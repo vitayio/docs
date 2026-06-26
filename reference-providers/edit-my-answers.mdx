@@ -1,0 +1,47 @@
+---
+title: "Editing your answers after submitting"
+description: "Whether you can change your answers once you've submitted the reference form, and what to do if you had trouble submitting."
+---
+
+Once you click **Submit** on the reference form, your answers are locked. There is no self-serve way to edit them after submission — the form closes to prevent duplicate or conflicting responses.
+
+If you need a change made, the recruiter can unlock the reference on their end. Reach out to them and they'll sort it out.
+
+## I submitted but need to change something
+
+<Steps>
+  <Step title="Find the recruiter's contact details">
+    Open the original reference request email you received from Vitay. The recruiter's name is in the email, and you can reply to reach them directly.
+  </Step>
+  <Step title="Explain what needs to change">
+    Let the recruiter know which answer you'd like to correct and what the updated answer should be. They can either make the edit themselves or reopen the form for you.
+  </Step>
+</Steps>
+
+## I'm having trouble submitting
+
+If you're stuck on the form and can't get it to submit at all, try these steps first:
+
+<AccordionGroup>
+  <Accordion title="The form won't let me submit">
+    Make sure all required questions are answered — required fields are usually marked. Scroll through the whole form to check nothing was missed.
+  </Accordion>
+  <Accordion title="I get an error when I click Submit">
+    Try refreshing the page and re-entering your answers. If the error says the reference has already been filled, your submission went through — no need to resubmit.
+  </Accordion>
+  <Accordion title="The form keeps timing out or crashing">
+    Try a different browser (Google Chrome works best) or switch to your phone's mobile data instead of a work network. Some corporate networks block external links.
+  </Accordion>
+  <Accordion title="None of the above worked">
+    Reply to your original request email and let the recruiter know what's happening. They can resend the link or help troubleshoot.
+  </Accordion>
+</AccordionGroup>
+
+## Related articles
+
+<CardGroup cols={2}>
+  <Card title="Help for reference providers" icon="house" href="/reference-providers/start-here" />
+  <Card title="The reference link isn't working" icon="link-slash" href="/reference-providers/link-not-working" />
+</CardGroup>
+
+{/* source: api app/controllers/api/v1/references_controller.rb public_create sets filled_at; Pundit policy blocks re-submission with render_reference_already_filled */}

@@ -1,0 +1,84 @@
+---
+title: "Add a candidate"
+description: "Create a candidate record in Vitay."
+---
+
+Before you can send a reference request, the candidate needs to exist in Vitay. Adding a candidate takes under a minute and only requires a name — you can fill in the rest later.
+
+<Note>
+  You need a recruiter (or higher) role to add candidates. If you don't see the
+  option, ask your Vitay admin to check your permissions.
+</Note>
+
+## Add a candidate
+
+<Steps>
+  <Step title="Open the Candidates list">
+    In the left sidebar, click **Candidates**. This shows all active candidates
+    in your account.
+  </Step>
+  <Step title="Open the add form">
+    Click the **Add candidate** button (usually in the top-right corner of the
+    Candidates page).
+
+    ![SCREENSHOT: the Candidates page header with the "Add candidate" button highlighted — placeholder](/images/placeholder.png)
+  </Step>
+  <Step title="Fill in the candidate's details">
+    Complete the form fields:
+
+    - **First name** and **Last name** — required.
+    - **Preferred name** — optional; used in outgoing emails if provided.
+    - **Email** — required by most firm configurations. Must be unique within your account.
+    - **Mobile number** — optional; used for SMS reminders if your plan includes them.
+    - **Internal ID** — your firm's own identifier (e.g., from your ATS). Click the refresh icon to auto-generate one if needed.
+    - **Assigned user** — the recruiter responsible for this candidate. Defaults to you; admins and root users can assign someone else.
+    - **Notes** — private notes visible only to recruiters, not to the candidate.
+    - **Placement date** — optional; useful for tracking when the hire was made.
+
+    Additional fields such as **Secondary ID**, **Job title**, and **Position applied for** appear only when your firm has those settings enabled.
+
+    ![SCREENSHOT: the Add candidate form with key fields labelled — placeholder](/images/placeholder.png)
+  </Step>
+  <Step title="Submit">
+    Click **Submit**. The candidate record is created and you're taken to their
+    profile, where you can send a reference request right away.
+  </Step>
+</Steps>
+
+## What happens next
+
+- The candidate appears in your **Candidates** list immediately.
+- You can edit any field later by opening the candidate and clicking **Edit**.
+- To begin collecting references, see [Send a reference request](/candidates-reference-requests/send-a-reference-request).
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="I get an error saying the email already exists">
+    Each email address can only be linked to one active candidate per account.
+    Search for the email in the Candidates list — the record may already exist
+    (possibly under a different name or marked inactive). If you need to
+    reactivate an old record, contact your Vitay admin.
+  </Accordion>
+  <Accordion title="Some fields are missing from the form">
+    Fields like Secondary ID, Job title, and Position applied for are controlled
+    by your firm's settings. If you need them enabled, ask a Vitay admin to
+    turn them on under account settings.
+  </Accordion>
+  <Accordion title="I can't assign the candidate to another recruiter">
+    The **Assigned user** field is only editable by admins, root users, or when
+    your firm has enabled candidate ownership transfers. Ask your admin if you
+    need to reassign a candidate.
+  </Accordion>
+</AccordionGroup>
+
+## Related articles
+
+<CardGroup cols={2}>
+  <Card title="Send a reference request" icon="paper-plane" href="/candidates-reference-requests/send-a-reference-request" />
+  <Card title="Manage in-flight requests" icon="sliders" href="/candidates-reference-requests/manage-in-flight-requests" />
+  <Card title="Search for past references" icon="magnifying-glass" href="/candidates-reference-requests/search-past-references" />
+  <Card title="Add a reference manually" icon="pen-to-square" href="/candidates-reference-requests/add-a-reference-manually" />
+</CardGroup>
+
+{/* source: app.vitay.io src/app/shared/components/modals/candidates/modals.candidates.component.html (fields: first_name, last_name, preferred_name, email, phone, internal_id, secondary_id, job_id, notes, placement_date, added_by_id); api app/models/candidate.rb */}

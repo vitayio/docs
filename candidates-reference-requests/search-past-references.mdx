@@ -1,0 +1,107 @@
+---
+title: "Search for past references"
+description: "Find references already collected on a candidate or profile."
+---
+
+Vitay stores every reference that has been completed, even after a hire is made. If a candidate has been through your process before — or has an existing Vitay profile — you may already have references on file that you can review without sending a new request.
+
+<Note>
+  You need a recruiter (or higher) role to view references. References
+  collected by other recruiters at your firm are visible to you unless your
+  firm has restricted access by assigned user.
+</Note>
+
+## Find references on a candidate record
+
+The quickest way to see past references for a specific candidate is through their profile in Vitay.
+
+<Steps>
+  <Step title="Open the candidate">
+    Go to **Candidates** and search for the candidate by name, email, or internal ID.
+
+    ![SCREENSHOT: the Candidates list with the search bar in use — placeholder](/images/placeholder.png)
+  </Step>
+  <Step title="Go to the References tab">
+    On the candidate page, click the **References** tab. This lists every
+    reference collected for this candidate — completed, pending, and manually
+    added.
+  </Step>
+  <Step title="Review the reference">
+    Click a completed reference to open it and read the answers and scores.
+    See [Read a completed reference](/candidates-reference-requests/read-a-completed-reference)
+    for a full walkthrough of the reference view.
+  </Step>
+</Steps>
+
+## Find references across all candidates
+
+If you're not sure which candidate a reference is tied to, or you want to browse recently completed references across your book of business, use the global references view.
+
+<Steps>
+  <Step title="Open References in the sidebar">
+    In the left sidebar, click **References**. This shows a paginated list of
+    all references your firm has collected, most recent first.
+  </Step>
+  <Step title="Filter or search">
+    Use the search or filter controls to narrow by candidate name, reference
+    name, question set, or status. Completed references have a filled-in status
+    indicator; pending ones are still awaiting a response.
+  </Step>
+  <Step title="Open a reference">
+    Click any row to open the individual reference and read its answers.
+  </Step>
+</Steps>
+
+## References from a candidate's profile (reference reuse)
+
+If a candidate has a Vitay profile — for example, because they previously submitted references for another job through Vitay — those references may already be on their profile and can be reused without collecting new ones.
+
+To check:
+
+<Steps>
+  <Step title="Open the candidate">
+    Go to **Candidates** and open the candidate record.
+  </Step>
+  <Step title="Check for a linked profile">
+    Look for a **Profile** section or link on the candidate page. If a profile
+    is linked, it means this candidate has a Vitay history.
+  </Step>
+  <Step title="View profile references">
+    Navigate to the linked profile to see any references collected under it.
+    These are references submitted directly by the candidate's own network via
+    a profile-based request — distinct from recruiter-initiated requests.
+  </Step>
+</Steps>
+
+<Note>
+  Profile references were collected via the candidate's own Vitay profile, not
+  through your firm's question set. Review them to confirm they meet your
+  firm's requirements before deciding whether to request new ones.
+</Note>
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="I can't find a candidate I know exists">
+    By default the Candidates list shows only active candidates. If the
+    candidate was deactivated or anonymized, they may not appear in the default
+    view. Ask your Vitay admin to check inactive records.
+  </Accordion>
+  <Accordion title="The References tab is empty even though references were sent">
+    References only appear here once they've been added (either by the
+    candidate entering a reference's details, or by you adding one manually).
+    If the request was sent but the candidate hasn't submitted any references
+    yet, the tab will be empty. Check the **Reference requests** tab instead to
+    see the pending request status.
+  </Accordion>
+</AccordionGroup>
+
+## Related articles
+
+<CardGroup cols={2}>
+  <Card title="Send a reference request" icon="paper-plane" href="/candidates-reference-requests/send-a-reference-request" />
+  <Card title="Read a completed reference" icon="clipboard-check" href="/candidates-reference-requests/read-a-completed-reference" />
+  <Card title="Add a reference manually" icon="pen-to-square" href="/candidates-reference-requests/add-a-reference-manually" />
+</CardGroup>
+
+{/* source: api app/models/profile_reference.rb; app/models/profile.rb; app/models/reference.rb (STI: RecruiterReference, ProfileReference); app.vitay.io src/app/shared/services/candidates/candidates.references.service.ts; src/app/shared/services/references.service.ts */}
