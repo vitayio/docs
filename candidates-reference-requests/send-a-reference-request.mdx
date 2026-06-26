@@ -1,0 +1,82 @@
+---
+title: "Send a reference request"
+description: "Build and send a reference request so a candidate can submit their references."
+---
+
+A reference request asks your candidate to provide their references. Once you
+send it, the candidate receives an email inviting them to enter each reference's
+contact details, and Vitay emails those references the questions to answer.
+
+<Note>
+  You need a recruiter (or higher) role to send reference requests, and the
+  candidate must already exist in Vitay. See [Add a candidate](/candidates-reference-requests/add-a-candidate).
+</Note>
+
+## Send a request
+
+<Steps>
+  <Step title="Open the candidate">
+    Go to **Candidates** and select the candidate you want references for.
+  </Step>
+  <Step title="Start a reference request">
+    Click **Request references** to open the reference request form.
+
+    ![SCREENSHOT: the candidate page with the "Request references" button — placeholder](/images/placeholder.png)
+  </Step>
+  <Step title="Choose the question set">
+    Select the **question set** the references will answer. This is the list of
+    questions Vitay sends to each reference. If your firm only has one question
+    set, it's selected for you.
+  </Step>
+  <Step title="Set how many references are required">
+    Choose the **minimum number of references** the candidate must provide
+    (for example, 2 or 3). The candidate can't finish until they've supplied at
+    least this many. Tick **manager references only** if every reference must be
+    a manager.
+  </Step>
+  <Step title="Add the optional details (if shown)">
+    Depending on your firm's settings you may also be able to:
+    - pick the **language** the request is sent in,
+    - add **notes** the candidate will see,
+    - set a **scheduled date** to send the request later.
+  </Step>
+  <Step title="Send">
+    Click **Send** (or **Submit**). The candidate is emailed right away, unless
+    you set a scheduled date.
+
+    ![SCREENSHOT: the completed reference request form before sending — placeholder](/images/placeholder.png)
+  </Step>
+</Steps>
+
+## What happens next
+
+- The candidate gets an email and a link to enter their references.
+- As each reference is added, Vitay emails that person the question set.
+- Vitay automatically sends reminders if a reference doesn't respond — see
+  [Reminders and how they work](/candidates-reference-requests/reminders-and-cadence).
+- You can resend, cancel, or fix a recipient at any time — see
+  [Manage in-flight requests](/candidates-reference-requests/manage-in-flight-requests).
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="The candidate says they didn't get the email">
+    See [A reference didn't receive the email](/candidates-reference-requests/reference-not-received)
+    for the checks to run (correct address, spam, resend).
+  </Accordion>
+  <Accordion title="I can't select a question set">
+    If the dropdown is empty, no question set is available to your account. Ask
+    an admin to set one up — see [Question sets and templates](/account-configuration/question-sets-and-templates).
+  </Accordion>
+</AccordionGroup>
+
+## Related articles
+
+<CardGroup cols={2}>
+  <Card title="Add a candidate" icon="user-plus" href="/candidates-reference-requests/add-a-candidate" />
+  <Card title="Reminders and how they work" icon="bell" href="/candidates-reference-requests/reminders-and-cadence" />
+  <Card title="Manage in-flight requests" icon="paper-plane" href="/candidates-reference-requests/manage-in-flight-requests" />
+  <Card title="Read a completed reference" icon="clipboard-check" href="/candidates-reference-requests/read-a-completed-reference" />
+</CardGroup>
+
+{/* source: app.vitay.io reference-requests modal (question_set, min_manager_references, is_manager_only, language, notes, scheduled_date); api app/models/reference_request.rb */}
