@@ -3,11 +3,14 @@
   "theme": "mint",
   "name": "Vitay Help Center",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#1CB9CB",
+    "light": "#98dae1",
+    "dark": "#0c575f"
   },
-  "favicon": "/favicon.svg",
+  "favicon": {
+    "light": "/images/logo-circle-green-small.webp",
+    "dark": "/images/logo-circle-green-small.webp"
+  },
   "navigation": {
     "pages": [
       "index",
@@ -102,8 +105,9 @@
     ]
   },
   "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
+    "light": "/images/vitay-white.svg",
+    "dark": "/images/vitay-color.svg",
+    "href": "https://vitay.io"
   },
   "navbar": {
     "primary": {
