@@ -105,8 +105,8 @@
     ]
   },
   "logo": {
-    "light": "/images/vitay-white.svg",
-    "dark": "/images/vitay-color.svg",
+    "light": "/images/vitay-color.svg",
+    "dark": "/images/vitay-white.svg",
     "href": "https://vitay.io"
   },
   "navbar": {
