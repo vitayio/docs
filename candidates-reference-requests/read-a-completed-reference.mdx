@@ -3,4 +3,81 @@ title: "Read a completed reference"
 description: "View answers and scores once a reference is submitted."
 ---
 
-_Draft in progress._
+When a reference completes the question form, Vitay records their answers and calculates scores automatically. You can review the full response at any time from the candidate's profile.
+
+<Note>
+  You need a recruiter (or higher) role to view completed references.
+</Note>
+
+## View a completed reference
+
+<Steps>
+  <Step title="Open the candidate">
+    Go to **Candidates** and select the candidate whose reference you want to
+    review.
+  </Step>
+  <Step title="Go to the References tab">
+    Click the **References** tab. Completed references show a filled-in status
+    (the exact label varies by account, but typically shows a completion date
+    or a "Completed" badge).
+
+    ![SCREENSHOT: the References tab showing a completed reference with status badge — placeholder](/images/placeholder.png)
+  </Step>
+  <Step title="Open the reference">
+    Click the completed reference to open it. The reference view shows:
+
+    - **Reference details** — the reference's name, title, company, relationship to the candidate, and the dates they worked together.
+    - **Answers** — each question from the question set, with the reference's response. Question types include text responses, ratings (e.g., 1–5 or 1–10 scale), multiple-choice, dropdown, checkbox, and date fields.
+    - **Score** — an overall numeric score calculated from the rating questions, displayed as a circle/dial. This gives a quick at-a-glance quality indicator.
+
+    ![SCREENSHOT: the completed reference view showing question answers and the score dial — placeholder](/images/placeholder.png)
+  </Step>
+</Steps>
+
+## Understand the overall candidate score
+
+Vitay rolls up scores across all completed references for a candidate into a single **candidate score**, visible on the candidate's profile page. This gives you an at-a-glance view of how the candidate's references rated them overall.
+
+The score is calculated automatically based on the numeric (rating) answers across all completed references. It updates in real time as more references are received.
+
+![SCREENSHOT: the candidate profile page showing the overall candidate score — placeholder](/images/placeholder.png)
+
+## Download or share a reference
+
+To share a completed reference outside of Vitay (for example, to send to a hiring manager), you can:
+
+- **Print or export as PDF** — use your browser's print function from the reference view. Vitay renders the reference in a clean, printable format.
+- **Copy a shareable link** — depending on your account settings, there may be a share or export option on the reference. If you don't see one, contact your Vitay admin.
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="The reference shows as completed but I see no answers">
+    This can happen if the reference submitted the form but the answer set is
+    still syncing, or if the question set had no answerable questions. Refresh
+    the page. If the problem persists, contact Vitay support.
+  </Accordion>
+  <Accordion title="The score seems lower than expected">
+    The score is derived from rating-type questions only. If the question set
+    uses mostly text or multiple-choice questions, the calculated score may
+    reflect a smaller number of data points. Check with your admin if you want
+    the scoring to weight questions differently.
+  </Accordion>
+  <Accordion title="I need to correct an answer">
+    Recruiters with the right permissions can edit individual answers after
+    submission (for example, to fix a transcription error on a phone reference).
+    Look for the **Edit** (pencil) icon next to the answer. Not all accounts
+    have this enabled — ask your Vitay admin if you need it.
+  </Accordion>
+</AccordionGroup>
+
+## Related articles
+
+<CardGroup cols={2}>
+  <Card title="Send a reference request" icon="paper-plane" href="/candidates-reference-requests/send-a-reference-request" />
+  <Card title="Add a reference manually" icon="pen-to-square" href="/candidates-reference-requests/add-a-reference-manually" />
+  <Card title="Search for past references" icon="magnifying-glass" href="/candidates-reference-requests/search-past-references" />
+  <Card title="A reference didn't receive the email" icon="triangle-exclamation" href="/candidates-reference-requests/reference-not-received" />
+</CardGroup>
+
+{/* source: api app/models/answer_set.rb; app/models/answer.rb (types: Text, Rating, Radio, Dropdown, Checkbox, Slider, Date, DateRange, Matrix, Ranking); app/models/candidate_score.rb (materialized view, score column); app.vitay.io src/app/shared/components/answers/answers.component.html; src/app/shared/components/score/score.component.html */}

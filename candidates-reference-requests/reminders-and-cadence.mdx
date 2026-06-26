@@ -3,4 +3,95 @@ title: "Reminders and how they work"
 description: "When and how Vitay reminds references to respond, and how to adjust it."
 ---
 
-_Draft in progress._
+Vitay can automatically follow up with references (and candidates) who haven't responded yet. Understanding how reminders work helps you avoid over-contacting people and troubleshoot when a reference goes quiet.
+
+<Note>
+  Auto-reminder settings are controlled at the account level by a Vitay admin.
+  As a recruiter you can send manual reminders and turn off reminders for
+  individual candidates, but you cannot change the global reminder schedule.
+</Note>
+
+## How automatic reminders work
+
+When a reference request or individual reference is sent, Vitay schedules a series of follow-up reminders automatically — provided your account has auto-reminders enabled.
+
+- **Cadence:** reminders go out at a configurable interval (the default is every 24 hours). Your admin may have changed this.
+- **Weekend skipping:** your admin can configure reminders to skip Saturday and Sunday, so references only receive nudges on weekdays.
+- **Channels:** depending on your account settings, reminders are sent by email, by SMS, or both.
+- **Limit:** there is a maximum number of reminders per request. Once that limit is reached, no further automatic reminders are sent.
+- **Auto-stop:** if the reference completes the form or the request is cancelled, any pending reminders are deactivated immediately.
+
+A reminder indicator on the candidate or reference record shows you how many reminders have been sent and when the next one is scheduled.
+
+![SCREENSHOT: a reference record showing the reminder count and next scheduled reminder date — placeholder](/images/placeholder.png)
+
+## Send a manual reminder
+
+You can nudge a reference or a candidate at any time, outside the automatic schedule.
+
+<Steps>
+  <Step title="Open the candidate">
+    Go to **Candidates** and select the candidate whose reference hasn't responded.
+  </Step>
+  <Step title="Find the reference or request">
+    On the candidate page, locate the reference or reference request that needs a nudge. Open it to see its detail view.
+  </Step>
+  <Step title="Send the reminder">
+    Click **Send reminder**. Vitay sends the follow-up email (and SMS, if applicable) immediately.
+
+    ![SCREENSHOT: the reference detail view with the "Send reminder" button — placeholder](/images/placeholder.png)
+  </Step>
+</Steps>
+
+<Note>
+  The **Send reminder** button is greyed out or labelled **Reminders disabled**
+  in two situations: reminders are turned off for this candidate, or the
+  reminder rate limit has been reached (you sent one too recently). Wait a short
+  period and try again.
+</Note>
+
+## Disable reminders for a candidate
+
+If a candidate asks you to stop sending reminder emails, you can turn reminders off for their record without affecting other candidates.
+
+<Steps>
+  <Step title="Open the candidate">
+    Go to **Candidates** and select the candidate.
+  </Step>
+  <Step title="Edit the candidate record">
+    Click **Edit** and look for the reminders toggle. Turn it off, then save.
+  </Step>
+</Steps>
+
+When reminders are disabled for a candidate, the **Send reminder** button on their references and requests will show **Reminders disabled**.
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="The Send reminder button is greyed out">
+    This usually means one of three things: the reference has already
+    completed the form, reminders are disabled for this candidate, or the
+    system's rate limit prevents sending another reminder so soon. Check the
+    reference status first, then check the candidate's reminders setting.
+  </Accordion>
+  <Accordion title="A reference says they're receiving too many emails">
+    Each account has a cap on total reminders per request. If a reference is
+    still getting emails after many days, check with your Vitay admin to
+    confirm the auto-reminder cadence and limit configured for your account.
+  </Accordion>
+  <Accordion title="No reminders are going out at all">
+    Your account's auto-reminders may be disabled. Ask a Vitay admin to check
+    the auto-reminders setting. Individual manual reminders still work even when
+    auto-reminders are off.
+  </Accordion>
+</AccordionGroup>
+
+## Related articles
+
+<CardGroup cols={2}>
+  <Card title="Send a reference request" icon="paper-plane" href="/candidates-reference-requests/send-a-reference-request" />
+  <Card title="Manage in-flight requests" icon="sliders" href="/candidates-reference-requests/manage-in-flight-requests" />
+  <Card title="A reference didn't receive the email" icon="triangle-exclamation" href="/candidates-reference-requests/reference-not-received" />
+</CardGroup>
+
+{/* source: api app/models/reminder.rb (rate_hours, skip_weekend_days, next_reminder_dates, send_reminders); app/models/email_reminder.rb; app/models/text_reminder.rb; app.vitay.io src/app/shared/services/reminders.service.ts; i18n keys MODALS.REMINDERS.*, BUTTONS.REMINDERS.*, SIDEBAR.WARNING.AUTO_REMINDERS */}

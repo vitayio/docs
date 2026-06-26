@@ -3,4 +3,94 @@ title: "Add a reference manually"
 description: "Enter a reference yourself instead of sending a request."
 ---
 
-_Draft in progress._
+In most cases, Vitay collects references by asking the candidate to provide their contacts. But sometimes you already have a reference's details — or you need to enter them on the candidate's behalf. Adding a reference manually lets you do that without going through the candidate.
+
+<Note>
+  You need a recruiter (or higher) role to add references manually. The
+  candidate must already exist in Vitay. See
+  [Add a candidate](/candidates-reference-requests/add-a-candidate).
+</Note>
+
+## Add a reference manually
+
+<Steps>
+  <Step title="Open the candidate">
+    Go to **Candidates** and select the candidate you want to add a reference for.
+  </Step>
+  <Step title="Go to the References tab">
+    On the candidate page, click the **References** tab to see all references
+    for this candidate.
+  </Step>
+  <Step title="Add a reference">
+    Click **Add reference** (or the equivalent button on the References tab).
+
+    ![SCREENSHOT: the References tab with the "Add reference" button highlighted — placeholder](/images/placeholder.png)
+  </Step>
+  <Step title="Fill in the reference's details">
+    Complete the form with the reference's contact information:
+
+    - **First name** and **Last name** — required.
+    - **Email** — required. This is where Vitay sends the reference request.
+    - **Phone / Mobile number** — optional; used for SMS if enabled.
+    - **Company name** — the company where the reference worked with the candidate.
+    - **Title** — the reference's job title.
+    - **Relationship** — the reference's relationship to the candidate (e.g., Direct Manager, Peer, HR).
+    - **Start date** / **End date** — the period when the reference worked with the candidate.
+    - **Question set** — the set of questions this reference will answer.
+    - **Language** — the language the request will be sent in (if multi-language is enabled).
+
+    ![SCREENSHOT: the Add reference form with fields filled in — placeholder](/images/placeholder.png)
+  </Step>
+  <Step title="Save and send">
+    Click **Submit** (or **Save**). Vitay creates the reference record and
+    sends the reference request email to the address you provided right away.
+  </Step>
+</Steps>
+
+## What happens next
+
+- The reference receives an email with a link to the question form.
+- Vitay automatically sends reminders if they don't respond — see [Reminders and how they work](/candidates-reference-requests/reminders-and-cadence).
+- Once they complete the form, you'll see the answers on their reference record. See [Read a completed reference](/candidates-reference-requests/read-a-completed-reference).
+
+## Difference between a manual reference and a reference request
+
+| | Reference request | Manual reference |
+|---|---|---|
+| Who provides the contact details | The candidate | You (the recruiter) |
+| Who gets the initial email | The candidate | The reference directly |
+| Useful when | You want the candidate to enter their own contacts | You already have the reference's details |
+
+Both result in the same experience for the reference: they receive an email with a link to complete the question form.
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="I can't see the Add reference button">
+    The button may be hidden if there's no active reference request for this
+    candidate, or if your firm requires a reference request to be sent first.
+    Try sending a reference request first, then adding the reference under that
+    request.
+  </Accordion>
+  <Accordion title="The reference says they didn't get the email">
+    See [A reference didn't receive the email](/candidates-reference-requests/reference-not-received)
+    for a step-by-step troubleshooting guide: confirm the address is correct,
+    check for a bounce, and resend if needed.
+  </Accordion>
+  <Accordion title="I entered the wrong email address">
+    Open the reference record, click **Edit**, and update the **Email** field.
+    Then use **Send reminder** to resend the request to the corrected address.
+    See [Manage in-flight requests](/candidates-reference-requests/manage-in-flight-requests).
+  </Accordion>
+</AccordionGroup>
+
+## Related articles
+
+<CardGroup cols={2}>
+  <Card title="Send a reference request" icon="paper-plane" href="/candidates-reference-requests/send-a-reference-request" />
+  <Card title="Manage in-flight requests" icon="sliders" href="/candidates-reference-requests/manage-in-flight-requests" />
+  <Card title="Reminders and how they work" icon="bell" href="/candidates-reference-requests/reminders-and-cadence" />
+  <Card title="Read a completed reference" icon="clipboard-check" href="/candidates-reference-requests/read-a-completed-reference" />
+</CardGroup>
+
+{/* source: api app/models/recruiter_reference.rb (send_reference_email, relationship_choice enum, contact_type_choice enum); app/models/reference.rb (columns: first_name, last_name, email, phone, company_name, title, relationship, start_date, end_date, question_set_id, language); app.vitay.io src/app/shared/services/references.service.ts (addCandidateReference) */}

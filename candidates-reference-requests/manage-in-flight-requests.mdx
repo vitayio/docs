@@ -3,4 +3,128 @@ title: "Manage in-flight requests"
 description: "Resend, cancel, or fix the recipient on an open reference request."
 ---
 
-_Draft in progress._
+Once a reference request is sent, you're not locked in. You can resend the candidate's invitation email, send a manual reminder to a specific reference, update a reference's email address, or cancel the entire request if plans change.
+
+<Note>
+  You need a recruiter (or higher) role to manage reference requests. You can
+  only manage requests for candidates assigned to you, unless you have admin
+  or root access.
+</Note>
+
+## Resend the request to the candidate
+
+If the candidate says they didn't receive the invitation email, or they accidentally deleted it, you can resend it.
+
+<Steps>
+  <Step title="Open the candidate">
+    Go to **Candidates** and select the candidate.
+  </Step>
+  <Step title="Go to the Reference requests tab">
+    On the candidate page, click **Reference requests** to see all requests
+    sent to this candidate.
+  </Step>
+  <Step title="Resend the invitation">
+    Find the open request and click **Send reminder** (or the resend option).
+    Vitay sends the candidate the invitation email again immediately.
+
+    ![SCREENSHOT: the reference request row with the resend/reminder action — placeholder](/images/placeholder.png)
+  </Step>
+</Steps>
+
+## Send a reminder to a specific reference
+
+If the candidate has already submitted their references' details but a reference hasn't responded, you can nudge that individual reference directly.
+
+<Steps>
+  <Step title="Open the candidate">
+    Go to **Candidates** and select the candidate.
+  </Step>
+  <Step title="Go to the References tab">
+    Click **References** to see the individual references added by the candidate.
+  </Step>
+  <Step title="Send the reminder">
+    Find the reference who hasn't responded and click **Send reminder**. Vitay
+    sends them the reference request email again.
+  </Step>
+</Steps>
+
+For full details on how reminders work and when they're blocked, see [Reminders and how they work](/candidates-reference-requests/reminders-and-cadence).
+
+## Update a reference's email address
+
+If a reference notifies you that their email address is wrong, you can correct it before resending.
+
+<Steps>
+  <Step title="Open the candidate's References tab">
+    Go to **Candidates**, select the candidate, and click the **References** tab.
+  </Step>
+  <Step title="Open the reference record">
+    Click the reference whose address needs to change.
+  </Step>
+  <Step title="Edit the email">
+    Click **Edit** on the reference record and update the **Email** field with
+    the correct address. Save your changes.
+
+    ![SCREENSHOT: the reference edit form with the email field highlighted — placeholder](/images/placeholder.png)
+  </Step>
+  <Step title="Resend the request">
+    After saving, send a reminder to the reference so they receive the request
+    at their new address.
+  </Step>
+</Steps>
+
+## Cancel a reference request
+
+If a candidate is withdrawn from the process or a mistake was made, you can cancel the open request. Cancelling deactivates all pending auto-reminders.
+
+<Steps>
+  <Step title="Open the candidate's Reference requests tab">
+    Go to **Candidates**, select the candidate, and click **Reference requests**.
+  </Step>
+  <Step title="Delete or cancel the request">
+    Find the open request and click the delete or cancel action (usually a
+    trash icon or a **Cancel** option in the row menu). Confirm when prompted.
+
+    ![SCREENSHOT: the reference request row with the cancel/delete action visible — placeholder](/images/placeholder.png)
+  </Step>
+</Steps>
+
+<Note>
+  Cancelling a request does not delete any references that were already
+  completed before the cancellation. Those remain on the candidate record and
+  can still be viewed.
+</Note>
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="The Send reminder button is greyed out">
+    This can happen if: the reference has already completed the form, reminders
+    are disabled for this candidate, or you sent a reminder very recently and
+    the rate limit hasn't reset. See
+    [Reminders and how they work](/candidates-reference-requests/reminders-and-cadence)
+    for more detail.
+  </Accordion>
+  <Accordion title="I can't edit the reference's email">
+    If the reference has already submitted their answers, the email field may
+    be locked. You can still view the completed reference — a new request would
+    be needed if you want to collect a fresh response from a different address.
+  </Accordion>
+  <Accordion title="The candidate says they still aren't getting the email">
+    See [A reference didn't receive the email](/candidates-reference-requests/reference-not-received)
+    — the same checklist applies when the candidate isn't receiving their
+    invitation: confirm the address, check for typos, and verify no bounce has
+    been recorded.
+  </Accordion>
+</AccordionGroup>
+
+## Related articles
+
+<CardGroup cols={2}>
+  <Card title="Send a reference request" icon="paper-plane" href="/candidates-reference-requests/send-a-reference-request" />
+  <Card title="Reminders and how they work" icon="bell" href="/candidates-reference-requests/reminders-and-cadence" />
+  <Card title="A reference didn't receive the email" icon="triangle-exclamation" href="/candidates-reference-requests/reference-not-received" />
+  <Card title="Read a completed reference" icon="clipboard-check" href="/candidates-reference-requests/read-a-completed-reference" />
+</CardGroup>
+
+{/* source: api app/models/reference_request.rb (send_reference_requests, add_reminders, reset_reminders); app/models/recruiter_reference.rb (send_reference_email, send_reminder_email); app/controllers/api/v1/reference_requests_controller.rb (send_reminder, destroy); app.vitay.io src/app/shared/services/reference-requests.service.ts (patch, sendReminder); src/app/shared/services/references.service.ts (patch, sendReferenceReminder) */}

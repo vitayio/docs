@@ -3,4 +3,114 @@ title: "A reference didn't receive the email"
 description: "Recruiter steps when a reference says they didn't get the request."
 ---
 
-_Draft in progress._
+When a reference tells you they never received the request email, a few quick checks from your end can usually resolve it. Work through the steps below before asking them to check their spam folder.
+
+<Note>
+  These steps are for **recruiters** troubleshooting on behalf of a reference.
+  You need a recruiter (or higher) role to view and edit reference records.
+</Note>
+
+## Step 1 — Confirm the email address on file
+
+The most common cause is a simple typo in the email address.
+
+<Steps>
+  <Step title="Open the candidate">
+    Go to **Candidates** and select the candidate who submitted this reference.
+  </Step>
+  <Step title="Go to the References tab">
+    Click the **References** tab and find the reference in question.
+  </Step>
+  <Step title="Check the email address">
+    Open the reference record and look at the **Email** field. Confirm it
+    matches what the reference says their address is.
+
+    ![SCREENSHOT: a reference record with the email address field visible — placeholder](/images/placeholder.png)
+  </Step>
+  <Step title="Correct it if needed">
+    If the address is wrong, click **Edit** and update the **Email** field.
+    Save the change, then resend the request (see Step 3 below).
+  </Step>
+</Steps>
+
+## Step 2 — Check for an email validity flag
+
+Vitay monitors whether outgoing emails are delivered successfully. If a previous email to this address bounced or was flagged as invalid, Vitay records that so you know future sends may also fail.
+
+<Steps>
+  <Step title="Look for a validity indicator">
+    On the reference record, look for any warning icon, "Invalid email" label,
+    or similar indicator next to the email address. This signals that Vitay's
+    delivery records show a problem with this address.
+
+    ![SCREENSHOT: a reference record showing an email validity warning — placeholder](/images/placeholder.png)
+  </Step>
+  <Step title="What to do if the email is flagged invalid">
+    - Confirm the correct address with the reference directly (phone or an alternative channel).
+    - Update the email address in the reference record (click **Edit**).
+    - Resend the request once the address is corrected.
+  </Step>
+</Steps>
+
+<Note>
+  Vitay's email validity check is based on delivery history. An address can be
+  flagged if the reference's inbox was full, their mail server temporarily
+  rejected the email, or the address genuinely doesn't exist. When in doubt,
+  ask the reference to provide an alternative address.
+</Note>
+
+## Step 3 — Resend the reference request
+
+Once the address is confirmed (or corrected), resend the request so the reference gets a fresh email.
+
+<Steps>
+  <Step title="Open the reference record">
+    On the candidate's **References** tab, click the reference who hasn't received the email.
+  </Step>
+  <Step title="Send a reminder">
+    Click **Send reminder**. Vitay sends the reference request email to the
+    address currently on file, immediately.
+
+    ![SCREENSHOT: the reference record with the "Send reminder" button — placeholder](/images/placeholder.png)
+  </Step>
+</Steps>
+
+## Step 4 — Ask the reference to check their spam folder
+
+If the address is correct and there are no validity flags, the email was likely delivered but caught by a spam or junk filter. Ask the reference to:
+
+1. Check their **Spam**, **Junk**, or **Promotions** folder for an email from Vitay.
+2. Add the Vitay sending address to their contacts or safe-senders list so future emails arrive in their inbox.
+3. Let you know once they've found it, or ask you to resend if they can't locate it.
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="The email address is correct but the reference still isn't getting emails">
+    The reference's mail server may be blocking Vitay's sending domain. Ask
+    them to check with their IT team to whitelist the Vitay sending domain, or
+    try an alternative personal email address if their corporate address is
+    the problem.
+  </Accordion>
+  <Accordion title="The Send reminder button is greyed out">
+    This usually means reminders are disabled for this candidate, or you sent
+    a reminder very recently and the rate limit hasn't reset. Wait a short
+    period and try again. See
+    [Reminders and how they work](/candidates-reference-requests/reminders-and-cadence).
+  </Accordion>
+  <Accordion title="The reference says they got the email but the link doesn't work">
+    The request link may have expired or already been used. Contact Vitay
+    support with the candidate name and reference name so they can investigate
+    the specific link.
+  </Accordion>
+</AccordionGroup>
+
+## Related articles
+
+<CardGroup cols={2}>
+  <Card title="Manage in-flight requests" icon="sliders" href="/candidates-reference-requests/manage-in-flight-requests" />
+  <Card title="Reminders and how they work" icon="bell" href="/candidates-reference-requests/reminders-and-cadence" />
+  <Card title="Add a reference manually" icon="pen-to-square" href="/candidates-reference-requests/add-a-reference-manually" />
+</CardGroup>
+
+{/* source: api app/models/reference_email_validity.rb (materialized view: is_valid, is_invalid columns); app/models/recruiter_reference.rb (send_reference_email, send_reminder_email); app.vitay.io src/app/shared/services/references.service.ts (sendReferenceReminder, patch) */}
