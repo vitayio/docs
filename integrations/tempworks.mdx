@@ -1,8 +1,56 @@
 ---
 title: "TempWorks integration"
-description: "Connect Vitay to TempWorks."
+description: "Connect Vitay to TempWorks Enterprise so candidate records sync automatically when a recruiter opens a candidate in the ATS."
 ---
 
+The TempWorks integration links Vitay to your TempWorks Enterprise account using an API token. When a recruiter opens a TempWorks candidate, Vitay automatically imports the candidate record — including their name, email, phone, and the assigned service representative — so a reference request can be started right away.
+
 <Note>
-  This article is being migrated from our previous help center. Full content is coming soon.
+  Setting up the TempWorks integration requires **admin** access in Vitay and your TempWorks **API token** and **account SID**. Contact [support@vitay.io](mailto:support@vitay.io) to configure this integration for your firm.
 </Note>
+
+## What the integration does
+
+- **Auto-import candidates** — when a TempWorks candidate is loaded into Vitay, the integration fetches their profile from TempWorks and creates or updates the candidate record in Vitay automatically.
+- **Branch-to-firm mapping** — TempWorks branches are mapped to Vitay hiring firm accounts, so candidates are routed to the correct firm when your organization has multiple sub-accounts.
+- **Service representative matching** — Vitay looks up the TempWorks service rep by email and assigns them as the recruiter for that candidate in Vitay. If no match is found, the firm's default recruiter is used.
+
+## Connect TempWorks
+
+The integration is configured by the Vitay team in coordination with your admin. You will need:
+
+- Your TempWorks **API token** (auth token).
+- Your TempWorks **account SID**.
+
+Contact [support@vitay.io](mailto:support@vitay.io) to provide these credentials securely. Vitay stores them as a Base64-encoded header token and applies them to all TempWorks API calls for your firm.
+
+<Note>
+  Branch-to-firm mapping (matching TempWorks branch IDs to Vitay sub-account IDs) is also set up at connection time. If you add new branches after the initial setup, contact [support@vitay.io](mailto:support@vitay.io) to update the mapping.
+</Note>
+
+![SCREENSHOT: Integrations settings page showing a connected TempWorks integration — placeholder](/images/placeholder.png)
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="A candidate imports to the wrong sub-account">
+    Vitay uses the TempWorks branch ID to route candidates to the correct hiring firm. If the branch mapping is incorrect or missing, the import will fail or route to the wrong account. Contact [support@vitay.io](mailto:support@vitay.io) to review the branch mapping.
+  </Accordion>
+  <Accordion title="The candidate import fails with an email error">
+    TempWorks candidates must have a primary email address that is different from their service representative's email. If those two fields match, or if the candidate has no email, Vitay cannot create the candidate record. Update the candidate's email in TempWorks and try again.
+  </Accordion>
+  <Accordion title="The service rep is not assigned correctly">
+    Vitay matches the TempWorks service rep by email to a recruiter in Vitay. If no recruiter with that email exists in your Vitay account, the firm's default recruiter is assigned instead. Ask your admin to ensure recruiter email addresses match between the two systems.
+  </Accordion>
+</AccordionGroup>
+
+## Related articles
+
+<CardGroup cols={2}>
+  <Card title="Integrations overview" icon="plug" href="/integrations/overview" />
+  <Card title="Bullhorn integration" icon="bullseye" href="/integrations/bullhorn" />
+  <Card title="Add a candidate" icon="user-plus" href="/candidates-reference-requests/add-a-candidate" />
+  <Card title="Send a reference request" icon="paper-plane" href="/candidates-reference-requests/send-a-reference-request" />
+</CardGroup>
+
+{/* source: api app/controllers/api/tempworks_controller.rb; api app/services/external_services/tempworks/; api app/models/external_authorisations/tempwork.rb */}

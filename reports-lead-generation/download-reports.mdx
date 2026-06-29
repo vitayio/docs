@@ -1,8 +1,113 @@
 ---
 title: "Download reports"
-description: "Export reference and activity data from Vitay."
+description: "Export candidate, reference, lead, and activity data from Vitay as CSV files."
 ---
 
+Vitay lets you export data from most sections of the platform as CSV files. Use exports to build
+your own reports, share data with stakeholders, or archive records outside of Vitay.
+
 <Note>
-  This article is being migrated from our previous help center. Full content is coming soon.
+  You need a recruiter (or higher) role to download most reports. Some report types (such as
+  account-level exports) are limited to admins.
 </Note>
+
+## Available report types
+
+| Report | What it contains |
+|--------|-----------------|
+| **Candidates** | Candidate list with status, score, assigned recruiter, reference totals, and creation date |
+| **References (answers per candidate)** | One row per completed reference, with every question and answer |
+| **Leads** | Reference contacts flagged as leads, including lead type, consent timestamp, and consent text |
+| **Custom leads** | Contacts captured via your firm's custom lead types (e.g. a second lead category) |
+| **Feedback** | Feedback request records with creation and completion dates |
+| **Feedback answers** | One row per completed feedback form with every question and answer |
+| **Pre-screenings** | Pre-screening requests with creation and completion dates |
+| **Candidates per recruiters** | Summary of candidates, references, and leads grouped by recruiter |
+| **Recruiter performance** | Completed and total references by recruiter, with active status |
+| **Dashboard** | Recruiter-level summary across the whole firm (or sub-accounts) |
+| **Recruiters** | Recruiter list with name, email, and active status |
+
+## Download a report
+
+<Steps>
+  <Step title="Go to Reports">
+    In the main navigation, click **Reports** (or **Exports**, depending on your plan's label).
+
+    ![SCREENSHOT: the main navigation with the Reports section highlighted — placeholder](/images/placeholder.png)
+  </Step>
+  <Step title="Choose a report type">
+    Select the report type you want from the list or tab menu. The page shows the available
+    columns and filters for that type.
+  </Step>
+  <Step title="Apply filters (optional)">
+    Most reports let you filter by **date range** (creation date or completion date). Some reports
+    also let you filter by recruiter or scope (for example, **My candidates** vs. **All
+    candidates**).
+
+    ![SCREENSHOT: the report filters panel with a date range selector — placeholder](/images/placeholder.png)
+  </Step>
+  <Step title="Download">
+    Click **Download** (or **Export CSV**). Vitay generates the file and your browser downloads it
+    automatically.
+  </Step>
+</Steps>
+
+## Column reference
+
+Most exported columns are self-explanatory. A few worth noting:
+
+- **Score** — a percentage calculated from rating and matrix questions in the question set. Zero
+  means no rating questions were answered.
+- **Consent Given At** / **Consent Text** — appear on lead and custom-lead exports. They show
+  the timestamp when the reference gave lead-gen consent and the exact wording they agreed to.
+  See [Lead generation](/reports-lead-generation/lead-generation) for context.
+- **Branch name** — the sub-account or hiring firm branch the record belongs to (shown on
+  multi-account exports).
+
+## Export a candidate reference-answer report
+
+The **References (answers per candidate)** report is the most detailed export: it creates one row
+per completed reference and adds one column per question. This is useful for analysis or for
+sharing reference results in spreadsheet form.
+
+<Steps>
+  <Step title="Select the report type">
+    Choose **Reference answers per candidate** from the Reports section.
+  </Step>
+  <Step title="Filter by question set (optional)">
+    If you want answers only from a specific question set, pick it from the question-set filter.
+  </Step>
+  <Step title="Download">
+    Click **Download**. Large exports may take a few seconds to generate.
+  </Step>
+</Steps>
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="The downloaded file is empty (only headers)">
+    No records match your current filters. Try widening the date range, removing the recruiter
+    filter, or confirming that the data you expect exists in Vitay.
+  </Accordion>
+  <Accordion title="A column I expected isn't in the file">
+    Some columns are only included when the matching feature is enabled on your account (for
+    example, the Consent columns only appear on lead exports). Contact your account admin if you
+    think a feature should be on.
+  </Accordion>
+  <Accordion title="The report includes more rows than expected">
+    Leads and custom-lead exports de-duplicate by email address (one row per unique email). If
+    the same contact appears on multiple reference requests, only the most complete record is
+    exported.
+  </Accordion>
+</AccordionGroup>
+
+## Related articles
+
+<CardGroup cols={2}>
+  <Card title="Lead generation" icon="bolt" href="/reports-lead-generation/lead-generation" />
+  <Card title="Bulk candidate upload" icon="upload" href="/reports-lead-generation/bulk-candidate-upload" />
+  <Card title="Candidate feedback" icon="comment-dots" href="/feedback/candidate-feedback" />
+  <Card title="Send a reference request" icon="paper-plane" href="/candidates-reference-requests/send-a-reference-request" />
+</CardGroup>
+
+{/* source: app.vitay.io reports/exports UI; api app/controllers/api/v3/documents/csv_controller.rb (show action, all when branches: candidates, referenceAnswersPerCandidates, leads, custom_leads, feedback_answers, feedbacks, pre_screenings, candidatesPerRecruiters, recruiter_performances, dashboard, recruiters); api app/services/documents/model_to_csv.rb (column header map) */}

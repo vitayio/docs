@@ -1,8 +1,68 @@
 ---
 title: "Bullhorn integration"
-description: "Connect Vitay to Bullhorn."
+description: "Connect Vitay to Bullhorn so you can import candidates and push completed reference reports back into Bullhorn."
 ---
 
+The Bullhorn integration links Vitay to your Bullhorn account using Bullhorn's OAuth flow. Once connected, your team can pull candidate records into Vitay and automatically upload the finished reference PDF to the candidate's Bullhorn file — without leaving either platform.
+
 <Note>
-  This article is being migrated from our previous help center. Full content is coming soon.
+  Only a **root admin** can connect or disconnect the Bullhorn integration. You will need your firm's Bullhorn **Client ID**, **Client Secret**, **username**, and **password** before you start.
 </Note>
+
+## What the integration does
+
+- **Import candidates** — load a Bullhorn candidate record into Vitay in one click so you can start a reference request immediately.
+- **Push reference reports** — once references are complete, upload a PDF of the reference report directly to the candidate's file in Bullhorn.
+- **Sync ownership** — when pushing a candidate to Bullhorn, Vitay matches the recruiter's email to the corresponding Bullhorn corporate user and sets them as the record owner.
+
+## Connect Bullhorn
+
+The connection is set up by the Vitay team together with your admin. During setup you provide:
+
+- Your Bullhorn **Client ID** and **Client Secret** (from your Bullhorn API credentials).
+- Your Bullhorn **username** and **password**.
+
+Vitay initiates an OAuth authorization against Bullhorn, and a Vitay team member validates the connection before it becomes active. Contact [support@vitay.io](mailto:support@vitay.io) to get started.
+
+<Note>
+  After you submit your credentials, Vitay sends an internal notification to validate the connection. You may need to accept Bullhorn's Terms of Service during this step before your recruiters can use the integration.
+</Note>
+
+![SCREENSHOT: Integrations settings page showing a connected Bullhorn integration — placeholder](/images/placeholder.png)
+
+## Use the integration
+
+Once connected, your recruiters will see Bullhorn-specific options on candidate and reference pages:
+
+- **Load from Bullhorn** — imports a candidate from Bullhorn by entity ID.
+- **Push candidate to Bullhorn** — creates or updates the candidate record in Bullhorn.
+- **Upload reference report** — generates a PDF of completed references and attaches it to the candidate in Bullhorn.
+
+## Disconnect Bullhorn
+
+Only a root admin can disconnect the integration. Contact [support@vitay.io](mailto:support@vitay.io) if you need to remove the connection.
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="I see an authorization error after connecting">
+    Bullhorn access tokens expire. Vitay refreshes them automatically, but if the connection breaks (for example, your Bullhorn password changes), the integration will need to be reconnected. Contact [support@vitay.io](mailto:support@vitay.io).
+  </Accordion>
+  <Accordion title="The 'Push to Bullhorn' option is missing">
+    This option is only visible once the Bullhorn integration is connected for your firm. Ask your admin to confirm the integration is active.
+  </Accordion>
+  <Accordion title="A reference report won't upload to Bullhorn">
+    The candidate must first be synced to Bullhorn (via "Push candidate to Bullhorn") before a document can be attached. If the candidate already exists in Bullhorn but the sync record is missing, contact [support@vitay.io](mailto:support@vitay.io).
+  </Accordion>
+</AccordionGroup>
+
+## Related articles
+
+<CardGroup cols={2}>
+  <Card title="Integrations overview" icon="plug" href="/integrations/overview" />
+  <Card title="JobAdder integration" icon="briefcase" href="/integrations/jobadder" />
+  <Card title="Add a candidate" icon="user-plus" href="/candidates-reference-requests/add-a-candidate" />
+  <Card title="Send a reference request" icon="paper-plane" href="/candidates-reference-requests/send-a-reference-request" />
+</CardGroup>
+
+{/* source: api app/controllers/api/bullhorn_controller.rb; api app/services/external_services/bullhorn/authorize.rb; api app/models/external_authorisations/bullhorn.rb */}

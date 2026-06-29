@@ -1,8 +1,91 @@
 ---
-title: "Configure email sender settings"
-description: "Set the From name and address references see on Vitay emails."
+title: "Email sender settings"
+description: "Control the From name and email address that references and candidates see when Vitay sends them emails."
 ---
 
+Every email Vitay sends on your behalf — reference requests, reminders, and thank-you notes — shows a sender name and email address in the recipient's inbox. You can choose whether those come from the individual recruiter's identity or from a shared, firm-wide address.
+
 <Note>
-  This article is being migrated from our previous help center. Full content is coming soon.
+  You need a **root recruiter** (admin) role to change email sender settings. Changes take effect for all outgoing emails immediately after saving.
 </Note>
+
+## How sender identity works
+
+Vitay offers two modes:
+
+| Mode | From name shown | From address shown |
+|---|---|---|
+| **Recruiter identity** (default) | The assigned recruiter's name | The assigned recruiter's email |
+| **Firm-wide override** | A generic name you configure | A generic address you configure |
+
+You can mix these: for example, use the recruiter's real name but a shared company address.
+
+## Change the sender name
+
+<Steps>
+  <Step title="Open Configuration settings">
+    Go to **Settings → Configuration** in the left-hand navigation.
+
+    ![The email (sender) settings page](/images/email-sender-settings.png)
+  </Step>
+  <Step title="Find the sender name controls">
+    Look for the **Send Emails Using Assigned Recruiter's Name** toggle and the **From: Sender name** field beneath it.
+  </Step>
+  <Step title="Choose recruiter name or a shared name">
+    - To use each recruiter's own name, turn **Send Emails Using Assigned Recruiter's Name** **on**.
+    - To send every email under the same display name, turn that toggle **off** and type your preferred name (for example, "Acme Recruiting Team") in the **From: Sender name** field.
+  </Step>
+  <Step title="Save">
+    Click **Save**. The change applies to all future outbound emails.
+  </Step>
+</Steps>
+
+## Change the sender email address
+
+<Steps>
+  <Step title="Open Configuration settings">
+    Go to **Settings → Configuration**.
+  </Step>
+  <Step title="Find the sender email controls">
+    Look for the **Send Emails Using Assigned Recruiter's Email** toggle and the **From: Email address** field.
+  </Step>
+  <Step title="Choose recruiter address or a shared address">
+    - To send from each recruiter's own address, turn **Send Emails Using Assigned Recruiter's Email** **on**.
+    - To send from one shared address for your whole firm, turn that toggle **off** and enter the address (for example, `hiring@yourcompany.com`) in **From: Email address**.
+  </Step>
+  <Step title="Save">
+    Click **Save**.
+  </Step>
+</Steps>
+
+## Deliverability and DMARC
+
+If you set a custom From address on a domain you own (e.g. `hiring@yourcompany.com`), your domain's DMARC policy may cause emails to land in spam or be rejected outright — unless Vitay is authorised to send on your domain's behalf.
+
+To resolve this, you need to publish DNS records that authorise Vitay as a sender. Contact **support@vitay.io** to get the specific records, then ask your IT team or domain registrar to add them. Once Vitay verifies the records, a green "valid" indicator appears on the **Developers** tab in Settings.
+
+<Note>
+  DMARC setup requires access to your company's DNS. It is a one-time step per domain. Vitay support can walk you through it.
+</Note>
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="References say emails are landing in their spam folder">
+    This is most commonly a deliverability issue. If you are using a custom From address, confirm that your DNS records (SPF, DKIM, DMARC) have been set up and verified in Vitay. If you are using a recruiter's personal email, ask your IT team whether your company's email domain has a restrictive DMARC policy that prevents third-party sending.
+  </Accordion>
+  <Accordion title="I saved a custom From address but outgoing emails still show the recruiter's address">
+    Check that the **Send Emails Using Assigned Recruiter's Email** toggle is turned **off**. When the toggle is on, the recruiter's individual address always takes priority over the custom field.
+  </Accordion>
+</AccordionGroup>
+
+## Related articles
+
+<CardGroup cols={2}>
+  <Card title="Manage users" icon="users" href="/account-configuration/manage-users" />
+  <Card title="Notification settings" icon="bell" href="/account-configuration/notification-settings" />
+  <Card title="Branding and white label" icon="palette" href="/account-configuration/branding-white-label" />
+  <Card title="Send a reference request" icon="paper-plane" href="/candidates-reference-requests/send-a-reference-request" />
+</CardGroup>
+
+{/* source: app.vitay.io projects/configuration SETTINGS.CONFIGURATION.branding_email_from, branding_email_name, is_branding_emails_from_enabled, is_branding_emails_name_enabled; api app/models/setting.rb (branding_email_from, branding_email_name, is_branding_emails_from_enabled, is_branding_emails_name_enabled, dmarc_setting) */}

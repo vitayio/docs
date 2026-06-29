@@ -1,8 +1,89 @@
 ---
 title: "SCIM user provisioning"
-description: "Automatically provision and deprovision users with SCIM."
+description: "Automatically provision and deprovision Vitay users from your identity provider using SCIM."
 ---
 
+SCIM (System for Cross-domain Identity Management) lets your identity provider
+(IdP) automatically create, update, and deactivate Vitay user accounts. When
+paired with [SSO](/security-it/sso-saml), your IT team manages who has access to
+Vitay entirely from the IdP — no manual account creation or cleanup needed.
+
 <Note>
-  This article is being migrated from our previous help center. Full content is coming soon.
+  SCIM provisioning is configured with Vitay's team as part of your SSO setup.
+  Contact [support@vitay.io](mailto:support@vitay.io) to enable it. You will
+  need an admin role in your IdP to configure the SCIM connector on your side.
 </Note>
+
+## What SCIM handles
+
+| Event in your IdP | What happens in Vitay |
+|---|---|
+| New user assigned to Vitay | A Vitay account is created or activated for that user |
+| User profile updated (name, email) | Vitay syncs the change to the user's account |
+| User unassigned or deprovisioned | Vitay deactivates the user's account |
+| User added to or removed from a group | Vitay updates the user's group membership accordingly |
+
+<Note>
+  Vitay provisions users into the hiring firm associated with your SCIM
+  configuration. If your organisation uses multiple Vitay firms (for example, a
+  parent and sub-accounts), Vitay's team will confirm which firm each SCIM
+  connector maps to.
+</Note>
+
+## How it works
+
+Vitay listens for SCIM events from your IdP (delivered via webhook). Each event
+is recorded and processed asynchronously:
+
+- **Create** — when a new member is assigned, Vitay creates the account. If the
+  user first logs in via SSO before the SCIM event arrives, Vitay handles that
+  gracefully (just-in-time creation at SSO callback takes precedence).
+- **Update** — profile changes from your IdP are synced to the Vitay user
+  record.
+- **Delete / deactivate** — when a user is removed in your IdP, Vitay
+  deactivates their account so they can no longer log in.
+
+![SCREENSHOT: the provisioning flow from IdP to Vitay — placeholder](/images/placeholder.png)
+
+## What you provide to Vitay
+
+To set up SCIM, share the following with Vitay's team:
+
+- Your IdP's **SCIM connector type** (for example, Okta, Azure AD, or
+  Google Workspace).
+- The **email domains and groups** you want provisioned into Vitay.
+- Any **attribute mappings** your IdP requires to correctly identify users
+  (typically first name, last name, and email).
+
+Vitay's team will provide the **SCIM endpoint URL** and **bearer token** to
+enter in your IdP's SCIM configuration.
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="A user was deprovisioned in the IdP but can still log in to Vitay">
+    SCIM events are processed asynchronously. There may be a short delay between
+    an IdP change and the deactivation taking effect in Vitay. If access persists
+    beyond a few minutes, contact [support@vitay.io](mailto:support@vitay.io).
+  </Accordion>
+  <Accordion title="A new user isn't appearing in Vitay after being assigned in the IdP">
+    Confirm that the user's email domain matches the domain configured for your
+    SCIM connector, and that the SCIM connector in your IdP shows a successful
+    push (no error status). Share the IdP error log with Vitay's team if the
+    issue persists.
+  </Accordion>
+  <Accordion title="A user's name or email updated in the IdP but not in Vitay">
+    Profile updates are handled by SCIM update events. Check your IdP's SCIM
+    logs to confirm the update event was sent. If the event shows as delivered
+    but Vitay hasn't synced, contact [support@vitay.io](mailto:support@vitay.io).
+  </Accordion>
+</AccordionGroup>
+
+## Related articles
+
+<CardGroup cols={2}>
+  <Card title="Single sign-on (SAML)" icon="key" href="/security-it/sso-saml" />
+  <Card title="Data and privacy" icon="shield-halved" href="/security-it/data-and-privacy" />
+</CardGroup>
+
+{/* source: api app/models/scim_event.rb; api app/workers/stytch_scim_event_worker.rb */}

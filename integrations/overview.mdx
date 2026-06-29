@@ -1,8 +1,52 @@
 ---
 title: "Integrations overview"
-description: "Connect Vitay to your ATS and other tools."
+description: "Connect Vitay to your ATS so candidates and reference requests stay in sync — no manual data entry."
 ---
 
+Vitay integrates with popular applicant tracking systems (ATS) so your team can trigger reference checks without leaving the ATS and push completed reference reports back automatically.
+
 <Note>
-  This article is being migrated from our previous help center. Full content is coming soon.
+  Setting up an integration requires admin access in Vitay. The exact steps vary by ATS — see the article for your platform below.
 </Note>
+
+
+![The Integrations gallery in Configuration](/images/integrations.png)
+
+## What integrations do
+
+Once an integration is connected, your recruiters can:
+
+- **Import candidates** from your ATS into Vitay with a single click.
+- **Send reference requests** directly from the ATS candidate record.
+- **Push completed reference PDFs** back into the candidate's ATS profile automatically.
+
+Vitay stores the connection credentials securely and refreshes access tokens in the background, so day-to-day use requires no re-authentication.
+
+## Supported integrations
+
+<CardGroup cols={2}>
+  <Card title="Bullhorn" icon="bullseye" href="/integrations/bullhorn">
+    Connect with your Bullhorn credentials to import candidates and push reference reports.
+  </Card>
+  <Card title="JobAdder" icon="briefcase" href="/integrations/jobadder">
+    OAuth-based connection that adds a Vitay action button inside JobAdder.
+  </Card>
+  <Card title="TempWorks" icon="clock" href="/integrations/tempworks">
+    API-token connection for staffing firms using TempWorks Enterprise.
+  </Card>
+  <Card title="Sponge" icon="plug" href="/integrations/sponge">
+    Framework for connecting Vitay to additional ATS platforms via a configurable adapter.
+  </Card>
+  <Card title="Google" icon="google" href="/integrations/google">
+    Link your Google account to import contacts into Vitay's network.
+  </Card>
+</CardGroup>
+
+## Related articles
+
+<CardGroup cols={2}>
+  <Card title="Account configuration" icon="gear" href="/account-configuration/manage-users" />
+  <Card title="Add a candidate" icon="user-plus" href="/candidates-reference-requests/add-a-candidate" />
+</CardGroup>
+
+{/* source: api app/controllers/api/bullhorn_controller.rb, jobadder_controller.rb, tempworks_controller.rb, sponge_controller.rb, google_controller.rb; api app/models/external_authorisation.rb */}

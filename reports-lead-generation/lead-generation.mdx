@@ -1,8 +1,135 @@
 ---
 title: "Lead generation"
-description: "Turn references into new business leads."
+description: "Turn completed references into new business leads by capturing contact interest directly in the reference form."
 ---
 
+When a reference completes a reference check for one of your candidates, they've already
+demonstrated that they know the candidate's work — and they may be someone you'd want to work with
+as a future candidate or client. Vitay's lead generation feature surfaces that interest
+automatically: references can opt in to being contacted, and their details flow straight into your
+leads pipeline.
+
 <Note>
-  This article is being migrated from our previous help center. Full content is coming soon.
+  Lead generation must be enabled on your account. Contact your admin to turn it on.
+  You need a recruiter (or higher) role to view and export leads.
 </Note>
+
+## How it works
+
+Your firm sets up one or more **lead types** — categories that describe the kind of contact you're
+looking for (for example, "Candidate" or "Client"). Each lead type has:
+
+- A **name** shown to references on the form.
+- A **checkbox label** the reference ticks to opt in (e.g. "I'm open to hearing about new
+  opportunities").
+- An optional **thank-you message** shown after the reference completes the form.
+- An optional **button** (label + link) if you want to direct leads to a landing page or
+  application form.
+
+When a reference finishes the reference check, the lead-gen card appears. The reference can tick
+as many lead-type checkboxes as apply. When they do, Vitay records them as a lead under that type,
+**along with a timestamped record of their consent**.
+
+## Consent requirement
+
+Vitay records two fields for every lead submission:
+
+| Field | What it captures |
+|-------|-----------------|
+| **Consent Given At** | The exact date and time the reference ticked the checkbox and submitted the form |
+| **Consent Text** | The exact wording of the checkbox label the reference agreed to at that moment |
+
+This consent is **required** for a lead to be recorded. If the reference does not tick the
+checkbox, no lead record is created. The consent timestamp and text are included in the
+[leads CSV export](/reports-lead-generation/download-reports) so you have an auditable record.
+
+## View your leads
+
+<Steps>
+  <Step title="Go to Leads">
+    In the main navigation, click **Leads** (sometimes labeled **Lead Generation**).
+
+    ![SCREENSHOT: the Leads section of the navigation and the leads list — placeholder](/images/placeholder.png)
+  </Step>
+  <Step title="Browse or filter leads">
+    The leads list shows each contact's name, email, lead type, the candidate they referenced,
+    and the date they were captured. Use the filters to narrow by date range, recruiter, or scope
+    (your leads vs. all leads vs. all sub-accounts).
+  </Step>
+  <Step title="View a lead's details">
+    Click a lead to see their full contact information and the candidate they provided a reference
+    for.
+  </Step>
+</Steps>
+
+## Export leads
+
+To download your leads as a CSV file — including consent timestamps and text — see
+[Download reports](/reports-lead-generation/download-reports) and choose the **Leads** or
+**Custom leads** report type.
+
+## Set up lead types
+
+Lead types are configured at the firm level by an admin.
+
+<Steps>
+  <Step title="Go to Settings">
+    Click your firm name or avatar in the navigation, then go to **Settings** → **Lead
+    Generation** (or **Lead types**).
+
+    ![The Lead settings panel](/images/lead-types.png)
+  </Step>
+  <Step title="Add a lead type">
+    Click **Add lead type** (up to three custom types are supported). Fill in:
+    - **Name** — internal label for this lead category.
+    - **Checkbox label** — the opt-in text the reference sees on the form. Write it in plain
+      language that clearly describes what they're consenting to, since this text is stored as
+      the consent record.
+    - **Thank-you text** (optional) — shown to the reference after they submit.
+    - **Button text** and **Button link** (optional) — adds a call-to-action button on the
+      thank-you screen.
+  </Step>
+  <Step title="Configure notifications">
+    Each lead type has its own notification settings. Choose whether to alert the assigned
+    recruiter, the account root user, or a custom email list whenever a new lead is captured
+    under that type.
+  </Step>
+  <Step title="Save">
+    Click **Save**. The lead type becomes active immediately; it will appear on the reference form
+    for any new reference check completed by a reference on your account.
+  </Step>
+</Steps>
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="A reference completed the form but I don't see a lead">
+    Leads are only recorded when the reference actively ticks the consent checkbox. If they
+    skipped it, no lead is created. You cannot add a lead on behalf of a reference.
+  </Accordion>
+  <Accordion title="The Leads section isn't visible in the navigation">
+    Lead generation must be enabled on your account. Ask your account admin to turn it on in the
+    firm settings.
+  </Accordion>
+  <Accordion title="I don't see a consent timestamp in the leads export">
+    The **Consent Given At** and **Consent Text** columns are included automatically on all leads
+    and custom-leads CSV exports. If they appear blank, the lead was captured before the consent
+    feature was introduced — the contact did opt in, but the timestamp was not recorded at that
+    time.
+  </Accordion>
+  <Accordion title="I need to add more than three lead types">
+    The platform currently supports up to three custom lead types per firm. Contact Vitay support
+    if you need a different configuration.
+  </Accordion>
+</AccordionGroup>
+
+## Related articles
+
+<CardGroup cols={2}>
+  <Card title="Download reports" icon="download" href="/reports-lead-generation/download-reports" />
+  <Card title="Send a reference request" icon="paper-plane" href="/candidates-reference-requests/send-a-reference-request" />
+  <Card title="Notification settings" icon="gear" href="/account-configuration/notification-settings" />
+  <Card title="Bulk candidate upload" icon="upload" href="/reports-lead-generation/bulk-candidate-upload" />
+</CardGroup>
+
+{/* source: api app/models/lead_type.rb (name, checkbox_text, button_text, button_link, thank_you_text, contact_type, position; max 3 via L/M/N contact_type assignment); api app/models/lead_type_notification.rb (send_to_root, send_to_assigned, send_to_custom, custom_emails); api app/models/reference.rb (lead_consent_at, lead_consent_text, contact_type_choices, validate_contact_type); api app/controllers/api/v3/documents/csv_controller.rb (leads export fields: lead_consent_at, lead_consent_text); git log VIT-1304 commits (feat: record and require lead-gen consent on public reference update; feat: add lead_consent_at and lead_consent_text to references) */}

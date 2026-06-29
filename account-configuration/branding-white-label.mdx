@@ -1,8 +1,112 @@
 ---
-title: "Branding and white-label options"
-description: "Customize logos and branding on candidate-facing pages and emails."
+title: "Branding and white label"
+description: "Customize your logo, colors, and sender identity so candidate-facing pages and emails reflect your firm's brand."
 ---
 
+Vitay lets you apply your firm's visual identity to the emails and pages your candidates and references see. You can upload a logo, set brand colors, and — on eligible plans — enable full white-label mode with a custom domain.
+
 <Note>
-  This article is being migrated from our previous help center. Full content is coming soon.
+  You need a **root recruiter** (admin) role to change branding settings. Most branding changes take effect immediately for all new outgoing emails and candidate-facing pages.
 </Note>
+
+## Upload your logo
+
+Your logo appears on candidate reference reports and on the emails Vitay sends to references.
+
+<Steps>
+  <Step title="Open General settings">
+    Go to **Settings → General**.
+
+    ![Settings → General, with company name and logo](/images/branding-general.png)
+  </Step>
+  <Step title="Upload your logo">
+    In the **Logo** section, click **Upload here** and select an image file from your computer. PNG or SVG files with a transparent background work best.
+  </Step>
+  <Step title="Save">
+    The logo is saved automatically after uploading. Refresh the page to confirm it appears correctly.
+  </Step>
+</Steps>
+
+## Set your brand colors
+
+Primary and secondary colors are used on buttons, tabs, and UI elements in candidate-facing and reference-facing pages.
+
+<Steps>
+  <Step title="Open General settings">
+    Go to **Settings → General**.
+  </Step>
+  <Step title="Set the primary color">
+    In the **Primary color** field, enter your brand color as a hex code (for example, `#1CBAC8`) or use the color picker. This color is used for buttons and key interactive elements.
+  </Step>
+  <Step title="Set the secondary color">
+    In the **Secondary color** field, enter your secondary brand color. This is used for supporting UI elements.
+  </Step>
+  <Step title="Save">
+    Click **Save**.
+
+    ![SCREENSHOT: The color picker fields for primary and secondary brand colors — placeholder](/images/placeholder.png)
+  </Step>
+</Steps>
+
+## Enable white-label mode
+
+White-label mode replaces all Vitay branding with your own logo and colors across candidate- and reference-facing pages, and allows you to use a custom domain name.
+
+<Note>
+  White-label mode is a paid add-on feature. If you don't see it enabled in your account, contact **support@vitay.io** to enquire about upgrading.
+</Note>
+
+<Steps>
+  <Step title="Open the White Label tab">
+    Go to **Settings → White Label**.
+
+    ![The White Label settings tab](/images/white-label.png)
+  </Step>
+  <Step title="Enable white label">
+    Turn on the **Enable / Disable white label** toggle. Vitay will immediately start using your logo and colors instead of its own across all candidate-facing surfaces.
+  </Step>
+  <Step title="Set a custom domain (optional)">
+    In the **Domain name** field, enter the domain you want to use (for example, `references.yourcompany.com`). This requires a DNS CNAME record pointing to Vitay — contact **support@vitay.io** for the exact record to add.
+  </Step>
+  <Step title="Add custom links for your team's welcome email">
+    Optionally update the **Explainer video link** and **User guide link** fields. New recruiters receive these links in their welcome email, so you can point them to your own onboarding materials.
+  </Step>
+  <Step title="Choose a font (optional)">
+    In the **Font family** field, select the typeface used across the application. The default is Open Sans.
+  </Step>
+  <Step title="Save">
+    Click **Save**.
+  </Step>
+</Steps>
+
+## Email sender branding
+
+Your logo and colors also flow into outgoing emails. To control the sender name and email address references see (separate from visual branding), see [Email sender settings](/account-configuration/email-sender-settings).
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="My logo isn't appearing on reports or emails">
+    Make sure you have uploaded the logo in **Settings → General** and that white-label mode is enabled (if required by your plan). Also check that the image file is not corrupted — try re-uploading a fresh copy. PNG files under 2 MB with a transparent background are most reliable.
+  </Accordion>
+  <Accordion title="Brand colors are not showing on candidate pages">
+    Colors are applied to candidate-facing pages when white-label mode is active. If you see default Vitay colors, confirm that the **Enable / Disable white label** toggle in **Settings → White Label** is turned on.
+  </Accordion>
+  <Accordion title="I don't see a White Label tab">
+    White-label mode requires a specific plan upgrade. If the tab is missing, your account does not have the feature enabled. Contact **support@vitay.io** to discuss enabling it.
+  </Accordion>
+  <Accordion title="My custom domain isn't working">
+    Custom domains need a CNAME record in your DNS provider pointing to Vitay's servers. DNS changes can take up to 48 hours to propagate. If it has been longer than that, contact **support@vitay.io** with your domain name so the team can verify the configuration.
+  </Accordion>
+</AccordionGroup>
+
+## Related articles
+
+<CardGroup cols={2}>
+  <Card title="Email sender settings" icon="envelope" href="/account-configuration/email-sender-settings" />
+  <Card title="Manage users" icon="users" href="/account-configuration/manage-users" />
+  <Card title="Notification settings" icon="bell" href="/account-configuration/notification-settings" />
+  <Card title="Send a reference request" icon="paper-plane" href="/candidates-reference-requests/send-a-reference-request" />
+</CardGroup>
+
+{/* source: app.vitay.io projects/configuration SETTINGS.GENERAL.LOGO, SETTINGS.GENERAL.COLORS_PRIMARY, SETTINGS.GENERAL.COLORS_SECONDARY, SETTINGS.WHITE_LABEL.*, PLUGINS.is_plugins_white_label_enabled, TABS.WHITE_LABEL; api app/models/setting.rb (colors_primary, colors_secondary, domain_name, font_family, explainer_video_link, user_guide_link, is_plugins_white_label_enabled, is_plugins_private_label_enabled), app/models/hiring_firm.rb (logo attachment, company_logo) */}

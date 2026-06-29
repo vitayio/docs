@@ -3,6 +3,119 @@ title: "Multi-factor authentication & login options"
 description: "Set up MFA and other login options for your account."
 ---
 
+Vitay supports two forms of multi-factor authentication (MFA) to add a second layer of security to
+your login. You can use a phone-based SMS code or a time-based authenticator app. These options
+are configured in your account profile.
+
 <Note>
-  This article is being migrated from our previous help center. Full content is coming soon.
+  Your root recruiter may have enabled MFA as a requirement for your whole account. If that is
+  the case, you will be prompted to set it up on your next login and cannot skip it.
 </Note>
+
+## SMS / phone MFA
+
+SMS MFA sends a one-time code to your phone number each time you log in.
+
+<Steps>
+  <Step title="Open your profile">
+    Click your name or avatar in the top-right corner and select **Profile** (or **Account
+    settings**).
+
+    ![SCREENSHOT: the account menu with the Profile option highlighted — placeholder](/images/placeholder.png)
+  </Step>
+  <Step title="Go to the Security tab">
+    Inside your profile, open the **Security** section.
+  </Step>
+  <Step title="Enable SMS MFA">
+    Toggle on **SMS / phone MFA**. You need a phone number saved on your profile for this option to
+    be available — if the toggle is greyed out, add your phone number first on the Profile tab.
+  </Step>
+  <Step title="Save">
+    Click **Save** (or **Submit**). The next time you log in, Vitay will send a code to your phone.
+    Enter that code on the verification screen to complete sign-in.
+
+    ![SCREENSHOT: the Security tab with SMS MFA toggle enabled — placeholder](/images/placeholder.png)
+  </Step>
+</Steps>
+
+## Authenticator app (TOTP)
+
+Authenticator app MFA generates a time-based code in an app like Google Authenticator, Authy, or
+Microsoft Authenticator. No phone signal is required once set up.
+
+<Steps>
+  <Step title="Open your profile">
+    Click your name or avatar in the top-right corner and select **Profile**.
+  </Step>
+  <Step title="Go to the Security tab">
+    Open the **Security** section inside your profile.
+  </Step>
+  <Step title="Enable authenticator app MFA">
+    Toggle on **Authenticator app**. A QR code appears on screen.
+
+    ![SCREENSHOT: the Security tab showing the QR code for authenticator app setup — placeholder](/images/placeholder.png)
+  </Step>
+  <Step title="Scan the QR code">
+    Open your authenticator app, tap the option to add an account, and scan the QR code displayed
+    by Vitay. Your app will begin generating 6-digit codes that rotate every 30 seconds.
+  </Step>
+  <Step title="Save">
+    Click **Save**. The next time you log in, you will be asked for the current code from your
+    authenticator app.
+  </Step>
+</Steps>
+
+## What to expect at login
+
+If MFA is active on your account, after entering your email and password you will see a second
+screen asking for a verification code:
+
+- **SMS MFA** — click **Send code** on the verification screen. A code is sent to your registered
+  phone number. Enter the code and click **Verify**.
+- **Authenticator app** — open your authenticator app, copy the current 6-digit code, and paste it
+  into the verification screen.
+
+## Disabling MFA
+
+You can disable either MFA option from the same Security section of your profile by toggling it off
+and saving. If your root recruiter has enforced MFA account-wide, you will not be able to disable it
+yourself — contact your root recruiter or Vitay support.
+
+## SSO / Single sign-on
+
+If your organization uses SAML-based single sign-on, authentication is handled by your identity
+provider and MFA is typically managed there rather than inside Vitay. See
+[SSO / SAML](/security-it/sso-saml) for setup details.
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="The SMS toggle is greyed out">
+    You need a phone number saved on your profile before you can enable SMS MFA. Go to the
+    **Profile** tab, add your phone number, save, then return to the Security tab.
+  </Accordion>
+  <Accordion title="My authenticator codes aren't working">
+    Authenticator codes are time-sensitive. Make sure your device's clock is set to the correct
+    time (ideally synced automatically). If codes still fail, disable and re-enable the
+    authenticator app option to generate a new QR code.
+  </Accordion>
+  <Accordion title="I've lost access to my MFA device">
+    Contact your root recruiter. They can disable MFA on your account so you can log in and
+    re-enroll with a new device.
+  </Accordion>
+  <Accordion title="I'm being asked for MFA but never set it up">
+    Your root recruiter may have enabled MFA as a firm-wide requirement. You will be walked
+    through the setup flow automatically on your next login.
+  </Accordion>
+</AccordionGroup>
+
+## Related articles
+
+<CardGroup cols={2}>
+  <Card title="Logging in" icon="arrow-right-to-bracket" href="/getting-started/logging-in" />
+  <Card title="User roles explained" icon="users" href="/getting-started/roles-explained" />
+  <Card title="SSO / SAML" icon="key" href="/security-it/sso-saml" />
+  <Card title="Manage users" icon="users-gear" href="/account-configuration/manage-users" />
+</CardGroup>
+
+{/* source: api app/models/user.rb (is_mfa_enabled, is_2fa_enabled, otp_secret, qr_code; is_mfa_by_email NOT IMPLEMENTED); app.vitay.io account.security.component.ts (params: is_mfa_enabled, is_2fa_enabled; showQrCode, isDisabled logic); mfa.component.ts (sendCode, postValidation flow) */}

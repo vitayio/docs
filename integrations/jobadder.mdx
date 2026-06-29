@@ -1,8 +1,67 @@
 ---
 title: "JobAdder integration"
-description: "Connect Vitay to JobAdder."
+description: "Connect Vitay to JobAdder via OAuth so your team can request references and push reports without leaving JobAdder."
 ---
 
+The JobAdder integration uses OAuth 2.0 to link your Vitay firm to your JobAdder account. Once connected, Vitay adds a **View candidate** action button inside JobAdder, letting recruiters open a candidate's Vitay reference panel and trigger reference requests directly from JobAdder.
+
 <Note>
-  This article is being migrated from our previous help center. Full content is coming soon.
+  Setting up the JobAdder integration requires **admin** access in Vitay. Contact [support@vitay.io](mailto:support@vitay.io) to initiate the OAuth connection — the client credentials are managed by the Vitay platform.
 </Note>
+
+## What the integration does
+
+- **In-ATS action button** — Vitay registers a "View candidate" partner action inside JobAdder on the Candidate entity. Clicking it opens the Vitay reference panel for that candidate.
+- **Request references from JobAdder** — trigger a reference request for a JobAdder candidate without leaving the ATS.
+- **Import candidates** — sync a JobAdder candidate record into Vitay automatically when accessed through the action button.
+- **Push candidates to JobAdder** — create or update a candidate record in JobAdder from Vitay.
+- **Upload reference reports** — once references are complete, attach the reference PDF to the candidate's JobAdder profile.
+- **Update candidate status** — write the Vitay candidate score and a custom status back to JobAdder.
+
+## Connect JobAdder
+
+The integration follows a standard OAuth 2.0 authorization-code flow. The Vitay team initiates this on your behalf:
+
+1. Contact [support@vitay.io](mailto:support@vitay.io) and request the JobAdder integration.
+2. Vitay redirects you to JobAdder to authorize the connection with your JobAdder credentials.
+3. After you approve, Vitay stores the access and refresh tokens and registers the "View candidate" action in your JobAdder account.
+
+Vitay refreshes the JobAdder access token automatically in the background.
+
+![SCREENSHOT: Integrations settings page showing a connected JobAdder integration — placeholder](/images/placeholder.png)
+
+## Use the integration
+
+Once connected:
+
+- In JobAdder, open any candidate record and find the **Vitay — View candidate** action. Clicking it loads the candidate into Vitay (or shows their existing Vitay record) and lets you send a reference request.
+- In Vitay, recruiters can push a candidate's profile or reference report back to JobAdder from the candidate page.
+
+## Disconnect JobAdder
+
+Contact [support@vitay.io](mailto:support@vitay.io) to remove the integration. Disconnecting also removes the Vitay action button from JobAdder.
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="The Vitay action button is not showing in JobAdder">
+    The partner action is registered during the OAuth flow. If the button is missing, the connection may not have completed successfully. Contact [support@vitay.io](mailto:support@vitay.io) to re-run the authorization.
+  </Accordion>
+  <Accordion title="A reference report won't upload to JobAdder">
+    The candidate must be synced to JobAdder before a document can be attached. Ensure the candidate has been pushed to (or imported from) JobAdder so the sync record exists.
+  </Accordion>
+  <Accordion title="The token has expired / I see authorization errors">
+    Vitay refreshes the JobAdder token automatically. If you still see errors, the refresh token may have been revoked in JobAdder. Contact [support@vitay.io](mailto:support@vitay.io) to reconnect.
+  </Accordion>
+</AccordionGroup>
+
+## Related articles
+
+<CardGroup cols={2}>
+  <Card title="Integrations overview" icon="plug" href="/integrations/overview" />
+  <Card title="Bullhorn integration" icon="bullseye" href="/integrations/bullhorn" />
+  <Card title="Send a reference request" icon="paper-plane" href="/candidates-reference-requests/send-a-reference-request" />
+  <Card title="Add a candidate" icon="user-plus" href="/candidates-reference-requests/add-a-candidate" />
+</CardGroup>
+
+{/* source: api app/controllers/api/jobadder_controller.rb; api app/services/external_services/jobadder/; api app/models/external_authorisations/jobadder.rb */}

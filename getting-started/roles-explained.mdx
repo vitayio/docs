@@ -3,6 +3,86 @@ title: "User roles explained"
 description: "What recruiters, supervisors, and admins can each do in Vitay."
 ---
 
+Vitay uses roles to control what each person can see and do. When a root recruiter adds a new
+user to your account, they choose the right role for that person.
+
 <Note>
-  This article is being migrated from our previous help center. Full content is coming soon.
+  Only the root recruiter (account owner) can invite and manage other users. If you need your role
+  changed, ask your root recruiter or contact Vitay support.
 </Note>
+
+## Role overview
+
+| Role | Who it's for | What they can do |
+|------|--------------|-----------------|
+| **Recruiter** | Individual team members | Add candidates and send reference requests scoped to their own work |
+| **Supervisor** | Team leads or managers | View candidates and references across the whole account, not just their own |
+| **Root Recruiter** | Account owner / admin | Full access: invite users, change settings, view all candidates and references, manage integrations |
+
+<Note>
+  The **admin** role is reserved for internal Vitay staff and is not assigned to customer accounts.
+</Note>
+
+## Recruiter
+
+A recruiter is the standard role for day-to-day reference checking. Recruiters can:
+
+- Add candidates and send reference requests
+- View and download references they personally sent
+- Update their own profile and notification preferences
+
+By default, a recruiter sees only the candidates and references they added themselves. If your root
+recruiter has enabled the **All toggle** setting for your account, recruiters may also see work
+belonging to their colleagues — this is a firm-wide setting your root recruiter can configure.
+
+## Supervisor
+
+A supervisor is a recruiter who has been granted an extra permission by the root recruiter. Supervisors
+can:
+
+- Do everything a recruiter can
+- View all candidates and references across the account, regardless of who added them
+
+The supervisor role is additive — a user must already be a recruiter before the root recruiter can
+grant them supervisor access.
+
+## Root Recruiter
+
+The root recruiter is the account owner and has full control over the account. Root recruiters can:
+
+- Do everything a recruiter can
+- View all candidates and references across the account
+- Invite, edit, and deactivate other users
+- Assign or revoke the supervisor role for other users
+- Configure account settings (question sets, branding, email settings, notifications)
+- Manage integrations (Bullhorn, JobAdder, and others)
+- Access analytics across all sub-accounts (if sub-accounts are enabled)
+
+Each Vitay account has at least one root recruiter. If your organization uses sub-accounts, each
+sub-account has its own root recruiter who manages that account's users and settings independently.
+
+![SCREENSHOT: the Manage Users page showing the role column and user list — placeholder](/images/placeholder.png)
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="I can't see another recruiter's candidates">
+    By default, recruiters only see their own candidates. Ask your root recruiter to enable the
+    **All toggle** setting, or ask them to grant you the supervisor role.
+  </Accordion>
+  <Accordion title="I don't see the Settings or Users menu">
+    Only root recruiters can access account settings and user management. If you need those
+    capabilities, ask your root recruiter to update your role.
+  </Accordion>
+</AccordionGroup>
+
+## Related articles
+
+<CardGroup cols={2}>
+  <Card title="Manage users" icon="users-gear" href="/account-configuration/manage-users" />
+  <Card title="Logging in" icon="arrow-right-to-bracket" href="/getting-started/logging-in" />
+  <Card title="Multi-factor authentication & login options" icon="shield-check" href="/getting-started/mfa-and-login-options" />
+  <Card title="SCIM provisioning" icon="server" href="/security-it/scim-provisioning" />
+</CardGroup>
+
+{/* source: api app/models/recruiter.rb (is_root, root?, recruiter?, role_label), app/models/user.rb (admin?), app/controllers/api/v1/api_controller.rb (access_as_root_recruiter?, access_as_recruiter?, access_as_supervisor?), app/controllers/api/v3/users/roles_controller.rb (supervisor role toggle); app.vitay.io User model (isRecruiter, isRootRecruiter, isSupervisor) */}
