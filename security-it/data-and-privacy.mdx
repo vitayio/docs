@@ -1,8 +1,113 @@
 ---
 title: "Data and privacy"
-description: "How Vitay handles candidate and reference data."
+description: "How Vitay stores, retains, and deletes candidate and reference data."
 ---
 
+Vitay handles personal data on behalf of the hiring firms that use it —
+primarily the data that candidates and references submit during the reference
+checking process. This article explains what data Vitay holds, how long it's
+kept, and how it can be deleted.
+
 <Note>
-  This article is being migrated from our previous help center. Full content is coming soon.
+  For formal data processing agreements (DPAs), sub-processor lists, or
+  questions about compliance with specific regulations (GDPR, SOC 2, etc.),
+  contact [support@vitay.io](mailto:support@vitay.io). Vitay's legal and
+  security teams handle those requests directly.
 </Note>
+
+## What data Vitay holds
+
+Vitay stores the following categories of data on behalf of your firm:
+
+- **Candidate data** — name, contact details, and the reference request(s) your
+  team creates.
+- **Reference data** — name, contact details, and the answers a reference
+  submits in response to a reference request.
+- **Recruiter and admin data** — account details (name, email, role) for
+  members of your firm who use Vitay.
+- **Activity data** — a log of actions taken in the platform (for example, when
+  a reference request was sent or a response was received).
+
+## Data residency
+
+Vitay operates separate environments by region:
+
+- **Australia / global** — `references.vitay.io`
+- **Canada** — `references.vitay.ca`
+- **United Kingdom** — `references.vitay.co.uk`
+
+Data is stored in the region that corresponds to your firm's Vitay environment.
+Reach out to [support@vitay.io](mailto:support@vitay.io) if you need to confirm
+which region your firm is on.
+
+## Data retention
+
+Vitay retains candidate and reference data for as long as your firm's account is
+active. Your firm controls when data is deleted (see below). Vitay does not
+automatically expire individual reference records based on a fixed calendar
+period — retention is governed by your firm's own policies and any contractual
+terms with Vitay.
+
+## Deleting data
+
+### Deleting individual records
+
+Recruiters and admins can delete individual candidates and references from within
+the Vitay app. Deleted records are removed from the active application.
+
+### Full firm data purge
+
+When a firm's account is closed or on request, Vitay can purge all data
+associated with that firm. A purge removes data across all related tables —
+including answers, reference requests, candidates, recruiters, and the firm
+record itself — in dependency order. The process is tracked and auditable
+internally, and a rollback capability exists for a short window after initiation.
+
+If you need to request a full data purge, contact
+[support@vitay.io](mailto:support@vitay.io).
+
+![SCREENSHOT: the data deletion or account settings area — placeholder](/images/placeholder.png)
+
+## Security measures
+
+- All data is transmitted over **HTTPS/TLS**.
+- Vitay authenticates recruiter sessions with signed tokens and supports
+  **SAML SSO** for centralised access control — see
+  [Single sign-on (SAML)](/security-it/sso-saml).
+- Reference submission links are single-use and time-limited.
+- Vitay monitors for errors and anomalies via application-level observability
+  tooling.
+
+## Frequently asked questions
+
+<AccordionGroup>
+  <Accordion title="Can we get a copy of all data Vitay holds for our firm?">
+    Yes. Contact [support@vitay.io](mailto:support@vitay.io) with your request.
+    Vitay can export your data in CSV format for standard report data. For a full
+    data extract, Vitay's team will scope the request with you.
+  </Accordion>
+  <Accordion title="Can candidates request deletion of their own data?">
+    Deletion requests from candidates should be directed to your firm, as the
+    data controller. Your firm can then action the deletion in Vitay or request
+    that Vitay's team assist. Contact [support@vitay.io](mailto:support@vitay.io)
+    if you need help handling a data subject request.
+  </Accordion>
+  <Accordion title="Where can I find Vitay's privacy policy and sub-processor list?">
+    Visit [vitay.io/legal](https://vitay.io/legal) or contact
+    [support@vitay.io](mailto:support@vitay.io) for the current privacy policy,
+    DPA template, and sub-processor list.
+  </Accordion>
+  <Accordion title="Is Vitay SOC 2 certified?">
+    For the current compliance status and available audit reports, contact
+    [support@vitay.io](mailto:support@vitay.io).
+  </Accordion>
+</AccordionGroup>
+
+## Related articles
+
+<CardGroup cols={2}>
+  <Card title="Single sign-on (SAML)" icon="key" href="/security-it/sso-saml" />
+  <Card title="SCIM user provisioning" icon="users-gear" href="/security-it/scim-provisioning" />
+</CardGroup>
+
+{/* source: api app/models/purge_batch.rb; api app/models/deleted_associated_record.rb */}

@@ -1,8 +1,118 @@
 ---
 title: "Notification settings"
-description: "Choose when Vitay notifies you about completed references, feedback, and leads."
+description: "Choose when and who Vitay notifies about completed references, feedback, leads, and unresponsive contacts."
 ---
 
+Vitay can send your team email notifications at key moments in the reference-checking process. You control exactly which events trigger a notification and which team members receive it.
+
 <Note>
-  This article is being migrated from our previous help center. Full content is coming soon.
+  You need a **root recruiter** (admin) role to change notification settings. Changes apply to all future activity in your account.
 </Note>
+
+## Two types of notifications
+
+Vitay has two separate notification systems:
+
+- **Event notifications** — per-event toggles in **Settings → Configuration** that fire automatically (e.g., "email me when a reference is completed").
+- **Custom notifications** — per-audience rules in **Settings → Configuration → Notifications** (or a dedicated Notifications section) that let you choose *who* receives each event (assigned recruiter, root/admin, or a custom email list).
+
+## Configure event notification toggles
+
+<Steps>
+  <Step title="Open Configuration settings">
+    Go to **Settings → Configuration**.
+
+    ![SCREENSHOT: Settings → Configuration page showing notification toggle section — placeholder](/images/placeholder.png)
+  </Step>
+  <Step title="Find the notification toggles">
+    Scroll to the notifications section. You will see a list of toggles — each controls one type of event email.
+  </Step>
+  <Step title="Enable or disable each toggle">
+    Turn a toggle **on** to activate that notification, **off** to suppress it. Common toggles include:
+
+    | Toggle | What it does |
+    |---|---|
+    | **Reference request completed** | Notify the assigned user when a candidate has submitted all their references |
+    | **Candidate: Reference is completed** | Notify the candidate when one of their references finishes |
+    | **Candidate: Reference has been added** | Notify the candidate when a user adds a new reference on their behalf |
+    | **Candidate reference pending notification** | Notify the candidate when their reference is still pending |
+    | **Candidate: Notify Reference Contact Errors** | Notify the candidate when Vitay cannot deliver an email or text to a reference |
+    | **Email errors notification** | Notify the assigned recruiter when an outgoing email cannot be delivered |
+    | **Text errors notification** | Notify the assigned recruiter when an outgoing SMS cannot be delivered |
+    | **IP address conflict** | Alert the assigned recruiter if a candidate and reference share the same IP address |
+    | **Send email notification with PDF report** | Attach a PDF reference report to the recruiter's completion notification |
+
+  </Step>
+  <Step title="Save">
+    Click **Save** after adjusting the toggles.
+  </Step>
+</Steps>
+
+## Configure custom notifications (who gets notified)
+
+For the main workflow events — reference completed, all references completed, leads, feedback, pre-screening, and unresponsive — you can choose exactly who receives the email.
+
+<Steps>
+  <Step title="Open the notification section">
+    In **Settings → Configuration**, find the **Custom notifications** area (it may appear as individual cards for each event type).
+
+    ![SCREENSHOT: Custom notifications cards showing Reference completed, All references completed, Leads, Feedback, Unresponsive — placeholder](/images/placeholder.png)
+  </Step>
+  <Step title="Open the event you want to configure">
+    Click or expand the event card (for example, **Reference completed notifications** or **Unresponsive notifications**).
+  </Step>
+  <Step title="Choose the recipients">
+    Each event lets you pick one or more recipient groups:
+
+    | Option | Who receives the email |
+    |---|---|
+    | **Send to candidate assigned user** | The recruiter assigned to the candidate |
+    | **Send to user who added the reference** | The recruiter who originally added that reference |
+    | **Send to root email** | The account's root/admin recruiter |
+    | **Send to custom emails** | Any email addresses you type into the custom list (separate multiple addresses with commas) |
+
+    You can enable more than one option at once.
+  </Step>
+  <Step title="For lead notifications, filter by lead type">
+    The **Lead notifications** card lets you further filter by lead type (for example, candidate leads vs. hiring-manager leads) if lead types are configured on your account.
+  </Step>
+  <Step title="Save">
+    Click **Save** on each card.
+  </Step>
+</Steps>
+
+## Notification event reference
+
+| Event | Default recipients |
+|---|---|
+| Reference completed | Assigned recruiter |
+| All references completed | Assigned recruiter |
+| Feedback completed | Assigned recruiter + user who requested |
+| Lead submitted | Assigned recruiter |
+| Pre-screening completed | Assigned recruiter |
+| Unresponsive reference or request | Assigned recruiter |
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="I'm not receiving notifications I expect">
+    First check that the relevant toggle is enabled in **Settings → Configuration**. Then open the custom notification card for that event and confirm your email (or "assigned user") is selected as a recipient. Also check your spam folder — notification emails from Vitay's shared sender domain can occasionally be filtered.
+  </Accordion>
+  <Accordion title="Too many people are getting notified">
+    Open each custom notification card and deselect the recipient groups you don't need. For example, if only the assigned recruiter should hear about completions, make sure **Send to root email** and **Send to custom emails** are turned off for that event.
+  </Accordion>
+  <Accordion title="I don't see the Notifications section">
+    Some notification options are feature-flag controlled and may not appear on all plans. Contact **support@vitay.io** if you believe a feature should be available to your account.
+  </Accordion>
+</AccordionGroup>
+
+## Related articles
+
+<CardGroup cols={2}>
+  <Card title="Email sender settings" icon="envelope" href="/account-configuration/email-sender-settings" />
+  <Card title="Manage users" icon="users" href="/account-configuration/manage-users" />
+  <Card title="Reminders and how they work" icon="clock" href="/candidates-reference-requests/reminders-and-cadence" />
+  <Card title="Read a completed reference" icon="clipboard-check" href="/candidates-reference-requests/read-a-completed-reference" />
+</CardGroup>
+
+{/* source: app.vitay.io projects/configuration SETTINGS.CONFIGURATION (is_notify_* toggles), MODALS.CUSTOM_NOTIFICATIONS, MODALS.LEAD_TYPE_NOTIFICATIONS; api app/models/custom_notification.rb, app/models/email_notification.rb, app/models/unresponsive_notification.rb, app/models/setting.rb (is_notify_* columns) */}

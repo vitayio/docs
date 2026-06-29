@@ -1,8 +1,62 @@
 ---
 title: "Google integration"
-description: "Connect Vitay to Google."
+description: "Link your Google account to Vitay to import your Google Contacts into the Vitay network."
 ---
 
+The Google integration lets individual Vitay users connect their Google account and import their Google Contacts into the Vitay network. It is a per-user connection — each recruiter who wants to use it authorizes their own Google account separately.
+
 <Note>
-  This article is being migrated from our previous help center. Full content is coming soon.
+  This integration is linked at the **user** level, not the firm level. Each recruiter connects their own Google account. You will be redirected to Google to grant Vitay read-only access to your contacts.
 </Note>
+
+## What the integration does
+
+- **Import Google Contacts** — reads your Google Contacts (name and email) and creates corresponding user records in the Vitay network, so people you already know can be found and invited more easily.
+- **Read-only access** — Vitay only requests read access to your contacts and basic profile information. It does not write to Google or access your Gmail.
+
+<Note>
+  The Google Contacts import creates network entries for contacts who are not already in Vitay. It does not create candidates or send reference requests automatically.
+</Note>
+
+## Connect your Google account
+
+<Steps>
+  <Step title="Go to your account settings">
+    In Vitay, navigate to your profile or network settings where the Google connection option appears.
+  </Step>
+  <Step title="Authorize with Google">
+    Click the **Connect Google** button (or equivalent). You will be redirected to Google's OAuth consent screen.
+  </Step>
+  <Step title="Grant access">
+    Sign in to your Google account and allow Vitay read-only access to your contacts and profile.
+  </Step>
+  <Step title="Sync contacts">
+    After authorizing, Vitay fetches your contacts and adds any new ones to the network.
+  </Step>
+</Steps>
+
+![SCREENSHOT: Google account connection button in Vitay user settings — placeholder](/images/placeholder.png)
+
+## Disconnect Google
+
+To remove the Google connection, contact [support@vitay.io](mailto:support@vitay.io) or revoke Vitay's access directly in your [Google account permissions](https://myaccount.google.com/permissions).
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="My contacts didn't import">
+    Make sure you completed the Google OAuth flow and granted the contacts permission. If authorization was declined or interrupted, reconnect your account and try again.
+  </Accordion>
+  <Accordion title="Some contacts are missing">
+    Vitay imports contacts that have both a name and an email address. Contacts without an email are skipped.
+  </Accordion>
+</AccordionGroup>
+
+## Related articles
+
+<CardGroup cols={2}>
+  <Card title="Integrations overview" icon="plug" href="/integrations/overview" />
+  <Card title="Account configuration" icon="gear" href="/account-configuration/manage-users" />
+</CardGroup>
+
+{/* source: api app/controllers/api/google_controller.rb; api app/services/external_services/google/; api app/models/external_authorisations/google.rb */}

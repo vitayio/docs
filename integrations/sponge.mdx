@@ -1,8 +1,79 @@
 ---
-title: "Sponge integration"
-description: "Connect Vitay to Sponge."
+title: "Sponge ATS integrations"
+description: "Sponge is Vitay's configurable integration framework for connecting to additional ATS platforms beyond the built-in Bullhorn, JobAdder, and TempWorks integrations."
 ---
 
+Sponge is the integration layer Vitay uses to support a growing list of ATS platforms through a shared, configurable framework. Instead of building a one-off connector for each ATS, Sponge lets Vitay connect to platforms like Avionte, Greenhouse, Workable, and others using per-ATS configuration files backed by a common adapter.
+
 <Note>
-  This article is being migrated from our previous help center. Full content is coming soon.
+  Sponge integrations are set up by the Vitay team. The available platforms and feature coverage vary by ATS. Contact [support@vitay.io](mailto:support@vitay.io) to ask whether your ATS is supported and to start the connection process.
 </Note>
+
+## What the Sponge framework does
+
+Depending on the ATS and its configuration, a Sponge integration can:
+
+- **Import candidates** — pull a candidate record from the ATS into Vitay.
+- **Export candidates** — push a Vitay candidate back to the ATS.
+- **Upload documents** — attach a completed reference PDF to the candidate's ATS profile.
+- **Receive webhooks** — accept real-time event notifications from the ATS so candidate data stays in sync automatically.
+
+Not every ATS supports every feature. The Vitay team will let you know what is available for your platform.
+
+## Authentication
+
+Sponge integrations support multiple authentication strategies depending on what the ATS provides:
+
+- **API key** — you supply an API key from the ATS settings page.
+- **OAuth 2.0** — you authorize Vitay via the ATS's standard OAuth flow.
+
+The authentication method is configured per ATS; the Vitay team will tell you which credentials to prepare.
+
+## Connect a Sponge-powered ATS
+
+<Steps>
+  <Step title="Check availability">
+    Contact [support@vitay.io](mailto:support@vitay.io) to confirm your ATS is supported and learn which credentials you need.
+  </Step>
+  <Step title="Provide credentials">
+    Share the required API key or OAuth details with the Vitay team through a secure channel. Do not paste credentials into email.
+  </Step>
+  <Step title="Vitay completes the setup">
+    The Vitay team configures the connection and confirms when the integration is active on your account.
+  </Step>
+</Steps>
+
+![SCREENSHOT: Integrations settings page listing available Sponge-powered ATS platforms — placeholder](/images/placeholder.png)
+
+<Warning>
+  Sponge integrations are an evolving part of the Vitay platform. Some connectors may have limited feature coverage or known gaps. The Vitay team will communicate any limitations specific to your ATS before setup.
+</Warning>
+
+## Disconnect a Sponge integration
+
+Contact [support@vitay.io](mailto:support@vitay.io) to remove a Sponge integration from your account.
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="A candidate import failed">
+    Import errors are logged and reported to the Vitay engineering team automatically. Contact [support@vitay.io](mailto:support@vitay.io) with the candidate's name and the approximate time of the attempt.
+  </Accordion>
+  <Accordion title="Webhooks are not arriving">
+    If your ATS sends real-time events and they are not being processed, the webhook registration may need to be refreshed. Contact [support@vitay.io](mailto:support@vitay.io).
+  </Accordion>
+  <Accordion title="I see an authentication error">
+    ATS API keys and OAuth tokens can expire or be revoked. Contact [support@vitay.io](mailto:support@vitay.io) to reconnect the integration with fresh credentials.
+  </Accordion>
+</AccordionGroup>
+
+## Related articles
+
+<CardGroup cols={2}>
+  <Card title="Integrations overview" icon="plug" href="/integrations/overview" />
+  <Card title="Bullhorn integration" icon="bullseye" href="/integrations/bullhorn" />
+  <Card title="JobAdder integration" icon="briefcase" href="/integrations/jobadder" />
+  <Card title="TempWorks integration" icon="clock" href="/integrations/tempworks" />
+</CardGroup>
+
+{/* source: api app/controllers/api/sponge_controller.rb; api app/services/sponge/; api config/integrations/*.yml */}

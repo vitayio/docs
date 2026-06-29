@@ -1,8 +1,86 @@
 ---
 title: "Logging in"
-description: "How to sign in to Vitay, including SSO and password reset."
+description: "How to sign in to Vitay, reset your password, and what to do if your account is locked."
 ---
 
-<Note>
-  This article is being migrated from our previous help center. Full content is coming soon.
-</Note>
+All recruiters and admins sign in at [app.vitay.io](https://app.vitay.io). You need the email address
+and password that were sent to you when your account was created.
+
+## Sign in
+
+<Steps>
+  <Step title="Go to app.vitay.io">
+    Open [app.vitay.io](https://app.vitay.io) in your browser. You will see the Vitay login page.
+
+    ![SCREENSHOT: the Vitay login page showing email and password fields — placeholder](/images/placeholder.png)
+  </Step>
+  <Step title="Enter your email and password">
+    Type your email address and password, then click **Log in**.
+  </Step>
+  <Step title="Complete MFA if prompted">
+    If multi-factor authentication is enabled on your account, you will be redirected to a
+    verification screen. Enter the code from your authenticator app or SMS, then click **Verify**.
+    See [Multi-factor authentication & login options](/getting-started/mfa-and-login-options) for setup details.
+  </Step>
+</Steps>
+
+## Reset your password
+
+<Steps>
+  <Step title="Click 'Forgot password'">
+    On the login page, click the **Forgot password** link below the password field.
+  </Step>
+  <Step title="Enter your email">
+    Type your Vitay email address and submit the form. Vitay sends you a password-reset email with
+    a link.
+
+    <Note>
+      Password reset emails are rate-limited. If you request more than two resets within a
+      three-hour window, you will need to wait before requesting another one.
+    </Note>
+  </Step>
+  <Step title="Follow the link and set a new password">
+    Click the link in the reset email and choose a new password. Passwords must be at least
+    8 characters and include an uppercase letter, a lowercase letter, a number, and a special
+    character.
+  </Step>
+</Steps>
+
+## SSO users
+
+If your organization uses single sign-on (SAML/SSO), you may be redirected automatically when you
+enter your email on the login page. You will complete authentication through your identity provider
+rather than entering a Vitay password. For setup and troubleshooting, see
+[SSO / SAML](/security-it/sso-saml).
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="I can't remember my password">
+    Use the **Forgot password** link on the login page. If you don't receive the reset email
+    within a few minutes, check your spam folder. The email comes from Vitay's notification address.
+  </Accordion>
+  <Accordion title="My account is locked">
+    Vitay locks accounts after 10 consecutive failed login attempts. Contact your account admin to
+    unlock your account, or reach out to Vitay support.
+  </Accordion>
+  <Accordion title="I'm being asked to verify my identity but I don't have the app">
+    If you've lost access to your MFA device, contact your account admin. They can disable MFA on
+    your profile so you can log in and re-enroll.
+  </Accordion>
+  <Accordion title="I see a 'password reset rate limit' message">
+    You can request up to two password resets within any three-hour period. Wait until the window
+    expires, then try again.
+  </Accordion>
+</AccordionGroup>
+
+## Related articles
+
+<CardGroup cols={2}>
+  <Card title="Multi-factor authentication & login options" icon="shield-check" href="/getting-started/mfa-and-login-options" />
+  <Card title="User roles explained" icon="users" href="/getting-started/roles-explained" />
+  <Card title="SSO / SAML" icon="key" href="/security-it/sso-saml" />
+  <Card title="SCIM provisioning" icon="server" href="/security-it/scim-provisioning" />
+</CardGroup>
+
+{/* source: app.vitay.io AuthenticationService (login, discoverSso/initiateSso for SSO); api app/models/user.rb (MAX_LOGIN_ATTEMPTS=10, PASSWORD_REQUIREMENTS), app/models/password_reset_attempt.rb (RATE_LIMIT_WINDOW=3.hours, MAX_ATTEMPTS=2) */}

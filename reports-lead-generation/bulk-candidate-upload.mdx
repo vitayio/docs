@@ -1,8 +1,131 @@
 ---
 title: "Bulk candidate upload"
-description: "Add many candidates at once via upload."
+description: "Add up to 100 candidates at once by uploading a formatted CSV file."
 ---
 
+Instead of adding candidates one at a time, you can upload a CSV file to create many candidates
+in a single step. You can optionally attach a reference request to each candidate at the same
+time, so requests go out the moment the upload finishes.
+
 <Note>
-  This article is being migrated from our previous help center. Full content is coming soon.
+  You need a recruiter (or higher) role to upload candidates. Each upload is limited to **50
+  rows** by default (100 rows if your account has the extended limit enabled). Every row that
+  fails validation rolls back the entire batch — no partial imports.
 </Note>
+
+## Prepare your CSV file
+
+Download the official template first so your columns are in the right order.
+
+<Steps>
+  <Step title="Download the template">
+    In the **Candidates** section, click **Upload candidates** (or the upload/import icon), then
+    click **Download template**. Open the file in your spreadsheet app.
+
+    ![SCREENSHOT: the bulk-upload panel with the "Download template" link — placeholder](/images/placeholder.png)
+  </Step>
+  <Step title="Fill in the required columns">
+    Every row must have at minimum:
+
+    | Column | Required | Notes |
+    |--------|----------|-------|
+    | `first_name` | Yes | |
+    | `last_name` | Yes | |
+    | `email` | Yes | Must be a valid email; cannot match an existing recruiter |
+    | `internal_id` | No | Your ATS/CRM ID; auto-generated if blank |
+    | `country_code` | No | Phone country code digits only (e.g. `1` for USA); defaults to `1` |
+    | `phone_number` | No | Digits only, no spaces or dashes |
+    | `public_notes` | No | Message shown to the candidate on their reference request |
+    | `internal_notes` | No | Notes visible to recruiters only |
+    | `min_manager_references` | No | Minimum references required |
+    | `is_manager_only` | No | `true` or `yes` to require all references to be managers |
+    | `assigned_recruiter_email` | No | Assigns the candidate to a specific recruiter on your firm |
+    | `branch_id` | No | Sub-account sequence ID; assigns the candidate to a branch |
+    | `question_set_id` | No | UUID of the question set to attach to the auto-created reference request |
+    | `job_title` | No | Visible when the Job title feature is enabled on your account |
+
+  </Step>
+  <Step title="Save as CSV">
+    Save the file with UTF-8 encoding and a `.csv` extension. Remove any blank rows at the end.
+  </Step>
+</Steps>
+
+## Upload the file
+
+<Steps>
+  <Step title="Open the upload panel">
+    In the **Candidates** section, click **Upload candidates**.
+  </Step>
+  <Step title="Choose a question set (optional)">
+    If you want Vitay to automatically send a reference request to every uploaded candidate,
+    select a **question set** in the upload panel. Leave this blank to add candidates without
+    sending requests.
+
+    ![SCREENSHOT: the upload panel with a question set selector and file-upload area — placeholder](/images/placeholder.png)
+  </Step>
+  <Step title="Select your file">
+    Click **Choose file** (or drag and drop) and pick your CSV. Vitay validates the file before
+    committing anything.
+  </Step>
+  <Step title="Review the validation results">
+    Vitay scans the file and shows:
+    - **New entries** — rows that will be created.
+    - **Duplicate entries** — rows where the email or internal ID already exists on your firm.
+    - **Errors** — rows that fail validation (missing required fields, invalid email format,
+      recruiter email not found, etc.).
+
+    Fix any errors in your spreadsheet, re-export as CSV, and re-upload. All errors must be
+    resolved before you can proceed.
+
+    ![SCREENSHOT: the validation summary screen showing new entries, duplicates, and errors — placeholder](/images/placeholder.png)
+  </Step>
+  <Step title="Confirm the upload">
+    When validation passes with no errors, click **Upload** to commit all rows. If you selected a
+    question set, Vitay sends reference requests to every new candidate immediately after the
+    import succeeds.
+  </Step>
+</Steps>
+
+## What happens after a successful upload
+
+- Each new candidate is created on your firm (or the branch specified by `branch_id`).
+- If you chose a question set, a reference request is created and emailed to each candidate
+  right away.
+- Vitay emails a confirmation to all Vitay admins, with your CSV attached.
+- Duplicate rows are skipped (not created), but they do not cause the entire batch to fail during
+  the check step — they are flagged as warnings rather than errors.
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="A row failed because the recruiter email wasn't found">
+    The email in `assigned_recruiter_email` must belong to an active recruiter on your firm (or
+    the branch specified by `branch_id`). Correct the email or remove the column value to assign
+    the candidate to yourself.
+  </Accordion>
+  <Accordion title="The upload says a candidate already exists but I don't see them">
+    Duplicate detection includes inactive (archived) candidates. If a candidate with the same
+    email or internal ID was previously archived, they still block a new upload. Contact your
+    admin to reactivate or remove the existing record.
+  </Accordion>
+  <Accordion title="My file has more than 50 rows but not all were imported">
+    Standard accounts process up to 50 rows per upload. Ask your account admin about enabling the
+    extended 100-row limit. For larger imports, split your file and upload in batches.
+  </Accordion>
+  <Accordion title="I see a phone number error even though the number looks correct">
+    Phone numbers must contain digits only — remove spaces, dashes, parentheses, and the leading
+    `+`. Make sure `country_code` is set to the correct dialing prefix (e.g. `1` for North
+    America, `44` for the UK).
+  </Accordion>
+</AccordionGroup>
+
+## Related articles
+
+<CardGroup cols={2}>
+  <Card title="Add a candidate" icon="user-plus" href="/candidates-reference-requests/add-a-candidate" />
+  <Card title="Send a reference request" icon="paper-plane" href="/candidates-reference-requests/send-a-reference-request" />
+  <Card title="Download reports" icon="download" href="/reports-lead-generation/download-reports" />
+  <Card title="Question sets and templates" icon="list-check" href="/account-configuration/question-sets-and-templates" />
+</CardGroup>
+
+{/* source: app.vitay.io bulk-upload UI; api app/controllers/api/v3/documents/csv_controller.rb (check and upload actions, candidates branch); api app/services/documents/csv/candidates_handler.rb (template fields: internal_id, first_name, last_name, email, country_code, phone_number, public_notes, internal_notes, min_manager_references, assigned_recruiter_email, branch_id, question_set_id, is_manager_only; optional job_title); api app/models/candidate.rb */}

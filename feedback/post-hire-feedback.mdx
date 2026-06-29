@@ -1,8 +1,94 @@
 ---
 title: "Post-hire feedback"
-description: "Collect feedback on a candidate after they're hired."
+description: "Ask an employer to share feedback on a placed candidate after they've started the role."
 ---
 
+Post-hire feedback lets you check in on a candidate after you've placed them. You send a feedback
+request to the employer (the hiring manager or company contact), and they answer a structured
+question set. The completed feedback appears on the candidate's profile so you can track quality of
+placement over time.
+
 <Note>
-  This article is being migrated from our previous help center. Full content is coming soon.
+  Post-hire feedback requires the **Employer feedback** feature to be enabled on your account.
+  Contact your account admin if you don't see the option. You need a recruiter (or higher) role
+  to send feedback requests.
 </Note>
+
+## Send a post-hire feedback request
+
+<Steps>
+  <Step title="Open the candidate">
+    Go to **Candidates** and select the placed candidate you want to collect feedback on.
+  </Step>
+  <Step title="Start a feedback request">
+    Click **Request feedback**. A modal opens where you choose the feedback type.
+
+    ![SCREENSHOT: the candidate profile page with the "Request feedback" button visible — placeholder](/images/placeholder.png)
+  </Step>
+  <Step title="Select the Employer type">
+    In the **Type** field, select **Employer**. Fields for the employer's contact details appear
+    below.
+  </Step>
+  <Step title="Enter the employer's details">
+    Fill in the employer's **first name**, **last name**, and **email address**. Add a phone number
+    if you want Vitay to send an SMS reminder as well.
+
+    ![SCREENSHOT: the feedback request modal with Employer selected and contact fields filled in — placeholder](/images/placeholder.png)
+  </Step>
+  <Step title="Choose a question set">
+    Select the **question set** the employer will answer. If your firm only has one question set
+    configured for feedback, it is pre-selected.
+  </Step>
+  <Step title="Schedule (optional)">
+    If your firm has scheduled feedback enabled, you can pick a **scheduled date** to delay
+    delivery. Leave this blank to send immediately.
+  </Step>
+  <Step title="Submit">
+    Click **Submit**. Vitay emails the employer with a link to the feedback form.
+  </Step>
+</Steps>
+
+## What happens next
+
+- The employer receives an email with a link to complete the feedback form.
+- Vitay automatically sends reminders if the employer hasn't responded — the number and timing of
+  reminders follow your firm's reminder settings.
+- When the employer submits their answers, you receive a notification email and the completed
+  feedback appears under the candidate's **Feedback** tab.
+- A score is calculated from any rating or matrix questions in the question set.
+
+## View completed feedback
+
+Open the candidate's profile and click the **Feedback** tab to see all completed and pending
+feedback requests for that candidate.
+
+![SCREENSHOT: the candidate's Feedback tab showing a completed employer feedback with score — placeholder](/images/placeholder.png)
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="I don't see the Employer option in the feedback type selector">
+    The Employer feedback type is controlled by a feature flag on your account. Ask your account
+    admin to enable **Employer feedbacks** in the firm settings.
+  </Accordion>
+  <Accordion title="The employer says they didn't get the email">
+    Check that the email address you entered is correct on the candidate's Feedback tab. If it
+    looks right, ask the employer to check their spam folder. You can resend the request from the
+    Feedback tab by finding the pending request and clicking **Resend**.
+  </Accordion>
+  <Accordion title="The feedback request was sent to the wrong email">
+    Open the candidate's Feedback tab, locate the pending request, and use the edit option to
+    correct the employer's email address, then resend.
+  </Accordion>
+</AccordionGroup>
+
+## Related articles
+
+<CardGroup cols={2}>
+  <Card title="Candidate feedback" icon="comment-dots" href="/feedback/candidate-feedback" />
+  <Card title="Read a completed reference" icon="clipboard-check" href="/candidates-reference-requests/read-a-completed-reference" />
+  <Card title="Reminders and how they work" icon="bell" href="/candidates-reference-requests/reminders-and-cadence" />
+  <Card title="Question sets and templates" icon="list-check" href="/account-configuration/question-sets-and-templates" />
+</CardGroup>
+
+{/* source: app.vitay.io src/app/shared/components/modals/feedback-requests/modals.feedback-requests.component.ts (Employer type, is_plugins_candidate_feedback_enabled, is_employer_feedbacks_scheduled_enabled); api app/models/feedback.rb (identifiable_type='Employer', send_feedback_requests, send_feedback_completed_email_to_recruiter) */}
