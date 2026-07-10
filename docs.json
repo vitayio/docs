@@ -125,9 +125,5 @@
       "claude"
     ]
   },
-  "footer": {
-    "socials": {
-      "linkedin": "https://www.linkedin.com/company/vitay"
-    }
-  }
+  "description": "Knowledge base for the Vitay platform, which focuses on simplifying the hiring process and reference checks."
 }
