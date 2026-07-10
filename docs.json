@@ -113,7 +113,7 @@
     "primary": {
       "type": "button",
       "label": "Go to Vitay",
-      "href": "https://app.vitay.io"
+      "href": "https://references.vitay.io"
     }
   },
   "contextual": {
