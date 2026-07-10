@@ -14,6 +14,7 @@
   "navigation": {
     "pages": [
       "index",
+      "changelog",
       {
         "group": "Getting Started",
         "icon": "rocket",

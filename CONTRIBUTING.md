@@ -75,3 +75,30 @@ Troubleshooting (optional) → Related articles.
 3. Follow the template and the audience rule above.
 4. If it replaces an old help.vitay.io article, add a row to the redirect map
    (`REDIRECTS.md`).
+
+## Changelog
+
+`changelog.mdx` is the customer-facing record of product releases. It is **not**
+a log of documentation edits.
+
+- **One `<Update>` block per release**, newest first. Props:
+  - `label` — the production release date as `Month D, YYYY` (this is the anchor).
+  - `description` — a one-line headline for the release.
+  - `tags` — optional; e.g. `["Feature"]`, `["Fix"]`, `["Announcement"]`.
+  - `rss={{ title, description }}` — **always set this**, so each release is a
+    single RSS entry. Without it, Mintlify emits one RSS item per heading.
+- **Group changes inside a block** under `### New`, `### Improved`, `### Fixed` —
+  include only the groups that have items.
+- **Customer-facing only.** New features, improvements, and user-visible fixes,
+  written benefit-first in second person. Never list infra, dependency bumps,
+  refactors, CI, or internal/demo changes.
+- **Never edit past entries** except to fix a factual error; the changelog is a
+  historical record.
+
+### How entries get added (release ritual)
+
+Entries are added when a release is prepped — when the `staging → master` PRs for
+`api.vitay.io` and `app.vitay.io` are opened. That flow (documented in
+`api.vitay.io/CLAUDE.md`) prepares a branch off `main` here, prepends one
+`<Update>` block with the customer-facing subset of the release, and opens a PR
+to `main`. The PR is the review gate for the wording — it is never auto-merged.
