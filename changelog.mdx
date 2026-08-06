@@ -4,6 +4,52 @@ description: "Product updates, improvements, and fixes shipped to Vitay."
 ---
 
 <Update
+  label="August 6, 2026"
+  description="Job title in templates and a big accessibility upgrade"
+  tags={["Feature", "Improvement"]}
+  rss={{
+    title: "Job title in templates and a big accessibility upgrade",
+    description: "Use the job title variable in reference templates, and enjoy a more accessible Vitay — better contrast, full keyboard support, and screen-reader-friendly public forms."
+  }}
+>
+  ### New
+
+  - **Job title in your templates.** Reference and reference-request templates
+    now support a `{{job_title}}` variable. Pick it from the variable list in
+    **Configuration → Templates** and the position the candidate applied for is
+    filled in automatically — so candidates and references always know which
+    role the request is about.
+
+  ### Improved
+
+  - **A more accessible Vitay.** We've completed a major accessibility pass
+    across the app, with a special focus on the public pages candidates and
+    references use. Text contrast now meets WCAG AA throughout (and AAA on the
+    public reference flows), every form can be completed with just a keyboard,
+    screen readers announce loading states and validation errors, and a
+    missing-fields summary points to exactly what's left before submitting.
+    Animations are also reduced automatically if your device asks for reduced
+    motion.
+  - **A refreshed brand teal.** Vitay's default accent color is now a deeper,
+    accessible teal — in the app and in your emails, PDF reports, and public
+    reference pages. If your firm uses custom branding colors, nothing changes.
+
+  ### Fixed
+
+  - **Adding a candidate who already has a Vitay account.** Creating a candidate
+    whose email matched an existing user (for example, adding yourself as a test
+    candidate) could fail — it now works reliably.
+  - **Question editing glitches.** The question-set and question windows could
+    show stale validation — for example, not re-checking the title after
+    switching the template toggle, or the answer options after changing a
+    question's type. Both now update immediately.
+  - **Settings pages after session expiry.** Opening a settings page right after
+    your session expired could show an error instead of redirecting to login.
+  - **Changing your firm's language.** The new language now applies reliably
+    everywhere as soon as you change it.
+</Update>
+
+<Update
   label="July 23, 2026"
   description="Share reports with more people and see candidate activity at a glance"
   tags={["Feature", "Improvement"]}
