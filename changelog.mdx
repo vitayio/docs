@@ -4,6 +4,44 @@ description: "Product updates, improvements, and fixes shipped to Vitay."
 ---
 
 <Update
+  label="August 17, 2026"
+  description="Smoother reference submission and accessibility polish"
+  tags={["Improvement", "Fix"]}
+  rss={{
+    title: "Smoother reference submission and accessibility polish",
+    description: "Reference submissions no longer stall on slow connections, question widgets in public flows are fully accessible, and feedback-only firms can now configure everything they need."
+  }}
+>
+  ### Improved
+
+  - **Accessible question widgets.** The interactive question types on public
+    reference and feedback pages — sliders, ratings, and multiple-choice
+    widgets — are now fully usable with a keyboard and properly announced by
+    screen readers, continuing our accessibility program.
+  - **Easier-to-see checkboxes.** Checkbox borders across the app and public
+    pages are now darker, so controls like the terms-acceptance checkbox are
+    clearly visible on any screen.
+
+  ### Fixed
+
+  - **Reference submission no longer stalls.** Submitting a reference could
+    occasionally leave the button spinning forever, with no way to tell whether
+    the submission went through. Slow back-end notifications no longer hold up
+    the submission, and if something does go wrong you now see a clear error
+    message instead of a frozen button.
+  - **Text formatting in rich-text fields.** Text entered in rich-text editors
+    (like lead-generation descriptions) could lose its line breaks or refuse to
+    wrap, running off the edge of the card. Formatting is now preserved
+    everywhere it's displayed.
+  - **Feedback-only firms.** Firms that use Vitay for feedback without candidate
+    references can now create feedback question sets and configure feedback
+    emails, texts, and pages — these settings were previously blocked.
+  - **Credits-used tile.** The credits-used tile on the references dashboard
+    could show an error state when usage data was briefly unavailable; it now
+    always shows a number.
+</Update>
+
+<Update
   label="August 6, 2026"
   description="Job title in templates and a big accessibility upgrade"
   tags={["Feature", "Improvement"]}
