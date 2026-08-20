@@ -4,6 +4,58 @@ description: "Product updates, improvements, and fixes shipped to Vitay."
 ---
 
 <Update
+  label="August 20, 2026"
+  description="Bulk candidate actions, password expiry controls, and smarter multi-language requests"
+  tags={["Feature", "Improvement", "Fix"]}
+  rss={{
+    title: "Bulk candidate actions, password expiry controls, and smarter multi-language requests",
+    description: "Act on many candidates at once from the candidates list, set how often your team's passwords must be updated, and send requests in any language knowing the question set is fully translated."
+  }}
+>
+  ### New
+
+  - **Bulk candidate actions.** Select any number of candidates on the
+    candidates list and act on all of them at once: update their status, assign
+    them to a recruiter, send reminders to unresponsive references, send new
+    reference (or feedback / pre-screening) requests, or deactivate them. A
+    floating action bar shows your selection and lets you select everything
+    matching your current filter.
+  - **Configurable password expiry.** Firms that require periodic password
+    updates can now choose the expiry window (1–365 days) instead of a fixed 30.
+    Enforcement is stricter and more consistent: expiry applies on every
+    password change path, recent passwords can't be reused, and users signing in
+    through SSO are never asked to update a Vitay password.
+
+  ### Improved
+
+  - **Question sets follow your request language.** When you pick a language for
+    a request, Vitay now offers exactly the question sets that are fully
+    translated into it — so a reference can never land on a form with missing
+    questions. If a set is hidden because its translation is incomplete, you'll
+    see a hint with a link to finish the translation, and the editor's language
+    dropdown now simply switches which translation you're viewing without
+    altering the set.
+  - **Full French (Canada) support.** Firms using Français (Canada) now get the
+    complete set of email, text-message, and page templates in Québécois French,
+    and reference reports (PDFs) render correctly in fr-CA.
+  - **Accessibility polish.** Page numbers in pagination are readable again
+    (the active page was teal-on-teal), and keyboard focus outlines on grouped
+    fields — like the internal-ID field with its Generate button — now wrap the
+    whole group instead of cutting across the attached button.
+  - **Logo links home.** The Vitay logo on the login pages now takes you to
+    vitay.io.
+
+  ### Fixed
+
+  - **French translations repaired.** An audit of the French and French (Canada)
+    interface fixed dozens of untranslated strings (including the entire
+    feedback and pre-screening vocabulary), typos, and outdated descriptions.
+  - **Request language and question set stay consistent.** A request can no
+    longer pair, say, a French invitation email with an English-only question
+    set — the choices are kept in sync as you change language.
+</Update>
+
+<Update
   label="August 17, 2026"
   description="Smoother reference submission and accessibility polish"
   tags={["Improvement", "Fix"]}

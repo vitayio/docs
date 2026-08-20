@@ -1,0 +1,71 @@
+---
+title: "Bulk candidate actions"
+description: "Select several candidates at once to deactivate them, update their status, assign a recruiter, send reminders, or send new requests."
+---
+
+When you need to do the same thing to many candidates — close out a filled role,
+hand a pipeline to a colleague, or nudge everyone still waiting on references —
+you can select the candidates on the list and apply one action to all of them.
+
+<Note>
+  Available to all recruiter roles. You can only act on candidates you can see:
+  if your access is limited to your own candidates, bulk actions apply only to
+  those.
+</Note>
+
+## Select candidates and choose an action
+
+<Steps>
+  <Step title="Open the candidates list">
+    Go to **Candidates**.
+  </Step>
+  <Step title="Tick the candidates you want">
+    Use the checkbox on each row, or the checkbox in the table header to select
+    the whole page. A floating action bar appears at the bottom of the screen
+    showing how many candidates are selected, with a **Select all** option for
+    every candidate matching your current filter and a button to clear the
+    selection.
+
+    ![SCREENSHOT: candidates list with several rows ticked and the floating bulk action bar visible — placeholder](/images/placeholder.png)
+  </Step>
+  <Step title="Pick an action from the bar">
+    Each action opens a short confirmation dialog before anything is applied.
+  </Step>
+</Steps>
+
+## Available actions
+
+| Action | What it does |
+|---|---|
+| **Update status** | Sets the same candidate status (e.g. Shortlisted, Hired, Rejected) on every selected candidate. |
+| **Assign to recruiter** | Moves the selected candidates to a recruiter you choose. |
+| **Send reminder** | Emails a reminder to the references that haven't responded yet, for each selected candidate. |
+| **Send new request** | Sends a new reference request — or a feedback / pre-screening request if those are enabled for your firm — to every selected candidate. You choose the question set and the minimum number of references, just like a single request. |
+| **Deactivate** | Deactivates the selected candidates. They disappear from the active list but their data and completed references are kept. |
+
+If an action can't be applied to one of the selected candidates, the others are
+still processed — you'll see which ones failed in the confirmation.
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="The action bar doesn't appear">
+    The bar only shows while at least one candidate is ticked. If you can't tick
+    any rows, your role may not have access to those candidates.
+  </Accordion>
+  <Accordion title="I don't see feedback or pre-screening in Send new request">
+    Those request types only appear when they're enabled for your firm. Ask your
+    admin, or see [Post-hire feedback](/feedback/post-hire-feedback).
+  </Accordion>
+</AccordionGroup>
+
+## Related articles
+
+<CardGroup cols={2}>
+  <Card title="Send a reference request" icon="paper-plane" href="/candidates-reference-requests/send-a-reference-request" />
+  <Card title="Reminders and how they work" icon="bell" href="/candidates-reference-requests/reminders-and-cadence" />
+  <Card title="Manage in-flight requests" icon="sliders" href="/candidates-reference-requests/manage-in-flight-requests" />
+  <Card title="Add a candidate" icon="user-plus" href="/candidates-reference-requests/add-a-candidate" />
+</CardGroup>
+
+{/* source: app.vitay.io projects/references candidates list + shared app-bulk-action-bar + bulk modals (CANDIDATES.BULK_ACTIONS.*); api app/controllers/api/v3/candidates/bulk_controller.rb */}
