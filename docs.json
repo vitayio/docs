@@ -35,6 +35,7 @@
           "candidates-reference-requests/reminders-and-cadence",
           "candidates-reference-requests/search-past-references",
           "candidates-reference-requests/manage-in-flight-requests",
+          "candidates-reference-requests/bulk-candidate-actions",
           "candidates-reference-requests/add-a-reference-manually",
           "candidates-reference-requests/read-a-completed-reference",
           "candidates-reference-requests/reference-not-received"
