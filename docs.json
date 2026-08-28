@@ -88,6 +88,7 @@
           "security-it/sso-saml",
           "security-it/scim-provisioning",
           "security-it/browser-support",
+          "security-it/cookies-and-consent",
           "security-it/data-and-privacy"
         ]
       },

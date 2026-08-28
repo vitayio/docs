@@ -75,6 +75,8 @@ If you need to request a full data purge, contact
   **SAML SSO** for centralised access control — see
   [Single sign-on (SAML)](/security-it/sso-saml).
 - Reference submission links are single-use and time-limited.
+- Non-essential cookies and third-party scripts load only after the visitor
+  gives consent — see [Cookies and consent](/security-it/cookies-and-consent).
 - Vitay monitors for errors and anomalies via application-level observability
   tooling.
 
@@ -108,6 +110,7 @@ If you need to request a full data purge, contact
 <CardGroup cols={2}>
   <Card title="Single sign-on (SAML)" icon="key" href="/security-it/sso-saml" />
   <Card title="SCIM user provisioning" icon="users-gear" href="/security-it/scim-provisioning" />
+  <Card title="Cookies and consent" icon="cookie-bite" href="/security-it/cookies-and-consent" />
 </CardGroup>
 
 {/* source: api app/models/purge_batch.rb; api app/models/deleted_associated_record.rb */}
