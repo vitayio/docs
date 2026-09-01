@@ -38,9 +38,12 @@ Vitay requires the following browser features to be **enabled**:
 
 - **JavaScript** — Vitay is a JavaScript application. Disabling JavaScript
   will prevent the app from loading.
-- **Cookies** — Vitay uses a session cookie to keep you logged in. Third-party
+- **Cookies** — Vitay uses a session cookie to keep you logged in, and a
+  first-party cookie to remember each user's cookie consent choice. Third-party
   cookie restrictions (from browser privacy modes or extensions) can interfere
   with SSO logins; if you use SSO, ensure cookies from `vitay.io` are permitted.
+  Browsers set to clear cookies on close will re-show the consent banner on
+  every visit — see [Cookies and consent](/security-it/cookies-and-consent).
 - **Local storage** — used to preserve app state between page refreshes.
 
 ## Tips for IT and managed devices

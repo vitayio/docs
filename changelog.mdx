@@ -4,6 +4,71 @@ description: "Product updates, improvements, and fixes shipped to Vitay."
 ---
 
 <Update
+  label="August 28, 2026"
+  description="Cookie consent, bulk reference requests from Bullhorn, and clearer privacy information"
+  tags={["Feature", "Improvement", "Fix"]}
+  rss={{
+    title: "Cookie consent, bulk reference requests from Bullhorn, and clearer privacy information",
+    description: "Choose which cookies Vitay uses, request references for several Bullhorn candidates at once, and see the privacy policy linked wherever you accept the terms."
+  }}
+>
+  ### New
+
+  - **Cookie consent.** Vitay now asks for cookie consent the first time you
+    visit, and lets you change your mind at any time. Cookies are grouped into
+    Strictly necessary, Functional, Analytics, and Advertising, each with a
+    plain-English list of exactly which cookies it covers and what they're for.
+    Rejecting
+    non-essential cookies is one click, exactly like accepting them, and a small
+    **Cookie preferences** control stays available on every page so you can
+    withdraw or change consent later. Your choice is remembered for 12 months
+    and carries across the Vitay sites you use. See
+    [Cookies and consent](/security-it/cookies-and-consent).
+  - **Request references for several Bullhorn candidates at once.** Firms using
+    the Bullhorn in-app experience can add a **Custom List Action** to Bullhorn:
+    select any number of candidates in a Bullhorn list, run the action, and
+    request references for all of them from a single form. Each candidate gets
+    its own result line, so you can see at a glance which requests went out and
+    which candidates already had a request in flight. A new **Custom Menu
+    Action** also gives you a one-click "Request references" entry on an
+    individual candidate that opens straight to the request form. See
+    [Bullhorn integration](/integrations/bullhorn).
+
+  ### Improved
+
+  - **Privacy policy linked where you accept the terms.** Every public Vitay
+    form — reference forms, reference requests, feedback, verification, and
+    registration — now links both the Terms of Service and the Privacy Policy in
+    the acceptance checkbox, in all supported languages. The checkbox has also
+    moved out of its cramped spot beside the submit button to a full-width row
+    alongside the other authorizations, so it's easy to find before you submit.
+  - **A clearer reason when a text can't be delivered.** Text messages that a
+    carrier refuses because the destination isn't reachable from Vitay's sending
+    number used to be reported as "Unknown Error". They now say **"Destination
+    not reachable from our sending number"**, so you know to follow up by email
+    or another channel instead of retrying.
+
+  ### Fixed
+
+  - **Reference submissions no longer fail on unusual names.** A reference whose
+    name contained a slash — for example a last name entered as "N/A" — could
+    hit an error on submit and, for firms with a document-upload integration,
+    silently skip the upload of the finished report. Both now work.
+  - **Reference edit history shows relationship names.** The record of what a
+    reference changed showed raw codes such as `P` or `D` instead of "Peer" or
+    "Direct manager" — always on report PDFs, and sometimes in the recruiter
+    edits panel. It now shows the relationship name, in the reference's own
+    language, including custom relationships you've defined.
+  - **Candidate status colors are back.** The status dropdown on the candidate
+    profile header lost its green/yellow/red background and rendered
+    transparent. The colors are restored everywhere the status is shown.
+  - **eRecruit candidate sync recovers on its own.** A single slow or failing
+    record in an eRecruit queue could stop an entire account's candidate sync,
+    leaving new eRecruit candidates missing from Vitay. Queue fetches now allow
+    more time and retry, and one bad record no longer stops the rest.
+</Update>
+
+<Update
   label="August 20, 2026"
   description="Bulk candidate actions, password expiry controls, and smarter multi-language requests"
   tags={["Feature", "Improvement", "Fix"]}

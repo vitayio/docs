@@ -1,0 +1,137 @@
+---
+title: "Cookies and consent"
+description: "What cookies Vitay sets, how the consent banner works, and how you or your users can change cookie preferences at any time."
+---
+
+Vitay asks every visitor for cookie consent before it loads any non-essential
+cookie or third-party script. This article explains the cookie categories, how
+consent is stored, and how to change it — useful when your IT or privacy team
+asks what Vitay drops on a browser.
+
+<Note>
+  No role is required. The consent banner and preferences are available to
+  everyone, including candidates and reference providers who have no Vitay
+  login.
+</Note>
+
+## How consent works
+
+The first time someone visits Vitay, a banner appears at the bottom of the page
+with three choices:
+
+- **Accept all** — allow every category.
+- **Reject non-essential** — allow only strictly necessary cookies.
+- **Customize** — open the **Cookie preferences** modal and choose per category.
+
+Nothing in the Functional, Analytics, or Advertising categories loads until
+consent is given. Rejecting is exactly as prominent and as quick as accepting.
+
+Once a choice is made, the banner is replaced by a persistent **Cookie
+preferences** control that stays available on every page, so consent can be
+changed or withdrawn at any time.
+
+## Cookie categories
+
+<AccordionGroup>
+  <Accordion title="Strictly necessary — always on">
+    Cookies Vitay cannot function without: your sign-in session and single
+    sign-on session, two-factor authentication state, the reference-provider
+    access token that keeps a part-completed form attached to the right request,
+    your language preference, cached white-label branding, bot protection, the
+    Stripe payment and fraud-prevention cookies, and the cookie that records
+    your consent choice itself. These cannot be switched off, and Vitay sets
+    them whether or not consent is given.
+  </Accordion>
+  <Accordion title="Functional">
+    Cookies that support optional conveniences rather than core functionality —
+    notably the in-app support chat widget. Turning this category off means the
+    widget is not loaded; the **Help** entry in the sidebar opens your cookie
+    preferences instead so you can re-enable it.
+  </Accordion>
+  <Accordion title="Analytics">
+    Product analytics used to understand how Vitay is used in aggregate. Loaded
+    through Google Tag Manager, and only once analytics consent is granted.
+  </Accordion>
+  <Accordion title="Advertising">
+    Marketing and audience-measurement pixels used to measure campaign
+    effectiveness. Loaded only once advertising consent is granted.
+  </Accordion>
+</AccordionGroup>
+
+Click **View cookies** on any category to see every cookie it declares, with
+its **Name**, **Provider**, **Purpose**, and **Duration** — so there's no need
+to inspect the browser to answer a privacy questionnaire.
+
+![SCREENSHOT: the cookie preferences modal with a category expanded to show its cookie table — placeholder](/images/placeholder.png)
+
+## Where consent applies
+
+<Steps>
+  <Step title="One choice across the Vitay sites you use">
+    Consent is stored in a first-party cookie on your firm's Vitay domain, so a
+    choice made on the reference-checking site also applies to the configuration
+    and feedback sites. Firms on a white-label domain give consent separately on
+    that domain.
+  </Step>
+  <Step title="Remembered for 12 months">
+    Vitay re-asks after 12 months, and also re-asks if the cookie list changes
+    materially — so consent always reflects what is actually being set.
+  </Step>
+  <Step title="Not shown inside ATS embeds">
+    When Vitay is embedded inside an ATS (for example a Bullhorn tab), no
+    consent banner is shown and no analytics, advertising, or functional
+    cookies are set at all — regardless of any consent given elsewhere. The
+    embed uses strictly necessary cookies only.
+  </Step>
+</Steps>
+
+## Change or withdraw consent
+
+<Steps>
+  <Step title="Open cookie preferences">
+    Click the **Cookie preferences** control on any Vitay page.
+  </Step>
+  <Step title="Adjust the categories">
+    Switch categories on or off. Click **View cookies** on a category first if
+    you want to see exactly which cookies it covers.
+  </Step>
+  <Step title="Save">
+    Click **Save preferences**. If you have withdrawn consent for a category
+    that was previously granted, the page reloads so the affected scripts and
+    cookies are cleared straight away.
+  </Step>
+</Steps>
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="The banner keeps coming back">
+    The consent choice is stored in a cookie. If the browser is set to clear
+    cookies on close, is in a private window, or has an extension that clears
+    site data, the choice cannot persist and the banner will reappear on each
+    visit. Allow cookies from your Vitay domain — see
+    [Browser support](/security-it/browser-support).
+  </Accordion>
+  <Accordion title="The support chat widget disappeared">
+    The in-app support chat widget sits in the Functional category. If that
+    category is off, the widget is not loaded. Open **Cookie preferences**,
+    switch Functional on, and save — or use the sidebar **Help** entry, which
+    opens the preferences modal when the widget is unavailable.
+  </Accordion>
+  <Accordion title="Our privacy team needs the full cookie list">
+    Every cookie Vitay declares is listed in the preferences modal, grouped by
+    category, with its purpose and lifetime. For the privacy policy, DPA
+    template, and sub-processor list, see
+    [Data and privacy](/security-it/data-and-privacy) or contact
+    [support@vitay.io](mailto:support@vitay.io).
+  </Accordion>
+</AccordionGroup>
+
+## Related articles
+
+<CardGroup cols={2}>
+  <Card title="Data and privacy" icon="shield-halved" href="/security-it/data-and-privacy" />
+  <Card title="Browser support" icon="globe" href="/security-it/browser-support" />
+</CardGroup>
+
+{/* source: app.vitay.io src/app/shared/config/cookie-registry.ts; src/app/shared/services/cookie-consent.service.ts; src/app/shared/components/cookie-consent/ */}

@@ -38,6 +38,85 @@ Once connected, your recruiters will see Bullhorn-specific options on candidate 
 - **Push candidate to Bullhorn** — creates or updates the candidate record in Bullhorn.
 - **Upload reference report** — generates a PDF of completed references and attaches it to the candidate in Bullhorn.
 
+## Work inside Bullhorn
+
+Firms on the Bullhorn in-app experience can run the whole reference-request
+flow without leaving Bullhorn. Vitay supports four Bullhorn placements, each
+added from Bullhorn's **View Layout** editor using a URL that Vitay generates
+for your firm.
+
+<Note>
+  The in-app experience is enabled per firm by the Vitay team. If you don't see
+  the URL rows described below on the Bullhorn integration in Vitay, contact
+  [support@vitay.io](mailto:support@vitay.io) to have it turned on.
+</Note>
+
+| Placement | What your recruiters get |
+| --- | --- |
+| **Custom Tab** | A full Vitay tab on the candidate record — request references and read results in place. |
+| **Card Tab** | A compact reference-status card on the candidate overview. |
+| **Custom Menu Action** | A one-click "Request references" entry in the candidate action menu that opens straight to the request form. |
+| **Custom List Action** | Select several candidates in a Bullhorn list and request references for all of them from a single form. |
+
+### Add a placement
+
+<Steps>
+  <Step title="Copy the URL from Vitay">
+    In Vitay, go to **Settings → Integrations** and open the Bullhorn
+    integration's configuration. Each placement has its own row with a copy
+    button — **Copy embed URL**, **Copy card URL**, **Copy menu action URL**, and
+    **Copy list action URL**.
+
+    ![SCREENSHOT: the Bullhorn integration configuration modal showing the four URL copy rows — placeholder](/images/placeholder.png)
+  </Step>
+  <Step title="Paste it into Bullhorn's View Layout editor">
+    In Bullhorn, open the View Layout editor for the Candidate entity and add
+    the URL to the matching section: **Custom Tabs**, **Card Tabs**, **Custom
+    Menu Actions**, or **Custom List Actions**. Each Vitay row names the
+    Bullhorn section it belongs in.
+  </Step>
+  <Step title="Save and reload Bullhorn">
+    Save the layout and reload Bullhorn. The new tab, card, menu entry, or list
+    action appears for the users covered by that layout.
+  </Step>
+</Steps>
+
+<Warning>
+  Add these placements only after your Vitay in-app experience has been enabled
+  and confirmed. A placement pointing at an integration that isn't active will
+  show an error to your recruiters rather than the Vitay form.
+</Warning>
+
+### Request references for several candidates at once
+
+<Steps>
+  <Step title="Select candidates in Bullhorn">
+    Open any Bullhorn candidate list and tick the candidates you want to request
+    references for.
+  </Step>
+  <Step title="Run the Vitay list action">
+    Choose the Vitay entry from the list's action menu. A Vitay window opens
+    showing how many candidates you selected.
+  </Step>
+  <Step title="Fill in the request once">
+    Complete the request form as you normally would for a single candidate. The
+    details you enter apply to every selected candidate.
+  </Step>
+  <Step title="Submit and check the results">
+    Vitay submits one request per candidate and shows a result line for each:
+    **requested**, **already in progress** (that candidate had an open request,
+    so nothing was duplicated), or **failed**. A tally appears when it finishes.
+  </Step>
+</Steps>
+
+<Note>
+  Leave the window open until the results finish. If you close it partway
+  through, the remaining candidates are not requested — just run the list action
+  again on those candidates. Re-running it is safe: candidates that already have
+  an open request come back as "already in progress" rather than getting a
+  second request.
+</Note>
+
 ## Disconnect Bullhorn
 
 Only a root admin can disconnect the integration. Contact [support@vitay.io](mailto:support@vitay.io) if you need to remove the connection.
@@ -50,6 +129,16 @@ Only a root admin can disconnect the integration. Contact [support@vitay.io](mai
   </Accordion>
   <Accordion title="The 'Push to Bullhorn' option is missing">
     This option is only visible once the Bullhorn integration is connected for your firm. Ask your admin to confirm the integration is active.
+  </Accordion>
+  <Accordion title="A candidate came back as 'already in progress' in a bulk request">
+    That candidate already had an open reference request in Vitay. Vitay does
+    not create a second request while one is in flight — open the candidate in
+    Vitay to see the existing request's status.
+  </Accordion>
+  <Accordion title="Some candidates in a bulk request were never requested">
+    The Vitay window was most likely closed before the run finished. Re-run the
+    list action on the same candidates; the ones already requested come back as
+    "already in progress" and nothing is duplicated.
   </Accordion>
   <Accordion title="A reference report won't upload to Bullhorn">
     The candidate must first be synced to Bullhorn (via "Push candidate to Bullhorn") before a document can be attached. If the candidate already exists in Bullhorn but the sync record is missing, contact [support@vitay.io](mailto:support@vitay.io).
@@ -65,4 +154,4 @@ Only a root admin can disconnect the integration. Contact [support@vitay.io](mai
   <Card title="Send a reference request" icon="paper-plane" href="/candidates-reference-requests/send-a-reference-request" />
 </CardGroup>
 
-{/* source: api app/controllers/api/bullhorn_controller.rb; api app/services/external_services/bullhorn/authorize.rb; api app/models/external_authorisations/bullhorn.rb */}
+{/* source: api app/controllers/api/bullhorn_controller.rb; api app/services/external_services/bullhorn/authorize.rb; api app/models/external_authorisations/bullhorn.rb; api app/controllers/api/sponge/ (embed_request, status, list_action); app.vitay.io projects/references embed surfaces (tab/card/list), projects/configuration MODALS.INTEGRATIONS.{EMBED,CARD,MENU,LIST}_URL */}
