@@ -6,7 +6,7 @@ description: "Connect Vitay to JobAdder via OAuth so your team can request refer
 The JobAdder integration uses OAuth 2.0 to link your Vitay firm to your JobAdder account. Once connected, Vitay adds a **View candidate** action button inside JobAdder, letting recruiters open a candidate's Vitay reference panel and trigger reference requests directly from JobAdder.
 
 <Note>
-  Setting up the JobAdder integration requires **admin** access in Vitay. Contact [support@vitay.io](mailto:support@vitay.io) to initiate the OAuth connection — the client credentials are managed by the Vitay platform.
+  Setting up the JobAdder integration requires **root recruiter** access in Vitay. You will need a JobAdder login that can approve the connection — the client credentials are managed by the Vitay platform.
 </Note>
 
 ## What the integration does
@@ -20,11 +20,19 @@ The JobAdder integration uses OAuth 2.0 to link your Vitay firm to your JobAdder
 
 ## Connect JobAdder
 
-The integration follows a standard OAuth 2.0 authorization-code flow. The Vitay team initiates this on your behalf:
+The integration follows a standard OAuth 2.0 authorization-code flow, and a root recruiter can set it up self-serve:
 
-1. Contact [support@vitay.io](mailto:support@vitay.io) and request the JobAdder integration.
-2. Vitay redirects you to JobAdder to authorize the connection with your JobAdder credentials.
-3. After you approve, Vitay stores the access and refresh tokens and registers the "View candidate" action in your JobAdder account.
+<Steps>
+  <Step title="Open the JobAdder integration">
+    In Vitay, open **Integrations** and select the **JobAdder** card.
+  </Step>
+  <Step title="Start the connection">
+    Click **Start**. Vitay redirects you to JobAdder's authorization screen.
+  </Step>
+  <Step title="Approve in JobAdder">
+    Sign in with your JobAdder credentials and approve the connection. Vitay stores the access and refresh tokens and registers the "View candidate" action in your JobAdder account.
+  </Step>
+</Steps>
 
 Vitay refreshes the JobAdder access token automatically in the background.
 
@@ -39,19 +47,23 @@ Once connected:
 
 ## Disconnect JobAdder
 
-Contact [support@vitay.io](mailto:support@vitay.io) to remove the integration. Disconnecting also removes the Vitay action button from JobAdder.
+Contact [hello@vitay.io](mailto:hello@vitay.io) to remove the integration.
+
+<Note>
+  The **View candidate** action may remain visible in JobAdder after disconnecting; it will no longer work.
+</Note>
 
 ## Troubleshooting
 
 <AccordionGroup>
   <Accordion title="The Vitay action button is not showing in JobAdder">
-    The partner action is registered during the OAuth flow. If the button is missing, the connection may not have completed successfully. Contact [support@vitay.io](mailto:support@vitay.io) to re-run the authorization.
+    The partner action is registered during the OAuth flow. If the button is missing, the connection may not have completed successfully. Ask a root recruiter to re-run the connection from **Integrations**, or contact [hello@vitay.io](mailto:hello@vitay.io).
   </Accordion>
   <Accordion title="A reference report won't upload to JobAdder">
     The candidate must be synced to JobAdder before a document can be attached. Ensure the candidate has been pushed to (or imported from) JobAdder so the sync record exists.
   </Accordion>
   <Accordion title="The token has expired / I see authorization errors">
-    Vitay refreshes the JobAdder token automatically. If you still see errors, the refresh token may have been revoked in JobAdder. Contact [support@vitay.io](mailto:support@vitay.io) to reconnect.
+    Vitay refreshes the JobAdder token automatically. If you still see errors, the refresh token may have been revoked in JobAdder. Ask a root recruiter to reconnect from **Integrations**, or contact [hello@vitay.io](mailto:hello@vitay.io).
   </Accordion>
 </AccordionGroup>
 

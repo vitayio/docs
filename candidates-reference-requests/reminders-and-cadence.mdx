@@ -6,19 +6,20 @@ description: "When and how Vitay reminds references to respond, and how to adjus
 Vitay can automatically follow up with references (and candidates) who haven't responded yet. Understanding how reminders work helps you avoid over-contacting people and troubleshoot when a reference goes quiet.
 
 <Note>
-  Auto-reminder settings are controlled at the account level by a Vitay admin.
-  As a recruiter you can send manual reminders and turn off reminders for
-  individual candidates, but you cannot change the global reminder schedule.
+  Auto-reminder settings are self-service for root recruiters, under
+  **Settings → Notification** (the "Auto reminders" and "Reminders Rate"
+  options). As a recruiter you can send manual reminders and turn off
+  reminders for individual candidates or references, but only a root
+  recruiter can change the firm-wide reminder schedule.
 </Note>
 
 ## How automatic reminders work
 
 When a reference request or individual reference is sent, Vitay schedules a series of follow-up reminders automatically — provided your account has auto-reminders enabled.
 
-- **Cadence:** reminders go out at a configurable interval (the default is every 24 hours). Your admin may have changed this.
-- **Weekend skipping:** your admin can configure reminders to skip Saturday and Sunday, so references only receive nudges on weekdays.
-- **Channels:** depending on your account settings, reminders are sent by email, by SMS, or both.
-- **Limit:** there is a maximum number of reminders per request. Once that limit is reached, no further automatic reminders are sent.
+- **Count and cadence:** Vitay sends up to **3 automatic reminders**, spaced at your firm's configured rate — every 24 hours by default, adjustable between 1 and 4 days.
+- **Weekend skipping:** a root recruiter can configure reminders to skip Saturday and Sunday, so references only receive nudges on weekdays.
+- **Channels:** reminders go out by email, and also by text message when the reference (or candidate) has a phone number on file and text messages are enabled for your firm.
 - **Auto-stop:** if the reference completes the form or the request is cancelled, any pending reminders are deactivated immediately.
 
 A reminder indicator on the candidate or reference record shows you how many reminders have been sent and when the next one is scheduled.
@@ -27,7 +28,7 @@ A reminder indicator on the candidate or reference record shows you how many rem
 
 ## Send a manual reminder
 
-You can nudge a reference or a candidate at any time, outside the automatic schedule.
+You can nudge a reference or a candidate outside the automatic schedule. Manual reminders are capped at **10 reminders in total per reference**, with a **12-hour gap** between reminders.
 
 <Steps>
   <Step title="Open the candidate">
@@ -45,44 +46,44 @@ You can nudge a reference or a candidate at any time, outside the automatic sche
 
 <Note>
   The **Send reminder** button is greyed out or labelled **Reminders disabled**
-  in two situations: reminders are turned off for this candidate, or the
-  reminder rate limit has been reached (you sent one too recently). Wait a short
-  period and try again.
+  in three situations: reminders are turned off for this candidate or this
+  reference, the reference has already received the maximum of 10 reminders,
+  or you sent a reminder within the last 12 hours.
 </Note>
 
-## Disable reminders for a candidate
+## Disable reminders for a candidate or a reference
 
-If a candidate asks you to stop sending reminder emails, you can turn reminders off for their record without affecting other candidates.
+If someone asks you to stop sending reminders, you can turn them off for one candidate or one reference without affecting anyone else. Both toggles save instantly — there is no separate save step.
 
-<Steps>
-  <Step title="Open the candidate">
-    Go to **Candidates** and select the candidate.
-  </Step>
-  <Step title="Edit the candidate record">
-    Click **Edit** and look for the reminders toggle. Turn it off, then save.
-  </Step>
-</Steps>
+- **For a whole candidate:** open the candidate's side panel and go to the **Reminders** tab. Turn the reminders toggle off. This stops reminders for that candidate's requests and references.
+- **For a single reference:** open the reference's side panel and go to its **Reminders** tab. Turn the toggle off to stop reminders for just that reference.
 
-When reminders are disabled for a candidate, the **Send reminder** button on their references and requests will show **Reminders disabled**.
+When reminders are disabled, the **Send reminder** button on the affected references and requests shows **Reminders disabled**.
+
+![SCREENSHOT: the Reminders tab of the candidate side panel with the reminders toggle — placeholder](/images/placeholder.png)
 
 ## Troubleshooting
 
 <AccordionGroup>
   <Accordion title="The Send reminder button is greyed out">
     This usually means one of three things: the reference has already
-    completed the form, reminders are disabled for this candidate, or the
-    system's rate limit prevents sending another reminder so soon. Check the
-    reference status first, then check the candidate's reminders setting.
+    completed the form, reminders are disabled for this candidate or this
+    reference, or a rate limit applies — a reference can receive at most 10
+    reminders in total, no more than one every 12 hours. Check the reference
+    status first, then the reminders toggles on the candidate and reference
+    side panels.
   </Accordion>
   <Accordion title="A reference says they're receiving too many emails">
-    Each account has a cap on total reminders per request. If a reference is
-    still getting emails after many days, check with your Vitay admin to
-    confirm the auto-reminder cadence and limit configured for your account.
+    Vitay sends at most 3 automatic reminders per request, at your firm's
+    configured rate (24 hours by default). You can stop further nudges by
+    turning off the reminders toggle on that reference's side panel. A root
+    recruiter can slow the firm-wide cadence (up to every 4 days) or enable
+    weekend skipping under **Settings → Notification**.
   </Accordion>
   <Accordion title="No reminders are going out at all">
-    Your account's auto-reminders may be disabled. Ask a Vitay admin to check
-    the auto-reminders setting. Individual manual reminders still work even when
-    auto-reminders are off.
+    Your firm's auto-reminders may be disabled. A root recruiter can check the
+    **Auto reminders** setting under **Settings → Notification**. Individual
+    manual reminders still work even when auto-reminders are off.
   </Accordion>
 </AccordionGroup>
 
@@ -94,4 +95,4 @@ When reminders are disabled for a candidate, the **Send reminder** button on the
   <Card title="A reference didn't receive the email" icon="triangle-exclamation" href="/candidates-reference-requests/reference-not-received" />
 </CardGroup>
 
-{/* source: api app/models/reminder.rb (rate_hours, skip_weekend_days, next_reminder_dates, send_reminders); app/models/email_reminder.rb; app/models/text_reminder.rb; app.vitay.io src/app/shared/services/reminders.service.ts; i18n keys MODALS.REMINDERS.*, BUTTONS.REMINDERS.*, SIDEBAR.WARNING.AUTO_REMINDERS */}
+{/* source: api app/models/reminder.rb (rate_hours, skip_weekend_days, next_reminder_dates = 3 auto reminders); config/application.rb (manual cap 10, 12h rate limit); app/models/email_reminder.rb; app/models/text_reminder.rb; app.vitay.io sidebar.candidate.reminders.component + sidebar.reference.reminders.component (is_reminders_enabled toggles); i18n keys MODALS.REMINDERS.*, BUTTONS.REMINDERS.*, SIDEBAR.WARNING.AUTO_REMINDERS */}

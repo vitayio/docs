@@ -22,8 +22,7 @@ you can select the candidates on the list and apply one action to all of them.
   <Step title="Tick the candidates you want">
     Use the checkbox on each row, or the checkbox in the table header to select
     the whole page. A floating action bar appears at the bottom of the screen
-    showing how many candidates are selected, with a **Select all** option for
-    every candidate matching your current filter and a button to clear the
+    showing how many candidates are selected, with a button to clear the
     selection.
 
     ![SCREENSHOT: candidates list with several rows ticked and the floating bulk action bar visible — placeholder](/images/placeholder.png)
@@ -37,14 +36,15 @@ you can select the candidates on the list and apply one action to all of them.
 
 | Action | What it does |
 |---|---|
-| **Update status** | Sets the same candidate status (e.g. Shortlisted, Hired, Rejected) on every selected candidate. |
-| **Assign to recruiter** | Moves the selected candidates to a recruiter you choose. |
+| **Update status** | Sets the same candidate status on every selected candidate. Statuses are: Process initiated, Waitlisted, Interview scheduled, Rejected, Interviewed, Completed, Submitted, Accepted, and Unresponsive. |
+| **Assign to recruiter** | Moves the selected candidates to a recruiter you choose. Not available while you're viewing all sub-accounts at once — switch to a single account first. |
 | **Send reminder** | Emails a reminder to the references that haven't responded yet, for each selected candidate. |
 | **Send new request** | Sends a new reference request — or a feedback / pre-screening request if those are enabled for your firm — to every selected candidate. You choose the question set and the minimum number of references, just like a single request. |
 | **Deactivate** | Deactivates the selected candidates. They disappear from the active list but their data and completed references are kept. |
 
 If an action can't be applied to one of the selected candidates, the others are
-still processed — you'll see which ones failed in the confirmation.
+still processed — after the action runs, a toast tells you how many candidates
+failed and why.
 
 ## Troubleshooting
 
@@ -54,8 +54,13 @@ still processed — you'll see which ones failed in the confirmation.
     any rows, your role may not have access to those candidates.
   </Accordion>
   <Accordion title="I don't see feedback or pre-screening in Send new request">
-    Those request types only appear when they're enabled for your firm. Ask your
-    admin, or see [Post-hire feedback](/feedback/post-hire-feedback).
+    Those request types only appear when they're enabled for your firm. Ask a
+    root recruiter at your firm, or see [Post-hire feedback](/feedback/post-hire-feedback).
+  </Accordion>
+  <Accordion title="Assign to recruiter is missing from the bar">
+    **Assign to recruiter** isn't offered while you're viewing candidates
+    across all sub-accounts. Switch to a single account and select the
+    candidates there.
   </Accordion>
 </AccordionGroup>
 

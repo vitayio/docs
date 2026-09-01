@@ -1,0 +1,79 @@
+---
+title: "eRecruit integration"
+description: "Connect Vitay to eRecruit so candidates are imported automatically and reference requests go out without any manual work."
+---
+
+The eRecruit integration runs a scheduled sync between Vitay and your eRecruit system. Candidates that reach the right stage in eRecruit are imported into Vitay automatically, a reference request is sent to each of them, and completed reference reports are attached back to the candidate's record in eRecruit.
+
+<Note>
+  The eRecruit integration is set up together with the Vitay team, and connecting or disconnecting it requires **root recruiter** access in Vitay. Contact [hello@vitay.io](mailto:hello@vitay.io) to get started.
+</Note>
+
+## What the integration does
+
+- **Imports candidates automatically** — on a regular schedule, Vitay checks the eRecruit requirements you've chosen for new candidates in the right status and imports each one (name, email, and mobile phone) into Vitay.
+- **Sends reference requests automatically** — as soon as a candidate is imported, Vitay creates a reference request and emails the candidate to collect their references. If a question set in Vitay has the same name as the eRecruit requirement, that question set is used; otherwise Vitay uses your firm's first active question set.
+- **Assigns the right recruiter** — Vitay looks up the candidate's owner in eRecruit and, if their email matches a Vitay user at your firm, assigns them the candidate. Otherwise the candidate is assigned to your firm's default root recruiter.
+- **Attaches completed reports to eRecruit** — when a reference is completed, Vitay automatically uploads a PDF of the completed reference to the candidate's attachments in eRecruit.
+- **Manual sync actions** — recruiters can also push a Vitay candidate to eRecruit from the **Synchronize** dropdown on the candidate page, and upload a reference document to eRecruit from the **Synchronize** dropdown on a completed reference.
+
+## Connect eRecruit
+
+The Vitay team sets up the connection with you. During setup you decide together:
+
+- Which eRecruit **requirements** (and candidate statuses) Vitay should watch for new candidates.
+- Optionally, which **departments** to limit the sync to.
+- Where completed reference reports should be filed in eRecruit (the attachment type used for uploads).
+
+You'll also need API access details for your eRecruit system. Contact [hello@vitay.io](mailto:hello@vitay.io) and the team will walk you through it.
+
+![SCREENSHOT: Integrations gallery showing a connected eRecruit integration — placeholder](/images/placeholder.png)
+
+## What syncs, and when
+
+<Steps>
+  <Step title="Vitay checks eRecruit on a schedule">
+    The sync runs automatically in the background — no one needs to trigger it. Each run checks the configured requirements for candidates in the configured status that Vitay hasn't imported yet.
+  </Step>
+  <Step title="New candidates are imported">
+    Each new candidate's first name, last name, email address, and mobile phone number are copied into Vitay. Candidates without a valid email address in eRecruit are skipped, since Vitay can't send them a reference request.
+  </Step>
+  <Step title="A reference request goes out">
+    Vitay sends the imported candidate a reference request straight away, using the question set matching the eRecruit requirement name (or your firm's first active question set).
+  </Step>
+  <Step title="Completed reports flow back">
+    As each reference is completed, a PDF of the completed reference is uploaded to the candidate's attachments in eRecruit automatically.
+  </Step>
+</Steps>
+
+## Disconnect eRecruit
+
+Only a root recruiter can disconnect the integration. Open **Integrations**, select the eRecruit card, and remove the connection from the integration dialog — or contact [hello@vitay.io](mailto:hello@vitay.io) for help.
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="A candidate in eRecruit never appeared in Vitay">
+    The sync only imports candidates that are in a watched requirement, in the configured status, and (if a department filter is set) in one of the configured departments. Candidates without a valid email address in eRecruit are also skipped. Check the candidate's record in eRecruit, or contact [hello@vitay.io](mailto:hello@vitay.io) to review the sync configuration.
+  </Accordion>
+  <Accordion title="An imported candidate was assigned to the wrong recruiter">
+    Vitay assigns the candidate to the Vitay user whose email matches the candidate's owner in eRecruit. If the owner's email doesn't match any Vitay user at your firm, the candidate is assigned to your firm's default root recruiter. Make sure your recruiters' eRecruit and Vitay accounts use the same email address.
+  </Accordion>
+  <Accordion title="Reference requests use the wrong question set">
+    Vitay picks the question set whose title exactly matches the eRecruit requirement name. If none matches, it falls back to your firm's first active question set. To control which questions go out, create a question set in Vitay named after the eRecruit requirement.
+  </Accordion>
+  <Accordion title="A completed reference report isn't showing in eRecruit">
+    Reports are only uploaded for candidates that are linked to an eRecruit record — candidates imported by the sync are linked automatically. If a report is missing, contact [hello@vitay.io](mailto:hello@vitay.io).
+  </Accordion>
+</AccordionGroup>
+
+## Related articles
+
+<CardGroup cols={2}>
+  <Card title="Integrations overview" icon="plug" href="/integrations/overview" />
+  <Card title="Question sets & templates" icon="list-check" href="/account-configuration/question-sets-and-templates" />
+  <Card title="Send a reference request" icon="paper-plane" href="/candidates-reference-requests/send-a-reference-request" />
+  <Card title="Add a candidate" icon="user-plus" href="/candidates-reference-requests/add-a-candidate" />
+</CardGroup>
+
+{/* source: api lib/tasks/services/erecruit.rake; api app/services/external_services/erecruit/ (authorize, candidates, documents, references, refresh_token); api app/controllers/api/services/erecruit_controller.rb; api app/controllers/api/v1/references_controller.rb (auto document upload on completion); app candidates.show.header + sidebar.reference.question-set Synchronize dropdowns */}

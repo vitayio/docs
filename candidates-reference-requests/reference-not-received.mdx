@@ -33,19 +33,21 @@ The most common cause is a simple typo in the email address.
   </Step>
 </Steps>
 
-## Step 2 — Check for an email validity flag
+## Step 2 — Check the delivery indicator
 
-Vitay monitors whether outgoing emails are delivered successfully. If a previous email to this address bounced or was flagged as invalid, Vitay records that so you know future sends may also fail.
+Vitay monitors whether outgoing emails are delivered successfully. If a previous email to this address bounced or failed, Vitay records that so you know future sends may also fail.
 
 <Steps>
-  <Step title="Look for a validity indicator">
-    On the reference record, look for any warning icon, "Invalid email" label,
-    or similar indicator next to the email address. This signals that Vitay's
-    delivery records show a problem with this address.
+  <Step title="Look at the envelope icon">
+    On the reference record, look at the colored **envelope icon** next to the
+    email address. Hover it for the tooltip: **Delivered** means Vitay's
+    records show the email arrived, **Failed** means delivery failed, and
+    **Check email validity** means past deliveries to this address suggest a
+    problem.
 
-    ![SCREENSHOT: a reference record showing an email validity warning — placeholder](/images/placeholder.png)
+    ![SCREENSHOT: a reference record showing the colored envelope delivery icon with its tooltip — placeholder](/images/placeholder.png)
   </Step>
-  <Step title="What to do if the email is flagged invalid">
+  <Step title="What to do if delivery failed or the address is flagged">
     - Confirm the correct address with the reference directly (phone or an alternative channel).
     - Update the email address in the reference record (click **Edit**).
     - Resend the request once the address is corrected.
@@ -93,15 +95,19 @@ If the address is correct and there are no validity flags, the email was likely 
     the problem.
   </Accordion>
   <Accordion title="The Send reminder button is greyed out">
-    This usually means reminders are disabled for this candidate, or you sent
-    a reminder very recently and the rate limit hasn't reset. Wait a short
-    period and try again. See
+    This usually means reminders are disabled for this candidate or this
+    reference, the reference has reached the limit of 10 reminders, or you
+    sent a reminder within the last 12 hours. See
     [Reminders and how they work](/candidates-reference-requests/reminders-and-cadence).
   </Accordion>
   <Accordion title="The reference says they got the email but the link doesn't work">
-    The request link may have expired or already been used. Contact Vitay
-    support with the candidate name and reference name so they can investigate
-    the specific link.
+    Reference links don't expire. A link stops working only when the form has
+    already been submitted, the reference declined to respond, or the
+    reference or request was removed. Check the reference's status on the
+    candidate's References tab — if it doesn't explain what they're seeing,
+    contact Vitay support at hello@vitay.io with the candidate name and
+    reference name. Some corporate firewalls also block or pre-scan links, so
+    asking the reference to try a personal device is worth a shot.
   </Accordion>
 </AccordionGroup>
 

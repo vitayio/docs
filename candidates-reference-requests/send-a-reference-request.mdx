@@ -4,12 +4,14 @@ description: "Build and send a reference request so a candidate can submit their
 ---
 
 A reference request asks your candidate to provide their references. Once you
-send it, the candidate receives an email inviting them to enter each reference's
-contact details, and Vitay emails those references the questions to answer.
+send it, the candidate receives an email (and a text message, if they have a
+phone number on file) inviting them to enter each reference's contact details,
+and Vitay sends those references the questions to answer.
 
 <Note>
   You need a recruiter (or higher) role to send reference requests, and the
-  candidate must already exist in Vitay. See [Add a candidate](/candidates-reference-requests/add-a-candidate).
+  candidate must already exist in Vitay with an email address or phone number.
+  See [Add a candidate](/candidates-reference-requests/add-a-candidate).
 </Note>
 
 ## Send a request
@@ -19,43 +21,58 @@ contact details, and Vitay emails those references the questions to answer.
     Go to **Candidates** and select the candidate you want references for.
   </Step>
   <Step title="Start a reference request">
-    Click **Request references** to open the reference request form.
+    Click **Reference request** to open the reference request form. The button
+    only appears when the candidate has an email address or phone number on
+    file.
 
-    ![SCREENSHOT: the candidate page with the "Request references" button — placeholder](/images/placeholder.png)
+    ![SCREENSHOT: the candidate page with the "Reference request" button — placeholder](/images/placeholder.png)
   </Step>
   <Step title="Choose the question set">
     Select the **question set** the references will answer. This is the list of
-    questions Vitay sends to each reference. If your firm only has one question
-    set, it's selected for you.
+    questions Vitay sends to each reference. Your firm's default question set
+    is pre-selected for you.
   </Step>
   <Step title="Set how many references are required">
-    Choose the **minimum number of references** the candidate must provide
+    Choose the **Number of references** the candidate must provide
     (for example, 2 or 3). The candidate can't finish until they've supplied at
-    least this many. Tick **manager references only** if every reference must be
+    least this many. Tick **Managers only** if every reference must be
     a manager.
   </Step>
-  <Step title="Add the optional details (if shown)">
-    Depending on your firm's settings you may also be able to:
-    - pick the **language** the request is sent in — the question-set dropdown
-      then only offers sets that are fully translated into that language, so a
-      reference can never receive a form with missing questions. If a set is
-      hidden because its translation is incomplete, a hint tells you and links
-      to your question-set settings,
-    - add **notes** the candidate will see,
+  <Step title="Add the optional details">
+    You can always add notes in **Public notes for the candidate** — the
+    candidate will see these. Depending on your firm's settings you may also be
+    able to:
+    - pick the **language** the request is sent in,
     - set a **scheduled date** to send the request later.
   </Step>
-  <Step title="Send">
-    Click **Send** (or **Submit**). The candidate is emailed right away, unless
-    you set a scheduled date.
+  <Step title="Submit">
+    Click **Submit**. The request goes out right away — by email, and also by
+    text message if the candidate has a phone number — unless you set a
+    scheduled date.
 
-    ![The reference request form: choose a question set, number of references, and manager-only option](/images/reference-request-modal.png)
+    ![The reference request form: choose a question set, number of references, and managers-only option](/images/reference-request-modal.png)
   </Step>
 </Steps>
 
+## The fast path: Quick request
+
+If the candidate isn't in Vitay yet, the **Quick request** button in the left
+navbar creates the candidate and sends the reference request in one step —
+enter the candidate's details and the request options in a single form.
+
+<Note>
+  When you pick a language in the Quick request form, question sets that aren't
+  fully translated into that language are hidden from the dropdown, and a
+  plain-text hint tells you how many sets were hidden because their translation
+  is incomplete.
+</Note>
+
 ## What happens next
 
-- The candidate gets an email and a link to enter their references.
-- As each reference is added, Vitay emails that person the question set.
+- The candidate gets an email (and a text message, if they have a phone number)
+  with a link to enter their references.
+- As each reference is added, Vitay sends that person the question set — by
+  email, or by text message when only a phone number was provided.
 - Vitay automatically sends reminders if a reference doesn't respond — see
   [Reminders and how they work](/candidates-reference-requests/reminders-and-cadence).
 - You can resend, cancel, or fix a recipient at any time — see
@@ -70,9 +87,11 @@ contact details, and Vitay emails those references the questions to answer.
   </Accordion>
   <Accordion title="I can't select a question set">
     If the dropdown is empty, no question set is available to your account. Ask
-    an admin to set one up — see [Question sets and templates](/account-configuration/question-sets-and-templates).
-    If you've picked a non-default language, sets that aren't fully translated
-    into that language are hidden — switch language, or complete the
+    a root recruiter at your firm to set one up — see
+    [Question sets and templates](/account-configuration/question-sets-and-templates).
+    A set is disabled in the dropdown when it has no questions. In the **Quick
+    request** form specifically, picking a language also hides sets that aren't
+    fully translated into that language — switch language, or complete the
     translations in the question-set editor.
   </Accordion>
 </AccordionGroup>
@@ -86,4 +105,4 @@ contact details, and Vitay emails those references the questions to answer.
   <Card title="Read a completed reference" icon="clipboard-check" href="/candidates-reference-requests/read-a-completed-reference" />
 </CardGroup>
 
-{/* source: app.vitay.io reference-requests modal (question_set, min_manager_references, is_manager_only, language, notes, scheduled_date); api app/models/reference_request.rb */}
+{/* source: app.vitay.io src/app/shared/components/modals/reference-requests/modals.reference-requests.component.ts (default question set preselect, always-on notes, setting-gated language/scheduled date); modals/quick-request/modals.quick-request.component.ts (translation-filtered question sets + hidden-sets hint); api app/models/reference_request.rb (email + SMS delivery) */}

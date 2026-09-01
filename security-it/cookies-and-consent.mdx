@@ -3,10 +3,10 @@ title: "Cookies and consent"
 description: "What cookies Vitay sets, how the consent banner works, and how you or your users can change cookie preferences at any time."
 ---
 
-Vitay asks every visitor for cookie consent before it loads any non-essential
-cookie or third-party script. This article explains the cookie categories, how
-consent is stored, and how to change it — useful when your IT or privacy team
-asks what Vitay drops on a browser.
+Vitay asks every visitor for cookie consent before it loads its analytics,
+advertising, or support-widget scripts and the cookies they set. This article
+explains the cookie categories, how consent is stored, and how to change it —
+useful when your IT or privacy team asks what Vitay drops on a browser.
 
 <Note>
   No role is required. The consent banner and preferences are available to
@@ -35,12 +35,11 @@ changed or withdrawn at any time.
 <AccordionGroup>
   <Accordion title="Strictly necessary — always on">
     Cookies Vitay cannot function without: your sign-in session and single
-    sign-on session, two-factor authentication state, the reference-provider
-    access token that keeps a part-completed form attached to the right request,
-    your language preference, cached white-label branding, bot protection, the
-    Stripe payment and fraud-prevention cookies, and the cookie that records
-    your consent choice itself. These cannot be switched off, and Vitay sets
-    them whether or not consent is given.
+    sign-on session, two-factor authentication state (the cookie that remembers
+    a trusted device), your language preference, cached white-label branding,
+    bot protection, the Stripe payment and fraud-prevention cookies, and the
+    cookie that records your consent choice itself. These cannot be switched
+    off, and Vitay sets them whether or not consent is given.
   </Accordion>
   <Accordion title="Functional">
     Cookies that support optional conveniences rather than core functionality —
@@ -74,8 +73,9 @@ to inspect the browser to answer a privacy questionnaire.
     that domain.
   </Step>
   <Step title="Remembered for 12 months">
-    Vitay re-asks after 12 months, and also re-asks if the cookie list changes
-    materially — so consent always reflects what is actually being set.
+    Vitay re-asks after 12 months. Vitay also re-asks everyone when it makes a
+    material change to its cookie list, so a stored choice doesn't silently
+    cover new cookies.
   </Step>
   <Step title="Not shown inside ATS embeds">
     When Vitay is embedded inside an ATS (for example a Bullhorn tab), no
@@ -97,8 +97,10 @@ to inspect the browser to answer a privacy questionnaire.
   </Step>
   <Step title="Save">
     Click **Save preferences**. If you have withdrawn consent for a category
-    that was previously granted, the page reloads so the affected scripts and
-    cookies are cleared straight away.
+    that was previously granted, the page reloads so the affected scripts stop
+    loading and no further data is collected. Cookies those services already
+    set are not deleted by Vitay — they expire on their own schedule, though
+    you can clear them from your browser immediately if you prefer.
   </Step>
 </Steps>
 
@@ -123,7 +125,7 @@ to inspect the browser to answer a privacy questionnaire.
     category, with its purpose and lifetime. For the privacy policy, DPA
     template, and sub-processor list, see
     [Data and privacy](/security-it/data-and-privacy) or contact
-    [support@vitay.io](mailto:support@vitay.io).
+    [hello@vitay.io](mailto:hello@vitay.io).
   </Accordion>
 </AccordionGroup>
 

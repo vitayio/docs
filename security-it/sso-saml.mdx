@@ -4,15 +4,17 @@ description: "Let your team log in to Vitay through your identity provider using
 ---
 
 SAML single sign-on (SSO) lets your recruiters log in to Vitay through your
-organisation's identity provider (IdP) — such as Okta, Azure AD, or Google
-Workspace — without needing a separate Vitay password. Access is controlled
-centrally from your IdP, so joiners, movers, and leavers are handled in one
-place.
+organisation's identity provider (IdP) — such as Okta, Microsoft Entra ID
+(Azure AD), or OneLogin — without needing a separate Vitay password. Access is
+controlled centrally from your IdP, so joiners, movers, and leavers are handled
+in one place.
 
 <Note>
   SSO is configured on a per-firm basis by Vitay's team. Reach out to
-  [support@vitay.io](mailto:support@vitay.io) to get started. You will need an
-  admin or IT role in your IdP to complete the setup on your side.
+  [hello@vitay.io](mailto:hello@vitay.io) to get started. You will need an
+  admin or IT role in your IdP to complete the setup on your side. Using
+  Google Workspace? It may be possible on request — contact
+  [hello@vitay.io](mailto:hello@vitay.io).
 </Note>
 
 ## How Vitay's SAML SSO works
@@ -21,9 +23,15 @@ Vitay acts as the SAML **service provider (SP)**. Your IdP authenticates your
 users and sends a signed SAML assertion back to Vitay. Vitay validates that
 assertion and logs the user in — no password is exchanged with Vitay.
 
-The flow is **IdP-initiated**: your users start from a tile or link in your IdP
-dashboard and land directly in their Vitay account. Vitay uses the email address
-in the SAML assertion (`NameID`) to match the user to their Vitay account.
+Users start from the Vitay login page: they click **Sign in with SSO**, enter
+their work email address, and are redirected to your IdP to authenticate
+(SP-initiated flow). After your IdP confirms who they are, they land back in
+their Vitay account. Vitay uses the email address in the SAML assertion
+(`NameID`) to match the user to their Vitay account.
+
+If someone signs in via SSO who doesn't have a Vitay account yet, one is
+created for them automatically (just-in-time provisioning) — no manual account
+setup is needed.
 
 <Note>
   The user's email address in Vitay must match the email your IdP sends in the
@@ -34,9 +42,9 @@ in the SAML assertion (`NameID`) to match the user to their Vitay account.
 
 To set up SSO, share the following with Vitay's team:
 
-- Your IdP's **SAML metadata URL** (or the metadata XML file directly). This
-  contains the SSO endpoint and signing certificate Vitay uses to validate
-  assertions.
+- Your IdP's **SAML metadata URL**. This contains the SSO endpoint and signing
+  certificate Vitay uses to validate assertions. If your IdP only gives you a
+  metadata XML file, [hello@vitay.io](mailto:hello@vitay.io) can help.
 - The **email domains** that should be covered (for example, `acme.com`).
 - Any **login URL or redirect** preferences for your environment.
 
@@ -57,28 +65,21 @@ Vitay's team will give you:
   the signature against your IdP's certificate before granting access.
 - Vitay runs `ruby-saml` 1.18, which includes fixes for CVE-2024-45409 and
   related SAML signature-bypass vulnerabilities.
-- Sessions are scoped to your firm's domain and expire after 24 hours, requiring
-  re-authentication through your IdP.
+- Sessions expire after 24 hours, requiring re-authentication through your IdP.
 
 ## Troubleshooting
 
 <AccordionGroup>
   <Accordion title="A user gets 'Unauthorized access' after being redirected back">
-    The email in the SAML assertion doesn't match any active Vitay account in
-    your firm. Confirm the user exists in Vitay with the exact same email address
-    your IdP is sending. If the user is new, an admin needs to add them to Vitay
-    first (or pair SSO with SCIM provisioning — see
-    [SCIM user provisioning](/security-it/scim-provisioning)).
+    The email in the SAML assertion doesn't match the email the user entered on
+    the Vitay login page, or the assertion failed validation. Confirm your IdP
+    is sending the user's work email as the `NameID`, and that the user is
+    assigned to the Vitay application in your IdP.
   </Accordion>
   <Accordion title="Login worked before but now fails with a signature error">
     Your IdP's signing certificate may have rotated. Provide Vitay's team with
     the updated IdP metadata URL or certificate so they can update the
     configuration.
-  </Accordion>
-  <Accordion title="Users are prompted for a Vitay password instead of being redirected">
-    SSO is IdP-initiated — users must start from the application tile in your
-    IdP, not from the Vitay login page. Check that the correct tile is configured
-    and assigned to the user in your IdP.
   </Accordion>
 </AccordionGroup>
 
@@ -89,4 +90,4 @@ Vitay's team will give you:
   <Card title="Data and privacy" icon="shield-halved" href="/security-it/data-and-privacy" />
 </CardGroup>
 
-{/* source: api app/controllers/auth/saml_controller.rb; api app/controllers/auth/stytch_sso_controller.rb; gem ruby-saml ~> 1.18.0 */}
+{/* source: api app/controllers/auth/stytch_sso_controller.rb; app src/app/.../login.component.ts (discoverSso); api app/controllers/auth/saml_controller.rb (legacy); gem ruby-saml ~> 1.18.0 */}

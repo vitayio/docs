@@ -7,8 +7,7 @@ Vitay lets you export data from most sections of the platform as CSV files. Use 
 your own reports, share data with stakeholders, or archive records outside of Vitay.
 
 <Note>
-  You need a recruiter (or higher) role to download most reports. Some report types (such as
-  account-level exports) are limited to admins.
+  You need a recruiter (or higher) role to download reports.
 </Note>
 
 ## Available report types
@@ -17,11 +16,11 @@ your own reports, share data with stakeholders, or archive records outside of Vi
 |--------|-----------------|
 | **Candidates** | Candidate list with status, score, assigned recruiter, reference totals, and creation date |
 | **References (answers per candidate)** | One row per completed reference, with every question and answer |
-| **Leads** | Reference contacts flagged as leads, including lead type, consent timestamp, and consent text |
+| **Leads** | Reference contacts, one row per unique email, with lead type, consent timestamp, and consent text |
 | **Custom leads** | Contacts captured via your firm's custom lead types (e.g. a second lead category) |
 | **Feedback** | Feedback request records with creation and completion dates |
-| **Feedback answers** | One row per completed feedback form with every question and answer |
-| **Pre-screenings** | Pre-screening requests with creation and completion dates |
+| **Feedback answers** | One row per feedback form with every question and answer (answers are blank for forms not yet completed) |
+| **Pre-screenings** | Pre-screening requests with creation dates |
 | **Candidates per recruiters** | Summary of candidates, references, and leads grouped by recruiter |
 | **Recruiter performance** | Completed and total references by recruiter, with active status |
 | **Dashboard** | Recruiter-level summary across the whole firm (or sub-accounts) |
@@ -30,27 +29,30 @@ your own reports, share data with stakeholders, or archive records outside of Vi
 ## Download a report
 
 <Steps>
-  <Step title="Go to Reports">
-    In the main navigation, click **Reports** (or **Exports**, depending on your plan's label).
+  <Step title="Open the Export modal">
+    Click the **download icon** in the top bar. An **Export** modal opens listing the available
+    export types.
 
-    ![SCREENSHOT: the main navigation with the Reports section highlighted — placeholder](/images/placeholder.png)
+    ![SCREENSHOT: the top bar with the download icon highlighted and the Export modal open — placeholder](/images/placeholder.png)
   </Step>
   <Step title="Choose a report type">
-    Select the report type you want from the list or tab menu. The page shows the available
-    columns and filters for that type.
+    Select the export type you want from the list in the modal.
   </Step>
   <Step title="Apply filters (optional)">
-    Most reports let you filter by **date range** (creation date or completion date). Some reports
-    also let you filter by recruiter or scope (for example, **My candidates** vs. **All
-    candidates**).
+    Most exports let you filter by **date range** — the filter matches on the record's creation
+    date. Some exports also let you filter by scope (for example, your own records vs. the whole
+    firm).
 
-    ![SCREENSHOT: the report filters panel with a date range selector — placeholder](/images/placeholder.png)
+    ![SCREENSHOT: the Export modal with a date range selector — placeholder](/images/placeholder.png)
   </Step>
   <Step title="Download">
-    Click **Download** (or **Export CSV**). Vitay generates the file and your browser downloads it
-    automatically.
+    Click **Download**. Vitay generates the CSV file and your browser downloads it automatically.
   </Step>
 </Steps>
+
+A few exports live on their own pages instead of the Export modal: **leads** are downloaded from
+the Leads page, and the **dashboard** and **recruiter performance** exports from their respective
+pages.
 
 ## Column reference
 
@@ -72,7 +74,8 @@ sharing reference results in spreadsheet form.
 
 <Steps>
   <Step title="Select the report type">
-    Choose **Reference answers per candidate** from the Reports section.
+    Open the **Export** modal from the download icon in the top bar and choose **Reference
+    answers per candidate**.
   </Step>
   <Step title="Filter by question set (optional)">
     If you want answers only from a specific question set, pick it from the question-set filter.
@@ -90,14 +93,13 @@ sharing reference results in spreadsheet form.
     filter, or confirming that the data you expect exists in Vitay.
   </Accordion>
   <Accordion title="A column I expected isn't in the file">
-    Some columns are only included when the matching feature is enabled on your account (for
-    example, the Consent columns only appear on lead exports). Contact your account admin if you
-    think a feature should be on.
+    Some columns only appear on the matching export type (for example, the Consent columns appear
+    only on lead exports), and some depend on features enabled for your account. Contact Vitay if
+    you think a feature should be on.
   </Accordion>
   <Accordion title="The report includes more rows than expected">
     Leads and custom-lead exports de-duplicate by email address (one row per unique email). If
-    the same contact appears on multiple reference requests, only the most complete record is
-    exported.
+    the same contact appears on multiple reference requests, only one row is exported.
   </Accordion>
 </AccordionGroup>
 

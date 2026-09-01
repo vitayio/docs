@@ -3,10 +3,10 @@ title: "Integrations overview"
 description: "Connect Vitay to your ATS so candidates and reference requests stay in sync — no manual data entry."
 ---
 
-Vitay integrates with popular applicant tracking systems (ATS) so your team can trigger reference checks without leaving the ATS and push completed reference reports back automatically.
+Vitay integrates with popular applicant tracking systems (ATS) so your team can run reference checks alongside your ATS and get completed reference reports back onto the candidate's record.
 
 <Note>
-  Setting up an integration requires admin access in Vitay. The exact steps vary by ATS — see the article for your platform below.
+  Setting up an integration requires **root recruiter** access in Vitay. The exact steps vary by ATS — see the article for your platform below.
 </Note>
 
 
@@ -14,33 +14,32 @@ Vitay integrates with popular applicant tracking systems (ATS) so your team can 
 
 ## What integrations do
 
-Once an integration is connected, your recruiters can:
+Depending on the platform, a connected integration can:
 
-- **Import candidates** from your ATS into Vitay with a single click.
-- **Send reference requests** directly from the ATS candidate record.
-- **Push completed reference PDFs** back into the candidate's ATS profile automatically.
+- **Import candidates** from your ATS into Vitay — in one click, or automatically as candidates become ready for reference checks.
+- **Send reference requests** for imported candidates without re-entering their details.
+- **Get completed reference reports back into your ATS** — some integrations push the completed report to the candidate's record automatically, others add it through a manual upload action in Vitay. See the article for your platform for exactly what it supports.
 
-Vitay stores the connection credentials securely and refreshes access tokens in the background, so day-to-day use requires no re-authentication.
+Connection credentials are stored on your Vitay account, so day-to-day use requires no re-authentication.
 
 ## Supported integrations
 
 <CardGroup cols={2}>
   <Card title="Bullhorn" icon="bullseye" href="/integrations/bullhorn">
-    Connect with your Bullhorn credentials to import candidates and push reference reports.
+    Connect with your Bullhorn credentials to import candidates, push reference reports, and run reference requests inside Bullhorn.
+  </Card>
+  <Card title="eRecruit" icon="rotate" href="/integrations/erecruit">
+    Scheduled sync that imports candidates from eRecruit and sends reference requests automatically.
   </Card>
   <Card title="JobAdder" icon="briefcase" href="/integrations/jobadder">
     OAuth-based connection that adds a Vitay action button inside JobAdder.
   </Card>
-  <Card title="TempWorks" icon="clock" href="/integrations/tempworks">
-    API-token connection for staffing firms using TempWorks Enterprise.
-  </Card>
-  <Card title="Sponge" icon="plug" href="/integrations/sponge">
-    Framework for connecting Vitay to additional ATS platforms via a configurable adapter.
-  </Card>
-  <Card title="Google" icon="google" href="/integrations/google">
-    Link your Google account to import contacts into Vitay's network.
+  <Card title="Greenhouse" icon="seedling" href="/integrations/greenhouse">
+    API-key connection that imports flagged candidates from Greenhouse and posts progress notes back to the candidate's activity feed.
   </Card>
 </CardGroup>
+
+Don't see your ATS? Contact [hello@vitay.io](mailto:hello@vitay.io) to ask about support for your platform.
 
 ## Related articles
 
@@ -49,4 +48,4 @@ Vitay stores the connection credentials securely and refreshes access tokens in 
   <Card title="Add a candidate" icon="user-plus" href="/candidates-reference-requests/add-a-candidate" />
 </CardGroup>
 
-{/* source: api app/controllers/api/bullhorn_controller.rb, jobadder_controller.rb, tempworks_controller.rb, sponge_controller.rb, google_controller.rb; api app/models/external_authorisation.rb */}
+{/* source: api app/controllers/api/bullhorn_controller.rb, jobadder_controller.rb, app/controllers/api/services/erecruit_controller.rb, greenhouse_controller.rb; api app/models/external_authorisation.rb */}

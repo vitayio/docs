@@ -3,33 +3,32 @@ title: "Manage users"
 description: "Add, remove, and change roles for the recruiters in your Vitay account, including sub-account access."
 ---
 
-Users are the recruiters and admins who log in to Vitay to manage candidates and references. As an admin (root) user you can invite colleagues, update their roles, and remove access when someone leaves.
+Users are the recruiters who log in to Vitay to manage candidates and references. As a root recruiter you can invite colleagues, update their roles, and remove access when someone leaves.
 
 <Note>
-  You need a **root recruiter** (admin) role to add, remove, or change the roles of other users. If you are a supervisor you can view your team but cannot make structural changes.
+  You need a **root recruiter** role to open the Configuration area, where user management lives. Only root recruiters can add users or change roles.
 </Note>
 
 ## Add a user
 
 <Steps>
   <Step title="Open the Users section">
-    From the left-hand navigation, go to **Settings** then select the **Users** tab (sometimes labelled **Team**).
+    Open the **Configuration** area from the main navigation, then select **Users** (alongside Settings, Plugins, and Integrations).
 
-    ![The Settings → Users page with the team list](/images/users-list.png)
+    ![The Users page with the team list](/images/users-list.png)
   </Step>
-  <Step title="Click Add a user">
-    Click the **+ Add a user** (or **Add user**) button in the top-right corner. A modal dialog opens.
+  <Step title="Click the add button">
+    Click the **plus** icon (its tooltip reads **Add recruiter**). The **Add user** modal opens.
   </Step>
   <Step title="Enter the user's details">
     Fill in the new user's **first name**, **last name**, **email address**, and optionally their **phone number**. The email address becomes their login username and must be unique across Vitay.
-  </Step>
-  <Step title="Set the role">
-    Choose whether this person is a **Recruiter** or a **Root recruiter** (admin). See [Roles explained](#roles-explained) below for the difference. You can also tick **Supervisor** to grant read-only oversight of the whole account without admin privileges.
+
+    Leave the **Send email to user** checkbox ticked if you want Vitay to email the new user their login credentials. If you untick it, no email is sent and you will need to share access details yourself (for example, by triggering a password reset later).
   </Step>
   <Step title="Submit">
-    Click **Submit**. Vitay creates the account and emails the new user their login credentials immediately.
+    Click **Submit**. Vitay creates the account as a regular **recruiter**. Roles are not set at creation — to promote the new user to root or supervisor, see [Edit a user's details or role](#edit-a-users-details-or-role) below.
 
-    ![SCREENSHOT: The Add a user modal with name, email, and role fields filled in — placeholder](/images/placeholder.png)
+    ![SCREENSHOT: The Add user modal with name, email, phone, and the Send email to user checkbox — placeholder](/images/placeholder.png)
   </Step>
 </Steps>
 
@@ -37,25 +36,27 @@ Users are the recruiters and admins who log in to Vitay to manage candidates and
 
 | Role | What they can do |
 |---|---|
-| **Recruiter** | Add candidates, send reference requests, read their own candidates' reports. |
+| **Recruiter** | Add candidates, send reference requests, and read reports for their candidates. By default a recruiter sees their own candidates; a firm-wide display setting can allow everyone's candidates to be visible instead. |
 | **Supervisor recruiter** | Everything a recruiter can do, plus visibility into all team activity and metrics, and the ability to edit question sets. |
-| **Root recruiter (admin)** | Full access: all recruiter capabilities plus account settings, user management, billing, and sub-accounts. |
+| **Root recruiter** | Full access: all recruiter capabilities plus the Configuration area — account settings, user management, billing, and sub-accounts. |
 
 <Note>
-  Each Vitay account has exactly one **default root** account that cannot be deactivated or have its role changed. If you need to hand over admin duties, contact Vitay support.
+  Each Vitay account has exactly one **default root** account that cannot be deactivated or have its role changed. If you need to hand over that designation to someone else, contact Vitay support.
 </Note>
 
 ## Edit a user's details or role
 
 <Steps>
-  <Step title="Find the user">
-    Go to **Settings → Users** and locate the person in the list.
+  <Step title="Open the user's page">
+    Go to **Configuration → Users** and click the person's row in the list to open their page.
   </Step>
   <Step title="Open the edit modal">
-    Click the **edit** icon (pencil) next to their name. The same modal used when adding a user opens, pre-populated with their current details.
+    On the user's page, click the **edit** icon (pencil). The **Edit user** modal opens, pre-populated with their current details.
   </Step>
   <Step title="Update and save">
-    Change the fields you need — name, phone number, or role — then click **Submit**.
+    Change the fields you need — name, phone number — then click **Submit**.
+
+    The Edit user modal is also where roles are changed: as a root recruiter, use the **Root** and **Supervisor** switches to grant or remove those roles. The switches are not shown for the account's default root user or for your own account.
   </Step>
 </Steps>
 
@@ -65,18 +66,18 @@ Deactivating a user removes their login access but preserves all their historica
 
 <Steps>
   <Step title="Find the user">
-    Go to **Settings → Users**.
+    Go to **Configuration → Users**.
   </Step>
   <Step title="Deactivate">
-    Click the **deactivate** (or toggle) control next to the user. Confirm when prompted.
+    Click the **deactivate** (cross) icon on the user's row. Confirm when prompted.
   </Step>
 </Steps>
 
-The user can no longer log in. Their past work remains visible and is still attributed to them in reports and activity logs.
+The user can no longer log in. Their past work remains visible and is still attributed to them in reports and activity logs. If you need to restore access later, use the **reactivate** (check) icon on the same row.
 
 ## Manage sub-accounts
 
-If your firm has **sub-accounts** enabled (visible under **Settings → Sub-accounts**), each sub-account has its own user list. To add a user to a sub-account, switch into that sub-account context and follow the same steps above.
+If your firm has **sub-accounts** enabled, an **Accounts** item appears in the Configuration area's navigation, and each sub-account has its own user list. To add a user to a sub-account, switch into that sub-account context and follow the same steps above.
 
 <Note>
   A user can belong to more than one account within the same firm family. They will see a firm-switcher at login. A user cannot be added to two unrelated firm families.
@@ -86,13 +87,13 @@ If your firm has **sub-accounts** enabled (visible under **Settings → Sub-acco
 
 <AccordionGroup>
   <Accordion title="The new user says they didn't receive their credentials email">
-    Ask them to check their spam or junk folder. If the email still hasn't arrived after a few minutes, open the user's edit modal and click **Resend credentials** (if available), or deactivate and re-add the user to trigger a fresh invite.
+    First confirm the **Send email to user** checkbox was ticked when the user was added — if it wasn't, no email was sent. Ask them to check their spam or junk folder. To send fresh login details, open the user's page and click **Reset password** (or **Unlock and Reset password** if their account is locked); they will receive a password reset email.
   </Accordion>
   <Accordion title="I can't change the role for a specific user">
-    The default root account's role is locked and cannot be changed. If the user is listed as the default account, contact Vitay support to transfer that designation.
+    The Root and Supervisor switches are only available to root recruiters, and are never shown for the account's default root user or for your own account. If the user is listed as the default account, contact Vitay support to transfer that designation.
   </Accordion>
-  <Accordion title="The Users tab is not visible">
-    You need a root recruiter role to see user management. If you believe you should have admin access, ask your account's root recruiter to upgrade your role.
+  <Accordion title="The Users section is not visible">
+    You need a root recruiter role to open the Configuration area, including user management. If you believe you should have access, ask your account's root recruiter to upgrade your role.
   </Accordion>
 </AccordionGroup>
 
@@ -105,4 +106,4 @@ If your firm has **sub-accounts** enabled (visible under **Settings → Sub-acco
   <Card title="Branding and white label" icon="palette" href="/account-configuration/branding-white-label" />
 </CardGroup>
 
-{/* source: app.vitay.io projects/configuration MODALS.USERS, MODALS.USERS.SUPERVISOR, NAVBAR.USERS; api app/models/user.rb, app/models/recruiter.rb, app/models/role.rb, app/models/hiring_firm.rb */}
+{/* source: app.vitay.io projects/configuration MODALS.USERS (Add user / Edit user, IS_SEND_EMAIL_ENABLED), MODALS.USERS.SUPERVISOR, NAVBAR.USERS, NAVBAR.ACCOUNTS, USERS show page (Reset password / Unlock and Reset password); api app/models/user.rb, app/models/recruiter.rb, app/models/role.rb, app/models/hiring_firm.rb */}
