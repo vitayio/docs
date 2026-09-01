@@ -1,0 +1,84 @@
+---
+title: "Greenhouse integration"
+description: "Connect Vitay to Greenhouse so flagged candidates flow into Vitay automatically and reference-check progress shows up on the candidate's Greenhouse activity feed."
+---
+
+The Greenhouse integration links Vitay to your Greenhouse account using a Greenhouse API key. Once connected, Vitay adds a set of **Vitay custom fields** to your Greenhouse candidate records — flag a candidate there and they're imported into Vitay and sent a reference request automatically, with progress notes posted back to their Greenhouse activity feed.
+
+<Note>
+  The Greenhouse integration is set up together with the Vitay team, and connecting or disconnecting it requires **root recruiter** access in Vitay. Contact [hello@vitay.io](mailto:hello@vitay.io) to get started.
+</Note>
+
+## What the integration does
+
+- **Adds Vitay fields to Greenhouse** — when the integration is connected, Vitay creates three custom fields on your Greenhouse candidate records: **Vitay Sync** (yes/no), **Vitay Question Set** (a dropdown of your Vitay question sets), and **Vitay Recruiter Email**.
+- **Imports flagged candidates** — when a candidate with **Vitay Sync** set to *Yes* is updated in Greenhouse, their name, email, phone number, and Greenhouse ID are imported into Vitay (creating a new Vitay candidate, or updating the existing one).
+- **Sends reference requests automatically** — if the candidate's **Vitay Question Set** field is filled in and they don't have a reference request in Vitay yet, Vitay creates one with that question set and emails the candidate straight away.
+- **Assigns the right recruiter** — the candidate is assigned to the Vitay user named in the **Vitay Recruiter Email** field; if that doesn't match a Vitay user, they're assigned to the user who connected the integration.
+- **Posts progress back to Greenhouse** — Vitay adds notes to the candidate's Greenhouse activity feed when the candidate submits their references and as each reference is completed, with a link to the candidate's reference results in Vitay.
+
+## Connect Greenhouse
+
+The Vitay team sets up the connection with you. You'll need:
+
+- A Greenhouse **API key** with Harvest API access.
+- The Greenhouse **user** the integration should act on behalf of.
+
+During setup, Vitay creates the Vitay custom fields on your Greenhouse candidate records and provides the webhook that tells Vitay when candidates change in Greenhouse. Contact [hello@vitay.io](mailto:hello@vitay.io) and the team will walk you through it.
+
+![SCREENSHOT: Integrations gallery showing a connected Greenhouse integration — placeholder](/images/placeholder.png)
+
+## Use the integration
+
+<Steps>
+  <Step title="Open the candidate in Greenhouse">
+    Find the candidate you want to run a reference check on and edit their custom fields.
+  </Step>
+  <Step title="Fill in the Vitay fields">
+    Set **Vitay Sync** to *Yes*, pick the question set to use in **Vitay Question Set**, and optionally enter the owning recruiter's email in **Vitay Recruiter Email**.
+
+    ![SCREENSHOT: a Greenhouse candidate record showing the Vitay Sync, Vitay Question Set, and Vitay Recruiter Email custom fields — placeholder](/images/placeholder.png)
+  </Step>
+  <Step title="Save the candidate">
+    Greenhouse notifies Vitay, the candidate is imported, and the reference request goes out automatically.
+  </Step>
+  <Step title="Follow progress from Greenhouse">
+    As the candidate submits references and each reference is completed, notes appear on the candidate's Greenhouse activity feed with a link to the results in Vitay.
+  </Step>
+</Steps>
+
+<Note>
+  Completed reference reports are not uploaded to Greenhouse as documents — the activity-feed notes link to the full results in Vitay, and you can download the report PDF from there.
+</Note>
+
+## Disconnect Greenhouse
+
+Only a root recruiter can disconnect the integration. Disconnecting also removes the Vitay custom fields from your Greenhouse candidate records. Contact [hello@vitay.io](mailto:hello@vitay.io) if you need help removing the connection.
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="A candidate I flagged never appeared in Vitay">
+    Check that **Vitay Sync** is set to *Yes* on the candidate and that the candidate has an email address in Greenhouse — candidates without one are skipped, since Vitay can't send them a reference request.
+  </Accordion>
+  <Accordion title="No reference request was sent for an imported candidate">
+    A reference request is only created when the **Vitay Question Set** field is filled in and the candidate doesn't already have a reference request in Vitay. Check both, then re-save the candidate in Greenhouse.
+  </Accordion>
+  <Accordion title="A new question set isn't listed in the Vitay Question Set field">
+    The dropdown options are created in Greenhouse when the integration is connected. If you've added question sets in Vitay since then, the integration needs to be re-connected to refresh the options — contact [hello@vitay.io](mailto:hello@vitay.io).
+  </Accordion>
+  <Accordion title="The candidate was assigned to the wrong recruiter in Vitay">
+    Vitay uses the **Vitay Recruiter Email** field to pick the recruiter. If it's empty or doesn't match a Vitay user's email, the candidate is assigned to the user who connected the integration. Make sure the field contains the recruiter's Vitay login email.
+  </Accordion>
+</AccordionGroup>
+
+## Related articles
+
+<CardGroup cols={2}>
+  <Card title="Integrations overview" icon="plug" href="/integrations/overview" />
+  <Card title="Question sets & templates" icon="list-check" href="/account-configuration/question-sets-and-templates" />
+  <Card title="Send a reference request" icon="paper-plane" href="/candidates-reference-requests/send-a-reference-request" />
+  <Card title="Add a candidate" icon="user-plus" href="/candidates-reference-requests/add-a-candidate" />
+</CardGroup>
+
+{/* source: api app/controllers/api/services/greenhouse_controller.rb; api app/controllers/api/services/greenhouse/candidates_controller.rb (webhook receiver); api app/services/external_services/greenhouse/ (authorize, set_custom_fields, delete_custom_fields, update_candidate); api app/models/external_authorisations/greenhouse.rb (CF_VITAY_* field names) */}

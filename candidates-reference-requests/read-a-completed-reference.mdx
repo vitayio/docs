@@ -17,9 +17,9 @@ When a reference completes the question form, Vitay records their answers and ca
     review.
   </Step>
   <Step title="Go to the References tab">
-    Click the **References** tab. Completed references show a filled-in status
-    (the exact label varies by account, but typically shows a completion date
-    or a "Completed" badge).
+    Click the **References** tab. Each reference shows one of a fixed set of
+    statuses: **Pending**, **Completed**, or **Unresponsive** (plus
+    **Declined**, when a reference chose not to respond).
 
     ![SCREENSHOT: the References tab showing a completed reference with status badge — placeholder](/images/placeholder.png)
   </Step>
@@ -28,7 +28,7 @@ When a reference completes the question form, Vitay records their answers and ca
 
     - **Reference details** — the reference's name, title, company, relationship to the candidate, and the dates they worked together.
     - **Answers** — each question from the question set, with the reference's response. Question types include text responses, ratings (e.g., 1–5 or 1–10 scale), multiple-choice, dropdown, checkbox, and date fields.
-    - **Score** — an overall numeric score calculated from the rating questions, displayed as a circle/dial. This gives a quick at-a-glance quality indicator.
+    - **Score** — an overall numeric score calculated from the rating and matrix questions, displayed as a circle/dial. This gives a quick at-a-glance quality indicator.
 
     ![SCREENSHOT: the completed reference view showing question answers and the score dial — placeholder](/images/placeholder.png)
   </Step>
@@ -38,16 +38,19 @@ When a reference completes the question form, Vitay records their answers and ca
 
 Vitay rolls up scores across all completed references for a candidate into a single **candidate score**, visible on the candidate's profile page. This gives you an at-a-glance view of how the candidate's references rated them overall.
 
-The score is calculated automatically based on the numeric (rating) answers across all completed references. It updates in real time as more references are received.
+The score is calculated automatically from the scored answers (rating and matrix questions) across all completed references. It updates in real time as more references are received.
 
 ![SCREENSHOT: the candidate profile page showing the overall candidate score — placeholder](/images/placeholder.png)
 
-## Download or share a reference
+## Download a reference report
 
-To share a completed reference outside of Vitay (for example, to send to a hiring manager), you can:
+To share completed references outside of Vitay (for example, to send to a
+hiring manager), use the **Download report** button on the candidate's
+**References** tab. You can download the full report covering all completed
+references, or a report for a single question set. Reports download as PDF;
+DOCX and CSV formats are also offered where they're enabled for your firm.
 
-- **Print or export as PDF** — use your browser's print function from the reference view. Vitay renders the reference in a clean, printable format.
-- **Copy a shareable link** — depending on your account settings, there may be a share or export option on the reference. If you don't see one, contact your Vitay admin.
+![SCREENSHOT: the References tab with the Download report button and its format options — placeholder](/images/placeholder.png)
 
 ## Troubleshooting
 
@@ -58,16 +61,17 @@ To share a completed reference outside of Vitay (for example, to send to a hirin
     the page. If the problem persists, contact Vitay support.
   </Accordion>
   <Accordion title="The score seems lower than expected">
-    The score is derived from rating-type questions only. If the question set
+    The score is derived from rating and matrix questions. If the question set
     uses mostly text or multiple-choice questions, the calculated score may
-    reflect a smaller number of data points. Check with your admin if you want
-    the scoring to weight questions differently.
+    reflect a smaller number of data points. A root recruiter can adjust the
+    question set if you want scoring based on more questions.
   </Accordion>
   <Accordion title="I need to correct an answer">
-    Recruiters with the right permissions can edit individual answers after
-    submission (for example, to fix a transcription error on a phone reference).
-    Look for the **Edit** (pencil) icon next to the answer. Not all accounts
-    have this enabled — ask your Vitay admin if you need it.
+    Recruiters can edit individual answers after submission (for example, to
+    fix a transcription error on a phone reference). Click the **Edit**
+    (pencil) icon next to the answer. Text answers, rating values, and the
+    comments on choice questions are editable; the selected option on
+    multiple-choice and dropdown questions can't be changed.
   </Accordion>
 </AccordionGroup>
 
@@ -80,4 +84,4 @@ To share a completed reference outside of Vitay (for example, to send to a hirin
   <Card title="A reference didn't receive the email" icon="triangle-exclamation" href="/candidates-reference-requests/reference-not-received" />
 </CardGroup>
 
-{/* source: api app/models/answer_set.rb; app/models/answer.rb (types: Text, Rating, Radio, Dropdown, Checkbox, Slider, Date, DateRange, Matrix, Ranking); app/models/candidate_score.rb (materialized view, score column); app.vitay.io src/app/shared/components/answers/answers.component.html; src/app/shared/components/score/score.component.html */}
+{/* source: api app/models/answer_set.rb; app/models/answer.rb (types: Text, Rating, Radio, Dropdown, Checkbox, Slider, Date, DateRange, Matrix, Ranking); app/models/reference.rb (score from Rating + Matrix weights); app/models/candidate_score.rb (materialized view, score column); app/controllers answers_controller.rb (answer edits, no setting gate); app.vitay.io candidates.show.references.component.ts (Download report → GET /documents, PDF/DOCX/CSV); src/app/shared/components/answers/answers.component.html; src/app/shared/components/score/score.component.html */}

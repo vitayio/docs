@@ -3,11 +3,11 @@ title: "Add a candidate"
 description: "Create a candidate record in Vitay."
 ---
 
-Before you can send a reference request, the candidate needs to exist in Vitay. Adding a candidate takes under a minute and only requires a name — you can fill in the rest later.
+Before you can send a reference request, the candidate needs to exist in Vitay. Adding a candidate takes under a minute — a first name, last name, and Internal ID are all that's required to start, and you can fill in the rest later.
 
 <Note>
   You need a recruiter (or higher) role to add candidates. If you don't see the
-  option, ask your Vitay admin to check your permissions.
+  option, ask a root recruiter at your firm to check your permissions.
 </Note>
 
 ## Add a candidate
@@ -18,24 +18,25 @@ Before you can send a reference request, the candidate needs to exist in Vitay. 
     in your account.
   </Step>
   <Step title="Open the add form">
-    Click the **Add candidate** button (usually in the top-right corner of the
-    Candidates page).
+    Click the **Add candidate** button in the left navbar. (On the Candidates
+    page itself, the plus icon in the top-right corner of the page header opens
+    the same form.)
 
-    ![SCREENSHOT: the Candidates page header with the "Add candidate" button highlighted — placeholder](/images/placeholder.png)
+    ![SCREENSHOT: the left navbar with the "Add candidate" button highlighted, plus the icon-only plus button in the Candidates page header — placeholder](/images/placeholder.png)
   </Step>
   <Step title="Fill in the candidate's details">
     Complete the form fields:
 
     - **First name** and **Last name** — required.
     - **Preferred name** — optional; used in outgoing emails if provided.
-    - **Email** — required by most firm configurations. Must be unique within your account.
-    - **Mobile number** — optional; used for SMS reminders if your plan includes them.
-    - **Internal ID** — your firm's own identifier (e.g., from your ATS). Click the refresh icon to auto-generate one if needed.
-    - **Assigned user** — the recruiter responsible for this candidate. Defaults to you; admins and root users can assign someone else.
+    - **Email** — whether an email address is required (and must be unique within your account) is a firm setting, and it's on by default.
+    - **Mobile number** — optional; when a candidate has a phone number, Vitay also sends requests and reminders by text message.
+    - **Internal ID** — required. Your firm's own identifier (e.g., from your ATS) — type one in, or click the refresh icon to generate one.
+    - **Assigned user** — the recruiter responsible for this candidate. Defaults to you; whether you can assign someone else depends on your role and firm settings (see Troubleshooting below).
     - **Notes** — private notes visible only to recruiters, not to the candidate.
     - **Placement date** — optional; useful for tracking when the hire was made.
 
-    Additional fields such as **Secondary ID**, **Job title**, and **Position applied for** appear only when your firm has those settings enabled.
+    Additional fields such as **Secondary ID**, **Job title**, **Position applied for**, and **Additional report recipients** appear only when your firm has those settings enabled.
 
     ![The Add candidate form](/images/add-candidate-modal.png)
   </Step>
@@ -55,20 +56,22 @@ Before you can send a reference request, the candidate needs to exist in Vitay. 
 
 <AccordionGroup>
   <Accordion title="I get an error saying the email already exists">
-    Each email address can only be linked to one active candidate per account.
-    Search for the email in the Candidates list — the record may already exist
-    (possibly under a different name or marked inactive). If you need to
-    reactivate an old record, contact your Vitay admin.
+    When your firm requires candidate emails, each address can only be linked to
+    one active candidate per account. Search for the email in the Candidates
+    list — the record may already exist (possibly under a different name or
+    deactivated). Deactivated candidates live in the **Recycle Bin** in the left
+    sidebar, where you can reactivate them yourself.
   </Accordion>
   <Accordion title="Some fields are missing from the form">
     Fields like Secondary ID, Job title, and Position applied for are controlled
-    by your firm's settings. If you need them enabled, ask a Vitay admin to
-    turn them on under account settings.
+    by your firm's settings. If you need them enabled, ask a root recruiter at
+    your firm to turn them on under account settings.
   </Accordion>
   <Accordion title="I can't assign the candidate to another recruiter">
-    The **Assigned user** field is only editable by admins, root users, or when
-    your firm has enabled candidate ownership transfers. Ask your admin if you
-    need to reassign a candidate.
+    The **Assigned user** field is editable by root recruiters, when your firm
+    has enabled candidate ownership transfers, or when you manage the
+    sub-account the candidate belongs to. Ask a root recruiter if you need a
+    candidate reassigned.
   </Accordion>
 </AccordionGroup>
 

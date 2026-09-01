@@ -13,7 +13,7 @@ your region:
 You need the email address and password that were sent to you when your account was created. If
 you're not sure which environment your firm is on, see
 [Data residency](/security-it/data-and-privacy) or contact
-[support@vitay.io](mailto:support@vitay.io).
+[hello@vitay.io](mailto:hello@vitay.io).
 
 ## Sign in
 
@@ -24,11 +24,13 @@ you're not sure which environment your firm is on, see
     ![The Vitay login page with email and password fields](/images/login.png)
   </Step>
   <Step title="Enter your email and password">
-    Type your email address and password, then click **Log in**.
+    Type your email address and password, then click **Sign in**.
   </Step>
   <Step title="Complete MFA if prompted">
-    If multi-factor authentication is enabled on your account, you will be redirected to a
-    verification screen. Enter the code from your authenticator app or SMS, then click **Verify**.
+    If multi-factor authentication is enabled on your account, you will be taken to the
+    **2FA verification** screen. For SMS MFA, click **Get code**, enter the code sent to your
+    phone, then click **Submit**. If you use an authenticator app, enter the current 6-digit code
+    from the app and click **Submit**.
     See [Multi-factor authentication & login options](/getting-started/mfa-and-login-options) for setup details.
   </Step>
 </Steps>
@@ -57,9 +59,12 @@ you're not sure which environment your firm is on, see
 
 ## SSO users
 
-If your organization uses single sign-on (SAML/SSO), you may be redirected automatically when you
-enter your email on the login page. You will complete authentication through your identity provider
-rather than entering a Vitay password. For setup and troubleshooting, see
+If your organization uses single sign-on (SAML/SSO), click **Sign in with SSO** on the login page,
+enter your work email address, and continue. You will complete authentication through your identity
+provider rather than entering a Vitay password.
+
+If SSO is required for your organization and you try to sign in with an email and password instead,
+Vitay shows an error asking you to use SSO. For setup and troubleshooting, see
 [SSO / SAML](/security-it/sso-saml).
 
 ## Troubleshooting
@@ -70,16 +75,20 @@ rather than entering a Vitay password. For setup and troubleshooting, see
     within a few minutes, check your spam folder. The email comes from Vitay's notification address.
   </Accordion>
   <Accordion title="My account is locked">
-    Vitay locks accounts after 10 consecutive failed login attempts. Contact your account admin to
-    unlock your account, or reach out to Vitay support.
+    Vitay locks accounts after 10 consecutive failed login attempts. You can unlock your account
+    yourself: use the **Forgot password** link and complete the password reset — finishing the
+    reset unlocks the account. Alternatively, your root recruiter can use the
+    **Unlock and Reset password** button on your user profile, or you can contact Vitay support
+    at [hello@vitay.io](mailto:hello@vitay.io).
   </Accordion>
   <Accordion title="I'm being asked to verify my identity but I don't have the app">
-    If you've lost access to your MFA device, contact your account admin. They can disable MFA on
-    your profile so you can log in and re-enroll.
+    If you've lost access to your MFA device, contact Vitay support at
+    [hello@vitay.io](mailto:hello@vitay.io) so they can reset MFA on your account and you can
+    log in again. Root recruiters cannot change another user's MFA settings.
   </Accordion>
   <Accordion title="I'm asked to change my password when I log in">
     Your firm can require passwords to be updated periodically (the interval is
-    set by your admin). When your password expires, Vitay takes you to the
+    a firm setting). When your password expires, Vitay takes you to the
     change-password screen before you can continue, and you can't reuse a
     password you've used recently. If you sign in through your organization's
     SSO, this doesn't apply to you.
@@ -99,4 +108,4 @@ rather than entering a Vitay password. For setup and troubleshooting, see
   <Card title="SCIM provisioning" icon="server" href="/security-it/scim-provisioning" />
 </CardGroup>
 
-{/* source: app.vitay.io AuthenticationService (login, discoverSso/initiateSso for SSO); api app/models/user.rb (MAX_LOGIN_ATTEMPTS=10, PASSWORD_REQUIREMENTS), app/models/password_reset_attempt.rb (RATE_LIMIT_WINDOW=3.hours, MAX_ATTEMPTS=2) */}
+{/* source: app.vitay.io login.component.html (Sign in / Sign in with SSO buttons), mfa.component (2FA verification: Get code / Submit); api app/models/user.rb (MAX_LOGIN_ATTEMPTS=10, PASSWORD_REQUIREMENTS), app/models/password_reset_attempt.rb (RATE_LIMIT_WINDOW=3.hours, MAX_ATTEMPTS=2), app/controllers/.../oauth_controller.rb (SSOAuthenticationRequiredError; password reset clears is_locked) */}

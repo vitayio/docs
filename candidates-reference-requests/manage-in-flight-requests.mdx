@@ -3,31 +3,30 @@ title: "Manage in-flight requests"
 description: "Resend, cancel, or fix the recipient on an open reference request."
 ---
 
-Once a reference request is sent, you're not locked in. You can resend the candidate's invitation email, send a manual reminder to a specific reference, update a reference's email address, or cancel the entire request if plans change.
+Once a reference request is sent, you're not locked in. You can remind the candidate, send a manual reminder to a specific reference, update a reference's email address, or cancel the entire request if plans change.
 
 <Note>
   You need a recruiter (or higher) role to manage reference requests. You can
-  only manage requests for candidates assigned to you, unless you have admin
-  or root access.
+  only manage requests for candidates you can see — root recruiters can manage
+  requests firm-wide.
 </Note>
 
-## Resend the request to the candidate
+## Remind the candidate about an open request
 
-If the candidate says they didn't receive the invitation email, or they accidentally deleted it, you can resend it.
+If the candidate says they didn't receive the invitation, or they accidentally deleted it, you can nudge them again. Each open request appears as a banner at the top of the candidate's page.
 
 <Steps>
   <Step title="Open the candidate">
-    Go to **Candidates** and select the candidate.
+    Go to **Candidates** and select the candidate. Open requests show as a
+    banner at the top of the candidate page.
   </Step>
-  <Step title="Go to the Reference requests tab">
-    On the candidate page, click **Reference requests** to see all requests
-    sent to this candidate.
-  </Step>
-  <Step title="Resend the invitation">
-    Find the open request and click **Send reminder** (or the resend option).
-    Vitay sends the candidate the invitation email again immediately.
+  <Step title="Send the reminder">
+    On the open request's banner, click **Send reminder**. Vitay immediately
+    sends the candidate the reminder email (and a text message, if they have a
+    phone number). The banner also has a copy-link action if you'd rather send
+    the request link to the candidate yourself.
 
-    ![SCREENSHOT: the reference request row with the resend/reminder action — placeholder](/images/placeholder.png)
+    ![SCREENSHOT: the open-request banner at the top of the candidate page with the Send reminder and copy-link actions — placeholder](/images/placeholder.png)
   </Step>
 </Steps>
 
@@ -44,7 +43,8 @@ If the candidate has already submitted their references' details but a reference
   </Step>
   <Step title="Send the reminder">
     Find the reference who hasn't responded and click **Send reminder**. Vitay
-    sends them the reference request email again.
+    sends them the reminder email (and a text message, if they have a phone
+    number) with the link to the question form.
   </Step>
 </Steps>
 
@@ -78,14 +78,16 @@ If a reference notifies you that their email address is wrong, you can correct i
 If a candidate is withdrawn from the process or a mistake was made, you can cancel the open request. Cancelling deactivates all pending auto-reminders.
 
 <Steps>
-  <Step title="Open the candidate's Reference requests tab">
-    Go to **Candidates**, select the candidate, and click **Reference requests**.
+  <Step title="Open the candidate">
+    Go to **Candidates** and select the candidate. The open request appears as
+    a banner at the top of the page.
   </Step>
-  <Step title="Delete or cancel the request">
-    Find the open request and click the delete or cancel action (usually a
-    trash icon or a **Cancel** option in the row menu). Confirm when prompted.
+  <Step title="Cancel the request">
+    Click the **X** on the request's banner, then click **Delete** in the
+    confirmation dialog. A "Request disabled" toast confirms the request is
+    cancelled.
 
-    ![SCREENSHOT: the reference request row with the cancel/delete action visible — placeholder](/images/placeholder.png)
+    ![SCREENSHOT: the open-request banner with the X (cancel) action and the Delete confirmation dialog — placeholder](/images/placeholder.png)
   </Step>
 </Steps>
 
@@ -100,15 +102,16 @@ If a candidate is withdrawn from the process or a mistake was made, you can canc
 <AccordionGroup>
   <Accordion title="The Send reminder button is greyed out">
     This can happen if: the reference has already completed the form, reminders
-    are disabled for this candidate, or you sent a reminder very recently and
-    the rate limit hasn't reset. See
+    are disabled for this candidate or for this specific reference, the
+    reference has reached the limit of 10 reminders, or you sent a reminder
+    within the last 12 hours. See
     [Reminders and how they work](/candidates-reference-requests/reminders-and-cadence)
     for more detail.
   </Accordion>
-  <Accordion title="I can't edit the reference's email">
-    If the reference has already submitted their answers, the email field may
-    be locked. You can still view the completed reference — a new request would
-    be needed if you want to collect a fresh response from a different address.
+  <Accordion title="Can I still edit a reference after they submit?">
+    Yes — contact details like the email address stay editable after the
+    reference submits their answers. Only the question set is locked once the
+    form has been filled in.
   </Accordion>
   <Accordion title="The candidate says they still aren't getting the email">
     See [A reference didn't receive the email](/candidates-reference-requests/reference-not-received)

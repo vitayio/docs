@@ -1,6 +1,6 @@
 ---
 title: "Supported browsers"
-description: "Which browsers and versions Vitay supports for recruiters and admins."
+description: "Which browsers work with Vitay, and the browser settings recruiters and admins need."
 ---
 
 Vitay is a modern web application that runs in any current evergreen browser.
@@ -8,22 +8,15 @@ You don't need to install anything — just open your browser and go.
 
 ## Supported browsers
 
-Vitay supports the **latest two major versions** of the following browsers:
+Vitay works in current versions of modern browsers, on desktop and mobile:
 
-| Browser | Platform |
-|---|---|
-| Google Chrome | Windows, macOS, Linux |
-| Microsoft Edge | Windows, macOS |
-| Mozilla Firefox | Windows, macOS, Linux |
-| Apple Safari | macOS, iOS |
-| Chrome for Android | Android |
-| Safari for iOS | iOS |
+- **Google Chrome** (including Chrome for Android)
+- **Microsoft Edge**
+- **Mozilla Firefox**
+- **Apple Safari** (macOS and iOS)
 
-<Note>
-  "Latest two major versions" means if Chrome 126 is current, Chrome 125 is
-  also supported. Older versions may work but are not tested or officially
-  supported.
-</Note>
+Keep your browser up to date — Vitay is built for current browser versions, and
+staying updated also keeps you on the latest security patches.
 
 ## Browsers that are not supported
 
@@ -53,7 +46,8 @@ Vitay requires the following browser features to be **enabled**:
 - If your managed device policy blocks browser extensions, Vitay has no
   extension requirements.
 - If you use a content security policy or proxy that inspects TLS, ensure
-  `*.vitay.io` and `*.vitay.ca` (Canada region) are on the allow-list.
+  `*.vitay.io`, `*.vitay.ca` (Canada region), and `*.vitay.co.uk` (UK region)
+  are on the allow-list.
 
 ## Troubleshooting
 
@@ -63,7 +57,7 @@ Vitay requires the following browser features to be **enabled**:
     Vitay in a private/incognito window (which disables most extensions) to rule
     out a browser extension conflict. If the issue only occurs on managed
     devices, check whether your proxy or security tools are blocking requests to
-    `*.vitay.io`.
+    `*.vitay.io`, `*.vitay.ca`, or `*.vitay.co.uk`.
   </Accordion>
   <Accordion title="SSO login redirects back to the login page without signing in">
     This is usually a cookie issue. Ensure cookies from `vitay.io` (and your
@@ -71,10 +65,13 @@ Vitay requires the following browser features to be **enabled**:
     for more SSO troubleshooting steps.
   </Accordion>
   <Accordion title="A user reports the app looks broken on their device">
-    Check the browser version — if it's more than two major versions behind,
-    update the browser. If the user is on a supported browser and still sees
-    issues, contact [support@vitay.io](mailto:support@vitay.io) with the browser
-    name, version, and a description of what's broken.
+    Update the browser to its current version, then clear the browser cache and
+    reload — a stale cached version of the app can cause layout or loading
+    issues. Also check for extensions (especially ad-blockers) that may
+    interfere; trying a private/incognito window is a quick way to rule them
+    out. If the issue persists on an up-to-date browser, contact
+    [hello@vitay.io](mailto:hello@vitay.io) with the browser name, version, and
+    a description of what's broken.
   </Accordion>
 </AccordionGroup>
 

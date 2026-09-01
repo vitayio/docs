@@ -6,22 +6,24 @@ description: "Create and manage the question sets that references answer, and us
 A **question set** is the list of questions Vitay sends to each reference when a reference request is sent. You can have multiple question sets — for example, one for executive roles and one for entry-level roles — and select the right one when you create a reference request.
 
 <Note>
-  You need a **root recruiter** or **supervisor recruiter** role to create, edit, or archive question sets. Regular recruiters can select from existing question sets but cannot modify them.
+  You need a **root recruiter** or **supervisor recruiter** role to create, edit, or delete question sets. Regular recruiters can select from existing question sets but cannot modify them.
 </Note>
 
 ## Create a question set
 
 <Steps>
   <Step title="Open Question sets">
-    Go to **Settings → Question sets** (sometimes listed as **Question Sets** in the navigation).
+    Click **Question sets** in the left-hand sidebar of the main app.
 
     ![The Question sets list page](/images/question-sets.png)
   </Step>
-  <Step title="Click Add (or Create)">
-    Click the **+ Add** button. A new question set form opens.
+  <Step title="Click the add button">
+    Click the **plus** icon in the toolbar (its tooltip reads **Add question set**). The **Add question set** modal opens.
   </Step>
-  <Step title="Give it a title">
-    Enter a clear, descriptive **title** so recruiters can identify it in the dropdown when sending a reference request (for example, "Standard Reference Check" or "Healthcare — Clinical Roles").
+  <Step title="Give it a label">
+    Enter a clear, descriptive name in the **Label** field so recruiters can identify the set in the dropdown when sending a reference request (for example, "Standard Reference Check" or "Healthcare — Clinical Roles").
+
+    To start from one of Vitay's pre-built sets instead, see [Use question set templates](#use-question-set-templates) below.
   </Step>
   <Step title="Choose a language">
     Select the **language** references will answer in. If your plan includes
@@ -32,7 +34,7 @@ A **question set** is the list of questions Vitay sends to each reference when a
     fully translated into that language are offered.
   </Step>
   <Step title="Add questions">
-    Click **Add question** and choose a question type:
+    On the set's page, click the **plus** icon (tooltip **Add question**) and choose a question type in the **Add question** modal:
 
     | Type | When to use |
     |---|---|
@@ -47,15 +49,12 @@ A **question set** is the list of questions Vitay sends to each reference when a
     | **Date** | Pick a single date |
     | **Date range** | Pick a start and end date |
 
-    For each question, enter the question text and — for choice-based types — add the answer options. You can also mark a question as **required** and, for rating/text questions, allow an additional comment field.
+    For each question, enter the question text and — for choice-based types — add the answer options. Every question type except **Text** can also be marked **Commentable**, which adds an extra comment field for the reference (with an optional **Comment required** setting).
   </Step>
   <Step title="Organise questions into groups (optional)">
-    If you have created **question groups** (labels that organise questions into themed sections), assign each question to a group. Groups appear as section headings in the reference form.
-  </Step>
-  <Step title="Save">
-    Click **Save**. The question set is now available to select when sending a reference request.
+    If you have created **question groups** (labels that organise related questions), assign each question to a group in the **Question group** field. The group's label appears as a small heading above each of its questions in the reference form.
 
-    ![SCREENSHOT: A completed question set with several questions and groups — placeholder](/images/placeholder.png)
+    ![SCREENSHOT: A completed question set with several questions and group labels — placeholder](/images/placeholder.png)
   </Step>
 </Steps>
 
@@ -63,71 +62,58 @@ A **question set** is the list of questions Vitay sends to each reference when a
 
 <Steps>
   <Step title="Find the question set">
-    Go to **Settings → Question sets** and click the set you want to change.
+    Open **Question sets** in the left-hand sidebar and click the set you want to change.
   </Step>
   <Step title="Make your edits">
-    Add, remove, or reorder questions. You can drag questions to change their order. Changes only affect future reference requests — submitted answers are not altered.
-  </Step>
-  <Step title="Save">
-    Click **Save**.
+    Add questions with the **plus** icon, edit a question by clicking it, and drag questions to change their order. Use the **pencil** icon to rename the set. Each change is saved when you submit its modal — there is no page-level Save. Changes only affect future reference requests — submitted answers are not altered.
   </Step>
 </Steps>
 
 ## Set a default question set
 
-If you have only one active question set, Vitay selects it automatically. If you have multiple, you can mark one as the **default** so it is pre-selected when a recruiter creates a reference request.
+You can mark a question set as a **default** so it is pre-selected when a recruiter creates a reference request.
 
-Open the question set and look for a **Set as default** option (or a "Default" toggle). Only one question set can be the default at a time.
+On the **Question sets** list, click the **star** icon on the set's row (its tooltip reads **Highlight**). Clicking it again removes the default mark.
 
-## Archive a question set
+## Duplicate or delete a question set
 
-Archiving hides a question set from the selection dropdown without deleting it or its historical data.
+To reuse a set as a starting point, click the **duplicate** (copy) icon — on the set's row in the list, or in the toolbar on the set's page — and confirm. Vitay creates a copy you can edit freely.
 
-<Steps>
-  <Step title="Find the question set">
-    Go to **Settings → Question sets**.
-  </Step>
-  <Step title="Deactivate it">
-    Use the **archive** or **deactivate** control next to the question set. It will no longer appear when recruiters send new reference requests, but all past references linked to it remain intact.
-  </Step>
-</Steps>
+To remove a set, open it and click the red **trash** icon, then confirm in the **Delete question set?** dialog. References already collected with that set are preserved, but the set no longer appears when recruiters send new requests, and it cannot be restored from the app — if you deleted a set by mistake, contact **hello@vitay.io**.
 
 ## Use question set templates
 
-If your plan includes **question set templates** (check **Settings → Question set templates**), Vitay provides pre-built question sets you can use as a starting point.
+Vitay provides pre-built question set templates you can use as a starting point. They are used from inside the **Add question set** modal:
 
 <Steps>
-  <Step title="Open Question set templates">
-    Go to **Settings → Question set templates**.
+  <Step title="Open the Add question set modal">
+    On the **Question sets** list, click the **plus** icon (tooltip **Add question set**).
   </Step>
-  <Step title="Browse available templates">
-    Each template has a title and a language. Templates are read-only — you copy them rather than edit them directly.
+  <Step title="Tick the template checkbox">
+    Tick **Use a question set template**. A **Template** dropdown appears listing the available templates.
   </Step>
-  <Step title="Copy a template to a question set">
-    Click **Use template** (or a similar copy action). Vitay creates a new question set pre-populated with the template's questions. You can then edit that copy however you need.
+  <Step title="Pick a template">
+    Select a template and submit. Vitay creates a new question set pre-populated with the template's questions — a copy you can then edit however you need; the template itself is never changed.
 
-    ![SCREENSHOT: The question set templates list with a "Use template" button on each row — placeholder](/images/placeholder.png)
+    ![SCREENSHOT: The Add question set modal with the Use a question set template checkbox ticked and the Template dropdown open — placeholder](/images/placeholder.png)
   </Step>
 </Steps>
 
 <Note>
-  Question set templates are managed by Vitay. If you need a template added or modified, contact **support@vitay.io**.
+  Question set templates are managed by Vitay. If you need a template added or modified, contact **hello@vitay.io**.
 </Note>
 
 ## Question groups
 
-**Question groups** are labels that let you organise questions under thematic headings (for example, "Leadership" or "Technical skills"). Groups appear as section headers in the reference form and make longer question sets easier to navigate.
+**Question groups** are labels that let you organise related questions (for example, "Leadership" or "Technical skills"). A group's label is shown as a small heading above each of its questions in the reference form, which makes longer question sets easier to follow.
 
-To manage groups, go to **Settings → Question groups**. You can add, rename, or remove groups there. Groups are shared across all question sets on your account.
+To manage groups, click the **Quest. groups** button at the top of the **Question sets** list. You can add, rename, or remove groups there — each group has a single **Label** field. Groups are shared across all question sets on your account.
 
 ## Troubleshooting
 
 <AccordionGroup>
   <Accordion title="I can't select a question set when sending a reference request">
-    There may be no active question sets, or all sets may have been archived. Go to **Settings → Question sets** and check that at least one set has an active status. If the list is empty, create a new set following the steps above.
-  </Accordion>
-  <Accordion title="The Question set templates section is not visible">
-    Templates are a feature that must be enabled for your account. If you don't see the section, contact **support@vitay.io** to enquire about enabling it.
+    There may be no question sets on your account, or they may all have been deleted. Open **Question sets** in the left-hand sidebar and check that at least one set exists. If the list is empty, create a new set following the steps above.
   </Accordion>
   <Accordion title="A question set doesn't appear for one of my languages">
     When sending a request, a set is only offered for a language once **every**
@@ -136,7 +122,7 @@ To manage groups, go to **Settings → Question groups**. You can add, rename, o
     untranslated questions.
   </Accordion>
   <Accordion title="I want different question sets for different relationship types">
-    You can assign a question set to a specific reference relationship (e.g., "Direct manager" always gets the Manager question set). Go to **Settings → Reference relationships** and select a default question set for each relationship type there.
+    You can assign a question set to a specific reference relationship (e.g., "Direct manager" always gets the Manager question set). Go to **Settings → Relationships** and select a default question set for each relationship type there.
   </Accordion>
 </AccordionGroup>
 
@@ -149,4 +135,4 @@ To manage groups, go to **Settings → Question groups**. You can add, rename, o
   <Card title="Read a completed reference" icon="clipboard-check" href="/candidates-reference-requests/read-a-completed-reference" />
 </CardGroup>
 
-{/* source: app.vitay.io projects/configuration MODALS.JOBS.QUESTION_SET, MODALS.REFERENCE_RELATIONSHIPS.QUESTION_SET, PLACEHOLDERS.JOBS.SELECT_QUESTION_SET; api app/models/question_set.rb, app/models/question.rb (type enum: O/T/R/D/C/M/S/K/A/E, category enum), app/models/question_group.rb, app/models/question_set_template.rb, app/models/setting.rb (is_question_set_template_enabled) */}
+{/* source: app.vitay.io projects/references NAVBAR.LINKS.QUESTION_SETS, question-sets.list.component (Quest. groups button, plus/Add question set, star Highlight = is_default, Duplicate), question-sets.show.component (Add question, pencil, trash + Delete question set? confirm, drag-to-reorder), src/app/shared/components/modals/question-sets (Label field, Use a question set template checkbox + Template dropdown), src/app/shared/components/modals/questions (type/sentence/options/columns/Commentable except Text/Comment required/Question group), references.component.html group label above questions; api app/models/question_set.rb (pseudo_destroy), app/models/question.rb (type enum: O/T/R/D/C/M/S/K/A/E), app/models/question_group.rb, app/models/question_set_template.rb */}

@@ -58,10 +58,9 @@
         "pages": [
           "integrations/overview",
           "integrations/bullhorn",
+          "integrations/erecruit",
           "integrations/jobadder",
-          "integrations/tempworks",
-          "integrations/sponge",
-          "integrations/google"
+          "integrations/greenhouse"
         ]
       },
       {
