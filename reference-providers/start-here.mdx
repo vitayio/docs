@@ -1,27 +1,36 @@
 ---
-title: "Help for reference providers"
-description: "You were asked to give a reference. Start here to find answers about your reference request email and form."
+title: "Help for candidates and references"
+description: "You received a Vitay email about a reference check. Start here to find answers, whether you're the candidate providing your references or the person asked to give one."
 ---
 
 <Note>
-  **Are you a recruiter or hiring manager using Vitay?** This section is for people who were asked to *give* a reference — it won't cover the recruiter app. Head to the [recruiter docs](/candidates-reference-requests/overview) instead.
+  **Are you a recruiter or hiring manager using Vitay?** This section is for people outside the recruiting team who received a Vitay email — it won't cover the recruiter app. Head to the [recruiter docs](/candidates-reference-requests/overview) instead.
 </Note>
 
-Welcome, and thank you for taking the time to complete a reference. Someone listed you as a reference for a job opportunity, and the company's recruiting team uses Vitay to collect that information securely online.
+A company's recruiting team uses Vitay to collect references securely online. That means two different people can receive an email from Vitay, and the help you need depends on which one you are:
 
-You don't need a Vitay account. Everything you need is in the reference request email you received, including the link to your form.
+- **You're the candidate.** You applied for a role and received a **reference request** asking you to provide the names and contact details of your references.
+- **You were asked to give a reference.** A candidate listed you as a reference, and you received a link to a form asking about your experience working with them.
 
-**If you have questions about the request itself** — the candidate, the role, or the hiring process — reply to your request email. The request typically comes from the recruiter who sent it, so replying is the fastest way to reach them (exact sender details depend on the company's email settings). For technical problems with the form itself, you can email Vitay support at hello@vitay.io.
+You don't need a Vitay account in either case. Everything you need is in the email you received — including a link to the form and the name of the recruiter who sent it.
 
-## What do you need help with?
+**If something isn't working**, the quickest path forward is to reply to your email or contact the recruiter directly. Their name and email are in the message Vitay sent you.
+
+## I'm the candidate providing my references
 
 <CardGroup cols={2}>
-  <Card title="The link or ID isn't working" icon="link-slash" href="/reference-providers/link-not-working" />
-  <Card title="I don't recognize this request" icon="circle-question" href="/reference-providers/unknown-reference-request" />
-  <Card title="I want to change my answers" icon="pen-to-square" href="/reference-providers/edit-my-answers" />
-  <Card title="Adding or providing another reference" icon="user-plus" href="/reference-providers/add-another-reference" />
-  <Card title="Updating a reference's email address" icon="envelope" href="/reference-providers/change-reference-email" />
-  <Card title="A reference I listed isn't getting the email" icon="bell-slash" href="/reference-providers/reference-not-receiving-email" />
+  <Card title="Adding another reference after submitting" icon="user-plus" href="/reference-providers/add-another-reference" />
+  <Card title="Correcting a reference's email address" icon="envelope" href="/reference-providers/change-reference-email" />
+  <Card title="My reference isn't getting the email" icon="bell-slash" href="/reference-providers/reference-not-receiving-email" />
+  <Card title="The link in my email isn't working" icon="link-slash" href="/reference-providers/link-not-working" />
 </CardGroup>
 
-{/* source: api app/models/recruiter_reference.rb send_reference_email — from/reply_to set to recruiter or support email */}
+## I was asked to give a reference
+
+<CardGroup cols={2}>
+  <Card title="The link in my email isn't working" icon="link-slash" href="/reference-providers/link-not-working" />
+  <Card title="I don't recognize this request" icon="circle-question" href="/reference-providers/unknown-reference-request" />
+  <Card title="I want to change my answers" icon="pen-to-square" href="/reference-providers/edit-my-answers" />
+</CardGroup>
+
+{/* source: api app/models/reference_request.rb send_reference_requests (candidate email, link /reference-requests/:id); app/models/recruiter_reference.rb send_reference_email (reference email, link /references/:id) — from/reply_to set to recruiter or support email */}

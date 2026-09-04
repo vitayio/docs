@@ -41,8 +41,9 @@ _(https://help.vitay.io/category/7-admins---configuration)_
 ## Category: Candidates and References
 _(https://help.vitay.io/category/4-candidates-and-references)_
 
-> Note: this old category mixed recruiter-facing and reference-provider-facing content. Articles
-> addressed TO the reference provider (person filling out the form) are mapped to `/reference-providers/*`.
+> Note: this old category mixed recruiter-facing content with articles for the two external parties —
+> the candidate (who lists their references) and the reference provider (who fills out the form). Articles
+> addressed TO either external party are mapped to `/reference-providers/*`; each article there states who it is for.
 
 | Old URL | Old Title | New Path | Status |
 |---|---|---|---|

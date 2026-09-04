@@ -1,35 +1,40 @@
 ---
-title: "Adding or providing a new reference"
-description: "How to add another reference after you've already submitted your reference form."
+title: "Adding another reference after submitting"
+description: "For candidates: how to add another reference once you've already submitted your list of references."
 ---
 
-Thank you for completing your reference. If the recruiter needs you to provide details for an additional person — or if you realize you left someone out — there's no self-serve way to add more references from your end.
+<Note>
+  **This article is for candidates** who received a reference request and have already submitted their references. If you were asked to *give* a reference, see [Help for candidates and references](/reference-providers/start-here).
+</Note>
 
-The recruiter manages the reference list on their side. All you need to do is get in touch with them.
+Thank you for submitting your references. Once you click **Submit** on the reference request form, your list is locked — if you open the link again, you'll see a **Reference request already filled** message. There's no self-serve way to add another reference from your end.
+
+If the recruiter has asked you for an additional reference, or you realize you left someone out, the recruiter can add them for you.
 
 ## What to do
 
 <Steps>
-  <Step title="Reply to your request email">
-    Open the original reference request email you received and reply to it — the request typically comes from the recruiter who sent it, so replying is the fastest way to reach them.
+  <Step title="Find the recruiter's contact details">
+    Open the original reference request email you received from Vitay. The recruiter's name is mentioned in the email, and you can reply directly to reach them.
   </Step>
-  <Step title="Let them know">
-    Tell the recruiter that you'd like to add another reference (or that they should add one). Include the person's name and email address if you have it.
+  <Step title="Send them the new reference's details">
+    Tell the recruiter you'd like to add another reference. Include the person's name, email address, and how you know them (for example, "my manager at Acme from 2022 to 2024").
   </Step>
   <Step title="The recruiter adds the reference">
-    Once the recruiter updates the list, the new reference usually gets their own request email automatically. Some companies review candidate-added references before sending, so the email may arrive after the recruiter approves it.
+    Once the recruiter adds them to your list, Vitay sends the new reference their own email automatically. It's worth giving your reference a heads-up so they know to expect it.
   </Step>
 </Steps>
 
 <Note>
-  If you can't find the original email, check your spam or junk folder, and try searching your inbox for the candidate's or the recruiter's name — the request typically comes from the recruiter's email address.
+  If you can't find the original email, check your spam or junk folder — it was sent from a Vitay-powered address on behalf of the recruiter.
 </Note>
 
 ## Related articles
 
 <CardGroup cols={2}>
-  <Card title="Help for reference providers" icon="house" href="/reference-providers/start-here" />
-  <Card title="Editing your answers after submitting" icon="pen-to-square" href="/reference-providers/edit-my-answers" />
-  <Card title="Updating a reference's email address" icon="envelope" href="/reference-providers/change-reference-email" />
-  <Card title="A reference I listed isn't getting the email" icon="bell-slash" href="/reference-providers/reference-not-receiving-email" />
+  <Card title="Help for candidates and references" icon="house" href="/reference-providers/start-here" />
+  <Card title="Correcting a reference's email address" icon="envelope" href="/reference-providers/change-reference-email" />
+  <Card title="My reference isn't getting the email" icon="bell-slash" href="/reference-providers/reference-not-receiving-email" />
 </CardGroup>
+
+{/* source: api app/controllers/api/v1/reference_requests_controller.rb public_create sets filled_at; Pundit::NotAuthorizedError → render_request_already_filled. app REFERENCE_REQUESTS.FILLED.UNAVAILABLE copy tells the candidate to contact the recruiter */}

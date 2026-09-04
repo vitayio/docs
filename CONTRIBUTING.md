@@ -10,15 +10,25 @@ cross-link between them in "Related articles".
 
 - **Recruiters / admins** — logged-in Vitay users. They can navigate the app,
   so articles can reference screens, buttons, and settings.
-- **Reference providers** — external people asked to give a reference. They have
-  **no Vitay login** and cannot navigate the app. Their articles describe only
-  what they can see (the request email and the reference form), and the default
-  answer is: *contact the recruiter who requested the reference — their email is
-  in the reference request email you received.*
+- **Candidates** — external people who received a *reference request* and use
+  the public form to list their references. They have **no Vitay login**. Once
+  they submit, their list is locked and the form tells them to contact the
+  recruiter.
+- **Reference providers** — external people asked to *give* a reference. They
+  have **no Vitay login** and see only the email and the reference form.
 
-The reference-provider section (`reference-providers/`) opens with
-`start-here`, which disambiguates: "Are you a recruiter? → go to the recruiter
-docs."
+Candidates and reference providers share the `reference-providers/` section
+(folder name kept for URL stability). Their articles describe only what they can
+see (the email and the form), and the default answer is: *contact the recruiter
+who sent the request — their email is in the message you received.* Each
+article in that section opens with a `<Note>` naming which of the two it is for;
+the one exception is `link-not-working`, which deliberately covers both because
+the fix is identical. Never link a candidate or reference-provider article to
+recruiter docs, or vice versa.
+
+The section opens with `start-here`, which disambiguates: "Are you a
+recruiter? → go to the recruiter docs", then splits the cards into "I'm the
+candidate" and "I was asked to give a reference".
 
 ## Page template
 
