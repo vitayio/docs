@@ -1,23 +1,27 @@
 ---
-title: "The reference link isn't working"
-description: "What to do if the link or reference ID in your request email opens an error or doesn't load."
+title: "The link in my email isn't working"
+description: "What to do if the link or ID in your Vitay email opens an error or doesn't load — for candidates and for people giving a reference."
 ---
 
-If clicking the link in your reference request email leads to an error — or the reference ID you were given isn't being accepted — here's what's likely happening and how to fix it.
+<Note>
+  **This article applies to both candidates and people asked to give a reference.** Whichever form you were sent, the fixes are the same, and only the recruiter can send you a fresh link.
+</Note>
+
+If clicking the link in your Vitay email leads to an error — or the ID you were given isn't being accepted — here's what's likely happening and how to fix it.
 
 ## Common reasons a link stops working
 
 **The form has already been submitted**
 
-Once a reference form is submitted, the link is locked. If you see a message like **"Reference has already been filled"**, your submission went through successfully and there's nothing else to do.
+Once a form is submitted, the link is locked. If you see a message saying the reference request or reference is already filled, your submission went through successfully and there's nothing else to do. If you're a candidate and need to change your list of references after this point, see [Adding another reference after submitting](/reference-providers/add-another-reference).
 
-**The reference or candidate was removed**
+**The request is no longer active**
 
-If the recruiter removed you as a reference — or removed the candidate — the link stops working and you'll see a message saying the reference is no longer available. If you think this happened by mistake, reply to your request email and ask the recruiter to re-add you; that creates a new link.
+The recruiter may have closed or removed the request. If so, only the recruiter can reissue it.
 
-**The link was mangled by your email client**
+**The link was copied incorrectly**
 
-Long links sometimes get broken across lines or cut short by email apps. Instead of clicking, copy the full URL from the email and paste it into your browser's address bar, making sure no characters are missing and there are no extra spaces at the end.
+If you copied the link manually from the email (rather than clicking it), check that the full URL was included with no missing characters or extra spaces at the end.
 
 **Your work network is blocking the link**
 
@@ -26,24 +30,25 @@ Some company networks block external links in emails. Try opening the link on yo
 ## What to do if none of the above helps
 
 <Steps>
-  <Step title="Reply to your request email">
-    Open your original reference request email and reply to it — the request typically comes from the recruiter who sent it, so replying is the fastest way to reach them.
+  <Step title="Find the recruiter's contact details">
+    Open your original Vitay email. The recruiter's name is mentioned in the message, and replying to that email will reach them directly.
   </Step>
-  <Step title="Ask them to send a fresh request">
-    Let the recruiter know the link isn't working. They can resend the request (which contains the same link) or, if needed, remove and re-add you as a reference — that creates a brand-new link.
+  <Step title="Ask them to reissue the link">
+    Let the recruiter know the link isn't working. They can check the status and send you a fresh email if needed.
   </Step>
 </Steps>
 
 <Note>
-  Only the recruiter can resend a request or create a new link. There is no self-serve way to generate one.
+  Only the recruiter can reissue a link. There is no self-serve way to generate a new one.
 </Note>
 
 ## Related articles
 
 <CardGroup cols={2}>
-  <Card title="Help for reference providers" icon="house" href="/reference-providers/start-here" />
+  <Card title="Help for candidates and references" icon="house" href="/reference-providers/start-here" />
   <Card title="Editing your answers after submitting" icon="pen-to-square" href="/reference-providers/edit-my-answers" />
   <Card title="I don't recognize this request" icon="circle-question" href="/reference-providers/unknown-reference-request" />
+  <Card title="My reference isn't getting the email" icon="bell-slash" href="/reference-providers/reference-not-receiving-email" />
 </CardGroup>
 
-{/* source: api app/controllers/api/v1/references_controller.rb render_reference_already_filled (Pundit::NotAuthorizedError on filled references); render_reference_not_found for invalid IDs */}
+{/* source: api app/controllers/api/v1/references_controller.rb render_reference_already_filled / render_reference_not_found; reference_requests_controller.rb render_request_already_filled / render_candidate_not_found */}

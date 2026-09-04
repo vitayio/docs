@@ -92,7 +92,7 @@
         ]
       },
       {
-        "group": "Help for Reference Providers",
+        "group": "Help for candidates & references",
         "icon": "circle-question",
         "pages": [
           "reference-providers/start-here",
