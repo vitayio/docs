@@ -71,9 +71,11 @@ A **question set** is the list of questions Vitay sends to each reference when a
 
 ## Set a default question set
 
-You can mark a question set as a **default** so it is pre-selected when a recruiter creates a reference request.
+You can mark one question set as the **default** so it is pre-selected when a recruiter creates a reference request.
 
 On the **Question sets** list, click the **star** icon on the set's row (its tooltip reads **Highlight**). Clicking it again removes the default mark.
+
+Only one set can be the default at a time: starring a set removes the mark from whichever set held it before. Duplicating a set never copies the default mark, so a copy of your default set starts out as a regular set.
 
 ## Duplicate or delete a question set
 
@@ -135,4 +137,4 @@ To manage groups, click the **Quest. groups** button at the top of the **Questio
   <Card title="Read a completed reference" icon="clipboard-check" href="/candidates-reference-requests/read-a-completed-reference" />
 </CardGroup>
 
-{/* source: app.vitay.io projects/references NAVBAR.LINKS.QUESTION_SETS, question-sets.list.component (Quest. groups button, plus/Add question set, star Highlight = is_default, Duplicate), question-sets.show.component (Add question, pencil, trash + Delete question set? confirm, drag-to-reorder), src/app/shared/components/modals/question-sets (Label field, Use a question set template checkbox + Template dropdown), src/app/shared/components/modals/questions (type/sentence/options/columns/Commentable except Text/Comment required/Question group), references.component.html group label above questions; api app/models/question_set.rb (pseudo_destroy), app/models/question.rb (type enum: O/T/R/D/C/M/S/K/A/E), app/models/question_group.rb, app/models/question_set_template.rb */}
+{/* source: app.vitay.io projects/references NAVBAR.LINKS.QUESTION_SETS, question-sets.list.component (Quest. groups button, plus/Add question set, star Highlight = is_default, Duplicate); api app/models/question_set.rb (after_save clears sibling is_default — one default per firm), app/models/question_set_base.rb (deep_copy! does not copy is_default), question-sets.show.component (Add question, pencil, trash + Delete question set? confirm, drag-to-reorder), src/app/shared/components/modals/question-sets (Label field, Use a question set template checkbox + Template dropdown), src/app/shared/components/modals/questions (type/sentence/options/columns/Commentable except Text/Comment required/Question group), references.component.html group label above questions; api app/models/question_set.rb (pseudo_destroy), app/models/question.rb (type enum: O/T/R/D/C/M/S/K/A/E), app/models/question_group.rb, app/models/question_set_template.rb */}

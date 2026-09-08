@@ -42,10 +42,12 @@ changed or withdrawn at any time.
     off, and Vitay sets them whether or not consent is given.
   </Accordion>
   <Accordion title="Functional">
-    Cookies that support optional conveniences rather than core functionality —
-    notably the in-app support chat widget. Turning this category off means the
-    widget is not loaded; the **Help** entry in the sidebar opens your cookie
-    preferences instead so you can re-enable it.
+    Cookies and scripts that support optional conveniences rather than core
+    functionality: the in-app support chat widget, and the Google script that
+    suggests addresses as you type on public forms. Turning this category off
+    means neither is loaded — the **Help** entry in the sidebar opens your
+    cookie preferences instead so you can re-enable the widget, and address
+    fields work as plain text fields you fill in by hand.
   </Accordion>
   <Accordion title="Analytics">
     Product analytics used to understand how Vitay is used in aggregate. Loaded
@@ -59,7 +61,9 @@ changed or withdrawn at any time.
 
 Click **View cookies** on any category to see every cookie it declares, with
 its **Name**, **Provider**, **Purpose**, and **Duration** — so there's no need
-to inspect the browser to answer a privacy questionnaire.
+to inspect the browser to answer a privacy questionnaire. Third-party scripts
+that set no cookie but do send the visitor's IP address to their provider (such
+as Google address suggestions) are listed in the same table.
 
 ![SCREENSHOT: the cookie preferences modal with a category expanded to show its cookie table — placeholder](/images/placeholder.png)
 
@@ -108,11 +112,19 @@ to inspect the browser to answer a privacy questionnaire.
 
 <AccordionGroup>
   <Accordion title="The banner keeps coming back">
-    The consent choice is stored in a cookie. If the browser is set to clear
-    cookies on close, is in a private window, or has an extension that clears
-    site data, the choice cannot persist and the banner will reappear on each
-    visit. Allow cookies from your Vitay domain — see
+    The consent choice is stored in a cookie that survives signing out and
+    session expiry. If the browser is set to clear cookies on close, is in a
+    private window, or has an extension that clears site data, the choice
+    cannot persist and the banner will reappear on each visit. Allow cookies
+    from your Vitay domain — see
     [Browser support](/security-it/browser-support).
+  </Accordion>
+  <Accordion title="Address suggestions don't appear on the form">
+    Address autocomplete is provided by Google and sits in the Functional
+    category. If that category is off, or the banner hasn't been answered yet,
+    the address fields are plain text fields — type the address in by hand, or
+    open **Cookie preferences**, switch Functional on, and save. Suggestions
+    start working straight away, without reloading.
   </Accordion>
   <Accordion title="The support chat widget disappeared">
     The in-app support chat widget sits in the Functional category. If that
@@ -136,4 +148,4 @@ to inspect the browser to answer a privacy questionnaire.
   <Card title="Browser support" icon="globe" href="/security-it/browser-support" />
 </CardGroup>
 
-{/* source: app.vitay.io src/app/shared/config/cookie-registry.ts; src/app/shared/services/cookie-consent.service.ts; src/app/shared/components/cookie-consent/ */}
+{/* source: app.vitay.io src/app/shared/config/cookie-registry.ts (functional: HelpScout Beacon + Google Places 'script' declaration); src/app/shared/services/cookie-consent.service.ts (preserve() across cleanStorage); src/app/shared/services/google-places-loader.service.ts (grantedOnce$('functional')); src/app/shared/components/cookie-consent/ */}

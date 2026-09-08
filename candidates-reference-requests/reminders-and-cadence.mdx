@@ -38,7 +38,7 @@ You can nudge a reference or a candidate outside the automatic schedule. Manual 
     On the candidate page, locate the reference or reference request that needs a nudge. Open it to see its detail view.
   </Step>
   <Step title="Send the reminder">
-    Click **Send reminder**. Vitay sends the follow-up email (and SMS, if applicable) immediately.
+    Click **Send reminder**. Vitay sends the follow-up email (and SMS, if applicable) immediately, and records who sent it and to whom on the **Activities** tab of the candidate's and the reference's side panels.
 
     ![SCREENSHOT: the reference detail view with the "Send reminder" button — placeholder](/images/placeholder.png)
   </Step>
@@ -95,4 +95,4 @@ When reminders are disabled, the **Send reminder** button on the affected refere
   <Card title="A reference didn't receive the email" icon="triangle-exclamation" href="/candidates-reference-requests/reference-not-received" />
 </CardGroup>
 
-{/* source: api app/models/reminder.rb (rate_hours, skip_weekend_days, next_reminder_dates = 3 auto reminders); config/application.rb (manual cap 10, 12h rate limit); app/models/email_reminder.rb; app/models/text_reminder.rb; app.vitay.io sidebar.candidate.reminders.component + sidebar.reference.reminders.component (is_reminders_enabled toggles); i18n keys MODALS.REMINDERS.*, BUTTONS.REMINDERS.*, SIDEBAR.WARNING.AUTO_REMINDERS */}
+{/* source: api app/models/reminder.rb (rate_hours, skip_weekend_days, next_reminder_dates = 3 auto reminders); config/application.rb (manual cap 10, 12h rate limit); app/models/email_reminder.rb; app/models/text_reminder.rb; app.vitay.io sidebar.candidate.reminders.component + sidebar.reference.reminders.component (is_reminders_enabled toggles); i18n keys MODALS.REMINDERS.*, BUTTONS.REMINDERS.*, SIDEBAR.WARNING.AUTO_REMINDERS; api reminders controllers create_activity *.send_reminder on manual sends */}

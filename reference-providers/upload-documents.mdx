@@ -1,0 +1,58 @@
+---
+title: "Attaching documents to my reference request"
+description: "For candidates: how to upload a résumé or other documents when the recruiter asks for them on your reference request form."
+---
+
+<Note>
+  **This article is for candidates** who received a reference request. If you were asked to *give* a reference, see [Help for candidates and references](/reference-providers/start-here).
+</Note>
+
+Some recruiting teams ask candidates to attach documents — often a résumé, certificates, or a licence — at the same time as they provide their references. When that's the case, the reference request form has a **Documents** section below your list of references, with a short note from the recruiter about what to attach. If you don't see that section, the recruiter hasn't asked for documents and there's nothing to upload.
+
+## Upload your documents
+
+<Steps>
+  <Step title="Read the recruiter's instructions">
+    The text above the upload area tells you which documents the recruiter wants. If the section heading has a red asterisk, at least one document is required before you can submit.
+  </Step>
+  <Step title="Add your files">
+    Drag your files onto the dashed area, or click **Browse files** and pick them from your device. You can attach up to **5 files**. Each file must be a **PDF, DOC, DOCX, PNG, or JPG** and no larger than **10 MB**.
+  </Step>
+  <Step title="Check the list">
+    Each uploaded file appears in a list under the upload area. If you picked the wrong file, click the **trash** icon next to it to remove it and upload another.
+  </Step>
+  <Step title="Submit the form">
+    Finish the rest of the form — your references, the acknowledgement checkbox, and your signature if asked — and click **Submit**. Your documents are sent to the recruiter together with your references.
+  </Step>
+</Steps>
+
+<Note>
+  Once you've submitted, you can't add or remove documents from the form. If you need to send another file, reply to the reference request email — the recruiter can add it to your record for you.
+</Note>
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="My file is rejected">
+    Check the message shown under the upload area:
+    - **"This file type is not supported"** — only PDF, DOC, DOCX, PNG, and JPG files are accepted. Export or save your document in one of those formats and try again. A file renamed to a different extension is still rejected.
+    - **"This file is larger than 10 MB"** — compress the file or export a smaller version (for example, a lower-resolution PDF).
+    - **"You can upload at most 5 documents"** — remove a file you no longer need before adding another.
+  </Accordion>
+  <Accordion title="I can't submit because a document is missing">
+    The recruiter has made the document upload required. Attach at least one file in the **Documents** section and the **Submit** button will work.
+  </Accordion>
+  <Accordion title="I already submitted and forgot a document">
+    Reply to the email you received from Vitay — it reaches the recruiter directly — and attach the file. They can add it to your record on their side.
+  </Accordion>
+</AccordionGroup>
+
+## Related articles
+
+<CardGroup cols={2}>
+  <Card title="Help for candidates and references" icon="house" href="/reference-providers/start-here" />
+  <Card title="Adding another reference after submitting" icon="user-plus" href="/reference-providers/add-another-reference" />
+  <Card title="The link in my email isn't working" icon="link-slash" href="/reference-providers/link-not-working" />
+</CardGroup>
+
+{/* source: app.vitay.io projects/references public/reference-requests/reference-requests.component (REFERENCE_REQUESTS.DOCUMENTS.* copy: DROP_HINT, BROWSE, LIMITS, REMOVE, MISSING, ERRORS.TYPE/SIZE/TOO_MANY); api app/controllers/api/v1/reference_requests_controller.rb public documents endpoints (allowlist, 10 MB, 5 files, 409 once filled) */}

@@ -32,6 +32,7 @@
           "candidates-reference-requests/overview",
           "candidates-reference-requests/add-a-candidate",
           "candidates-reference-requests/send-a-reference-request",
+          "candidates-reference-requests/candidate-documents",
           "candidates-reference-requests/reminders-and-cadence",
           "candidates-reference-requests/search-past-references",
           "candidates-reference-requests/manage-in-flight-requests",
@@ -96,6 +97,7 @@
         "icon": "circle-question",
         "pages": [
           "reference-providers/start-here",
+          "reference-providers/upload-documents",
           "reference-providers/add-another-reference",
           "reference-providers/change-reference-email",
           "reference-providers/edit-my-answers",
