@@ -4,6 +4,77 @@ description: "Product updates, improvements, and fixes shipped to Vitay."
 ---
 
 <Update
+  label="September 8, 2026"
+  description="Candidate document uploads, a complete activity history, and more accessible public forms"
+  tags={["Feature", "Improvement", "Fix"]}
+  rss={{
+    title: "Candidate document uploads, a complete activity history, and more accessible public forms",
+    description: "Ask candidates to attach documents with their references, page through every activity on a candidate or reference with who changed what, and get more accessible public forms — plus fixes for list paging, cookie consent, default question sets, lead types, and JobAdder."
+  }}
+>
+  ### New
+
+  - **Candidate document uploads.** Ask candidates to attach documents — a
+    résumé, certificates, ID — while they fill in their reference request.
+    Turn on **Candidate document upload** under **Settings → Ref. Requests**,
+    optionally make it required, and write the instructions candidates see
+    above the upload area, in each of your languages. Candidates drag and drop
+    or browse for up to 5 files (PDF, DOC, DOCX, PNG, or JPG, 10 MB each).
+    Uploaded files appear on the candidate's **Documents** tab and in the
+    candidate side panel, and are attached to the "reference request
+    completed" email. See
+    [Collect documents from candidates](/candidates-reference-requests/candidate-documents).
+
+  ### Improved
+
+  - **A complete activity history.** The **Activities** tab in the candidate
+    and reference side panels now pages through the full history instead of
+    stopping at the last 30 days. Status changes say who changed the status
+    and from what to what, bulk status changes are recorded too, and every
+    manual reminder you send is logged with who sent it and to whom. Hover
+    over any relative time ("2 days ago") in the app to see the exact date and
+    time.
+  - **More accessible public forms and sign-in pages.** Third pass of our
+    accessibility work: the decline and call-back options on the reference form
+    are real buttons that keyboard and screen-reader users can reach, focus
+    moves to the right place when a view changes or a reference card is added
+    or removed, phone and country fields are properly labelled, tap targets are
+    larger, and notifications stay on screen longer. Sign-in and registration
+    pages now work with browser autofill.
+  - **Address autocomplete respects cookie consent.** Google address
+    suggestions on public forms now load only after Functional cookies are
+    accepted, and Google is listed in the cookie preferences. The manual address
+    fields always work. See
+    [Cookies and consent](/security-it/cookies-and-consent).
+
+  ### Fixed
+
+  - **Lists stay on the page you were on.** Since the August release, opening a
+    candidate or reference from a later page of a list and going back returned
+    you to page 1. Lists now return to the page you left.
+  - **Your cookie choice is remembered.** Signing out or an expired session no
+    longer resets your cookie consent, so the banner stops reappearing on every
+    login.
+  - **One default question set.** Marking a question set as the default (the
+    star) now removes the mark from the previous default, and duplicating the
+    default set no longer creates a second default. Firms that had more than
+    one default keep the most recently updated one.
+  - **A third lead type is recorded as a lead.** With three lead types
+    configured, references who chose the third one were recorded as "not
+    interested" and no lead notification went out. They are now captured as
+    leads. Earlier submissions of that type can't be recovered.
+  - **Disconnecting JobAdder removes the Vitay button.** Disconnecting the
+    JobAdder integration now also removes the **View candidate** action from
+    your JobAdder account instead of leaving a dead button behind.
+  - **Background check requests open reliably.** Opening the background check
+    request dialog before its categories had loaded could leave it empty. It
+    now waits for them.
+  - **Reference forms no longer go blank on a flaky connection.** If the
+    country list or a language file failed to download, the reference form
+    could fail to open at all. It now opens and falls back gracefully.
+</Update>
+
+<Update
   label="August 28, 2026"
   description="Cookie consent, bulk reference requests from Bullhorn, and clearer privacy information"
   tags={["Feature", "Improvement", "Fix"]}

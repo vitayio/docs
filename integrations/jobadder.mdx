@@ -49,9 +49,7 @@ Once connected:
 
 Contact [hello@vitay.io](mailto:hello@vitay.io) to remove the integration.
 
-<Note>
-  The **View candidate** action may remain visible in JobAdder after disconnecting; it will no longer work.
-</Note>
+Disconnecting also removes the **View candidate** action from your JobAdder account. If JobAdder has already revoked Vitay's access by the time you disconnect, the action can't be removed automatically — delete it from your JobAdder partner actions, or contact [hello@vitay.io](mailto:hello@vitay.io).
 
 ## Troubleshooting
 
@@ -76,4 +74,4 @@ Contact [hello@vitay.io](mailto:hello@vitay.io) to remove the integration.
   <Card title="Add a candidate" icon="user-plus" href="/candidates-reference-requests/add-a-candidate" />
 </CardGroup>
 
-{/* source: api app/controllers/api/jobadder_controller.rb; api app/services/external_services/jobadder/; api app/models/external_authorisations/jobadder.rb */}
+{/* source: api app/controllers/api/jobadder_controller.rb (destroy: refresh token, list + delete partner actions best-effort, then pseudo_destroy); api app/services/external_services/jobadder/; api app/models/external_authorisations/jobadder.rb */}

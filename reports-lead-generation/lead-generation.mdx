@@ -84,8 +84,7 @@ Lead types are configured at the firm level.
   </Step>
   <Step title="Choose how many lead types to collect">
     Use the **Number of lead types to collect** dropdown to pick how many types you want (up to
-    three). A card appears for each type. We recommend configuring at most **two** lead types for
-    now — a known issue means selections of a third type are not recorded as leads.
+    three). A card appears for each type.
   </Step>
   <Step title="Fill in each lead type">
     On each card, fill in:
@@ -141,4 +140,4 @@ Lead types are configured at the firm level.
   <Card title="Bulk candidate upload" icon="upload" href="/reports-lead-generation/bulk-candidate-upload" />
 </CardGroup>
 
-{/* source: api app/models/lead_type.rb (name, checkbox_text, button_text, button_link, thank_you_text, contact_type, position; max 3 via L/M/N contact_type assignment); api app/models/lead_type_notification.rb (send_to_root, send_to_assigned, send_to_custom, custom_emails); api app/models/reference.rb (lead_consent_at, lead_consent_text, contact_type_choices, validate_contact_type); api app/controllers/api/v3/documents/csv_controller.rb (leads export fields: lead_consent_at, lead_consent_text); git log VIT-1304 commits (feat: record and require lead-gen consent on public reference update; feat: add lead_consent_at and lead_consent_text to references) */}
+{/* source: api app/models/lead_type.rb (name, checkbox_text, button_text, button_link, thank_you_text, contact_type, position; max 3 via L/M/O contact_type assignment, CONTACT_TYPE_CODES shared with Reference#validate_contact_type); api app/models/lead_type_notification.rb (send_to_root, send_to_assigned, send_to_custom, custom_emails); api app/models/reference.rb (lead_consent_at, lead_consent_text, contact_type_choices, validate_contact_type); api app/controllers/api/v3/documents/csv_controller.rb (leads export fields: lead_consent_at, lead_consent_text); git log VIT-1304 commits (feat: record and require lead-gen consent on public reference update; feat: add lead_consent_at and lead_consent_text to references) */}
