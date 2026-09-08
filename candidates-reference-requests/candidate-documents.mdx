@@ -24,13 +24,26 @@ before the references come back. You can make the upload optional or required.
     Find the **Candidate document upload** card and switch it on. Changes on
     this card save automatically.
 
-    ![SCREENSHOT: the Ref. Requests settings page with the Candidate document upload card switched on, showing the Required toggle and the description editor — placeholder](/images/placeholder.png)
+    ![SCREENSHOT: the Ref. Requests settings page with the Candidate document upload card switched on, showing the Required toggle, the attach-to-email toggle with its hint, and the description editor — placeholder](/images/placeholder.png)
   </Step>
   <Step title="Decide whether a document is required">
     Switch on **Require at least one document before the candidate can
     submit** if candidates must attach something. When it's off, the
     Documents section is optional and a candidate can submit their references
     without a file.
+  </Step>
+  <Step title="Choose whether documents are emailed to the recruiter">
+    **Attach the uploaded documents to the "Reference(s) submitted" email
+    sent to the recruiter** is off by default. Leave it off and the completion
+    email simply links to the candidate's page, where the files stay under
+    Vitay's access controls and deletion rules.
+
+    <Warning>
+      Turn it on only if your team needs the files in their inbox. Emailed
+      copies sit in the recruiter's mailbox and mail archive outside Vitay, so
+      they can't be recalled or erased by Vitay when you delete the candidate
+      or their documents.
+    </Warning>
   </Step>
   <Step title="Write the instructions candidates see">
     Use the **Description shown to candidates above the upload area** editor
@@ -70,10 +83,11 @@ and you can add it to their record.
   panel lists the same files with a **Download** button, so you can grab them
   without leaving the list you're on.
 - **Completion email** — the "reference request completed" email your team
-  receives when the candidate submits includes the uploaded files as
-  attachments. Attachments are capped at 20 MB combined: files that would push
-  the total over the cap are left out, and the email says so, with a link to
-  the candidate's profile.
+  receives when the candidate submits always links to the candidate's page.
+  It includes the uploaded files as attachments only when **Attach the
+  uploaded documents to the "Reference(s) submitted" email** is switched on
+  (it's off by default). Attachments are capped at 20 MB combined: files that
+  would push the total over the cap are left out, and the email says so.
 
 ![SCREENSHOT: the candidate page Documents tab showing a candidate-uploaded résumé with the count badge on the tab — placeholder](/images/placeholder.png)
 
@@ -93,10 +107,13 @@ and you can add it to their record.
     the form. A request that has already been submitted never shows the card.
   </Accordion>
   <Accordion title="The completion email arrived without the attachments">
-    Attachments are capped at 20 MB combined. Files that didn't fit are noted
-    in the email body and remain available on the candidate's Documents tab.
-    Very large mailboxes or strict mail filters can also strip attachments —
-    the Documents tab is always the source of truth.
+    Attachments are off by default: check that **Attach the uploaded documents
+    to the "Reference(s) submitted" email** is switched on under **Settings →
+    Ref. Requests**. When it is on, attachments are capped at 20 MB combined;
+    files that didn't fit are noted in the email body and remain available on
+    the candidate's Documents tab. Very large mailboxes or strict mail filters
+    can also strip attachments — the Documents tab is always the source of
+    truth.
   </Accordion>
 </AccordionGroup>
 
@@ -109,4 +126,4 @@ and you can add it to their record.
   <Card title="Notification settings" icon="bell" href="/account-configuration/notification-settings" />
 </CardGroup>
 
-{/* source: app.vitay.io projects/configuration settings/requests/settings.requests.component (SETTINGS.candidate_documents card: enabled, required, per-language description); projects/references public/reference-requests/reference-requests.component (REFERENCE_REQUESTS.DOCUMENTS card, ngx-file-drop, LIMITS copy); protected/candidates/show/documents + sidebar/candidate/documents (Documents tab count, Download); api app/controllers/api/v1/reference_requests_controller.rb public documents create/destroy (Marcel magic-byte sniffing, 10 MB, 5 files, 422 when required and missing); app/mailers reference request completed email (attachments ≤ 20 MB combined, oversized skipped with body note) */}
+{/* source: app.vitay.io projects/configuration settings/requests/settings.requests.component (SETTINGS.candidate_documents card: enabled, required, attach_to_completion_email sub-toggle default off with recall hint, per-language description); projects/references public/reference-requests/reference-requests.component (REFERENCE_REQUESTS.DOCUMENTS card, ngx-file-drop, LIMITS copy); protected/candidates/show/documents + sidebar/candidate/documents (Documents tab count, Download); api app/controllers/api/v1/reference_requests_controller.rb public documents create/destroy (Marcel magic-byte sniffing, 10 MB, 5 files, 422 when required and missing); ReferenceRequest#send_reference_request_completed_to_recruiter via app/jobs/send_reference_request_completed_job.rb (attachments only when attach_to_completion_email is true; ≤ 20 MB combined, oversized skipped with body note) */}
