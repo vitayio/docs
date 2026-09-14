@@ -33,17 +33,26 @@ and Vitay sends those references the questions to answer.
     is pre-selected for you.
   </Step>
   <Step title="Set how many references are required">
-    Choose the **Number of references** the candidate must provide
-    (for example, 2 or 3). The candidate can't finish until they've supplied at
-    least this many. Tick **Managers only** if every reference must be
-    a manager.
+    Choose the **Number of references** the candidate must provide. The
+    candidate can't finish until they've supplied at least this many. Tick
+    **Managers only** if every reference must be a manager.
+
+    The dropdown starts at your firm's default and offers the next four values
+    — so with a firm default of 2 you can pick 2, 3, 4, 5 or 6. If this
+    candidate has had a reference request before, the dropdown offers 1 to 5
+    instead. A root recruiter sets the firm default on the **Ref. Requests**
+    settings tab; see
+    [Reference request settings](/account-configuration/reference-request-settings).
   </Step>
   <Step title="Add the optional details">
     You can always add notes in **Public notes for the candidate** — the
     candidate will see these. Depending on your firm's settings you may also be
     able to:
     - pick the **language** the request is sent in,
-    - set a **scheduled date** to send the request later.
+    - set a **scheduled date** to send the request later. You can only pick
+      today or a future date, and the request goes out when a daily job picks
+      up everything scheduled for that day — so a scheduled request is sent on
+      the chosen date, not at a time you choose.
   </Step>
   <Step title="Submit">
     Click **Submit**. The request goes out right away — by email, and also by
@@ -88,6 +97,18 @@ enter the candidate's details and the request options in a single form.
     See [A reference didn't receive the email](/candidates-reference-requests/reference-not-received)
     for the checks to run (correct address, spam, resend).
   </Accordion>
+  <Accordion title="Vitay says a request has already been sent to this candidate">
+    A candidate can only have **one open request per question set** at a time.
+    If a request using that question set is still outstanding, Vitay refuses
+    the new one with *"You have already sent a reference request to this
+    candidate"*.
+
+    You have two ways forward: pick a **different question set**, which is
+    allowed and creates a second, separate request; or deal with the open one
+    first — it disappears from the check once the candidate submits it, or once
+    you cancel it. See
+    [Manage in-flight requests](/candidates-reference-requests/manage-in-flight-requests).
+  </Accordion>
   <Accordion title="I can't select a question set">
     If the dropdown is empty, no question set is available to your account. Ask
     a root recruiter at your firm to set one up — see
@@ -106,6 +127,7 @@ enter the candidate's details and the request options in a single form.
   <Card title="Reminders and how they work" icon="bell" href="/candidates-reference-requests/reminders-and-cadence" />
   <Card title="Manage in-flight requests" icon="paper-plane" href="/candidates-reference-requests/manage-in-flight-requests" />
   <Card title="Read a completed reference" icon="clipboard-check" href="/candidates-reference-requests/read-a-completed-reference" />
+  <Card title="Reference request settings" icon="sliders" href="/account-configuration/reference-request-settings" />
 </CardGroup>
 
-{/* source: app.vitay.io src/app/shared/components/modals/reference-requests/modals.reference-requests.component.ts (default question set preselect, always-on notes, setting-gated language/scheduled date); modals/quick-request/modals.quick-request.component.ts (translation-filtered question sets + hidden-sets hint); api app/models/reference_request.rb (email + SMS delivery) */}
+{/* source: app.vitay.io src/app/shared/components/modals/reference-requests/modals.reference-requests.component.ts (default question set preselect, always-on notes, setting-gated language/scheduled date); modals/quick-request/modals.quick-request.component.ts (translation-filtered question sets + hidden-sets hint); api app/models/reference_request.rb (email + SMS delivery; min_references validated 1..10, nil falls back to setting.min_reference_count; scheduled/for_today scopes); api app/controllers/api/v1/reference_requests_controller.rb#check_reference_request (DuplicateReferenceRequest when candidate.pending_requests already uses that question_set; 'You have already sent a reference request to this candidate'); lib/tasks/reference_requests.rake (reference_requests:scheduled enqueues ReferenceRequest.scheduled.for_today, run daily); app.vitay.io modals/reference-requests component (min_manager_references dropdown = [min_reference_count .. +4], or [1..5] when referenceRequestWasSent; bsConfig.minDate = today when schedule_references is on) */}

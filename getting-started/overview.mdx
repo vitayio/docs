@@ -22,6 +22,47 @@ who sent you the request; their email address is in the request email.
 - **Generate leads** — turn reference respondents into a talent pipeline.
 - **Configure your account** — manage users, branding, question sets, and integrations.
 
+## Your first look around
+
+If you land on Vitay's welcome screen when you first sign in, it offers three ways to start:
+
+- **Take a Tour** — a short guided walkthrough that highlights each item in the left sidebar in
+  turn: the dashboard, candidates, references, question sets, activities, and configuration. Press
+  **Esc** or click outside the highlight to leave the tour at any point.
+- **Book a Demo** — books time with the Vitay team for a guided walkthrough.
+- **Skip onboarding** — takes you straight to your dashboard.
+
+Nothing is lost by skipping: every screen the tour points at is in the sidebar, and each has an
+article in this help center.
+
+## Notifications and announcements
+
+The **bell** icon in the top bar carries product announcements from Vitay, with a count of anything
+unread. Click one to read it, use **Mark all as read** to clear the badge, or **View all
+notifications** for the full history. It's separate from your account's
+[activities log](/reports-lead-generation/activities-log), which records what people did in your
+account.
+
+## Trial and demo accounts
+
+Accounts that haven't been upgraded yet run in demo mode, with a banner across the top of the app:
+
+> You currently have access to limited features. Please upgrade your plan to gain full access or
+> contact our team to book a demo for a guided tour.
+
+On a demo account, actions that would send real messages or change your firm's setup are switched
+off — adding and importing candidates, sending reference requests, editing question sets, adding
+users, connecting an integration, and most of the settings tabs. You can still look around the app
+and read the sample data.
+
+The **upgrade your plan** link in the banner takes you to
+[Billing and usage](/account-configuration/billing-and-usage), where subscribing unlocks everything.
+
+<Warning>
+  Demo accounts are automatically deactivated about 35 days after they're created. If your trial is
+  running out and you need more time, contact us at **hello@vitay.io** before then.
+</Warning>
+
 ## Help center sections
 
 <CardGroup cols={2}>
@@ -40,6 +81,22 @@ who sent you the request; their email address is in the request email.
     Invite users, set up question sets, configure branding, and manage email settings.
   </Card>
   <Card
+    title="Firm settings"
+    icon="sliders"
+    href="/account-configuration/firm-configuration"
+  >
+    Firm configuration, reference request settings, report settings, email/text/page templates,
+    plugins, and billing and usage.
+  </Card>
+  <Card
+    title="Reports & Lead Generation"
+    icon="chart-line"
+    href="/reports-lead-generation/overview-dashboard"
+  >
+    Track performance on the overview dashboard, export data, review the activities log, and turn
+    references into leads.
+  </Card>
+  <Card
     title="Integrations"
     icon="plug"
     href="/integrations/overview"
@@ -55,10 +112,30 @@ who sent you the request; their email address is in the request email.
   </Card>
 </CardGroup>
 
+Settings are split across a few pages, so it's worth knowing where things live:
+
+- [Firm configuration](/account-configuration/firm-configuration) — company details, branding,
+  language, default list timeframes, and session settings.
+- [Reference request settings](/account-configuration/reference-request-settings) — how many
+  references you ask for and what candidates and references are asked to provide.
+- [Notification settings](/account-configuration/notification-settings) — who gets told what, and
+  when.
+- [Report settings](/account-configuration/report-settings) — report formats, redaction, and who
+  can download.
+- [Email, text and page templates](/account-configuration/email-text-and-page-templates) — the
+  wording of every message Vitay sends.
+- [Plugins](/account-configuration/plugins) — optional features such as feedback and pre-screening.
+- [Billing and usage](/account-configuration/billing-and-usage) — your plan, usage against your
+  contract, and invoices.
+
 ## Related articles
 
 <CardGroup cols={2}>
   <Card title="Logging in" icon="arrow-right-to-bracket" href="/getting-started/logging-in" />
   <Card title="User roles explained" icon="users" href="/getting-started/roles-explained" />
   <Card title="Multi-factor authentication & login options" icon="shield-check" href="/getting-started/mfa-and-login-options" />
+  <Card title="Your profile" icon="user" href="/getting-started/your-profile" />
+  <Card title="Switch firms" icon="arrows-rotate" href="/getting-started/switch-firms" />
 </CardGroup>
+
+{/* source: app.vitay.io projects/references protected/welcome/welcome.component.{html,ts} (WELCOME.TITLE "Welcome to Vitay", WELCOME.BUTTONS.TAKE_TOUR "Take a Tour" → TourService.referencesStartTour(), BUTTONS.DEMO "Book a Demo", WELCOME.BUTTONS.SKIP "Skip onboarding" → /dashboard; route protected-routing.module.ts path 'welcome' behind ProtectedGuard — NOTE no code auto-navigates here, so the screen is described conditionally), src/app/shared/services/tour.services.ts (intro.js; anchors are data-title/data-intro/data-step on shared/components/navbar/navbar.component.html) and TOUR.STEP1-7 in projects/references/src/assets/i18n/en.json; src/app/shared/components/announcements/{badge,sidebar} + shared/routing/notifications + shared/services/announcements.service.ts (ANNOUNCEMENTS.TITLE "Notifications", MARK_ALL_READ "Mark all as read", VIEW_ALL "View all notifications", unread_count polled every 5 min), api app/controllers/api/v3/announcements_controller.rb + app/models/announcement.rb; app.vitay.io projects/references shared/components/topbar/topbar.component.html TOPBAR.DEMO.* banner when is_demo_enabled (links to billingUrl); api db/schema.rb settings.is_demo_enabled default true; app.vitay.io projects/configuration protected/settings/settings.component.ts (General/Configuration/Plugins/Relationships/Requests/Feedback/Documents/Notifications/Leads/Pages/Emails/Texts/Developers isDisabled when is_demo_enabled) + projects/references navbar/candidates list/show demo gating; api lib/tasks/accounts.rake demo_deactivate (HiringFirm created_at < 35.days.ago && setting.is_demo_enabled → is_active false, no customer warning) */}

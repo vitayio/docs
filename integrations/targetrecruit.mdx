@@ -1,0 +1,93 @@
+---
+title: "TargetRecruit integration"
+description: "Connect Vitay to TargetRecruit (Salesforce) so candidates and references flow between the two systems and completed reference PDFs land on the candidate's record."
+---
+
+The TargetRecruit integration links Vitay to your TargetRecruit instance — a Salesforce-based ATS — using a Salesforce connected app and an integration user. Once connected, TargetRecruit can send candidates and references to Vitay and trigger reference requests, Vitay writes completed references and their PDF reports back to the candidate's record, and recruiters can push a candidate or a report from Vitay by hand.
+
+<Note>
+  The TargetRecruit integration is set up **together with the Vitay team**: the automatic flows depend on Vitay fields and a webhook configured on your TargetRecruit side. Connecting or disconnecting requires **root recruiter** access in Vitay, and you'll need your Salesforce **site URL**, connected-app **Client ID** and **Client Secret**, the integration user's **username**, **password**, and (if your org requires it) **security token**, plus the **record type ID** used for candidate contacts. Contact [hello@vitay.io](mailto:hello@vitay.io) to get started.
+</Note>
+
+## What the integration does
+
+- **Imports candidates from TargetRecruit** — when TargetRecruit sends a candidate to Vitay, the candidate is created in Vitay (or matched to an existing candidate with the same email) and assigned to the recruiter you specify, or to your firm's default root recruiter.
+- **Sends reference requests automatically** — if the candidate is flagged to send a reference request, Vitay creates one with the question set chosen in TargetRecruit (or your firm's default reference question set) and emails the candidate straight away. If that candidate already has an open request with the same question set, nothing is duplicated.
+- **Imports references** — a reference added to a synced candidate in TargetRecruit is created in Vitay (name, email, phone, company, relationship, start date) and immediately emailed the reference form.
+- **Writes completed references back** — when a reference is completed in Vitay, it's created on the candidate's TargetRecruit record if it isn't there yet; if it already is, Vitay attaches the completed reference PDF to the candidate's *Credentials* record.
+- **Manual sync actions** — recruiters can push a Vitay candidate to TargetRecruit from the **Synchronize** dropdown on the candidate page, and upload a reference PDF from the **Synchronize** dropdown on a completed reference.
+
+## Connect TargetRecruit
+
+The Vitay team sets up the connection with you. On the TargetRecruit side, the team walks you through the Vitay fields on your candidate and reference records and the webhook that tells Vitay when to act. In Vitay, a root recruiter then enters the credentials:
+
+<Steps>
+  <Step title="Open the TargetRecruit integration">
+    In Vitay, open **Integrations** and select the **Target recruit** card.
+  </Step>
+  <Step title="Enter your Salesforce details">
+    Fill in the **Site url** of your TargetRecruit instance, the connected app's **Client ID** and **Client secret**, the integration user's **Username** and **Password**, the **Token** (the user's Salesforce security token — leave it empty if your org doesn't require one), and the **Candidate record type id** Vitay should use when it creates candidate contacts. Then submit.
+  </Step>
+  <Step title="Confirm the card shows Active">
+    Vitay requests an access token from Salesforce with these details before saving them. If Salesforce rejects them, the connection isn't created. Once accepted, the card is marked **Active**.
+  </Step>
+</Steps>
+
+![SCREENSHOT: Integrations gallery showing the Target recruit integration dialog with the site URL, token, record type ID and credential fields — placeholder](/images/placeholder.png)
+
+## What syncs, and when
+
+The integration is event-driven — there is no scheduled poll. Things happen when TargetRecruit notifies Vitay, when a reference is completed, or when a recruiter uses a manual action:
+
+<Steps>
+  <Step title="TargetRecruit sends a candidate">
+    Vitay creates the candidate (first name, last name, email, mobile phone, TargetRecruit ID) or matches an existing one by email in your firm. Candidates without an email are ignored. If the candidate is flagged to send a reference request, the request goes out immediately with the chosen (or default) question set.
+  </Step>
+  <Step title="TargetRecruit sends a reference">
+    For a candidate that's already linked, Vitay creates the reference and emails the reference form. Relationship values map to *Peer (or Colleague)*, *Manager*, *Teacher (Professor, Instructor)*, or *Subordinate (or Direct Report)*; anything else is recorded as unknown.
+  </Step>
+  <Step title="A reference is completed in Vitay">
+    Vitay creates the reference on the candidate's TargetRecruit record if it isn't there yet. If it already is, the completed reference PDF (*Candidate name – Reference name.pdf*) is attached to the candidate's *Credentials* record.
+  </Step>
+  <Step title="Manual pushes from Vitay">
+    **Synchronize to Target recruit** creates the candidate contact (using the configured record type) and its *Credentials* record; **Upload document to Target recruit** attaches the reference PDF to the candidate — and to the reference record too, if that reference is linked.
+  </Step>
+</Steps>
+
+## Disconnect TargetRecruit
+
+Only a root recruiter can disconnect the integration. Open **Integrations**, select the **Target recruit** card, and choose **Reset credentials**. Vitay stops accepting TargetRecruit notifications for your firm and no longer writes anything back.
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="A candidate sent from TargetRecruit never appeared in Vitay">
+    Vitay ignores candidates without an email address, and candidates that are already linked to the integration. If the candidate is new and has an email, contact [hello@vitay.io](mailto:hello@vitay.io) to check the webhook configuration on your TargetRecruit side.
+  </Accordion>
+  <Accordion title="No reference request was sent for an imported candidate">
+    A request is only created when the candidate is flagged to send one in TargetRecruit, and not if they already have an open request with the same question set. Check both, then send the candidate again.
+  </Accordion>
+  <Accordion title="A reference added in TargetRecruit didn't get the form">
+    References are only imported for candidates that are already linked to the integration. Send the candidate to Vitay first, then the reference. The reference also needs an email address or phone number for the form to be sent.
+  </Accordion>
+  <Accordion title="I get 'Candidate already exists' when pushing a candidate">
+    That candidate is already linked to a TargetRecruit record — either it came from TargetRecruit or was pushed earlier. There's nothing more to do.
+  </Accordion>
+  <Accordion title="A reference PDF isn't showing on the candidate's record">
+    The PDF is only attached once the reference is complete and already linked to TargetRecruit. If the reference was created in Vitay, its first completion creates it in TargetRecruit — use **Upload document to Target recruit** on the completed reference to attach the PDF, or contact [hello@vitay.io](mailto:hello@vitay.io).
+  </Accordion>
+  <Accordion title="Actions fail after a password or security-token change">
+    Vitay signs in to Salesforce with the stored username, password, and security token before every action. If any of them change, the sign-in fails. Ask a root recruiter to open **Integrations**, choose **Reset credentials** on the Target recruit card, and connect again with the new details.
+  </Accordion>
+</AccordionGroup>
+
+## Related articles
+
+<CardGroup cols={2}>
+  <Card title="Integrations overview" icon="plug" href="/integrations/overview" />
+  <Card title="Question sets & templates" icon="list-check" href="/account-configuration/question-sets-and-templates" />
+  <Card title="Send a reference request" icon="paper-plane" href="/candidates-reference-requests/send-a-reference-request" />
+  <Card title="Add a candidate" icon="user-plus" href="/candidates-reference-requests/add-a-candidate" />
+</CardGroup>
+
+{/* source: api app/controllers/api/v3/webhooks/target_recruit_controller.rb (types candidate / reference / credentials / reference_request; vitay_send_reference_request__c, vitay_question_set_id__c, vitay_recruiter_id__c; REFERENCE_RELATIONSHIPS map); api app/controllers/api/services/target_recruit_controller.rb (+ target_recruit/candidates, references, documents controllers); api app/services/external_services/target_recruit/{authorize,refresh_token,candidates,references,credentials,documents}.rb (Salesforce password grant, Contact + CRDNTLS__Credentials_Answers__c, AVTRRT__References__c, Attachment); api app/controllers/api/v1/references_controller.rb public_create INTEGRATIONS AUTO UPLOAD (TargetRecruit branch); app configuration modals.integrations (target_recruit fields; INTEGRATIONS.DELETE "Reset credentials"); app candidates.show.header Synchronize dropdown */}

@@ -32,6 +32,16 @@ Users are the recruiters who log in to Vitay to manage candidates and references
   </Step>
 </Steps>
 
+### What the new user receives
+
+When **Send email to user** is ticked, the new user gets a welcome email (subject "Reference checking. Simplified.") that says who added them, lists their username and a temporary password, and has a **Log in** button. It also links to an explainer video and a user guide — by default Vitay's own, or your firm's if you've set custom links on the **White Label** tab (see [Branding and white label](/account-configuration/branding-white-label)).
+
+If your firm has filled in **New Recruiters - Compliance Statement** under **Settings → Configuration**, that statement is included in the welcome email in bold. Use it for any onboarding or compliance wording your new users must see.
+
+### Download the user list
+
+To export your team list, click the **download** icon on the **Users** page (its tooltip reads **Download report**). Vitay downloads a CSV with each user's first name, last name, email, and whether they are active.
+
 ## Roles explained
 
 | Role | What they can do |
@@ -75,13 +85,56 @@ Deactivating a user removes their login access but preserves all their historica
 
 The user can no longer log in. Their past work remains visible and is still attributed to them in reports and activity logs. If you need to restore access later, use the **reactivate** (check) icon on the same row.
 
+## Automatic lock for inactive users
+
+If you turn on **Disable inactive accounts** under **Settings → Configuration** (off by default), Vitay periodically locks any user who hasn't signed in for a month. Root recruiters are never locked this way. A locked user sees a **Locked** badge on their user page and can't sign in until the account is unlocked.
+
+To unlock someone, open their page under **Configuration → Users** and click **Unlock and Reset password**. They receive a password reset email, and the account is unlocked once they finish resetting their password. Users can also unlock themselves with the **Forgot password** link on the login page — see [Logging in](/getting-started/logging-in).
+
+## Change the assigned recruiter for a candidate
+
+Every candidate has an **Assigned user** — the recruiter who owns the record and receives its notifications. You'll typically reassign candidates when a recruiter leaves or changes role.
+
+- **Root recruiters** can always change the assigned user.
+- **Other users** can only do so when **Allow users to update the assigned user** is turned on under **Settings → Configuration** (off by default).
+
+<Steps>
+  <Step title="Reassign one candidate">
+    Open the candidate, click the **edit** (pencil) icon, and pick the new recruiter in the **Assigned user** field at the top of the **Edit candidate** modal — the current assignee is shown beneath it. Click **Submit**.
+  </Step>
+  <Step title="Reassign several candidates at once">
+    On the **Candidates** list, tick the candidates you want to move and choose **Assign to recruiter** from the bulk actions. Select the recruiter and confirm. The bulk action isn't offered while the list is filtered to **All Sub Accounts**, because a recruiter belongs to a single account — switch to one account first.
+  </Step>
+</Steps>
+
+![SCREENSHOT: the Edit candidate modal with the Assigned user field, and the Assign to recruiter bulk action on the Candidates list — placeholder](/images/placeholder.png)
+
 ## Manage sub-accounts
 
-If your firm has **sub-accounts** enabled, an **Accounts** item appears in the Configuration area's navigation, and each sub-account has its own user list. To add a user to a sub-account, switch into that sub-account context and follow the same steps above.
+Sub-accounts are separate environments for branches, teams, or client companies under your main account: each has its own candidates, references, and user list, while usage rolls up to the parent for billing. If sub-accounts are enabled for your firm, an **Accounts** item appears in the Configuration area's navigation.
+
+<Steps>
+  <Step title="Open Accounts">
+    Go to **Configuration → Accounts**. The table lists each sub-account with its **ID**, name, nickname, root user, and creation date. (The **ID** is the "Branch ID" used when [bulk-uploading candidates](/reports-lead-generation/bulk-candidate-upload) into a sub-account.)
+  </Step>
+  <Step title="Click the add button">
+    Click the **plus** icon (tooltip **Add sub account**). Sub-accounts can only be created from the parent account — the button is disabled while you're working inside a sub-account.
+  </Step>
+  <Step title="Enter the sub-account and its root user">
+    Fill in the sub-account's **Name**, then the **first name**, **last name**, and **email** of the person who will manage it — they become that sub-account's root user.
+
+    Leave **Send email to user** ticked to email them their login credentials (the modal confirms "Credentials are sent directly to the user"); untick it and no email goes out, so you'll need to share access another way.
+  </Step>
+  <Step title="Submit">
+    Click **Submit**. To add more users to the sub-account, switch into it and follow [Add a user](#add-a-user) above.
+  </Step>
+</Steps>
 
 <Note>
-  A user can belong to more than one account within the same firm family. They will see a firm-switcher at login. A user cannot be added to two unrelated firm families.
+  A user can belong to more than one account within the same firm family; they switch between them from the company switcher in the top bar — see [Switch firms](/getting-started/switch-firms). A user cannot be added to two unrelated firm families.
 </Note>
+
+Root users of the parent account can see combined usage across sub-accounts on the **Sub accounts overview** dashboard, and on the billing pages — see [Billing and usage](/account-configuration/billing-and-usage).
 
 ## Troubleshooting
 
@@ -91,6 +144,12 @@ If your firm has **sub-accounts** enabled, an **Accounts** item appears in the C
   </Accordion>
   <Accordion title="I can't change the role for a specific user">
     The Root and Supervisor switches are only available to root recruiters, and are never shown for the account's default root user or for your own account. If the user is listed as the default account, contact Vitay support to transfer that designation.
+  </Accordion>
+  <Accordion title="A user was locked but never entered a wrong password">
+    This is the inactive-user lock: **Disable inactive accounts** is on and the user hadn't signed in for a month. Click **Unlock and Reset password** on their user page, or turn the setting off under **Settings → Configuration** if you don't want this behaviour.
+  </Accordion>
+  <Accordion title="I can't see the Assigned user field when editing a candidate">
+    The field only appears for root recruiters, or for everyone once **Allow users to update the assigned user** is turned on under **Settings → Configuration**. Ask a root recruiter to reassign the candidate or to enable the setting.
   </Accordion>
   <Accordion title="The Users section is not visible">
     You need a root recruiter role to open the Configuration area, including user management. If you believe you should have access, ask your account's root recruiter to upgrade your role.
@@ -104,6 +163,8 @@ If your firm has **sub-accounts** enabled, an **Accounts** item appears in the C
   <Card title="Notification settings" icon="bell" href="/account-configuration/notification-settings" />
   <Card title="Question sets and templates" icon="list-check" href="/account-configuration/question-sets-and-templates" />
   <Card title="Branding and white label" icon="palette" href="/account-configuration/branding-white-label" />
+  <Card title="Firm configuration" icon="sliders" href="/account-configuration/firm-configuration" />
+  <Card title="Billing and usage" icon="credit-card" href="/account-configuration/billing-and-usage" />
 </CardGroup>
 
-{/* source: app.vitay.io projects/configuration MODALS.USERS (Add user / Edit user, IS_SEND_EMAIL_ENABLED), MODALS.USERS.SUPERVISOR, NAVBAR.USERS, NAVBAR.ACCOUNTS, USERS show page (Reset password / Unlock and Reset password); api app/models/user.rb, app/models/recruiter.rb, app/models/role.rb, app/models/hiring_firm.rb */}
+{/* source: app.vitay.io projects/configuration MODALS.USERS (Add user / Edit user, IS_SEND_EMAIL_ENABLED), MODALS.USERS.SUPERVISOR, NAVBAR.USERS, NAVBAR.ACCOUNTS, USERS show page (Reset password / Unlock and Reset password, USERS.SHOW.LOCKED badge), users.list.component (download → documents csv type recruiters), accounts.list.component (cols seq_id ID/name/nickname/default_root/created_at; add disabled when isSubAccount) + shared/components/modals/accounts (name, first/last name, email, is_send_email_enabled, MODALS.ACCOUNTS.WARNING), SETTINGS.CONFIGURATION.is_disable_inactive_users_enabled / is_candidate_ownership_updatable / new_recruiters_security_statement labels; projects/references shared/components/modals/candidates (added_by_id Assigned user field gated by isRoot || is_candidate_ownership_updatable), candidates.list.component + assign-to-recruiter-modal (CANDIDATES.BULK_ACTIONS.ASSIGN_TO_RECRUITER, withheld under scope:all_sub_accounts), DASHBOARD.SUB_ACCOUNTS; api app/models/user.rb, app/models/recruiter.rb (send_welcome email: subject, username/password, explainer_video_link, user_guide_link, new_recruiters_security_statement), app/models/role.rb, app/models/hiring_firm.rb (seq_id per parent), lib/tasks/users.rake (disable_inactive: non-root, last_connected_at > 1 month → is_locked), app/controllers/api/v3/candidates/bulk_controller.rb (bulk_assign_to_recruiter), app/controllers/api/v3/documents/csv_controller.rb (recruiters export fields first_name last_name email is_active) */}

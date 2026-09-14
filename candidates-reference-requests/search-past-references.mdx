@@ -12,6 +12,25 @@ Vitay stores every reference that has been completed, even after a hire is made.
   in by enabling the **Display Everyone / Myself toggle** setting.
 </Note>
 
+## Search from anywhere with the top bar
+
+The fastest way to jump to a specific person is the **magnifier** icon in the top bar. Click it to
+open a search box, then start typing — results appear as you type.
+
+The search box has a dropdown next to it that decides what you're searching:
+
+- **Search candidates** — jumps to the candidate's profile.
+- **Search references** — jumps to the reference's page.
+
+Vitay switches the dropdown for you as you move around: it searches candidates while you're on the
+Candidates pages and references while you're on the References pages, and you can change it
+manually at any time.
+
+<Note>
+  The top-bar search is hidden on demo accounts, and it's not shown while you have a single
+  candidate open.
+</Note>
+
 ## Find references on a candidate record
 
 The quickest way to see past references for a specific candidate is through their profile in Vitay.
@@ -34,6 +53,32 @@ The quickest way to see past references for a specific candidate is through thei
   </Step>
 </Steps>
 
+## Narrow the Candidates list
+
+The Candidates list starts with a compact toolbar: a **refresh** icon, a **Filters** (funnel) icon,
+a date-range picker and a **Search candidates** box. Click the **Filters** funnel to expand the
+full filter toolbar.
+
+| Filter | What it does |
+|---|---|
+| **Date range** | Limits the list by date. Presets are **Last 7 days**, **Month to date**, **Last month** and **Year to date**, or pick your own start and end dates. |
+| **Search job title…** | Searches candidates by job title. Only shown when job titles are enabled for your firm. |
+| **Statuses** | One dropdown with two sections. **Statuses** filters on the candidate status — Process initiated, Waitlisted, Interview scheduled, Rejected, Interviewed, Completed, Submitted, Accepted, Unresponsive. **Reference status** filters on where their references are — No Reference req. sent, Candidate req. pending, Reference req. pending, Completed, Unresponsive. |
+| **Recruiters** | Limits the list to candidates assigned to the recruiters you tick. |
+| **Everyone / Myself** | Switches between your own candidates and the whole firm's. |
+
+Tick the boxes you want inside a dropdown and click **Apply filters**. To clear everything, click
+the red **✕** at the end of the toolbar — it resets every filter, switches the view back to
+**Myself**, and collapses the toolbar again.
+
+<Tip>
+  The date range doesn't start empty. When you open the list, Vitay pre-selects the default
+  timeframe your firm has configured, so widen the range if an older candidate seems to be
+  missing.
+</Tip>
+
+![SCREENSHOT: the Candidates list with the Filters funnel expanded, showing the date range, Statuses dropdown, Recruiters dropdown and the red reset ✕ — placeholder](/images/placeholder.png)
+
 ## Find references across all candidates
 
 If you're not sure which candidate a reference is tied to, or you want to browse recently completed references across your book of business, use the global references view.
@@ -46,15 +91,36 @@ If you're not sure which candidate a reference is tied to, or you want to browse
     toggle** setting (or you're a root recruiter or supervisor), you can
     switch the toggle to **Everyone** to browse the whole firm's references.
   </Step>
-  <Step title="Filter or search">
-    Use the search box to find a reference by their name or email, and the
-    filters to narrow by question set or status. Completed references have a
-    filled-in status indicator; pending ones are still awaiting a response.
+  <Step title="Search by name or email">
+    Use the **Search references** box in the toolbar to find a reference by
+    their name or email address.
+  </Step>
+  <Step title="Filter the list">
+    Click the **Filters** (funnel) icon to expand the filter toolbar:
+
+    | Filter | What it does |
+    |---|---|
+    | **Date range** | Same presets as elsewhere — **Last 7 days**, **Month to date**, **Last month**, **Year to date**, or custom dates. |
+    | **Recruiters** | Limits the list to references belonging to the recruiters you tick. |
+    | **Types** | **Client**, **Candidate**, **Duplicated IP** and **N/A**. The Client and Candidate types come from lead generation; **Duplicated IP** picks out references flagged for sharing an IP address with their candidate. |
+    | **Relationships** | Filters by the reference's relationship to the candidate, using the relationship list your firm has configured. |
+    | **Status** | **Pending**, **Completed** or **Unresponsive**. |
+
+    Each dropdown has an **Apply filters** button. The red **✕** at the end of
+    the toolbar clears all of them and returns the view to **Myself**.
+
+    ![SCREENSHOT: the References list with the filter toolbar expanded showing Recruiters, Types, Relationships and Status — placeholder](/images/placeholder.png)
   </Step>
   <Step title="Open a reference">
     Click any row to open the individual reference and read its answers.
   </Step>
 </Steps>
+
+<Tip>
+  With the filter toolbar open you may also see a **download** icon, which exports the filtered
+  list as a CSV file. It appears for root recruiters, and for everyone else when your firm allows
+  report downloads. See [Download reports](/reports-lead-generation/download-reports).
+</Tip>
 
 ## Troubleshooting
 
@@ -81,4 +147,4 @@ If you're not sure which candidate a reference is tied to, or you want to browse
   <Card title="Add a reference manually" icon="pen-to-square" href="/candidates-reference-requests/add-a-reference-manually" />
 </CardGroup>
 
-{/* source: api app/models/reference.rb (search by reference first/last/email); app/models/setting.rb + api/v2/references_controller.rb (is_all_toogle_enabled opt-in, default false; root/supervisor always firm-wide); app.vitay.io pagination.leads.service.ts (default Myself scope); src/app/shared/services/candidates/candidates.references.service.ts; src/app/shared/services/references.service.ts */}
+{/* source: api app/models/reference.rb (search by reference first/last/email); app/models/setting.rb + api/v2/references_controller.rb (is_all_toogle_enabled opt-in, default false; root/supervisor always firm-wide); app.vitay.io pagination.leads.service.ts (default Myself scope); src/app/shared/services/candidates/candidates.references.service.ts; src/app/shared/services/references.service.ts; projects/references protected/candidates/list/candidates.list.component.{html,ts} (compact vs isMore toolbar toggled by BUTTONS.FILTERS funnel / red lnr-cross resetFilters(true); PLACEHOLDERS.SEARCH "Search {{value}}", PLACEHOLDERS.SEARCH_JOB_TITLE "Search job title..." gated on is_candidate_job_title_enabled, FILTERS.CANDIDATE_STATUSES "Statuses" + FILTERS.REFERENCE_STATUSES "Reference status" in one dropdown, FILTERS.RECRUITERS "Recruiters", FILTERS.APPLY "Apply filters", FILTERS.EVERYONE/MYSELF/ALL_SUB_ACCOUNTS, BUTTONS.DOWNLOAD when isRoot || is_reports_downloadable; bsConfig.ranges hardcoded "Last 7 days"/"Month to date"/"Last month"/"Year to date"; default range from settings.default_filters_timeframe); src/app/shared/helpers/candidate.helper.ts candidatesStatus + reference.helper.ts referenceStatus (hardcoded English labels); projects/references protected/leads/list/leads.list.component.{html,ts} (the sidebar "References" page, NAVBAR.LINKS.LEADS url /leads, LEADS.TITLE "References"; FILTERS.RECRUITERS, FILTERS.CONTACT_TYPES.TITLE "Types" with HIRING "Client"/CANDIDATE/IP "Duplicated IP"/NA, FILTERS.RELATIONSHIPS from per-firm referenceRelationships, FILTERS.STATUSES.TITLE "Status" with PENDING/COMPLETED/UNRESPONSIVE); projects/references shared/components/topbar/topbar.component.{html,ts} (lnr-magnifier toggles isSearchbarEnabled, hidden when is_demo_enabled or 'search' in hideMenuItems; checkCurrentUrl swaps resourceName candidates<->references on NavigationEnd) + src/app/shared/components/typeahead (advanced-search dropdown "Search candidates"/"Search references", COMMON.NO_RESULTS) */}

@@ -68,8 +68,12 @@ If a reference notifies you that their email address is wrong, you can correct i
     ![SCREENSHOT: the reference edit form with the email field highlighted — placeholder](/images/placeholder.png)
   </Step>
   <Step title="Resend the request">
-    After saving, send a reminder to the reference so they receive the request
-    at their new address.
+    Saving a changed email address or phone number for a reference who hasn't
+    submitted yet cancels the reminders that were still scheduled for them —
+    Vitay doesn't resend anything on its own and doesn't prompt you to. Send a
+    reminder yourself so they receive the request at their new address, and
+    check the **Email activity** tab afterwards to confirm it arrived. See
+    [Check email and text delivery](/candidates-reference-requests/email-and-text-delivery).
   </Step>
 </Steps>
 
@@ -127,7 +131,8 @@ If a candidate is withdrawn from the process or a mistake was made, you can canc
   <Card title="Send a reference request" icon="paper-plane" href="/candidates-reference-requests/send-a-reference-request" />
   <Card title="Reminders and how they work" icon="bell" href="/candidates-reference-requests/reminders-and-cadence" />
   <Card title="A reference didn't receive the email" icon="triangle-exclamation" href="/candidates-reference-requests/reference-not-received" />
+  <Card title="Check email and text delivery" icon="envelope-circle-check" href="/candidates-reference-requests/email-and-text-delivery" />
   <Card title="Read a completed reference" icon="clipboard-check" href="/candidates-reference-requests/read-a-completed-reference" />
 </CardGroup>
 
-{/* source: api app/models/reference_request.rb (send_reference_requests, add_reminders, reset_reminders); app/models/recruiter_reference.rb (send_reference_email, send_reminder_email); app/controllers/api/v1/reference_requests_controller.rb (send_reminder, destroy); app.vitay.io src/app/shared/services/reference-requests.service.ts (patch, sendReminder); src/app/shared/services/references.service.ts (patch, sendReferenceReminder) */}
+{/* source: api app/models/reference_request.rb (send_reference_requests, add_reminders, reset_reminders); app/models/recruiter_reference.rb (send_reference_email, send_reminder_email); app/controllers/api/v1/reference_requests_controller.rb (send_reminder, destroy); app/controllers/api/v1/references_controller.rb#update (is_contact_updated → reset_reminders, no resend, no prompt) + app/models/recruiter_reference.rb#reset_reminders (skipped once filled); app.vitay.io src/app/shared/services/reference-requests.service.ts (patch, sendReminder); src/app/shared/services/references.service.ts (patch, sendReferenceReminder) */}

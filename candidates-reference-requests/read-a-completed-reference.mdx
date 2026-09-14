@@ -18,8 +18,11 @@ When a reference completes the question form, Vitay records their answers and ca
   </Step>
   <Step title="Go to the References tab">
     Click the **References** tab. Each reference shows one of a fixed set of
-    statuses: **Pending**, **Completed**, or **Unresponsive** (plus
-    **Declined**, when a reference chose not to respond).
+    statuses: **Pending**, **Completed**, or **Unresponsive**. **Declined**
+    only appears if your firm has switched on **References can decline the
+    request** on the **Ref. Requests** settings tab — it is off by default, so
+    most accounts never see this status. See
+    [Reference request settings](/account-configuration/reference-request-settings).
 
     ![SCREENSHOT: the References tab showing a completed reference with status badge — placeholder](/images/placeholder.png)
   </Step>
@@ -34,13 +37,55 @@ When a reference completes the question form, Vitay records their answers and ca
   </Step>
 </Steps>
 
-## Understand the overall candidate score
+## How the score is calculated
 
-Vitay rolls up scores across all completed references for a candidate into a single **candidate score**, visible on the candidate's profile page. This gives you an at-a-glance view of how the candidate's references rated them overall.
+Vitay scores a reference from its **rating** and **matrix** answers only. Text,
+dropdown, radio, checkbox, slider, ranking and date answers are never part of
+the score, and an answer the reference marked **N/A** is left out of it.
 
-The score is calculated automatically from the scored answers (rating and matrix questions) across all completed references. It updates in real time as more references are received.
+- **Rating questions** — Vitay averages the values the reference gave and
+  divides that average by the rating scale. The scale comes from your firm's
+  **Default rating scale** setting (**5** by default; **10** is the other
+  option), so an average of 4 on a 5-point scale is 80%.
+- **Matrix questions** — each row is scored against the **highest column
+  weight** configured on that question, not against the number of columns. That
+  way retiring a column doesn't quietly rescale the question. The **N/A**
+  column a matrix always offers is not counted.
+- **Both together** — when a question set contains rating *and* matrix
+  questions, the reference's score is the average of the two results.
 
-![SCREENSHOT: the candidate profile page showing the overall candidate score — placeholder](/images/placeholder.png)
+A worked example, for a question set with one rating question and one matrix
+question:
+
+| Answer | Score |
+|---|---|
+| A rating question answered **5** on a 5-point scale | 100% |
+| A matrix row where the **4th of 5** columns is selected | 80% |
+| **Reference score** | **90%** |
+
+### The candidate score
+
+The score in the circle at the top of the candidate page is the average of the
+scores of that candidate's completed references. References that were declined
+or deleted are not included, and the number moves as each new reference comes
+back.
+
+![SCREENSHOT: the candidate page header showing the overall candidate score dial — placeholder](/images/placeholder.png)
+
+### Hiding scores
+
+Scores are shown by default. A root recruiter can hide them everywhere — on the
+candidate page, in lists, and on PDF reports — by switching off **Show
+reference score** on the **Ref. Requests** settings tab. See
+[Reference request settings](/account-configuration/reference-request-settings).
+
+<Note>
+  The score reflects only what the reference answered. If you are checking
+  whether a reference is trustworthy as well as positive, look at the
+  IP-conflict banner and the list of edits the candidate made to the reference's
+  details — see
+  [IP conflicts and reference edits](/candidates-reference-requests/ip-conflicts-and-reference-edits).
+</Note>
 
 ## Download a reference report
 
@@ -49,6 +94,9 @@ hiring manager), use the **Download report** button on the candidate's
 **References** tab. You can download the full report covering all completed
 references, or a report for a single question set. Reports download as PDF;
 DOCX and CSV formats are also offered where they're enabled for your firm.
+
+If you would rather send someone a link than an attachment, see
+[Share reports](/candidates-reference-requests/share-reports).
 
 ![SCREENSHOT: the References tab with the Download report button and its format options — placeholder](/images/placeholder.png)
 
@@ -61,10 +109,16 @@ DOCX and CSV formats are also offered where they're enabled for your firm.
     the page. If the problem persists, contact Vitay support.
   </Accordion>
   <Accordion title="The score seems lower than expected">
-    The score is derived from rating and matrix questions. If the question set
-    uses mostly text or multiple-choice questions, the calculated score may
-    reflect a smaller number of data points. A root recruiter can adjust the
-    question set if you want scoring based on more questions.
+    Only rating and matrix answers count towards the score, so a question set
+    built mostly from text or multiple-choice questions is scored on very few
+    data points. Answers marked **N/A** are excluded too. A root recruiter can
+    add rating or matrix questions to the set if you want the score based on
+    more of the answers.
+  </Accordion>
+  <Accordion title="I can't see a score anywhere">
+    A root recruiter has switched off **Show reference score** on the
+    **Ref. Requests** settings tab. It hides scores on candidate pages, in
+    lists, and on PDF reports for the whole account.
   </Accordion>
   <Accordion title="I need to correct an answer">
     Recruiters can edit individual answers after submission (for example, to
@@ -82,6 +136,8 @@ DOCX and CSV formats are also offered where they're enabled for your firm.
   <Card title="Add a reference manually" icon="pen-to-square" href="/candidates-reference-requests/add-a-reference-manually" />
   <Card title="Search for past references" icon="magnifying-glass" href="/candidates-reference-requests/search-past-references" />
   <Card title="A reference didn't receive the email" icon="triangle-exclamation" href="/candidates-reference-requests/reference-not-received" />
+  <Card title="IP conflicts and reference edits" icon="fingerprint" href="/candidates-reference-requests/ip-conflicts-and-reference-edits" />
+  <Card title="Share reports" icon="share-nodes" href="/candidates-reference-requests/share-reports" />
 </CardGroup>
 
-{/* source: api app/models/answer_set.rb; app/models/answer.rb (types: Text, Rating, Radio, Dropdown, Checkbox, Slider, Date, DateRange, Matrix, Ranking); app/models/reference.rb (score from Rating + Matrix weights); app/models/candidate_score.rb (materialized view, score column); app/controllers answers_controller.rb (answer edits, no setting gate); app.vitay.io candidates.show.references.component.ts (Download report → GET /documents, PDF/DOCX/CSV); src/app/shared/components/answers/answers.component.html; src/app/shared/components/score/score.component.html */}
+{/* source: api app/models/reference.rb#score (Rating avg / scale * 100; Matrix weight normalised against question_columns MAX weight, N/A column weight 6 excluded; mean of the two when both present), app/models/concerns/has_references.rb#score (candidate score = average of filled_references scores, declines excluded), app/models/setting.rb (rating_scale default 5, is_reference_score_enabled default true, is_reference_is_declinable_enabled default false); app.vitay.io projects/configuration settings/configuration (defaultRatings [5, 10], SETTINGS.CONFIGURATION.rating_scale "Default rating scale"), settings/requests (SETTINGS.REQUESTS.is_reference_score_enabled "Show reference score"); projects/references public/references/references.component.html (matrix N/A column weight 6, rating Not applicable checkbox), protected/candidates/show/header (app-score dial); api app/models/answer_set.rb; app/models/answer.rb (types: Text, Rating, Radio, Dropdown, Checkbox, Slider, Date, DateRange, Matrix, Ranking); app/models/reference.rb (score from Rating + Matrix weights); app/models/candidate_score.rb (materialized view, score column); app/controllers answers_controller.rb (answer edits, no setting gate); app.vitay.io candidates.show.references.component.ts (Download report → GET /documents, PDF/DOCX/CSV); src/app/shared/components/answers/answers.component.html; src/app/shared/components/score/score.component.html */}

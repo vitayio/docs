@@ -1,0 +1,62 @@
+---
+title: "I can't type, select, or submit on the form"
+description: "For candidates: what to check when the reference request form won't accept your input or won't submit, and what to do if the problem persists."
+---
+
+<Note>
+  **This article is for candidates** who received a reference request. If you were asked to *give* a reference and are stuck, see [Editing your answers after submitting](/reference-providers/edit-my-answers) — it covers submission problems on the reference form.
+</Note>
+
+Most submission problems come down to one of three things: a required field that's still empty, a checkbox or signature that's missing, or a browser add-on getting in the way. Work through the checks below in order.
+
+## Check what the form says is missing
+
+The **Submit** button turns red with a cross when the form isn't complete. Click it anyway — it doesn't send anything yet. Instead, a panel headed **"Please complete the following before submitting:"** lists exactly what's outstanding, and items disappear from the list as you fix them.
+
+Things that commonly show up there:
+
+- **A field on one of your references** — for example *"Ref #2: Email required"* or *"Ref #1: Start date required"*. Every reference needs a first name, last name, email address and relationship, plus any extra fields the recruiter has turned on (job title, company, phone number, employment dates). Employment dates only need a month and year; tick **Present** if the job is ongoing.
+- **The terms checkbox** — *"Please accept our Terms of Service and acknowledge our Privacy Policy"*. Tick **I accept the Terms of Service and acknowledge the Privacy Policy** above the Submit button.
+- **An authorization checkbox** — *"Please review and accept all the terms above"*. Some recruiting teams add their own consent text with a checkbox you must tick.
+- **Signature** — *"Signature is required"*. If a signature box is shown, use the **Draw** tab to sign with your mouse or finger, or the **Type** tab to type your full name. **Clear** lets you start again.
+- **At least one document** — if the recruiter has made a document upload mandatory, attach at least one file in the **Documents** section.
+
+## Check the email addresses you entered
+
+- If a message on the form says personal email addresses are not permitted, use a work or professional address for each reference — addresses at common providers (Gmail, Yahoo, Hotmail, AOL and similar) will be rejected.
+- If an email shows *"Email already exists"* or *"Reference already attached to your profile"*, that person is already on your list. Remove the duplicate, or use a different reference.
+
+## If typing or selecting doesn't work
+
+<Steps>
+  <Step title="Refresh the page">
+    Reload the form. Your entries are saved on this device as you type, so they should still be there — check them and try again.
+  </Step>
+  <Step title="Turn off ad-blockers and extensions">
+    Browser extensions — especially ad-blockers and privacy tools — can stop parts of the form from responding. Disable them for this page, or open the link in a private/incognito window, where extensions are usually off.
+  </Step>
+  <Step title="Try another browser or your phone">
+    If the form still doesn't respond, open the link from your email in a different browser (Google Chrome or Microsoft Edge work well) or on your phone. If your work network blocks external links, use your phone's mobile data.
+  </Step>
+</Steps>
+
+## If you get an error when you click Submit
+
+- **"Something went wrong while submitting. Your answers have been saved on this device — please try again."** — the connection dropped before the form reached Vitay. Your entries are kept on this device; wait a moment and click **Submit** again.
+- **"… of … reference(s) failed to submit"** — one or more references were rejected, and the reason is shown under that reference on the form (for example an invalid email address). Nothing is saved until every reference is accepted, so correct the ones with errors and submit the whole form again — you won't create duplicates.
+- **"Reference request already filled"** — your submission has already gone through. There's nothing else to do. If you need to change something, see [Adding another reference after submitting](/reference-providers/add-another-reference) or contact the recruiter.
+
+## Still stuck?
+
+Contact the recruiter who sent the request — their name and email are in the message you received, and replying to that email reaches them directly. Let them know what you see on the form (a screenshot helps) so they can check the request and send you a fresh link if needed.
+
+## Related articles
+
+<CardGroup cols={2}>
+  <Card title="Help for candidates and references" icon="house" href="/reference-providers/start-here" />
+  <Card title="The link in my email isn't working" icon="link-slash" href="/reference-providers/link-not-working" />
+  <Card title="Filling in date fields" icon="calendar" href="/reference-providers/date-fields" />
+  <Card title="Editing your answers after submitting" icon="pen-to-square" href="/reference-providers/edit-my-answers" />
+</CardGroup>
+
+{/* source: app.vitay.io projects/references public/reference-requests component (isFormReady red submit button, app-missing-fields panel + collectMissingFields, isAccepted terms checkbox PUBLIC.REFERENCES.TERMS, candidateAuthorization, signature-pad Draw/Type, isMissingRequiredDocuments, localStorage `${id}-references` autosave/restore, TOASTS.NETWORK_RETRY / PARTIAL_FAILURE, PERSONAL_EMAIL_WARNING); i18n REFERENCES_REQUEST.FIELDS.*, FORMS.ERRORS.*; api app/controllers/api/v1/reference_requests_controller.rb render_request_already_filled */}

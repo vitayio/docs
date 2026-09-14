@@ -1,0 +1,146 @@
+---
+title: "Customize emails, text messages, and pages"
+description: "Edit the wording of every email, text message and public-form page Vitay sends on your behalf, in each language you use, with merge fields for names and company details."
+---
+
+Vitay ships with default wording for every email, text message and public page it shows to candidates, references and employers. The **Emails**, **Texts** and **Pages** tabs let you rewrite that wording for your account — per language if you use more than one — and insert merge fields such as the candidate's name.
+
+<Note>
+  You need a **root recruiter** role to open the Configuration area. The **From** address and name on outgoing emails are not set here — see [Email sender settings](/account-configuration/email-sender-settings). Which events trigger an email is set on the **Notification** tab — see [Notification settings](/account-configuration/notification-settings).
+</Note>
+
+## Edit a template
+
+The three tabs work the same way. Each template is a card with its own toolbar.
+
+<Steps>
+  <Step title="Open the tab">
+    Open the **Configuration** area, select **Settings**, then pick **Emails**, **Texts** or **Pages** in the left-hand list.
+  </Step>
+  <Step title="Pick the language">
+    If your account has more than one language enabled, each card shows a language dropdown. Choose the language you want to edit — every language has its own copy of the template.
+  </Step>
+  <Step title="Edit the text">
+    Emails have an **Email subject**, an **Email title**, a **Button** label and a rich-text body. Texts have a plain body with a character counter (240 characters maximum). Pages have a rich-text body.
+  </Step>
+  <Step title="Insert merge fields">
+    Click **Variables** and choose a field to insert it at the cursor. Fields are written as `{{field_name}}` and are replaced with real values when the message is sent. Only use the fields offered in the menu for that template.
+  </Step>
+  <Step title="Save">
+    Click the **save** icon on the card. You will see **Email template updated**, **Text updated** or **Page updated**.
+
+    ![SCREENSHOT: An Emails card showing the language dropdown, Variables menu, Reset, Send test and save icon, with the subject/title/button fields above the editor — placeholder](/images/placeholder.png)
+  </Step>
+</Steps>
+
+### Test, preview and reset
+
+| Action | Where | What it does |
+|---|---|---|
+| **Send test** | Emails, Texts | Sends the saved template to you. Emails go to your login email ("We are going to send an email to yourself at …"); texts go to the phone number on your profile, so the button is disabled until you add one. Merge fields are not filled in on a test send. |
+| **Preview** | Pages | Toggles the editor into a read-only rendering of the page text. Switch it off again to keep editing. |
+| **Reset** | All three | Replaces the card's text with Vitay's default wording for that template and language, and saves it immediately. |
+
+## Email templates
+
+| Card | When it is sent |
+|---|---|
+| **Reference requests** | To the candidate when you send a reference request, asking them to list their references |
+| **Reference requests - reminders** | Reminder to a candidate who has not yet listed their references |
+| **Reference** | To the reference once they have been added, asking them to complete the question set |
+| **Reference - reminders** | Reminder to a reference who has not yet completed the question set |
+| **Candidate: Reference completed** | To the candidate when one of their references has finished (if the matching notification is on) |
+| **Recruiter: Reference completed** | To the recruiter when a reference has finished |
+| **Recruiter: All references completed** | To the recruiter when every reference for a candidate has finished |
+| **Permission request to the candidate** | To the candidate, asking for consent before their data is managed in Vitay |
+| **Feedback requests** / **- reminders** | To the candidate for a feedback request (shown only when a feedback plugin is active) |
+| **Employer Feedback requests** / **- reminders** | To the candidate's employer for a feedback request (candidate feedback plugin) |
+| **Pre-screening requests** / **- reminders** | To the candidate for a pre-screening request (pre-screening plugin) |
+
+### Email merge fields
+
+| Template | Fields in the Variables menu |
+|---|---|
+| Reference requests | `{{candidate_first_name}}`, `{{candidate_full_name}}`, `{{company_name}}`, `{{recruiter_full_name}}`, `{{nb_min_references}}` (not on the reminder) |
+| Reference | `{{candidate_first_name}}`, `{{candidate_full_name}}`, `{{reference_first_name}}`, `{{reference_full_name}}` |
+| Candidate: Reference completed | `{{candidate_first_name}}`, `{{candidate_full_name}}`, `{{reference_full_name}}` |
+| Recruiter: Reference completed | `{{candidate_first_name}}`, `{{candidate_last_name}}`, `{{candidate_email}}`, `{{candidate_full_name}}`, `{{reference_full_name}}`, `{{reference_first_name}}`, `{{reference_last_name}}`, `{{added_by_full_name}}` |
+| Feedback requests | `{{candidate_first_name}}`, `{{candidate_full_name}}`, `{{company_name}}`, `{{recruiter_full_name}}` |
+| Employer Feedback requests | `{{candidate_first_name}}`, `{{employer_full_name}}`, `{{candidate_full_name}}`, `{{company_name}}`, `{{recruiter_full_name}}` |
+
+If the **Candidate job field** is enabled for your account, `{{job_title}}` is also offered on the Reference requests and Reference templates.
+
+The **Recruiter: All references completed**, **Permission request** and **Pre-screening** cards have no Variables menu. Their default text already contains merge fields (for example `{{candidate_full_name}}` and `{{recruiter_full_name}}`), and those keep working if you leave them in place while editing.
+
+## Text message templates
+
+The Texts tab starts with an **Enable / Disable text messages** switch (on by default). When it is off, Vitay sends no text messages at all and the template cards are hidden. Text messages are only sent to people who have a mobile number on record.
+
+| Card | When it is sent |
+|---|---|
+| **Reference requests** / **- reminders** | To the candidate, asking them to list their references |
+| **Reference** / **- reminders** | To the reference, asking them to complete the question set |
+| **Feedback requests** / **- reminders** | Feedback request to the candidate (feedback plugin) |
+| **Employer Feedback requests** / **- reminders** | Feedback request to the employer (candidate feedback plugin) |
+| **Pre-screening requests** / **- reminders** | Pre-screening request to the candidate (pre-screening plugin) |
+
+Each text is limited to **240 characters**; the counter turns red and the save icon is disabled when you go over. Merge fields in the Variables menu:
+
+| Template | Fields |
+|---|---|
+| Reference requests | `{{candidate_first_name}}`, `{{recruiter_full_name}}`, `{{hiring_firm_name}}` |
+| Reference | `{{reference_full_name}}`, `{{reference_first_name}}`, `{{candidate_full_name}}`, `{{hiring_firm_name}}` |
+
+`{{job_title}}` is added to both when the **Candidate job field** is enabled. The feedback and pre-screening texts have no Variables menu.
+
+## Page templates
+
+Pages are the blocks of text shown on the public forms themselves.
+
+| Card | Where it appears | Fields |
+|---|---|---|
+| **Reference request header** | Top of the candidate's reference request form | `{{nb_min_references}}` |
+| **Reference header** | Top of the reference's question-set form | `{{candidate_full_name}}`, `{{company_name}}` |
+| **Reference Request - Submitted** | Message the candidate sees after submitting their references | — |
+| **Candidate authorization** | Label of the extra checkbox on the candidate's form. Shown only while the **Candidate authorization checkbox** setting is on | — |
+| **Reference authorization** | Label of the extra checkbox on the reference's form. Shown only while the **Reference authorization checkbox** setting is on | — |
+| **Feedback request header** / **Employer Feedback request header** | Top of the feedback forms (feedback plugins) | `{{candidate_full_name}}`, `{{company_name}}` |
+| **Pre-screening request** | Top of the pre-screening form (pre-screening plugin) | — |
+
+`{{job_title}}` is added to the two request/reference headers when the **Candidate job field** is enabled. The thank-you page references see after submitting, and the lead-generation options on it, are configured on the **Leads** tab — see [Lead generation](/reports-lead-generation/lead-generation).
+
+![SCREENSHOT: The Pages tab with the Reference request header card in Preview mode — placeholder](/images/placeholder.png)
+
+## Languages
+
+Vitay provides default templates in English, French, French (Canada) and Spanish. The languages available in the per-card dropdown are the ones enabled for your account through the **Multi languages** plugin on the **Plugins** tab; the account's default language is set on the **General** tab. When you enable a language your account has never used, Vitay creates the default templates for it automatically, ready for you to edit.
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="My test email shows the merge fields as literal text">
+    That is expected — a test send uses your saved template without a candidate or reference behind it, so `{{candidate_full_name}}` and similar fields are not replaced. They are filled in on real sends.
+  </Accordion>
+  <Accordion title="I do not see the Feedback, Employer Feedback or Pre-screening cards">
+    Those cards only appear when the matching plugin is active on your account. Contact **hello@vitay.io** if you believe a plugin should be enabled.
+  </Accordion>
+  <Accordion title="Send test is greyed out on the Texts tab">
+    Text tests are sent to the phone number on your own profile. Add one under [Your profile](/getting-started/your-profile) and reload the tab.
+  </Accordion>
+  <Accordion title="I broke a template and want the original back">
+    Click **Reset** on the card. It restores Vitay's default wording for that template and language and saves it straight away — your edits for that language are discarded.
+  </Accordion>
+</AccordionGroup>
+
+## Related articles
+
+<CardGroup cols={2}>
+  <Card title="Email sender settings" icon="envelope" href="/account-configuration/email-sender-settings" />
+  <Card title="Notification settings" icon="bell" href="/account-configuration/notification-settings" />
+  <Card title="Reference request settings" icon="list-check" href="/account-configuration/reference-request-settings" />
+  <Card title="Reminders and how they work" icon="clock" href="/candidates-reference-requests/reminders-and-cadence" />
+  <Card title="Email and text delivery" icon="paper-plane" href="/candidates-reference-requests/email-and-text-delivery" />
+  <Card title="Lead generation" icon="magnet" href="/reports-lead-generation/lead-generation" />
+</CardGroup>
+
+{/* source: app.vitay.io projects/configuration protected/settings/{emails,texts,pages}/settings.*.component.{ts,html} (Variables/Reset/Send test/Preview, checkDisplay plugin gating, texts maxLength 240, is_text_messages_enabled switch, languages from settings.languages when is_plugins_multi_languages_enabled), i18n SETTINGS.EMAILS.* / SETTINGS.TEXTS.* / SETTINGS.PAGES.* / SETTINGS.TEXT_MESSAGES / SETTINGS.PLUGINS.MULTI_LANGUAGES; src/app/shared/models/{email,text,page}.model.ts (variables getters, jobTitleVariable); api templates/{emails,texts,pages}.yml (categories × en/fr/es/fr-ca), app/models/{email,text,page}.rb, app/controllers/api/v3/{emails,texts,pages}_controller.rb (is_default reset from YAML, preview), app/models/setting.rb (SUPPORTED_LANGUAGES, provision_language_templates), app/services/settings/provision_language_templates.rb, app/models/recruiter_reference.rb + recruiter_request.rb + feedback.rb + pre_screening.rb ({{…}} substitution) */}

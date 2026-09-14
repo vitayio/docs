@@ -37,9 +37,31 @@ Connection credentials are stored on your Vitay account, so day-to-day use requi
   <Card title="Greenhouse" icon="seedling" href="/integrations/greenhouse">
     API-key connection that imports flagged candidates from Greenhouse and posts progress notes back to the candidate's activity feed.
   </Card>
+  <Card title="JobDiva" icon="users" href="/integrations/jobdiva">
+    API-credential connection that imports candidates you've flagged in JobDiva and sends each one a reference request.
+  </Card>
+  <Card title="TargetRecruit" icon="cloud" href="/integrations/targetrecruit">
+    Salesforce-based connection that exchanges candidates and references with TargetRecruit and files completed reference PDFs on the candidate's record.
+  </Card>
 </CardGroup>
 
+<Note>
+  Accounts start with a limit of **one active integration**. If you connect up to
+  the limit, the other cards stop opening and the page tells you the limit has
+  been reached — contact [hello@vitay.io](mailto:hello@vitay.io) to have it raised.
+</Note>
+
 Don't see your ATS? Contact [hello@vitay.io](mailto:hello@vitay.io) to ask about support for your platform.
+
+## For developers
+
+Prefer to build your own connection? Vitay can post reference events to a URL you control.
+
+<CardGroup cols={2}>
+  <Card title="Webhooks" icon="code" href="/integrations/webhooks">
+    Get notified at your own endpoint when reference requests are created, completed, or declined.
+  </Card>
+</CardGroup>
 
 ## Related articles
 
@@ -48,4 +70,4 @@ Don't see your ATS? Contact [hello@vitay.io](mailto:hello@vitay.io) to ask about
   <Card title="Add a candidate" icon="user-plus" href="/candidates-reference-requests/add-a-candidate" />
 </CardGroup>
 
-{/* source: api app/controllers/api/bullhorn_controller.rb, jobadder_controller.rb, app/controllers/api/services/erecruit_controller.rb, greenhouse_controller.rb; api app/models/external_authorisation.rb */}
+{/* source: api app/controllers/api/bullhorn_controller.rb, jobadder_controller.rb, app/controllers/api/services/erecruit_controller.rb, greenhouse_controller.rb, jobdiva_controller.rb, target_recruit_controller.rb; api app/models/external_authorisation.rb; api db/schema.rb settings.max_integrations (default 1); app configuration protected/integrations (isIntegrationsLimitReached, INTEGRATIONS.LIMIT) */}
