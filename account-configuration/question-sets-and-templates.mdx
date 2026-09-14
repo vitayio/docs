@@ -25,6 +25,14 @@ A **question set** is the list of questions Vitay sends to each reference when a
 
     To start from one of Vitay's pre-built sets instead, see [Use question set templates](#use-question-set-templates) below.
   </Step>
+  <Step title="Choose the type">
+    Pick the **Type** the set is for. **Reference** is always available.
+    **Feedback** appears only if a feedback plugin is enabled on your account,
+    and **Pre-screening** only if the pre-screening plugin is. The type decides
+    where the set can be used — a Feedback set is never offered when you send a
+    reference request — and it also filters the list of templates you can start
+    from.
+  </Step>
   <Step title="Choose a language">
     Select the **language** references will answer in. If your plan includes
     multiple languages, a set can hold translations of its questions in several
@@ -34,22 +42,13 @@ A **question set** is the list of questions Vitay sends to each reference when a
     fully translated into that language are offered.
   </Step>
   <Step title="Add questions">
-    On the set's page, click the **plus** icon (tooltip **Add question**) and choose a question type in the **Add question** modal:
+    On the set's page, click the **plus** icon (tooltip **Add question**). In
+    the **Add question** modal, write the question in the **Sentence** box and
+    pick a **Type** — see [Question types](#question-types) below for what each
+    one does and which extra fields it brings with it.
 
-    | Type | When to use |
-    |---|---|
-    | **Text** | Open-ended written answer |
-    | **Rating** | Numeric score on a scale (e.g., 1–5) |
-    | **Multiple choice (Options)** | Pick one from a list |
-    | **Radio** | Single-select from options displayed as radio buttons |
-    | **Checkbox** | Multi-select from a list |
-    | **Matrix** | Rate several items on the same scale in a grid |
-    | **Slider** | Drag to a value on a continuous scale |
-    | **Ranking** | Drag items into a ranked order |
-    | **Date** | Pick a single date |
-    | **Date range** | Pick a start and end date |
-
-    For each question, enter the question text and — for choice-based types — add the answer options. Every question type except **Text** can also be marked **Commentable**, which adds an extra comment field for the reference (with an optional **Comment required** setting).
+    Click **Preview** at the top of the modal at any point to see the question
+    exactly as the reference will see it.
   </Step>
   <Step title="Organise questions into groups (optional)">
     If you have created **question groups** (labels that organise related questions), assign each question to a group in the **Question group** field. The group's label appears as a small heading above each of its questions in the reference form.
@@ -105,6 +104,78 @@ Vitay provides pre-built question set templates you can use as a starting point.
   Question set templates are managed by Vitay. If you need a template added or modified, contact **hello@vitay.io**.
 </Note>
 
+## Question types
+
+Pick the type in the **Add question** modal. Only **Rating** and **Matrix**
+answers are scored — everything else is recorded but never affects the
+reference's score (see [Read a completed reference](/candidates-reference-requests/read-a-completed-reference)).
+
+| Type | What the reference sees | Extra fields in the editor | Scored |
+|---|---|---|---|
+| **Text** | A free-text box | — | No |
+| **Rating** | A row of numbered buttons, colour-graded from red at the low end to green at the high end | **Context labels** (see below) | **Yes** |
+| **Dropdown** | A single-select dropdown | **Options** (at least 2) | No |
+| **Radio** | A single-select list of radio buttons | **Options** (at least 2) | No |
+| **Checkbox** | A multi-select list | **Options** (at least 2) | No |
+| **Matrix/Rating Scale** | A grid: one row per option, one column per rating | **Options** (the rows) and **Columns** (the ratings, up to 5) | **Yes** |
+| **Slider** | A slider the reference drags to a value | — | No |
+| **Ranking** | A list the reference puts in order | **Options** (at least 2) | No |
+| **Date** | A single date picker | — | No |
+| **Date range** | A start and an end date | **Year and month only (no day)** | No |
+
+### Options, columns and weights
+
+**Options** are the choices on Dropdown, Radio, Checkbox and Ranking questions,
+and the row labels on a Matrix question. Drag them to reorder. They carry no
+score — picking the last option in a dropdown is worth exactly as much as
+picking the first.
+
+**Columns** only exist on a Matrix question, and they *are* the scale. A new
+Matrix question starts with five empty columns; you can delete some, but five
+is the maximum (the editor refuses a sixth with **Maximum of 5 columns
+allowed**). Order matters: the editor notes that *"Columns are the ratings the
+reference selects for each row (higher is better)"*, so put the weakest rating
+in Column 1 and the strongest in the last column.
+
+Vitay scores each matrix row against the **highest** column on that question
+rather than against the number of columns, so a question with four columns and
+one with five both run from 0% to 100%. Every matrix row also offers an **N/A**
+choice that Vitay adds automatically — it never counts towards the score.
+
+### Comments
+
+Every type except **Text** can be marked **Commentable**, which adds a comment
+box under the question. Tick **Comment required** as well to stop the reference
+submitting until they have written something.
+
+Rating questions open a comment box on their own when the answer is low — 2 or
+less on a 5-point scale, 4 or less on a 10-point scale — prompting *"(Optional)
+Why is it so low?"*, even if the question isn't commentable.
+
+### Context labels (Rating only)
+
+**Context labels** put a word at each end of the rating row so the reference
+knows which direction is good. Choose from **Lowest/Highest** (the default),
+**Poor/Great**, **Never/Always**, **Dissatisfied/Satisfied**,
+**Disagree/Agree** or **Unsatisfactory/Outstanding**.
+
+How many buttons the row has is not set per question: it comes from your firm's
+**Default rating scale** setting — **5** or **10**, 5 by default — on the
+**Configuration** settings tab.
+
+### Dates
+
+**Date range** questions have a **Year and month only (no day)** checkbox, for
+things like employment periods where the exact day isn't useful.
+
+### Questions in more than one language
+
+A question belongs to a language. If your account has the **Multi languages**
+plugin, a question set can hold the same questions in several languages: use
+the language dropdown in the editor to switch, then add or edit the questions
+for that language. A set is only offered when a request is sent in a given
+language once every question in it has been translated.
+
 ## Question groups
 
 **Question groups** are labels that let you organise related questions (for example, "Leadership" or "Technical skills"). A group's label is shown as a small heading above each of its questions in the reference form, which makes longer question sets easier to follow.
@@ -137,4 +208,4 @@ To manage groups, click the **Quest. groups** button at the top of the **Questio
   <Card title="Read a completed reference" icon="clipboard-check" href="/candidates-reference-requests/read-a-completed-reference" />
 </CardGroup>
 
-{/* source: app.vitay.io projects/references NAVBAR.LINKS.QUESTION_SETS, question-sets.list.component (Quest. groups button, plus/Add question set, star Highlight = is_default, Duplicate); api app/models/question_set.rb (after_save clears sibling is_default — one default per firm), app/models/question_set_base.rb (deep_copy! does not copy is_default), question-sets.show.component (Add question, pencil, trash + Delete question set? confirm, drag-to-reorder), src/app/shared/components/modals/question-sets (Label field, Use a question set template checkbox + Template dropdown), src/app/shared/components/modals/questions (type/sentence/options/columns/Commentable except Text/Comment required/Question group), references.component.html group label above questions; api app/models/question_set.rb (pseudo_destroy), app/models/question.rb (type enum: O/T/R/D/C/M/S/K/A/E), app/models/question_group.rb, app/models/question_set_template.rb */}
+{/* source: app.vitay.io projects/references NAVBAR.LINKS.QUESTION_SETS, question-sets.list.component (Quest. groups button, plus/Add question set, star Highlight = is_default, Duplicate); api app/models/question_set.rb (after_save clears sibling is_default — one default per firm), app/models/question_set_base.rb (deep_copy! does not copy is_default), question-sets.show.component (Add question, pencil, trash + Delete question set? confirm, drag-to-reorder), src/app/shared/components/modals/question-sets (Label field, Use a question set template checkbox + Template dropdown), src/app/shared/components/modals/questions/modals.questions.component.{ts,html} (type/sentence/options/columns/Commentable except Text/Comment required/Question group, questionRatingPairs = Context labels, defaultRatingLabel 'Lowest/Highest', Matrix seeds 5 columns + 'Maximum of 5 columns allowed', month_only on DateRange only, Preview button); src/app/shared/enums/question.enum.ts (QuestionTypes labels incl. 'Matrix/Rating Scale', 'Date Range'); src/app/shared/components/modals/question-sets/modals.question-sets.component.ts (identifiable_type Reference/Feedback/PreScreening gated on feedback + pre-screening plugins, template filtering, isMultiLanguagesEnabled); projects/references public/references/references.component.{html,ts,scss} (rating buttons v-btn-rating--<scale>--<n> danger→success, low-rating comment <=2 of 5 / <=4 of 10 with REFERENCE.ANSWER.LOW, matrix N/A column weight 6, MODALS.MATRIX_OBSERVATION); projects/configuration settings/configuration defaultRatings [5, 10]; api app/models/reference.rb#score (Rating + Matrix only, matrix normalised against MAX column weight), references.component.html group label above questions; api app/models/question_set.rb (pseudo_destroy), app/models/question.rb (type enum: O/T/R/D/C/M/S/K/A/E), app/models/question_group.rb, app/models/question_set_template.rb */}

@@ -1,0 +1,159 @@
+---
+title: "Background screening requests"
+description: "Order a background check on a candidate through Vitay's screening partners, follow its status on the candidate's Background screening tab, and download the report when it's ready."
+---
+
+Background screening lets you order a background check on a candidate without
+leaving Vitay. The check itself is run by a screening partner — **Mintz Global
+Screening** or **Validity Screening Solutions** — which contacts the candidate
+directly to collect what it needs. Vitay shows you the status of each check and
+lets you download the partner's report when it's complete.
+
+<Note>
+  Background screening is activated by the Vitay team, per partner:
+
+  - **Mintz Global Screening** (Canada) — the **Background screening** plugin.
+    A root recruiter can request it from **Configuration → Plugins**.
+  - **Validity Screening Solutions** (United States) — a Vitay-managed plugin
+    with no marketplace card. Email **hello@vitay.io** to ask for it.
+
+  The Vitay team also sets up which screening products (categories) your
+  account can order. Any recruiter with access to the candidate can then send
+  a request. Each completed check is billed by Vitay — ask your account
+  manager for pricing.
+</Note>
+
+## Request a background check
+
+<Steps>
+  <Step title="Open the candidate's Background screening tab">
+    Open the candidate and click the **Background screening** tab. The tab is
+    only shown when at least one partner is active on your account.
+  </Step>
+  <Step title="Click Background screening request">
+    Click **Background screening request**. The **Background screening
+    requests** modal opens (*Send a background screening request to your
+    candidate*).
+  </Step>
+  <Step title="Choose the partner, if you have both">
+    When both partners are active, the modal shows two tabs: **Mintz** and
+    **Validity Screening**. With a single partner there are no tabs.
+  </Step>
+  <Step title="Select a category and submit">
+    Under **Select background screening category**, pick one product. Some
+    products show a **?** icon — hover it for the product's description. Click
+    **Submit**. A **Background screening requested** toast confirms the order
+    was placed.
+
+    ![SCREENSHOT: the Background screening requests modal with the Mintz / Validity Screening tabs and the category radio list — placeholder](/images/placeholder.png)
+  </Step>
+</Steps>
+
+The candidate must have an **email address** on their profile: Vitay passes
+their name and email (and, for Mintz, their phone number) to the partner, which
+invites the candidate to complete its own application. Vitay itself does not
+email the candidate about background checks.
+
+## Follow the status
+
+The Background screening tab lists every check for the candidate with
+**Type** (the product), **Status**, **Notes**, **Created at**, **Filled on** and
+**Download**.
+
+| Status | Meaning |
+|---|---|
+| **Process initiated** | The order was placed with the partner. |
+| **In progress** | Mintz is working on the case. |
+| **Invitation sent** / **Invitation accepted** | Validity has emailed the candidate / the candidate opened the invitation. |
+| **Application begun** / **Application completed** | The candidate is filling in / has finished Validity's application. |
+| **Screening begun** | Validity has started the search. |
+| **Completed (Clear)** | The search found nothing to report. |
+| **Completed (Not Clear)** | The partner flagged a possible record — open the report and review it. |
+
+Statuses update when the partner notifies Vitay. To pull the latest status on
+demand, click the **refresh** button next to **Background screening request**;
+Vitay re-queries the partner for every check on the tab and shows **Background
+checkings refreshed**.
+
+When a product is a bundle of several searches, the row expands into a sub-table
+listing each search with its **ID**, **Status**, **Last Updated** and its own
+**Download** button.
+
+![SCREENSHOT: the Background screening tab with one Completed (Clear) row and one in-progress row — placeholder](/images/placeholder.png)
+
+## Who gets emailed
+
+Background screening does not use your account's notification settings, and no
+reminders are sent to the candidate.
+
+- **When you order** — no email from Vitay. The partner contacts the candidate.
+- **While the check progresses** — status-update emails go to the Vitay support
+  team (hello@vitay.io), not to your recruiters.
+- **When the check completes** — the candidate's **assigned recruiter** receives
+  **Background check results for *candidate*** with a **Read *candidate*
+  background check results** button that opens the Background screening tab.
+  If the assigned recruiter has been deactivated, no one is emailed — check the
+  tab instead.
+
+## Download the report
+
+Once a check reaches a **Completed** status, an eye button (**View document**)
+appears in the **Download** column; before that the column shows **-**. Click
+it to download the partner's PDF report, named
+`<candidate>_background_checking_<category>_<id>.pdf`. For bundled products,
+download each search's report from its sub-row.
+
+If Vitay can't fetch the file yet you'll see **Document not found — The
+requested document could not be found. It may not be ready yet.** Partners
+sometimes mark a case complete before the PDF is generated; wait a little, click
+refresh, and try again.
+
+## Duplicate requests
+
+- **Validity Screening** — Vitay refuses a second request for the **same
+  candidate and category** while an earlier one is still in progress. The modal
+  shows an error and no new order is placed. Wait for the open check to
+  complete, or pick a different category.
+- **Mintz** — requests are not de-duplicated. Submitting the same category
+  twice creates two separate orders, so check the tab before re-ordering.
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="There's no Background screening tab on the candidate">
+    Neither partner is active on your account. A root recruiter can request the
+    **Background screening** plugin from **Configuration → Plugins**, or email
+    **hello@vitay.io**.
+  </Accordion>
+  <Accordion title="The modal shows no categories to pick">
+    Your account has no screening products assigned yet. Contact
+    **hello@vitay.io** to have them set up.
+  </Accordion>
+  <Accordion title="I submitted and got an error">
+    For Validity, the most common cause is an open check for the same candidate
+    and category (see above). Also confirm the candidate has an email address.
+    If it keeps failing, contact **hello@vitay.io** with the candidate's name.
+  </Accordion>
+  <Accordion title="The status hasn't changed in days">
+    Click the **refresh** button on the tab to re-query the partner. If the
+    candidate hasn't responded to the partner's invitation, ask them to check
+    their inbox and spam folder for an email from Mintz or Validity — Vitay
+    can't resend it.
+  </Accordion>
+  <Accordion title="The download button is missing or the file won't open">
+    The button only appears once the check is completed. If you get the
+    "may not be ready yet" message, wait and retry. Reports are fetched live
+    from the partner, so a partner outage also blocks downloads temporarily.
+  </Accordion>
+</AccordionGroup>
+
+## Related articles
+
+<CardGroup cols={2}>
+  <Card title="Plugins and the marketplace" icon="puzzle-piece" href="/account-configuration/plugins" />
+  <Card title="Pre-screening questionnaires" icon="clipboard-question" href="/candidates-reference-requests/pre-screening" />
+  <Card title="Add a candidate" icon="user-plus" href="/candidates-reference-requests/add-a-candidate" />
+  <Card title="Activities log" icon="list-timeline" href="/reports-lead-generation/activities-log" />
+</CardGroup>
+
+{/* source: app.vitay.io projects/references protected/candidates/show (TABS.BACKGROUND_CHECKING gate: is_plugins_background_checking_enabled || plugins_json.validity_screening_plugin; CANDIDATES.BUTTONS.REQUEST_BACKGROUND_CHECKING; refresh → shouldRefreshStatus), protected/candidates/show/background-checkings (columns, download filename, "Background checkings refreshed"); src/app/shared/components/modals/background-checking-requests (MODALS.BACKGROUND_CHECKING_REQUESTS.*, Mintz / Validity Screening tabs, catalogue from hiring_firm_background_check_products), src/app/shared/helpers/background-checking.helper.ts (status labels), src/app/shared/components/table (Download column, packages sub-table); api app/models/background_checking.rb (provider enum mintz/validity_screening, send_notify_team_status → config.emails, send_background_checkings_completed_email_to_recruiter → candidate.added_by), app/controllers/api/v3/background_checkings_controller.rb (create — add_reminders NOT IMPLEMENTED; show_document "may not be ready yet"; refresh_status), app/services/background_check_service/mintz.rb + validity_screening.rb (check_duplicate_request! same candidate + category not screening_complete), app/services/external_services/mintz/requests.rb (Evite payload: name, email, phone), app/services/external_services/validity_screening/initiate_screening_request.rb, app/controllers/api/v3/webhooks/mintz_controller.rb + validity_screening_controller.rb (status events, clear/not_clear), app/models/background_check_product.rb, hiring_firm_background_check_product.rb, config/environments/production.rb config.emails hello@vitay.io */}

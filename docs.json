@@ -22,7 +22,9 @@
           "getting-started/overview",
           "getting-started/logging-in",
           "getting-started/roles-explained",
-          "getting-started/mfa-and-login-options"
+          "getting-started/mfa-and-login-options",
+          "getting-started/your-profile",
+          "getting-started/switch-firms"
         ]
       },
       {
@@ -39,7 +41,14 @@
           "candidates-reference-requests/bulk-candidate-actions",
           "candidates-reference-requests/add-a-reference-manually",
           "candidates-reference-requests/read-a-completed-reference",
-          "candidates-reference-requests/reference-not-received"
+          "candidates-reference-requests/reference-not-received",
+          "candidates-reference-requests/email-and-text-delivery",
+          "candidates-reference-requests/candidate-statuses-and-comments",
+          "candidates-reference-requests/share-reports",
+          "candidates-reference-requests/ip-conflicts-and-reference-edits",
+          "candidates-reference-requests/recycle-bin",
+          "candidates-reference-requests/pre-screening",
+          "candidates-reference-requests/background-screening"
         ]
       },
       {
@@ -47,10 +56,18 @@
         "icon": "gear",
         "pages": [
           "account-configuration/manage-users",
+          "account-configuration/firm-configuration",
+          "account-configuration/reference-request-settings",
           "account-configuration/email-sender-settings",
           "account-configuration/notification-settings",
           "account-configuration/question-sets-and-templates",
-          "account-configuration/branding-white-label"
+          "account-configuration/relationships-and-jobs",
+          "account-configuration/email-text-and-page-templates",
+          "account-configuration/report-settings",
+          "account-configuration/signatures",
+          "account-configuration/branding-white-label",
+          "account-configuration/plugins",
+          "account-configuration/billing-and-usage"
         ]
       },
       {
@@ -61,7 +78,10 @@
           "integrations/bullhorn",
           "integrations/erecruit",
           "integrations/jobadder",
-          "integrations/greenhouse"
+          "integrations/greenhouse",
+          "integrations/jobdiva",
+          "integrations/targetrecruit",
+          "integrations/webhooks"
         ]
       },
       {
@@ -77,6 +97,8 @@
         "icon": "chart-line",
         "pages": [
           "reports-lead-generation/download-reports",
+          "reports-lead-generation/overview-dashboard",
+          "reports-lead-generation/activities-log",
           "reports-lead-generation/bulk-candidate-upload",
           "reports-lead-generation/lead-generation"
         ]
@@ -89,7 +111,9 @@
           "security-it/scim-provisioning",
           "security-it/browser-support",
           "security-it/cookies-and-consent",
-          "security-it/data-and-privacy"
+          "security-it/data-and-privacy",
+          "security-it/data-retention",
+          "security-it/support-mode"
         ]
       },
       {
@@ -103,7 +127,10 @@
           "reference-providers/edit-my-answers",
           "reference-providers/unknown-reference-request",
           "reference-providers/reference-not-receiving-email",
-          "reference-providers/link-not-working"
+          "reference-providers/link-not-working",
+          "reference-providers/trouble-submitting",
+          "reference-providers/date-fields",
+          "reference-providers/copy-of-my-responses"
         ]
       }
     ]

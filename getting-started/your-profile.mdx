@@ -1,0 +1,147 @@
+---
+title: "Your profile, language, and password"
+description: "Update your name, email, phone, and interface language, change your password, and review your own account activity from the Account page."
+---
+
+Everything about your own Vitay user — your contact details, the language the app is displayed in, your password, and a log of what you've done — lives on the **Account** page.
+
+<Note>
+  Every logged-in user can edit their own Account page. Changing *another*
+  user's details is a root recruiter job — see
+  [Manage users](/account-configuration/manage-users).
+</Note>
+
+## Open your Account page
+
+<Steps>
+  <Step title="Click the person icon">
+    In the top bar, click the **person** icon on the right-hand side. It opens
+    **Account → Information**.
+  </Step>
+  <Step title="Switch tabs">
+    The page has three tabs: **Information**, **Security**, and
+    **Activities**.
+
+    ![SCREENSHOT: the Account page with the Information, Security, and Activities tabs — placeholder](/images/placeholder.png)
+  </Step>
+</Steps>
+
+## Account → Information
+
+This tab holds two cards.
+
+### Language
+
+The **Language** card at the top changes the language of the Vitay interface **for you only** — it does not affect your firm's default or the language references and candidates see. The options are:
+
+- English
+- Español
+- Français
+- Français (Canada)
+
+Pick one from the dropdown and Vitay saves it and reloads the page so the new language applies everywhere in the app. If you pick the same language your firm already uses as its default, Vitay clears your personal preference and you simply follow the firm default from then on.
+
+### Your details
+
+The second card is your personal information. It saves only when you click **Submit**.
+
+| Field | Notes |
+| --- | --- |
+| **First name** / **Last name** | Optional. |
+| **Email** | Required, and it's the address you sign in with. |
+| **Phone** | Optional, with a country selector. Add it if you want to use SMS multi-factor authentication. |
+| **Default Sub Account** | Only useful if your account is linked to more than one firm or branch — it decides which one you land in when you sign in. See [Switch between firms, branches, and sub-accounts](/getting-started/switch-firms). |
+
+A **Profile updated** toast confirms the save.
+
+## Account → Security
+
+### Change your password
+
+<Steps>
+  <Step title="Enter your current password">
+    Fill in **Old password**.
+  </Step>
+  <Step title="Choose a new one">
+    Type the new password in **Password** and again in **Confirm password**.
+    A strength meter and the rule reminder sit under the field: *"Password must
+    be at least 8 characters long, contains alpha-numeric, lower and upper case
+    and special characters."* You also can't reuse your current password or any
+    of your previous five.
+  </Step>
+  <Step title="Submit">
+    Click **Submit**. A **Profile updated** toast confirms the change.
+
+    ![SCREENSHOT: the Account → Security tab with the password form and the MFA cards — placeholder](/images/placeholder.png)
+  </Step>
+</Steps>
+
+### Multi-factor authentication
+
+To the right of the password form are the MFA switches for your own account:
+
+- **Multi-factor authentication** — *"Secure your account with 2FA"*. This is the SMS option, so it needs a phone number on your Information tab; without one the switch is disabled and hovering it shows **Phone number required**. It's also locked if your firm requires MFA for everyone.
+- **Multi-factor Google authentication** — *"Secure your account with Google 2FA"*. When it's on, the QR code to scan with your authenticator app appears underneath the card.
+
+Full setup and recovery steps are in [Multi-factor authentication & login options](/getting-started/mfa-and-login-options).
+
+## Account → Activities
+
+A read-only table of your own account activity, newest first, with two columns: **Date** and **Description**. Use it to confirm what you did and when. It covers your user account only — for activity across candidates and references, see the [Activities log](/reports-lead-generation/activities-log).
+
+## The "Update password" screen at sign-in
+
+Sometimes Vitay takes you straight to a full-page **Update password** screen after you sign in, before you can reach the app. It asks for your **Old password**, the new **Password**, and **Confirm password**, and its subtitle reads *"Update your password and set up a new one."*
+
+You'll see it in two situations:
+
+- **Your first-ever sign-in.** Vitay asks you to replace the password you were given when the account was created.
+- **Your password has expired.** This only happens when your firm has turned on **Require passwords update** — passwords then expire after 30 days by default, and a root recruiter can set anywhere from 1 to 365 days. See [Firm configuration](/account-configuration/firm-configuration).
+
+Once you submit a valid new password, Vitay signs you into your normal landing page. If you sign in through your organization's SSO, password expiry never applies to you.
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="The Submit button on Security stays greyed out">
+    The form only enables once all three fields are filled, the new password
+    meets the complexity rule, and **Password** and **Confirm password** match.
+  </Accordion>
+  <Accordion title="Vitay rejects my new password">
+    It must be at least 8 characters with an uppercase letter, a lowercase
+    letter, a number, and a special character, and it can't match your current
+    password or any of your previous five. Vitay also doesn't accept Tutanota
+    or Proton addresses for user accounts, so an email change to one of those
+    will be rejected too.
+  </Accordion>
+  <Accordion title="The MFA switch won't turn on">
+    The SMS option needs a phone number saved on **Account → Information**
+    first. If it's still locked after that, your firm requires MFA and the
+    setting is managed centrally.
+  </Accordion>
+  <Accordion title="I changed the language but part of the app is still in English">
+    Vitay reloads the page after a language change so the whole shell picks it
+    up. If some text stays in English, that content hasn't been translated for
+    your language yet — tell us at [hello@vitay.io](mailto:hello@vitay.io) so
+    we can fill the gap.
+  </Accordion>
+  <Accordion title="I keep being sent back to the Update password screen">
+    Your password has expired and Vitay blocks the rest of the app until it's
+    replaced. Complete the form; if it keeps reappearing, ask a root recruiter
+    to check **Require passwords update** on
+    [Firm configuration](/account-configuration/firm-configuration), or
+    contact [hello@vitay.io](mailto:hello@vitay.io).
+  </Accordion>
+</AccordionGroup>
+
+## Related articles
+
+<CardGroup cols={2}>
+  <Card title="Logging in" icon="right-to-bracket" href="/getting-started/logging-in" />
+  <Card title="Multi-factor authentication & login options" icon="shield-check" href="/getting-started/mfa-and-login-options" />
+  <Card title="Switch between firms, branches, and sub-accounts" icon="building" href="/getting-started/switch-firms" />
+  <Card title="Firm configuration" icon="sliders" href="/account-configuration/firm-configuration" />
+  <Card title="Manage users" icon="users" href="/account-configuration/manage-users" />
+</CardGroup>
+
+{/* source: app.vitay.io src/app/shared/routing/account/account.component.ts (TABS.INFORMATION / SECURITY / ACTIVITIES), account/information/account.information.component.{html,ts} (ACCOUNT.INFORMATION.LANGUAGE.TITLE, COMMON.DEFAULT_BRANCH "Default Sub Account", "Profile updated" toast, changeLanguage), src/app/shared/helpers/languages.helper.ts (en/es/fr/fr-ca), src/app/shared/services/language.service.ts (clears personal override when it matches the firm default, reloadPage), account/security/account.security.component.{html,ts} (ACCOUNT.SECURITY.OLDPASSWORD, COMMON.PASSWORD_COMPLEXITY, params is_mfa_enabled / is_2fa_enabled, "Phone number required" tooltip, showQrCode), account/activities/account.activities.component.ts (TABLES.HEADERS.DATE / DESCRIPTION), src/app/shared/routing/password/password.component.{html,ts} (PASSWORD.TITLE "Update password"), projects/references public/login/login.component.ts (is_first_login / is_force_password_update → /password), src/app/shared/services/interceptor.service.ts (403 password_expired → /password), projects/references shared/components/topbar/topbar.component.html (person icon → /account/information); api app/models/concerns/has_secure_tokens.rb (is_force_password_update, SSO exempt), app/controllers/concerns/authorization.rb (enforce_password_expiry!, password_update_required?), app/models/user.rb (PASSWORD_REQUIREMENTS, BLACKLIST_EMAILS), app/validators/unique_password_validator.rb (current + previous 5), app/models/setting.rb (is_force_users_password_update_enabled, password_expiry_days default 30, range 1..365) */}

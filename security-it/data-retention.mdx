@@ -1,0 +1,134 @@
+---
+title: "Set up automatic data retention"
+description: "Turn on a retention policy so Vitay anonymizes candidate and feedback records that have been inactive for longer than the period you choose, and review what is scheduled before it happens."
+---
+
+A **data retention policy** puts an expiry date on personal data. Once you switch it on, Vitay automatically anonymizes candidates (and their references) that have had no reference activity for longer than the retention period you pick, and emails your administrators before it happens so you can rescue anything that must be kept.
+
+<Note>
+  Two things are needed. The **Data Retention** feature has to be enabled for your firm by Vitay — if the tab is greyed out, contact [hello@vitay.io](mailto:hello@vitay.io). And you need a **root recruiter** role to open the Configuration area and to review or keep scheduled records.
+</Note>
+
+## Turn on a retention policy
+
+<Steps>
+  <Step title="Open the Data Retention tab">
+    Open the **Configuration** area, select **Settings**, then pick the **Data Retention** tab. The banner at the top reads *"Configure GDPR-compliant data retention policies to automatically anonymize old candidate and reference data."*
+
+    ![SCREENSHOT: The Data Retention tab with the Enable Automatic Data Retention card — placeholder](/images/placeholder.png)
+  </Step>
+  <Step title="Switch on Enable Automatic Data Retention">
+    Flip **Enable Automatic Data Retention** — *"Automatically anonymize old candidate and reference data for GDPR compliance"*. The rest of the tab appears once it is on.
+  </Step>
+  <Step title="Choose a Retention Period">
+    **Retention Period** — *"How long to keep personal data before anonymization"* — offers **3**, **6**, **12**, **18**, **24**, **36**, **48** and **60** months. The tab starts at 24 months. **3 months is the minimum** and Vitay enforces it: a shorter value is pushed back up to 3 months with the message *"Minimum retention period is 3 months"*.
+
+    The help text under the field restates the two rules that matter: *"Data will be flagged 30 days before anonymization. Minimum retention period is 3 months."*
+  </Step>
+  <Step title="Decide whether it covers sub-accounts">
+    On a parent account, **Apply to Sub-Accounts** — *"Apply this retention policy to all child hiring firms"* — cascades the same policy to every child account. A sub-account that has switched on its own policy keeps its own settings; the parent's policy only reaches sub-accounts that have not. Standalone accounts do not see this card.
+  </Step>
+  <Step title="Check the status">
+    **Anonymization Status** shows **Last Anonymization Run** — the date and time the policy last ran for your firm, or **Never** if it has not run yet.
+
+    A warning box at the bottom of the tab spells the policy back to you: *"Candidates and references inactive for **N months** will be flagged 30 days before anonymization. You'll receive email notifications and can exclude specific records."*
+  </Step>
+</Steps>
+
+## How the clock is measured
+
+The retention period is counted from the last time reference activity was started for a candidate — the moment a reference, a feedback request or a pre-screening was added to them. Adding a new reference to an old candidate restarts their clock. On the review page this date is the **Last Used** column.
+
+Candidates that have already been anonymized, and candidates you have marked **Keep Record**, are never picked up again.
+
+## What anonymization does
+
+Anonymization is not deletion of the row — it is the permanent removal of the personal data in it. For each candidate that falls past the retention period, Vitay:
+
+- replaces the candidate's name with *Anonymized Candidate*, blanks their preferred name, phone and placement date, and replaces their email with a placeholder address;
+- does the same for each of their references — name becomes *Anonymized Reference*, and email, phone numbers, job title, company name, position, specialty and ATS ID are cleared;
+- deletes the answer sets behind those references, and the answers on the candidate's feedback forms and pre-screenings;
+- deletes uploaded documents and signatures;
+- deletes the email-activity and text-activity history and strips the details out of activity log entries;
+- deletes the browser/device metadata and IP-conflict records;
+- marks the candidate and their references inactive.
+
+Standalone feedback records (for example employer feedback that is not attached to a candidate) are anonymized on the same schedule.
+
+<Warning>
+  Anonymization cannot be undone. There is no restore, and the Recycle Bin cannot bring the data back — see [Recycle Bin](/candidates-reference-requests/recycle-bin) for the difference between deactivating a candidate and erasing them.
+</Warning>
+
+## The warning emails
+
+While a policy is on, Vitay emails your account's **root recruiters** about what is coming:
+
+| Email | Subject | When |
+|---|---|---|
+| Upcoming anonymization | *Data Retention Notice: N records scheduled for anonymization* | When records are due to be anonymized within the next **30 days**. It lists how many candidates and how many feedback records, warns that *"Anonymization permanently removes personal data and cannot be undone"*, and has a **Review Scheduled Records** button. |
+| Run summary | *Data Retention Summary: N records anonymized* | After a run that anonymized something, with the counts and a **View Data Retention Settings** button. |
+
+The warning is **re-sent at most once every 7 days** while records are still scheduled, so a daily check does not turn into a daily email. If there is nothing coming up in the next 30 days, no warning is sent.
+
+## Review what is scheduled
+
+<Steps>
+  <Step title="Open Scheduled Deletion">
+    Click **Scheduled Deletion** in the Configuration navigation — it carries a badge with the number of records currently scheduled — or use the **View Scheduled Records** button at the bottom of the Data Retention tab.
+
+    The page is titled **Scheduled for Anonymization** with the subtitle *"Review and manage records scheduled for automatic anonymization"* and a banner: *"These records are scheduled for anonymization. You have until the scheduled date to exclude any records you need to keep."*
+
+    ![SCREENSHOT: The Scheduled for Anonymization page with a few candidates listed — placeholder](/images/placeholder.png)
+  </Step>
+  <Step title="Choose how far ahead to look">
+    **Preview period** lets you look **7**, **14**, **30**, **60** or **90 days** ahead. It starts at 30 days. Records that are already past the retention period are always included — they are the ones the next run will anonymize.
+  </Step>
+  <Step title="Find a record">
+    Use **Search by name or email...**; the list filters as you type. Each row shows **Name**, **Email**, **Last Used**, **Scheduled For** (a coloured badge with the anonymization date) and **Days Remaining**. The days count turns amber inside 14 days and red inside 7.
+
+    Feedback records scheduled in the same window are not listed individually — a note under the table tells you how many there are.
+  </Step>
+  <Step title="Keep a record">
+    Click **Keep Record** on the row. The **Keep This Record?** dialog confirms: *"Are you sure you want to keep"* followed by the candidate's name and *"? This will permanently exclude the record from automatic anonymization."* Click **Keep Record** again to confirm, and the row disappears from the list.
+  </Step>
+  <Step title="Keep several at once">
+    Tick the checkbox on each row you want to protect, then click **Keep Selected (N)** at the top of the list. The toast tells you how many were excluded, and reports separately if any could not be.
+  </Step>
+</Steps>
+
+A kept record is excluded **permanently** — future runs skip it no matter how long it stays inactive.
+
+## When the policy runs
+
+The policy runs automatically on a recurring schedule; you do not trigger it. The exact timing is managed by Vitay, so treat **Last Anonymization Run** on the Data Retention tab as the authoritative answer for your firm. The 30-day warning window and the 7-day re-send interval mean that in practice you always get at least one email before anything is erased.
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="The Data Retention tab is greyed out">
+    Data retention is switched on per firm by Vitay. Contact [hello@vitay.io](mailto:hello@vitay.io) to have it enabled for your account. The same applies to the **Scheduled Deletion** page — opening it directly while the feature is off just shows an empty page.
+  </Accordion>
+  <Accordion title="I can't set a retention period shorter than 3 months">
+    3 months is a hard floor. Anything shorter is reset to 3 months with the toast *"Minimum retention period is 3 months"*.
+  </Accordion>
+  <Accordion title="Nothing appears on the Scheduled for Anonymization page">
+    That is the expected state when everything is inside the retention period — the page shows *"No records scheduled for anonymization / All your records are within the retention period"*. Widen the **Preview period** to 60 or 90 days to look further ahead.
+  </Accordion>
+  <Accordion title="Our sub-account isn't being anonymized">
+    Check **Apply to Sub-Accounts** on the parent account. Note that a sub-account with its own **Enable Automatic Data Retention** switched on uses its own retention period instead of the parent's.
+  </Accordion>
+  <Accordion title="We anonymized someone by mistake">
+    There is no way to reverse it — the personal data is gone from Vitay. Turn the policy off or lengthen the retention period to stop further runs, and contact [hello@vitay.io](mailto:hello@vitay.io) if you need help assessing what was affected.
+  </Accordion>
+</AccordionGroup>
+
+## Related articles
+
+<CardGroup cols={2}>
+  <Card title="Data and privacy" icon="shield-halved" href="/security-it/data-and-privacy" />
+  <Card title="Recycle Bin" icon="trash-arrow-up" href="/candidates-reference-requests/recycle-bin" />
+  <Card title="Firm configuration and security settings" icon="gear" href="/account-configuration/firm-configuration" />
+  <Card title="Manage users" icon="users" href="/account-configuration/manage-users" />
+</CardGroup>
+
+{/* source: app.vitay.io projects/configuration protected/settings/data-retention/settings.data-retention.component.{ts,html} (retentionPeriods 3-60, MINIMUM_RETENTION_MONTHS, isParentAccount), protected/scheduled-entities/scheduled-entities.component.{ts,html} (dayOptions 7/14/30/60/90, badge thresholds, bulk keep), shared/components/navbar (NAVBAR.SCHEDULED_ENTITIES badge), i18n SETTINGS.DATA_RETENTION.*, SCHEDULED_ENTITIES.*, TABS.DATA_RETENTION; api app/services/data_retention_policy_service.rb (MINIMUM_RETENTION_MONTHS 3, DEFAULT_PREVIEW_DAYS 30, effective_retention_settings/apply_to_children, retention_feature_available? data_retention plugin, last_run_at), app/jobs/data_retention_anonymization_job.rb (WARNING_PREVIEW_DAYS 30, WARNING_INTERVAL 7 days, root_recruiter_emails), app/mailers/data_retention_mailer.rb (subjects and buttons), app/services/candidate_anonymizer_service.rb, app/services/reference_anonymizer_service.rb, app/services/feedback_anonymizer_service.rb, app/controllers/api/v1/candidates_controller.rb (scheduled_for_anonymization, exclude_from_anonymization), app/models/candidate.rb (touch_last_initiated_at) */}

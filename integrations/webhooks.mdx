@@ -1,0 +1,120 @@
+---
+title: "Outbound webhooks"
+description: "Point Vitay at an HTTPS endpoint and it will POST a JSON payload whenever a reference is added, a reference or a reference request is completed, or a reference is declined."
+---
+
+Webhooks let your own systems react to reference activity without polling the Vitay API. Give Vitay one URL on the **Developers** tab and it sends a JSON `POST` to that URL as each event happens.
+
+<Note>
+  You need a **root recruiter** role to open the Configuration area. One URL is configured per account — Vitay sends every event type to it, and there is no per-event routing.
+</Note>
+
+## Turn webhooks on
+
+<Steps>
+  <Step title="Open Configuration → Settings → Developers">
+    Open the **Configuration** area from the main navigation, select **Settings**, then pick the **Developers** tab.
+
+    ![SCREENSHOT: The Developers tab with the Enable Webhook switch and Webhook Url field — placeholder](/images/placeholder.png)
+  </Step>
+  <Step title="Switch on Enable Webhook">
+    Flip **Enable Webhook** — *"Receive notifications when a reference request and the reference is completed"*. The URL field stays greyed out until this is on.
+  </Step>
+  <Step title="Enter your endpoint">
+    Type your endpoint into **Webhook Url** and click the **save** (disk) icon next to the field. You will see a **Settings updated** toast. The value must be an `http://` or `https://` URL — anything else is ignored at send time and no request is made.
+  </Step>
+</Steps>
+
+## Events
+
+| `event` | `type` | Fires when |
+|---|---|---|
+| `created` | `Reference` | A reference is added to a candidate from inside Vitay — by a recruiter in the app, or through an API or ATS integration acting as a recruiter. |
+| `completed` | `ReferenceRequest` | The **candidate** submits their list of references on the public reference-request form, which marks the request complete. |
+| `completed` | `Reference` | A **reference provider** submits the reference form. |
+| `declined` | `Decline` | A reference provider declines to give a reference. This only happens if the decline option is enabled for your firm — see [Reference request settings](/account-configuration/reference-request-settings). |
+
+Both completion events use the same `event` value, so branch on `type` (or on the fields inside `data`) to tell a completed reference from a completed reference request.
+
+References added by the candidate on the public form do **not** produce a `created` event — that submission produces the `completed` / `ReferenceRequest` event instead.
+
+## Payload
+
+Every delivery has the same envelope:
+
+```json
+{
+  "event": "completed",
+  "type": "Reference",
+  "id": "8f6b2f2e-1f1f-4c62-9a1b-4a8f6b0d5e21",
+  "data": { }
+}
+```
+
+- **`event`** — `created`, `completed` or `declined`.
+- **`type`** — the kind of record the event is about: `Reference`, `ReferenceRequest` or `Decline`.
+- **`id`** — the record's UUID, repeated at the top level so you can route without unpacking `data`.
+- **`data`** — the record itself, with its stored fields.
+
+What you find inside `data` depends on `type`:
+
+| `type` | Fields in `data` include |
+|---|---|
+| `Reference` | `id`, `first_name`, `last_name`, `email`, `phone`, `country_code`, `work_phone`, `title`, `company_name`, `candidate_position`, `specialty`, `relationship`, `language`, `start_date`, `end_date`, `status`, `filled_at`, `is_active`, `is_pending`, `unresponsive`, `notes`, `internal_id`, `candidate_id`, `question_set_id`, `requested_by_id`, `reference_type`, `created_at`, `updated_at` |
+| `ReferenceRequest` | `id`, `request_type`, `language`, `is_manager_only`, `min_manager_references`, `scheduled_date`, `filled_at`, `is_active`, `unresponsive`, `notes`, `candidate_id`, `question_set_id`, `requested_by_id`, `created_at`, `updated_at` |
+| `Decline` | `id`, `comment`, `is_declined`, `identifiable_type`, `identifiable_id` (the reference that was declined), `created_at`, `updated_at` |
+
+<Note>
+  Answers are not included in the payload. Treat the webhook as a signal and fetch the completed report from the Vitay API — or from your ATS integration — when you need the content.
+</Note>
+
+## Delivery, retries and security
+
+Be aware of how the delivery works before you build against it:
+
+- **One attempt, no retries.** Vitay sends a single `POST` and moves on. If your endpoint is down, returns an error, or times out, that event is lost — there is no queue, no backoff and no replay.
+- **10-second timeout.** The request is abandoned after 10 seconds, so your endpoint must acknowledge quickly. Do the real work asynchronously on your side.
+- **Headers are `Content-Type: application/json` and `Accept: application/json` only.** There is **no signature, no secret, no bearer token** and no way to add custom headers.
+- **Sent as the event happens**, inline with the action that triggered it, so a slow endpoint slows the person submitting the form.
+
+Because deliveries are not signed, treat the payload as a notification rather than as trusted data:
+
+- use a long, unguessable path on your endpoint, and serve it over HTTPS;
+- restrict the endpoint to the traffic you expect where you can;
+- re-fetch the record from the Vitay API before acting on anything that matters, rather than trusting the posted body;
+- make your handler idempotent — process the same `id` twice without side effects.
+
+## DMARC
+
+The **Developers** tab also carries the **DMARC Protection** card, which is about email authentication for the domains you send from, not about webhooks. It is covered in [Email sender settings](/account-configuration/email-sender-settings).
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="The Webhook Url field is greyed out">
+    Switch **Enable Webhook** on first. The field and its save button stay disabled until the switch is on.
+  </Accordion>
+  <Accordion title="I saved a URL but nothing arrives">
+    Check three things: the switch is on, the value was saved with the disk icon (typing alone does not save it), and the URL starts with `http://` or `https://`. A value Vitay cannot parse as an HTTP URL is skipped silently. Then confirm the event you are waiting for actually fires — adding a reference yourself produces `created`, not `completed`.
+  </Accordion>
+  <Accordion title="We missed some events">
+    There are no retries, so an endpoint that was unavailable will have missed those deliveries permanently. Reconcile by reading the affected records from the API rather than waiting for a redelivery.
+  </Accordion>
+  <Accordion title="Can we send different events to different URLs?">
+    No. One URL per account receives every event type. Route on `event` and `type` in your own handler.
+  </Accordion>
+  <Accordion title="Can we verify a payload really came from Vitay?">
+    Not from the request itself — deliveries are unsigned and carry no shared secret. Use an unguessable endpoint URL and re-fetch the record from the Vitay API before acting on it.
+  </Accordion>
+</AccordionGroup>
+
+## Related articles
+
+<CardGroup cols={2}>
+  <Card title="Integrations overview" icon="plug" href="/integrations/overview" />
+  <Card title="Email sender settings" icon="envelope" href="/account-configuration/email-sender-settings" />
+  <Card title="Reference request settings" icon="list-check" href="/account-configuration/reference-request-settings" />
+  <Card title="Firm configuration and security settings" icon="gear" href="/account-configuration/firm-configuration" />
+</CardGroup>
+
+{/* source: app.vitay.io projects/configuration protected/settings/developers/settings.developers.component.{ts,html} (is_webhook_enabled switch, webhook_url input disabled until enabled, save icon) and settings.developers.dmarc.component.*, i18n SETTINGS.DEVELOPERS.*, TABS.DEVELOPERS; api app/services/external_services/webhooks/events.rb (envelope event/type/id/data, TIMEOUT_SECONDS 10, Content-Type + Accept only, URI::HTTP guard, failures rescued and logged, no retry), app/controllers/api/v1/references_controller.rb#create (created) and #public_create (completed), app/controllers/api/v3/references_controller.rb#create (created), app/controllers/api/v1/reference_requests_controller.rb#public_create (completed, ReferenceRequest), app/controllers/api/v1/references/declines_controller.rb (declined, Decline), app/models/setting.rb (is_webhook_enabled, webhook_url), app/models/reference.rb + reference_request.rb + decline.rb schema annotations */}

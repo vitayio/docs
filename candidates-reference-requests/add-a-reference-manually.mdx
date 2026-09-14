@@ -81,6 +81,26 @@ Both result in the same experience for the reference: they receive an email (or 
     for a step-by-step troubleshooting guide: confirm the address is correct,
     check for a bounce, and resend if needed.
   </Accordion>
+  <Accordion title="Vitay says the email, phone number or ID is already linked to an existing reference">
+    Your firm has **Prevent duplicate references** switched on — it is on by
+    default, and a root recruiter can turn it off on the **Configuration**
+    settings tab. While it is on, Vitay refuses a reference whose **email
+    address**, **mobile number** (with the same country code) or **internal
+    ID** already belongs to another reference on the *same candidate* for the
+    *same question set*.
+
+    So the same person can be used as a reference for a different candidate, or
+    for the same candidate under a different question set — but not twice for
+    the same candidate and question set. If you meant to update the existing
+    reference, open it and edit it instead of adding a new one.
+  </Accordion>
+  <Accordion title="The email field shows 'personal emails not allowed'">
+    Your firm has switched off **Allow personal email addresses**, so Gmail,
+    Yahoo, Hotmail, AOL, Outlook, iCloud and similar domains are rejected in
+    this modal as well as on the candidate's own form. Ask the candidate for
+    the reference's work address, or ask a root recruiter to review
+    [Reference request settings](/account-configuration/reference-request-settings).
+  </Accordion>
   <Accordion title="I entered the wrong email address">
     Open the reference record, click **Edit**, and update the **Email** field.
     Then use **Send reminder** to resend the request to the corrected address.
@@ -97,4 +117,4 @@ Both result in the same experience for the reference: they receive an email (or 
   <Card title="Read a completed reference" icon="clipboard-check" href="/candidates-reference-requests/read-a-completed-reference" />
 </CardGroup>
 
-{/* source: api app/models/recruiter_reference.rb (send_reference_email, relationship_choice enum, contact_type_choice enum); app/models/reference.rb (columns: first_name, last_name, email, phone, company_name, title, relationship, start_date, end_date, question_set_id, language); app.vitay.io src/app/shared/services/references.service.ts (addCandidateReference) */}
+{/* source: api app/models/recruiter_reference.rb (send_reference_email, relationship_choice enum, contact_type_choice enum); app/models/reference.rb (columns: first_name, last_name, email, phone, company_name, title, relationship, start_date, end_date, question_set_id, language); app.vitay.io src/app/shared/services/references.service.ts (addCandidateReference); api app/models/reference.rb#check_uniqueness + exists_by_email?/exists_by_phone?/exists_by_internal_id? + uniqueness_scope (gated on setting.is_prevent_duplicate_references_enabled, default true; scoped to candidate + question_set); db/schema.rb settings.is_prevent_duplicate_references_enabled default true; app.vitay.io projects/configuration settings/configuration SETTINGS.CONFIGURATION.is_prevent_duplicate_references_enabled 'Prevent duplicate references'; src/app/shared/validators/phoneEmailPersonal.validators.ts + personalEmailAllowed.validators.ts (WORK_EMAILS_REGEX, settings_json.is_personal_emails_allowed === false or relationship prevent_personal_emails), src/app/shared/components/form/form-group (FORMS.ERRORS.PERSONAL_EMAIL_ALLOWED '(personal emails not allowed)'); note: the recruiter modal passes only the firm setting, not the per-relationship prevent_personal_emails flag */}

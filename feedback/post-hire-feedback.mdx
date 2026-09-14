@@ -37,7 +37,9 @@ placement over time.
   </Step>
   <Step title="Choose a question set">
     Select the **question set** the employer will answer. Only question sets configured for
-    feedback are shown.
+    feedback are shown — that means a set whose **Type** is **Feedback** rather than
+    **Reference**. Set that on the question set itself under **Question Sets**; see
+    [Candidate feedback](/feedback/candidate-feedback) for the steps.
   </Step>
   <Step title="Schedule (optional)">
     If your firm has scheduled feedback enabled, you can pick a **scheduled date** to delay
@@ -64,9 +66,34 @@ placement over time.
 ## View completed feedback
 
 Open the candidate's profile and click the **Feedback** tab to see all completed and pending
-feedback requests for that candidate.
+feedback requests for that candidate. Below the surveys, an **employers** table lists the employers
+attached to the candidate — click a row to correct a name, email, phone number, position, or the
+employment dates.
 
 ![SCREENSHOT: the candidate's Feedback tab showing a completed employer feedback with score — placeholder](/images/placeholder.png)
+
+To see employer feedback across all your candidates at once, use the **Feedback** page in the left
+sidebar and set its type filter to **Employer**. There's also an **Employers** page listing every
+employer on the account. Both are described in
+[Candidate feedback](/feedback/candidate-feedback).
+
+### If the employer answers by phone
+
+Open the pending request and click **Complete feedback** to fill in the form yourself with what they
+told you. Answers entered this way are stored the same as the employer's own, so use it only for
+genuine transcription.
+
+## Reminders
+
+Employer feedback follows your firm's standard reminder sequence. A root recruiter can switch
+**Feedback reminders** off on **Settings → Notification** so recipients get the original request
+only — see [Notification settings](/account-configuration/notification-settings).
+
+<Note>
+  Want the candidate to rate your recruiter instead of the employer rating the candidate? That's the
+  **Recruiter** feedback type, a separate feature described in
+  [Candidate feedback](/feedback/candidate-feedback).
+</Note>
 
 ## Troubleshooting
 
@@ -95,4 +122,4 @@ feedback requests for that candidate.
   <Card title="Question sets and templates" icon="list-check" href="/account-configuration/question-sets-and-templates" />
 </CardGroup>
 
-{/* source: app.vitay.io src/app/shared/components/modals/feedback-requests/modals.feedback-requests.component.ts (Employer type, is_plugins_candidate_feedback_enabled, is_employer_feedbacks_scheduled_enabled); api app/models/feedback.rb (identifiable_type='Employer', send_feedback_requests, send_feedback_completed_email_to_recruiter) */}
+{/* source: app.vitay.io src/app/shared/components/modals/feedback-requests/modals.feedback-requests.component.ts (Employer type, is_plugins_candidate_feedback_enabled, is_employer_feedbacks_scheduled_enabled, postEmployer() → POST /employers); api app/models/feedback.rb (identifiable_type='Employer', send_feedback_requests, send_feedback_completed_email_to_recruiter, add_reminders gated on auto_reminders is_feedback_reminders_enabled, template category feedback_employer for Employer); api app/models/question_set_base.rb identifiable_type_choices (FEEDBACK: 'Feedback') + app.vitay.io src/app/shared/components/modals/question-sets (MODALS.QUESTION_SETS.IDENTIFIABLE_TYPE "Type"); app.vitay.io projects/references protected/candidates/show/feedbacks/candidates.show.feedbacks.component.html (FEEDBACKS.SUBTITLES.SURVEYS + FEEDBACKS.SUBTITLES.EMPLOYERS tables, onRowClick opens MODALS.EMPLOYERS.EDIT for an Employer) + src/app/shared/components/modals/employers (first_name/last_name/email/candidate_position/specialty/start_date/end_date, address when is_employer_feedbacks_address_enabled); projects/references protected/feedbacks/list (FILTERS.EMPLOYER type filter) and protected/employers/list; projects/references protected/feedbacks/show/feedbacks.show.component.html (FEEDBACKS.SHOW.COMPLETE.CTA "Complete feedback" → /forms/:id); api app/models/employer.rb; app.vitay.io projects/configuration SETTINGS.CONFIGURATION.auto_reminders.is_feedback_reminders_enabled "Feedback reminders" */}

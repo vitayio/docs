@@ -47,6 +47,26 @@ Primary and secondary colors are used on buttons, tabs, and UI elements on the p
   </Step>
 </Steps>
 
+## Other settings on the General tab
+
+The **General** tab holds a few account-wide defaults alongside the logo and
+colors. Each one saves as soon as you change it.
+
+| Setting | What it does |
+|---|---|
+| **Company name** | The name shown on your candidate reports. |
+| **Nickname** | A short name that tells your sub-accounts apart. It only appears when your account has sub-accounts. |
+| **Default country** | The country used for phone-number input, so numbers default to the right dialling code. |
+| **Default timezone** | The timezone dates and times are shown in across the app. |
+| **Default date format** | How dates are written — `01/01/20`, `Jan 01, 2020`, `Jan 01, 2020 09:35pm` or `Jan 01, 2020 21:35`. |
+| **Default language** | The language of the app interface and of the emails Vitay sends. Changing it reloads the app so the new language applies everywhere; a personal language set on your own account page still wins for you. |
+
+<Note>
+  Looking for the coloured message bar across the top of the app? That is the
+  **Information banner**, on the **Configuration** tab rather than here — see
+  [Firm configuration](/account-configuration/firm-configuration).
+</Note>
+
 ## Enable white-label mode
 
 White-label mode replaces Vitay's branding with your own logo, colors, and font on the pages your candidates and references see, served from a custom domain name.
@@ -78,6 +98,22 @@ White-label mode replaces Vitay's branding with your own logo, colors, and font 
   </Step>
 </Steps>
 
+<Note>
+  The **Font family**, **Domain name**, **Explainer video link** and **User guide link** fields only appear once the **Enable / Disable white label** toggle is on. Switching the toggle off hides them again without clearing what you saved.
+</Note>
+
+## Remove "powered by Vitay" from emails
+
+White label changes the pages your candidates and references see. The footer of
+the *emails* Vitay sends is separate: by default every reference email ends with
+a short note about opening the link, followed by "Reference checking powered by
+Vitay.io".
+
+**Private label** removes that footer. It isn't a switch you can flip yourself —
+ask the Vitay team to enable it on your account by writing to
+**hello@vitay.io**. It's usually turned on together with white label, so the
+experience is consistent between the emails and the pages they link to.
+
 ## Email sender branding
 
 Your logo also flows into outgoing emails. To control the sender name and email address references see (separate from visual branding), see [Email sender settings](/account-configuration/email-sender-settings).
@@ -94,6 +130,15 @@ Your logo also flows into outgoing emails. To control the sender name and email 
   <Accordion title="I don't see a White Label tab">
     White label is a plugin that must be enabled by the Vitay team. Request it from **Settings → Plugins** (the request emails **hello@vitay.io**) or contact **hello@vitay.io** directly.
   </Accordion>
+  <Accordion title="Emails still say 'powered by Vitay.io'">
+    That footer is controlled by the **Private label** option, which is separate
+    from white label and is enabled by the Vitay team rather than in Settings.
+    Write to **hello@vitay.io** to have it turned on.
+  </Accordion>
+  <Accordion title="Dates or times look wrong for my team">
+    Check **Default timezone** and **Default date format** on **Settings →
+    General** — they apply to the whole account.
+  </Accordion>
   <Accordion title="My custom domain isn't working">
     Custom domains need a DNS record at your domain provider, which Vitay provides when setting up your white label. DNS changes can take some time to propagate. If your domain still isn't working, contact **hello@vitay.io** with your domain name so the team can verify the configuration.
   </Accordion>
@@ -106,6 +151,8 @@ Your logo also flows into outgoing emails. To control the sender name and email 
   <Card title="Manage users" icon="users" href="/account-configuration/manage-users" />
   <Card title="Notification settings" icon="bell" href="/account-configuration/notification-settings" />
   <Card title="Send a reference request" icon="paper-plane" href="/candidates-reference-requests/send-a-reference-request" />
+  <Card title="Firm configuration" icon="sliders" href="/account-configuration/firm-configuration" />
+  <Card title="Plugins" icon="puzzle-piece" href="/account-configuration/plugins" />
 </CardGroup>
 
-{/* source: app.vitay.io projects/configuration SETTINGS.GENERAL.LOGO, SETTINGS.GENERAL.COLORS_PRIMARY, SETTINGS.GENERAL.COLORS_SECONDARY, SETTINGS.WHITE_LABEL.*, PLUGINS (request CTA → hello@vitay.io), TABS.WHITE_LABEL, environments.service.ts IS_VITAY hostname guard; api app/models/setting.rb (colors_primary, colors_secondary, domain_name, font_family, explainer_video_link, user_guide_link, is_plugins_white_label_enabled), app/models/hiring_firm.rb (logo attachment, company_logo), app/services/mail_service.rb (email logo) */}
+{/* source: app.vitay.io projects/configuration SETTINGS.GENERAL.LOGO, SETTINGS.GENERAL.COLORS_PRIMARY, SETTINGS.GENERAL.COLORS_SECONDARY, SETTINGS.WHITE_LABEL.*, PLUGINS (request CTA → hello@vitay.io), TABS.WHITE_LABEL, environments.service.ts IS_VITAY hostname guard; api app/models/setting.rb (colors_primary, colors_secondary, domain_name, font_family, explainer_video_link, user_guide_link, is_plugins_white_label_enabled), app/models/hiring_firm.rb (logo attachment, company_logo), app/services/mail_service.rb (email logo); app.vitay.io projects/configuration settings/general/settings.general.component.{ts,html} (COMPANY_NAME, NICKNAME gated on is_sub_hiring_firm_enabled, COUNTRY, TIMEZONE momentTz.tz.names(), DATE_FORMAT dateFormats helper, LANGUAGE changeLanguage + reload), settings/white-label/settings.white-label.component.{ts,html} (params domain_name/explainer_video_link/user_guide_link + FONT_FAMILY rendered only while is_plugins_white_label_enabled); api app/models/setting.rb#get_private_label_text (returns the 'Reference checking powered by Vitay.io' footer unless is_plugins_private_label_enabled) — no root-recruiter UI for it, only projects/admin companies/show/configuration 'Private label / Hide vitay in emails'; SETTINGS.CONFIGURATION.is_banner_enabled 'Information banner' lives on the Configuration tab */}

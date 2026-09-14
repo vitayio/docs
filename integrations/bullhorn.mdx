@@ -122,6 +122,12 @@ for your firm.
   second request.
 </Note>
 
+## How often it syncs
+
+- **The actions you take are immediate.** Pushing a candidate, uploading a report, and requesting references from inside Bullhorn all run the moment you use them — there's no queue to wait for.
+- **Vitay keeps the connection alive in the background.** Your Bullhorn credentials are re-authorised about once an hour, so day-to-day use never asks you to sign in again.
+- **Automatic reference requests (optional).** If the Vitay team has turned on Bullhorn automation for your firm, Vitay watches your Bullhorn job submissions and sends a reference request when a candidate reaches the submission stage you chose (and cancels an in-flight request when they reach a stage you chose for that). Vitay reads Bullhorn's event feed continuously and, as a safety net, re-checks recently changed submissions about every 15 minutes — so a request normally goes out within minutes of the stage change.
+
 ## Disconnect Bullhorn
 
 Only a root recruiter can disconnect the integration. Open **Integrations**, select the Bullhorn card, and choose **Reset credentials** in the integration dialog to remove the connection.
@@ -148,6 +154,20 @@ Only a root recruiter can disconnect the integration. Open **Integrations**, sel
     list action on the same candidates; the ones already requested come back as
     "already in progress" and nothing is duplicated.
   </Accordion>
+  <Accordion title="We got a 'Bullhorn Integration Disconnected' email">
+    Vitay sends that email when it can no longer sign in to Bullhorn while
+    running the automatic sync — usually because the Bullhorn API password or
+    client credentials changed. It goes to every **active root recruiter** at
+    your firm, and it means automated reference requests through Bullhorn are
+    **paused** until the connection is restored. Anything you do by hand in
+    Vitay is unaffected.
+
+    To fix it, a root recruiter opens **Integrations**, chooses **Reset
+    credentials** on the Bullhorn card, and connects again with the current
+    details. Vitay sends this alert at most once every 24 hours per connection,
+    so you won't be flooded while the credentials are being sorted out — and
+    that also means a fresh alert won't arrive the moment something breaks again.
+  </Accordion>
   <Accordion title="A reference report won't upload to Bullhorn">
     The candidate must first be synced to Bullhorn (via **Synchronize to Bullhorn**) before a document can be attached. If the candidate already exists in Bullhorn but the sync record is missing, contact [hello@vitay.io](mailto:hello@vitay.io).
   </Accordion>
@@ -162,4 +182,4 @@ Only a root recruiter can disconnect the integration. Open **Integrations**, sel
   <Card title="Send a reference request" icon="paper-plane" href="/candidates-reference-requests/send-a-reference-request" />
 </CardGroup>
 
-{/* source: api app/controllers/api/bullhorn_controller.rb; api app/services/external_services/bullhorn/authorize.rb; api app/models/external_authorisations/bullhorn.rb; api embed/list-action controllers (embed_request, status, list_action); app.vitay.io projects/references embed surfaces (tab/card/list), projects/configuration MODALS.INTEGRATIONS.{EMBED,CARD,MENU,LIST}_URL */}
+{/* source: api app/controllers/api/bullhorn_controller.rb; api app/services/external_services/bullhorn/authorize.rb; api app/models/external_authorisations/bullhorn.rb; api embed/list-action controllers (embed_request, status, list_action); api lib/tasks/services/bullhorn.rake (hourly services:bullhorn:refresh); api app/jobs/sponge_bullhorn_event_poll_job.rb + sponge_bullhorn_reconcile_job.rb (15-min reconcile sweep, data['automation']['enabled'] gate) + app/services/sponge/bullhorn/event_handler.rb (trigger_stage / cancel_stages); api app/mailers/sponge_connection_alert_mailer.rb (active root recruiters, 24 h THROTTLE, "<ATS> Integration Disconnected"); app.vitay.io projects/references embed surfaces (tab/card/list), projects/configuration MODALS.INTEGRATIONS.{EMBED,CARD,MENU,LIST}_URL */}

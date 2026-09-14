@@ -17,8 +17,10 @@ Vitay can automatically follow up with references (and candidates) who haven't r
 
 When a reference request or individual reference is sent, Vitay schedules a series of follow-up reminders automatically — provided your account has auto-reminders enabled.
 
-- **Count and cadence:** Vitay sends up to **3 automatic reminders**, spaced at your firm's configured rate — every 24 hours by default, adjustable between 1 and 4 days.
-- **Weekend skipping:** a root recruiter can configure reminders to skip Saturday and Sunday, so references only receive nudges on weekdays.
+- **Count and cadence:** Vitay schedules exactly **3 automatic reminders** per record, spaced at your firm's **Reminders Rate** — **1 day** by default, and a root recruiter can set 1, 2, 3 or 4 days.
+- **Scheduled up front:** all three are timed the moment the request or reference is sent. Changing the rate or the weekend setting afterwards only affects requests sent from then on — reminders already in the queue keep the times they were given. The setting says as much in its tooltip.
+- **Weekend skipping:** **Skip Reminders during the weekend** is **off** by default. When a root recruiter turns it on, any reminder that would land on a Saturday or Sunday is pushed forward a day at a time until it falls on a weekday — so a Saturday reminder goes out on the Monday.
+- **Feedback reminders:** feedback requests have their own switch, **Feedback reminders** (on by default, and only shown when a feedback or pre-screening plugin is enabled). Turn it off to stop reminders on feedback while leaving reference reminders running.
 - **Channels:** reminders go out by email, and also by text message when the reference (or candidate) has a phone number on file and text messages are enabled for your firm.
 - **Auto-stop:** if the reference completes the form or the request is cancelled, any pending reminders are deactivated immediately.
 
@@ -28,7 +30,7 @@ A reminder indicator on the candidate or reference record shows you how many rem
 
 ## Send a manual reminder
 
-You can nudge a reference or a candidate outside the automatic schedule. Manual reminders are capped at **10 reminders in total per reference**, with a **12-hour gap** between reminders.
+You can nudge a reference or a candidate outside the automatic schedule. Manual reminders are capped at **10 reminders in total per reference**, with a **12-hour gap** between reminders. The same two limits apply to the bulk **Send reminder** action on the candidate list, which reminds every pending reference of the selected candidates: references that have hit the cap of 10, were reminded in the last 12 hours, or have reminders turned off are skipped, so a bulk send often reports fewer reminders than the number of candidates you picked.
 
 <Steps>
   <Step title="Open the candidate">
@@ -62,6 +64,21 @@ When reminders are disabled, the **Send reminder** button on the affected refere
 
 ![SCREENSHOT: the Reminders tab of the candidate side panel with the reminders toggle — placeholder](/images/placeholder.png)
 
+## What stops reminders
+
+Three things end a record's reminders, and it's worth knowing which is which:
+
+- **The person responds** — completing the form deactivates every reminder still queued for that record.
+- **You turn reminders off** — the **Reminders** toggle on the candidate or the reference (see above).
+- **You correct their contact details** — changing a reference's **email address** or **mobile number** cancels the reminders still queued for that reference. Vitay does *not* automatically re-send the request to the new address, so after fixing a typo use **Send reminder** to reach the corrected contact.
+
+<Note>
+  There is no unsubscribe link in Vitay's emails. A reference who asks to stop being contacted has
+  to be handled by you, with the **Reminders** toggle on their record. Text messages are different:
+  a reference can reply **STOP** to opt out of SMS (and **START** to opt back in), which stops
+  texts to that number but not emails.
+</Note>
+
 ## Troubleshooting
 
 <AccordionGroup>
@@ -75,10 +92,12 @@ When reminders are disabled, the **Send reminder** button on the affected refere
   </Accordion>
   <Accordion title="A reference says they're receiving too many emails">
     Vitay sends at most 3 automatic reminders per request, at your firm's
-    configured rate (24 hours by default). You can stop further nudges by
-    turning off the reminders toggle on that reference's side panel. A root
-    recruiter can slow the firm-wide cadence (up to every 4 days) or enable
-    weekend skipping under **Settings → Notification**.
+    **Reminders Rate** (1 day by default). You can stop further nudges by
+    turning off the reminders toggle on that reference's side panel — there is
+    no unsubscribe link in the email for them to use themselves. A root
+    recruiter can slow the firm-wide cadence (up to every 4 days) or turn on
+    **Skip Reminders during the weekend** under **Settings → Notification**,
+    but both changes apply only to requests sent afterwards.
   </Accordion>
   <Accordion title="No reminders are going out at all">
     Your firm's auto-reminders may be disabled. A root recruiter can check the
@@ -95,4 +114,4 @@ When reminders are disabled, the **Send reminder** button on the affected refere
   <Card title="A reference didn't receive the email" icon="triangle-exclamation" href="/candidates-reference-requests/reference-not-received" />
 </CardGroup>
 
-{/* source: api app/models/reminder.rb (rate_hours, skip_weekend_days, next_reminder_dates = 3 auto reminders); config/application.rb (manual cap 10, 12h rate limit); app/models/email_reminder.rb; app/models/text_reminder.rb; app.vitay.io sidebar.candidate.reminders.component + sidebar.reference.reminders.component (is_reminders_enabled toggles); i18n keys MODALS.REMINDERS.*, BUTTONS.REMINDERS.*, SIDEBAR.WARNING.AUTO_REMINDERS; api reminders controllers create_activity *.send_reminder on manual sends */}
+{/* source: api app/models/reminder.rb (rate_hours, skip_weekend_days, next_reminder_dates = 3 auto reminders); config/application.rb (manual cap 10, 12h rate limit); app/models/email_reminder.rb; app/models/text_reminder.rb; app.vitay.io sidebar.candidate.reminders.component + sidebar.reference.reminders.component (is_reminders_enabled toggles); i18n keys MODALS.REMINDERS.*, BUTTONS.REMINDERS.*, SIDEBAR.WARNING.AUTO_REMINDERS; api reminders controllers create_activity *.send_reminder on manual sends; api app/models/setting.rb SETTINGS[:auto_reminders] = {is_enabled: true, is_feedback_reminders_enabled: true, rate_hours: 24, skip_weekend_days: false} + build_auto_reminders_setting; app/models/reference.rb#add_reminders / reference_request.rb#add_reminders (Reminder.next_reminder_dates(3, ...) computed at send time), feedback.rb#add_reminders (returns unless is_feedback_reminders_enabled); app/models/email_reminder.rb + text_reminder.rb (is_enabled checked at send; manual reminders have time_diff zero and still go out); app/controllers/api/v3/candidates/bulk_controller.rb#send_candidate_reminders (same total_limit 10 / rate_limit 12h / is_reminders_enabled skips); app/controllers/api/v1/references_controller.rb#update (@reference.reset_reminders when email or phone changes — deactivates queued reminders, no automatic re-send); no email unsubscribe route (app/controllers/api/v3/webhooks/twilio_controller.rb handles SMS STOP/START only); app.vitay.io projects/configuration settings/notifications (notificationRates 24/48/72/96, SETTINGS.CONFIGURATION.auto_reminders.* titles 'Auto reminders' / 'Reminders Rate' + tooltip / 'Skip Reminders during the weekend' / 'Feedback reminders' gated on feedback + pre-screening plugins) */}

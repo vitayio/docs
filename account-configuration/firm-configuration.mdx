@@ -1,0 +1,98 @@
+---
+title: "Firm configuration and security settings"
+description: "Set idle timeouts, password expiry, inactive-account locking, the team banner, list defaults, phone validation and other firm-wide behaviour from the Configuration tab."
+---
+
+The **Configuration** tab holds the firm-wide settings that shape how your team uses Vitay day to day: session and password rules, what everyone sees by default, which contact details are mandatory, and how system emails are addressed. This article walks through every card on the tab, with the security-related ones grouped first for IT reviewers.
+
+<Note>
+  You need a **root recruiter** role to open the Configuration area. Switches save as soon as you flip them (you will see a **Settings updated** toast). Text and number fields have their own **save** icon next to the input — the value is only stored when you click it.
+</Note>
+
+## Open the tab
+
+<Steps>
+  <Step title="Open Settings">
+    Open the **Configuration** area from the main navigation and select **Settings**.
+  </Step>
+  <Step title="Select Configuration">
+    Pick the **Configuration** tab in the left-hand list.
+
+    ![SCREENSHOT: The Configuration tab showing the Information banner card at the top and the switch cards below — placeholder](/images/placeholder.png)
+  </Step>
+</Steps>
+
+## Security settings
+
+These are the settings an IT or security reviewer will usually ask about.
+
+| Setting | What it does | Default |
+|---|---|---|
+| **IDLE** | Logs users out after a period of inactivity in the browser. Turn it on, then set the **IDLE timeout** (minutes) underneath and click its save icon. | Off; 15 minutes |
+| **Require passwords update** | Forces users to change their password on a schedule. Turn it on, then set **Password expiry (days)** (1 to 365) and click its save icon. A user whose password is older than that is sent to the change-password screen at their next login. Users who sign in through SSO are not affected. | Off; 30 days |
+| **Disable inactive accounts** | A monthly job locks every non-root user who has not logged in for a month. A locked user sees "Account locked. Please contact your company's Admin User" when they try to sign in; unlock them from **Configuration → Users** with **Unlock and Reset password** (see [Manage users](/account-configuration/manage-users)). | Off |
+| **Metadata collection** | Records browser, operating system and IP address when candidates, references and employers submit the public forms. Turning it off limits fraud detection such as [IP conflict alerts](/candidates-reference-requests/ip-conflicts-and-reference-edits). | On |
+
+Multi-factor authentication is switched on per user rather than on this tab — see [MFA and login options](/getting-started/mfa-and-login-options). Single sign-on has its own **SSO** tab — see [SSO with SAML](/security-it/sso-saml).
+
+## Team-wide defaults
+
+| Setting | What it does | Default |
+|---|---|---|
+| **Information banner** | Shows a message bar at the top of the app for everyone in your account — handy for internal announcements such as a freeze on new requests. Turn the switch on, type up to 255 characters in **Content of the banner**, then click the save icon. | Off |
+| **Default filters timeframe** | The date range list pages start with: **1 month**, **3 months** or **6 months**. Applies to the Candidates list, the Leads list and the Activities view. | 1 month |
+| **Default rating scale** | Whether rating questions use a **5** or **10** point scale. The reference form reads the scale when it loads, so the change applies to any form opened after you save. | 5 |
+| **Display Everyone / Myself toggle** | Lets regular recruiters switch list pages between **Everyone** and **Myself**. When off, only root recruiters and supervisors can see other people's candidates; recruiters see their own. | Off |
+| **Allow users to update the assigned user** | Shows the assigned-recruiter field in the candidate modal to every user, so anyone can change who owns a candidate or reference. When off, only root recruiters (and sub-account managers) can reassign. | Off |
+| **Status change comment prompt** | Opens a **Change candidate status** dialog whenever someone changes a candidate's status, with an optional comment ("Add a comment (optional)"). The comment is saved to the candidate's Comments section. | Off |
+
+## Contact details and data quality
+
+| Setting | What it does | Default |
+|---|---|---|
+| **Candidate email required** | Makes the candidate's email address mandatory when adding a candidate or sending a quick request. | On |
+| **Reference email required** | Makes a reference's email address mandatory. | Off |
+| **Reference mobile number required** | Makes a reference's mobile number mandatory. This card is replaced by **Phone number requirement** when work phone numbers are enabled (below). | Off |
+| **Enable Work Phone Number** | Adds a work phone field for candidates and references. Once on, a **Phone number requirement** dropdown appears with: **No phone required**, **Mobile number required**, **Work number required**, **Both mobile and work required**, **At least one (mobile or work)**. | Off |
+| **Phone numbers validity** | Checks every candidate, reference and employer phone number against a carrier lookup when it is saved. Numbers that cannot be dialled are rejected with "is not a valid phone number". | On |
+| **Prevent duplicate references** | Stops the same reference being added twice to one candidate for the same question set — matching on email, phone number or ATS ID. The form shows "is already linked to an existing reference". | On |
+
+## Email routing
+
+| Setting | What it does | Default |
+|---|---|---|
+| **Email Sender Identity** | The **From** address and name on candidate and reference emails. Covered in [Email sender settings](/account-configuration/email-sender-settings). | Recruiter's email / Recruiter's name |
+| **Primary reply email** / **Primary Reply Name** | The Reply-To address and name Vitay uses on account emails it sends on your behalf, such as the welcome email to a newly added recruiter. Type the value and click the save icon. | hello@vitay.io / Vitay.io |
+| **New Recruiters - Compliance Statement** | Free-text statement added in bold to the welcome email every new recruiter receives when you add them. Leave it empty to send the standard email. | Empty |
+
+![SCREENSHOT: The Require passwords update card with the Password expiry (days) input and save icon — placeholder](/images/placeholder.png)
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="Users are being logged out unexpectedly">
+    Check the **IDLE** switch and the **IDLE timeout** value. The timeout counts minutes without clicks, scrolls or key presses in the Vitay tab, so a user who leaves the tab open in the background is logged out once it elapses.
+  </Accordion>
+  <Accordion title="A recruiter says their account is locked">
+    Either they exceeded the failed-login limit or **Disable inactive accounts** locked them after a month without logging in. A root recruiter can unlock them from **Configuration → Users** with **Unlock and Reset password**.
+  </Accordion>
+  <Accordion title="I typed a banner message but nobody sees it">
+    The banner only appears while the **Information banner** switch is on, and the text is only stored after you click the save icon next to **Content of the banner**. Messages over 255 characters cannot be saved — the counter turns red.
+  </Accordion>
+  <Accordion title="A valid-looking phone number is rejected">
+    **Phone numbers validity** rejects numbers the carrier lookup cannot dial (for example, missing digits or a wrong country code). Correct the number, or turn the check off if you need to store numbers that cannot be validated.
+  </Accordion>
+</AccordionGroup>
+
+## Related articles
+
+<CardGroup cols={2}>
+  <Card title="Manage users" icon="users" href="/account-configuration/manage-users" />
+  <Card title="Email sender settings" icon="envelope" href="/account-configuration/email-sender-settings" />
+  <Card title="MFA and login options" icon="shield" href="/getting-started/mfa-and-login-options" />
+  <Card title="SSO with SAML" icon="key" href="/security-it/sso-saml" />
+  <Card title="Reference request settings" icon="list-check" href="/account-configuration/reference-request-settings" />
+  <Card title="Candidate statuses and comments" icon="comment" href="/candidates-reference-requests/candidate-statuses-and-comments" />
+</CardGroup>
+
+{/* source: app.vitay.io projects/configuration protected/settings/configuration/settings.configuration.component.{ts,html} (params, filtersTimeframes, defaultRatings, phoneRequirementMode, maxLength 255), i18n SETTINGS.CONFIGURATION.*; src/app/shared/services/idle.service.ts; projects/references public/login/login.component.ts (is_force_password_update → /password), protected/protected.component.html (banner), candidates/show/header (status change modal), candidates.list / leads.list / activities (default_filters_timeframe), shared modals/candidates (is_candidate_ownership_updatable), shared/validators/phoneEmailPersonal.validators.ts; api app/models/setting.rb + db/schema.rb defaults, app/models/user.rb (password_expiry_days), app/models/concerns/has_secure_tokens.rb (SSO exempt), lib/tasks/users.rake + config/schedule.rb (users:disable_inactive monthly), app/controllers/api/v3/oauth_controller.rb (is_locked), app/models/concerns/can_receive_texts.rb (Twilio lookup), app/models/reference.rb (check_uniqueness), app/models/recruiter.rb (welcome email: support_email_from, new_recruiters_security_statement), app/controllers/api/v3/candidates_controller.rb (is_all_toogle_enabled) */}

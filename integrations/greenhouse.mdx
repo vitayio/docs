@@ -51,6 +51,12 @@ During setup, Vitay creates the Vitay custom fields on your Greenhouse candidate
   Completed reference reports are not uploaded to Greenhouse as documents — the activity-feed notes link to the full results in Vitay, and you can download the report PDF from there.
 </Note>
 
+## How often it syncs
+
+The Greenhouse integration is **event-driven**, not scheduled: Greenhouse notifies Vitay through a webhook whenever a candidate changes, so a candidate you flag with **Vitay Sync** is usually imported — and their reference request sent — within moments of you saving the record. Progress notes go back to the Greenhouse activity feed as the candidate submits references and as each reference is completed.
+
+Because there's no periodic catch-up sweep, a candidate that Greenhouse never notified Vitay about won't be picked up later on its own. Re-save the candidate in Greenhouse to send a fresh notification.
+
 ## Disconnect Greenhouse
 
 Only a root recruiter can disconnect the integration. Disconnecting also removes the Vitay custom fields from your Greenhouse candidate records. Contact [hello@vitay.io](mailto:hello@vitay.io) if you need help removing the connection.
@@ -81,4 +87,4 @@ Only a root recruiter can disconnect the integration. Disconnecting also removes
   <Card title="Add a candidate" icon="user-plus" href="/candidates-reference-requests/add-a-candidate" />
 </CardGroup>
 
-{/* source: api app/controllers/api/services/greenhouse_controller.rb; api app/controllers/api/services/greenhouse/candidates_controller.rb (webhook receiver); api app/services/external_services/greenhouse/ (authorize, set_custom_fields, delete_custom_fields, update_candidate); api app/models/external_authorisations/greenhouse.rb (CF_VITAY_* field names) */}
+{/* source: api app/controllers/api/services/greenhouse_controller.rb; api app/controllers/api/services/greenhouse/candidates_controller.rb (webhook receiver — event-driven only, no greenhouse task in lib/tasks or config/schedule.rb and no polling section in config/integrations/greenhouse_*.yml); api app/services/external_services/greenhouse/ (authorize, set_custom_fields, delete_custom_fields, update_candidate); api app/models/external_authorisations/greenhouse.rb (CF_VITAY_* field names) */}

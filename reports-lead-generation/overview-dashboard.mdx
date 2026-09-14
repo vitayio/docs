@@ -1,0 +1,131 @@
+---
+title: "Read the Overview dashboard"
+description: "What every tile, chart, and toggle on the Vitay dashboard measures, how to change the date range and the Everyone/Myself scope, and why the numbers can lag behind the app."
+---
+
+The dashboard is Vitay's summary view: how many candidates you took on, how many references went out and came back, how long references take to complete, and who on your team is doing the work. It is the first screen after you sign in.
+
+<Note>
+  Every user can open the dashboard and see their own figures. The **Everyone** scope, the download buttons, and the drill-down tables are limited to **root recruiters** and **supervisors**.
+</Note>
+
+## Choose a view
+
+<Steps>
+  <Step title="Open the dashboard">
+    Click **Overview** in the main navigation. It opens on **References overview**.
+  </Step>
+  <Step title="Switch views">
+    Use the blue dropdown at the top right. It always offers **References** and **Leads**, plus one entry per plugin your firm has enabled: **Recruiters feedback**, **Feedback**, and **Pre-screening**.
+  </Step>
+</Steps>
+
+![SCREENSHOT: The dashboard toolbar showing the view dropdown, date range picker, and Everyone/Myself toggle — placeholder](/images/placeholder.png)
+
+## References overview
+
+The default view. Four tiles across the top:
+
+| Tile | What it counts |
+|---|---|
+| **Total candidates** | Candidates created in the selected period. |
+| **Credits used** | Your billable usage over the same period, pulled from your subscription. See [Billing and usage](/account-configuration/billing-and-usage). |
+| **References completed / sent** | Two numbers — completed, then total references created — with the completion rate as a percentage beside them. |
+| **Avg. completion time** | How long references take to come back, written in plain language ("2 days", "about 20 hours"). Shows **-** when nothing completed in the period. |
+
+<Note>
+  **Avg. completion time** is the total of *(completed at − created at)* across every reference that completed, divided by the number of completed references. Only completed references count — outstanding ones never drag the average up.
+</Note>
+
+Below the tiles:
+
+- **The daily chart** — stacked columns of **References sent** and **References completed** per day, with a line for candidates created.
+- **Recruiters** — for a root recruiter or supervisor looking at **Everyone**, a bar chart of the busiest users (up to ten). For anyone looking at their own figures, a pie of their own performance instead. **More** opens the full **Recruiters** table: **Branch**, **Name**, **Email**, **Total candidates**, **References completed / sent**.
+- **Sub accounts** — an extra panel, shown only under the **All Sub Accounts** scope, charting each branch. **More** opens the **Sub accounts** table: **Name**, **Total references**, **Total candidates**, **References completed / sent**.
+- **Desktop / Mobile** — a pie splitting reference submissions by the device they were completed on.
+- **Last activities** — the most recent entries from the [Activities log](/reports-lead-generation/activities-log), filtered to the same dates and scope. **More** opens the full log.
+
+## The other views
+
+| View | Tiles | Chart |
+|---|---|---|
+| **Leads** | **Candidates** and **Clients** — how many leads of each kind came in, each with its share of all leads. | Leads per day. |
+| **Feedback** | **Total candidates**, **Feedback completed / sent** with its completion rate, **Avg. completion time**. | Candidate, recruiter, and employer feedback sent vs completed, per day. |
+| **Pre-screening** | **Total candidates**, **Pre screening completed / sent** with its completion rate, **Avg. completion time**. | Pre-screenings sent vs completed, per day. |
+| **Recruiters feedback** | None. | A single chart of your team's scores. |
+
+## Dates and scope
+
+**The date range picker** sets the period every tile and chart is calculated over. Open it with the calendar button and either drag out a range or use a preset:
+
+- **Last 7 days**
+- **Month to date**
+- **Last month**
+- **Year to date**
+
+It opens on roughly the last month, will not go back before 1 January 2018, and will not go past today.
+
+**Everyone / Myself** switches between the whole firm and just your own records. The toggle is shown to root recruiters and supervisors who can manage sub-accounts; everyone else always sees their own figures. Where your account has sub-accounts and you sit at the parent, a third option — **All Sub Accounts** — appears first in the group and rolls every branch together.
+
+Both choices are carried in the page URL, so a dashboard link you paste to a colleague opens on the same period and scope.
+
+## Download a dashboard report
+
+<Steps>
+  <Step title="Set the period and scope">
+    Pick your dates, and switch to **Everyone** — the download button is disabled while you are looking at **Myself**.
+  </Step>
+  <Step title="Click the download button">
+    On the **References** view it is a dropdown offering **Download CSV** and **Download PDF**. On the **Leads**, **Feedback**, and **Pre-screening** views it is a single button that produces a CSV. The **Recruiters feedback** view has no download.
+  </Step>
+</Steps>
+
+The **PDF** is a formatted summary: **Total Candidates**, **Total References**, **References Completed / Sent**, **Avg. Completion Time** and **Avg. Candidate Score**, followed by a **Recruiters** breakdown and the **Desktop / Mobile** split. The **CSV** is one row per user — name, email, total candidates, total references, and branch — so you can pivot it yourself.
+
+For candidate-level and reference-level exports, see [Download and export reports](/reports-lead-generation/download-reports).
+
+![SCREENSHOT: The References dashboard with the download dropdown open showing CSV and PDF — placeholder](/images/placeholder.png)
+
+## Why the numbers lag
+
+A small **Updated daily** note sits above the tiles. Hovering it says: *"These stats refresh once a day. Recent changes may not appear until tomorrow."*
+
+The dashboard does not count rows live. Vitay pre-computes daily totals per firm and the dashboard reads those, which is what makes a year-to-date view load instantly. Those roll-ups are refreshed on a schedule:
+
+- Recent days are re-summarised **every few minutes**.
+- Candidate and reference list views are rebuilt on their own cycles, roughly every **15 to 30 minutes**.
+- Candidate scores are recalculated **overnight**, and a **full rebuild** of every roll-up runs just after, so scores and history settle by the next morning.
+
+Treat those intervals as approximate: the schedule is managed by Vitay's infrastructure and can be tuned without a product release. A reference that completed in the last few minutes may not be in the tiles yet — the candidate page always shows the live state.
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="A reference I just received isn't counted">
+    The roll-ups refresh on a cycle rather than instantly. Give it a few minutes and reload; anything still missing the next day is worth reporting to **hello@vitay.io**. The candidate's own page is always live.
+  </Accordion>
+  <Accordion title="The download button is greyed out">
+    Dashboard reports are firm-wide. Switch from **Myself** to **Everyone** to enable it. If you never see a download button at all, your role isn't root recruiter or supervisor.
+  </Accordion>
+  <Accordion title="Avg. completion time shows a dash">
+    No reference completed inside the selected period. Widen the date range.
+  </Accordion>
+  <Accordion title="Charts are empty but the tiles have numbers">
+    The panels that compare users need more than one day of data in the range and, for the team bar chart, the **Everyone** scope. Where there is genuinely nothing to plot, Vitay shows an empty-state card rather than a blank chart.
+  </Accordion>
+  <Accordion title="The view I want isn't in the dropdown">
+    **Recruiters feedback**, **Feedback**, and **Pre-screening** are plugins. A root recruiter enables them under **Configuration** → **Settings** → **Plugins**.
+  </Accordion>
+</AccordionGroup>
+
+## Related articles
+
+<CardGroup cols={2}>
+  <Card title="Download and export reports" icon="download" href="/reports-lead-generation/download-reports" />
+  <Card title="The Activities log" icon="clock-rotate-left" href="/reports-lead-generation/activities-log" />
+  <Card title="Lead generation" icon="bullseye" href="/reports-lead-generation/lead-generation" />
+  <Card title="Billing and usage" icon="credit-card" href="/account-configuration/billing-and-usage" />
+  <Card title="Plugins" icon="puzzle-piece" href="/account-configuration/plugins" />
+</CardGroup>
+
+{/* source: app.vitay.io projects/references protected/dashboard/dashboard.component.{ts,html} (filters References/Leads + plugin-gated Recruiters feedback/Feedback/Pre-screening; ownerFilters FILTERS.EVERYONE/MYSELF plus FILTERS.ALL_SUB_ACCOUNTS when is_sub_hiring_firm_enabled && access_as_parent_root_recruiter; bsConfig ranges Last 7 days / Month to date / Last month / Year to date, minDate 2018-01-01, maxDate today; default range = 1 month ago → tomorrow; isRoot = isRootRecruiter || isSupervisor; download dropdown csv+pdf only when isReferencesSelected, single button otherwise and disabled on scope:my; toolbar hidden entirely on recruiter-feedbacks; queryParams start_date/end_date/scope), protected/dashboard/references/dashboard.references.component.{ts,html} (statistics Total candidates / Credits used / References completed / sent / Avg. completion time; getAvgReferenceTime humanizes seconds, '-' when 0; getCreditsUsed → GET /customers/:id/usage totals.usage_count; setSeriesChart series "References sent" + "References completed" + candidate line; top-recruiters bar vs pie; metadataPieChart Desktop / Mobile; embedded app-dashboard-activities), dashboard/leads, /feedbacks, /pre-screenings, /recruiter-feedbacks components, dashboard/recruiters (cols BRANCH/NAME/EMAIL/TOTAL_CANDIDATES/REFERENCES_COMPLETED_SENT) and dashboard/sub-accounts (NAME/TOTAL_REFERENCES/TOTAL_CANDIDATES/REFERENCES_COMPLETED_SENT); i18n DASHBOARD.REFERENCES.TITLE "References overview", DASHBOARD.STATS.TOP_RECRUITERS/PERFORMANCES, COMMON.DAILY_SYNC.LABEL "Updated daily" + TOOLTIP; api app/services/analytics/reader.rb#references (FirmDailyAnalytic sums; avg_reference_completion_time = references_completion_seconds / references_completed), app/models/hiring_firm.rb ~420 (EXTRACT(EPOCH FROM AVG(filled_at - created_at)) over filled references), app/controllers/api/v1/hiring_firms/analytics_controller.rb, app/controllers/api/v3/documents/pdf_controller.rb type 'dashboard' + app/views/api/v3/documents/dashboard.erb (Total Candidates / Total References / References Completed / Sent / Avg. Completion Time / Avg. Candidate Score, Recruiters, Desktop / Mobile), app/controllers/api/v3/documents/csv_controller.rb 'dashboard' branch (full_name, email, total_candidates, total_references, hiring_firm_name), config/schedule.rb (analytics:refresh_recent_firm_daily every 15 min, refreshers:candidate_views 17 min, refreshers:references_views 29 min, refreshers:candidate_scores_views 00:00, analytics:backfill_firm_daily 00:30 — cron now runs in Duplo, so treat schedule.rb as indicative) */}

@@ -8,9 +8,11 @@ in a single step. You can optionally attach a reference request to each candidat
 time, so requests go out the moment the upload finishes.
 
 <Note>
-  You need a recruiter (or higher) role to upload candidates. Each upload is limited to **50
-  rows** by default (100 rows if your account has the extended limit enabled). Every row that
-  fails validation rolls back the entire batch — no partial imports.
+  You need a recruiter (or higher) role to upload candidates. Each upload reads the first **50
+  rows** of the file — **100** if Vitay has enabled the raised limit for your account (ask
+  **hello@vitay.io**). Rows past the limit are ignored silently, so split larger files rather
+  than relying on a warning. Every row that fails validation rolls back the entire batch — no
+  partial imports.
 </Note>
 
 ## Prepare your CSV file
@@ -39,8 +41,8 @@ Download the official template first so your columns are in the right order.
     | `internal_notes` | No | Notes visible to recruiters only |
     | `min_manager_references` | No | Minimum references required |
     | `is_manager_only` | No | `true` or `yes` to require all references to be managers |
-    | `assigned_recruiter_email` | No | Assigns the candidate to a specific recruiter on your firm |
-    | `branch_id` | No | Sub-account sequence ID; assigns the candidate to a branch |
+    | `assigned_recruiter_email` | No | Assigns the candidate to a specific recruiter on your firm (or on the branch named by `branch_id`). Leave it blank and **you** become the assigned recruiter |
+    | `branch_id` | No | Sub-account ID; assigns the candidate to a branch. Find it in the **ID** column of **Configuration → Accounts** |
     | `job_title` | No | Visible when the Job title feature is enabled on your account |
 
     The question set for auto-created reference requests is not set per row — you choose it once
@@ -93,6 +95,9 @@ Download the official template first so your columns are in the right order.
 ## What happens after a successful upload
 
 - Each new candidate is created on your firm (or the branch specified by `branch_id`).
+- The candidate is assigned to the recruiter in `assigned_recruiter_email`. If you left that
+  column blank, the candidate is assigned to **you** — the person running the upload — and any
+  reference request created for the row is sent in your name.
 - If you chose a question set, a reference request is created and emailed to each candidate
   right away.
 
@@ -101,7 +106,13 @@ Download the official template first so your columns are in the right order.
 <AccordionGroup>
   <Accordion title="A row failed because the recruiter email wasn't found">
     The email in `assigned_recruiter_email` must match a recruiter on your firm (or the branch
-    specified by `branch_id`). Correct the email or remove the column value.
+    specified by `branch_id`). Correct the email, or remove the column value and let the
+    candidate be assigned to you.
+  </Accordion>
+  <Accordion title="Where do I find the Branch ID?">
+    Open the **Configuration** area and go to **Accounts**. The first column, **ID**, is the
+    number to put in `branch_id` — it is a short number, not the long UUID from the browser
+    address bar. Leave the column blank to create the candidate on your own firm.
   </Accordion>
   <Accordion title="The upload says a candidate already exists but I don't see them">
     Duplicate detection includes inactive (archived) candidates. If a candidate with the same
@@ -109,8 +120,9 @@ Download the official template first so your columns are in the right order.
     remove the existing record before re-uploading that row.
   </Accordion>
   <Accordion title="My file has more than 50 rows and won't import">
-    Uploads process up to 50 rows (100 for accounts with the raised limit — contact Vitay if you
-    need it). For larger imports, split your file and upload in batches.
+    Vitay reads the first 50 rows of the file — 100 for accounts with the raised limit, which
+    Vitay enables on request (write to **hello@vitay.io**). Rows beyond the limit are simply not
+    read, and nothing tells you they were skipped, so split your file and upload in batches.
   </Accordion>
   <Accordion title="I see a phone number error even though the number looks correct">
     Formatting characters — spaces, dashes, parentheses, and a leading `+` — are removed
@@ -129,4 +141,4 @@ Download the official template first so your columns are in the right order.
   <Card title="Question sets and templates" icon="list-check" href="/account-configuration/question-sets-and-templates" />
 </CardGroup>
 
-{/* source: app.vitay.io bulk-upload UI; api app/controllers/api/v3/documents/csv_controller.rb (check and upload actions, candidates branch); api app/services/documents/csv/candidates_handler.rb (template fields: internal_id, first_name, last_name, email, country_code, phone_number, public_notes, internal_notes, min_manager_references, assigned_recruiter_email, branch_id, question_set_id, is_manager_only; optional job_title); api app/models/candidate.rb */}
+{/* source: app.vitay.io bulk-upload UI; api app/controllers/api/v3/documents/csv_controller.rb (check and upload actions, candidates branch); api app/services/documents/csv/candidates_handler.rb (template fields: internal_id, first_name, last_name, email, country_code, phone_number, public_notes, internal_notes, min_manager_references, assigned_recruiter_email, branch_id, question_set_id, is_manager_only; optional job_title); api app/controllers/api/v3/documents/csv_controller.rb#check/#upload (content_raw.first(100) when setting.break_rows_limit_feature_flag else first(50); added_by = current_recruiter unless assigned_recruiter_email resolves; branch_id matched on hiring_firm.load_self_and_siblings.seq_id); api app/models/setting.rb feature flag :break_rows_limit 'Increase the rows of CSV from 50 to 100'; app.vitay.io projects/configuration protected/accounts/list (TABLES.HEADERS.ID -> seq_id column); api app/models/candidate.rb */}

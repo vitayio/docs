@@ -1,0 +1,114 @@
+---
+title: "Reference relationships, candidate jobs, and automatic question sets"
+description: "Manage the relationship list candidates pick from, keep a list of candidate jobs, and let either one choose the question set a reference receives."
+---
+
+Two lists in the **Configuration** area shape what a candidate sees and which questions a reference is asked: **Relationships** (how the reference knows the candidate) and **Jobs** (the role the candidate applied for). Attaching a question set to either one lets Vitay pick the right questions without you choosing them every time.
+
+<Note>
+  You need a **root recruiter** role to open the Configuration area. The **Relationships** tab is disabled on demo accounts; the **Jobs** tab is available on every account, but its **Add** / **Edit** / **Delete** controls only appear for root recruiters and supervisors.
+</Note>
+
+## Manage reference relationships
+
+The relationship list is what the candidate picks from when they add each reference — **Manager**, **Colleague**, **Character**, and whatever else you choose to offer. Remove an option here and candidates stop being able to pick it.
+
+<Steps>
+  <Step title="Open the tab">
+    Open the **Configuration** area, select **Settings**, then the **Relationships** tab. The page is titled **Reference relationships** — *"Add, edit, or delete relationships the reference can have with the candidate."* Each row shows the relationship name, the question set attached to it (if any), and a **No personal emails** badge where that option is on.
+  </Step>
+  <Step title="Add one">
+    Click **Add new relationship**. Fill in **Relationship name**. If your account has more than one language enabled, you get one name box per language, each labelled with its language — fill them all in so candidates see the relationship in their own language.
+  </Step>
+  <Step title="Attach a question set (optional)">
+    Pick one from the **Question set** dropdown. Only reference-type question sets are listed. The help text under it reads: *"If a question set is selected, references with this relationship will automatically be assigned to it."* Leave it on **Select a question set** to attach nothing.
+  </Step>
+  <Step title="Block personal emails (optional)">
+    Tick **Prevent personal emails for these references (@gmail.com, @yahoo.com, etc.)** to require a work address for this relationship specifically — useful for **Manager** while still letting a **Character** reference use a personal address.
+  </Step>
+  <Step title="Save">
+    Click the save button in the modal. Editing an existing relationship shows a note first: *"Any changes made will also apply to all previous references who share this relationship."*
+  </Step>
+</Steps>
+
+![SCREENSHOT: The Relationships tab listing relationships with their question sets and No personal emails badges — placeholder](/images/placeholder.png)
+
+To remove one, click **Delete** on its row and confirm in the **Confirm Deletion** dialog. Deleting takes the option off the candidate's form; references already created keep the relationship they were given.
+
+<Note>
+  This per-relationship email rule sits on top of the account-wide **Allow personal email addresses** switch on the **Ref. Requests** tab. See [Reference request settings](/account-configuration/reference-request-settings).
+</Note>
+
+## Manage candidate jobs
+
+Jobs are the roles your candidates applied for. Keeping them as a list — rather than free text — lets you attach a default question set to each role.
+
+<Steps>
+  <Step title="Open the tab">
+    Open **Configuration** → **Settings** → the **Jobs** tab. It is titled **Candidate jobs** — *"The job that candidates are applying for"* — and lists every job with its question set.
+  </Step>
+  <Step title="Turn the job field on">
+    Two switches sit above the list:
+
+    - **Candidate job field** — *"Open job title field for recruiters fill up on quick request and candidate creation"*. This is what puts the job box on the Add candidate and Quick request forms.
+    - **Candidate job required** — *"Require the job title to be filled when adding a candidate or submitting a quick request"*. Only appears once the field is on.
+  </Step>
+  <Step title="Add a job">
+    Click the **+** button (**Add new job**). Enter the **Job name**, then optionally pick a **Question set** — *"Assign a default question set for a candidate added under this job (optional)"*. Choose **None** to attach nothing.
+  </Step>
+  <Step title="Edit or delete">
+    Use the row actions to open **Edit job** or to delete. Editing warns: *"NOTE: Any changes made will also apply ot all candidates with this job assigned to them."* Deleting asks **Delete job?** and names the job.
+  </Step>
+</Steps>
+
+![SCREENSHOT: The Jobs tab with the Candidate job field switches above the job list — placeholder](/images/placeholder.png)
+
+Use **Search by job title** above the list to find a job in a long list. Recruiters can also create a job on the fly: typing a name that doesn't exist into the job box on the Add candidate or Quick request form offers a **(Create new job)** option.
+
+## How Vitay picks the question set
+
+Three things can decide which question set a reference is sent. They apply at different moments, and the later one wins.
+
+| Priority | Source | When it applies |
+|---|---|---|
+| 1 (highest) | **The relationship's question set** | Applied when the candidate submits their reference list. If the relationship the candidate picked has a question set, that reference gets it — overriding whatever the request was sent with. |
+| 2 | **The job's question set** | Applied when you pick a job on the **Quick request** form. The **Question set** field switches to the job's question set as soon as you select the job. You can still change it before sending. |
+| 3 (lowest) | **Your firm's default question set** | Pre-selected in the Reference request modal when you open it. Whatever is in the **Question set** field when you send is what the request carries. |
+
+So a request that went out carrying the **Nurse** question set (from the Nurse job, or from your default) still delivers the **Character** question set to any reference the candidate marked as a **Character** relationship, provided that relationship has its own question set. A relationship with no question set attached changes nothing — the reference keeps whatever the request carried.
+
+<Note>
+  The job-to-question-set fill-in happens on the **Quick request** form. Adding a candidate with a job, then sending a reference request from the candidate page later, does not re-apply the job's question set — pick it in the modal if you want it.
+</Note>
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="The question set dropdown on a relationship is empty">
+    You see *"No reference type question sets available. Please create one first."* Relationships can only be attached to reference-type question sets — create one first under **Question sets**. See [Question sets and templates](/account-configuration/question-sets-and-templates).
+  </Accordion>
+  <Accordion title="A reference got the wrong question set">
+    Check the relationship the candidate chose for them. A relationship question set overrides the one the request was sent with, so a **Character** reference on a **Nurse** request will receive the Character questions. Detach the question set from that relationship if you don't want that behaviour.
+  </Accordion>
+  <Accordion title="Picking a job doesn't change the question set">
+    That fill-in only runs on the **Quick request** form's reference request tab, and only when you pick an existing job from the dropdown rather than typing a new name. Check that the job actually has a question set attached on the **Jobs** tab.
+  </Accordion>
+  <Accordion title="A relationship name shows in the wrong language">
+    Each relationship stores one name per enabled language. If a language name was left blank, Vitay falls back to the first name on the record. Edit the relationship and fill in the missing language.
+  </Accordion>
+  <Accordion title="The Relationships tab is greyed out">
+    The tab is disabled on demo accounts. Contact **hello@vitay.io** if you need it enabled.
+  </Accordion>
+</AccordionGroup>
+
+## Related articles
+
+<CardGroup cols={2}>
+  <Card title="Reference request settings" icon="sliders" href="/account-configuration/reference-request-settings" />
+  <Card title="Question sets and templates" icon="list-check" href="/account-configuration/question-sets-and-templates" />
+  <Card title="Send a reference request" icon="paper-plane" href="/candidates-reference-requests/send-a-reference-request" />
+  <Card title="Add a candidate" icon="user-plus" href="/candidates-reference-requests/add-a-candidate" />
+  <Card title="Firm configuration and security settings" icon="gear" href="/account-configuration/firm-configuration" />
+</CardGroup>
+
+{/* source: app.vitay.io projects/configuration protected/settings/settings.component.ts (TABS.RELATIONSHIPS disabled on is_demo_enabled, TABS.JOBS never disabled), protected/settings/relationships/settings.relationships.component.{ts,html} (grouped list, question_set_title, prevent_personal_emails badge, delete confirm), shared/components/modals/reference-relationship-edit/modals.reference-relationship-edit.component.{ts,html} (one name input per enabled language, question sets loaded with filter qs=scope:reference, prevent_personal_emails checkbox, EDIT_NOTE), protected/settings/jobs/settings.jobs.component.{ts,html} (isRoot = isRootRecruiter || isSupervisor gates add/edit; is_candidate_job_title_enabled + settings_json.is_job_title_required switches; cols Title + Question set; SETTINGS.JOBS.SEARCH), shared/components/modals/jobs/modals.jobs.component.html (MODALS.JOBS.NAME / QUESTION_SET / QUESTION_SET_DESCRIPTION / NOTE), i18n MODALS.REFERENCE_RELATIONSHIPS.* + SETTINGS.JOBS.* + MODALS.JOBS.* + SETTINGS.REQUESTS.is_candidate_job_title_enabled/is_job_title_required; projects/references shared/components/modals/quick-request/modals.quick-request.component.ts#onJobSelect (tab id 0 = TABS.REFERENCE; GET /jobs/:id then patches request.question_set) and src/app/shared/components/modals/candidates/modals.candidates.component.ts#onJobSelect (job only, no question set), src/app/shared/components/modals/reference-requests/modals.reference-requests.component.ts (preselects the question set flagged is_default); api app/controllers/api/v1/reference_requests_controller.rb#public_create ~140 (reference.question_set_id = request's, then overridden by ReferenceRelationship#question_set when present), app/models/reference_relationship.rb (has_one :question_set, has_many :relationship_languages, CanPseudoDestroy), app/controllers/api/v3/hiring_firms/reference_relationships_controller.rb, app/models/question_set.rb#ensure_single_default */}
