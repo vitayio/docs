@@ -1,0 +1,130 @@
+---
+title: "Signatures on reference requests and reference forms"
+description: "How the candidate and reference signature plugins add a signature pad to Vitay's public forms, where the captured signatures are shown, and how to turn them off."
+---
+
+Vitay can ask candidates to sign the reference request form when they list
+their references, and ask reference providers to sign the reference form when
+they submit their answers. The signatures are stored with the record and shown
+in the side panel and on PDF reports as evidence of consent.
+
+<Note>
+  Both signature plugins — **Candidate signature** and **Reference
+  signature** — are **on by default** for every account. Only a root recruiter
+  can see their state, under **Configuration → Plugins**. The switches there
+  are locked: to turn either plugin off (or back on), email **hello@vitay.io**.
+</Note>
+
+## What each plugin does
+
+| Plugin | Where the pad appears | Who signs |
+|---|---|---|
+| **Candidate signature** | At the bottom of the public **reference request** form, after the references list (and after the Documents card, when document upload is on). | The candidate, when submitting their references. |
+| **Reference signature** | At the bottom of the public **reference** form, after the questions. | The reference provider, when submitting their answers. |
+
+When a plugin is on, the signature is **required** — the form can't be
+submitted without one, and the error **Signature is required** is shown.
+
+## What candidates and references see
+
+### Candidate signature card
+
+The card on the reference request form reads:
+
+> **I hereby give *Your company* permission to conduct an employment
+> reference check.**
+>
+> Place cursor over the signature pad, click down and draw your signature.
+
+*Your company* is your firm's name as set in **Configuration → Settings →
+General**.
+
+### Reference signature card
+
+The card on the reference form is titled **Signature**, with the same
+instruction: *Place cursor over the signature pad, click down and draw your
+signature.*
+
+### The signature pad
+
+Both cards use the same pad, with two modes:
+
+- **Draw** — sign with the mouse, trackpad or a finger on touch screens.
+- **Type** — type a full name (placeholder *Type your full name*); Vitay
+  renders it in a signature style.
+
+A **Clear** button resets the pad. The signature is uploaded together with the
+form when the person submits.
+
+![SCREENSHOT: the candidate signature card on the reference request form with the Draw / Type toggle and the Clear button — placeholder](/images/placeholder.png)
+
+## Where signatures are shown
+
+- **Candidate side panel** — open a candidate's side panel (**See more**). The
+  **Details** and **About** tabs show a **Signature** section with the image
+  once the candidate has submitted.
+- **Reference side panel** — the **About** tab of a reference's side panel
+  shows the reference provider's **Signature**.
+- **PDF reports** — candidate and reference reports end with a signatures block:
+  **Candidate Signature** and/or **Reference Signature**, each with the image.
+  A block is only printed when the matching plugin is on at the time the report
+  is generated and a signature was captured.
+
+![SCREENSHOT: the reference side panel About tab showing the Signature section — placeholder](/images/placeholder.png)
+
+## Check or change the setting
+
+<Steps>
+  <Step title="Open Configuration → Plugins">
+    As a root recruiter, open the **Configuration** area and select
+    **Plugins**.
+  </Step>
+  <Step title="Find the two cards">
+    **Candidate signature** and **Reference signature** are listed under
+    **Activated** (switch on, locked) or **Deactivated**.
+  </Step>
+  <Step title="Ask Vitay to change it">
+    To turn an active plugin off, email **hello@vitay.io** naming the plugin.
+    To turn a deactivated one on, click **Request plugin** on its card — this
+    opens a pre-filled email to hello@vitay.io.
+  </Step>
+</Steps>
+
+Changes take effect on forms opened after the change. Signatures already
+captured stay stored, but stop appearing on newly generated PDF reports while
+the plugin is off.
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="A candidate or reference says they can't submit">
+    If the error is **Signature is required**, the pad is empty. Ask them to
+    draw a signature, or switch to **Type** and enter their full name, then
+    submit again.
+  </Accordion>
+  <Accordion title="The pad doesn't respond on a phone">
+    Drawing works with a finger on touch screens. If the page scrolls instead,
+    ask them to use the **Type** mode, or to open the link on a computer.
+  </Accordion>
+  <Accordion title="A report has no signature block">
+    Either the plugin was off when the report was generated, or no signature
+    was captured — references added manually by your team have no signature,
+    and forms submitted while the plugin was off don't collect one.
+  </Accordion>
+  <Accordion title="We don't want to collect signatures">
+    Email **hello@vitay.io** and ask for the Candidate signature and/or
+    Reference signature plugin to be turned off. The signature card disappears
+    from the public forms immediately.
+  </Accordion>
+</AccordionGroup>
+
+## Related articles
+
+<CardGroup cols={2}>
+  <Card title="Plugins and the marketplace" icon="puzzle-piece" href="/account-configuration/plugins" />
+  <Card title="Reference request settings" icon="sliders" href="/account-configuration/reference-request-settings" />
+  <Card title="Report settings" icon="file-pdf" href="/account-configuration/report-settings" />
+  <Card title="Read a completed reference" icon="clipboard-check" href="/candidates-reference-requests/read-a-completed-reference" />
+</CardGroup>
+
+{/* source: app.vitay.io projects/references public/reference-requests (SIGNATURES.REFERENCE_REQUESTS.TITLE/DESCRIPTION card gated by is_plugins_candidate_signature_enabled; REFERENCE_ANSWERS.FIELDS.SIGNATURE required; postSignature), public/references (SIGNATURES.REFERENCES.* card gated by is_plugins_reference_signature_enabled), src/app/shared/components/signature-pad (Draw / Type modes, "Type your full name", Clear), shared sidebar candidate/details + candidate/about + reference/about (SIDEBAR.SIGNATURE, signature_url); projects/configuration protected/plugins (locked ui-switch, Request plugin mailto hello@vitay.io); api app/controllers/api/v3/signatures_controller.rb (public_update attaches signature to Candidate or Reference), app/models/setting.rb is_plugins_candidate_signature_enabled / is_plugins_reference_signature_enabled default TRUE, app/views/api/v3/documents/*/default/candidates.erb + references.erb ("Candidate Signature" / "Reference Signature" blocks) */}

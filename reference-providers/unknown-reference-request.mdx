@@ -19,7 +19,7 @@ The email names the candidate you're being asked to reference. If you recognize 
 
 **Option 1 — Decline using the form**
 
-Open the link in the email. Most Vitay reference forms have a **Decline** option that lets you indicate you don't wish to (or are unable to) complete the reference. This notifies the recruiter automatically.
+Open the link in the email. Some Vitay reference forms include a **Decline** option (it depends on the recruiter's setup) that lets you indicate you don't wish to (or are unable to) complete the reference. This notifies the recruiter automatically. If you don't see a Decline option, use one of the other options below.
 
 **Option 2 — Contact the recruiter**
 
@@ -41,4 +41,4 @@ If you don't respond, the recruiter will eventually follow up. There's no penalt
   <Card title="Editing your answers after submitting" icon="pen-to-square" href="/reference-providers/edit-my-answers" />
 </CardGroup>
 
-{/* source: app projects/references public/references — reference form with decline option; api app/models/recruiter_reference.rb send_reference_email names the candidate */}
+{/* source: app projects/references public/references — reference form with decline option; api app/controllers/api/v1/references/declines_controller.rb + app/models/setting.rb is_reference_is_declinable_enabled (default false, so Decline is only present when the firm turns it on); app/models/recruiter_reference.rb send_reference_email names the candidate */}

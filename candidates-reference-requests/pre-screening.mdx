@@ -1,0 +1,221 @@
+---
+title: "Pre-screening questionnaires"
+description: "Send a candidate a pre-screening question set before you check their references, follow their answers and score, and get notified when they complete it."
+---
+
+Pre-screening lets you send a candidate a short questionnaire — built from a
+question set of type **Pre-screening** — and review their answers and score
+before you decide whether to move forward with reference checks. Candidates
+answer on a public form, with no login.
+
+<Note>
+  Pre-screening is a **plugin** that the Vitay team activates on your account.
+  When it's active, a **Pre-screening** item appears in the main navigation and
+  a **Pre-screening** tab appears on every candidate page. If you don't see
+  them, a root recruiter can request the plugin from **Configuration →
+  Plugins**, or email **hello@vitay.io**. See
+  [Plugins and the marketplace](/account-configuration/plugins).
+</Note>
+
+## Create a pre-screening question set
+
+<Steps>
+  <Step title="Open Question sets">
+    Go to **Question sets** in the main navigation and click the add button to
+    open the **Add question set** modal.
+  </Step>
+  <Step title="Set the Type to Pre-screening">
+    Give the set a **Label** and, in the **Type** dropdown, choose
+    **Pre-screening**. The Type dropdown only appears when the pre-screening
+    (or feedback) plugin is active.
+  </Step>
+  <Step title="Add your questions">
+    Save, then add questions as you would for any other question set. Rating
+    and matrix questions feed the candidate's pre-screening **score**; other
+    question types are shown as answers only.
+
+    ![SCREENSHOT: the Add question set modal with the Type dropdown open showing Reference, Feedback and Pre-screening — placeholder](/images/placeholder.png)
+  </Step>
+</Steps>
+
+The **Question sets** list has a **Pre-screening** filter so you can find
+these sets quickly. Only sets of type Pre-screening are offered when you send a
+pre-screening request.
+
+## Send a pre-screening request
+
+You can send a pre-screening from three places.
+
+### From the candidate page
+
+<Steps>
+  <Step title="Open the Pre-screening tab">
+    Open the candidate and click the **Pre-screening** tab.
+  </Step>
+  <Step title="Click Pre-screening request">
+    Click **Pre-screening request**. The **Send pre-screening request** modal
+    opens.
+  </Step>
+  <Step title="Pick a question set and submit">
+    Choose a set in the **Question set** dropdown (**Select a question set**).
+    Optionally add **Public notes for the candidate** — these are shown to the
+    candidate on the form. Click **Submit**. A **Pre-screening requested**
+    toast confirms the request went out.
+
+    ![SCREENSHOT: the Send pre-screening request modal with the Question set dropdown and the public notes field — placeholder](/images/placeholder.png)
+  </Step>
+</Steps>
+
+### From Quick request
+
+Open **Quick request** in the navigation and switch to the **Pre-screening**
+tab. The modal explains: *This will create a candidate profile and send them a
+pre-screening survey.* Enter the candidate's details (or tick **Search
+existing candidate**), pick the question set, and submit. Vitay creates the
+candidate, sends the request, and takes you to their Pre-screening tab.
+
+### In bulk from the Candidates list
+
+Select several candidates on the **Candidates** page, open **Send new
+request**, and choose the **Pre-screening** card (*Send a pre-screening
+questionnaire*). Pick a question set and confirm — every selected candidate
+receives the same pre-screening. See
+[Bulk candidate actions](/candidates-reference-requests/bulk-candidate-actions).
+
+<Note>
+  Vitay does not block duplicate pre-screenings. Sending the same question set
+  to the same candidate again creates a second, separate request.
+</Note>
+
+## What the candidate receives
+
+The candidate gets an email built from your **Pre screening** email template
+(default subject: *`{{recruiter_full_name}}` invited you to complete a pre
+interview questionnaire*, button **Complete pre screening request**). If text
+messaging is on for your account and the candidate has a phone number, they
+also get a text with the link.
+
+The form greets the candidate by first name, shows your **Pre screening** page
+text (default: *Congratulations for being selected for our pre-screening
+process. Please complete the below questionnaire and click submit.*) and the
+questions in the set. When they submit, they see a **Thank you** page.
+
+The email, text and page wording are editable under **Configuration →
+Settings → Emails / Texts / Pages**. The Pre screening entries only appear
+there while the plugin is active. See
+[Email, text and page templates](/account-configuration/email-text-and-page-templates).
+
+## Track pre-screenings
+
+- **Pre-screening page** — the **Pre-screening** item in the main navigation
+  lists every request with **Title** (question set), **Name** (candidate),
+  **Score**, **Assigned user**, **Requested on** and **Completed at**. Use the
+  **Everyone** / **Myself** toggle and the date-range picker to narrow the
+  list, and click a column header to sort.
+- **Candidate page** — the **Pre-screening** tab lists that candidate's
+  requests with the same columns (minus the name). Click a row to open it.
+
+![SCREENSHOT: the Pre-screening list page with the Everyone/Myself toggle, date range and a few rows with scores — placeholder](/images/placeholder.png)
+
+## Read the answers and complete on the candidate's behalf
+
+Clicking a pre-screening opens the **Pre-screening answers** page.
+
+While the request is still open, two banners are shown:
+
+- **Pre-screening request "…" sent — date**, with a **Send reminder** button
+  (see below).
+- **Help *candidate* to complete the pre-screening question set?**, with a
+  **Complete pre-screening** button. It opens the candidate's public form in a
+  new tab so you can enter their answers yourself — for example while
+  screening them over the phone. Submitting it completes the request exactly
+  as if the candidate had done it.
+
+Once completed, the page shows the score, the completion date and every answer.
+Use the download button to save a PDF report (a DOCX option appears when DOCX
+downloads are enabled for your account), and the eye icon (**Show candidate
+info**) to include or hide the candidate's contact details in it.
+
+![SCREENSHOT: a completed Pre-screening answers page with the score circle, download button and answers — placeholder](/images/placeholder.png)
+
+## Reminders
+
+- **Automatic** — when a pre-screening is sent, Vitay schedules **three**
+  automatic reminders spaced by your account's reminder rate (24 hours by
+  default; weekend days are skipped when that option is on). Reminders go by
+  email and, when text messaging is on, by text. They stop as soon as the
+  candidate submits. See
+  [Reminders and cadence](/candidates-reference-requests/reminders-and-cadence).
+- **Manual** — click **Send reminder** on the Pre-screening answers page. A
+  pre-screening can receive at most **10** reminders in total, and manual
+  reminders must be at least **12 hours** apart; when either limit is hit the
+  button shows **Reminder sent** and is disabled (hover to see when the last
+  one went out).
+
+## Completion notification
+
+When the candidate submits, Vitay emails **Results for *candidate*'s
+pre-screening assessment** with a **Read *candidate* pre screening** button
+that opens the candidate's Pre-screening tab. Who receives it is set on the
+**Pre-screening** card under **Configuration → Settings → Notification** —
+the assigned recruiter, the requester, the root user, recruiters with
+notifications turned on, or a custom list. See
+[Notification settings](/account-configuration/notification-settings).
+
+## Dashboard and export
+
+- **Overview** (dashboard) gains a **Pre-screening** tab showing **Total
+  candidates**, **Pre screening completed / sent** (with the completion rate)
+  and **Avg. completion time**, plus a sent-vs-completed chart, a recruiters
+  chart for root users, and the latest activities. See
+  [Overview dashboard](/reports-lead-generation/overview-dashboard).
+- **CSV export** — on the Pre-screening page, open the filters and click the
+  download icon to export the current list as `pre_screenings.csv`. The button
+  is available to root recruiters, or to everyone when report downloads are
+  enabled. The same data is the **Pre-screenings** row in
+  [Download reports](/reports-lead-generation/download-reports).
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="I don't see Pre-screening in the navigation or on the candidate page">
+    The plugin isn't active on your account. A root recruiter can check
+    **Configuration → Plugins**: if **Pre-screening** is under **Deactivated**,
+    click **Request plugin** or email **hello@vitay.io**.
+  </Accordion>
+  <Accordion title="The question set modal has no Type field">
+    The Type dropdown only appears when the pre-screening or feedback plugin is
+    active. Without it, every set you create is a reference question set.
+  </Accordion>
+  <Accordion title="The Question set dropdown in the request modal is empty">
+    Only question sets whose Type is **Pre-screening** are listed. Create one
+    (or edit an existing set's Type) and try again.
+  </Accordion>
+  <Accordion title="Send reminder is greyed out">
+    Either 10 reminders have already been sent for this pre-screening or the
+    last one went out less than 12 hours ago. Hover the **Reminder sent**
+    button to see the timestamp.
+  </Accordion>
+  <Accordion title="The candidate lost the link">
+    Click **Send reminder** to resend it, or open **Complete pre-screening**
+    and fill the form with them on a call.
+  </Accordion>
+  <Accordion title="Nobody got the completion email">
+    Check the **Pre-screening** card under **Settings → Notification** — the
+    email goes only to the recipients selected there. The email comes from
+    hello@vitay.io, so also check spam filters.
+  </Accordion>
+</AccordionGroup>
+
+## Related articles
+
+<CardGroup cols={2}>
+  <Card title="Question sets and templates" icon="list-check" href="/account-configuration/question-sets-and-templates" />
+  <Card title="Reminders and cadence" icon="bell" href="/candidates-reference-requests/reminders-and-cadence" />
+  <Card title="Notification settings" icon="envelope" href="/account-configuration/notification-settings" />
+  <Card title="Bulk candidate actions" icon="layer-group" href="/candidates-reference-requests/bulk-candidate-actions" />
+  <Card title="Plugins and the marketplace" icon="puzzle-piece" href="/account-configuration/plugins" />
+  <Card title="Download reports" icon="download" href="/reports-lead-generation/download-reports" />
+</CardGroup>
+
+{/* source: app.vitay.io projects/references protected/pre-screenings/list + show (PRE_SCREENINGS.*, BUTTONS.REMINDERS.*, CSV download), protected/candidates/show (TABS.PRE_SCREENING, CANDIDATES.BUTTONS.REQUEST_PRE_SCREENING), protected/candidates/list/send-new-request-modal (CANDIDATES.BULK_ACTIONS.REQUEST_TYPES.PRE_SCREENING), protected/dashboard/pre-screenings, shared navbar (NAVBAR.LINKS.PRE_SCREENING); src/app/shared/components/modals/pre-screening-requests (MODALS.PRE_SCREENING_REQUESTS), modals/quick-request (MODALS.QUICK_REQUEST.DESCRIPTION.PRE_SCREENING), modals/question-sets (identifiable_type "PreScreening"); api app/models/pre_screening.rb (add_reminders 3 × Reminder.next_reminder_dates, send_pre_screening_requests_email/_text, send_pre_screening_completed_email_to_recruiter via custom_notifications 'pre_screening'), app/controllers/api/v3/pre_screenings_controller.rb (create, public_update, send_reminder limits from config.reminders total_limit 10 / rate_limit 12h, analytics), app/models/setting.rb is_plugins_pre_screening_enabled, templates/emails.yml + texts.yml + pages.yml category pre_screening */}

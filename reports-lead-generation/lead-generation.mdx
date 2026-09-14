@@ -10,14 +10,25 @@ automatically: references can opt in to being contacted, and their details flow 
 leads pipeline.
 
 <Note>
-  Lead generation must be enabled on your account. Contact Vitay to turn it on.
-  You need a recruiter (or higher) role to view and export leads.
+  A **root recruiter** turns lead generation on and configures it under
+  **Configuration → Settings → Leads**. You need a recruiter (or higher) role to view leads.
+  The Leads settings tab is not available on demo accounts.
 </Note>
 
 ## How it works
 
-Your firm sets up one or more **lead types** — categories that describe the kind of contact you're
-looking for (for example, "Candidate" or "Client"). Each lead type has:
+Every reference who completes a reference check sees a **company description** your firm writes —
+a short rich-text introduction (bold, lists, and links are supported) that can point to your careers
+site or staffing page. You then choose how many **lead types** to collect:
+
+- **Don't collect any lead types** — references only see the company description (and any links in
+  it). No form is shown and no leads are recorded in Vitay. Use this when you simply want to send
+  references to an external page such as a careers site.
+- **Collect 1, 2, or 3 lead types** — references can pick a category of interest, enter their email
+  address, and submit themselves as a lead.
+
+Lead types are categories that describe the kind of contact you're looking for (for example,
+"Candidate" or "Client"). Each lead type has:
 
 - A **name** shown to references on the form.
 - An **opt-in label** describing the option (e.g. "I'm open to hearing about new
@@ -27,8 +38,17 @@ looking for (for example, "Candidate" or "Client"). Each lead type has:
   application form.
 
 When a reference finishes the reference check, the lead-gen card appears. Lead types are
-**single-choice**: the reference picks the one option that fits them, confirms their email
-address on the card, and submits. Vitay then records them as a lead under that type.
+**single-choice**: the reference picks the one option that fits them, enters the email address they
+want to be contacted at (required), and clicks **Contact me** — or **No thanks** to skip. Vitay then
+records them as a lead under that type, and the email they entered is shown on the Leads list and
+the lead's page.
+
+<Note>
+  If your firm used the older lead-generation setup, it was migrated automatically. A "Careers"
+  setup became description-only (no lead types) with an **Explore Job Openings** link in the
+  description; a "Staffing" setup became two lead types (**Candidate** and **Client**). You can
+  rename these and edit their text at any time.
+</Note>
 
 ## Consent
 
@@ -57,14 +77,41 @@ auditable record.
   </Step>
   <Step title="Browse or filter leads">
     The leads list shows each contact's name, email, lead type, the candidate they referenced,
-    and the date they were captured. Use the filters to narrow by scope (**Everyone** or
-    **Myself**) and by date range.
+    and the date they were captured. Use the toolbar to narrow the list:
+
+    - the **date range** picker (with **Last 7 days**, **Month to date**, **Last month**, and
+      **Year to date** presets);
+    - the **Filter by position** search box;
+    - the **Lead Type** filter (one checkbox per lead type you've configured);
+    - the **Status** filter;
+    - the **Everyone / Myself** toggle, if your role or firm settings allow firm-wide browsing.
+
+    Root recruiters (and everyone else, if your firm allows CSV downloads) also see a **download**
+    icon here that exports the filtered list as a CSV file.
   </Step>
   <Step title="View a lead's details">
     Click a lead to see their full contact information and the candidate they provided a reference
-    for.
+    for. The lead's page also shows the **Lead type** they picked.
+  </Step>
+  <Step title="Track your follow-up with the status">
+    Use the **status** dropdown at the top of the lead's page to record where you are with them:
+
+    | Status | Meaning |
+    |--------|---------|
+    | **Process initiated** | The lead was received but you haven't acted on it yet |
+    | **Contacted** | You've reached out to the lead |
+    | **Completed** | Your follow-up with this lead is finished |
+
+    The status saves as soon as you pick it.
   </Step>
 </Steps>
+
+<Tip>
+  Leads are references, so they also appear on the **References** page. That page's **Types**
+  filter offers **Candidate**, **Client**, **Duplicated IP**, and **N/A**; to filter by the custom
+  lead types you've set up, use the **Lead Type** filter on the **Leads** page instead. See
+  [Search for past references](/candidates-reference-requests/search-past-references).
+</Tip>
 
 ## Export leads
 
@@ -72,42 +119,65 @@ To download your leads as a CSV file — including consent timestamps and text �
 [Download reports](/reports-lead-generation/download-reports) and choose the **Leads** or
 **Custom leads** report type.
 
-## Set up lead types
+## Set up lead generation
 
-Lead types are configured at the firm level.
+Lead generation is configured at the firm level by a root recruiter. There is no Save button on
+this page: every field saves on its own a moment after you stop typing (a small **Saving…** note
+appears next to it).
 
 <Steps>
   <Step title="Go to the Leads settings">
-    Go to **Configuration** → **Settings** → **Leads**.
+    Go to **Configuration** → **Settings** → **Leads** and turn on the switch at the top of the
+    **Leads** card. The rest of the page appears once it's on.
 
-    ![SCREENSHOT: the Leads settings page with the lead-type cards and the "Number of lead types to collect" dropdown — placeholder](/images/placeholder.png)
+    ![SCREENSHOT: the Leads settings page with the switch, company description, lead-type cards and the "Number of lead types to collect" dropdown — placeholder](/images/placeholder.png)
+  </Step>
+  <Step title="Write the company description">
+    Fill in **Company description**. This is shown to every reference, whatever mode you choose, so
+    use it to introduce your firm and add any links (for example, to your careers page). If you
+    don't collect any lead types, this is the only thing references will see, so put your
+    call-to-action links here.
+  </Step>
+  <Step title="Configure consent (optional)">
+    Turn on the **Consent checkbox** switch to require references to confirm consent before
+    submitting as a lead, and set the consent wording they'll agree to.
   </Step>
   <Step title="Choose how many lead types to collect">
-    Use the **Number of lead types to collect** dropdown to pick how many types you want (up to
-    three). A card appears for each type.
+    Under **Lead Types**, use the **Number of lead types to collect** dropdown: **Don't collect any
+    lead types**, or **Collect 1**, **2**, or **3 lead types**. A card appears for each type, pre-filled
+    with defaults (Candidate, Client, Other) that you can rename.
   </Step>
   <Step title="Fill in each lead type">
     On each card, fill in:
-    - **Lead type name** — the label for this lead category.
+    - **Lead type name** — the label used in Vitay and on the lead's page.
     - **Checkbox text (call to action)** — the opt-in text the reference sees on the form.
-    - **Thank you message** (optional) — shown to the reference after they submit.
-    - **Button text** and **Button link (URL)** (optional) — adds a call-to-action button on the
-      confirmation screen.
+    - **Thank you message** (optional) — shown after the reference submits, below the fixed
+      "reference submitted" text. Keep it short (the field is meant for up to 150 characters).
+    - **Button text** and **Button link (URL)** (optional) — a call-to-action button that appears
+      on the confirmation screen only when **both** are filled in. Include `http://` or `https://`
+      in the link.
   </Step>
-  <Step title="Configure consent (optional)">
-    Turn on the **Consent checkbox** option to require references to confirm consent before
-    submitting as a lead, and set the consent wording they'll agree to.
+  <Step title="Configure notifications per lead type">
+    Click **Notifications** on a lead-type card. The **Notification Settings** modal lets you choose
+    who is emailed when a lead of that type is submitted: the assigned recruiter, the root email,
+    and/or a custom email list.
   </Step>
-  <Step title="Configure notifications">
-    Each lead type has its own notification settings. Choose whether to alert the assigned
-    recruiter, the root recruiter, or a custom email list whenever a new lead is captured under
-    that type.
+  <Step title="Add translations (multi-language firms)">
+    If your firm has more than one language enabled, language tabs appear at the top of the card.
+    Switch tabs to enter the company description, consent text, and each lead type's name, checkbox
+    text, thank-you message, and button text in that language. References who complete a reference
+    in another language see the translated version, so fill in every language you support.
   </Step>
-  <Step title="Save">
-    Click **Save**. The lead types become active immediately; they will appear on the reference
-    form for any new reference check completed on your account.
+  <Step title="Check the interactive preview">
+    Scroll to **Interactive Preview** at the bottom of the page. It shows exactly what references
+    will see, in the language tab you have selected. Pick a lead type and press **Contact me** to
+    see the thank-you message and button for that type, then **Reset preview** to start over.
+    Editing a thank-you or button field also switches the preview to that state automatically.
   </Step>
 </Steps>
+
+Changes are live immediately: the card appears on the next reference check completed on your
+account.
 
 ## Troubleshooting
 
@@ -118,7 +188,18 @@ Lead types are configured at the firm level.
     checkbox, no lead is created. You cannot add a lead on behalf of a reference.
   </Accordion>
   <Accordion title="The Leads section isn't visible in the navigation">
-    Lead generation must be enabled on your account. Contact Vitay to turn it on.
+    The **Leads** link only appears when lead generation is switched on. Ask a root recruiter to
+    turn on the switch at the top of **Configuration → Settings → Leads**.
+  </Accordion>
+  <Accordion title="References see my description but can't submit themselves as a lead">
+    Your **Number of lead types to collect** is set to **Don't collect any lead types**. In that
+    mode only the company description is shown and no leads are recorded. Pick **Collect 1 lead
+    type** (or more) to show the form.
+  </Accordion>
+  <Accordion title="My edits don't show up in another language">
+    Each language has its own fields. Switch to that language's tab on the Leads settings page and
+    fill in the description, consent text, and lead-type fields there; blank translated fields fall
+    back to the English text for lead-type names and checkbox text.
   </Accordion>
   <Accordion title="I don't see a consent timestamp in the leads export">
     The **Consent Given At** and **Consent Text** columns are included automatically on all leads
@@ -140,4 +221,4 @@ Lead types are configured at the firm level.
   <Card title="Bulk candidate upload" icon="upload" href="/reports-lead-generation/bulk-candidate-upload" />
 </CardGroup>
 
-{/* source: api app/models/lead_type.rb (name, checkbox_text, button_text, button_link, thank_you_text, contact_type, position; max 3 via L/M/O contact_type assignment, CONTACT_TYPE_CODES shared with Reference#validate_contact_type); api app/models/lead_type_notification.rb (send_to_root, send_to_assigned, send_to_custom, custom_emails); api app/models/reference.rb (lead_consent_at, lead_consent_text, contact_type_choices, validate_contact_type); api app/controllers/api/v3/documents/csv_controller.rb (leads export fields: lead_consent_at, lead_consent_text); git log VIT-1304 commits (feat: record and require lead-gen consent on public reference update; feat: add lead_consent_at and lead_consent_text to references) */}
+{/* source: app.vitay.io projects/configuration protected/settings/leads/settings.leads.component.{ts,html} (SETTINGS.PAGES.LEADS.*: switch, description quill, consent, MODE_LABEL dropdown none/one/two/three, per-type fields with debounced auto-save + SETTINGS.SAVING, language tabs when is_plugins_multi_languages_enabled, Interactive Preview, Notifications button → MODALS.LEAD_TYPE_NOTIFICATIONS); settings.component.ts (TABS.LEADS isDisabled when is_demo_enabled); src/app/shared/components/lead-gen-card (radio lead types, required email, Contact me / No thanks); projects/references protected/lead-generation/list (date presets, LEAD_GENERATION.FILTERS.POSITION / LEAD_TYPE, FILTERS.STATUSES, Everyone/Myself, CSV download when isRoot || is_reports_downloadable), protected/leads/show (status dropdown from src/app/shared/helpers/lead.helper.ts: Process initiated / Contacted / Completed; LEADS.SHOW.LEAD_TYPE), protected/leads/list (FILTERS.CONTACT_TYPES: CANDIDATE/HIRING/IP/NA), shared/components/navbar (LEADS_LIST link only when settings_json.lead_generation.enabled); api app/models/setting.rb (settings_json lead_generation: enabled, mode, description(s), consent_*), lib/tasks/migrate_lead_generation.rake (careers_page → mode none + "Explore Job Openings" link; hiring → two_lead_types); api app/models/lead_type.rb (name, checkbox_text, button_text, button_link, thank_you_text, contact_type, position; max 3 via L/M/O contact_type assignment, CONTACT_TYPE_CODES shared with Reference#validate_contact_type); api app/models/lead_type_notification.rb (send_to_root, send_to_assigned, send_to_custom, custom_emails); api app/models/reference.rb (lead_consent_at, lead_consent_text, contact_type_choices, validate_contact_type); api app/controllers/api/v3/documents/csv_controller.rb (leads export fields: lead_consent_at, lead_consent_text); git log VIT-1304 commits (feat: record and require lead-gen consent on public reference update; feat: add lead_consent_at and lead_consent_text to references) */}

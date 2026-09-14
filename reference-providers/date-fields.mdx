@@ -1,0 +1,66 @@
+---
+title: "Filling in date fields"
+description: "How the date fields on a Vitay form work — employment dates, 'Present', and date questions — for candidates and for people giving a reference."
+---
+
+<Note>
+  **This article applies to both candidates and people asked to give a reference.** The date fields work the same way on the reference request form and on the reference form, and neither needs a Vitay login.
+</Note>
+
+Some Vitay forms ask for dates — most often the **start date** and **end date** of the time you or the candidate worked at a company. Vitay uses your browser's built-in date controls for these, so they look slightly different from one browser or phone to another, but they always work the same way.
+
+## Employment dates (Start date / End date)
+
+If the recruiter has turned this on, each reference entry has a **Start date** and **End date**. These fields ask for a **month and year only** — there is no day to pick.
+
+<Steps>
+  <Step title="Pick the year and month">
+    Click or tap the **Start date** field. Depending on your browser you'll either get a small calendar-style picker where you choose the year and then the month, or a field where you can type the month and year directly. If your browser shows a plain text box instead, type the date as year-month, for example `2023-04`.
+  </Step>
+  <Step title="Fill in the end date — or tick Present">
+    Do the same for **End date**. If the job is still ongoing, tick **Present** underneath it instead; the End date field is then switched off and not required.
+  </Step>
+  <Step title="Check the two dates make sense">
+    The end date can't be earlier than the start date. If you pick one that is, the field keeps its previous value — pick a later month, or correct the start date first.
+  </Step>
+</Steps>
+
+![SCREENSHOT: the Start date and End date fields with the Present checkbox on the reference form — placeholder](/images/placeholder.png)
+
+<Note>
+  Some recruiting teams only accept references from people who worked with the candidate recently (for example, within the last 3 years). When that rule is on, the form says so above the date fields, and an end date that's too far back shows **"This end date is too far in the past for the firm's policy."** If you haven't worked together within that period, contact the recruiter — their email is in the message you received.
+</Note>
+
+## Date questions on the reference form
+
+A recruiter can also include date questions in the questionnaire itself:
+
+- **A single date** — labelled **Select a date**. This one asks for a full date (day, month and year).
+- **A date range** — labelled **From** and **To**. Depending on how the question was set up it asks for either full dates or just month and year. The **To** date can't be before the **From** date.
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="I can't find the month or year I need in the picker">
+    Browser pickers usually open on the current month. Use the arrows or the year/month headings in the picker to move back — or, where your browser allows it, click into the field and type the value directly.
+  </Accordion>
+  <Accordion title="The end date keeps jumping back to what it was">
+    That happens when the end date you chose is earlier than the start date (or earlier than the recruiter's allowed period). Adjust the start date first, then set the end date again.
+  </Accordion>
+  <Accordion title="The form says a date is required but I've already filled it in">
+    Make sure the value actually saved: click into the field, re-select the month and year, then click somewhere else on the page. If **Present** is ticked, the end date is not required — untick it only if the job has ended.
+  </Accordion>
+  <Accordion title="The picker won't open at all">
+    Try a different browser (Google Chrome or Microsoft Edge work well) or open the link on your phone, where the system's own date picker is used. If nothing helps, contact the recruiter who sent the request — their email is in the message you received.
+  </Accordion>
+</AccordionGroup>
+
+## Related articles
+
+<CardGroup cols={2}>
+  <Card title="Help for candidates and references" icon="house" href="/reference-providers/start-here" />
+  <Card title="I can't type, select, or submit on the form" icon="triangle-exclamation" href="/reference-providers/trouble-submitting" />
+  <Card title="The link in my email isn't working" icon="link-slash" href="/reference-providers/link-not-working" />
+</CardGroup>
+
+{/* source: app.vitay.io projects/references public/references + public/reference-requests templates (native <input type="month"> for start_date/end_date with [min] and the isCurrent "Present" checkbox; <input type="date"> for Date questions; DateRange uses month_only); src/app/shared/helpers/date-input.helper.ts; REFERENCE(S)_REQUEST(S).END_DATE_RESTRICTION.* copy; api setting reference_end_date_max_age */}

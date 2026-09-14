@@ -1,0 +1,162 @@
+---
+title: "Check email and text delivery for a candidate or reference"
+description: "Use the Email activity and Text activity tabs to see whether Vitay's emails and texts reached a candidate or reference, understand delivery errors, and fix the contact details."
+---
+
+Every email and text message Vitay sends to a candidate or reference is tracked. When someone says they never received a request, the **Email activity** and **Text activity** tabs on their side panel show what was sent, whether it arrived, and why it failed if it didn't.
+
+<Note>
+  You need a recruiter (or higher) role. Activity is recorded per email address
+  and per mobile number, so a record with no email or no phone number has no
+  entries on the matching tab. Text messages are only sent when your firm has
+  them enabled (**Settings → Texts → Enable / Disable text messages**).
+</Note>
+
+## Open the activity tabs
+
+<Steps>
+  <Step title="Open the candidate">
+    Go to **Candidates** and select the candidate.
+  </Step>
+  <Step title="Open the side panel">
+    To check the candidate's own emails and texts, open the candidate side
+    panel. To check a reference, go to the **References** tab and click the
+    reference.
+  </Step>
+  <Step title="Choose Email activity or Text activity">
+    The side panel has a row of icon tabs. Hover the icons to find
+    **Email activity** (envelope) and **Text activity** (phone). The newest
+    entry is listed first.
+
+    ![SCREENSHOT: the reference side panel with the Email activity tab open — placeholder](/images/placeholder.png)
+  </Step>
+</Steps>
+
+## Read the Email activity tab
+
+Each row is one event reported by Vitay's email provider, with the **Status**, the **Email** it applies to, a **Description** (the provider's reason, or `-` when there is none), and the **Date**.
+
+| Status | What it means |
+| --- | --- |
+| **processed** / **delivered** | The email was accepted and handed to the recipient's mail server. |
+| **open** | The recipient opened the email. |
+| **click** | The recipient clicked a link in the email. |
+| **bounce** | The recipient's mail server rejected the email (for example, the address doesn't exist or the mailbox is full). |
+| **dropped** | Vitay's email provider did not attempt delivery, usually because the address bounced before or was marked as invalid. |
+| **spamreport** | The recipient reported the email as spam. |
+| **unsubscribe** / **group_unsubscribe** | The recipient unsubscribed. |
+| **group_resubscribe** | The recipient subscribed again. |
+
+Green icons mark the successful events; red warning icons mark **bounce**, **dropped**, **spamreport**, and the unsubscribe events. A **delivered** row with no **open** row usually means the email is sitting in a spam or junk folder.
+
+## Read the Text activity tab
+
+Each row shows the **Status** reported by the SMS carrier, the **Mobile number**, a **Description** of any error, the **Body** of the message, who it was **From**, and the **Date**. Rows marked with a red warning icon are delivery errors.
+
+Statuses you'll see on outgoing texts are **sending**, **sent**, **delivered**, **undelivered**, **failed**, and **canceled**. Replies from the recipient appear as **received** rows.
+
+When a text fails, the Description explains why:
+
+| Description | What it means in practice |
+| --- | --- |
+| Attempt to send to unsubscribed recipient | The person replied **STOP** to a Vitay text. They won't get texts until they reply **START**. |
+| Destination not reachable from our sending number | This number is in a country or on a network Vitay's sending number can't reach. Use email for this person. |
+| Unreachable destination handset | The phone was off or out of coverage when the carrier tried. It may work on a later reminder. |
+| Message blocked | The carrier or the recipient's phone blocked the message. |
+| Message Delivery - Unknown destination handset | The number doesn't exist or is no longer active. Check the number with the person. |
+| Landline or unreachable carrier | The number is a landline and can't receive texts. |
+| Message filtered | The carrier's spam filter stopped the message. |
+| Message Delivery - Unknown error | The carrier reported a failure without a reason. Try again later or use email. |
+| Unknown Error | The carrier returned an error code Vitay doesn't recognise. |
+
+<Note>
+  Texts to UK (+44) numbers are sent from a UK-based sending number, so they
+  arrive from a different number than texts sent to other countries.
+</Note>
+
+### STOP and START replies
+
+The first text a reference receives ends with "Reply *stop* to unsubscribe". If they reply **STOP** (or **STOPALL**), the Text activity tab records **Unsubscribed from Vitay SMS communications**, and the candidate's page shows the banner *One or more references have unsubscribed and will not receive texts*. Any further text to that number fails with *Attempt to send to unsubscribed recipient* until the person replies **START**, **UNSTOP**, or **YES**, which is recorded as **Resubscribed from Vitay SMS communications**. You can't re-subscribe someone on their behalf — email is the fallback.
+
+## Who is notified when delivery fails
+
+Vitay can email people automatically when an email or text can't be delivered. These are firm-wide settings on **Settings → Notification** (root recruiters only):
+
+- **Email errors notification** (on by default) — when an email to a candidate or reference bounces, is dropped, is reported as spam, or the recipient unsubscribes, the candidate's assigned recruiter receives an email with the subject *&lt;address&gt; is invalid*. It lists the address, the reason, the provider's details, and the record's internal ID, with a button to open the record.
+- **Text errors notification** (off by default) — the same email, subject *&lt;number&gt; is invalid*, when a text can't be delivered.
+- **Candidate: Notify Reference Contact Errors** (off by default) — when the failing email or text was addressed to one of the candidate's *references*, the candidate is also emailed so they can supply better contact details. The candidate's email uses your firm's reply-to address (or the assigned recruiter's, if **Redirect support emails to assigned user** is on).
+
+Notifications are only sent for active records, and not when the failing address belongs to the recruiter themselves. See [Notification settings](/account-configuration/notification-settings) for the full list of toggles.
+
+## Fix the problem
+
+<Steps>
+  <Step title="Confirm the contact details with the person">
+    Check the email address or mobile number by another channel. Typos and
+    old work addresses are the most common cause of bounces.
+  </Step>
+  <Step title="Update the record">
+    Click **Edit** on the candidate or the reference and correct the **Email**
+    or mobile number, then save. Saving a new email address or phone number
+    for a reference cancels the reminders that were still scheduled for them,
+    so send the next one yourself.
+  </Step>
+  <Step title="Resend the request">
+    Click **Send reminder** on the reference (or on the open request banner
+    for a candidate). Vitay sends the email — and a text, if there's a mobile
+    number — to the details now on file. See
+    [Reminders and how they work](/candidates-reference-requests/reminders-and-cadence)
+    for the limits on manual reminders.
+  </Step>
+  <Step title="Check the activity tab again">
+    A new **delivered** row (email) or **delivered** status (text) confirms
+    the corrected details work.
+  </Step>
+</Steps>
+
+## Pause reminders for one person
+
+If a candidate or reference asks you to stop contacting them, open their side panel and go to the **Reminders** tab. The **Reminders** card ("Enable / Disable reminders for &lt;name&gt;") has a toggle that saves immediately; below it, the table lists each scheduled reminder with its **Type**, **Scheduled at**, and **Sent at** dates and an **Active** switch for reminders that haven't gone out yet. A yellow *Auto-reminders are disabled* notice on this tab means automatic reminders are switched off for the whole firm.
+
+![SCREENSHOT: the Reminders tab of a reference side panel with the toggle and the reminders table — placeholder](/images/placeholder.png)
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="The Email activity tab is empty even though the request was sent">
+    Delivery events arrive from Vitay's email provider shortly after sending;
+    give it a few minutes and reopen the tab. Events are matched to the
+    record by email address, so if you changed the address after sending, the
+    earlier events stay attached to the old address.
+  </Accordion>
+  <Accordion title="The Text activity tab shows nothing">
+    The tab only loads when the record has a mobile number. If the number was
+    added after the request went out, no text was sent for it — send a
+    reminder to trigger one. If your firm has text messages turned off on
+    **Settings → Texts**, no texts are sent at all.
+  </Accordion>
+  <Accordion title="The email shows as delivered but the person can't find it">
+    Ask them to check their spam, junk, or promotions folders and to add
+    Vitay's sending address to their safe senders. Corporate mail filters can
+    quarantine messages after the mail server accepts them, which still
+    counts as delivered. See
+    [A reference didn't receive the email](/candidates-reference-requests/reference-not-received).
+  </Accordion>
+  <Accordion title="I didn't get the 'is invalid' email">
+    Check **Settings → Notification**: **Email errors notification** must be
+    on (and **Text errors notification** for texts). Only the candidate's
+    assigned recruiter receives it, and only while the candidate or reference
+    is active.
+  </Accordion>
+</AccordionGroup>
+
+## Related articles
+
+<CardGroup cols={2}>
+  <Card title="A reference didn't receive the email" icon="triangle-exclamation" href="/candidates-reference-requests/reference-not-received" />
+  <Card title="Manage in-flight requests" icon="sliders" href="/candidates-reference-requests/manage-in-flight-requests" />
+  <Card title="Reminders and how they work" icon="bell" href="/candidates-reference-requests/reminders-and-cadence" />
+  <Card title="Notification settings" icon="bell-on" href="/account-configuration/notification-settings" />
+</CardGroup>
+
+{/* source: app.vitay.io projects/references shared/components/sidebar/{candidate,reference}/emails + texts + reminders (TABS.EMAIL_ACTIVITY, TABS.TEXT_ACTIVITY, TABLES.HEADERS.*, SIDEBAR.REMINDERS.*, SIDEBAR.WARNING.AUTO_REMINDERS), src/app/shared/models/email-activity.model.ts + text-activity.model.ts (status icon classes), protected/candidates/show/alerts (CANDIDATE.PHONE_NUMBER.REFERENCE_UNSUBSCRIBE), projects/configuration settings/texts (SETTINGS.TEXT_MESSAGES.IS_AVAILABLE) + settings/notifications (is_notify_email_activities_enabled, is_notify_text_activities_enabled, is_notify_candidate_reference_email_activities_enabled); api app/controllers/api/v3/webhooks/sendgrid_controller.rb (sendgrid_errors, "<email> is invalid" notification), app/controllers/api/v3/webhooks/twilio_controller.rb (OPTOUT_KEYWORDS, OPTIN_KEYWORDS, HANDLED_DELIVERY_STATUSES, ERRORS map), app/models/concerns/can_receive_texts.rb (send_text, UK +44 account, handle_send_message_error), app/models/email_activity.rb, app/models/text_activity.rb (UNSUBSCRIBED_MSG / RESUBSCRIBED_MSG), app/models/reference.rb (text_activities, unsubscribed_from_sms?, add_reminder gated on is_text_messages_enabled), app/models/recruiter_reference.rb (send_reference_text opt-out line, reset_reminders), app/controllers/api/v1/references_controller.rb#update (reset_reminders when email/phone changes), app/controllers/api/v3/{candidates,references}/{email,text}_activities_controller.rb, app/models/setting.rb (defaults) */}
