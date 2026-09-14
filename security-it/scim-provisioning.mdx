@@ -1,90 +1,120 @@
 ---
 title: "SCIM user provisioning"
-description: "Automatically provision and deprovision Vitay users from your identity provider using SCIM."
+description: "Automatically create, update, and deactivate Vitay users from your identity provider using SCIM."
 ---
 
 SCIM (System for Cross-domain Identity Management) lets your identity provider
-(IdP) automatically create and deactivate Vitay user accounts. When paired
-with [SSO](/security-it/sso-saml), your IT team manages who has access to
-Vitay entirely from the IdP — no manual account creation or cleanup needed.
+(IdP) create and deactivate Vitay accounts for you, and decide what each person
+can do in Vitay. Paired with [single sign-on](/security-it/sso-saml), your IT
+team manages access to Vitay entirely from the IdP — no manual account creation
+or cleanup.
 
 <Note>
-  SCIM provisioning is configured with Vitay's team as part of your SSO setup.
-  Contact [hello@vitay.io](mailto:hello@vitay.io) to enable it. You will
-  need an admin role in your IdP to configure the SCIM connector on your side.
+  SCIM is configured in **Configuration → Settings → SSO**, which only
+  **root recruiters** can open and which appears once Vitay has provisioned your
+  firm's identity organisation. Contact
+  [hello@vitay.io](mailto:hello@vitay.io) to get that started. You'll also need
+  an admin role in your IdP to configure its SCIM connector.
 </Note>
+
+## Where you set it up
+
+In the **SSO** tab, the **SCIM Provisioning** section walks you through creating
+the SCIM connection for your IdP and gives you the values to paste into your
+IdP's SCIM configuration. The **Members** section on the same tab shows the
+people currently in your Vitay organisation, so you can confirm provisioning is
+landing as expected.
+
+![SCREENSHOT: Configuration → Settings → SSO showing the SCIM Provisioning section — placeholder](/images/placeholder.png)
 
 ## What SCIM handles
 
 | Event in your IdP | What happens in Vitay |
 |---|---|
-| New user assigned to Vitay | A Vitay account is created or activated for that user |
-| User unassigned or deprovisioned | Vitay deactivates the user's account and revokes their active sessions |
-| User added to or removed from a group | Vitay updates the user's **role** (recruiter, root recruiter, or supervisor) based on the group-to-role mapping configured at setup |
+| New user assigned to Vitay | A Vitay account is created for that user, or an existing/deactivated one is matched and reactivated |
+| User unassigned or deprovisioned | Vitay deactivates the user's account for your firm and revokes their active sessions |
+| User added to or removed from a group | Vitay re-checks the user's groups and updates their **role** — recruiter, root recruiter, or supervisor |
+
+Changes are processed in the background as your IdP sends them, so they
+normally take effect within moments rather than instantly.
+
+### Roles come from your groups
+
+Vitay manages three roles through SCIM: **recruiter**, **root recruiter**, and
+**supervisor**. A user gets exactly the roles that their mapped IdP groups grant
+them:
+
+- Add someone to a mapped group and they gain that role in Vitay.
+- Remove them from it and Vitay removes the role again.
+- Root recruiter and supervisor both include the base recruiter role
+  automatically.
+
+Vitay has no group concept of its own — IdP groups are used only to decide which
+Vitay role each person gets. If you're not sure how your groups map to Vitay
+roles, ask [hello@vitay.io](mailto:hello@vitay.io).
+
+### Deactivation and reactivation
+
+When your IdP deprovisions someone, Vitay deactivates their access to your firm
+and immediately revokes their signed-in sessions, so an open browser tab can't
+keep working. If that was their only Vitay firm, the account itself is
+deactivated too.
+
+Reassigning the person later brings the **same** account back — their history in
+Vitay is preserved and no duplicate is created. Their roles are re-applied from
+whichever groups they're in at that point.
 
 <Note>
-  Profile updates (name, email) do **not** currently sync to existing Vitay
-  users. After an account is created, name or email changes are made in Vitay
-  itself.
+  Profile updates (name, email) do **not** sync to existing Vitay users. After
+  an account exists, change a name or email in Vitay itself.
 </Note>
-
-Vitay has no separate group concept — IdP groups are used only to determine
-which Vitay role a user gets, via the mapping agreed with Vitay's team during
-setup.
 
 <Note>
-  Vitay provisions users into the hiring firm associated with your SCIM
-  configuration. If your organisation uses multiple Vitay firms (for example, a
-  parent and sub-accounts), Vitay's team will confirm which firm each SCIM
-  connector maps to.
+  Each SCIM connection provisions into one Vitay account. If your organisation
+  uses several Vitay firms (a parent and sub-accounts, for example), Vitay's team
+  will confirm which firm each connection maps to.
 </Note>
-
-## How it works
-
-Vitay listens for SCIM events from your IdP (delivered via webhook). Each event
-is recorded and processed asynchronously:
-
-- **Create** — when a new member is assigned, Vitay creates the account. If the
-  user first logs in via SSO before the SCIM event arrives, Vitay handles that
-  gracefully — both flows simply create or match the same user.
-- **Group change** — when a user's group membership changes, Vitay re-syncs
-  their role according to your group-to-role mapping.
-- **Delete / deactivate** — when a user is removed in your IdP, Vitay
-  deactivates their account and revokes their active sessions so they can no
-  longer log in.
-
-![SCREENSHOT: the provisioning flow from IdP to Vitay — placeholder](/images/placeholder.png)
 
 ## What you provide to Vitay
 
-To set up SCIM, share the following with Vitay's team:
+Most of the setup happens in the SSO tab and in your IdP, but it helps to agree
+up front on:
 
 - Your IdP's **SCIM connector type** (for example, Okta or Microsoft Entra ID).
 - The **groups** you want provisioned into Vitay, and which Vitay role
-  (recruiter, root recruiter, or supervisor) each group should map to.
-- Any **attribute mappings** your IdP requires to correctly identify users
-  (typically first name, last name, and email).
-
-Vitay's team will provide the **SCIM endpoint URL** and **bearer token** to
-enter in your IdP's SCIM configuration.
+  (recruiter, root recruiter, or supervisor) each group should grant.
+- The **attribute mappings** your IdP needs to identify people — typically first
+  name, last name, and email address.
 
 ## Troubleshooting
 
 <AccordionGroup>
   <Accordion title="A user was deprovisioned in the IdP but can still log in to Vitay">
-    SCIM events are processed asynchronously. There may be a short delay between
-    an IdP change and the deactivation taking effect in Vitay. If access persists
-    beyond a few minutes, contact [hello@vitay.io](mailto:hello@vitay.io).
+    Deprovisioning is processed in the background, so there can be a short delay
+    before it takes effect. If access persists beyond a few minutes, contact
+    [hello@vitay.io](mailto:hello@vitay.io).
   </Accordion>
   <Accordion title="A new user isn't appearing in Vitay after being assigned in the IdP">
-    Confirm that the SCIM connector in your IdP shows a successful push for the
-    user (no error status). Share the IdP error log with Vitay's team if the
-    issue persists.
+    Check that the SCIM connector in your IdP shows a successful push for that
+    user with no error status, and that the user has an email address. Share the
+    IdP error log with [hello@vitay.io](mailto:hello@vitay.io) if the issue
+    persists.
+  </Accordion>
+  <Accordion title="A user was provisioned but can't do anything in Vitay">
+    They have an account but no role yet. Roles come from your mapped IdP
+    groups — add the user to the group for the Vitay role they need, and Vitay
+    updates them on the next sync.
   </Accordion>
   <Accordion title="A user's name or email updated in the IdP but not in Vitay">
-    This is expected — profile updates from your IdP don't currently sync to
-    existing Vitay users. Make the name or email change in Vitay itself, or ask
+    This is expected — profile updates don't sync to existing Vitay users. Make
+    the change in Vitay itself, or ask
     [hello@vitay.io](mailto:hello@vitay.io) for help.
+  </Accordion>
+  <Accordion title="A role keeps coming back (or disappearing) after being changed in Vitay">
+    For SCIM-provisioned users, your IdP groups are the source of truth: Vitay
+    re-applies the roles your groups grant and removes the ones they don't.
+    Change the person's group membership in your IdP rather than the role in
+    Vitay.
   </Accordion>
 </AccordionGroup>
 
@@ -95,4 +125,4 @@ enter in your IdP's SCIM configuration.
   <Card title="Data and privacy" icon="shield-halved" href="/security-it/data-and-privacy" />
 </CardGroup>
 
-{/* source: api app/models/scim_event.rb; api app/workers/stytch_scim_event_worker.rb */}
+{/* source: api app/controllers/api/v3/webhooks/stytch_controller.rb (signed SCIM webhook -> ScimEvent); api app/workers/stytch_scim_event_worker.rb (async, per-member lock, stale-event guard; scim.member.create/update -> UpsertMember, scim.member.delete -> DeactivateMember, scim.scim_member_group.* -> RefreshMember, scim.scim_group.* ignored); api app/services/stytch_sync/upsert_member.rb (create/match, reactivation, no name/email update for existing users); sync_member_roles.rb (MANAGED_ROLES recruiter/root_recruiter/supervisor, scim_connection_group source, root_recruiter+supervisor imply recruiter); deactivate_member.rb (per-firm deactivate, user deactivate when last firm, revoke_all_tokens!); api app/controllers/api/v3/stytch/sessions_controller.rb (root-recruiter gate); app projects/configuration settings/sso (stytch-admin-portal-scim / -members) */}

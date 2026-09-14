@@ -29,11 +29,15 @@ You'll also need API access details for your eRecruit system. Contact [hello@vit
 
 ![SCREENSHOT: Integrations gallery showing a connected eRecruit integration — placeholder](/images/placeholder.png)
 
+## How often it syncs
+
+Vitay polls eRecruit — there are no webhooks to set up on your side. The import runs about **every 90 minutes**, so a candidate who reaches the right status in eRecruit is usually in Vitay, with their reference request sent, within a couple of hours. Everything else is immediate: completed reference PDFs are uploaded to eRecruit as each reference finishes, and the manual **Synchronize** actions run as soon as you use them.
+
 ## What syncs, and when
 
 <Steps>
   <Step title="Vitay checks eRecruit on a schedule">
-    The sync runs automatically in the background — no one needs to trigger it. Each run checks the configured requirements for candidates in the configured status that Vitay hasn't imported yet.
+    The sync runs automatically in the background about every 90 minutes — no one needs to trigger it. Each run checks the configured requirements for candidates in the configured status that Vitay hasn't imported yet.
   </Step>
   <Step title="New candidates are imported">
     Each new candidate's first name, last name, email address, and mobile phone number are copied into Vitay. Candidates without a valid email address in eRecruit are skipped, since Vitay can't send them a reference request.
@@ -76,4 +80,4 @@ Only a root recruiter can disconnect the integration. Open **Integrations**, sel
   <Card title="Add a candidate" icon="user-plus" href="/candidates-reference-requests/add-a-candidate" />
 </CardGroup>
 
-{/* source: api lib/tasks/services/erecruit.rake; api app/services/external_services/erecruit/ (authorize, candidates, documents, references, refresh_token); api app/controllers/api/services/erecruit_controller.rb; api app/controllers/api/v1/references_controller.rb (auto document upload on completion); app candidates.show.header + sidebar.reference.question-set Synchronize dropdowns */}
+{/* source: api lib/tasks/services/erecruit.rake (cadence: every 90 minutes per config/schedule.rb; real cron runs in Duplo); api app/services/external_services/erecruit/ (authorize, candidates, documents, references, refresh_token); api app/controllers/api/services/erecruit_controller.rb; api app/controllers/api/v1/references_controller.rb (auto document upload on completion); app candidates.show.header + sidebar.reference.question-set Synchronize dropdowns */}

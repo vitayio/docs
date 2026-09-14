@@ -45,6 +45,12 @@ Once connected:
 - In JobAdder, open any candidate record and find the **Vitay — View candidate** action. Clicking it loads the candidate into Vitay (or shows their existing Vitay record) and lets you send a reference request.
 - In Vitay, recruiters can push a candidate's profile or reference report back to JobAdder from the candidate page.
 
+## How often it syncs
+
+There's no scheduled background import for JobAdder — the integration works **on demand**. A candidate is pulled from JobAdder into Vitay at the moment someone opens the **View candidate** action for them, and pushes, report uploads, and status write-backs happen as soon as you trigger them. Vitay refreshes its JobAdder access token as part of each of those actions, so nothing needs re-authorising between uses.
+
+Because nothing runs on a timer, a change made in JobAdder doesn't reach Vitay on its own — open the candidate through the Vitay action to bring the latest details across.
+
 ## Disconnect JobAdder
 
 Contact [hello@vitay.io](mailto:hello@vitay.io) to remove the integration.
@@ -74,4 +80,4 @@ Disconnecting also removes the **View candidate** action from your JobAdder acco
   <Card title="Add a candidate" icon="user-plus" href="/candidates-reference-requests/add-a-candidate" />
 </CardGroup>
 
-{/* source: api app/controllers/api/jobadder_controller.rb (destroy: refresh token, list + delete partner actions best-effort, then pseudo_destroy); api app/services/external_services/jobadder/; api app/models/external_authorisations/jobadder.rb */}
+{/* source: api app/controllers/api/jobadder_controller.rb (load_entity/upload_entity call refresh_token then JobadderCandidateSyncJob.perform_now — on-demand only, no scheduled task in lib/tasks or config/schedule.rb); api app/controllers/api/jobadder_controller.rb (destroy: refresh token, list + delete partner actions best-effort, then pseudo_destroy); api app/services/external_services/jobadder/; api app/models/external_authorisations/jobadder.rb */}
