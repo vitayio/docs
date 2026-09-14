@@ -1,0 +1,165 @@
+---
+title: "Fraud signals: IP conflicts and reference edits"
+description: "Understand the IP address conflict alert, when it is raised, how to clear it, and how to see which of their own details a reference changed when they submitted the form."
+---
+
+Vitay watches for two signs that a reference may not be who they say they are: the reference and the candidate submitting their forms from the **same IP address**, and the reference **editing the contact details** the candidate originally supplied for them. Neither is proof of anything on its own — this article explains what each signal means and where to find it.
+
+<Note>
+  Any recruiter can see both signals on a candidate they can open. Turning IP detection on or off, and putting either signal on PDF reports, needs a **root recruiter** role because those switches live in the **Configuration** area.
+</Note>
+
+## How the IP conflict check works
+
+When someone fills in one of Vitay's public forms, Vitay records the IP address the form was submitted from, along with the browser, browser version, device, operating system, and user agent.
+
+<Steps>
+  <Step title="The candidate submits their reference list">
+    Their IP address is stored against the candidate record.
+  </Step>
+  <Step title="A reference submits the question form">
+    Their IP address is stored against that reference, and Vitay compares the two addresses.
+  </Step>
+  <Step title="An exact match raises a conflict">
+    If the reference's IP address is exactly the same string as the candidate's, Vitay records a conflict between that candidate and that reference, and — about fifteen seconds later — emails the recruiter.
+  </Step>
+</Steps>
+
+The comparison is a plain equality check between the two stored addresses. Vitay does not compare networks, subnets, or approximate locations, and it does not compare one reference against another. If either side has no IP address on file, no conflict can be raised.
+
+<Note>
+  The whole check is gated on the **IP address conflict** switch (see below). While that switch is off, Vitay does not record conflicts at all, so no alert, indicator, or report banner appears — even later, once you switch it back on, for submissions that happened while it was off.
+</Note>
+
+### Why an innocent match happens
+
+A shared IP address means the two forms left the same public internet connection. That happens for plenty of legitimate reasons:
+
+- The candidate and the reference filled the forms in the same office, on the same corporate Wi-Fi or VPN.
+- They are on the same home or shared network.
+- They are behind the same carrier-grade NAT or corporate proxy, which puts many unrelated people behind one address.
+
+Treat the alert as a prompt to verify the reference — call the number you have for them, or check their details against their company's public directory — not as a verdict.
+
+## Where an IP conflict shows up
+
+| Where | What you see |
+|---|---|
+| **The candidate page** | A yellow warning banner: *"We have detected that the same IP address was used by the candidate and their reference. We advise you double check this references identity to ensure they are a valid reference."* |
+| **The References table** | A warning triangle in an extra column at the left of the affected reference's row. Hover it for the tooltip **Same IP address**. |
+| **The reference itself** | Opening the reference shows a yellow banner: *"This reference appears to share an IP address with the candidate. This may indicate the reference is not legitimate."* |
+| **PDF reports** | A red **IP Address Conflict Detected** box above the reference's answers — only when the **IP conflict banner** setting is on. |
+| **Email** | An **IP address conflict detected** email to the recruiter, saying that the candidate has the same IP address as that reference and suggesting you look into its validity. |
+
+![SCREENSHOT: A candidate page showing the IP address warning banner above the References table, with the warning triangle on the affected row — placeholder](/images/placeholder.png)
+
+The raw address is always available even when there is no conflict: open the reference and go to its **About** tab (or the candidate's **Details** tab) to see **IP Address**, **Browser**, **Browser version**, **Device**, **OS**, **OS version** and **User agent** for that submission.
+
+### Two other IP banners
+
+The candidate page can also show two banners that compare *your own* IP address, right now, against what is on file:
+
+- **"Reference request submitted by the user"** — your IP address matches the candidate's, which usually means you filled the candidate's form in yourself.
+- **"IP match between Recruiter and Referee"** — your IP address matches one of the references' on that candidate.
+
+These two are calculated live in your browser and are not affected by the settings below, and they are not the same thing as the candidate-to-reference conflict.
+
+## Clear an IP fraud alert
+
+Once you have checked a reference and are satisfied it is genuine, you can remove the alert.
+
+<Steps>
+  <Step title="Open the reference">
+    From the candidate page, click the reference carrying the banner.
+  </Step>
+  <Step title="Dismiss the banner">
+    Click the **✕** at the right of the yellow banner. Its tooltip reads **Clear IP fraud alert**.
+  </Step>
+  <Step title="Confirm">
+    A **Clear IP fraud alert?** dialog asks you to confirm for that person by name. Click **Clear**.
+  </Step>
+</Steps>
+
+Clearing deletes the recorded conflict, so the banner, the warning triangle, and the report box all disappear for that reference. It cannot be undone from the interface — the IP addresses themselves are still on the **About** tab, but the alert is gone. The reference's alert is cleared individually; other references on the same candidate keep theirs.
+
+## The two IP settings
+
+Both live in the **Configuration** area, under **Settings** → the **Notification** tab.
+
+| Setting | What it does | Default |
+|---|---|---|
+| **IP address conflict** | *"Send email to assigned user if their candidates and references have the same ip address"*. This is the master switch: while it is on, Vitay compares addresses, records conflicts, and emails the recruiter. While it is off, no comparison is made and nothing is recorded. | On |
+| **IP conflict banner** | *"Show a banner on reports when the candidate and reference share the same IP address"*. Adds the red **IP Address Conflict Detected** box to PDF reports. It appears as a sub-switch underneath **Send email notification with pdf report**, so you have to switch that on to reach it. | Off |
+
+The conflict email goes to the candidate's assigned user, or to the person who sent the request if your firm uses the **Requested user email** setting on the same tab.
+
+![SCREENSHOT: The Notification settings tab showing the IP address conflict switch and the nested IP conflict banner switch — placeholder](/images/placeholder.png)
+
+## Reference edits
+
+When a reference opens their question form, the contact and employment details the candidate gave for them are pre-filled. The reference can correct any of them before submitting — and Vitay keeps the original value so you can see exactly what changed.
+
+Vitay tracks changes to these twelve fields:
+
+- First name, Last name
+- Email, Phone, Country code
+- Title, Company name, Candidate position
+- Relationship, Specialty
+- Start date, End date
+
+Only fields the reference actually changed at submission are stored. A reference who submits without touching anything leaves no edits behind, and edits a recruiter makes afterwards are not counted here.
+
+### See what a reference changed
+
+<Steps>
+  <Step title="Open the completed reference">
+    Go to the candidate and click the reference.
+  </Step>
+  <Step title="Click Show reference edits">
+    A **Show reference edits (n)** button appears on the reference's detail card whenever there is at least one edit — *n* is the number of fields changed. It is not shown at all when nothing was edited.
+  </Step>
+  <Step title="Read the list">
+    A **Reference edits** card opens underneath, listing one line per field: the field name, the original value struck through, an arrow, and the value the reference submitted. Click **Hide reference edits** to collapse it again.
+  </Step>
+</Steps>
+
+![SCREENSHOT: A completed reference with the Show reference edits button expanded into the Reference edits card — placeholder](/images/placeholder.png)
+
+A big change is worth a second look — a reference who replaces a company email with a personal one, or rewrites the employment dates the candidate gave, is worth confirming independently. Small corrections (a misspelled surname, a missing job title) are routine.
+
+### Put edits on the report
+
+A root recruiter can add the same summary to PDF reports: **Configuration** → **Settings** → **Documents** tab → **Show Reference Edits On Reports** (*"Show a summary of fields edited by the reference on PDF reports"*). It is off by default. When it is on, a **Reference Made Edits** box lists each changed field as `original → current` above that reference's answers. See [Report settings](/account-configuration/report-settings).
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="I never get IP conflict emails">
+    Check **IP address conflict** on the **Notification** settings tab. It is on by default, but if it was switched off nothing is compared or recorded while it is off — and the email only ever goes to one person: the candidate's assigned user (or the requesting user, if **Requested user email** is on).
+  </Accordion>
+  <Accordion title="The banner is on screen but not on the PDF report">
+    The report box is a separate setting. Switch on **IP conflict banner** on the **Notification** tab — you will only see it once **Send email notification with pdf report** above it is on — then download the report again.
+  </Accordion>
+  <Accordion title="I cleared the alert by mistake">
+    There is no undo. The submission details are still on the reference's **About** tab, so you can compare its **IP Address** with the candidate's on the candidate's **Details** tab by hand.
+  </Accordion>
+  <Accordion title="Can I list every candidate with an IP conflict?">
+    Not from the candidate list — its filters cover candidate status, reference status, and assigned recruiter only. Conflicts are visible on each candidate individually, and by the alert email when the setting is on.
+  </Accordion>
+  <Accordion title="A reference edited a field that isn't in the list">
+    Only the twelve fields above are tracked. Answers to question-set questions are not reference edits — they are simply the reference's answers.
+  </Accordion>
+</AccordionGroup>
+
+## Related articles
+
+<CardGroup cols={2}>
+  <Card title="Read a completed reference" icon="file-lines" href="/candidates-reference-requests/read-a-completed-reference" />
+  <Card title="Report settings" icon="file-pdf" href="/account-configuration/report-settings" />
+  <Card title="Reference request settings" icon="sliders" href="/account-configuration/reference-request-settings" />
+  <Card title="Notification settings" icon="bell" href="/account-configuration/notification-settings" />
+  <Card title="Candidate statuses and comments" icon="tags" href="/candidates-reference-requests/candidate-statuses-and-comments" />
+  <Card title="Share reports" icon="share-nodes" href="/candidates-reference-requests/share-reports" />
+</CardGroup>
+
+{/* source: api app/services/ip_conflict_service.rb (exact string equality of reference.metadatum.ip_address vs candidate.metadatum.ip_address; creates CandidateReferenceIpAddress), app/workers/ip_conflict_worker.rb (+ email), app/controllers/api/v1/references_controller.rb ~300 (both gated on is_notify_recruiters_ip_address_enabled; worker enqueued 15s later) and ~449 clear_ip_conflict (DELETE /references/:id/ip_conflict destroys the record), app/controllers/api/v3/metadata_controller.rb (same gate on metadata create), app/models/reference.rb#send_notify_recruiter_ip_conflict (subject "IP address conflict detected"; recipient = requested_by when is_requested_recruiter_from_email else candidate.added_by), app/models/candidate_reference_ip_address.rb, app/models/metadatum.rb fields, app/models/setting.rb (is_notify_recruiters_ip_address_enabled default TRUE per db/schema.rb; settings_json is_ip_conflict_banner_enabled + is_show_reference_edits_on_report default false), app/views/api/v3/documents/en/{default,compressed}/{references,candidates}.erb (IP Address Conflict Detected box), app/views/api/v3/documents/_reference_edits_summary.erb (Reference Made Edits), app/models/reference.rb CANDIDATE_EDITABLE_FIELDS (12 fields) + track_reference_edits!/reference_edited_fields/has_reference_edits?, app/controllers/api/v1/references_controller.rb ~107 (tracked on public submission only); app.vitay.io projects/references protected/candidates/show/alerts/candidates.show.alerts.component.{ts,html} (CANDIDATE.IP_ADDRESS.CANDIDATE_REFERENCE banner from candidate.has_same_ip; CANDIDATE_RECRUITER / REFERENCE_RECRUITER computed against the signed-in user's payload ip_address), protected/candidates/show/references/candidates.show.references.component.ts#checkIpAddresses (warning-triangle column, tooltip "Same IP address"), shared/components/sidebar/reference/question-set/alerts/... (REFERENCE.IP_ADDRESS.* banner + Clear IP fraud alert modal), shared/components/sidebar/reference/question-set/sidebar.reference.question-set.component.html + edits-card (REFERENCE.EDITS.SHOW_WITH_COUNT, SIDEBAR.REFERENCE_EDITS), shared/components/sidebar/reference/about + sidebar/candidate/details (SIDEBAR.IP_ADDRESS/BROWSER/DEVICE/OS/USER_AGENT); projects/configuration protected/settings/notifications/settings.notifications.component.{ts,html} (params order; is_ip_conflict_banner_enabled nested under is_attach_pdf_report_recruiter_email_enabled) and settings/documents, i18n SETTINGS.CONFIGURATION.is_notify_recruiters_ip_address_enabled.* / is_ip_conflict_banner_enabled.* / SETTINGS.DOCUMENTS.is_show_reference_edits_on_report.* */}

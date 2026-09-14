@@ -1,0 +1,169 @@
+---
+title: "Candidate statuses and comments"
+description: "What each candidate status means, how reference statuses differ, changing status one at a time or in bulk, the automatic Unresponsive flip, and leaving comments on candidates and references."
+---
+
+Every candidate in Vitay carries a **status** you set to track where they are in your process, and a separate **reference status** that Vitay maintains from the state of their references. Comments let your team leave notes on a candidate or on an individual reference.
+
+<Note>
+  Any recruiter can change the status of a candidate they can see, and can comment. Switching the comment prompt on or off needs a **root recruiter** role.
+</Note>
+
+## The candidate statuses
+
+The status appears as a coloured button at the top of the candidate page and as a column in the candidate list. There are nine:
+
+| Status | Meaning |
+|---|---|
+| **Process initiated** | The starting status for every new candidate. |
+| **Waitlisted** | On hold — kept for later, not currently progressing. |
+| **Interview scheduled** | An interview is booked. |
+| **Interviewed** | The interview has happened. |
+| **Rejected** | Not proceeding. |
+| **Completed** | Your process for this candidate is finished. |
+| **Submitted** | Put forward to the client or hiring manager. |
+| **Accepted** | Offer accepted / placed. |
+| **Unresponsive** | The candidate has stopped responding to their reference request. Vitay sets this one for you — see below. |
+
+Apart from the automatic flip between **Process initiated** and **Unresponsive**, these labels are yours to use however your team works. Nothing in Vitay behaves differently because of them: changing a status never sends an email, stops reminders, or alters a reference request.
+
+<Note>
+  Statuses are account-wide — the list is fixed and cannot be renamed or extended.
+</Note>
+
+## Change one candidate's status
+
+<Steps>
+  <Step title="Open the candidate">
+    Go to **Candidates** and click the candidate.
+  </Step>
+  <Step title="Click the status button">
+    The coloured button in the header carries the current status. Click it to drop down the full list.
+  </Step>
+  <Step title="Pick the new status">
+    Select it. If your firm has the comment prompt switched off, the change saves immediately.
+  </Step>
+  <Step title="Add a reason (when prompted)">
+    With the prompt on, a **Change candidate status** dialog appears: *"You are about to change the status from **X** to **Y**."* Fill in **Add a comment (optional)** — the placeholder reads *"Enter a reason for this status change..."* — or leave it blank, then confirm. The note under the box explains: *"This comment will be visible in the candidate's comments section."*
+  </Step>
+</Steps>
+
+![SCREENSHOT: The candidate header status dropdown open, and the Change candidate status dialog — placeholder](/images/placeholder.png)
+
+When you do type a comment, Vitay posts it to the candidate's **Comments** tab in the form `Status changed from "Process initiated" to "Interviewed": <your text>`, attributed to you and timestamped. Leaving it blank changes the status without creating a comment.
+
+### The comment prompt setting
+
+A root recruiter controls the prompt in the **Configuration** area: **Settings** → the **Configuration** tab → **Status change comment prompt** — *"Show a prompt to add an optional comment when changing a candidate's status"*. With it off, statuses change in one click and no comment is ever created.
+
+## Change status in bulk
+
+<Steps>
+  <Step title="Select candidates">
+    On the **Candidates** list, tick the candidates you want. A bulk action bar appears.
+  </Step>
+  <Step title="Click Update status">
+    The dialog says *"Select a new status for the N selected candidates:"* and offers the same nine statuses.
+  </Step>
+  <Step title="Confirm">
+    Pick one and confirm. Every selected candidate moves to it.
+  </Step>
+</Steps>
+
+The bulk action never asks for a comment, even when the prompt setting is on — comment on the candidates individually if you need the reasons recorded. See [Bulk candidate actions](/candidates-reference-requests/bulk-candidate-actions) for the other bulk operations.
+
+## Reference statuses
+
+A reference carries its own status, which Vitay derives — you cannot set it:
+
+| Status | When it shows |
+|---|---|
+| **Pending** | The reference has been created but has not submitted the form. |
+| **Completed** | They submitted the form. |
+| **Unresponsive** | They have gone quiet, by the rule below. |
+
+A reference who used the decline option shows a banner with their comment instead of completing — see [Read a completed reference](/candidates-reference-requests/read-a-completed-reference).
+
+On the **Candidates** list, the filter button opens two groups of checkboxes: **Statuses** (the nine candidate statuses) and **Reference status**, which asks a slightly different question — how far along the whole candidate is:
+
+| Filter option | Matches candidates who |
+|---|---|
+| **No Reference req. sent** | Have no active reference request at all. |
+| **Candidate req. pending** | Received a reference request but have not submitted their list of references yet. |
+| **Reference req. pending** | Have at least one reference that has not completed. |
+| **Completed** | Have references, and every one of them has completed. |
+| **Unresponsive** | Have at least one reference marked unresponsive. |
+
+## The automatic Unresponsive flip
+
+Vitay runs a check once a day and moves records in and out of **Unresponsive** on its own.
+
+**A reference or a reference request becomes unresponsive when all of these are true:**
+
+- it is still active and has not been submitted;
+- at least one reminder has already been sent to it;
+- the most recent reminder went out **more than 24 hours ago**; and
+- there is **no further reminder scheduled** for it.
+
+**It stops being unresponsive as soon as any of these becomes true:** the form is submitted, a new reminder gets scheduled, or the sent reminders are removed.
+
+**The candidate's own status follows the reference *request* only.** A candidate sitting on **Process initiated** who has an unresponsive reference request flips to **Unresponsive**. When that request is answered — or stops being unresponsive for any of the reasons above — the candidate flips back to **Process initiated**. An unresponsive *reference* (the person giving the reference) shows on the reference and in the filter, but never changes the candidate's status.
+
+<Note>
+  The flip only touches candidates on **Process initiated** and **Unresponsive**. A candidate you have set to **Interviewed**, **Submitted** or any other status is left alone, whatever their references do.
+</Note>
+
+Separately, Vitay can email your team when a record first turns unresponsive. That notification is off until someone configures an **Unresponsive** recipient list, it is sent once per record, and it is skipped if the last reminder went out more than two days ago. See [Notification settings](/account-configuration/notification-settings).
+
+## Comments
+
+Candidates and references each have a **Comments** tab for internal notes. Comments are never shown to candidates or references.
+
+<Steps>
+  <Step title="Open the Comments tab">
+    On a candidate, the tabs run **Details**, **Activities**, **Comments**, **Email activity**, **Text activity**, **Reference requests**, **Reminders**, **Documents**. On a reference they run **Reference**, **Activities**, **Comments**, **Email activity**, **Text activity**, **Reminders**, **About**.
+  </Step>
+  <Step title="Write the comment">
+    Type into the box under **Comment** — the placeholder reads *"Write a comment..."* — and click **Submit**.
+  </Step>
+  <Step title="Edit or delete your own">
+    Each comment shows its author and time. The pencil and bin buttons appear only on comments you wrote; other people's comments are read-only for you. An empty tab reads **No comments yet**.
+  </Step>
+</Steps>
+
+![SCREENSHOT: The candidate Comments tab with one comment and the add-comment box — placeholder](/images/placeholder.png)
+
+Adding, editing, and deleting a comment are all recorded in the [Activities log](/reports-lead-generation/activities-log), so a deleted comment still leaves a trace of who removed it and when.
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="A candidate keeps going back to Unresponsive">
+    That is the daily check doing its job: the reference request is still unanswered, its last reminder is over 24 hours old, and nothing further is scheduled. Send a new reminder, or move the candidate to a status other than **Process initiated** — the flip only touches **Process initiated** and **Unresponsive**.
+  </Accordion>
+  <Accordion title="I wasn't asked for a comment when I changed a status">
+    Either **Status change comment prompt** is off for your firm, or you used the bulk **Update status** action, which never prompts.
+  </Accordion>
+  <Accordion title="I can't edit a colleague's comment">
+    Only the author can edit or delete a comment. Add your own comment instead, or ask them to change theirs.
+  </Accordion>
+  <Accordion title="The status change didn't notify anyone">
+    Statuses are internal labels — changing one never emails the candidate, the references, or your team.
+  </Accordion>
+  <Accordion title="A reference shows Pending but the candidate shows Completed">
+    They measure different things. The candidate status is whatever a person last set; the reference status is derived from that reference's own form.
+  </Accordion>
+</AccordionGroup>
+
+## Related articles
+
+<CardGroup cols={2}>
+  <Card title="Bulk candidate actions" icon="list-check" href="/candidates-reference-requests/bulk-candidate-actions" />
+  <Card title="Manage in-flight requests" icon="hourglass-half" href="/candidates-reference-requests/manage-in-flight-requests" />
+  <Card title="Reminders and cadence" icon="bell" href="/candidates-reference-requests/reminders-and-cadence" />
+  <Card title="The Activities log" icon="clock-rotate-left" href="/reports-lead-generation/activities-log" />
+  <Card title="Notification settings" icon="envelope" href="/account-configuration/notification-settings" />
+  <Card title="Fraud signals: IP conflicts and reference edits" icon="fingerprint" href="/candidates-reference-requests/ip-conflicts-and-reference-edits" />
+</CardGroup>
+
+{/* source: api app/models/candidate.rb ~137 (enum statuses_labels process/waitlisted/scheduled/rejected/interviewed/completed/submitted/accepted/unresponsive), app/models/reference.rb ~119 (enum status process_initiated/contacted/completed — not what the UI renders), app/models/concerns/can_be_unresponsive.rb (UNRESPONSIVE_THRESHOLD 24.hours; false when filled_at present or a future reminder is scheduled), app/workers/unresponsive_notification_worker.rb (bulk mark/unmark for Reference + ReferenceRequest; update_candidate_statuses flips PROCESS_STATUS 0 ↔ UNRESPONSIVE_STATUS 8 from unresponsive reference_requests ONLY; NOTIFICATION_WINDOW 2.days; UnresponsiveNotification.already_notified? once per record; recipients from CustomNotification::UNRESPONSIVE root/assigned/requested/custom, no notification when that record is absent), lib/tasks/notifications.rake notifications:unresponsive daily (config/schedule.rb 9am — cron now runs in Duplo, treat as indicative), app/controllers/api/v3/candidates_controller.rb ~505 (reference_statuses filter semantics 0–4), app/models/comment.rb + app/controllers/api/v3/comments_controller.rb (author-only update/destroy; create_activity on create/update/destroy), app/models/setting.rb settings_json is_status_change_comment_prompt_enabled; app.vitay.io src/app/shared/helpers/candidate.helper.ts (candidatesStatus labels) and reference.helper.ts (referenceStatus filter labels), src/app/shared/models/reference.model.ts#reference_status (Unresponsive → Completed → Pending), projects/references protected/candidates/show/header/candidates.show.header.component.ts (changeStatus → MODALS.STATUS_CHANGE_COMMENT when settings_json.is_status_change_comment_prompt_enabled; createStatusChangeComment builds `Status changed from "X" to "Y": …`), protected/candidates/list/candidates.list.component.{ts,html} (bulk actions incl. CANDIDATES.BULK_ACTIONS.UPDATE_STATUS; filters = candidateStatuses + referenceStatuses + recruiters only) and list/update-status-modal.component.ts (no comment field), shared/components/sidebar/candidate|reference/comments components + COMMENTS.* i18n, sidebar.candidate.component.ts / sidebar.reference.component.ts tab lists */}
