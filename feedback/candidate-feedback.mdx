@@ -23,6 +23,39 @@ service ratings — all powered by the same question-set system used for referen
 | **Employer** | A hiring manager or company contact | Post-hire check-ins, client satisfaction |
 | **Recruiter** | The candidate, rating their assigned recruiter | Measuring recruiter service quality (if enabled) |
 
+### About Recruiter feedback
+
+Recruiter feedback often trips people up because of its name: **the form goes to the candidate, not
+to the recruiter**. The candidate receives the same kind of link they'd get for any other feedback
+request, and the questions ask them to rate the recruiter who handled them — think of it as a
+recruiting NPS. When you pick this type in the request modal, Vitay shows a reminder that reads
+"Candidate will rate the assigned user".
+
+## Create a feedback question set
+
+Feedback uses the same question-set system as references — a question set just has to be marked as a
+feedback set first.
+
+<Steps>
+  <Step title="Add or edit a question set">
+    Go to **Question Sets** and add a new set (or open an existing one to edit it).
+  </Step>
+  <Step title="Set the Type to Feedback">
+    In the **Type** dropdown, choose **Feedback** instead of **Reference**, then save. Only sets
+    marked this way appear in the feedback request modal.
+  </Step>
+  <Step title="Add your questions">
+    Build the set exactly as you would a reference question set. See
+    [Question sets and templates](/account-configuration/question-sets-and-templates).
+  </Step>
+</Steps>
+
+<Note>
+  There's one **Feedback** question-set type, not one per flavour. The same set can be used for
+  candidate, employer, or recruiter feedback — you choose which when you send the request. The
+  **Type** dropdown only offers **Feedback** once a feedback type is enabled for your firm.
+</Note>
+
 ## Send a feedback request
 
 <Steps>
@@ -72,6 +105,53 @@ service ratings — all powered by the same question-set system used for referen
   candidate's assigned recruiter.
 - Any rating or matrix questions generate a score you can see at a glance.
 
+## Turn feedback reminders off
+
+Feedback requests follow your firm's normal reminder sequence. If you'd rather recipients heard from
+you only once, a root recruiter can switch **Feedback reminders** off on **Settings → Notification**
+— reference reminders keep running as usual. See
+[Notification settings](/account-configuration/notification-settings).
+
+## The Feedback page
+
+As well as the per-candidate tab, there's a **Feedback** item in the left sidebar listing every
+feedback request across your candidates. It appears as soon as a feedback type is enabled for your
+firm.
+
+Each row shows the question set, the feedback type, the candidate, the score, the assigned user, and
+the requested and completed dates. To narrow the list:
+
+- the **date range** picker, with **Last 7 days**, **Month to date**, **Last month** and **Year to
+  date** presets;
+- the **type** filter — **All**, plus **Candidate** and **Employer** (when candidate feedback is on)
+  and **Recruiter** (when recruiter feedback is on);
+- the **Everyone / Myself** toggle, if your role or firm settings allow firm-wide browsing.
+
+![SCREENSHOT: the Feedback list page with the date range, type filter and Everyone/Myself toggle — placeholder](/images/placeholder.png)
+
+### Complete a feedback form on someone's behalf
+
+If a candidate or employer gives you their answers over the phone, you can enter them yourself.
+Open the feedback request and click **Complete feedback** — Vitay opens the same form the recipient
+would have received, in a new tab, ready to fill in and submit.
+
+<Warning>
+  Answers entered this way are saved exactly like answers the recipient submitted themselves, and
+  there's no marker on the report to say who typed them. Use it only when you're transcribing what
+  the person actually told you. The option disappears once the form has any answers on it.
+</Warning>
+
+## Employers
+
+Employer feedback creates an **Employer** record attached to the candidate. You'll find employers in
+two places:
+
+- The candidate's **Feedback** tab has an **employers** table underneath the feedback surveys. Click
+  a row to edit the employer's name, email, phone, the candidate's position and specialty, and their
+  start and end dates.
+- An **Employers** page in the left sidebar lists every employer on the account with their name,
+  email, and when they were added. It's a read-only overview — edits happen on the candidate.
+
 ## View and export feedback
 
 Open the candidate's **Feedback** tab to see all sent, pending, and completed feedback requests.
@@ -104,4 +184,4 @@ To export feedback answers in bulk, see [Download reports](/reports-lead-generat
   <Card title="Question sets and templates" icon="list-check" href="/account-configuration/question-sets-and-templates" />
 </CardGroup>
 
-{/* source: app.vitay.io src/app/shared/components/modals/feedback-requests/modals.feedback-requests.component.ts (is_plugins_candidate_feedback_enabled, is_plugins_recruiter_feedback_enabled, types array: Candidate/Employer/Recruiter); api app/models/feedback.rb (identifiable_type polymorphic, send_feedback_requests, notes, scheduled_date) */}
+{/* source: app.vitay.io src/app/shared/components/modals/feedback-requests/modals.feedback-requests.component.{ts,html} (is_plugins_candidate_feedback_enabled, is_plugins_recruiter_feedback_enabled, hardcoded types Candidate/Employer/Recruiter, MODALS.FEEDBACK_REQUESTS.TYPE "Feedback type" + RECRUITER_REQUEST "Candidate will rate the assigned user"; filterQuestionSets() hardcodes type 'Feedback'; postEmployer() creates the Employer); api app/controllers/api/v3/feedbacks_controller.rb ~91-105 (Recruiter type → identifiable = Recruiter, recipient = Candidate) and app/models/feedback.rb (send_feedback_requests_email to recipient&.email || identifiable&.email, add_reminders gated on auto_reminders is_feedback_reminders_enabled, template category feedback / feedback_employer); api app/models/question_set_base.rb ~10-18 (identifiable_type_choices REFERENCE/CANDIDATE/FEEDBACK/EMPLOYER/RECRUITER/PRE_SCREENING; question_sets.identifiable_type default "Reference") + app.vitay.io src/app/shared/components/modals/question-sets/modals.question-sets.component.{ts,html} (MODALS.QUESTION_SETS.IDENTIFIABLE_TYPE "Type", Feedback option only when a feedback plugin is on); app.vitay.io projects/references protected/feedbacks/list/feedbacks.list.component.{html,ts} (NAVBAR.LINKS.FEEDBACKS "Feedback" /feedbacks + FeedbacksGuard; FEEDBACKS.LIST.TITLE; bsConfig.ranges Last 7 days/Month to date/Last month/Year to date; FILTERS.ALL/CANDIDATE/EMPLOYER/RECRUITER type dropdown; FILTERS.EVERYONE/MYSELF when is_all_toogle_enabled || isRoot; columns incl. ASSIGNED_RECRUITER "Assigned user"; no status filter, no search, no CSV), protected/feedbacks/show/feedbacks.show.component.html + shared/components/sidebar/feedback/question-set (FEEDBACKS.SHOW.COMPLETE.CTA "Complete feedback" → routerLink /forms/:id in a new tab, shown only when !filled_at && answers.length === 0); projects/references protected/employers/list + protected/candidates/show/feedbacks (FEEDBACKS.SUBTITLES.EMPLOYERS) + src/app/shared/components/modals/employers (MODALS.EMPLOYERS.EDIT "Edit employer"); api app/models/employer.rb; app.vitay.io projects/configuration SETTINGS.CONFIGURATION.auto_reminders.is_feedback_reminders_enabled "Feedback reminders" */}

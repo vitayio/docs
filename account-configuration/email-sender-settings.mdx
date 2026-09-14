@@ -20,6 +20,58 @@ Sender identity is controlled by the **Email Sender Identity** card in **Setting
 
 Because the two are independent, you can mix them: for example, show each recruiter's real name but send from one shared company address.
 
+## Which setup should you choose?
+
+### Personalised — recruiter's email and name
+
+Both controls set to the recruiter's own value. Emails arrive looking as though they came directly
+from the recruiter managing that candidate.
+
+- **Good for** firms where candidates already have a relationship with a named recruiter, and where
+  personal outreach lifts response rates. Recipients are less likely to ignore a familiar sender.
+- **Consider** that every recruiter's email domain needs to be authenticated (see below) or messages
+  may land in spam, and that replies land in individual inboxes rather than a shared one.
+
+### Centralised — one custom address and name
+
+Both controls set to a custom value, e.g. `references@yourcompany.com` with the name
+"Acme Talent Team". Every email looks the same regardless of who is assigned.
+
+- **Good for** a consistent, branded experience, teams with recruiter turnover, firms that want
+  replies in a shared inbox, and IT teams with strict email governance.
+- **Consider** that it feels less personal — but it's far easier to authenticate and maintain,
+  because there's only one domain to configure.
+
+### Mixed
+
+Use the recruiter's address with a custom display name, or the reverse. Less common, but useful when
+replies should reach the recruiter while the brand name stays consistent.
+
+### Using a Vitay-hosted address
+
+If you don't have a company address you want to send from, you can leave the custom address as a
+Vitay-hosted one — new accounts start with `recruitment@vitay.io` and the sender name "Recruitment".
+
+- **Pros:** nothing to configure, and Vitay handles authentication and deliverability for you.
+- **Cons:** the address doesn't match your company's domain, which can look less familiar to
+  candidates and references.
+
+It's a good starting point for smaller teams; most established firms eventually move to their own
+domain.
+
+## Where replies go
+
+The From address is not necessarily where replies land. Reply-to routing is controlled separately,
+on the same **Settings → Configuration** tab:
+
+| Setting | Effect |
+|---|---|
+| **Redirect support emails to assigned user** (on by default) | Replies go to the recruiter assigned to that candidate — their own address and name. |
+| **Primary reply email** / **Primary Reply Name** | Used when the redirect setting is off. Every reply goes to this one shared address instead. |
+
+So a firm can send everything from one branded address and still have each reply reach the right
+recruiter — or switch the redirect off to funnel all replies into a shared inbox.
+
 ## Change the sender address or name
 
 <Steps>
@@ -46,6 +98,24 @@ Because the two are independent, you can mix them: for example, show each recrui
 
 If you set a custom From address on a domain you own (e.g. `hiring@yourcompany.com`), your domain's DMARC policy may cause emails to land in spam or be rejected outright — unless Vitay is authorised to send on your domain's behalf.
 
+### The three standards, in plain language
+
+Three DNS-based standards work together to prove an email really came from your domain:
+
+- **SPF (Sender Policy Framework)** — a DNS entry listing which mail servers are allowed to send
+  email for your domain. Vitay's sending infrastructure has to be on that list.
+- **DKIM (DomainKeys Identified Mail)** — a cryptographic signature added to every message, proving
+  it came from an authorised sender and hasn't been altered on the way. Vitay supplies the DKIM
+  entries you publish.
+- **DMARC (Domain-based Message Authentication, Reporting & Conformance)** — builds on the other
+  two. It tells receiving mail servers what to do with a message that fails those checks: reject
+  it, send it to spam, or let it through — and can send you reports on what's happening.
+
+You don't need to write any of these by hand. When you add a domain in Vitay, the records you need
+are generated for you; your job is to publish them in your DNS.
+
+### Add and verify your domain
+
 You can set this up yourself from **Settings → Developers**, under **DMARC Protection**:
 
 <Steps>
@@ -66,6 +136,12 @@ You can set this up yourself from **Settings → Developers**, under **DMARC Pro
   DMARC setup requires access to your company's DNS. It is a one-time step per domain. If you get stuck, contact **hello@vitay.io**.
 </Note>
 
+<Note>
+  Adding and verifying a domain here does not change your From address. It authorises the domain so
+  mail sent from it is trusted — you still choose the address itself with **From: Address** on the
+  Configuration tab.
+</Note>
+
 ## Troubleshooting
 
 <AccordionGroup>
@@ -74,6 +150,16 @@ You can set this up yourself from **Settings → Developers**, under **DMARC Pro
   </Accordion>
   <Accordion title="I set a custom From address but outgoing emails still show the recruiter's address">
     Check that **From: Address** is set to **Custom address** (not **Recruiter's email**) and that you clicked the inline **save** icon after typing the address — the custom value is only stored when you save it.
+  </Accordion>
+  <Accordion title="Replies are going to the wrong inbox">
+    Replies are not controlled by the From address. On **Settings → Configuration**, check
+    **Redirect support emails to assigned user**: when it's on, replies go to the recruiter assigned
+    to that candidate; when it's off, they all go to the **Primary reply email** instead.
+  </Accordion>
+  <Accordion title="We haven't set a custom address — what are emails sent from?">
+    New accounts start with a Vitay-hosted address (`recruitment@vitay.io`, sender name
+    "Recruitment"), which is used whenever **From: Address** is set to **Custom address** and you
+    haven't replaced it. That works out of the box with no DNS setup.
   </Accordion>
 </AccordionGroup>
 
@@ -86,4 +172,4 @@ You can set this up yourself from **Settings → Developers**, under **DMARC Pro
   <Card title="Send a reference request" icon="paper-plane" href="/candidates-reference-requests/send-a-reference-request" />
 </CardGroup>
 
-{/* source: app.vitay.io projects/configuration settings.configuration.component.html SETTINGS.CONFIGURATION.EMAIL_SENDER (From: Address / From: Name segmented buttons, inline save), SETTINGS.DEVELOPERS.DMARC (Add Domain, DNS records table, Check DMARC status); api app/models/setting.rb (branding_email_from, branding_email_name, is_branding_emails_from_enabled, is_branding_emails_name_enabled), app/controllers/.../dmarc_settings_controller.rb, app/services/send_grid_service/dmarc.rb */}
+{/* source: app.vitay.io projects/configuration settings.configuration.component.html SETTINGS.CONFIGURATION.EMAIL_SENDER (From: Address / From: Name segmented buttons via setEmailSenderSource('from'|'name', bool), inline floppy-disk save on branding_email_from / branding_email_name), SETTINGS.CONFIGURATION.support_email_from "Primary reply email" / support_email_name "Primary Reply Name" / is_support_email_to_assigned_enabled "Redirect support emails to assigned user"; settings.developers.dmarc.component.{html,ts} SETTINGS.DEVELOPERS.DMARC (Domain name, Add Domain, Type/Host/Value table, Check DMARC status); api app/models/setting.rb (branding_email_from default recruitment@vitay.io, branding_email_name default "Recruitment", is_branding_emails_from_enabled/_name_enabled default TRUE = use assigned recruiter's value, support_email_from default hello@vitay.io, is_support_email_to_assigned_enabled default TRUE, settings_json dmarc via find/create/update/delete_dmarc_setting); api app/models/reference.rb ~922-932 + reference_request.rb ~268 + candidate.rb ~278-299 (from_email/from_name ternaries and the reply_to override block); api app/controllers/api/v3/dmarc_settings_controller.rb, app/services/send_grid_service/dmarc.rb (SendGrid /v3/whitelabel/domains?dmarc=true, automatic_security, custom_dkim_selector 'vit' → dkim1/dkim2/mail_cname/dmarc records) */}
