@@ -49,10 +49,10 @@ card between the references and the signature area, with your description
 above it. Candidates drag and drop files onto the card or click **Browse
 files**, and can remove a file before submitting.
 
-Vitay accepts **PDF, DOC, DOCX, PNG, and JPG** files up to **10 MB each**,
-and at most **5 files per request**. Files are checked on upload by their
-actual content, not just their name — a renamed file of another type is
-rejected.
+Vitay accepts **PDF, DOC, DOCX, PNG, and JPG** files up to **10 MB each**, and
+at most **5 files per request**. Files are checked on upload by their actual
+content, not just their name — a renamed file of another type is rejected, and
+so is a filename containing more than one dot (`resume.pdf.exe`).
 
 If you made the upload required, the section is marked with an asterisk and
 the candidate can't submit until at least one file has been uploaded.
@@ -60,6 +60,51 @@ the candidate can't submit until at least one file has been uploaded.
 Once a request has been submitted, the candidate can no longer add or remove
 documents. If they need to send something afterwards, they can email it to you
 and you can add it to their record.
+
+## Upload a document yourself
+
+You don't have to wait for the candidate. Any recruiter who can see the
+candidate can add a document to their record:
+
+<Steps>
+  <Step title="Open the candidate's Documents tab">
+    Go to **Candidates**, open the candidate, and click the **Documents** tab.
+  </Step>
+  <Step title="Add the file">
+    Drag the file onto the toolbar at the top right of the tab, or click
+    **Select file** and pick it. The upload starts immediately and the list
+    refreshes with a **Document uploaded** confirmation.
+
+    ![SCREENSHOT: the candidate Documents tab with the Select file button in the toolbar — placeholder](/images/placeholder.png)
+  </Step>
+</Steps>
+
+Recruiter uploads accept a wider set of document formats than the candidate
+form does: **PDF**, **DOC/DOCX**, **XLS/XLSX**, **PPT/PPTX**, **TXT**, **RTF**,
+**ODT/ODS/ODP**, **MD**, **EPUB**, **Pages** and **Keynote**. Images are not
+accepted here — a PNG or JPG is rejected as an invalid file type, even though
+the file picker may offer them. A filename with more than one dot is rejected
+too, and files over 15 MB are refused with **File is too big**.
+
+The tab lists every document on the candidate, whoever added it: **Name**,
+**Type**, **Uploaded by**, the date, a status, and buttons to download or
+delete. On demo accounts the **Select file** button is hidden.
+
+## Malware scanning
+
+Every document that reaches Vitay — from the candidate's form or from your own
+upload — is scanned for malware.
+
+If a file is flagged, it is held back rather than deleted straight away. On the
+Documents tab it shows a red **Quarantined** badge, and the download button is
+replaced with a dash; clicking the row tells you *"Flagged by malware scanning.
+It cannot be downloaded and will be removed automatically."* Nobody on your
+team can open the file.
+
+Quarantined files are deleted automatically once they have been in quarantine
+for **7 days**, and the removal is recorded in the candidate's activity
+history. If you still need the document, ask the candidate to scan their copy and
+send you a clean version to upload yourself.
 
 ## Find the uploaded documents
 
@@ -92,6 +137,18 @@ and you can add it to their record.
     form. Check **Settings → Ref. Requests**, then ask the candidate to reload
     the form. A request that has already been submitted never shows the card.
   </Accordion>
+  <Accordion title="A document shows a Quarantined badge">
+    Malware scanning flagged the file. It cannot be downloaded by anyone, and
+    Vitay deletes it automatically after 7 days in quarantine. Ask the
+    candidate for a clean copy — see [Malware scanning](#malware-scanning)
+    above.
+  </Accordion>
+  <Accordion title="My own upload was rejected as an invalid file type">
+    Recruiter uploads accept documents (PDF, Word, Excel, PowerPoint, text,
+    RTF, OpenDocument, Markdown, EPUB, Pages, Keynote) but **not images** — a
+    PNG or JPG screenshot has to be converted to PDF first. Filenames with more
+    than one dot are rejected as well, and the file must be under 15 MB.
+  </Accordion>
   <Accordion title="The completion email arrived without the attachments">
     Attachments are capped at 20 MB combined. Files that didn't fit are noted
     in the email body and remain available on the candidate's Documents tab.
@@ -109,4 +166,4 @@ and you can add it to their record.
   <Card title="Notification settings" icon="bell" href="/account-configuration/notification-settings" />
 </CardGroup>
 
-{/* source: app.vitay.io projects/configuration settings/requests/settings.requests.component (SETTINGS.candidate_documents card: enabled, required, per-language description); projects/references public/reference-requests/reference-requests.component (REFERENCE_REQUESTS.DOCUMENTS card, ngx-file-drop, LIMITS copy); protected/candidates/show/documents + sidebar/candidate/documents (Documents tab count, Download); api app/controllers/api/v1/reference_requests_controller.rb public documents create/destroy (Marcel magic-byte sniffing, 10 MB, 5 files, 422 when required and missing); app/mailers reference request completed email (attachments ≤ 20 MB combined, oversized skipped with body note) */}
+{/* source: app.vitay.io projects/configuration settings/requests/settings.requests.component (SETTINGS.candidate_documents card: enabled, required, per-language description); projects/references public/reference-requests/reference-requests.component (REFERENCE_REQUESTS.DOCUMENTS card, ngx-file-drop, LIMITS copy); protected/candidates/show/documents + sidebar/candidate/documents (Documents tab count, Download); api app/controllers/api/v1/reference_requests_controller.rb public documents create/destroy (Marcel magic-byte sniffing, 10 MB, 5 files, 422 when required and missing); app/controllers/api/v3/candidates_controller.rb#create_document + ALLOWED_CONTENT_TYPES (recruiter uploads: pdf/doc/docx/xls/xlsx/ppt/pptx/txt/rtf/odt/ods/odp/md/epub/pages/key, no images; multi-extension rejected); app.vitay.io projects/references protected/candidates/show/candidates.show.component.{ts,html} (ngx-file-drop on the Documents tab, BUTTONS.DROP_FILE 'Select file', 15 MB client guard 'File is too big', browse hidden on demo firms), protected/candidates/show/documents/candidates.show.documents.component.ts (Name/Content type/Uploaded by/Created at/Status/Download/Delete columns, CANDIDATE_DOCUMENTS.QUARANTINED + QUARANTINED_HINT, download blocked when quarantined); api app/models/document_malware_scan.rb (GuardDutyMalwareScanStatus tag, THREATS_FOUND), app/services/quarantined_document_purge_service.rb (DEFAULT_GRACE_PERIOD 7.days, delete_document activity source malware_scan); app/mailers reference request completed email (attachments ≤ 20 MB combined, oversized skipped with body note) */}
