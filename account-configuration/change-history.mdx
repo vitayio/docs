@@ -1,0 +1,72 @@
+---
+title: "Change history"
+description: "See every change made to your firm's configuration from the Configuration area: when it happened, who made it, which setting changed, and the value before and after."
+---
+
+The **Change history** page answers "who changed this, and when?". It lists every change made to your firm's configuration from the Configuration area — settings, email, text and page templates, relationships, jobs, notifications, users and integrations — with the old and new value side by side.
+
+<Note>
+  Only **root recruiters** can see the Change history page. It lists changes made in the Configuration area from the day the page was introduced; earlier changes are not included.
+</Note>
+
+## Open the change history
+
+<Steps>
+  <Step title="Open the Configuration area">
+    Open the **Configuration** area from the main navigation.
+  </Step>
+  <Step title="Select Change history">
+    Select **Change history** in the left-hand navigation, just below **Integrations**. The most recent changes are at the top; use the page numbers at the bottom to go further back.
+
+    ![SCREENSHOT: The Change history page with the When, Who, Setting, Old value and New value columns and a few rows, including one by Vitay Support — placeholder](/images/placeholder.png)
+  </Step>
+  <Step title="Go to the setting">
+    Where a row names a setting card, the setting's name is a link. Click it to open the right Settings tab with that card highlighted, so you can check or change it.
+  </Step>
+</Steps>
+
+## Read a row
+
+| Column | What it shows |
+|---|---|
+| **When** | The date and time of the change. Hover the date to see the full timestamp. |
+| **Who** | The name and email of the team member who made the change. Changes made by the Vitay team — for example when support adjusts a setting for you — show as **Vitay Support**, with "on behalf of *name*" when they were acting for one of your users. Someone who has since been removed from your account shows as **Former user**. |
+| **Setting** | What changed, with the Settings tab or page it belongs to underneath (for example **Notifications** or **Users**). A record that was added or deleted, such as a relationship or a user, carries an **Added** or **Removed** badge. |
+| **Old value** / **New value** | The value before and after. Switches show as **On** or **Off**, an empty value as **—**, and long template text is shortened with a **Show more** link. Sensitive values, such as integration credentials, show as **Hidden (sensitive)**. |
+
+One save can change several values at once — for example a switch and the setting under it. Each value gets its own row.
+
+## What isn't listed
+
+The history covers changes made through the Configuration area by a signed-in person. It does not list:
+
+- Changes Vitay's own systems make automatically, such as updates made by background processes or integrations syncing data.
+- Changes to candidates, references and other day-to-day records — those are in the [Activities log](/reports-lead-generation/activities-log).
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="I can't see Change history in the navigation">
+    The page is only shown to root recruiters. If you open its address directly without that role, you see "Only root users can view the configuration change history." Ask a root recruiter on your account for access — see [Manage users](/account-configuration/manage-users).
+  </Accordion>
+  <Accordion title="The page says No changes recorded yet">
+    Nobody has changed your configuration from the Configuration area since the page was introduced. Changes appear here as soon as they are saved.
+  </Accordion>
+  <Accordion title="A setting changed but there's no row for it">
+    The change was probably made outside the Configuration area — for example by an automatic process — rather than by a person in the panel. Contact **hello@vitay.io** if you need to know more about a specific change.
+  </Accordion>
+  <Accordion title="I'm looking at the wrong account's history">
+    The page shows the account you are currently in. Use the company switcher in the top bar to move to another account — see [Switch firms](/getting-started/switch-firms).
+  </Accordion>
+</AccordionGroup>
+
+## Related articles
+
+<CardGroup cols={2}>
+  <Card title="Find and change settings" icon="magnifying-glass" href="/account-configuration/find-and-change-settings" />
+  <Card title="Firm configuration and security settings" icon="sliders" href="/account-configuration/firm-configuration" />
+  <Card title="Manage users" icon="users" href="/account-configuration/manage-users" />
+  <Card title="Activities log" icon="list" href="/reports-lead-generation/activities-log" />
+</CardGroup>
+
+{/* source: app.vitay.io projects/configuration protected/change-history/change-history.component.{ts,html} (When/Who/Setting/Old value/New value, vitay_support actor + on_behalf_of, Former user, Added/Removed badges, value kinds empty/redacted/boolean/list/text with Show more, app-pagination, ROOT_ONLY notice, EMPTY state), change-history.labels.ts (registry deep link /settings/<tab>#<anchor>, SECTION_BY_TYPE), shared/components/navbar/navbar.component.ts (NAVBAR.CHANGE_HISTORY after Integrations, isRootRecruiter only), i18n CHANGE_HISTORY.*; api app/controllers/api/v3/configuration_changes_controller.rb (root recruiter / parent root only, newest_first, paginated), app/models/concerns/tracks_configuration_changes.rb (after_save/after_destroy only while Current.actor is set — console, rake, Sidekiq and webhooks never log; JSON columns diffed per key; redact → "[redacted]"), db/migrate/20260921120000_create_configuration_changes.rb; app PR #2032, api PR #2654 */}

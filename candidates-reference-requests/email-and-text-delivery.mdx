@@ -80,13 +80,16 @@ The first text a reference receives ends with "Reply *stop* to unsubscribe". If 
 
 ## Who is notified when delivery fails
 
-Vitay can email people automatically when an email or text can't be delivered. These are firm-wide settings on **Settings → Notification** (root recruiters only):
+Vitay can email people automatically when an email or text can't be delivered. A root recruiter chooses who on **Configuration → Settings → Notifications**, in the **Team notifications** table:
 
-- **Email errors notification** (on by default) — when an email to a candidate or reference bounces, is dropped, is reported as spam, or the recipient unsubscribes, the candidate's assigned recruiter receives an email with the subject *&lt;address&gt; is invalid*. It lists the address, the reason, the provider's details, and the record's internal ID, with a button to open the record.
-- **Text errors notification** (off by default) — the same email, subject *&lt;number&gt; is invalid*, when a text can't be delivered.
-- **Candidate: Notify Reference Contact Errors** (off by default) — when the failing email or text was addressed to one of the candidate's *references*, the candidate is also emailed so they can supply better contact details. The candidate's email uses your firm's reply-to address (or the assigned recruiter's, if **Redirect support emails to assigned user** is on).
+- **Email could not be delivered**: when an email to a candidate or reference bounces, is dropped, is reported as spam, or the recipient unsubscribes, the people ticked on this row receive an email with the subject *&lt;address&gt; is invalid*. It lists the address, the reason, the provider's details, and the record's internal ID, with a button to open the record. For new accounts it goes to the **Assigned recruiter**.
+- **Text message could not be delivered**: the same email, subject *&lt;number&gt; is invalid*, when a text can't be delivered. The row only appears when text messages are enabled for your account, and nobody is ticked on it by default.
 
-Notifications are only sent for active records, and not when the failing address belongs to the recruiter themselves. See [Notification settings](/account-configuration/notification-settings) for the full list of toggles.
+Each row can go to the assigned recruiter, the recruiter who sent the request, every root user, extra addresses such as a shared inbox, or any mix of them. Team members switched on under **Always notified team members** receive these emails too.
+
+Under **Candidate notifications** on the same tab, **Candidate: Notify Reference Contact Errors** (off by default) also emails the candidate when the failing email or text was addressed to one of their *references*, so they can supply better contact details. It is only sent when at least one team member is notified about the same failure. The candidate's email uses your firm's reply-to address (or the assigned recruiter's, if **Redirect support emails to assigned user** is on).
+
+Notifications are only sent for active records, and a team member is never emailed about their own address bouncing. See [Notification settings](/account-configuration/notification-settings) for the full list of events.
 
 ## Fix the problem
 
@@ -143,10 +146,11 @@ If a candidate or reference asks you to stop contacting them, open their side pa
     [A reference didn't receive the email](/candidates-reference-requests/reference-not-received).
   </Accordion>
   <Accordion title="I didn't get the 'is invalid' email">
-    Check **Settings → Notification**: **Email errors notification** must be
-    on (and **Text errors notification** for texts). Only the candidate's
-    assigned recruiter receives it, and only while the candidate or reference
-    is active.
+    Check **Settings → Notifications**: on the **Email could not be
+    delivered** row (or **Text message could not be delivered** for texts),
+    a column that includes you must be ticked. For example, if only
+    **Assigned recruiter** is ticked, you only hear about your own candidates.
+    The email is also only sent while the candidate or reference is active.
   </Accordion>
 </AccordionGroup>
 
@@ -159,4 +163,4 @@ If a candidate or reference asks you to stop contacting them, open their side pa
   <Card title="Notification settings" icon="bell-on" href="/account-configuration/notification-settings" />
 </CardGroup>
 
-{/* source: app.vitay.io projects/references shared/components/sidebar/{candidate,reference}/emails + texts + reminders (TABS.EMAIL_ACTIVITY, TABS.TEXT_ACTIVITY, TABLES.HEADERS.*, SIDEBAR.REMINDERS.*, SIDEBAR.WARNING.AUTO_REMINDERS), src/app/shared/models/email-activity.model.ts + text-activity.model.ts (status icon classes), protected/candidates/show/alerts (CANDIDATE.PHONE_NUMBER.REFERENCE_UNSUBSCRIBE), projects/configuration settings/texts (SETTINGS.TEXT_MESSAGES.IS_AVAILABLE) + settings/notifications (is_notify_email_activities_enabled, is_notify_text_activities_enabled, is_notify_candidate_reference_email_activities_enabled); api app/controllers/api/v3/webhooks/sendgrid_controller.rb (sendgrid_errors, "<email> is invalid" notification), app/controllers/api/v3/webhooks/twilio_controller.rb (OPTOUT_KEYWORDS, OPTIN_KEYWORDS, HANDLED_DELIVERY_STATUSES, ERRORS map), app/models/concerns/can_receive_texts.rb (send_text, UK +44 account, handle_send_message_error), app/models/email_activity.rb, app/models/text_activity.rb (UNSUBSCRIBED_MSG / RESUBSCRIBED_MSG), app/models/reference.rb (text_activities, unsubscribed_from_sms?, add_reminder gated on is_text_messages_enabled), app/models/recruiter_reference.rb (send_reference_text opt-out line, reset_reminders), app/controllers/api/v1/references_controller.rb#update (reset_reminders when email/phone changes), app/controllers/api/v3/{candidates,references}/{email,text}_activities_controller.rb, app/models/setting.rb (defaults) */}
+{/* source: app.vitay.io projects/references shared/components/sidebar/{candidate,reference}/emails + texts + reminders (TABS.EMAIL_ACTIVITY, TABS.TEXT_ACTIVITY, TABLES.HEADERS.*, SIDEBAR.REMINDERS.*, SIDEBAR.WARNING.AUTO_REMINDERS), src/app/shared/models/email-activity.model.ts + text-activity.model.ts (status icon classes), protected/candidates/show/alerts (CANDIDATE.PHONE_NUMBER.REFERENCE_UNSUBSCRIBE), projects/configuration settings/texts (SETTINGS.TEXT_MESSAGES.IS_AVAILABLE) + settings/notifications (team notifications matrix rows email_delivery_failed / text_delivery_failed via shared/components/notification-matrix, candidate toggle is_notify_candidate_reference_email_activities_enabled; api Notifications::RecipientResolver, candidate email gated on resolver.any?); api app/controllers/api/v3/webhooks/sendgrid_controller.rb (sendgrid_errors, "<email> is invalid" notification), app/controllers/api/v3/webhooks/twilio_controller.rb (OPTOUT_KEYWORDS, OPTIN_KEYWORDS, HANDLED_DELIVERY_STATUSES, ERRORS map), app/models/concerns/can_receive_texts.rb (send_text, UK +44 account, handle_send_message_error), app/models/email_activity.rb, app/models/text_activity.rb (UNSUBSCRIBED_MSG / RESUBSCRIBED_MSG), app/models/reference.rb (text_activities, unsubscribed_from_sms?, add_reminder gated on is_text_messages_enabled), app/models/recruiter_reference.rb (send_reference_text opt-out line, reset_reminders), app/controllers/api/v1/references_controller.rb#update (reset_reminders when email/phone changes), app/controllers/api/v3/{candidates,references}/{email,text}_activities_controller.rb, app/models/setting.rb (defaults) */}

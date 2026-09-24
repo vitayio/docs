@@ -70,7 +70,7 @@ Anonymization** page lets your team mark individual records **Keep Record**
 before the next run. Anonymization is permanent and cannot be undone.
 
 See [Set up automatic data retention](/security-it/data-retention) for the full
-walkthrough. If the Data Retention tab is greyed out, contact
+walkthrough. If you don't see a Data Retention tab, contact
 [hello@vitay.io](mailto:hello@vitay.io) to have the feature switched on.
 
 ## Deleting data
@@ -117,6 +117,16 @@ If you need to request a full data purge, contact
 - Vitay authenticates recruiter sessions with signed tokens and supports
   **SAML SSO** for centralised access control — see
   [Single sign-on (SAML)](/security-it/sso-saml).
+- Password sign-ins are protected by enforced password rules (8+ characters
+  with upper- and lowercase letters, a number and a special character), an
+  account lockout after 10 failed attempts, and limits on bursts of sign-in and
+  password-reset attempts. Password-reset links expire after 1 hour and work
+  once. See [Logging in](/getting-started/logging-in).
+- Users with multi-factor authentication set up must enter a code on every
+  password sign-in, and Vitay can require MFA for your whole team — see
+  [Multi-factor authentication & login options](/getting-started/mfa-and-login-options).
+- Deactivating a user ends their access straight away, not when their session
+  would have expired.
 - Reference submission links are single-use — once a reference is submitted,
   the link locks and can no longer be used to view or change the response.
 - Analytics, advertising, and support-widget scripts load only after the
@@ -158,4 +168,4 @@ If you need to request a full data purge, contact
   <Card title="Cookies and consent" icon="cookie-bite" href="/security-it/cookies-and-consent" />
 </CardGroup>
 
-{/* source: api app/models/purge_batch.rb; api app/models/deleted_associated_record.rb */}
+{/* source: api app/models/purge_batch.rb; api app/models/deleted_associated_record.rb; security measures: api app/models/user.rb (PASSWORD_REQUIREMENTS model validation, MAX_LOGIN_ATTEMPTS=10, PASSWORD_RESET_KEY_TTL=1.hour, mfa_method/mfa_required?, after_save revoke_all_tokens! on deactivation), config/initializers/rack_attack.rb, app/controllers/concerns/authorization.rb (mfa_pending gate, Account deactivated 401) */}

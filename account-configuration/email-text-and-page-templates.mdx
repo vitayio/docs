@@ -6,7 +6,7 @@ description: "Edit the wording of every email, text message and public-form page
 Vitay ships with default wording for every email, text message and public page it shows to candidates, references and employers. The **Emails**, **Texts** and **Pages** tabs let you rewrite that wording for your account — per language if you use more than one — and insert merge fields such as the candidate's name.
 
 <Note>
-  You need a **root recruiter** role to open the Configuration area. The **From** address and name on outgoing emails are not set here — see [Email sender settings](/account-configuration/email-sender-settings). Which events trigger an email is set on the **Notification** tab — see [Notification settings](/account-configuration/notification-settings).
+  You need a **root recruiter** role to open the Configuration area. The **From** address and name on outgoing emails are not set here — see [Email sender settings](/account-configuration/email-sender-settings). Which events trigger an email is set on the **Notifications** tab — see [Notification settings](/account-configuration/notification-settings).
 </Note>
 
 ## Edit a template
@@ -26,10 +26,10 @@ The three tabs work the same way. Each template is a card with its own toolbar.
   <Step title="Insert merge fields">
     Click **Variables** and choose a field to insert it at the cursor. Fields are written as `{{field_name}}` and are replaced with real values when the message is sent. Only use the fields offered in the menu for that template.
   </Step>
-  <Step title="Save">
-    Click the **save** icon on the card. You will see **Email template updated**, **Text updated** or **Page updated**.
+  <Step title="Let it save">
+    There is no save button: your changes save automatically shortly after you stop typing, and as soon as you click away or leave the page. The card's toolbar shows **Saving…** and then **Saved**. If it shows **Not saved**, the change was rejected — an error message explains why — and it tries again the next time you edit.
 
-    ![SCREENSHOT: An Emails card showing the language dropdown, Variables menu, Reset, Send test and save icon, with the subject/title/button fields above the editor — placeholder](/images/placeholder.png)
+    ![SCREENSHOT: An Emails card showing the language dropdown, Variables menu, Restore default and Send test buttons and the Saved status, with the subject/title/button fields above the editor — placeholder](/images/placeholder.png)
   </Step>
 </Steps>
 
@@ -39,7 +39,7 @@ The three tabs work the same way. Each template is a card with its own toolbar.
 |---|---|---|
 | **Send test** | Emails, Texts | Sends the saved template to you. Emails go to your login email ("We are going to send an email to yourself at …"); texts go to the phone number on your profile, so the button is disabled until you add one. Merge fields are not filled in on a test send. |
 | **Preview** | Pages | Toggles the editor into a read-only rendering of the page text. Switch it off again to keep editing. |
-| **Reset** | All three | Replaces the card's text with Vitay's default wording for that template and language, and saves it immediately. |
+| **Restore default** | All three | Replaces the card's text with Vitay's default wording for that template and language, and saves it immediately. The button only appears on a card whose text differs from the default, so a card you have never edited has no **Restore default**. |
 
 ## Email templates
 
@@ -84,7 +84,7 @@ The Texts tab starts with an **Enable / Disable text messages** switch (on by de
 | **Employer Feedback requests** / **- reminders** | Feedback request to the employer (candidate feedback plugin) |
 | **Pre-screening requests** / **- reminders** | Pre-screening request to the candidate (pre-screening plugin) |
 
-Each text is limited to **240 characters**; the counter turns red and the save icon is disabled when you go over. Merge fields in the Variables menu:
+Each text is limited to **240 characters**; the counter turns red when you go over, and the text isn't saved until you bring it back under the limit. Merge fields in the Variables menu:
 
 | Template | Fields |
 |---|---|
@@ -128,7 +128,10 @@ Vitay provides default templates in English, French, French (Canada) and Spanish
     Text tests are sent to the phone number on your own profile. Add one under [Your profile](/getting-started/your-profile) and reload the tab.
   </Accordion>
   <Accordion title="I broke a template and want the original back">
-    Click **Reset** on the card. It restores Vitay's default wording for that template and language and saves it straight away — your edits for that language are discarded.
+    Click **Restore default** on the card. It restores Vitay's default wording for that template and language and saves it straight away — your edits for that language are discarded.
+  </Accordion>
+  <Accordion title="There's no Restore default button on a card">
+    That card already matches Vitay's default wording for that language, so there is nothing to restore. The button appears as soon as the text differs from the default.
   </Accordion>
 </AccordionGroup>
 
@@ -143,4 +146,4 @@ Vitay provides default templates in English, French, French (Canada) and Spanish
   <Card title="Lead generation" icon="magnet" href="/reports-lead-generation/lead-generation" />
 </CardGroup>
 
-{/* source: app.vitay.io projects/configuration protected/settings/{emails,texts,pages}/settings.*.component.{ts,html} (Variables/Reset/Send test/Preview, checkDisplay plugin gating, texts maxLength 240, is_text_messages_enabled switch, languages from settings.languages when is_plugins_multi_languages_enabled), i18n SETTINGS.EMAILS.* / SETTINGS.TEXTS.* / SETTINGS.PAGES.* / SETTINGS.TEXT_MESSAGES / SETTINGS.PLUGINS.MULTI_LANGUAGES; src/app/shared/models/{email,text,page}.model.ts (variables getters, jobTitleVariable); api templates/{emails,texts,pages}.yml (categories × en/fr/es/fr-ca), app/models/{email,text,page}.rb, app/controllers/api/v3/{emails,texts,pages}_controller.rb (is_default reset from YAML, preview), app/models/setting.rb (SUPPORTED_LANGUAGES, provision_language_templates), app/services/settings/provision_language_templates.rb, app/models/recruiter_reference.rb + recruiter_request.rb + feedback.rb + pre_screening.rb ({{…}} substitution) */}
+{/* source: app.vitay.io projects/configuration protected/settings/{emails,texts,pages}/settings.*.component.{ts,html} (Variables / Restore default gated on is_customized / Send test / Preview, appAutoSave + app-auto-save-status per card (SETTINGS.AUTOSAVE.SAVING / SAVED / ERROR), checkDisplay plugin gating, texts maxLength 240 autoSaveDisabled over limit, is_text_messages_enabled switch, languages from settings.languages when is_plugins_multi_languages_enabled), i18n SETTINGS.EMAILS.* / SETTINGS.TEXTS.* / SETTINGS.PAGES.* / SETTINGS.TEXT_MESSAGES / SETTINGS.PLUGINS.MULTI_LANGUAGES; src/app/shared/models/{email,text,page}.model.ts (variables getters, jobTitleVariable); api templates/{emails,texts,pages}.yml (categories × en/fr/es/fr-ca), app/models/{email,text,page}.rb, app/controllers/api/v3/{emails,texts,pages}_controller.rb (is_default reset, is_customized vs default template, preview), app/models/default_template.rb, app/models/setting.rb (SUPPORTED_LANGUAGES, provision_language_templates), app/services/settings/provision_language_templates.rb, app/models/recruiter_reference.rb + recruiter_request.rb + feedback.rb + pre_screening.rb ({{…}} substitution) */}

@@ -83,14 +83,14 @@ recruiter — or switch the redirect off to funnel all replies into a shared inb
   <Step title="Choose the From: Address">
     Next to **From: Address**, click either **Recruiter's email** or **Custom address**. The choice saves as soon as you click it.
 
-    If you choose **Custom address**, an input appears (for example, `noreply@yourcompany.com`). Type the address, then click the inline **save** icon next to the field to store it.
+    If you choose **Custom address**, an input appears (for example, `noreply@yourcompany.com`). Type the address; it saves automatically once you stop typing or click away, and **Saved** appears under the field.
   </Step>
   <Step title="Choose the From: Name">
     Next to **From: Name**, click either **Recruiter's name** or **Custom name** — again, the choice saves on click.
 
-    If you choose **Custom name**, type the display name (for example, "Acme Recruiting Team") in the input that appears and click its inline **save** icon.
+    If you choose **Custom name**, type the display name (for example, "Acme Recruiting Team") in the input that appears; it saves automatically, like the address.
 
-    ![SCREENSHOT: The Email Sender Identity card with the From: Address and From: Name segmented choices and a custom input with its inline save icon — placeholder](/images/placeholder.png)
+    ![SCREENSHOT: The Email Sender Identity card with the From: Address and From: Name segmented choices and a custom input with the Saved status under it — placeholder](/images/placeholder.png)
   </Step>
 </Steps>
 
@@ -149,7 +149,7 @@ You can set this up yourself from **Settings → Developers**, under **DMARC Pro
     This is most commonly a deliverability issue. If you are using a custom From address, confirm that the DNS records generated under **Settings → Developers → DMARC Protection** have been published and show as valid. If you are using recruiters' own emails, ask your IT team whether your company's email domain has a restrictive DMARC policy that prevents third-party sending.
   </Accordion>
   <Accordion title="I set a custom From address but outgoing emails still show the recruiter's address">
-    Check that **From: Address** is set to **Custom address** (not **Recruiter's email**) and that you clicked the inline **save** icon after typing the address — the custom value is only stored when you save it.
+    Check that **From: Address** is set to **Custom address** (not **Recruiter's email**) and that the status under the address says **Saved**. If it says **Not saved**, the address was rejected — check it for typos and correct it.
   </Accordion>
   <Accordion title="Replies are going to the wrong inbox">
     Replies are not controlled by the From address. On **Settings → Configuration**, check
@@ -172,4 +172,4 @@ You can set this up yourself from **Settings → Developers**, under **DMARC Pro
   <Card title="Send a reference request" icon="paper-plane" href="/candidates-reference-requests/send-a-reference-request" />
 </CardGroup>
 
-{/* source: app.vitay.io projects/configuration settings.configuration.component.html SETTINGS.CONFIGURATION.EMAIL_SENDER (From: Address / From: Name segmented buttons via setEmailSenderSource('from'|'name', bool), inline floppy-disk save on branding_email_from / branding_email_name), SETTINGS.CONFIGURATION.support_email_from "Primary reply email" / support_email_name "Primary Reply Name" / is_support_email_to_assigned_enabled "Redirect support emails to assigned user"; settings.developers.dmarc.component.{html,ts} SETTINGS.DEVELOPERS.DMARC (Domain name, Add Domain, Type/Host/Value table, Check DMARC status); api app/models/setting.rb (branding_email_from default recruitment@vitay.io, branding_email_name default "Recruitment", is_branding_emails_from_enabled/_name_enabled default TRUE = use assigned recruiter's value, support_email_from default hello@vitay.io, is_support_email_to_assigned_enabled default TRUE, settings_json dmarc via find/create/update/delete_dmarc_setting); api app/models/reference.rb ~922-932 + reference_request.rb ~268 + candidate.rb ~278-299 (from_email/from_name ternaries and the reply_to override block); api app/controllers/api/v3/dmarc_settings_controller.rb, app/services/send_grid_service/dmarc.rb (SendGrid /v3/whitelabel/domains?dmarc=true, automatic_security, custom_dkim_selector 'vit' → dkim1/dkim2/mail_cname/dmarc records) */}
+{/* source: app.vitay.io projects/configuration settings.configuration.component.html SETTINGS.CONFIGURATION.EMAIL_SENDER (From: Address / From: Name segmented buttons via setEmailSenderSource('from'|'name', bool), appAutoSave + app-auto-save-status on branding_email_from / branding_email_name), SETTINGS.CONFIGURATION.support_email_from "Primary reply email" / support_email_name "Primary Reply Name" / is_support_email_to_assigned_enabled "Redirect support emails to assigned user"; settings.developers.dmarc.component.{html,ts} SETTINGS.DEVELOPERS.DMARC (Domain name, Add Domain, Type/Host/Value table, Check DMARC status); api app/models/setting.rb (branding_email_from default recruitment@vitay.io, branding_email_name default "Recruitment", is_branding_emails_from_enabled/_name_enabled default TRUE = use assigned recruiter's value, support_email_from default hello@vitay.io, is_support_email_to_assigned_enabled default TRUE, settings_json dmarc via find/create/update/delete_dmarc_setting); api app/models/reference.rb ~922-932 + reference_request.rb ~268 + candidate.rb ~278-299 (from_email/from_name ternaries and the reply_to override block); api app/controllers/api/v3/dmarc_settings_controller.rb, app/services/send_grid_service/dmarc.rb (SendGrid /v3/whitelabel/domains?dmarc=true, automatic_security, custom_dkim_selector 'vit' → dkim1/dkim2/mail_cname/dmarc records) */}

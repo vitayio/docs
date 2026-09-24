@@ -1,9 +1,9 @@
 ---
 title: "Reference report settings"
-description: "Choose the PDF template, add a watermark, allow Word and CSV downloads, hide personal details, and show reference edits — everything on the Documents tab."
+description: "Choose the PDF template, add a watermark, hide personal details, and show reference edits on reports — everything on the Documents tab — and see which download formats your team gets."
 ---
 
-The **Documents** tab controls how your firm's reference reports look and which formats your team can download them in. The settings apply to every report generated after you save — the PDF your recruiters download, the PDF attached to notification emails, and the report pushed to your ATS.
+The **Documents** tab controls how your firm's reference reports look. The settings apply to every report generated after you save — the PDF your recruiters download, the PDF attached to notification emails, and the report pushed to your ATS.
 
 <Note>
   You need a **root recruiter** role to open the Configuration area. Every switch on this tab saves as soon as you flip it — you will see a **Settings updated** toast.
@@ -43,12 +43,14 @@ New accounts start on **Compressed**.
 
 ## Download formats
 
-By default your team downloads reports as PDF: the report area shows a single **Download report** button. Turning either of the switches below on replaces that button with a dropdown offering **Download PDF**, **Download Word** and **Download CSV**.
+Every firm can download reports in every format — there are no switches for this any more. Wherever a report can be downloaded, the download button opens a menu:
 
-| Setting | What it does | Default |
-|---|---|---|
-| **Allow Candidate Reference Reports In CSV** | Adds a **Download CSV** option to the candidate's references list, so a candidate's references and answers can be exported as a spreadsheet. | On |
-| **Allow Users To Download Reports In .Docx** | Adds a **Download Word** option wherever a report can be downloaded — the candidate page, a single reference, a feedback report and a pre-screening report. The Word version uses its own simplified layout, not the PDF template you picked above. | Off |
+| Where | Formats offered |
+|---|---|
+| A candidate's references list (per question set) | **Download PDF**, **Download Word**, **Download CSV** — the CSV has one row per reference and a column per question |
+| The candidate page, a single reference, a feedback report and a pre-screening report | **Download PDF**, **Download Word** |
+
+The Word version uses its own simplified layout, not the PDF template you picked above.
 
 <Note>
   The **Show candidate info** (eye) toggle next to the download button is a per-download choice made by the recruiter, not a setting. It controls whether the candidate's email and phone number are printed on that copy of the report.
@@ -90,8 +92,8 @@ Feedback reports and pre-screening reports are not affected by these switches.
   <Accordion title="A recruiter can't see the CSV export button in the top bar">
     That button is the firm-wide CSV export (see [Download reports](/reports-lead-generation/download-reports)), not the report download on this tab. Root recruiters always see it; whether other recruiters see it is controlled by a firm-level setting that has no toggle on this tab. Contact [hello@vitay.io](mailto:hello@vitay.io) to have it changed.
   </Accordion>
-  <Accordion title="The Word option isn't showing">
-    **Allow Users To Download Reports In .Docx** has to be on, and the change only reaches a recruiter's browser after their session refreshes the settings — ask them to reload the app.
+  <Accordion title="The settings for Word and CSV downloads are gone">
+    That's expected. **Allow Users To Download Reports In .Docx** and **Allow Candidate Reference Reports In CSV** were removed because Word and CSV downloads are now available to every firm. If a recruiter still sees only a single download button, ask them to reload the app.
   </Accordion>
   <Accordion title="A report won't generate at all">
     Vitay can only build a report once at least one reference has been completed. A candidate with no completed references, or a reference that was declined, returns *"The record does not have sufficient data to generate a pdf document"*.
@@ -109,4 +111,4 @@ Feedback reports and pre-screening reports are not affected by these switches.
   <Card title="Firm configuration and security settings" icon="gear" href="/account-configuration/firm-configuration" />
 </CardGroup>
 
-{/* source: app.vitay.io projects/configuration protected/settings/documents/settings.documents.component.{ts,html} (pdf_templates, params, subSettings), i18n SETTINGS.DOCUMENTS.* and TABS.DOCUMENTS; projects/references protected/candidates/show/references + show/header, shared/components/sidebar/reference/question-set (download dropdown), src/app/shared/helpers/array.helper.ts (reportFormats / csvReportFormat labels PDF / Word / CSV); api app/models/setting.rb (pdf_template default "compressed", is_pdf_watermark_enabled, is_docx_enabled, is_candidate_references_csv_enabled, is_show_reference_edits_on_report, is_hide_report_* settings_json defaults), app/services/documents/pdf_redaction.rb, app/controllers/api/v3/documents/pdf_controller.rb, app/controllers/api/v3/documents/docx_controller.rb, app/views/api/v3/documents/en/compressed/{candidates,references}.erb (hide flags), app/views/api/v3/documents/en/default/*.erb (watermark), app/views/api/v3/documents/_reference_edits_summary.erb */}
+{/* source: app.vitay.io projects/configuration protected/settings/documents/settings.documents.component.{ts,html} (pdf_templates, params — CSV/DOCX switches removed in #2017, subSettings), i18n SETTINGS.DOCUMENTS.* and TABS.DOCUMENTS; projects/references protected/candidates/show/references + show/header, shared/components/sidebar/reference/question-set (download dropdown), src/app/shared/helpers/array.helper.ts (reportFormats PDF / Word everywhere, csvReportFormat added only on candidates.show.references); api db/migrate/20260917130000_remove_csv_docx_settings.rb; app/models/setting.rb (pdf_template default "compressed", is_pdf_watermark_enabled, is_show_reference_edits_on_report, is_hide_report_* settings_json defaults), app/services/documents/pdf_redaction.rb, app/controllers/api/v3/documents/pdf_controller.rb, app/controllers/api/v3/documents/docx_controller.rb, app/views/api/v3/documents/en/compressed/{candidates,references}.erb (hide flags), app/views/api/v3/documents/en/default/*.erb (watermark), app/views/api/v3/documents/_reference_edits_summary.erb */}

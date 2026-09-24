@@ -1,26 +1,30 @@
 ---
-title: "Billing and usage"
-description: "See how many contract credits your firm has used, break usage down by period or sub-account, and set up alerts before you reach your limit."
+title: "Usage and billing"
+description: "See how many contract credits your firm has used on the Usage page, break usage down by period or sub-account, and set up alerts before you reach your limit."
 ---
 
-The **Billing & Usage** tab shows how much of your contract your firm has consumed: the credits you bought, how many you have used, what is left, and how the usage was spread over time. It is a reporting view — plan and contract changes are handled by the Vitay team.
+The **Usage** page shows how much of your contract your firm has consumed: the credits you bought, how many you have used, what is left, and how the usage was spread over time. It is a reporting view — plan and contract changes are handled by the Vitay team.
 
 <Note>
-  You need a **root recruiter** role to open the Configuration area. The tab is unavailable on sub-accounts whose billing is rolled up into a parent account — in that case, open Billing & Usage on the parent account instead.
+  You need a **root recruiter** role to open the Configuration area. The **Usage** page does not appear on sub-accounts whose billing is rolled up into a parent account — in that case, open **Usage** on the parent account instead.
 </Note>
 
-## Open the tab
+## Open the Usage page
 
 <Steps>
-  <Step title="Open Settings">
-    Open the **Configuration** area from the main navigation and select **Settings**.
+  <Step title="Open the Configuration area">
+    Open the **Configuration** area from the main navigation.
   </Step>
-  <Step title="Select the Billing and Usage tab">
-    Pick the **Billing & Usage** tab in the left-hand list. It opens on your current contract period.
+  <Step title="Select Usage">
+    Select **Usage** in the left-hand navigation, between **Settings** and **Plugins**. It opens on your current contract period.
 
-    ![SCREENSHOT: The Billing & Usage tab with the four stat cards and the usage chart — placeholder](/images/placeholder.png)
+    ![SCREENSHOT: The Usage page in the Configuration navigation, with the four stat cards and the usage chart — placeholder](/images/placeholder.png)
   </Step>
 </Steps>
+
+<Note>
+  Usage used to be the **Billing & Usage** tab inside **Settings**. Old links to that tab now open the **Usage** page.
+</Note>
 
 ## What counts as usage
 
@@ -32,7 +36,7 @@ One credit is consumed **per candidate**, the first time a report is completed f
 
 ## Read the numbers
 
-Four stat cards sit at the top of the tab. The three contract cards only appear when your account has contract credits recorded.
+Four stat cards sit at the top of the page. The three contract cards only appear when your account has contract credits recorded.
 
 | Card | What it means |
 |---|---|
@@ -58,10 +62,10 @@ The **Usage Over Time** chart can be read two ways: **Cumulative** (a running to
 
 ## Get alerted before you run out
 
-Usage threshold notifications live on the **Notification** tab, not on Billing & Usage.
+Usage threshold notifications are set on the **Notifications** settings tab, not on the Usage page.
 
 <Steps>
-  <Step title="Open Configuration → Settings → Notification">
+  <Step title="Open Configuration → Settings → Notifications">
     Scroll to the **Usage Notifications** card — *"Automatically notify your team when usage reaches specified thresholds relative to your contract limits."* It is off by default.
   </Step>
   <Step title="Pick your thresholds">
@@ -76,7 +80,7 @@ Usage threshold notifications live on the **Notification** tab, not on Billing &
   </Step>
 </Steps>
 
-The alert arrives with the subject **Usage Alert: N% threshold reached** and summarises your usage, contract credits, percentage used and any overage, with a **View Usage Details** button that opens the Billing & Usage tab. Usage for these alerts is always calculated **including sub-accounts**, even if you have the sub-account checkbox turned off on the tab.
+The alert arrives with the subject **Usage Alert: N% threshold reached** and summarises your usage, contract credits, percentage used and any overage, with a **View Usage Details** button that opens the Usage page. Usage for these alerts is always calculated **including sub-accounts**, even if you have the sub-account checkbox turned off on the Usage page.
 
 Threshold alerts need an active contract on the account with a start date and a candidate limit recorded. If your contract details are not in Vitay yet, nothing is sent — contact [hello@vitay.io](mailto:hello@vitay.io).
 
@@ -93,8 +97,8 @@ Credits, contract dates and limits come from your Vitay contract; they are not e
 ## Troubleshooting
 
 <AccordionGroup>
-  <Accordion title="The Billing & Usage tab is greyed out">
-    Accounts whose billing is consolidated into a parent account do not have their own billing view. Open the tab on the parent account — and turn on **Include subaccounts** to see the child account's usage inside the totals.
+  <Accordion title="I can't find the Usage page">
+    Accounts whose billing is consolidated into a parent account do not have their own usage view, so **Usage** is not in their navigation. Switch to the parent account and open **Usage** there — and turn on **Include subaccounts** to see the child account's usage inside the totals.
   </Accordion>
   <Accordion title="The contract cards are missing">
     **Contract Credits**, **Remaining Credits** and **Overages** only render when contract credits are recorded for the account. **Credits Used** always shows. If your contract should be on file, contact [hello@vitay.io](mailto:hello@vitay.io).
@@ -116,4 +120,4 @@ Credits, contract dates and limits come from your Vitay contract; they are not e
   <Card title="Download reports" icon="download" href="/reports-lead-generation/download-reports" />
 </CardGroup>
 
-{/* source: app.vitay.io projects/configuration protected/settings/billing/settings.billing.component.{ts,html} (groupByOptions, chartViewOptions, statistics, tableCols, includeChildFirms, useContractPeriods, CSV export), protected/settings/settings.component.ts (TABS.BILLING isDisabled when is_billing_sub_accounts_linked_enabled), protected/settings/notifications/settings.notifications.component.{ts,html} (availableThresholds 70-110, custom emails), i18n SETTINGS.BILLING.* and SETTINGS.CONFIGURATION.usage_notifications.*; api app/services/usage_service/creator.rb (one UsageRecord per candidate on first filled Reference/PreScreening/Feedback), app/models/usage_record.rb (uniqueness per candidate + firm), app/services/usage_notification_service.rb (thresholds once per contract term, notify_root_users + custom_emails, include_child_firms: true, contract validity), app/models/usage_notification_log.rb, app/mailers/usage_notification_mailer.rb (subject + View Usage Details), app/models/setting.rb (usage_notifications defaults 80/90/100, notify_root_users true), lib/tasks/notifications.rake (notifications:usage_thresholds), lib/tasks/client_reports.rake (client_reports:monthly_overview, is_monthly_usage_report_enabled + usage_report_emails_list, admin-only UI) */}
+{/* source: app.vitay.io projects/configuration protected/usage/usage.component.{ts,html} (groupByOptions, chartViewOptions, statistics, tableCols, includeChildFirms, useContractPeriods, CSV export; i18n USAGE.TITLE), shared/components/navbar/navbar.component.ts (NAVBAR.USAGE between Settings and Plugins, hidden when is_billing_sub_accounts_linked_enabled), protected/settings/settings-routing.module.ts (settings/billing → /usage redirect), protected/settings/notifications/settings.notifications.component.{ts,html} (availableThresholds 70-110, custom emails), i18n SETTINGS.BILLING.* and SETTINGS.CONFIGURATION.usage_notifications.*; api app/services/usage_service/creator.rb (one UsageRecord per candidate on first filled Reference/PreScreening/Feedback), app/models/usage_record.rb (uniqueness per candidate + firm), app/services/usage_notification_service.rb (thresholds once per contract term, notify_root_users + custom_emails, include_child_firms: true, contract validity), app/models/usage_notification_log.rb, app/mailers/usage_notification_mailer.rb (subject + View Usage Details), app/models/setting.rb (usage_notifications defaults 80/90/100, notify_root_users true), lib/tasks/notifications.rake (notifications:usage_thresholds), lib/tasks/client_reports.rake (client_reports:monthly_overview, is_monthly_usage_report_enabled + usage_report_emails_list, admin-only UI) */}

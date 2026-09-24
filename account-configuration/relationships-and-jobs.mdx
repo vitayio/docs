@@ -15,10 +15,10 @@ The relationship list is what the candidate picks from when they add each refere
 
 <Steps>
   <Step title="Open the tab">
-    Open the **Configuration** area, select **Settings**, then the **Relationships** tab. The page is titled **Reference relationships** — *"Add, edit, or delete relationships the reference can have with the candidate."* Each row shows the relationship name, the question set attached to it (if any), and a **No personal emails** badge where that option is on.
+    Open the **Configuration** area, select **Settings**, then the **Relationships** tab. The page is titled **Reference relationships** — *"Add, edit, or delete relationships the reference can have with the candidate."* Each row shows the relationship name, the question set attached to it (if any) underneath, and a **No personal emails** badge where that option is on. If you haven't added any relationships yet, the tab says so and invites you to add one.
   </Step>
   <Step title="Add one">
-    Click **Add new relationship**. Fill in **Relationship name**. If your account has more than one language enabled, you get one name box per language, each labelled with its language — fill them all in so candidates see the relationship in their own language.
+    Click **Add new relationship** at the top right of the list. Fill in **Relationship name**. If your account has more than one language enabled, you get one name box per language, each labelled with its language — fill them all in so candidates see the relationship in their own language.
   </Step>
   <Step title="Attach a question set (optional)">
     Pick one from the **Question set** dropdown. Only reference-type question sets are listed. The help text under it reads: *"If a question set is selected, references with this relationship will automatically be assigned to it."* Leave it on **Select a question set** to attach nothing.
@@ -27,16 +27,16 @@ The relationship list is what the candidate picks from when they add each refere
     Tick **Prevent personal emails for these references (@gmail.com, @yahoo.com, etc.)** to require a work address for this relationship specifically — useful for **Manager** while still letting a **Character** reference use a personal address.
   </Step>
   <Step title="Save">
-    Click the save button in the modal. Editing an existing relationship shows a note first: *"Any changes made will also apply to all previous references who share this relationship."*
+    Click **Save** in the modal. To change a relationship later, click the **pencil** icon on its row. Editing an existing relationship shows a note first: *"Any changes made will also apply to all previous references who share this relationship."*
   </Step>
 </Steps>
 
-![SCREENSHOT: The Relationships tab listing relationships with their question sets and No personal emails badges — placeholder](/images/placeholder.png)
+![SCREENSHOT: The Relationships tab listing relationships with their question sets, No personal emails badges, and the pencil and trash icons on each row — placeholder](/images/placeholder.png)
 
-To remove one, click **Delete** on its row and confirm in the **Confirm Deletion** dialog. Deleting takes the option off the candidate's form; references already created keep the relationship they were given.
+To remove one, click the **trash** icon on its row (its tooltip reads **Delete**) and confirm with **Delete** in the **Confirm Deletion** dialog. Deleting takes the option off the candidate's form; references already created keep the relationship they were given.
 
 <Note>
-  This per-relationship email rule sits on top of the account-wide **Allow personal email addresses** switch on the **Ref. Requests** tab. See [Reference request settings](/account-configuration/reference-request-settings).
+  This per-relationship email rule sits on top of the account-wide **Allow personal email addresses** switch on the **References** tab. See [Reference settings](/account-configuration/reference-settings).
 </Note>
 
 ## Manage candidate jobs
@@ -104,11 +104,11 @@ So a request that went out carrying the **Nurse** question set (from the Nurse j
 ## Related articles
 
 <CardGroup cols={2}>
-  <Card title="Reference request settings" icon="sliders" href="/account-configuration/reference-request-settings" />
+  <Card title="Reference settings" icon="sliders" href="/account-configuration/reference-settings" />
   <Card title="Question sets and templates" icon="list-check" href="/account-configuration/question-sets-and-templates" />
   <Card title="Send a reference request" icon="paper-plane" href="/candidates-reference-requests/send-a-reference-request" />
   <Card title="Add a candidate" icon="user-plus" href="/candidates-reference-requests/add-a-candidate" />
   <Card title="Firm configuration and security settings" icon="gear" href="/account-configuration/firm-configuration" />
 </CardGroup>
 
-{/* source: app.vitay.io projects/configuration protected/settings/settings.component.ts (TABS.RELATIONSHIPS disabled on is_demo_enabled, TABS.JOBS never disabled), protected/settings/relationships/settings.relationships.component.{ts,html} (grouped list, question_set_title, prevent_personal_emails badge, delete confirm), shared/components/modals/reference-relationship-edit/modals.reference-relationship-edit.component.{ts,html} (one name input per enabled language, question sets loaded with filter qs=scope:reference, prevent_personal_emails checkbox, EDIT_NOTE), protected/settings/jobs/settings.jobs.component.{ts,html} (isRoot = isRootRecruiter || isSupervisor gates add/edit; is_candidate_job_title_enabled + settings_json.is_job_title_required switches; cols Title + Question set; SETTINGS.JOBS.SEARCH), shared/components/modals/jobs/modals.jobs.component.html (MODALS.JOBS.NAME / QUESTION_SET / QUESTION_SET_DESCRIPTION / NOTE), i18n MODALS.REFERENCE_RELATIONSHIPS.* + SETTINGS.JOBS.* + MODALS.JOBS.* + SETTINGS.REQUESTS.is_candidate_job_title_enabled/is_job_title_required; projects/references shared/components/modals/quick-request/modals.quick-request.component.ts#onJobSelect (tab id 0 = TABS.REFERENCE; GET /jobs/:id then patches request.question_set) and src/app/shared/components/modals/candidates/modals.candidates.component.ts#onJobSelect (job only, no question set), src/app/shared/components/modals/reference-requests/modals.reference-requests.component.ts (preselects the question set flagged is_default); api app/controllers/api/v1/reference_requests_controller.rb#public_create ~140 (reference.question_set_id = request's, then overridden by ReferenceRelationship#question_set when present), app/models/reference_relationship.rb (has_one :question_set, has_many :relationship_languages, CanPseudoDestroy), app/controllers/api/v3/hiring_firms/reference_relationships_controller.rb, app/models/question_set.rb#ensure_single_default */}
+{/* source: app.vitay.io projects/configuration protected/settings/settings.component.ts (TABS.RELATIONSHIPS disabled on is_demo_enabled, TABS.JOBS never disabled), protected/settings/relationships/settings.relationships.component.{ts,html} (restyled in app #2014: card header with Add new relationship button, flush rows, pencil/trash icon actions with Edit/Delete tooltips, EMPTY state, grouped list, question_set_title, prevent_personal_emails badge, delete confirm), shared/components/modals/reference-relationship-edit/modals.reference-relationship-edit.component.{ts,html} (one name input per enabled language, question sets loaded with filter qs=scope:reference, prevent_personal_emails checkbox, EDIT_NOTE), protected/settings/jobs/settings.jobs.component.{ts,html} (isRoot = isRootRecruiter || isSupervisor gates add/edit; is_candidate_job_title_enabled + settings_json.is_job_title_required switches; cols Title + Question set; SETTINGS.JOBS.SEARCH), shared/components/modals/jobs/modals.jobs.component.html (MODALS.JOBS.NAME / QUESTION_SET / QUESTION_SET_DESCRIPTION / NOTE), i18n MODALS.REFERENCE_RELATIONSHIPS.* + SETTINGS.JOBS.* + MODALS.JOBS.* + SETTINGS.REQUESTS.is_candidate_job_title_enabled/is_job_title_required; projects/references shared/components/modals/quick-request/modals.quick-request.component.ts#onJobSelect (tab id 0 = TABS.REFERENCE; GET /jobs/:id then patches request.question_set) and src/app/shared/components/modals/candidates/modals.candidates.component.ts#onJobSelect (job only, no question set), src/app/shared/components/modals/reference-requests/modals.reference-requests.component.ts (preselects the question set flagged is_default); api app/controllers/api/v1/reference_requests_controller.rb#public_create ~140 (reference.question_set_id = request's, then overridden by ReferenceRelationship#question_set when present), app/models/reference_relationship.rb (has_one :question_set, has_many :relationship_languages, CanPseudoDestroy), app/controllers/api/v3/hiring_firms/reference_relationships_controller.rb, app/models/question_set.rb#ensure_single_default */}

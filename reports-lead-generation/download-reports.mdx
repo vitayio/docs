@@ -105,13 +105,13 @@ you've already narrowed the list on screen.
 
 Bulk CSVs aside, you can download the report for one candidate or one reference:
 
-- From a **candidate's page**, the download button gives you **PDF** — plus **Word** when your firm
-  has .docx downloads enabled.
+- From a **candidate's page**, the download button offers **PDF** or **Word**.
 - From the candidate's **References** tab, you can download per question set in **PDF**, **Word**,
-  or **CSV** (one row per reference, with a column per question). Word and CSV each depend on their
-  own firm setting.
-- From a single completed reference in the sidebar, you get **PDF** (and **Word** if enabled). The
-  option only appears once the reference is complete and wasn't declined.
+  or **CSV** (one row per reference, with a column per question).
+- From a single completed reference in the sidebar, you get **PDF** or **Word**. The option only
+  appears once the reference is complete and wasn't declined.
+
+These formats are available to every firm; there's no setting to switch Word or CSV on.
 
 Whether the PDF uses the full or condensed layout, and whether personal details are hidden or a
 watermark is applied, comes from your firm's **Settings → Documents** configuration. See
@@ -159,20 +159,15 @@ sharing reference results in spreadsheet form.
 ## Troubleshooting
 
 <AccordionGroup>
-  <Accordion title="The download icon is missing or greyed out">
-    CSV downloads are controlled by your firm's **Settings → Documents** configuration:
+  <Accordion title="The download icon is missing from the top bar">
+    Root recruiters always see the export icon in the top bar. Whether other users see it is a
+    firm-level setting that has no switch in the Configuration area — ask a root recruiter to
+    contact [hello@vitay.io](mailto:hello@vitay.io) to have it changed.
 
-    - **Allow users to download the CSV reports** controls the download icon in the top bar and on
-      the Candidates and References lists. Root recruiters always keep it; everyone else needs this
-      setting on.
-    - **Allow Users To Download Reports In .Docx** adds the **Word** option to individual report
-      downloads. It's off by default, so you'll see only PDF until a root recruiter turns it on.
-    - **Allow Candidate Reference Reports in CSV** adds the **CSV** option on a candidate's
-      References tab.
-
-    When a format is switched off it's hidden rather than greyed out, so a missing option usually
-    means the setting — not a permissions error. Ask a root recruiter to change it, or see
-    [Report settings](/account-configuration/report-settings).
+    The report download buttons on a candidate, reference, feedback or pre-screening page are not
+    affected by this: every firm gets **PDF** and **Word** there, plus **CSV** on the candidate's
+    References tab. If one of those formats is missing, reload the app. See
+    [Report settings](/account-configuration/report-settings) for how the PDF itself looks.
   </Accordion>
   <Accordion title="The CSV doesn't match what I see on screen">
     The list exports apply some filters and not others — see the warning above. The Export modal
@@ -203,4 +198,4 @@ sharing reference results in spreadsheet form.
   <Card title="Send a reference request" icon="paper-plane" href="/candidates-reference-requests/send-a-reference-request" />
 </CardGroup>
 
-{/* source: app.vitay.io projects/references shared/components/modals/export/modals.export.component.{ts,html} (MODALS.EXPORT.TITLE "Export" / DESCRIPTION "Export all of your data" / TABLES / DATE_RANGE / FIELDS / ALL_QUESTION_SETS / CTA "Export", PLACEHOLDERS.TABLES "Select a table to export"; hardcoded tables[] answers/candidates/referenceAnswersPerCandidates/candidatesPerRecruiters/feedbacks/feedback_answers/pre_screenings/references→leads; question-set select only when type === referenceAnswersPerCandidates; Fields checkboxes from src/app/shared/helpers/table-fields.helper.ts, empty for referenceAnswersPerCandidates + candidatesPerRecruiters; filter hardcoded scope:all so the modal is always firm-wide); topbar.component.html (download icon shown when (is_reports_downloadable || isRoot) && shouldShow('download')); projects/references protected/leads/list/leads.list.component.ts download() and protected/candidates/list/candidates.list.component.ts (pass the live selectFilter, i.e. the Everyone/Myself scope) via src/app/shared/services/documents.service.ts; api app/controllers/api/v3/documents/csv_controller.rb (show action when branches: candidates, referenceAnswersPerCandidates, candidate_references_answers, leads, custom_leads, feedback_answers, feedbacks, pre_screenings, candidatesPerRecruiters, recruiter_performances, dashboard, recruiters; leads branch honours scope:my via requested_by_id and de-duplicates by reference email; candidates branch honours scope only); api app/services/filters/leads.rb (to_query_string covers contact_type/relationships/recruiters/question_sets but NOT reference_statuses or job_title); api app/services/documents/model_to_csv.rb (column header map); api app/models/setting.rb (is_reports_downloadable default TRUE, is_candidate_references_csv_enabled default TRUE, is_docx_enabled default FALSE, is_pdf_watermark_enabled default FALSE, pdf_template); app.vitay.io projects/configuration protected/settings/documents/settings.documents.component.{ts,html} SETTINGS.DOCUMENTS.* labels; projects/references protected/candidates/show/references/candidates.show.references.component.ts (reportFormats filtered to pdf + docx/csv per setting; csv → type candidate_references_answers) and .../show/header + shared/components/sidebar/reference/question-set (PDF/Word only; isDownloadable = filled && !decline); api app/controllers/api/v3/documents/pdf_controller.rb ~183-205 (pdf_template default/compressed, question-set template override, watermark, hide_personal_data) */}
+{/* source: app.vitay.io projects/references shared/components/modals/export/modals.export.component.{ts,html} (MODALS.EXPORT.TITLE "Export" / DESCRIPTION "Export all of your data" / TABLES / DATE_RANGE / FIELDS / ALL_QUESTION_SETS / CTA "Export", PLACEHOLDERS.TABLES "Select a table to export"; hardcoded tables[] answers/candidates/referenceAnswersPerCandidates/candidatesPerRecruiters/feedbacks/feedback_answers/pre_screenings/references→leads; question-set select only when type === referenceAnswersPerCandidates; Fields checkboxes from src/app/shared/helpers/table-fields.helper.ts, empty for referenceAnswersPerCandidates + candidatesPerRecruiters; filter hardcoded scope:all so the modal is always firm-wide); topbar.component.html (download icon shown when (is_reports_downloadable || isRoot) && shouldShow('download')); projects/references protected/leads/list/leads.list.component.ts download() and protected/candidates/list/candidates.list.component.ts (pass the live selectFilter, i.e. the Everyone/Myself scope) via src/app/shared/services/documents.service.ts; api app/controllers/api/v3/documents/csv_controller.rb (show action when branches: candidates, referenceAnswersPerCandidates, candidate_references_answers, leads, custom_leads, feedback_answers, feedbacks, pre_screenings, candidatesPerRecruiters, recruiter_performances, dashboard, recruiters; leads branch honours scope:my via requested_by_id and de-duplicates by reference email; candidates branch honours scope only); api app/services/filters/leads.rb (to_query_string covers contact_type/relationships/recruiters/question_sets but NOT reference_statuses or job_title); api app/services/documents/model_to_csv.rb (column header map); api app/models/setting.rb (is_reports_downloadable default TRUE — no panel toggle, is_pdf_watermark_enabled default FALSE, pdf_template; is_candidate_references_csv_enabled / is_docx_enabled dropped in api #2647); app.vitay.io projects/configuration protected/settings/documents/settings.documents.component.{ts,html} SETTINGS.DOCUMENTS.* labels; projects/references protected/candidates/show/references/candidates.show.references.component.ts (reportFormats = PDF / Word / CSV for every firm since app #2017; csv → type candidate_references_answers) and .../show/header + shared/components/sidebar/reference/question-set (PDF/Word only; isDownloadable = filled && !decline); api app/controllers/api/v3/documents/pdf_controller.rb ~183-205 (pdf_template default/compressed, question-set template override, watermark, hide_personal_data) */}
