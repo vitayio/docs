@@ -1,0 +1,93 @@
+---
+title: "Find and change settings"
+description: "Search every setting in the Configuration area by name, jump straight to its card, share a link to it, and understand how changes are saved."
+---
+
+All of your firm's settings live under **Settings** in the Configuration area, spread across a list of tabs. You can browse the tabs, or search for a setting by name and jump straight to it. Changes save on their own — there are no Save buttons to remember.
+
+<Note>
+  You need a **root recruiter** role to open the Configuration area.
+</Note>
+
+## Search for a setting
+
+<Steps>
+  <Step title="Open Settings">
+    Open the **Configuration** area from the main navigation and select **Settings**.
+  </Step>
+  <Step title="Open the search">
+    Click the **Search settings…** bar at the top of the page, above the tabs, or press **Ctrl K** (**⌘K** on a Mac) anywhere in Settings.
+
+    ![SCREENSHOT: The Settings page header with the Search settings… bar and its Ctrl K hint, and the search window open with a few results — placeholder](/images/placeholder.png)
+  </Step>
+  <Step title="Type what you are looking for">
+    Type part of a setting's name or description, for example `reminder` or `personal email`. Results update as you type and show the setting's name, its description and the tab it is on. Vitay shows the best 10 matches; keep typing to narrow them down.
+  </Step>
+  <Step title="Pick a result">
+    Click a result, or move to it with **↑** / **↓** and press **Enter**. Vitay opens the right tab, scrolls to the setting and briefly highlights its card. Press **Esc** to close the search without choosing.
+  </Step>
+</Steps>
+
+The search matches setting names and descriptions in the language you are using Vitay in. It only lists settings you can actually see: a setting on a tab your account doesn't have, or one that only appears when another switch is on (for example **Password expiry (days)** under **Require passwords update**), won't show up until it is visible on its tab.
+
+## Share a link to a setting
+
+When you open a setting from the search, the address in your browser points straight at its card — for example `…/settings/references#is_reference_dates_enabled`. Copy that address to send a colleague to the exact setting. When they open it (as a root recruiter on the same account), Vitay opens the tab and scrolls to the card.
+
+## How changes are saved
+
+| Kind of setting | How it saves |
+|---|---|
+| Switches, dropdowns and checkboxes | Immediately, when you change them. A confirmation message such as **Settings updated** appears. |
+| Text and number fields, and the email, text and page editors | Automatically, shortly after you stop typing, and straight away when you click away or leave the page. A status next to the field shows **Saving…** and then **Saved**. |
+
+If the status shows **Not saved**, the value wasn't accepted — for example a number outside the allowed range, or a text message over its character limit. An error message explains why. Correct the value and it saves again on its own.
+
+Buttons that do something other than save — **Restore default**, **Send test** and **Preview** — are still there where they apply.
+
+## Which tabs you see
+
+The tabs are listed down the left of the Settings page: **General**, **Configuration**, **Plugins**, **Relationships**, **Ref. Requests**, **References**, **Jobs**, **Documents**, **Notifications**, **Leads**, **Pages**, **Emails**, **Texts** and **Developers**.
+
+A few tabs belong to plugins or features that Vitay turns on for your account. They are hidden, not greyed out, until then:
+
+| Tab | Appears when |
+|---|---|
+| **Feedback** | The Candidate Feedback plugin is on. See [Plugins and the marketplace](/account-configuration/plugins). |
+| **Data Retention** | The Data retention plugin is on. See [Data retention](/security-it/data-retention). |
+| **White Label** | The White label plugin is on. See [Branding and white label](/account-configuration/branding-white-label). |
+| **SSO** | Single sign-on has been set up for your account. See [SSO with SAML](/security-it/sso-saml). |
+
+On a demo account, most tabs are shown but greyed out until the account is upgraded.
+
+Some pages sit next to **Settings** in the Configuration navigation rather than inside it: **Usage** (see [Usage and billing](/account-configuration/billing-and-usage)), **Plugins**, **Integrations**, **Change history** (see [Change history](/account-configuration/change-history)) and **Users**.
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="Ctrl K doesn't open the search">
+    The shortcut only works while you are on a **Settings** page. Click inside the page first if focus is in the browser's address bar, or click the **Search settings…** bar instead.
+  </Accordion>
+  <Accordion title="The search can't find a setting I know exists">
+    Check that the setting is visible on its tab: settings that only appear under another switch, or on a tab your account doesn't have, are left out of the results. Try a different word from the setting's description, too.
+  </Accordion>
+  <Accordion title="A tab I used before is missing">
+    Tabs tied to a plugin are hidden when the plugin isn't active on the account you are in. If you work across several accounts, check the company switcher in the top bar — see [Switch firms](/getting-started/switch-firms). The **About** tab has been removed, and **Billing & Usage** is now the **Usage** page in the navigation.
+  </Accordion>
+  <Accordion title="A field keeps showing Not saved">
+    The value is being rejected. Read the error message that appears, fix the value (for example, bring a number back within its range), and it saves on its own. If the message doesn't help, contact **hello@vitay.io**.
+  </Accordion>
+</AccordionGroup>
+
+## Related articles
+
+<CardGroup cols={2}>
+  <Card title="Firm configuration and security settings" icon="sliders" href="/account-configuration/firm-configuration" />
+  <Card title="Reference request settings" icon="list-check" href="/account-configuration/reference-request-settings" />
+  <Card title="Reference settings" icon="user-check" href="/account-configuration/reference-settings" />
+  <Card title="Change history" icon="clock-rotate-left" href="/account-configuration/change-history" />
+  <Card title="Plugins and the marketplace" icon="puzzle-piece" href="/account-configuration/plugins" />
+  <Card title="Switch firms" icon="arrows-rotate" href="/getting-started/switch-firms" />
+</CardGroup>
+
+{/* source: app.vitay.io projects/configuration protected/settings/settings.component.{ts,html} (Search settings trigger, Ctrl/⌘K HostListener, fragment → SettingsAnchorService.reveal), shared/components/modals/settings-search/modals.settings-search.component.{ts,html} (↑/↓/Enter/Esc, tab badge, SETTINGS.SEARCH.*), shared/settings-search/settings-search.service.ts (MAX_RESULTS 10, translated title/description matching), settings-search.registry.ts (SETTINGS_TABS order, isHidden for Feedback / Data Retention / White Label / SSO, isDisabled isDemo, isVisible rules), setting-anchor.directive.ts + settings-anchor.service.ts (/settings/<tab>#<id>, scroll + focus + highlight), shared/auto-save/auto-save.directive.ts + auto-save-status.component (800 ms debounce, flush on blur/destroy, SETTINGS.AUTOSAVE.SAVING / SAVED / ERROR + error toast), shared/components/navbar/navbar.component.ts (Settings, Usage, Plugins, Integrations, Change history, Users); app PRs #2001 #2002 #2005 #2017 #2019 #2022 #2031 */}

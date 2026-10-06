@@ -55,9 +55,11 @@
         "group": "Account & Configuration",
         "icon": "gear",
         "pages": [
+          "account-configuration/find-and-change-settings",
           "account-configuration/manage-users",
           "account-configuration/firm-configuration",
           "account-configuration/reference-request-settings",
+          "account-configuration/reference-settings",
           "account-configuration/email-sender-settings",
           "account-configuration/notification-settings",
           "account-configuration/question-sets-and-templates",
@@ -67,7 +69,8 @@
           "account-configuration/signatures",
           "account-configuration/branding-white-label",
           "account-configuration/plugins",
-          "account-configuration/billing-and-usage"
+          "account-configuration/billing-and-usage",
+          "account-configuration/change-history"
         ]
       },
       {

@@ -1,0 +1,123 @@
+---
+title: "Reference settings"
+description: "Preview the reference form, choose which contact details a reference must have, and decide which consent, decline, call-back and date options appear on the form — everything on the References tab."
+---
+
+The **References** tab holds the settings about the reference itself: which contact details every reference must have, what a reference is asked on their form, and what they can do instead of answering (decline, ask to be called back, limit who sees their answers). You can also preview the form your references fill in.
+
+How the request reaches your candidate — number of references, candidate authorization, review before sending — is on the **Ref. Requests** tab. See [Reference request settings](/account-configuration/reference-request-settings).
+
+<Note>
+  You need a **root recruiter** role to open the Configuration area. Every switch and dropdown on this tab saves as soon as you change it (you will see a **Settings updated** toast) and applies from then on. Forms that are already open pick up the change the next time they are loaded.
+</Note>
+
+## Open the tab
+
+<Steps>
+  <Step title="Open Settings">
+    Open the **Configuration** area from the main navigation and select **Settings**.
+  </Step>
+  <Step title="Select References">
+    Pick the **References** tab in the left-hand list, just below **Ref. Requests**. Each setting is a card with a switch or a dropdown. You can also type a setting's name in the **Search settings…** bar at the top of Settings to jump straight to its card.
+
+    ![SCREENSHOT: The References tab showing the Preview the reference form card with its question set dropdown, and the first switch cards — placeholder](/images/placeholder.png)
+  </Step>
+</Steps>
+
+## Preview the reference form
+
+The **Preview the reference form** card opens the form a reference fills in when they answer a reference request, so you can check your settings, questions and branding the way a reference will see them.
+
+<Steps>
+  <Step title="Choose the question set to show">
+    Under **Question set shown in the preview**, pick one of:
+
+    - **Sample question set (every question type)** — a sample set with one question of each type Vitay supports, so you can see how every kind of question looks on the form.
+    - **Default question set: *name*** — your firm's default question set. It is pre-selected when you have one. If you haven't chosen a default yet, the option reads **Default question set (none selected)** and can't be picked; set one with **Default question set** on the **Ref. Requests** tab.
+  </Step>
+  <Step title="Click Preview">
+    Click **Preview** on the card. The reference form opens in a new browser tab for a sample candidate and reference, using your current settings, in your account's default language.
+  </Step>
+  <Step title="Change settings and watch it update">
+    Keep the preview tab open and go back to the configuration panel. Every time you save a change — on any Settings tab, including question sets and page texts — the preview reloads on its own. Clicking **Preview** again reuses the same tab.
+  </Step>
+  <Step title="Try the form">
+    You can answer and submit the preview to see what the reference sees afterwards, including the thank-you page. A banner at the top reminds you it is a preview: nothing you enter is saved or sent. Click **Reset preview** to start again.
+
+    ![SCREENSHOT: The reference form opened as a preview with the sample question set, showing the preview banner and Reset preview button — placeholder](/images/placeholder.png)
+  </Step>
+</Steps>
+
+To preview the form candidates use to list their references, use **Preview the reference request form** on the **Ref. Requests** tab — see [Reference request settings](/account-configuration/reference-request-settings#preview-the-reference-request-form).
+
+## Contact details every reference must have
+
+These apply wherever a reference is added: on the candidate's reference request form and in the recruiter's add-reference modal.
+
+| Setting | What it does | Default |
+|---|---|---|
+| **Reference email required** | Makes a reference's email address mandatory. | Off |
+| **Enable Work Phone Number** | Adds a work phone field for candidates and references. Once on, a **Phone number requirement** dropdown appears on the same card with: **No phone required**, **Mobile number required**, **Work number required**, **Both mobile and work required**, **At least one (mobile or work)**. | Off |
+| **Reference mobile number required** | Makes a reference's mobile number mandatory. This card is hidden while **Enable Work Phone Number** is on — use **Phone number requirement** instead. | Off |
+| **Allow personal email addresses** | When on, references can be added with Gmail, Yahoo, Hotmail and similar addresses. When off, both the candidate's form and the recruiter's add-reference modal reject common personal domains, and the candidate's form displays: "Please note: Personal email addresses from common domains (Gmail, Yahoo, Hotmail, AOL, etc.) are not permitted." You can also block personal emails for a single relationship type — see [Relationships and jobs](/account-configuration/relationships-and-jobs). | On |
+| **Prevent duplicate references** | Stops the same reference being added twice to one candidate for the same question set — matching on email, phone number or ATS ID. The form shows "is already linked to an existing reference". | On |
+
+## What the reference is asked
+
+| Setting | What it does | Default |
+|---|---|---|
+| **Reference address** | Adds a **Previous employer address** section to the reference form. Turn on **Reference address required** underneath to make it mandatory. | Off / Off |
+| **Specialty required** | Makes the **Specialty** field on the reference form mandatory. | Off |
+| **Candidate position held** | Asks the reference for the candidate's job title in the role they held together. The answer appears on the reference and on PDF reports. | Off |
+| **Reference dates** | Asks the candidate for the start and end dates they worked with each reference. The reference sees the same dates on their form (**Candidate employment date**) and can correct them. | On |
+| **Restrict reference end date** | Shown under **Reference dates** once dates are on. Limits how long ago a reference's employment can have ended. Choose the **Maximum end date age**: **6 months**, **1 year**, **2 years**, **3 years** or **5 years**. The public forms show a note asking the person to contact the recruiter if they have not worked with the candidate within that period, and an end date older than the limit is rejected with "This end date is too far in the past for the firm's policy." | Off; limit 3 years |
+| **Reference authorization checkbox** | Adds a mandatory checkbox to the reference form. The reference cannot submit until it is ticked; the wording is edited on the **Pages** tab (**Reference authorization** card, visible only while this setting is on). | Off |
+
+## Consent, decline and call-back options
+
+| Setting | What it does | Default |
+|---|---|---|
+| **Ask for references consent to share results** | Turns on two sub-switches: **Permission release to client** and **Permission release to candidate**. Each adds a Yes/No question to the reference form ("Do we have your permission to release this information to our client?" / "... to the candidate?"). If the reference answers **No**, Vitay shows a warning on the reference and on PDF reports, for example "This reference has requested that this information not be shared with the candidate." See [Share reference reports outside Vitay](/candidates-reference-requests/share-reports#when-a-reference-withholds-permission-to-share). | Off (both sub-switches off) |
+| **References can decline the request** | Adds a decline link to the reference form. The reference must leave a comment; the assigned recruiter receives a **Reference declined** email, and the reference shows "This reference has declined the reference request." together with the comment. If webhooks are enabled, a `declined` event is sent. | Off |
+| **Call me instead** | Adds "If you would like to be called back" to the reference form. The reference enters a phone number instead of completing the form, and the assigned recruiter is notified so they can call. | Off |
+
+![SCREENSHOT: The Ask for references consent to share results card expanded with the Permission release to client / candidate sub-switches — placeholder](/images/placeholder.png)
+
+## Scores
+
+| Setting | What it does | Default |
+|---|---|---|
+| **Show reference score** | Displays the average score a reference gave the candidate on the candidate page and on PDF reports. Turn it off to hide scores everywhere. | On |
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="Candidates cannot enter a reference's email address">
+    If **Allow personal email addresses** is off, Gmail, Yahoo, Hotmail and similar addresses are rejected. Either turn the setting back on or ask the candidate for a work address. A relationship type can also block personal emails on its own — check the **Relationships** tab.
+  </Accordion>
+  <Accordion title="I can't find Reference mobile number required">
+    It is hidden while **Enable Work Phone Number** is on. Set the mobile requirement with the **Phone number requirement** dropdown on the **Enable Work Phone Number** card instead.
+  </Accordion>
+  <Accordion title="I can't choose my default question set in the preview">
+    The option is only available once a default is selected. Pick one under **Default question set** on the **Ref. Requests** tab, then come back to the **References** tab.
+  </Accordion>
+  <Accordion title="The preview says Preview unavailable">
+    The preview only works while you are logged in to the configuration panel. Log in again and open it from the **Preview** button on the **References** tab rather than from a saved link. If nothing opens at all, allow pop-ups for the Vitay configuration site.
+  </Accordion>
+  <Accordion title="The References tab is greyed out">
+    The tab is disabled on demo accounts. Contact **hello@vitay.io** if you need it enabled.
+  </Accordion>
+</AccordionGroup>
+
+## Related articles
+
+<CardGroup cols={2}>
+  <Card title="Reference request settings" icon="list-check" href="/account-configuration/reference-request-settings" />
+  <Card title="Read a completed reference" icon="clipboard-check" href="/candidates-reference-requests/read-a-completed-reference" />
+  <Card title="Share reference reports outside Vitay" icon="share-nodes" href="/candidates-reference-requests/share-reports" />
+  <Card title="Relationships and jobs" icon="sitemap" href="/account-configuration/relationships-and-jobs" />
+  <Card title="Question sets and templates" icon="list-check" href="/account-configuration/question-sets-and-templates" />
+  <Card title="Customize emails, text messages, and pages" icon="envelope" href="/account-configuration/email-text-and-page-templates" />
+</CardGroup>
+
+{/* source: app.vitay.io projects/configuration protected/settings/references/settings.references.component.{ts,html} (params order, visibleParams hides is_reference_mobile_number_required while is_work_phone_number_enabled, phone_requirement select, is_reference_address_required sub-switch, end-date restriction + endDateAgeOptions, consent sub-switches, preview card with previewQuestionSet sample|default, default disabled without settings.default_question_set_id), shared/services/form-preview.service.ts + PreviewRefreshInterceptor, shared/settings-search/settings-search.registry.ts (TABS.REFERENCES after TABS.REQUESTS), i18n SETTINGS.REFERENCES.*; projects/references public/references preview mode (i18n REFERENCE.PREVIEW.BANNER / RESET / TOASTS.NOT_SAVED / ERRORS.UNAUTHORIZED), public/reference-requests + public/references components (referenceAuthorization validator, consent Yes/No, decline + CALLING_BACK, end-date blurb), shared/validators/phoneEmailPersonal.validators.ts; api app/controllers/api/v1/references_controller.rb#preview + #preview_lead_types, app/services/question_sets/sample_builder.rb (one question per type), app/controllers/concerns/resolves_preview_question_set.rb, app/models/setting.rb (SETTINGS defaults, REFERENCE_END_DATE_MAX_AGE_ALLOWED), app/models/reference.rb (permission_warning_message, end_date_within_restricted_age, check_uniqueness), api/v1/references/declines_controller.rb, app/models/recruiter_reference.rb (call_back_enabled?) */}

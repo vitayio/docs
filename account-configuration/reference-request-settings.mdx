@@ -1,12 +1,14 @@
 ---
 title: "Reference request settings"
-description: "Configure what candidates and references must provide, whether references are reviewed before sending, and which consent and decline options appear on the public forms."
+description: "Preview the candidate's reference request form, set the default question set and number of references, and choose whether references are reviewed before sending — everything on the Ref. Requests tab."
 ---
 
-The **Ref. Requests** tab controls how reference requests behave for your whole account: how many references a candidate is asked for, which fields the candidate and the reference must fill in, and which extra options (consent, decline, call-back) appear on the public forms.
+The **Ref. Requests** tab controls how a reference request reaches your candidate: how many references they are asked for, what they must agree to before submitting, whether you review their references before Vitay contacts them, and whether they can upload documents. You can also preview the form your candidates see.
+
+Settings about the reference itself — the contact details a reference must have, and what a reference can do on their form (consent, decline, call-back, dates, score) — are on the **References** tab next to it. See [Reference settings](/account-configuration/reference-settings).
 
 <Note>
-  You need a **root recruiter** role to open the Configuration area. Every switch on this tab saves as soon as you flip it (you will see a **Settings updated** toast) and applies to requests sent from then on. Forms that are already open pick up the change the next time they are loaded.
+  You need a **root recruiter** role to open the Configuration area. Every switch and dropdown on this tab saves as soon as you change it (you will see a **Settings updated** toast) and applies to requests sent from then on. Forms that are already open pick up the change the next time they are loaded.
 </Note>
 
 ## Open the tab
@@ -16,61 +18,67 @@ The **Ref. Requests** tab controls how reference requests behave for your whole 
     Open the **Configuration** area from the main navigation and select **Settings**.
   </Step>
   <Step title="Select Ref. Requests">
-    Pick the **Ref. Requests** tab in the left-hand list. Each setting is a card with a switch or a dropdown.
+    Pick the **Ref. Requests** tab in the left-hand list. Each setting is a card with a switch or a dropdown. You can also type a setting's name in the **Search settings…** bar at the top of Settings to jump straight to its card.
 
-    ![SCREENSHOT: The Ref. Requests tab showing the Number of references dropdown and the first few switch cards — placeholder](/images/placeholder.png)
+    ![SCREENSHOT: The Ref. Requests tab showing the Preview the reference request form card, the Default question set and Number of references dropdowns, and the first switch cards — placeholder](/images/placeholder.png)
   </Step>
 </Steps>
 
-## How many references
+## Preview the reference request form
+
+The **Preview the reference request form** card opens the page a candidate sees when they add their references, so you can check your settings, wording and branding before a real candidate does.
+
+<Steps>
+  <Step title="Click Preview">
+    Click **Preview** on the card. The form opens in a new browser tab, filled from a sample request built from your current settings — your default question set, number of references and **Managers only default** — in your account's default language.
+  </Step>
+  <Step title="Change settings and watch it update">
+    Keep the preview tab open and go back to the configuration panel. Every time you save a change — on any Settings tab, including the **Pages** texts — the preview reloads on its own. Clicking **Preview** again reuses the same tab.
+  </Step>
+  <Step title="Try the form">
+    You can fill in and submit the preview to see what candidates see afterwards. A banner at the top reminds you it is a preview: nothing you type is saved or sent, and no email goes to anyone. Click **Reset preview** to start again.
+
+    ![SCREENSHOT: The candidate reference request form opened as a preview, with the preview banner and Reset preview button at the top — placeholder](/images/placeholder.png)
+  </Step>
+</Steps>
+
+To preview the form references fill in, use **Preview the reference form** on the **References** tab — see [Reference settings](/account-configuration/reference-settings#preview-the-reference-form).
+
+## Question set and number of references
 
 | Setting | What it does | Default |
 |---|---|---|
+| **Default question set** | Your firm's default question set, picked from your question sets (or **None**). The reference request preview uses it, and the reference form preview on the **References** tab can show it. It is separate from the starred default on the **Question sets** list, which is what the Reference request modal pre-selects — see [Question sets and templates](/account-configuration/question-sets-and-templates#set-a-default-question-set). | None |
 | **Number of references** | The default number of references a candidate is asked to provide. Pick a value from **0** to **6**. It pre-fills the **Number of references** dropdown in the Reference request modal and fills the `{{nb_min_references}}` merge field in the request email ("please provide at least N reference(s)"). | 1 |
 | **Allow candidate to add additional references** | Shows an **Add another reference** button on the candidate's reference request page so they can list more than the requested number. | On |
 | **Managers only default** | Ticks the **Managers only** checkbox by default in the Reference request modal. When that box is ticked, the candidate's form shows: "Please only provide direct or non direct managers contact details." | Off |
 
-## What candidates must provide
+## What the candidate must do
 
 | Setting | What it does | Default |
 |---|---|---|
-| **Reference dates** | Asks the candidate for the start and end dates they worked with each reference. The reference sees the same dates on their form (**Candidate employment date**) and can correct them. | On |
-| **Restrict reference end date** | Shown under **Reference dates** once dates are on. Limits how long ago a reference's employment can have ended. Choose the **Maximum end date age**: **6 months**, **1 year**, **2 years**, **3 years** or **5 years**. The public forms show a note asking the person to contact the recruiter if they have not worked with the candidate within that period, and an end date older than the limit is rejected with "This end date is too far in the past for the firm's policy." | Off; limit 3 years |
-| **Allow personal email addresses** | When on, references can be added with Gmail, Yahoo, Hotmail and similar addresses. When off, both the candidate's form and the recruiter's add-reference modal reject common personal domains, and the candidate's form displays: "Please note: Personal email addresses from common domains (Gmail, Yahoo, Hotmail, AOL, etc.) are not permitted." You can also block personal emails for a single relationship type — see [Relationships and jobs](/account-configuration/relationships-and-jobs). | On |
 | **Candidate authorization checkbox** | Adds a mandatory checkbox to the candidate's reference request form. The candidate cannot submit until it is ticked; the wording is edited on the **Pages** tab (**Candidate authorization** card). | Off |
 | **Candidate document upload** | Lets candidates attach documents (resume, certificates) to their reference request. See [Candidate documents](/candidates-reference-requests/candidate-documents) for the full options. | Off |
-
-## What references must provide
-
-| Setting | What it does | Default |
-|---|---|---|
-| **Specialty required** | Makes the **Specialty** field on the reference form mandatory. | Off |
-| **Reference address** | Adds a **Previous employer address** section to the reference form. Turn on **Reference address required** underneath to make it mandatory. | Off / Off |
-| **Candidate position held** | Asks the reference for the candidate's job title in the role they held together. The answer appears on the reference and on PDF reports. | Off |
-| **Reference authorization checkbox** | Adds a mandatory checkbox to the reference form. The reference cannot submit until it is ticked; the wording is edited on the **Pages** tab (**Reference authorization** card, visible only while this setting is on). | Off |
 
 ## Review references before sending
 
 | Setting | What it does | Default |
 |---|---|---|
-| **Reference review configuration** | Holds every new reference (added by the candidate or by a user) as **Pending user approval** instead of emailing it straight away. Open the reference and click **Approve reference** on the "This reference is pending review" alert; the question set is sent to the reference only then. | Off |
+| **Reference review configuration** | Holds every new reference (added by the candidate or by a user) as **Pending user approval** instead of emailing it straight away. Open the reference and click **Approve reference** on the "This reference is pending review" alert; the question set is sent to the reference only then. Who is emailed when a reference is waiting for approval is set by the **Reference awaiting your review** row under **Settings → Notifications** (the reference requester by default) — see [Notification settings](/account-configuration/notification-settings). | Off |
 
-## Consent, decline and call-back options
-
-| Setting | What it does | Default |
-|---|---|---|
-| **Ask for references consent to share results** | Turns on two sub-switches: **Permission release to client** and **Permission release to candidate**. Each adds a Yes/No question to the reference form ("Do we have your permission to release this information to our client?" / "... to the candidate?"). If the reference answers **No**, Vitay shows a warning on the reference and on PDF reports, for example "This reference has requested that this information not be shared with the candidate." | Off (both sub-switches off) |
-| **References can decline the request** | Adds a decline link to the reference form. The reference must leave a comment; the assigned recruiter receives a **Reference declined** email, and the reference shows "This reference has declined the reference request." together with the comment. If webhooks are enabled, a `declined` event is sent. | Off |
-| **Call me instead** | Adds "If you would like to be called back" to the reference form. The reference enters a phone number instead of completing the form, and the assigned recruiter is notified so they can call. | Off |
-
-## Reports and ownership
+## Ownership
 
 | Setting | What it does | Default |
 |---|---|---|
-| **Show reference score** | Displays the average score a reference gave the candidate on the candidate page and on PDF reports. Turn it off to hide scores everywhere. | On |
 | **Reassign user upon reference request** | Adds a **Set yourself as the assigned user** checkbox to the Reference request modal, ticked by default. Untick it in the modal if you want to send the request without taking over the candidate. | Off |
 
-![SCREENSHOT: The Ask for references consent to share results card expanded with the Permission release to client / candidate sub-switches — placeholder](/images/placeholder.png)
+## Settings that moved to the References tab
+
+If you are looking for one of these, it is now on the **References** tab — see [Reference settings](/account-configuration/reference-settings):
+
+- **Reference dates** (with **Restrict reference end date**), **Allow personal email addresses**, **Specialty required**, **Reference address**, **Candidate position held** and **Reference authorization checkbox**
+- **Ask for references consent to share results**, **References can decline the request** and **Call me instead**
+- **Show reference score**
 
 ## Troubleshooting
 
@@ -78,8 +86,11 @@ The **Ref. Requests** tab controls how reference requests behave for your whole 
   <Accordion title="A reference says they never received the question set">
     Check whether **Reference review configuration** is on. If it is, the reference stays in **Pending user approval** until someone clicks **Approve reference** on the reference page.
   </Accordion>
-  <Accordion title="Candidates cannot enter a reference's email address">
-    If **Allow personal email addresses** is off, Gmail, Yahoo, Hotmail and similar addresses are rejected. Either turn the setting back on or ask the candidate for a work address. A relationship type can also block personal emails on its own — check the **Relationships** tab.
+  <Accordion title="Nothing happens when I click Preview">
+    The preview opens in a new tab. If your browser blocks pop-ups for the Vitay configuration site, allow them and click **Preview** again.
+  </Accordion>
+  <Accordion title="The preview says Preview unavailable">
+    The preview only works while you are logged in to the configuration panel. Log in again and open it from the **Preview** button on the **Ref. Requests** tab rather than from a saved link.
   </Accordion>
   <Accordion title="The Ref. Requests tab is greyed out">
     The tab is disabled on demo accounts. Contact **hello@vitay.io** if you need it enabled.
@@ -89,12 +100,12 @@ The **Ref. Requests** tab controls how reference requests behave for your whole 
 ## Related articles
 
 <CardGroup cols={2}>
+  <Card title="Reference settings" icon="user-check" href="/account-configuration/reference-settings" />
   <Card title="Send a reference request" icon="paper-plane" href="/candidates-reference-requests/send-a-reference-request" />
   <Card title="Customize emails, text messages, and pages" icon="envelope" href="/account-configuration/email-text-and-page-templates" />
-  <Card title="Firm configuration and security settings" icon="sliders" href="/account-configuration/firm-configuration" />
-  <Card title="Relationships and jobs" icon="sitemap" href="/account-configuration/relationships-and-jobs" />
+  <Card title="Question sets and templates" icon="list-check" href="/account-configuration/question-sets-and-templates" />
   <Card title="Candidate documents" icon="file" href="/candidates-reference-requests/candidate-documents" />
   <Card title="Notification settings" icon="bell" href="/account-configuration/notification-settings" />
 </CardGroup>
 
-{/* source: app.vitay.io projects/configuration protected/settings/requests/settings.requests.component.{ts,html} (params list, minReferenceValues 0-6, endDateAgeOptions), i18n SETTINGS.REQUESTS.*; projects/references public/reference-requests + public/references components (candidateAuthorization/referenceAuthorization validators, consent Yes/No, decline + CALLING_BACK, end-date blurb), shared/validators/phoneEmailPersonal.validators.ts, shared modals/reference-requests (Managers only, Set yourself as the assigned user default true), sidebar reference alerts (Approve reference); api app/models/setting.rb (SETTINGS defaults, REFERENCE_END_DATE_MAX_AGE_ALLOWED), db/schema.rb settings defaults, app/models/reference.rb (permission_warning_message, end_date_within_restricted_age), app/controllers/api/v3/references_controller.rb + api/v1/reference_requests_controller.rb (is_pending, enforce_candidate_attestation!), api/v1/references/declines_controller.rb, app/models/recruiter_reference.rb (call_back_enabled?) */}
+{/* source: app.vitay.io projects/configuration protected/settings/requests/settings.requests.component.{ts,html} (preview card → FormPreviewService.open('reference-request'), default_question_set_id select with None, params list, minReferenceValues 0-6, candidate_documents card), shared/services/form-preview.service.ts + PreviewRefreshInterceptor (named tab reused, refresh on every 2xx settings/pages/question-set/relationship/lead-type save), i18n SETTINGS.REQUESTS.*; projects/references public reference-requests preview mode (i18n REFERENCE_REQUEST.PREVIEW.BANNER / RESET / UNAVAILABLE), public/reference-requests components (candidateAuthorization validator, Managers only copy), shared modals/reference-requests (Managers only, Set yourself as the assigned user default true), sidebar reference alerts (Approve reference); api app/controllers/api/v1/reference_requests_controller.rb#preview (unsaved sample RecruiterRequest, question set = explicit → settings.default_question_set_id → flagged default → any; min_reference_count; is_managers_only_default_enabled; nothing persisted), app/controllers/concerns/resolves_preview_question_set.rb, app/models/setting.rb (SETTINGS defaults), api/v1/reference_requests_controller.rb (is_pending, enforce_candidate_attestation!) */}

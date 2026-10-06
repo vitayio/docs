@@ -21,7 +21,7 @@ Webhooks let your own systems react to reference activity without polling the Vi
     Flip **Enable Webhook** — *"Receive notifications when a reference request and the reference is completed"*. The URL field stays greyed out until this is on.
   </Step>
   <Step title="Enter your endpoint">
-    Type your endpoint into **Webhook Url** and click the **save** (disk) icon next to the field. You will see a **Settings updated** toast. The value must be an `http://` or `https://` URL — anything else is ignored at send time and no request is made.
+    Type your endpoint into **Webhook Url**. It saves automatically once you stop typing or click away, and **Saved** appears under the field. The value must be an `http://` or `https://` URL — anything else is ignored at send time and no request is made.
   </Step>
 </Steps>
 
@@ -32,7 +32,7 @@ Webhooks let your own systems react to reference activity without polling the Vi
 | `created` | `Reference` | A reference is added to a candidate from inside Vitay — by a recruiter in the app, or through an API or ATS integration acting as a recruiter. |
 | `completed` | `ReferenceRequest` | The **candidate** submits their list of references on the public reference-request form, which marks the request complete. |
 | `completed` | `Reference` | A **reference provider** submits the reference form. |
-| `declined` | `Decline` | A reference provider declines to give a reference. This only happens if the decline option is enabled for your firm — see [Reference request settings](/account-configuration/reference-request-settings). |
+| `declined` | `Decline` | A reference provider declines to give a reference. This only happens if the decline option is enabled for your firm — see [Reference settings](/account-configuration/reference-settings). |
 
 Both completion events use the same `event` value, so branch on `type` (or on the fields inside `data`) to tell a completed reference from a completed reference request.
 
@@ -92,10 +92,10 @@ The **Developers** tab also carries the **DMARC Protection** card, which is abou
 
 <AccordionGroup>
   <Accordion title="The Webhook Url field is greyed out">
-    Switch **Enable Webhook** on first. The field and its save button stay disabled until the switch is on.
+    Switch **Enable Webhook** on first. The field stays disabled until the switch is on.
   </Accordion>
   <Accordion title="I saved a URL but nothing arrives">
-    Check three things: the switch is on, the value was saved with the disk icon (typing alone does not save it), and the URL starts with `http://` or `https://`. A value Vitay cannot parse as an HTTP URL is skipped silently. Then confirm the event you are waiting for actually fires — adding a reference yourself produces `created`, not `completed`.
+    Check three things: the switch is on, the status under the field said **Saved** after you typed (**Not saved** means the value was rejected), and the URL starts with `http://` or `https://`. A value Vitay cannot parse as an HTTP URL is skipped silently. Then confirm the event you are waiting for actually fires — adding a reference yourself produces `created`, not `completed`.
   </Accordion>
   <Accordion title="We missed some events">
     There are no retries, so an endpoint that was unavailable will have missed those deliveries permanently. Reconcile by reading the affected records from the API rather than waiting for a redelivery.
@@ -113,8 +113,8 @@ The **Developers** tab also carries the **DMARC Protection** card, which is abou
 <CardGroup cols={2}>
   <Card title="Integrations overview" icon="plug" href="/integrations/overview" />
   <Card title="Email sender settings" icon="envelope" href="/account-configuration/email-sender-settings" />
-  <Card title="Reference request settings" icon="list-check" href="/account-configuration/reference-request-settings" />
+  <Card title="Reference settings" icon="list-check" href="/account-configuration/reference-settings" />
   <Card title="Firm configuration and security settings" icon="gear" href="/account-configuration/firm-configuration" />
 </CardGroup>
 
-{/* source: app.vitay.io projects/configuration protected/settings/developers/settings.developers.component.{ts,html} (is_webhook_enabled switch, webhook_url input disabled until enabled, save icon) and settings.developers.dmarc.component.*, i18n SETTINGS.DEVELOPERS.*, TABS.DEVELOPERS; api app/services/external_services/webhooks/events.rb (envelope event/type/id/data, TIMEOUT_SECONDS 10, Content-Type + Accept only, URI::HTTP guard, failures rescued and logged, no retry), app/controllers/api/v1/references_controller.rb#create (created) and #public_create (completed), app/controllers/api/v3/references_controller.rb#create (created), app/controllers/api/v1/reference_requests_controller.rb#public_create (completed, ReferenceRequest), app/controllers/api/v1/references/declines_controller.rb (declined, Decline), app/models/setting.rb (is_webhook_enabled, webhook_url), app/models/reference.rb + reference_request.rb + decline.rb schema annotations */}
+{/* source: app.vitay.io projects/configuration protected/settings/developers/settings.developers.component.{ts,html} (is_webhook_enabled switch, webhook_url input disabled until enabled, appAutoSave + app-auto-save-status) and settings.developers.dmarc.component.*, i18n SETTINGS.DEVELOPERS.*, TABS.DEVELOPERS; api app/services/external_services/webhooks/events.rb (envelope event/type/id/data, TIMEOUT_SECONDS 10, Content-Type + Accept only, URI::HTTP guard, failures rescued and logged, no retry), app/controllers/api/v1/references_controller.rb#create (created) and #public_create (completed), app/controllers/api/v3/references_controller.rb#create (created), app/controllers/api/v1/reference_requests_controller.rb#public_create (completed, ReferenceRequest), app/controllers/api/v1/references/declines_controller.rb (declined, Decline), app/models/setting.rb (is_webhook_enabled, webhook_url), app/models/reference.rb + reference_request.rb + decline.rb schema annotations */}

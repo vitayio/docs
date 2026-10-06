@@ -27,10 +27,11 @@ you're not sure which environment your firm is on, see
     Type your email address and password, then click **Sign in**.
   </Step>
   <Step title="Complete MFA if prompted">
-    If multi-factor authentication is enabled on your account, you will be taken to the
-    **2FA verification** screen. For SMS MFA, click **Get code**, enter the code sent to your
-    phone, then click **Submit**. If you use an authenticator app, enter the current 6-digit code
-    from the app and click **Submit**.
+    If multi-factor authentication is enabled on your account, or your firm requires it, you
+    will be taken to the **2FA verification** screen. For SMS MFA, click **Get code**, enter the
+    code sent to your phone, then click **Submit**. If you use an authenticator app, enter the
+    current 6-digit code from the app and click **Submit**. Vitay asks for a code on every
+    password sign-in, and you have 10 minutes to enter it.
     See [Multi-factor authentication & login options](/getting-started/mfa-and-login-options) for setup details.
   </Step>
 </Steps>
@@ -43,7 +44,7 @@ you're not sure which environment your firm is on, see
   </Step>
   <Step title="Enter your email">
     Type your Vitay email address and submit the form. Vitay sends you a password-reset email with
-    a link.
+    a link. The link expires after **1 hour** and works only once.
 
     <Note>
       Password reset emails are rate-limited. If you request more than two resets within a
@@ -51,7 +52,7 @@ you're not sure which environment your firm is on, see
     </Note>
   </Step>
   <Step title="Follow the link and set a new password">
-    Click the link in the reset email and choose a new password. Passwords must be at least
+    Click the link in the reset email within the hour and choose a new password. Passwords must be at least
     8 characters and include an uppercase letter, a lowercase letter, a number, and a special
     character. You can't reuse your current password or any of your previous five.
   </Step>
@@ -62,12 +63,18 @@ you're not sure which environment your firm is on, see
 These rules apply to every recruiter account:
 
 - **Password complexity** — at least 8 characters, with an uppercase letter, a lowercase letter,
-  a number, and a special character.
+  a number, and a special character. This applies wherever a password is set: when you replace
+  your temporary password on your first sign-in, when you reset it, and when you change it.
+  A password you set before these rules applied keeps working until you next change it.
 - **Password history** — a new password can't match your current password or any of the
   previous five you've used.
-- **Lockout** — 10 consecutive failed sign-in attempts lock the account (see
-  [Why was my account locked?](#troubleshooting) below).
+- **Lockout** — 10 consecutive failed sign-in attempts lock the account. Wrong passwords and
+  wrong MFA codes both count (see [Why was my account locked?](#troubleshooting) below).
+- **Reset links** — a password-reset link expires 1 hour after it's sent and can be used once.
 - **Reset rate limit** — at most two password-reset emails per address in any three-hour window.
+- **Too many requests** — Vitay also slows down bursts of sign-in or password-reset attempts,
+  whether they come from one network or target one email address. If you hit this limit, wait a
+  few minutes and try again.
 - **Password expiry** — only applies when your firm has turned on **Require passwords update**.
   When it's on, passwords expire after 30 days by default; a root recruiter can set anywhere
   from 1 to 365 days. Users who sign in through SSO are never asked to change an expired
@@ -76,6 +83,9 @@ These rules apply to every recruiter account:
   firm can also log you out sooner after a period of inactivity with the **IDLE** setting
   (off by default, 15 minutes when enabled) — see
   [Firm configuration](/account-configuration/firm-configuration).
+- **Deactivated accounts** — when a user is deactivated (by a root recruiter, or by your identity
+  provider if you use SCIM), they are signed out the next time they do anything in Vitay and
+  can't sign in again until they're reactivated.
 - **Email domains** — Vitay doesn't accept Tutanota or Proton email addresses for user
   accounts; use your work address instead.
 
@@ -100,7 +110,7 @@ Vitay shows an error asking you to use SSO. For setup and troubleshooting, see
     There are two reasons an account gets locked:
 
     - **Too many failed sign-ins.** Vitay locks the account after 10 consecutive failed
-      attempts.
+      attempts. Wrong passwords and wrong MFA codes both count towards the 10.
     - **Inactivity.** If your firm has turned on **Disable inactive accounts**, Vitay
       periodically locks any non-root user who hasn't signed in for a month — even if they
       never entered a wrong password.
@@ -125,8 +135,25 @@ Vitay shows an error asking you to use SSO. For setup and troubleshooting, see
     doesn't apply to you.
   </Accordion>
   <Accordion title="I see a 'password reset rate limit' message">
-    You can request up to two password resets within any three-hour period. Wait until the window
-    expires, then try again.
+    You can request up to two password resets within any three-hour period. The message tells you
+    how long to wait. Wait until the window expires, then try again.
+  </Accordion>
+  <Accordion title="My reset link says it's invalid or expired">
+    Reset links expire 1 hour after they're sent and stop working once you've used them. Go back
+    to the login page, click **Forgot password**, and request a new link. If you've already
+    requested two resets in the last three hours, you'll need to wait before a new one is sent.
+  </Accordion>
+  <Accordion title="I see a 'Too many requests' error">
+    Vitay has seen a lot of sign-in or password-reset attempts in a short time, either for your
+    email address or from your network (for example, a shared office connection). Wait a few
+    minutes, then try again. This is separate from the account lockout: your account isn't
+    locked, and you don't need to reset your password.
+  </Accordion>
+  <Accordion title="I was suddenly signed out and can't sign back in">
+    Your account has probably been deactivated. Vitay signs deactivated users out on their next
+    action instead of waiting for the session to end, and blocks new sign-ins (you may see
+    "This account is currently inactive"). If you think this is a mistake, ask a root recruiter at
+    your firm to reactivate you (see [Manage users](/account-configuration/manage-users)).
   </Accordion>
 </AccordionGroup>
 
@@ -141,4 +168,4 @@ Vitay shows an error asking you to use SSO. For setup and troubleshooting, see
   <Card title="Manage users" icon="users" href="/account-configuration/manage-users" />
 </CardGroup>
 
-{/* source: app.vitay.io login.component.html (Sign in / Sign in with SSO buttons), mfa.component (2FA verification: Get code / Submit); api app/models/user.rb (MAX_LOGIN_ATTEMPTS=10, PASSWORD_REQUIREMENTS, BLACKLIST_EMAILS tutanota|proton), app/validators/unique_password_validator.rb (HISTORY_LIMIT=5 + current), app/models/password_reset_attempt.rb (RATE_LIMIT_WINDOW=3.hours, MAX_ATTEMPTS=2), app/models/setting.rb (DEFAULT_PASSWORD_EXPIRY_DAYS=30, password_expiry_days 1..365, is_force_users_password_update_enabled, is_idle_enabled/idle_timeout 15), app/models/concerns/has_secure_tokens.rb (JWT expires_in 1.day; SSO sessions skip is_force_password_update), app/controllers/concerns/authorization.rb (enforce_password_expiry!), lib/tasks/users.rake (disable_inactive: non-root, last_connected_at > 1 month, is_locked), app/controllers/.../oauth_controller.rb (SSOAuthenticationRequiredError; password reset clears is_locked); app.vitay.io src/app/shared/services/idle.service.ts; configuration SETTINGS.CONFIGURATION.is_force_users_password_update_enabled / password_expiry_days / is_disable_inactive_users_enabled / is_idle_enabled labels */}
+{/* source: app.vitay.io login.component.html (Sign in / Sign in with SSO buttons), mfa.component (2FA verification: Get code / Submit); api app/models/user.rb (MAX_LOGIN_ATTEMPTS=10, PASSWORD_REQUIREMENTS, BLACKLIST_EMAILS tutanota|proton), app/validators/unique_password_validator.rb (HISTORY_LIMIT=5 + current), app/models/password_reset_attempt.rb (RATE_LIMIT_WINDOW=3.hours, MAX_ATTEMPTS=2), User::PASSWORD_RESET_KEY_TTL=1.hour + password_reset_key_valid? (InvalidResetKeyError "invalid or expired"), password format validated on the model (every set path; legacy digests untouched), after_save revoke_all_tokens! on deactivation + authorization.rb 401 "Account deactivated", oauth_controller.rb UserAccountInactiveError "This account is currently inactive", config/initializers/rack_attack.rb (login/ip, login/email, password_reset/* throttles → 429 "Too many requests"), api/v3/authentication_controller.rb (wrong MFA code increments failed_attempts), app/models/setting.rb (DEFAULT_PASSWORD_EXPIRY_DAYS=30, password_expiry_days 1..365, is_force_users_password_update_enabled, is_idle_enabled/idle_timeout 15), app/models/concerns/has_secure_tokens.rb (JWT expires_in 1.day; SSO sessions skip is_force_password_update), app/controllers/concerns/authorization.rb (enforce_password_expiry!), lib/tasks/users.rake (disable_inactive: non-root, last_connected_at > 1 month, is_locked), app/controllers/.../oauth_controller.rb (SSOAuthenticationRequiredError; password reset clears is_locked); app.vitay.io src/app/shared/services/idle.service.ts; configuration SETTINGS.CONFIGURATION.is_force_users_password_update_enabled / password_expiry_days / is_disable_inactive_users_enabled / is_idle_enabled labels */}

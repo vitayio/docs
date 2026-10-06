@@ -70,6 +70,10 @@ To export your team list, click the **download** icon on the **Users** page (its
   </Step>
 </Steps>
 
+### Send someone every team notification
+
+There is no per-person "always notify" switch. Who receives each team notification email is decided row by row in the **Team notifications** table under **Settings → Notifications**: tick **Root users** on a row to include every root user, or add the person's address under **Additional emails**. See [Notification settings](/account-configuration/notification-settings).
+
 ## Deactivate (remove) a user
 
 Deactivating a user removes their login access but preserves all their historical candidates and references.
@@ -83,17 +87,23 @@ Deactivating a user removes their login access but preserves all their historica
   </Step>
 </Steps>
 
-The user can no longer log in. Their past work remains visible and is still attributed to them in reports and activity logs. If you need to restore access later, use the **reactivate** (check) icon on the same row.
+The user loses access straight away. If they are signed in when you deactivate them, they are signed out the next time they do anything in Vitay, rather than keeping access until their session would have expired. They can't sign in again, and they stop receiving team notification emails. If the person also belongs to another account in your firm family and is still active there, their access to that account is not affected.
+
+Their past work remains visible and is still attributed to them in reports and activity logs. If you need to restore access later, use the **reactivate** (check) icon on the same row. They then sign in again as usual.
+
+<Note>
+  Deactivating a user doesn't reassign their candidates. Emails for those candidates that go to the **Assigned recruiter** skip deactivated users, so reassign the candidates if someone else should hear about them. See [Change the assigned recruiter for a candidate](#change-the-assigned-recruiter-for-a-candidate).
+</Note>
 
 ## Automatic lock for inactive users
 
 If you turn on **Disable inactive accounts** under **Settings → Configuration** (off by default), Vitay periodically locks any user who hasn't signed in for a month. Root recruiters are never locked this way. A locked user sees a **Locked** badge on their user page and can't sign in until the account is unlocked.
 
-To unlock someone, open their page under **Configuration → Users** and click **Unlock and Reset password**. They receive a password reset email, and the account is unlocked once they finish resetting their password. Users can also unlock themselves with the **Forgot password** link on the login page — see [Logging in](/getting-started/logging-in).
+To unlock someone, open their page under **Configuration → Users** and click **Unlock and Reset password**. They receive a password reset email, and the account is unlocked once they finish resetting their password. The link in that email expires after **1 hour** and works only once; if it runs out, click the button again to send a fresh one. Users can also unlock themselves with the **Forgot password** link on the login page — see [Logging in](/getting-started/logging-in).
 
 ## Change the assigned recruiter for a candidate
 
-Every candidate has an **Assigned user** — the recruiter who owns the record and receives its notifications. You'll typically reassign candidates when a recruiter leaves or changes role.
+Every candidate has an **Assigned user** — the recruiter who owns the record and, with the default [notification settings](/account-configuration/notification-settings), receives its notifications. You'll typically reassign candidates when a recruiter leaves or changes role.
 
 - **Root recruiters** can always change the assigned user.
 - **Other users** can only do so when **Allow users to update the assigned user** is turned on under **Settings → Configuration** (off by default).
@@ -121,12 +131,14 @@ Sub-accounts are separate environments for branches, teams, or client companies 
     Click the **plus** icon (tooltip **Add sub account**). Sub-accounts can only be created from the parent account — the button is disabled while you're working inside a sub-account.
   </Step>
   <Step title="Enter the sub-account and its root user">
-    Fill in the sub-account's **Name**, then the **first name**, **last name**, and **email** of the person who will manage it — they become that sub-account's root user.
+    Fill in the sub-account's **Name**, then the **first name**, **last name**, and **email** of the person who will manage it — they become that sub-account's default root user.
+
+    The root users of your parent account are added to the new sub-account as root users at the same time, so they can manage it and switch into it from the company switcher. People with the plain recruiter role, and deactivated users, are not carried over.
 
     Leave **Send email to user** ticked to email them their login credentials (the modal confirms "Credentials are sent directly to the user"); untick it and no email goes out, so you'll need to share access another way.
   </Step>
   <Step title="Submit">
-    Click **Submit**. To add more users to the sub-account, switch into it and follow [Add a user](#add-a-user) above.
+    Click **Submit**. To add more users to the sub-account, switch into it and follow [Add a user](#add-a-user) above. If the email you enter belongs to someone who already has a Vitay account in your firm family, that account is given access to the sub-account instead of a duplicate being created, and no welcome email is sent. Capitalisation in the email address doesn't matter.
   </Step>
 </Steps>
 
@@ -140,7 +152,7 @@ Root users of the parent account can see combined usage across sub-accounts on t
 
 <AccordionGroup>
   <Accordion title="The new user says they didn't receive their credentials email">
-    First confirm the **Send email to user** checkbox was ticked when the user was added — if it wasn't, no email was sent. Ask them to check their spam or junk folder. To send fresh login details, open the user's page and click **Reset password** (or **Unlock and Reset password** if their account is locked); they will receive a password reset email.
+    First confirm the **Send email to user** checkbox was ticked when the user was added — if it wasn't, no email was sent. Ask them to check their spam or junk folder. To send fresh login details, open the user's page and click **Reset password** (or **Unlock and Reset password** if their account is locked); they will receive a password reset email. The reset link expires after **1 hour** and works only once, so ask them to use it promptly.
   </Accordion>
   <Accordion title="I can't change the role for a specific user">
     The Root and Supervisor switches are only available to root recruiters, and are never shown for the account's default root user or for your own account. If the user is listed as the default account, contact Vitay support to transfer that designation.
@@ -167,4 +179,4 @@ Root users of the parent account can see combined usage across sub-accounts on t
   <Card title="Billing and usage" icon="credit-card" href="/account-configuration/billing-and-usage" />
 </CardGroup>
 
-{/* source: app.vitay.io projects/configuration MODALS.USERS (Add user / Edit user, IS_SEND_EMAIL_ENABLED), MODALS.USERS.SUPERVISOR, NAVBAR.USERS, NAVBAR.ACCOUNTS, USERS show page (Reset password / Unlock and Reset password, USERS.SHOW.LOCKED badge), users.list.component (download → documents csv type recruiters), accounts.list.component (cols seq_id ID/name/nickname/default_root/created_at; add disabled when isSubAccount) + shared/components/modals/accounts (name, first/last name, email, is_send_email_enabled, MODALS.ACCOUNTS.WARNING), SETTINGS.CONFIGURATION.is_disable_inactive_users_enabled / is_candidate_ownership_updatable / new_recruiters_security_statement labels; projects/references shared/components/modals/candidates (added_by_id Assigned user field gated by isRoot || is_candidate_ownership_updatable), candidates.list.component + assign-to-recruiter-modal (CANDIDATES.BULK_ACTIONS.ASSIGN_TO_RECRUITER, withheld under scope:all_sub_accounts), DASHBOARD.SUB_ACCOUNTS; api app/models/user.rb, app/models/recruiter.rb (send_welcome email: subject, username/password, explainer_video_link, user_guide_link, new_recruiters_security_statement), app/models/role.rb, app/models/hiring_firm.rb (seq_id per parent), lib/tasks/users.rake (disable_inactive: non-root, last_connected_at > 1 month → is_locked), app/controllers/api/v3/candidates/bulk_controller.rb (bulk_assign_to_recruiter), app/controllers/api/v3/documents/csv_controller.rb (recruiters export fields first_name last_name email is_active) */}
+{/* source: app.vitay.io projects/configuration MODALS.USERS (Add user / Edit user, IS_SEND_EMAIL_ENABLED), MODALS.USERS.SUPERVISOR, NAVBAR.USERS, NAVBAR.ACCOUNTS, USERS show page (Reset password / Unlock and Reset password, USERS.SHOW.LOCKED badge), users.list.component (download → documents csv type recruiters), accounts.list.component (cols seq_id ID/name/nickname/default_root/created_at; add disabled when isSubAccount) + shared/components/modals/accounts (name, first/last name, email, is_send_email_enabled, MODALS.ACCOUNTS.WARNING), SETTINGS.CONFIGURATION.is_disable_inactive_users_enabled / is_candidate_ownership_updatable / new_recruiters_security_statement labels; projects/references shared/components/modals/candidates (added_by_id Assigned user field gated by isRoot || is_candidate_ownership_updatable), candidates.list.component + assign-to-recruiter-modal (CANDIDATES.BULK_ACTIONS.ASSIGN_TO_RECRUITER, withheld under scope:all_sub_accounts), DASHBOARD.SUB_ACCOUNTS; api app/models/user.rb, app/models/recruiter.rb (send_welcome email: subject, username/password, explainer_video_link, user_guide_link, new_recruiters_security_statement), app/models/role.rb, app/models/hiring_firm.rb (seq_id per parent), lib/tasks/users.rake (disable_inactive: non-root, last_connected_at > 1 month → is_locked), app/controllers/api/v3/candidates/bulk_controller.rb (bulk_assign_to_recruiter), app/controllers/api/v3/documents/csv_controller.rb (recruiters export fields first_name last_name email is_active), app/controllers/concerns/authorization.rb (inactive user or recruiter → 401, token revoked) + User#revoke_all_tokens! / Recruiter#revoke_session_tokens! after deactivation (VIT-1347; sibling-firm sessions kept), app/models/user.rb PASSWORD_RESET_KEY_TTL = 1.hour + clear_password_reset_key (single use), app/services/notifications/recipient_resolver.rb (active recruiter + active user only); app.vitay.io projects/configuration shared/components/always-notified-recruiters (recruiter.notifications) */}

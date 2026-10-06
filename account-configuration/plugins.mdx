@@ -19,7 +19,7 @@ marketplace) shows which are active and lets you request the rest.
 <Steps>
   <Step title="Open Configuration → Plugins">
     Open the **Configuration** area from the main navigation and select
-    **Plugins** (alongside Settings, Users and Integrations). The page is
+    **Plugins** (alongside Settings, Usage, Integrations and Users). The page is
     titled **Plugins** — *Enhance your experience and add exclusive features*.
   </Step>
   <Step title="Read the two sections">
@@ -86,16 +86,16 @@ Settings → Plugins**:
 
 ## What each plugin unlocks
 
-Plugin-gated screens are simply hidden until the plugin is active.
+Plugin-gated screens are simply hidden until the plugin is active. That includes the plugin tabs under **Settings**: **Feedback**, **White Label** and **Data Retention** don't appear in the list of settings tabs (or in settings search) until the plugin is on.
 
 | Plugin | Screens and options it reveals |
 |---|---|
-| **Pre-screening** | **Pre-screening** in the main navigation; **Pre-screening** tab on candidate pages; **Pre-screening** tab in Quick request and in the bulk **Send new request** modal; the **Type** field on question sets (with a **Pre-screening** option) and a **Pre-screening** filter on the Question sets list; **Pre-screening** tab on the Overview dashboard; the Pre screening templates under Settings → Emails / Texts / Pages; the Pre-screening notification card. |
-| **Candidate Feedback** / **Recruiter Feedback** | **Feedback** in the main navigation; **Feedback** tab on candidate pages; the **Type** field on question sets (with a **Feedback** option); feedback templates and notification cards; Recruiter Feedback also adds a **Feedback** tab on each user's page under Configuration → Users. |
+| **Pre-screening** | **Pre-screening** in the main navigation; **Pre-screening** tab on candidate pages; **Pre-screening** tab in Quick request and in the bulk **Send new request** modal; the **Type** field on question sets (with a **Pre-screening** option) and a **Pre-screening** filter on the Question sets list; **Pre-screening** tab on the Overview dashboard; the Pre screening templates under Settings → Emails / Texts / Pages; the **Pre-screening completed** row in **Team notifications** on Settings → Notifications. |
+| **Candidate Feedback** / **Recruiter Feedback** | **Feedback** in the main navigation; **Feedback** tab on candidate pages; the **Type** field on question sets (with a **Feedback** option); feedback templates; the **Feedback completed** row in **Team notifications** on Settings → Notifications; Candidate Feedback also adds the **Feedback** tab under Settings. Recruiter Feedback also adds a **Feedback** tab on each user's page under Configuration → Users. |
 | **Background screening** / **Validity Screening** | **Background screening** tab on candidate pages, with the partner's tab in the request modal. |
 | **Candidate signature** / **Reference signature** | The signature card on the public reference request form / reference form; signature sections in side panels and on PDF reports. |
 | **Multi-languages** | The Settings → Plugins language card; language pickers on the Emails, Texts, Pages and Leads settings tabs and on question sets. |
-| **White label** | The **White Label** tab under Settings (greyed out otherwise). |
+| **White label** | The **White Label** tab under Settings. |
 | **Data retention** | The **Data Retention** settings tab and the **Scheduled deletion** item in the Configuration navigation. |
 
 <Note>
@@ -136,4 +136,4 @@ Plugin-gated screens are simply hidden until the plugin is active.
   <Card title="Branding and white label" icon="palette" href="/account-configuration/branding-white-label" />
 </CardGroup>
 
-{/* source: app.vitay.io projects/configuration protected/plugins (plugins.component.ts card list — 8 rendered, others commented out; PLUGINS.ACTIVATED / DEACTIVATED / CTA "Request plugin" mailto hello@vitay.io; locked ui-switch), protected/settings/plugins (SETTINGS.PLUGINS.NOT_ACTIVATED.*, MULTI_LANGUAGES.*, languages helper en/es/fr/fr-ca with index 0 disabled), protected/settings/settings.component.ts (TABS.WHITE_LABEL isDisabled, TABS.DATA_RETENTION gated by plugins_json.data_retention_plugin), shared navbar (NAVBAR.SCHEDULED_ENTITIES gate), protected/users/show/feedbacks (is_plugins_recruiter_feedback_enabled); projects/references shared navbar (NAVBAR.LINKS.PRE_SCREENING / FEEDBACKS, NAVBAR.FEATURE_LOCKED shown when disabled = is_demo_enabled), protected/candidates/show setTabs (TABS.FEEDBACK / PRE_SCREENING / BACKGROUND_CHECKING gates), shared modals/question-sets (Type options), protected/question-sets/list filters, protected/dashboard filters; api app/models/setting.rb (is_plugins_* columns and defaults; PLUGINS = validity_screening, data_retention in plugins_json), app/services/settings/provision_language_templates.rb */}
+{/* source: app.vitay.io projects/configuration protected/plugins (plugins.component.ts card list — 8 rendered, others commented out; PLUGINS.ACTIVATED / DEACTIVATED / CTA "Request plugin" mailto hello@vitay.io; locked ui-switch), protected/settings/plugins (SETTINGS.PLUGINS.NOT_ACTIVATED.*, MULTI_LANGUAGES.*, languages helper en/es/fr/fr-ca with index 0 disabled), shared/settings-search/settings-search.registry.ts SETTINGS_TABS (TABS.FEEDBACK / TABS.WHITE_LABEL / TABS.DATA_RETENTION isHidden without the plugin), shared/components/notification-matrix/notification-matrix.rows.ts (FEEDBACKS / PRE_SCREENING rows gated by plugin), shared navbar (NAVBAR.SCHEDULED_ENTITIES gate), protected/users/show/feedbacks (is_plugins_recruiter_feedback_enabled); projects/references shared navbar (NAVBAR.LINKS.PRE_SCREENING / FEEDBACKS, NAVBAR.FEATURE_LOCKED shown when disabled = is_demo_enabled), protected/candidates/show setTabs (TABS.FEEDBACK / PRE_SCREENING / BACKGROUND_CHECKING gates), shared modals/question-sets (Type options), protected/question-sets/list filters, protected/dashboard filters; api app/models/setting.rb (is_plugins_* columns and defaults; PLUGINS = validity_screening, data_retention in plugins_json), app/services/settings/provision_language_templates.rb */}

@@ -35,8 +35,7 @@ changed or withdrawn at any time.
 <AccordionGroup>
   <Accordion title="Strictly necessary — always on">
     Cookies Vitay cannot function without: your sign-in session and single
-    sign-on session, two-factor authentication state (the cookie that remembers
-    a trusted device), your language preference, cached white-label branding,
+    sign-on session, your language preference, cached white-label branding,
     bot protection, the Stripe payment and fraud-prevention cookies, and the
     cookie that records your consent choice itself. These cannot be switched
     off, and Vitay sets them whether or not consent is given.
@@ -148,4 +147,4 @@ as Google address suggestions) are listed in the same table.
   <Card title="Browser support" icon="globe" href="/security-it/browser-support" />
 </CardGroup>
 
-{/* source: app.vitay.io src/app/shared/config/cookie-registry.ts (functional: HelpScout Beacon + Google Places 'script' declaration); src/app/shared/services/cookie-consent.service.ts (preserve() across cleanStorage); src/app/shared/services/google-places-loader.service.ts (grantedOnce$('functional')); src/app/shared/components/cookie-consent/ */}
+{/* source: app.vitay.io src/app/shared/config/cookie-registry.ts (functional: HelpScout Beacon + Google Places 'script' declaration); src/app/shared/services/cookie-consent.service.ts (preserve() across cleanStorage); src/app/shared/services/google-places-loader.service.ts (grantedOnce$('functional')); src/app/shared/components/cookie-consent/; the 'mfa' remember-device cookie is no longer set or read since VIT-1346 (api #2656 / app #2034) even though cookie-registry.ts still declares it */}

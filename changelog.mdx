@@ -4,6 +4,130 @@ description: "Product updates, improvements, and fixes shipped to Vitay."
 ---
 
 <Update
+  label="October 6, 2026"
+  description="Simpler team notifications, sub-accounts that include your root users, and report download fixes"
+  tags={["Improvement", "Fix"]}
+  rss={{
+    title: "Simpler team notifications, sub-accounts that include your root users, and report download fixes",
+    description: "Team notification recipients now come only from the Notifications table, new sub-accounts include the parent account's root users, and PDF and Word report downloads work again where they used to fail."
+  }}
+>
+  ### Improved
+
+  - **Team notifications come only from the table.** The **Always notified
+    team members** card has been removed from **Settings → Notifications**.
+    It let individual people receive every team email regardless of the
+    table, which made it hard to tell why someone was notified. Who gets each
+    email is now decided by the ticked columns on that row alone. If you had
+    people on that list, tick **Root users** or add their address under
+    **Additional emails** on the rows they should keep receiving. See
+    [Notification settings](/account-configuration/notification-settings).
+  - **Sub-accounts include your root users.** When you create a sub-account,
+    every active root user of the parent account is added to it as a root
+    user, so they can manage it and appear on its **Users** page. Adding an
+    existing user to a sub-account by email now works whatever the
+    capitalisation of the address, and the account is reused rather than
+    duplicated. See [Manage users](/account-configuration/manage-users#manage-sub-accounts).
+
+  ### Fixed
+
+  - **Reports download even when a date range is incomplete.** PDF and Word
+    report downloads failed for candidates where a reference had answered a
+    date-range question with only one of the two dates. They now download,
+    with "n/a" in place of the missing date, and the reference form asks for
+    both dates before it can be submitted.
+  - **Word report downloads.** Downloading a report as a Word document had
+    been failing with an error. It works again for candidate, reference,
+    feedback and pre-screening reports.
+  - **Editing another user's email no longer signs you out.** When a root
+    user, or an integration acting as one, changed another user's email
+    address, the person making the change was signed out instead of the
+    user being edited. Only the edited user's sessions end now.
+  - **Activities view on very large accounts.** The Activities view failed to
+    load for some accounts with a very large number of candidates. It loads
+    again.
+</Update>
+
+<Update
+  label="September 28, 2026"
+  description="Settings search, form previews, a References tab, change history, and stronger sign-in security"
+  tags={["Feature", "Improvement", "Fix"]}
+  rss={{
+    title: "Settings search, form previews, a References tab, change history, and stronger sign-in security",
+    description: "Find any setting with Ctrl/⌘K, preview the candidate and reference forms before you send them, see who changed your configuration and when, and route team notifications from one matrix. Text settings now save automatically, and sign-in security is stronger across the board."
+  }}
+>
+  ### New
+
+  - **Settings search.** Press **Ctrl+K** (**⌘K** on a Mac) or click the
+    search bar in the **Settings** header to find any setting by name or
+    description. Picking a result takes you straight to that setting on its
+    tab. Settings your firm doesn't have access to stay out of the results.
+    See [Find and change settings](/account-configuration/find-and-change-settings).
+  - **Preview the candidate and reference forms.** A **Preview** card on
+    **Settings → Ref. Requests** opens the page candidates see when they add
+    their references, built from your current settings. **Preview the
+    reference form** on the new **References** tab does the same for the form
+    your references fill in, using either your default question set or a
+    sample with one question of every type. Previews open in their own tab and
+    refresh every time you save a setting, and nothing typed in a preview is
+    sent anywhere.
+  - **References tab.** Settings that shape the reference itself, like
+    reference dates, address and phone requirements, consent to share results,
+    declining, **Call me instead**, and duplicate-reference prevention, now
+    have their own **References** tab next to **Ref. Requests**. The
+    **Ref. Requests** tab keeps the settings about the request your candidate
+    receives. See [Reference settings](/account-configuration/reference-settings).
+  - **Change history.** Root users get a **Change history** page in the
+    configuration sidebar that lists every change made to your firm's
+    settings: when it happened, who made it, and the old and new values.
+    See [Change history](/account-configuration/change-history).
+
+  ### Improved
+
+  - **One matrix for team notifications.** **Settings → Notifications** now
+    shows every team email in one table: pick who receives each one (the
+    assigned recruiter, the reference requester, root users, or additional
+    email addresses) with a checkbox that saves on its own. The **Reference
+    awaiting your review** email can now go to anyone on that list, or be
+    switched off. Your existing choices were carried over; the **Root users**
+    column now includes every active root user at your firm. See
+    [Notification settings](/account-configuration/notification-settings).
+  - **Text settings save as you type.** Text fields in Settings save
+    automatically when you stop typing or leave the field, and a small
+    **Saving… / Saved** status under the field replaces the save buttons.
+  - **A tidier configuration panel.** Billing and usage now live on their own
+    **Usage** page in the sidebar. Tabs for plug-ins your firm doesn't have
+    are hidden instead of greyed out, and the **About** tab is gone. PDF,
+    Word and CSV report downloads are always available, so the settings that
+    switched them on have been removed. **Restore default** on email, text and
+    page templates only appears once a template has been changed. The
+    account switcher now appears in the configuration panel too.
+  - **Stronger sign-in security.**
+    - If you use multi-factor authentication, you enter your code on every
+      sign-in; the 15-day "remember this device" skip has been removed.
+      If your firm requires multi-factor authentication for its whole team,
+      that now applies at sign-in to every team member who has an
+      authenticator app or phone number set up. See
+      [MFA and login options](/getting-started/mfa-and-login-options).
+    - Password reset links expire after one hour.
+    - Every new password must meet the password rules, including passwords
+      set from an invitation or at sign-up.
+    - Deactivated users are signed out right away.
+    - Repeated sign-in attempts in a short time are briefly blocked.
+
+  ### Fixed
+
+  - **Employer address required saves.** Turning on **Employer address
+    required** for employer feedback now sticks.
+  - **French reference request email.** The default French reference
+    request email showed raw placeholders instead of the recruiter's and
+    company's names. The default is fixed. If your firm still uses the
+    original French email, click **Restore default** on it to pick up the
+    correction.
+</Update>
+
+<Update
   label="September 8, 2026"
   description="Candidate document uploads, a complete activity history, and more accessible public forms"
   tags={["Feature", "Improvement", "Fix"]}
