@@ -72,7 +72,7 @@ To export your team list, click the **download** icon on the **Users** page (its
 
 ### Send someone every team notification
 
-To have a user receive every team notification email (completed references, delivery failures, unresponsive alerts and so on) for all candidates, not just their own, switch on **Always notify** for them under **Settings → Notifications → Always notified team members**. See [Notification settings](/account-configuration/notification-settings#always-notify-a-team-member).
+There is no per-person "always notify" switch. Who receives each team notification email is decided row by row in the **Team notifications** table under **Settings → Notifications**: tick **Root users** on a row to include every root user, or add the person's address under **Additional emails**. See [Notification settings](/account-configuration/notification-settings).
 
 ## Deactivate (remove) a user
 
@@ -131,12 +131,14 @@ Sub-accounts are separate environments for branches, teams, or client companies 
     Click the **plus** icon (tooltip **Add sub account**). Sub-accounts can only be created from the parent account — the button is disabled while you're working inside a sub-account.
   </Step>
   <Step title="Enter the sub-account and its root user">
-    Fill in the sub-account's **Name**, then the **first name**, **last name**, and **email** of the person who will manage it — they become that sub-account's root user.
+    Fill in the sub-account's **Name**, then the **first name**, **last name**, and **email** of the person who will manage it — they become that sub-account's default root user.
+
+    The root users of your parent account are added to the new sub-account as root users at the same time, so they can manage it and switch into it from the company switcher. People with the plain recruiter role, and deactivated users, are not carried over.
 
     Leave **Send email to user** ticked to email them their login credentials (the modal confirms "Credentials are sent directly to the user"); untick it and no email goes out, so you'll need to share access another way.
   </Step>
   <Step title="Submit">
-    Click **Submit**. To add more users to the sub-account, switch into it and follow [Add a user](#add-a-user) above.
+    Click **Submit**. To add more users to the sub-account, switch into it and follow [Add a user](#add-a-user) above. If the email you enter belongs to someone who already has a Vitay account in your firm family, that account is given access to the sub-account instead of a duplicate being created, and no welcome email is sent. Capitalisation in the email address doesn't matter.
   </Step>
 </Steps>
 

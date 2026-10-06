@@ -6,11 +6,10 @@ description: "Choose who on your team is emailed about completed references, fee
 The **Notifications** tab controls every automatic email Vitay sends about your candidates: who on your team hears about each event, how those emails are sent, and which updates candidates receive. It is grouped by audience, top to bottom:
 
 1. **Team notifications**: who is emailed when each event happens.
-2. **Always notified team members**: people who receive every team notification.
-3. **Additional report recipients**: extra addresses on individual candidates.
-4. **Email options**: how team notifications are sent.
-5. **Candidate notifications**: emails candidates receive about their own references.
-6. **Auto reminders** and **Usage Notifications**.
+2. **Additional report recipients**: extra addresses on individual candidates.
+3. **Email options**: how team notifications are sent.
+4. **Candidate notifications**: emails candidates receive about their own references.
+5. **Auto reminders** and **Usage Notifications**.
 
 <Note>
   You need a **root recruiter** role to open **Configuration → Settings → Notifications**. Every switch and checkbox on the tab saves as soon as you change it; there is no Save button. Changes apply to future emails only.
@@ -50,7 +49,7 @@ Some things to know about recipients:
 
 - **Only active people are emailed.** Team members whose account has been deactivated are skipped automatically.
 - **Nobody gets the same email twice.** If one person matches several columns (for example, they are both the assigned recruiter and a root user), they receive one copy.
-- **An event with nobody ticked sends no email**, unless someone is on the [always notified](#always-notify-a-team-member) list.
+- **An event with nobody ticked sends no email.** The table is the only place recipients come from; there is no separate list of people who receive everything.
 - **Additional emails reach people outside Vitay.** Team notifications name the candidate and link to their record, so only add addresses that should see that information.
 
 <Note>
@@ -96,28 +95,15 @@ Vitay then emails the people ticked on **Reference or request unresponsive**. Th
 
 ### IP address conflicts
 
-Vitay only checks for IP conflicts while someone would be told about them: at least one column is ticked on **IP address conflict detected**, or the **IP conflict banner** under [Email options](#email-options) is on. If neither is true, no conflicts are recorded. Adding someone to the always notified list doesn't turn the check on by itself. See [IP conflicts and reference edits](/candidates-reference-requests/ip-conflicts-and-reference-edits).
+Vitay only checks for IP conflicts while someone would be told about them: at least one column is ticked on **IP address conflict detected**, or the **IP conflict banner** under [Email options](#email-options) is on. If neither is true, no conflicts are recorded. See [IP conflicts and reference edits](/candidates-reference-requests/ip-conflicts-and-reference-edits).
 
 ### Lead notifications
 
 On accounts that use the original lead generation setup, the **Lead received** row sends lead emails. If your account collects hiring leads this way, the **Additional emails** column shows a **Manage list** button instead of a checkbox. Click it to edit the list of addresses and which lead types each one receives. Accounts on the current lead generation setup choose lead recipients per lead type instead. See [Lead generation](/reports-lead-generation/lead-generation).
 
-## Always notify a team member
-
-**Always notified team members** lists every active user on your account. Anyone with **Always notify** switched on receives every team notification in the table above, whatever the columns say. This suits a team lead who wants to see everything.
-
-<Steps>
-  <Step title="Find the person">
-    On **Settings → Notifications**, scroll to **Always notified team members**. Each row shows the person's name and email.
-
-    ![SCREENSHOT: The Always notified team members card with the Name, Email and Always notify columns — placeholder](/images/placeholder.png)
-  </Step>
-  <Step title="Switch Always notify on or off">
-    Flip the **Always notify** switch on their row. It saves straight away.
-  </Step>
-</Steps>
-
-Always notified team members don't receive lead emails on the current lead generation setup (those are set per lead type), usage alerts, or the report emails sent to additional report recipients.
+<Note>
+  **Always notified team members** has been removed. That card let you mark individual people to receive every team notification regardless of the table, which made it hard to tell why someone was emailed. If you used it, those people now receive only the events whose ticked columns include them. To keep someone on everything, tick **Root users** on each row (if they are a root user) or add their address under **Additional emails**.
+</Note>
 
 ## Additional report recipients
 
@@ -202,10 +188,10 @@ conversation isn't a surprise.
 
 <AccordionGroup>
   <Accordion title="I'm not receiving notifications I expect">
-    On **Settings → Notifications**, find the event's row under **Team notifications** and check that a column that includes you is ticked. For example, if only **Assigned recruiter** is ticked, you only hear about candidates assigned to you. To receive every team notification, ask a root recruiter to switch on **Always notify** for you. Also check your spam folder, because notification emails from Vitay's shared sender domain can occasionally be filtered.
+    On **Settings → Notifications**, find the event's row under **Team notifications** and check that a column that includes you is ticked. For example, if only **Assigned recruiter** is ticked, you only hear about candidates assigned to you. To receive every team notification, ask a root recruiter to tick a column that includes you (for example **Root users**, or your address under **Additional emails**) on every row. Also check your spam folder, because notification emails from Vitay's shared sender domain can occasionally be filtered.
   </Accordion>
   <Accordion title="Too many people are getting notified">
-    Untick the columns you don't need on each row. If someone still receives everything, check whether **Always notify** is on for them under **Always notified team members**, since that overrides the columns. Remember that **Root users** includes every active root user.
+    Untick the columns you don't need on each row. If someone still receives everything, check whether they are a root user (**Root users** includes every active root user) or whether their address was added under **Additional emails** on each row.
   </Accordion>
   <Accordion title="I don't see a row for a particular event">
     Rows follow the features your account uses. **Feedback completed** and **Pre-screening completed** need their plugins, **Text message could not be delivered** needs text messages, and **Reference awaiting your review** needs **Reference review configuration**. Contact **hello@vitay.io** if you believe a feature should be available to your account.
@@ -224,4 +210,4 @@ conversation isn't a surprise.
   <Card title="Email and text delivery" icon="triangle-exclamation" href="/candidates-reference-requests/email-and-text-delivery" />
 </CardGroup>
 
-{/* source: app.vitay.io projects/configuration protected/settings/notifications/settings.notifications.component.{ts,html} (TABS.NOTIFICATIONS "Notifications"; card order team_notifications → always_notified_recruiters → candidate_report_recipients → email_options → candidate_notifications (candidateParams: is_notify_candidate_reference_added/pending/completed/email_activities_enabled) → auto_reminders → usage_notifications), shared/components/notification-matrix/notification-matrix.{component.html,component.ts,rows.ts} (NOTIFICATION_MATRIX_ROWS order + isVisible: reference_pending_review needs review_candidate_references, text_delivery_failed needs is_text_messages_enabled, feedbacks needs candidate/recruiter feedback plugin, pre_screening needs is_plugins_pre_screening_enabled, leads hidden on the new lead-generation system; legacy hiring leads → MANAGE_LIST button; custom emails chip input maxItems 20; per-cell optimistic save with rollback), shared/components/always-notified-recruiters (recruiter.notifications flag, active recruiters only), i18n SETTINGS.CONFIGURATION.{TEAM_NOTIFICATIONS,ALWAYS_NOTIFIED,EMAIL_OPTIONS,CANDIDATE_NOTIFICATIONS,is_attach_pdf_report_recruiter_email_enabled,is_ip_conflict_banner_enabled,is_requested_recruiter_from_email,candidate_report_recipients,auto_reminders,usage_notifications}; api app/models/custom_notification.rb (TYPES, DEFAULT_FLAGS / FALLBACK_DEFAULT_FLAGS for new firms via HiringFirm#create_custom_notifications; ensure_all_types_for! creates missing rows all-off; any_recipient?), app/services/notifications/recipient_resolver.rb (assigned = candidate.added_by, requested = requested_by, root = active_root_recruiters, opt_in = recruiters.notifications, custom; active recruiter + active user only; case-insensitive dedupe; no row => no recipients), db/migrate/20260916120000_backfill_recruiter_event_custom_notifications.rb + 20260917120000_add_reference_pending_review_custom_notifications.rb (existing firms keep behaviour), app/models/reference.rb#notify_pending_review (one email per recipient), app/services/ip_conflict_service.rb#detection_enabled? (banner on OR ip_conflict row any_recipient?), app/workers/unresponsive_notification_worker.rb + app/models/concerns/can_be_unresponsive.rb (24h threshold, 2-day window, once per record), app/controllers/api/v3/webhooks/{sendgrid,twilio}_controller.rb (candidate contact-error email only when resolver.any?), app/models/recruiter_reference.rb#custom_notifications (new lead system → lead_type_custom_notifications, no opt-in), app/models/candidate_report_recipient.rb (MAX_PER_CANDIDATE = 5), app/services/usage_notification_service.rb, app/models/setting.rb (is_notify_candidate_* / is_attach_pdf_report_recruiter_email_enabled / is_requested_recruiter_from_email defaults) */}
+{/* source: app.vitay.io projects/configuration protected/settings/notifications/settings.notifications.component.{ts,html} (TABS.NOTIFICATIONS "Notifications"; card order team_notifications → candidate_report_recipients → email_options → candidate_notifications (candidateParams: is_notify_candidate_reference_added/pending/completed/email_activities_enabled) → auto_reminders → usage_notifications), shared/components/notification-matrix/notification-matrix.{component.html,component.ts,rows.ts} (NOTIFICATION_MATRIX_ROWS order + isVisible: reference_pending_review needs review_candidate_references, text_delivery_failed needs is_text_messages_enabled, feedbacks needs candidate/recruiter feedback plugin, pre_screening needs is_plugins_pre_screening_enabled, leads hidden on the new lead-generation system; legacy hiring leads → MANAGE_LIST button; custom emails chip input maxItems 20; per-cell optimistic save with rollback) (always-notified-recruiters card removed in app #2054), i18n SETTINGS.CONFIGURATION.{TEAM_NOTIFICATIONS,EMAIL_OPTIONS,CANDIDATE_NOTIFICATIONS,is_attach_pdf_report_recruiter_email_enabled,is_ip_conflict_banner_enabled,is_requested_recruiter_from_email,candidate_report_recipients,auto_reminders,usage_notifications}; api app/models/custom_notification.rb (TYPES, DEFAULT_FLAGS / FALLBACK_DEFAULT_FLAGS for new firms via HiringFirm#create_custom_notifications; ensure_all_types_for! creates missing rows all-off; any_recipient?), app/services/notifications/recipient_resolver.rb (assigned = candidate.added_by, requested = requested_by, root = active_root_recruiters, custom; the recruiters.notifications opt-in was dropped in api #2684; active recruiter + active user only; case-insensitive dedupe; no row => no recipients), db/migrate/20260916120000_backfill_recruiter_event_custom_notifications.rb + 20260917120000_add_reference_pending_review_custom_notifications.rb (existing firms keep behaviour), app/models/reference.rb#notify_pending_review (one email per recipient), app/services/ip_conflict_service.rb#detection_enabled? (banner on OR ip_conflict row any_recipient?), app/workers/unresponsive_notification_worker.rb + app/models/concerns/can_be_unresponsive.rb (24h threshold, 2-day window, once per record), app/controllers/api/v3/webhooks/{sendgrid,twilio}_controller.rb (candidate contact-error email only when resolver.any?), app/models/recruiter_reference.rb#custom_notifications (new lead system → lead_type_custom_notifications, no opt-in), app/models/candidate_report_recipient.rb (MAX_PER_CANDIDATE = 5), app/services/usage_notification_service.rb, app/models/setting.rb (is_notify_candidate_* / is_attach_pdf_report_recruiter_email_enabled / is_requested_recruiter_from_email defaults) */}
