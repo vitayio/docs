@@ -50,6 +50,7 @@ The three tabs work the same way. Each template is a card with its own toolbar.
 | **Reference** | To the reference once they have been added, asking them to complete the question set |
 | **Reference - reminders** | Reminder to a reference who has not yet completed the question set |
 | **Candidate: Reference completed** | To the candidate when one of their references has finished (if the matching notification is on) |
+| **Candidate: Reference response still pending** | To the candidate when one of their references is reminded and still hasn't responded, asking them to nudge the reference. Shown only while **Candidate reference pending notification** is on (**Notifications** tab) |
 | **Recruiter: Reference completed** | To the recruiter when a reference has finished |
 | **Recruiter: All references completed** | To the recruiter when every reference for a candidate has finished |
 | **Permission request to the candidate** | To the candidate, asking for consent before their data is managed in Vitay |
@@ -64,6 +65,7 @@ The three tabs work the same way. Each template is a card with its own toolbar.
 | Reference requests | `{{candidate_first_name}}`, `{{candidate_full_name}}`, `{{company_name}}`, `{{recruiter_full_name}}`, `{{nb_min_references}}` (not on the reminder) |
 | Reference | `{{candidate_first_name}}`, `{{candidate_full_name}}`, `{{reference_first_name}}`, `{{reference_full_name}}` |
 | Candidate: Reference completed | `{{candidate_first_name}}`, `{{candidate_full_name}}`, `{{reference_full_name}}` |
+| Candidate: Reference response still pending | `{{candidate_first_name}}`, `{{candidate_full_name}}`, `{{reference_first_name}}`, `{{reference_full_name}}`, `{{recruiter_full_name}}`, `{{company_name}}` |
 | Recruiter: Reference completed | `{{candidate_first_name}}`, `{{candidate_last_name}}`, `{{candidate_email}}`, `{{candidate_full_name}}`, `{{reference_full_name}}`, `{{reference_first_name}}`, `{{reference_last_name}}`, `{{added_by_full_name}}` |
 | Feedback requests | `{{candidate_first_name}}`, `{{candidate_full_name}}`, `{{company_name}}`, `{{recruiter_full_name}}` |
 | Employer Feedback requests | `{{candidate_first_name}}`, `{{employer_full_name}}`, `{{candidate_full_name}}`, `{{company_name}}`, `{{recruiter_full_name}}` |
@@ -124,6 +126,9 @@ Vitay provides default templates in English, French, French (Canada) and Spanish
   <Accordion title="I do not see the Feedback, Employer Feedback or Pre-screening cards">
     Those cards only appear when the matching plugin is active on your account. Contact **hello@vitay.io** if you believe a plugin should be enabled.
   </Accordion>
+  <Accordion title="I do not see the Candidate: Reference response still pending card">
+    It follows the **Candidate reference pending notification** switch on the **Notifications** tab. Turn that on and the card appears on the Emails tab (and in settings search); turn it off and the card is hidden, because the email is not sent at all.
+  </Accordion>
   <Accordion title="Send test is greyed out on the Texts tab">
     Text tests are sent to the phone number on your own profile. Add one under [Your profile](/getting-started/your-profile) and reload the tab.
   </Accordion>
@@ -146,4 +151,4 @@ Vitay provides default templates in English, French, French (Canada) and Spanish
   <Card title="Lead generation" icon="magnet" href="/reports-lead-generation/lead-generation" />
 </CardGroup>
 
-{/* source: app.vitay.io projects/configuration protected/settings/{emails,texts,pages}/settings.*.component.{ts,html} (Variables / Restore default gated on is_customized / Send test / Preview, appAutoSave + app-auto-save-status per card (SETTINGS.AUTOSAVE.SAVING / SAVED / ERROR), checkDisplay plugin gating, texts maxLength 240 autoSaveDisabled over limit, is_text_messages_enabled switch, languages from settings.languages when is_plugins_multi_languages_enabled), i18n SETTINGS.EMAILS.* / SETTINGS.TEXTS.* / SETTINGS.PAGES.* / SETTINGS.TEXT_MESSAGES / SETTINGS.PLUGINS.MULTI_LANGUAGES; src/app/shared/models/{email,text,page}.model.ts (variables getters, jobTitleVariable); api templates/{emails,texts,pages}.yml (categories × en/fr/es/fr-ca), app/models/{email,text,page}.rb, app/controllers/api/v3/{emails,texts,pages}_controller.rb (is_default reset, is_customized vs default template, preview), app/models/default_template.rb, app/models/setting.rb (SUPPORTED_LANGUAGES, provision_language_templates), app/services/settings/provision_language_templates.rb, app/models/recruiter_reference.rb + recruiter_request.rb + feedback.rb + pre_screening.rb ({{…}} substitution) */}
+{/* source: app.vitay.io projects/configuration protected/settings/{emails,texts,pages}/settings.*.component.{ts,html} (Variables / Restore default gated on is_customized / Send test / Preview, appAutoSave + app-auto-save-status per card (SETTINGS.AUTOSAVE.SAVING / SAVED / ERROR), checkDisplay plugin gating (candidate_reference_pending card gated on is_notify_candidate_reference_pending_enabled), texts maxLength 240 autoSaveDisabled over limit, is_text_messages_enabled switch, languages from settings.languages when is_plugins_multi_languages_enabled), i18n SETTINGS.EMAILS.* / SETTINGS.TEXTS.* / SETTINGS.PAGES.* / SETTINGS.TEXT_MESSAGES / SETTINGS.PLUGINS.MULTI_LANGUAGES; src/app/shared/models/{email,text,page}.model.ts (variables getters, jobTitleVariable); api templates/{emails,texts,pages}.yml (categories × en/fr/es/fr-ca), app/models/{email,text,page}.rb, app/controllers/api/v3/{emails,texts,pages}_controller.rb (is_default reset, is_customized vs default template, preview), app/models/default_template.rb, app/models/setting.rb (SUPPORTED_LANGUAGES, provision_language_templates), app/services/settings/provision_language_templates.rb, app/models/recruiter_reference.rb + recruiter_request.rb + feedback.rb + pre_screening.rb ({{…}} substitution) */}

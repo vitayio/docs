@@ -4,6 +4,86 @@ description: "Product updates, improvements, and fixes shipped to Vitay."
 ---
 
 <Update
+  label="October 21, 2026"
+  description="Self-reference alerts, an editable candidate reminder email, a clearer activity feed, and reminder and dashboard fixes"
+  tags={["Feature", "Improvement", "Fix"]}
+  rss={{
+    title: "Self-reference alerts, an editable candidate reminder email, a clearer activity feed, and reminder and dashboard fixes",
+    description: "Vitay now alerts you when a candidate tries to list themselves as a reference, lets you edit the email candidates receive while a reference is pending, and shows who sent each request and reassignment on the candidate feed. Reminder limits are enforced again, bounced addresses are no longer reminded, team notifications arrive from your own sender, and the dashboard is faster and consistent across every view."
+  }}
+>
+  ### New
+
+  - **Self-reference alerts.** When a candidate tries to add a reference using
+    their own email address or phone number, the submission is still rejected,
+    and Vitay now tells you: a yellow banner on the candidate page says which
+    details were reused and how many times, an entry appears on the
+    candidate's **Activities** tab, and the people ticked on the new
+    **Candidate submitted their own contact details as a reference** row of
+    **Settings → Notifications** are emailed. Clear the alert with the **✕** on
+    the banner once you have checked the references. With **IP conflict
+    banner** on, PDF reports flag it too. See
+    [Fraud signals](/candidates-reference-requests/ip-conflicts-and-reference-edits#self-reference-attempts).
+  - **Edit the "Reference response still pending" email.** The email a
+    candidate receives when one of their references is reminded is now a
+    template of its own, **Candidate: Reference response still pending**, on
+    **Settings → Emails**, with merge fields for the candidate, the reference,
+    the recruiter and your company. The card appears while **Candidate
+    reference pending notification** is on. See
+    [Customize emails](/account-configuration/email-text-and-page-templates#email-templates).
+
+  ### Improved
+
+  - **The candidate feed shows who did what.** A candidate's **Activities**
+    tab now includes who sent each reference request, who changed the
+    candidate's assigned recruiter and from whom to whom, and reference
+    requests cancelled by an integration. See
+    [The Activities log](/reports-lead-generation/activities-log).
+  - **Background checks: no more accidental duplicates.** Vitay refuses a
+    second request for the same candidate and product while the first is still
+    open, for Mintz as well as Validity, and Mintz checks now show **Candidate
+    submitted**, **On hold (information needed)** and **Cancelled** instead of
+    sitting on **Process initiated**. See
+    [Background screening](/candidates-reference-requests/background-screening).
+  - **Team notifications come from your own sender.** Reference, feedback and
+    pre-screening completed emails to your team, and test sends from the
+    Emails tab, now leave from the sender your firm configured instead of
+    Vitay's address, so they stop showing "via" warnings in Outlook. See
+    [Email sender settings](/account-configuration/email-sender-settings#which-sender-your-team-sees).
+  - **A faster, consistent dashboard.** The **Myself** view, the dashboard
+    for recruiters and supervisors, and the **All Sub Accounts** view now load
+    from the same pre-computed totals as **Everyone**, so they open instantly
+    and use the same definitions. Sent and completed columns sit side by side
+    instead of stacked, the sub-accounts chart plots the right series, and the
+    note in the header now reads **Updated every 15 minutes**. Your **Myself**
+    numbers may shift slightly as a result. See
+    [Read the Overview dashboard](/reports-lead-generation/overview-dashboard).
+  - **Pre-screening report download.** The download button on the
+    **Pre-screening** page now produces a CSV with the same columns as the
+    list, respecting the **Everyone** / **Myself** toggle and the date range.
+    See [Pre-screening questionnaires](/candidates-reference-requests/pre-screening#dashboard-and-export).
+
+  ### Fixed
+
+  - **Reminder limits are enforced again.** The limit of 10 manual reminders
+    per reference, no more than one every 12 hours, was not being applied, so
+    some references received many more. It is now. Vitay also stops emailing
+    reminders to an address whose last email bounced until you correct it, and
+    approving a reference held for review no longer resets its request date or
+    schedules a second set of automatic reminders. See
+    [Reminders and how they work](/candidates-reference-requests/reminders-and-cadence#what-stops-reminders).
+  - **Quick request could not be submitted** for some firms: the **Submit**
+    button stayed disabled when a team member's account held both a recruiter
+    and a candidate role. It works again.
+  - **Adding a reference failed** for a few recruiters whose account was
+    originally created as a candidate. Fixed.
+  - **Browser translation on the forms.** With Chrome's "Translate this page"
+    on, the open-text answer boxes on the reference and pre-screening forms
+    refused to keep what was typed. Those boxes are now left untranslated so
+    typing works; the questions themselves still translate.
+</Update>
+
+<Update
   label="October 6, 2026"
   description="Simpler team notifications, sub-accounts that include your root users, and report download fixes"
   tags={["Improvement", "Fix"]}

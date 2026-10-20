@@ -171,9 +171,13 @@ For new accounts it goes to the assigned recruiter. See
   chart for root users, and the latest activities. See
   [Overview dashboard](/reports-lead-generation/overview-dashboard).
 - **CSV export** — on the Pre-screening page, open the filters and click the
-  download icon to export the current list as `pre_screenings.csv`. The button
-  is available to root recruiters, or to everyone when report downloads are
-  enabled. The same data is the **Pre-screenings** row in
+  download icon to export the current list as `pre_screenings.csv`: one row
+  per pre-screening with **Question set**, **First name**, **Last name**,
+  **Email**, **Phone number**, **Score**, **Assigned recruiter**, **Created
+  at** and **Completed at**, matching the **Everyone** / **Myself** toggle and
+  the date range you have set. The button is available to root recruiters, or
+  to everyone when report downloads are enabled. The same data is the
+  **Pre-screenings** row in
   [Download reports](/reports-lead-generation/download-reports).
 
 ## Troubleshooting
@@ -203,8 +207,10 @@ For new accounts it goes to the assigned recruiter. See
   </Accordion>
   <Accordion title="Nobody got the completion email">
     Check the **Pre-screening completed** row under **Settings →
-    Notifications** — the email goes only to the columns ticked there. The email comes from
-    hello@vitay.io, so also check spam filters.
+    Notifications** — the email goes only to the columns ticked there. The email is sent from
+    your firm's own sender address (see
+    [Email sender settings](/account-configuration/email-sender-settings#which-sender-your-team-sees)),
+    so also check spam filters.
   </Accordion>
 </AccordionGroup>
 
@@ -219,4 +225,4 @@ For new accounts it goes to the assigned recruiter. See
   <Card title="Download reports" icon="download" href="/reports-lead-generation/download-reports" />
 </CardGroup>
 
-{/* source: app.vitay.io projects/references protected/pre-screenings/list + show (PRE_SCREENINGS.*, BUTTONS.REMINDERS.*, CSV download), protected/candidates/show (TABS.PRE_SCREENING, CANDIDATES.BUTTONS.REQUEST_PRE_SCREENING), protected/candidates/list/send-new-request-modal (CANDIDATES.BULK_ACTIONS.REQUEST_TYPES.PRE_SCREENING), protected/dashboard/pre-screenings, shared navbar (NAVBAR.LINKS.PRE_SCREENING); src/app/shared/components/modals/pre-screening-requests (MODALS.PRE_SCREENING_REQUESTS), modals/quick-request (MODALS.QUICK_REQUEST.DESCRIPTION.PRE_SCREENING), modals/question-sets (identifiable_type "PreScreening"); api app/models/pre_screening.rb (add_reminders 3 × Reminder.next_reminder_dates, send_pre_screening_requests_email/_text, send_pre_screening_completed_email_to_recruiter via custom_notifications 'pre_screening'), app/controllers/api/v3/pre_screenings_controller.rb (create, public_update, send_reminder limits from config.reminders total_limit 10 / rate_limit 12h, analytics), app/models/setting.rb is_plugins_pre_screening_enabled, templates/emails.yml + texts.yml + pages.yml category pre_screening */}
+{/* source: app.vitay.io projects/references protected/pre-screenings/list + show (PRE_SCREENINGS.*, BUTTONS.REMINDERS.*, CSV download), protected/candidates/show (TABS.PRE_SCREENING, CANDIDATES.BUTTONS.REQUEST_PRE_SCREENING), protected/candidates/list/send-new-request-modal (CANDIDATES.BULK_ACTIONS.REQUEST_TYPES.PRE_SCREENING), protected/dashboard/pre-screenings, shared navbar (NAVBAR.LINKS.PRE_SCREENING); src/app/shared/components/modals/pre-screening-requests (MODALS.PRE_SCREENING_REQUESTS), modals/quick-request (MODALS.QUICK_REQUEST.DESCRIPTION.PRE_SCREENING), modals/question-sets (identifiable_type "PreScreening"); api app/models/pre_screening.rb (add_reminders 3 × Reminder.next_reminder_dates, send_pre_screening_requests_email/_text, send_pre_screening_completed_email_to_recruiter via custom_notifications 'pre_screening'), app/controllers/api/v3/pre_screenings_controller.rb (create, public_update, send_reminder limits from config.reminders total_limit 10 / rate_limit 12h, analytics), app/controllers/api/v3/documents/csv_controller.rb pre_screenings type (default columns question set / first & last name / email / phone / score / requested_by / created_at / completed_at; filter[pre_screenings] scope:my|all + date range, VIT-651), pre_screening.rb#send_pre_screening_completed_email_to_recruiter From = Setting#recruiter_sender, app/models/setting.rb is_plugins_pre_screening_enabled, templates/emails.yml + texts.yml + pages.yml category pre_screening */}
