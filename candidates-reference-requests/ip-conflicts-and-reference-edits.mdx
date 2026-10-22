@@ -1,9 +1,9 @@
 ---
-title: "Fraud signals: IP conflicts and reference edits"
-description: "Understand the IP address conflict alert, when it is raised, how to clear it, and how to see which of their own details a reference changed when they submitted the form."
+title: "Fraud signals: IP conflicts, self-reference attempts and reference edits"
+description: "Understand the IP address conflict alert and the self-reference attempt alert, when each is raised, how to clear them, and how to see which of their own details a reference changed when they submitted the form."
 ---
 
-Vitay watches for two signs that a reference may not be who they say they are: the reference and the candidate submitting their forms from the **same IP address**, and the reference **editing the contact details** the candidate originally supplied for them. Neither is proof of anything on its own — this article explains what each signal means and where to find it.
+Vitay watches for three signs that a reference may not be who they say they are: the reference and the candidate submitting their forms from the **same IP address**, the candidate **trying to list themselves** as a reference, and the reference **editing the contact details** the candidate originally supplied for them. None is proof of anything on its own — this article explains what each signal means and where to find it.
 
 <Note>
   Any recruiter can see both signals on a candidate they can open. Turning IP detection on or off, and putting either signal on PDF reports, needs a **root recruiter** role because those switches live in the **Configuration** area.
@@ -82,18 +82,52 @@ Once you have checked a reference and are satisfied it is genuine, you can remov
 
 Clearing deletes the recorded conflict, so the banner, the warning triangle, and the report box all disappear for that reference. It cannot be undone from the interface — the IP addresses themselves are still on the **About** tab, but the alert is gone. The reference's alert is cleared individually; other references on the same candidate keep theirs.
 
-## The IP settings
+## Self-reference attempts
 
-Both live in the **Configuration** area, under **Settings** → the **Notifications** tab.
+The reference request form refuses a reference whose **email address** or **phone number** is the candidate's own, with the message *Email must be different from the candidate's* (or the phone equivalent). Vitay compares the values after normalising them — capitalisation, spaces and phone formatting do not matter, and the reference's work phone is checked as well — so retyping the same address in a different form does not get past the check.
+
+The reference is never created. What Vitay does record is that the candidate tried:
+
+| Where | What you see |
+|---|---|
+| **The candidate page** | A yellow banner: *"The candidate tried to add a reference using their own email address (2 attempts, last on <date>). The submission was rejected. We advise you double check the references they provide."* The wording names what was reused — email address, phone number, or both. |
+| **The Activities tab** | *"<Candidate> tried to add themselves as a reference using their own email address"* on the candidate's **Activities** tab and on the firm-wide log. |
+| **PDF reports** | A **Self-Reference Attempt Detected** box on the candidate's report — only when the **IP conflict banner** setting is on. That setting now covers both alerts. |
+| **Email** | An email to the people ticked on the **Candidate submitted their own contact details as a reference** row of the **Team notifications** table. See [Notification settings](/account-configuration/notification-settings). |
+
+Repeated attempts are grouped: a candidate who tries five times before you clear the alert produces one banner, one activity entry and one email, with the attempt count and the date of the latest try updated on the banner. Unlike the IP check, this check always runs; the settings only decide who is emailed and whether reports carry the box.
+
+![SCREENSHOT: A candidate page showing the self-reference attempt banner with the attempt count and the ✕ to clear it — placeholder](/images/placeholder.png)
+
+### Clear a self-reference alert
+
+<Steps>
+  <Step title="Open the candidate">
+    The banner sits at the top of the candidate page, in the same place as the IP conflict banner.
+  </Step>
+  <Step title="Dismiss the banner">
+    Click the **✕** at the right of the yellow banner. Its tooltip reads **Clear self-reference alert**.
+  </Step>
+  <Step title="Confirm">
+    A **Clear self-reference alert?** dialog asks you to confirm for that candidate by name. Confirm it.
+  </Step>
+</Steps>
+
+Clearing removes the banner and the report box and writes *"<Recruiter> cleared the self-reference alert for <Candidate>"* to the Activities tab. If the candidate tries again afterwards, a fresh alert is raised and the notification goes out again.
+
+## The IP and self-reference settings
+
+All live in the **Configuration** area, under **Settings** → the **Notifications** tab.
 
 | Setting | What it does | Default for new accounts |
 |---|---|---|
 | **IP address conflict detected** (a row of the **Team notifications** table) | Chooses who is emailed when a conflict is found: **Assigned recruiter**, **Reference requester**, **Root users**, **Additional emails**, or any mix. | Assigned recruiter |
-| **IP conflict banner** (under **Email options**) | *"Show a banner on reports when the candidate and reference share the same IP address"*. Adds the red **IP Address Conflict Detected** box to PDF reports. It sits underneath **Attach the PDF report to completion emails**, so you have to switch that on to reach it. | Off |
+| **Candidate submitted their own contact details as a reference** (a row of the same table) | Chooses who is emailed when a candidate tries to list themselves as a reference. Same columns. Existing accounts received a copy of their **IP address conflict detected** choices when the row was introduced. | Assigned recruiter |
+| **IP conflict banner** (under **Email options**) | *"Show a banner on reports when the candidate and reference share the same IP address, or when the candidate tried to add themselves as a reference"*. Adds the red **IP Address Conflict Detected** and **Self-Reference Attempt Detected** boxes to PDF reports. It sits underneath **Attach the PDF report to completion emails**, so you have to switch that on to reach it. | Off |
 
-Vitay compares addresses and records conflicts while **at least one column is ticked** on the **IP address conflict detected** row, **or** the **IP conflict banner** is on. With no column ticked and the banner off, no comparison is made and nothing is recorded. See [Notification settings](/account-configuration/notification-settings).
+Vitay compares IP addresses and records conflicts while **at least one column is ticked** on the **IP address conflict detected** row, **or** the **IP conflict banner** is on. With no column ticked and the banner off, no comparison is made and nothing is recorded. See [Notification settings](/account-configuration/notification-settings).
 
-![SCREENSHOT: Settings → Notifications showing the IP address conflict detected row of the Team notifications table and the nested IP conflict banner switch under Email options — placeholder](/images/placeholder.png)
+![SCREENSHOT: Settings → Notifications showing the IP address conflict detected and self-reference rows of the Team notifications table and the nested IP conflict banner switch under Email options — placeholder](/images/placeholder.png)
 
 ## Reference edits
 
@@ -143,6 +177,12 @@ A root recruiter can add the same summary to PDF reports: **Configuration** → 
   <Accordion title="I cleared the alert by mistake">
     There is no undo. The submission details are still on the reference's **About** tab, so you can compare its **IP Address** with the candidate's on the candidate's **Details** tab by hand.
   </Accordion>
+  <Accordion title="I never get self-reference emails">
+    Check the **Candidate submitted their own contact details as a reference** row on **Settings → Notifications**: a column that includes you must be ticked. The alert itself is always recorded and shown on the candidate page, whatever the row says.
+  </Accordion>
+  <Accordion title="The self-reference banner came back after I cleared it">
+    The candidate tried again after you cleared the alert. Each new episode raises a new banner and a new email. Check which details were reused and consider contacting the candidate about their references.
+  </Accordion>
   <Accordion title="Can I list every candidate with an IP conflict?">
     Not from the candidate list — its filters cover candidate status, reference status, and assigned recruiter only. Conflicts are visible on each candidate individually, and by the alert email when the setting is on.
   </Accordion>
@@ -162,4 +202,4 @@ A root recruiter can add the same summary to PDF reports: **Configuration** → 
   <Card title="Share reports" icon="share-nodes" href="/candidates-reference-requests/share-reports" />
 </CardGroup>
 
-{/* source: api app/services/ip_conflict_service.rb (exact string equality of reference.metadatum.ip_address vs candidate.metadatum.ip_address; creates CandidateReferenceIpAddress), app/workers/ip_conflict_worker.rb (+ email), app/controllers/api/v1/references_controller.rb ~312 (both gated on IpConflictService.detection_enabled? = is_ip_conflict_banner_enabled OR ip_conflict CustomNotification#any_recipient?; worker enqueued 15s later) and ~449 clear_ip_conflict (DELETE /references/:id/ip_conflict destroys the record), app/controllers/api/v3/metadata_controller.rb (same gate on metadata create), app/models/reference.rb#send_notify_recruiter_ip_conflict (subject "IP address conflict detected"; recipients from Notifications::RecipientResolver ip_conflict row incl. always-notify recruiters), app/models/candidate_reference_ip_address.rb, app/models/metadatum.rb fields, app/models/setting.rb (legacy is_notify_recruiters_ip_address_enabled mirrored into the ip_conflict row for one release; settings_json is_ip_conflict_banner_enabled + is_show_reference_edits_on_report default false), app/views/api/v3/documents/en/{default,compressed}/{references,candidates}.erb (IP Address Conflict Detected box), app/views/api/v3/documents/_reference_edits_summary.erb (Reference Made Edits), app/models/reference.rb CANDIDATE_EDITABLE_FIELDS (12 fields) + track_reference_edits!/reference_edited_fields/has_reference_edits?, app/controllers/api/v1/references_controller.rb ~107 (tracked on public submission only); app.vitay.io projects/references protected/candidates/show/alerts/candidates.show.alerts.component.{ts,html} (CANDIDATE.IP_ADDRESS.CANDIDATE_REFERENCE banner from candidate.has_same_ip; CANDIDATE_RECRUITER / REFERENCE_RECRUITER computed against the signed-in user's payload ip_address), protected/candidates/show/references/candidates.show.references.component.ts#checkIpAddresses (warning-triangle column, tooltip "Same IP address"), shared/components/sidebar/reference/question-set/alerts/... (REFERENCE.IP_ADDRESS.* banner + Clear IP fraud alert modal), shared/components/sidebar/reference/question-set/sidebar.reference.question-set.component.html + edits-card (REFERENCE.EDITS.SHOW_WITH_COUNT, SIDEBAR.REFERENCE_EDITS), shared/components/sidebar/reference/about + sidebar/candidate/details (SIDEBAR.IP_ADDRESS/BROWSER/DEVICE/OS/USER_AGENT); projects/configuration protected/settings/notifications/settings.notifications.component.{ts,html} (Email options card; is_ip_conflict_banner_enabled nested under is_attach_pdf_report_recruiter_email_enabled) + shared/components/notification-matrix (IP_CONFLICT row) and settings/documents, i18n SETTINGS.CONFIGURATION.TEAM_NOTIFICATIONS.ROWS.IP_CONFLICT / is_ip_conflict_banner_enabled.* / SETTINGS.DOCUMENTS.is_show_reference_edits_on_report.* */}
+{/* source: api app/services/self_reference_check.rb (email case/whitespace-insensitive, phone by digits under country code, work_phone included), app/models/recruiter_reference.rb#no_self_reference (:same_as_candidate on email/phone/work_phone), app/models/candidate_self_reference_attempt.rb (one row per episode: attempts_count, last_attempted_at, matched_email/matched_phone, cleared_at/cleared_by), app/services/candidate_self_reference_attempts/record.rb (run from reference_requests_controller#public_create outside the rolled-back transaction; first attempt → candidate.self_reference_attempt activity + SelfReferenceAttemptWorker → Notifications::SelfReferenceAttemptEmail via the self_reference_attempt matrix row, seeded from ip_conflict by migration 20261009120100), app/controllers/api/v3/candidates_controller.rb DELETE :id/self_reference_attempt (CandidateFinder-scoped; candidate.self_reference_attempt_cleared activity), PDF Self-Reference Attempt Detected box in app/views/api/v3/documents/en/{default,compressed}/candidates.erb behind is_ip_conflict_banner_enabled; app.vitay.io candidates.show.alerts.component (CANDIDATE.SELF_REFERENCE.BANNER / FIELDS / ATTEMPTS / CLEAR / CONFIRM), notification-matrix.rows.ts self_reference_attempt (TEAM_NOTIFICATIONS.ROWS.SELF_REFERENCE_ATTEMPT), ACTIVITY_FEED.SENTENCES.CANDIDATE.SELF_REFERENCE_ATTEMPT(_CLEARED), is_ip_conflict_banner_enabled.DESCRIPTION widened; api app/services/ip_conflict_service.rb (exact string equality of reference.metadatum.ip_address vs candidate.metadatum.ip_address; creates CandidateReferenceIpAddress), app/workers/ip_conflict_worker.rb (+ email), app/controllers/api/v1/references_controller.rb ~312 (both gated on IpConflictService.detection_enabled? = is_ip_conflict_banner_enabled OR ip_conflict CustomNotification#any_recipient?; worker enqueued 15s later) and ~449 clear_ip_conflict (DELETE /references/:id/ip_conflict destroys the record), app/controllers/api/v3/metadata_controller.rb (same gate on metadata create), app/models/reference.rb#send_notify_recruiter_ip_conflict (subject "IP address conflict detected"; recipients from Notifications::RecipientResolver ip_conflict row incl. always-notify recruiters), app/models/candidate_reference_ip_address.rb, app/models/metadatum.rb fields, app/models/setting.rb (legacy is_notify_recruiters_ip_address_enabled mirrored into the ip_conflict row for one release; settings_json is_ip_conflict_banner_enabled + is_show_reference_edits_on_report default false), app/views/api/v3/documents/en/{default,compressed}/{references,candidates}.erb (IP Address Conflict Detected box), app/views/api/v3/documents/_reference_edits_summary.erb (Reference Made Edits), app/models/reference.rb CANDIDATE_EDITABLE_FIELDS (12 fields) + track_reference_edits!/reference_edited_fields/has_reference_edits?, app/controllers/api/v1/references_controller.rb ~107 (tracked on public submission only); app.vitay.io projects/references protected/candidates/show/alerts/candidates.show.alerts.component.{ts,html} (CANDIDATE.IP_ADDRESS.CANDIDATE_REFERENCE banner from candidate.has_same_ip; CANDIDATE_RECRUITER / REFERENCE_RECRUITER computed against the signed-in user's payload ip_address), protected/candidates/show/references/candidates.show.references.component.ts#checkIpAddresses (warning-triangle column, tooltip "Same IP address"), shared/components/sidebar/reference/question-set/alerts/... (REFERENCE.IP_ADDRESS.* banner + Clear IP fraud alert modal), shared/components/sidebar/reference/question-set/sidebar.reference.question-set.component.html + edits-card (REFERENCE.EDITS.SHOW_WITH_COUNT, SIDEBAR.REFERENCE_EDITS), shared/components/sidebar/reference/about + sidebar/candidate/details (SIDEBAR.IP_ADDRESS/BROWSER/DEVICE/OS/USER_AGENT); projects/configuration protected/settings/notifications/settings.notifications.component.{ts,html} (Email options card; is_ip_conflict_banner_enabled nested under is_attach_pdf_report_recruiter_email_enabled) + shared/components/notification-matrix (IP_CONFLICT row) and settings/documents, i18n SETTINGS.CONFIGURATION.TEAM_NOTIFICATIONS.ROWS.IP_CONFLICT / is_ip_conflict_banner_enabled.* / SETTINGS.DOCUMENTS.is_show_reference_edits_on_report.* */}
