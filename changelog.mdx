@@ -4,6 +4,46 @@ description: "Product updates, improvements, and fixes shipped to Vitay."
 ---
 
 <Update
+  label="October 22, 2026"
+  description="Clearer missing-answer messages on the reference form, and a Usage page fix"
+  tags={["Improvement", "Fix"]}
+  rss={{
+    title: "Clearer missing-answer messages on the reference form, and a Usage page fix",
+    description: "References are now told exactly which grid rows and required comments they still need to fill in before submitting, the Usage page no longer drops the last month of a contract period, a stray \"no\" above open-text questions is gone, and eRecruit candidates whose email changed sync again."
+  }}
+>
+  ### Improved
+
+  - **The reference form names what is still missing.** When a reference clicks
+    **Submit** with a grid (matrix) question partly answered, the **"Please
+    complete the following before submitting"** panel now lists the unanswered
+    rows (*"Question #3 – unanswered rows: Teamwork, Leadership"*) instead of a
+    bare *"Question #3 is required"*, the blank row headers are marked
+    *"(req.)"* in red until each one is answered, and a required comment left
+    empty gets its own entry (*"Question #3 – a comment is required"*).
+    Feedback and pre-screening forms show the same messages, and **Comment
+    required** now blocks submission there too, as it already did on the
+    reference form. See
+    [Editing your answers after submitting](/reference-providers/edit-my-answers#im-having-trouble-submitting).
+
+  ### Fixed
+
+  - **Usage page: the last month of a contract period is listed again.** For
+    firms whose timezone is ahead of the person viewing the page, the
+    **Usage Breakdown** table and chart could stop one month early and show a
+    zero-usage month before the period began, so the running total did not
+    match **Credits Used**. Every period is listed, and the **Contract Period**
+    dates shown are your contract's own dates.
+  - **No more stray "no" above open-text questions.** After the October 21
+    release, open-text questions on the reference and feedback forms showed the
+    word "no" between the question and the answer box. Fixed on October 22.
+  - **eRecruit: candidates whose email changed in eRecruit sync again.** The
+    import matched candidates by email only, so a candidate already in Vitay
+    whose email was later changed in eRecruit failed on every sync run. Vitay
+    now recognises them by their eRecruit record.
+</Update>
+
+<Update
   label="October 21, 2026"
   description="Self-reference alerts, an editable candidate reminder email, a clearer activity feed, and reminder and dashboard fixes"
   tags={["Feature", "Improvement", "Fix"]}

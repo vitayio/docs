@@ -28,7 +28,13 @@ If you're stuck on the form and can't get it to submit at all, try these steps f
 
 <AccordionGroup>
   <Accordion title="The form won't let me submit">
-    Make sure all required questions are answered — required fields are usually marked. Scroll through the whole form to check nothing was missed.
+    The **Submit** button turns red when something required is still empty. Click it anyway — nothing is sent yet. A panel headed **"Please complete the following before submitting:"** lists what's outstanding, and each line disappears as you fix it:
+
+    - *"Question #3 is required"* — that question has no answer yet.
+    - *"Question #3 – unanswered rows: Teamwork, Leadership"* — a grid question where some rows are still blank. The question label shows *"(answer every row)"*, and each blank row is marked *"(req.)"* in red until you pick a column (or **N/A**) for it.
+    - *"Question #3 – a comment is required"* — the recruiter asked for a written comment on that question. The comment label is marked *"(req.)"* in red until you type something.
+
+    Scroll through the whole form to check nothing was missed, then click **Submit** again.
   </Accordion>
   <Accordion title="I get an error when I click Submit">
     Try refreshing the page and re-entering your answers. If the error says the reference has already been filled, your submission went through — no need to resubmit.
@@ -49,4 +55,4 @@ If you're stuck on the form and can't get it to submit at all, try these steps f
   <Card title="I don't recognize this request" icon="circle-question" href="/reference-providers/unknown-reference-request" />
 </CardGroup>
 
-{/* source: api app/controllers/api/v1/references_controller.rb public_create sets filled_at; Pundit policy blocks re-submission with render_reference_already_filled; recruiter-authenticated update permits answers — no unlock/reopen exists */}
+{/* source: api app/controllers/api/v1/references_controller.rb public_create sets filled_at; Pundit policy blocks re-submission with render_reference_already_filled; recruiter-authenticated update permits answers — no unlock/reopen exists; app.vitay.io projects/references public/references/references.component.{ts,html} (collectMissingFields, isMatrixRowMissing, isCommentMissing, app-missing-fields panel) + public/forms/forms.component.ts (same for feedback / pre-screening forms, Comment required validator), src/app/shared/helpers/matrix-answer.helper.ts (unansweredMatrixRows), i18n REFERENCE_ANSWERS.FIELDS.{REQUIRED,MATRIX_ROWS,COMMENT}, FORMS.ERRORS.{REQUIRED,MATRIX_ROWS} */}
