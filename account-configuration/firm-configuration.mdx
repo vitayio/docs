@@ -30,7 +30,7 @@ These are the settings an IT or security reviewer will usually ask about.
 |---|---|---|
 | **IDLE** | Logs users out after a period of inactivity in the browser. Turn it on, then set the **IDLE timeout** (minutes, 1 to 1440) underneath; it saves automatically. | Off; 15 minutes |
 | **Require passwords update** | Forces users to change their password on a schedule. Turn it on, then set **Password expiry (days)** (1 to 365); it saves automatically. A user whose password is older than that is sent to the change-password screen at their next login. Users who sign in through SSO are not affected. | Off; 30 days |
-| **Disable inactive accounts** | A monthly job locks every non-root user who has not logged in for a month. A locked user sees "Account locked. Please contact your company's Admin User" when they try to sign in; unlock them from **Configuration → Users** with **Unlock and Reset password** (see [Manage users](/account-configuration/manage-users)). | Off |
+| **Lock inactive users** | A monthly job locks every non-root user who has not logged in for a month. A locked user sees "Account locked. Please contact your company's Admin User" when they try to sign in; unlock them from **Configuration → Users** with **Unlock and Reset password** (see [Manage users](/account-configuration/manage-users)). | Off |
 | **Metadata collection** | Records browser, operating system and IP address when candidates, references and employers submit the public forms. Turning it off limits fraud detection such as [IP conflict alerts](/candidates-reference-requests/ip-conflicts-and-reference-edits). | On |
 
 Multi-factor authentication is switched on per user rather than on this tab — see [MFA and login options](/getting-started/mfa-and-login-options). A firm can also require MFA for its whole team; that is arranged with Vitay support rather than set here. When it is on, Vitay asks for a code at sign-in from every member who has an authenticator app or a phone number set up. Members with neither set up can still sign in. Single sign-on has its own **SSO** tab — see [SSO with SAML](/security-it/sso-saml).
@@ -72,7 +72,7 @@ The reference contact settings — **Reference email required**, **Enable Work P
     Check the **IDLE** switch and the **IDLE timeout** value. The timeout counts minutes without clicks, scrolls or key presses in the Vitay tab, so a user who leaves the tab open in the background is logged out once it elapses.
   </Accordion>
   <Accordion title="A recruiter says their account is locked">
-    Either they exceeded the failed-login limit or **Disable inactive accounts** locked them after a month without logging in. A root recruiter can unlock them from **Configuration → Users** with **Unlock and Reset password**.
+    Either they exceeded the failed-login limit or **Lock inactive users** locked them after a month without logging in. A root recruiter can unlock them from **Configuration → Users** with **Unlock and Reset password**.
   </Accordion>
   <Accordion title="I typed a banner message but nobody sees it">
     The banner only appears while the **Information banner** switch is on. Check that the status next to **Content of the banner** says **Saved**: messages over 255 characters are not saved — the counter turns red — so shorten the text and it saves on its own.
