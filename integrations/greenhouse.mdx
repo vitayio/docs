@@ -3,7 +3,7 @@ title: "Greenhouse integration"
 description: "Connect Vitay to Greenhouse so flagged candidates flow into Vitay automatically and reference-check progress shows up on the candidate's Greenhouse activity feed."
 ---
 
-The Greenhouse integration links Vitay to your Greenhouse account using a Greenhouse API key. Once connected, Vitay adds a set of **Vitay custom fields** to your Greenhouse candidate records — flag a candidate there and they're imported into Vitay and sent a reference request automatically, with progress notes posted back to their Greenhouse activity feed.
+The Greenhouse integration links Vitay to your Greenhouse account through a Harvest API credential you create in Greenhouse. Once connected, Vitay adds a set of **Vitay custom fields** to your Greenhouse candidate records — flag a candidate there and they're imported into Vitay and sent a reference request automatically, with progress notes posted back to their Greenhouse activity feed.
 
 <Note>
   The Greenhouse integration is set up together with the Vitay team, and connecting or disconnecting it requires **root recruiter** access in Vitay. Contact [hello@vitay.io](mailto:hello@vitay.io) to get started.
@@ -19,14 +19,32 @@ The Greenhouse integration links Vitay to your Greenhouse account using a Greenh
 
 ## Connect Greenhouse
 
-The Vitay team sets up the connection with you. You'll need:
+Vitay authenticates with Greenhouse's **Harvest API v3**, which uses an OAuth client (a Client ID and Client Secret) instead of the API keys Greenhouse retired in 2026.
 
-- A Greenhouse **API key** with Harvest API access.
-- The Greenhouse **user** the integration should act on behalf of.
+<Steps>
+  <Step title="Create the credential in Greenhouse">
+    In Greenhouse go to **Configure → Dev Center → API Credential Management** and create a **Harvest v3 (OAuth)** credential for a custom integration. Grant it **Notes: create** and **Custom fields: list, create and delete**. Copy the **Client ID** and **Client Secret**; Greenhouse shows the secret only once.
+  </Step>
+  <Step title="Connect in Vitay">
+    As a root recruiter, open the **Configuration** area, select **Integrations**, and click **Greenhouse**. Paste the **Client ID** and **Client secret**.
 
-During setup, Vitay creates the Vitay custom fields on your Greenhouse candidate records and provides the webhook that tells Vitay when candidates change in Greenhouse. Contact [hello@vitay.io](mailto:hello@vitay.io) and the team will walk you through it.
+    Two fields are optional:
 
-![SCREENSHOT: Integrations gallery showing a connected Greenhouse integration — placeholder](/images/placeholder.png)
+    - **User ID** — the numeric ID of the Greenhouse user the Vitay progress notes should appear from. Leave it blank to post them as the integration user that owns the credential.
+    - **Site url** — your Greenhouse site address, if the Vitay team asked you for it.
+
+    Vitay checks the credential with Greenhouse before saving; if Greenhouse rejects it, the error names the reason and nothing is stored.
+
+    ![SCREENSHOT: the Greenhouse connect modal with Client ID, Client secret, User ID and Site url fields — placeholder](/images/placeholder.png)
+  </Step>
+  <Step title="Finish setup with the Vitay team">
+    On connecting, Vitay creates the Vitay custom fields on your Greenhouse candidate records. The Vitay team then gives you the webhook that tells Vitay when candidates change in Greenhouse. Contact [hello@vitay.io](mailto:hello@vitay.io) and the team will walk you through it.
+  </Step>
+</Steps>
+
+<Note>
+  **Connected with a Greenhouse API key before October 2026?** Greenhouse has retired the API keys that connection used, so progress notes may have stopped reaching your activity feed. Create a Harvest v3 (OAuth) credential as above and reconnect; the Vitay custom fields are recreated and notes resume.
+</Note>
 
 ## Use the integration
 
@@ -76,6 +94,12 @@ Only a root recruiter can disconnect the integration. Disconnecting also removes
   <Accordion title="The candidate was assigned to the wrong recruiter in Vitay">
     Vitay uses the **Vitay Recruiter Email** field to pick the recruiter. If it's empty or doesn't match a Vitay user's email, the candidate is assigned to the user who connected the integration. Make sure the field contains the recruiter's Vitay login email.
   </Accordion>
+  <Accordion title="Progress notes stopped appearing on the Greenhouse activity feed">
+    Your connection most likely still uses a Greenhouse API key, which Greenhouse retired in 2026. Create a **Harvest v3 (OAuth)** credential and reconnect as described under [Connect Greenhouse](#connect-greenhouse). Candidates still import through the webhook in the meantime; only the notes back to Greenhouse are affected.
+  </Accordion>
+  <Accordion title="Connecting fails with an error from Greenhouse">
+    Vitay asks Greenhouse for a token before saving the credential, and shows Greenhouse's own reason when that fails. Check that you copied the Client ID and Client Secret exactly, that the credential is a **Harvest v3 (OAuth)** credential, and that it has **Notes: create** and **Custom fields: list, create and delete**. If you entered a **User ID**, it must be the numeric ID of an active Greenhouse user.
+  </Accordion>
 </AccordionGroup>
 
 ## Related articles
@@ -87,4 +111,4 @@ Only a root recruiter can disconnect the integration. Disconnecting also removes
   <Card title="Add a candidate" icon="user-plus" href="/candidates-reference-requests/add-a-candidate" />
 </CardGroup>
 
-{/* source: api app/controllers/api/services/greenhouse_controller.rb; api app/controllers/api/services/greenhouse/candidates_controller.rb (webhook receiver — event-driven only, no greenhouse task in lib/tasks or config/schedule.rb and no polling section in config/integrations/greenhouse_*.yml); api app/services/external_services/greenhouse/ (authorize, set_custom_fields, delete_custom_fields, update_candidate); api app/models/external_authorisations/greenhouse.rb (CF_VITAY_* field names) */}
+{/* source: api app/controllers/api/services/greenhouse_controller.rb (authorize stores client_id/client_secret + optional user_id/site_url, 422 with Greenhouse reason, api #2727); api app/services/external_services/greenhouse/client.rb (Harvest v3 Bearer JWT via auth.greenhouse.io client credentials, legacy api_key via transition endpoint); update_candidate → POST /v3/notes; set_custom_fields → /v3/custom_fields; app.vitay.io projects/configuration integrations Greenhouse modal (INTEGRATIONS.CLIENT_ID / CLIENT_SECRET / USER_ID / SITE_URL, MODALS.INTEGRATIONS.GREENHOUSE.HELP, app #2117); api app/controllers/api/services/greenhouse/candidates_controller.rb (webhook receiver — event-driven only, no greenhouse task in lib/tasks or config/schedule.rb and no polling section in config/integrations/greenhouse_*.yml); api app/services/external_services/greenhouse/ (authorize, set_custom_fields, delete_custom_fields, update_candidate); api app/models/external_authorisations/greenhouse.rb (CF_VITAY_* field names) */}
