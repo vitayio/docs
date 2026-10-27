@@ -20,6 +20,10 @@ When you click **Deactivate** on a candidate (in the candidate's **Details** pan
 
 Nothing is deleted at this point. The confirmation modal for a single candidate is titled **Delete candidate?** and the bulk version **Deactivate candidates?** — both do the same thing, and the bulk modal says so: *"Deactivated candidates are moved to the recycle bin and can be reactivated later."*
 
+## Adding a deactivated candidate again
+
+A deactivated candidate still counts as existing on your account. If you add a candidate whose internal ID belongs to one, or a CSV import contains their email or internal ID, Vitay refuses with *"Candidate Jane Doe (jane@example.com) is deactivated. Reactivate them from the Recycle Bin to use them again"* and shows an **Open the Recycle Bin** link. The link opens the bin with the search box already filled with that candidate, so you can **Reactivate** them in one click; their references and history come back with them, and no duplicate is created. If you would rather keep them deactivated, change the details in your new record or drop the row from your import.
+
 ## Open the Recycle Bin
 
 <Steps>
@@ -110,4 +114,4 @@ If your firm needs personal data erased on a schedule rather than case by case, 
   <Card title="Activities log" icon="list-timeline" href="/reports-lead-generation/activities-log" />
 </CardGroup>
 
-{/* source: app.vitay.io projects/references protected/recycle-bin (recycle-bin.component, details/recycle-bin-details.component), RECYCLE_BIN.* and CANDIDATES.BULK_ACTIONS.DEACTIVATE_* i18n, shared/components/sidebar/candidate/details (Deactivate / Purge data buttons), navbar NAVBAR.LINKS.RECYCLE_BIN; api app/models/concerns/can_pseudo_destroy.rb, app/models/candidate.rb (#reactivate), app/controllers/api/v3/recycle_bin/candidates_controller.rb (index/reactivate/bulk_reactivate/destroy/bulk_destroy, SOFT_DELETED_CHILD_MODELS), app/controllers/api/v3/candidates_controller.rb (#destroy, #anonymize), app/services/candidate_anonymizer_service.rb */}
+{/* source: app.vitay.io projects/references protected/recycle-bin (recycle-bin.component, details/recycle-bin-details.component), RECYCLE_BIN.* and CANDIDATES.BULK_ACTIONS.DEACTIVATE_* i18n, shared/components/sidebar/candidate/details (Deactivate / Purge data buttons), navbar NAVBAR.LINKS.RECYCLE_BIN; api app/models/concerns/can_pseudo_destroy.rb, app/models/candidate.rb (#reactivate), app/controllers/api/v3/recycle_bin/candidates_controller.rb (index/reactivate/bulk_reactivate/destroy/bulk_destroy, SOFT_DELETED_CHILD_MODELS), app/controllers/api/v3/candidates_controller.rb (#destroy, #anonymize), app/services/candidate_anonymizer_service.rb; api #2733 ("Deactivated candidate" 422 on POST /v3/candidates and CSV check/upload rows, with deactivated/candidate_id/candidate_email/candidate_name) + app #2129 (app-form-errors "Open the Recycle Bin" link, recycle-bin reads ?query= to prefill the search) */}
