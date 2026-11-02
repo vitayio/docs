@@ -4,6 +4,94 @@ description: "Product updates, improvements, and fixes shipped to Vitay."
 ---
 
 <Update
+  label="October 28, 2026"
+  description="Filter references by question set, jump to any page, background CSV imports, Greenhouse Harvest v3, and clearer errors for deactivated candidates"
+  tags={["Feature", "Improvement", "Fix"]}
+  rss={{
+    title: "Filter references by question set, jump to any page, background CSV imports, Greenhouse Harvest v3, and clearer errors for deactivated candidates",
+    description: "The References list gains a Question sets filter, long lists get a jump-to-page field, bulk CSV uploads run in the background with a progress bar, and the Greenhouse integration moves to Harvest v3. Adding a deactivated candidate now points you to the Recycle Bin, role switches stay visible when locked, and a long-running session no longer slows Vitay down."
+  }}
+>
+  ### New
+
+  - **Filter the References list by question set.** The filter toolbar on the
+    **References** page has a new **Question sets** dropdown, next to
+    **Recruiters**. Tick one or more sets to see only the references sent with
+    them; the statistics card and the CSV download follow the same choice. See
+    [Search for past references](/candidates-reference-requests/search-past-references#find-references-across-all-candidates).
+  - **Jump straight to a page.** Any list with more than five pages now shows
+    a **Page [ ] of N** field beside the page numbers. Type a page and press
+    **Enter** to go there.
+  - **Bulk candidate uploads run in the background.** After you click
+    **Submit** on a CSV import, a progress bar shows how many rows are done,
+    so large files no longer freeze the page or time out. If a row cannot be
+    added during the import, the rest still go in and the failed rows are
+    listed for you. See
+    [Bulk candidate upload](/reports-lead-generation/bulk-candidate-upload#upload-the-file).
+
+  ### Improved
+
+  - **Blocked by a deactivated candidate? Vitay now says so.** When you add
+    or import a candidate who already exists on your account but was
+    deactivated, the error names them and offers an **Open the Recycle Bin**
+    link that opens the bin with that candidate already searched, ready to
+    reactivate. See
+    [Recycle Bin](/candidates-reference-requests/recycle-bin#adding-a-deactivated-candidate-again).
+  - **Role switches stay visible.** In **Edit user**, the **Root** and
+    **Supervisor** switches no longer disappear when they cannot be changed
+    (your own account, the default root user, or the supervisor switch on a
+    root user). They show as locked with a note explaining why. See
+    [Manage users](/account-configuration/manage-users#edit-a-users-details-or-role).
+  - **Labels on the top-bar icons.** Hover any icon in the top right of the
+    app (search, help, notifications, export, apps, your account, log out) to
+    see what it does. The labels are also read out by screen readers.
+  - **Clearer settings wording.** On **Settings → Configuration**, **Disable
+    inactive accounts** is now **Lock inactive users**, which is what it does:
+    users who have not signed in for a month are locked until an admin unlocks
+    them. On **Settings → Notifications**, the **Requested user email**
+    description now states what the switch changes. See
+    [Firm configuration](/account-configuration/firm-configuration).
+  - **PDF template option retired.** The **PDF template** dropdown is gone
+    from **Settings → Documents**; every account uses the compressed layout.
+    Accounts that had chosen the full-length layout keep it. See
+    [Reference report settings](/account-configuration/report-settings#report-layout).
+  - **Text delivery failures reach the assigned recruiter by default.** New
+    accounts start with **Text message could not be delivered** sent to the
+    assigned recruiter, like every other team notification. Existing accounts
+    keep their current choice. See
+    [Notification settings](/account-configuration/notification-settings).
+  - **Longer Support Mode sessions when you need them.** When you ask Vitay
+    support to work inside your account, the session is now set to 1 hour (the
+    default), 2 hours or 4 hours at the start, so a long onboarding call is
+    not cut off. The length is recorded in the audit trail and a session still
+    cannot be extended once started. See
+    [Support Mode](/security-it/support-mode).
+  - **Candidate page title.** The browser tab for the page where candidates
+    add their references now reads **Add your references**.
+
+  ### Fixed
+
+  - **Vitay no longer slows down over a long session.** Keeping one tab open
+    all day and moving between candidate pages made the app progressively
+    slower until you reloaded. The cause, connections left open on every
+    candidate page visit, is fixed.
+  - **Filters no longer show the wrong rows.** Changing a filter while a list
+    was still loading could leave the previous, unfiltered results on screen.
+    Superseded requests are now discarded.
+  - **Email and phone icons update as soon as you fix an address.** After
+    correcting a reference's or candidate's email or phone number, the
+    delivery icon kept its old colour for up to half an hour. It now reflects
+    the new address immediately.
+  - **Greenhouse progress notes post again.** Greenhouse retired its Harvest
+    v1 API in early October, and since then Vitay's notes to the candidate's
+    activity feed had been failing silently. Vitay now uses Harvest v3. If you
+    connected Greenhouse before this release, create a **Harvest v3 (OAuth)**
+    credential and reconnect; the connect form now asks for a Client ID and
+    Client Secret. See
+    [Greenhouse integration](/integrations/greenhouse#connect-greenhouse).
+</Update>
+
+<Update
   label="October 21, 2026"
   description="Self-reference alerts, an editable candidate reminder email, a clearer activity feed, and reminder and dashboard fixes"
   tags={["Feature", "Improvement", "Fix"]}

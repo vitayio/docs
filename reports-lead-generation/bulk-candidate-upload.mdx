@@ -11,8 +11,8 @@ time, so requests go out the moment the upload finishes.
   You need a recruiter (or higher) role to upload candidates. Each upload reads the first **50
   rows** of the file — **100** if Vitay has enabled the raised limit for your account (ask
   **hello@vitay.io**). Rows past the limit are ignored silently, so split larger files rather
-  than relying on a warning. Every row that fails validation rolls back the entire batch — no
-  partial imports.
+  than relying on a warning. Vitay checks the whole file before anything is created, and only a
+  file with no errors can be submitted.
 </Note>
 
 ## Prepare your CSV file
@@ -81,14 +81,31 @@ Download the official template first so your columns are in the right order.
     Fix any errors in your spreadsheet, re-export as CSV, and re-upload. Every error, duplicates
     included, must be resolved before you can proceed.
 
+    A row that matches a **deactivated** candidate is listed as **Deactivated candidate**, with
+    the candidate's name and email, and the panel shows an **Open the Recycle Bin** link that
+    opens the bin with that candidate already searched. Reactivate them there and remove the row
+    from your file, or leave them deactivated and drop the row. See
+    [Recycle Bin](/candidates-reference-requests/recycle-bin#adding-a-deactivated-candidate-again).
+
     ![SCREENSHOT: the validation summary screen showing new entries, duplicates, and errors — placeholder](/images/placeholder.png)
   </Step>
   <Step title="Confirm the upload">
-    When validation passes with no errors, click **Submit** to commit all rows. If a duplicate is
-    discovered during the upload itself (for example, a candidate created between the check and
-    the upload), the entire batch rolls back and nothing is imported. If you selected a question
-    set, Vitay sends reference requests to every new candidate immediately after the import
-    succeeds.
+    When validation passes with no errors, click **Submit**. The import runs in the background:
+    the panel shows **Uploading and processing candidates…** with a progress bar, the percentage
+    done and **Processed X of Y rows**, so large files no longer freeze the page or time out.
+    Keep the panel open until it finishes.
+
+    When every row is in, the toast **Candidates added** confirms it and the panel closes. If you
+    selected a question set, Vitay sends the reference requests to every new candidate as soon as
+    the import finishes.
+
+    If a row could not be added during the import itself (for example, a candidate created by a
+    colleague between the check and the upload), the other rows are still imported and the panel
+    lists the rows that failed, with the message *"N candidate(s) added, M row(s) could not be
+    added"*. Fix those rows and upload them in a new file. If more than half the rows fail, nothing
+    is imported.
+
+    ![SCREENSHOT: the import panel showing the progress bar with "Processed 23 of 50 rows" — placeholder](/images/placeholder.png)
   </Step>
 </Steps>
 
@@ -114,10 +131,18 @@ Download the official template first so your columns are in the right order.
     number to put in `branch_id` — it is a short number, not the long UUID from the browser
     address bar. Leave the column blank to create the candidate on your own firm.
   </Accordion>
-  <Accordion title="The upload says a candidate already exists but I don't see them">
-    Duplicate detection includes inactive (archived) candidates. If a candidate with the same
-    email or internal ID was previously archived, they still block a new upload. Restore or
-    remove the existing record before re-uploading that row.
+  <Accordion title="The upload says a candidate is deactivated">
+    Duplicate detection includes deactivated candidates, who do not appear in your candidates
+    list. The error names the candidate and offers an **Open the Recycle Bin** link that opens the
+    bin with that candidate already searched. Click **Reactivate** there to bring them back with
+    their full history, then remove the row from your file and upload it again. See
+    [Recycle Bin](/candidates-reference-requests/recycle-bin).
+  </Accordion>
+  <Accordion title="I closed the import panel while the progress bar was running">
+    The import carries on in the background; closing the panel only stops the progress display.
+    Reload the candidates list after a minute and the new candidates are there. If you upload the
+    same file again, the rows already imported are reported as duplicates and skipped at the check
+    step.
   </Accordion>
   <Accordion title="My file has more than 50 rows and won't import">
     Vitay reads the first 50 rows of the file — 100 for accounts with the raised limit, which
@@ -141,4 +166,4 @@ Download the official template first so your columns are in the right order.
   <Card title="Question sets and templates" icon="list-check" href="/account-configuration/question-sets-and-templates" />
 </CardGroup>
 
-{/* source: app.vitay.io bulk-upload UI; api app/controllers/api/v3/documents/csv_controller.rb (check and upload actions, candidates branch); api app/services/documents/csv/candidates_handler.rb (template fields: internal_id, first_name, last_name, email, country_code, phone_number, public_notes, internal_notes, min_manager_references, assigned_recruiter_email, branch_id, question_set_id, is_manager_only; optional job_title); api app/controllers/api/v3/documents/csv_controller.rb#check/#upload (content_raw.first(100) when setting.break_rows_limit_feature_flag else first(50); added_by = current_recruiter unless assigned_recruiter_email resolves; branch_id matched on hiring_firm.load_self_and_siblings.seq_id); api app/models/setting.rb feature flag :break_rows_limit 'Increase the rows of CSV from 50 to 100'; app.vitay.io projects/configuration protected/accounts/list (TABLES.HEADERS.ID -> seq_id column); api app/models/candidate.rb */}
+{/* source: app.vitay.io projects/references shared/components/modals/import (check via POST /documents/csv is_check, submit via DocumentsService.postAsync → csv#upload_async 202 upload_job_id, UploadJobsService.pollUntilComplete every 1 s on GET /v3/upload_jobs/:id, progress bar + "Processed X of Y rows", TOASTS.CANDIDATES_ADDED / IMPORT_PARTIAL, MODALS.IMPORT.DEACTIVATED_HINT + RECYCLE_BIN.OPEN_LINK; app #2099 + #2129); api app/jobs/process_csv_upload_job.rb (Sidekiq, per-row errors, ActiveRecord::Rollback when failed_rows > total/2, reference requests sent after the transaction; api #2714), app/models/upload_job.rb, app/controllers/api/v3/upload_jobs_controller.rb; api #2733 ("Deactivated candidate" error with deactivated/candidate_id/candidate_email/candidate_name); api app/controllers/api/v3/documents/csv_controller.rb (check and upload actions, candidates branch); api app/services/documents/csv/candidates_handler.rb (template fields: internal_id, first_name, last_name, email, country_code, phone_number, public_notes, internal_notes, min_manager_references, assigned_recruiter_email, branch_id, question_set_id, is_manager_only; optional job_title); api app/controllers/api/v3/documents/csv_controller.rb#check/#upload (content_raw.first(100) when setting.break_rows_limit_feature_flag else first(50); added_by = current_recruiter unless assigned_recruiter_email resolves; branch_id matched on hiring_firm.load_self_and_siblings.seq_id); api app/models/setting.rb feature flag :break_rows_limit 'Increase the rows of CSV from 50 to 100'; app.vitay.io projects/configuration protected/accounts/list (TABLES.HEADERS.ID -> seq_id column); api app/models/candidate.rb */}

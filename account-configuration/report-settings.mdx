@@ -1,6 +1,6 @@
 ---
 title: "Reference report settings"
-description: "Choose the PDF template, add a watermark, hide personal details, and show reference edits on reports — everything on the Documents tab — and see which download formats your team gets."
+description: "Add a watermark, hide personal details, and show reference edits on reports — everything on the Documents tab — and see which download formats your team gets."
 ---
 
 The **Documents** tab controls how your firm's reference reports look. The settings apply to every report generated after you save — the PDF your recruiters download, the PDF attached to notification emails, and the report pushed to your ATS.
@@ -18,23 +18,16 @@ The **Documents** tab controls how your firm's reference reports look. The setti
   <Step title="Select Documents">
     Pick the **Documents** tab in the left-hand list.
 
-    ![SCREENSHOT: The Documents tab with the PDF template dropdown at the top and the switch cards below — placeholder](/images/placeholder.png)
+    ![SCREENSHOT: The Documents tab with the Watermark card at the top and the switch cards below — placeholder](/images/placeholder.png)
   </Step>
 </Steps>
 
-## PDF template
+## Report layout
 
-**PDF template** — *"Choose whether you want to get a condensed version of the PDF reports"* — is a dropdown with two options:
-
-| Option | What you get |
-|---|---|
-| **Default** | The full-length report: one section per reference, questions and answers laid out in full. |
-| **Compressed** | A condensed layout that fits the same content into fewer pages. |
-
-New accounts start on **Compressed**.
+Every account uses Vitay's **compressed** PDF layout: a condensed report that fits the full content into fewer pages. There is no longer a **PDF template** dropdown on this tab.
 
 <Note>
-  The **Hide personal data** switches below only take effect on the **Compressed** template. On **Default**, reference names, contact details and the company logo are always printed in full. If you need details redacted, switch the template to **Compressed**.
+  Accounts that had chosen the full-length **Default** layout before October 2026 keep it. On that layout, reference names, contact details and the company logo are always printed in full, so the **Hide personal data** switches below have no effect. Contact [hello@vitay.io](mailto:hello@vitay.io) to move your account to the compressed layout.
 </Note>
 
 ## Watermark
@@ -50,7 +43,7 @@ Every firm can download reports in every format — there are no switches for th
 | A candidate's references list (per question set) | **Download PDF**, **Download Word**, **Download CSV** — the CSV has one row per reference and a column per question |
 | The candidate page, a single reference, a feedback report and a pre-screening report | **Download PDF**, **Download Word** |
 
-The Word version uses its own simplified layout, not the PDF template you picked above.
+The Word version uses its own simplified layout, not the PDF layout.
 
 <Note>
   The **Show candidate info** (eye) toggle next to the download button is a per-download choice made by the recruiter, not a setting. It controls whether the candidate's email and phone number are printed on that copy of the report.
@@ -60,11 +53,11 @@ The Word version uses its own simplified layout, not the PDF template you picked
 
 **Show Reference Edits On Reports** — *"Show a summary of fields edited by the reference on PDF reports"*. Off by default.
 
-When it is on, and a reference changed any of the details the candidate originally supplied, the report carries a banner headed **Reference Made Edits** listing each changed field as *old value → new value*. References that changed nothing show no banner. This works on both the **Default** and the **Compressed** template.
+When it is on, and a reference changed any of the details the candidate originally supplied, the report carries a banner headed **Reference Made Edits** listing each changed field as *old value → new value*. References that changed nothing show no banner. It works on every PDF layout.
 
 ## Hide personal data
 
-**Hide personal data** — *"Hide personal reference info from the reference PDF reports"* — is a heading rather than a switch. Underneath it sit seven independent switches, all off by default. They apply to **candidate reports and single-reference reports** on the **Compressed** template.
+**Hide personal data** — *"Hide personal reference info from the reference PDF reports"* — is a heading rather than a switch. Underneath it sit seven independent switches, all off by default. They apply to **candidate reports and single-reference reports** on the compressed layout, which every account uses unless Vitay set a different one for you (see [Report layout](#report-layout)).
 
 | Switch | What disappears from the PDF |
 |---|---|
@@ -84,10 +77,10 @@ Feedback reports and pre-screening reports are not affected by these switches.
 
 <AccordionGroup>
   <Accordion title="I turned on a Hide switch but the details still print">
-    The redaction switches are only applied by the **Compressed** PDF template. Change **PDF template** to **Compressed**, download the report again, and the hidden fields disappear. If your firm is on a custom-branded template (see below), the switches do not apply either.
+    The redaction switches only apply to the compressed PDF layout. Your account is still on the full-length **Default** layout, or on a custom-branded one, from before the layout choice was retired. Contact [hello@vitay.io](mailto:hello@vitay.io) to move it to the compressed layout; the hidden fields then disappear from the next download.
   </Accordion>
-  <Accordion title="The PDF template dropdown doesn't list our branded template">
-    Some firms have a bespoke report layout built for them. Those layouts are assigned by Vitay and do not appear in the dropdown — the dropdown only offers **Default** and **Compressed**. Contact [hello@vitay.io](mailto:hello@vitay.io) if you want a custom layout, or if you think you are on one and the report does not look right.
+  <Accordion title="Where did the PDF template dropdown go?">
+    It was removed from the **Documents** tab in October 2026. Every account now uses the compressed layout, and accounts that had picked **Default** keep it. Some firms also have a bespoke report layout built for them; those are assigned by Vitay and never appeared in the dropdown. Contact [hello@vitay.io](mailto:hello@vitay.io) to change your layout, or if you think you are on a custom one and the report does not look right.
   </Accordion>
   <Accordion title="A recruiter can't see the CSV export button in the top bar">
     That button is the firm-wide CSV export (see [Download reports](/reports-lead-generation/download-reports)), not the report download on this tab. Root recruiters always see it; whether other recruiters see it is controlled by a firm-level setting that has no toggle on this tab. Contact [hello@vitay.io](mailto:hello@vitay.io) to have it changed.
@@ -111,4 +104,4 @@ Feedback reports and pre-screening reports are not affected by these switches.
   <Card title="Firm configuration and security settings" icon="gear" href="/account-configuration/firm-configuration" />
 </CardGroup>
 
-{/* source: app.vitay.io projects/configuration protected/settings/documents/settings.documents.component.{ts,html} (pdf_templates, params — CSV/DOCX switches removed in #2017, subSettings), i18n SETTINGS.DOCUMENTS.* and TABS.DOCUMENTS; projects/references protected/candidates/show/references + show/header, shared/components/sidebar/reference/question-set (download dropdown), src/app/shared/helpers/array.helper.ts (reportFormats PDF / Word everywhere, csvReportFormat added only on candidates.show.references); api db/migrate/20260917130000_remove_csv_docx_settings.rb; app/models/setting.rb (pdf_template default "compressed", is_pdf_watermark_enabled, is_show_reference_edits_on_report, is_hide_report_* settings_json defaults), app/services/documents/pdf_redaction.rb, app/controllers/api/v3/documents/pdf_controller.rb, app/controllers/api/v3/documents/docx_controller.rb, app/views/api/v3/documents/en/compressed/{candidates,references}.erb (hide flags), app/views/api/v3/documents/en/default/*.erb (watermark), app/views/api/v3/documents/_reference_edits_summary.erb */}
+{/* source: app.vitay.io projects/configuration protected/settings/documents/settings.documents.component.{ts,html} (params — PDF template dropdown + pdf_templates list removed in app #2135, CSV/DOCX switches removed in #2017, subSettings; settings.pdf_template column default "compressed" still read by pdf_controller, stored "default" values kept), i18n SETTINGS.DOCUMENTS.* and TABS.DOCUMENTS; projects/references protected/candidates/show/references + show/header, shared/components/sidebar/reference/question-set (download dropdown), src/app/shared/helpers/array.helper.ts (reportFormats PDF / Word everywhere, csvReportFormat added only on candidates.show.references); api db/migrate/20260917130000_remove_csv_docx_settings.rb; app/models/setting.rb (pdf_template default "compressed", is_pdf_watermark_enabled, is_show_reference_edits_on_report, is_hide_report_* settings_json defaults), app/services/documents/pdf_redaction.rb, app/controllers/api/v3/documents/pdf_controller.rb, app/controllers/api/v3/documents/docx_controller.rb, app/views/api/v3/documents/en/compressed/{candidates,references}.erb (hide flags), app/views/api/v3/documents/en/default/*.erb (watermark), app/views/api/v3/documents/_reference_edits_summary.erb */}
