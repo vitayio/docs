@@ -80,11 +80,16 @@ as Google address suggestions) are listed in the same table.
     material change to its cookie list, so a stored choice doesn't silently
     cover new cookies.
   </Step>
-  <Step title="Not shown inside ATS embeds">
-    When Vitay is embedded inside an ATS (for example a Bullhorn tab), no
-    consent banner is shown and no analytics, advertising, or functional
-    cookies are set at all — regardless of any consent given elsewhere. The
-    embed uses strictly necessary cookies only.
+  <Step title="Inside ATS tabs and embeds">
+    In the classic Vitay **custom tab** inside Bullhorn, the banner appears the
+    first time you open the tab, and your choice is remembered for later visits.
+    The choice is stored separately for each ATS site, so it does not carry over
+    from the Vitay site or from one ATS to another. Until you choose, only
+    strictly necessary cookies are used.
+
+    Embedded Vitay forms inside an ATS, and form previews in the configuration
+    panel, never show a banner. They use strictly necessary cookies only, whatever
+    consent you gave elsewhere.
   </Step>
 </Steps>
 
@@ -147,4 +152,4 @@ as Google address suggestions) are listed in the same table.
   <Card title="Browser support" icon="globe" href="/security-it/browser-support" />
 </CardGroup>
 
-{/* source: app.vitay.io src/app/shared/config/cookie-registry.ts (functional: HelpScout Beacon + Google Places 'script' declaration); src/app/shared/services/cookie-consent.service.ts (preserve() across cleanStorage); src/app/shared/services/google-places-loader.service.ts (grantedOnce$('functional')); src/app/shared/components/cookie-consent/; the 'mfa' remember-device cookie is no longer set or read since VIT-1346 (api #2656 / app #2034) even though cookie-registry.ts still declares it */}
+{/* source: app.vitay.io src/app/shared/config/cookie-registry.ts (functional: HelpScout Beacon + Google Places 'script' declaration); src/app/shared/services/cookie-consent.service.ts (preserve() across cleanStorage; cross-origin frame → host-only SameSite=None; Secure; Partitioned consent cookie, app #2156); src/app/shared/helpers/consent-path.helper.ts (isConsentSuppressedPath: /embed + form previews suppressed, /iframe keeps the banner); src/app/shared/services/google-places-loader.service.ts (grantedOnce$('functional')); src/app/shared/components/cookie-consent/; the 'mfa' remember-device cookie is no longer set or read since VIT-1346 (api #2656 / app #2034) even though cookie-registry.ts still declares it */}
