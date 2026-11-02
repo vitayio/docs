@@ -24,12 +24,12 @@ The banner cannot be dismissed and is visible on every screen for as long as the
 
 ## How long a session lasts
 
-A support session lasts a **maximum of one hour** and cannot be extended — the session token is minted with a one-hour expiry and refreshing it is blocked, so a longer investigation means starting a fresh, separately audited session.
+A support session lasts **one hour by default**. When a longer session is needed — for example an onboarding call that walks through the whole account — the staff member chooses the length when they start the session, up to a **maximum of four hours** (1, 2 or 4 hours). The length is fixed at the start: the session token is minted with that expiry and refreshing it is blocked, so a session can never quietly extend itself. If more time is needed, a fresh, separately audited session has to be started.
 
 A session ends when:
 
 - the staff member clicks **Exit Support Mode**, which closes the session and revokes the token immediately;
-- the one-hour countdown reaches zero — the app exits automatically, and any further request with that token is rejected as *"Impersonation session invalid or expired"*.
+- the countdown reaches zero — the app exits automatically, and any further request with that token is rejected as *"Impersonation session invalid or expired"*.
 
 ## What is recorded
 
@@ -39,7 +39,7 @@ Every support session is written to an audit record before it starts. Vitay stor
 - a **written reason**, which is mandatory and must be between 10 and 500 characters — a session cannot be started without one;
 - a support ticket reference, where one was supplied;
 - the IP address and browser the staff member used;
-- when the session started, when it is set to expire, and when it actually ended;
+- the session length chosen at the start, when the session started, when it is set to expire, and when it actually ended;
 - a running count of the actions performed during the session;
 - how the session ended, and its final state (ended or expired).
 
@@ -57,7 +57,7 @@ While in Support Mode the staff member sees the app with your user's permissions
 | Changing multi-factor authentication settings | MFA cannot be disabled or re-enrolled from a support session. |
 | Changing the account's email address | The account identity cannot be moved. |
 | Deleting the user account | Irreversible account removal is off the table. |
-| Refreshing the session token | The one-hour limit is hard; a session cannot quietly extend itself. |
+| Refreshing the session token | The length chosen at the start is hard; a session cannot quietly extend itself. |
 
 Vitay also restricts who can start a session and on whom:
 
@@ -99,4 +99,4 @@ If you saw the banner and want to know why, or you want Support Mode excluded fr
   <Card title="Roles explained" icon="user-shield" href="/getting-started/roles-explained" />
 </CardGroup>
 
-{/* source: app.vitay.io src/app/shared/components/impersonation-banner/impersonation-banner.component.{ts,html} ("Support Mode Active", "Viewing as", "Session expires in", "Exit Support Mode", 1s countdown), src/app/shared/services/impersonation.service.ts (imp claim, exit → /admin/exit-impersonation); api app/models/impersonation_session.rb (reason, ticket_id, ip_address, user_agent, actions_count, status active/expired/ended, 1.hour expiry, end_session! activity), app/controllers/api/v3/admin/impersonations_controller.rb (reason 10-500 chars required, impersonation_started / impersonation_ended / impersonation_denied activities, token revoked on exit), app/policies/impersonation_policy.rb (admin only, no admin targets, no self, no chaining, 20 per 24h), app/controllers/concerns/impersonation_guard.rb + app/controllers/api/v1/users_controller.rb + app/controllers/api/v3/users_controller.rb + app/controllers/api/v3/oauth_controller.rb (password/MFA/email/account-delete/token-refresh blocked), app/controllers/concerns/authorization.rb (validate_impersonation_session, increment_actions!, password expiry skipped), app/models/concerns/has_secure_tokens.rb (generate_impersonation_token, 1 hour) */}
+{/* source: app.vitay.io src/app/shared/components/impersonation-banner/impersonation-banner.component.{ts,html} ("Support Mode Active", "Viewing as", "Session expires in", "Exit Support Mode", 1s countdown), src/app/shared/services/impersonation.service.ts (imp claim, exit → /admin/exit-impersonation); api app/models/impersonation_session.rb (reason, ticket_id, ip_address, user_agent, actions_count, status active/expired/ended, ALLOWED_DURATION_MINUTES 60/120/240 default 60, end_session! activity), app/controllers/api/v3/admin/impersonations_controller.rb (reason 10-500 chars required, duration_minutes allowlisted + logged on impersonation_started, impersonation_started / impersonation_ended / impersonation_denied activities, token revoked on exit), app/policies/impersonation_policy.rb (admin only, no admin targets, no self, no chaining, 20 per 24h), app/controllers/concerns/impersonation_guard.rb + app/controllers/api/v1/users_controller.rb + app/controllers/api/v3/users_controller.rb + app/controllers/api/v3/oauth_controller.rb (password/MFA/email/account-delete/token-refresh blocked), app/controllers/concerns/authorization.rb (validate_impersonation_session, increment_actions!, password expiry skipped), app/models/concerns/has_secure_tokens.rb (generate_impersonation_token, expires_at from the session) */}
