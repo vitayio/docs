@@ -1,46 +1,42 @@
 ---
 title: "The link in my email isn't working"
-description: "What to do if the link or ID in your Vitay email opens an error or doesn't load — for candidates and for people giving a reference."
+description: "What to do if the link or ID in your Vitay email opens an error or doesn't load, for candidates and for people giving a reference."
 ---
 
 <Note>
-  **This article applies to both candidates and people asked to give a reference.** Whichever form you were sent, the fixes are the same, and only the recruiter can send you a fresh link.
+  This article is for both candidates and people asked to give a reference. The fixes are the same for both forms, and only the recruiter can send you a new link.
 </Note>
 
-If clicking the link in your Vitay email leads to an error — or the ID you were given isn't being accepted — here's what's likely happening and how to fix it.
+These are the usual reasons a link from a Vitay email shows an error or doesn't load.
 
-## Common reasons a link stops working
+## Common reasons
 
-**The form has already been submitted**
+### The form was already submitted
 
-Once a form is submitted, the link is locked. If you see a message saying the reference request or reference is already filled, your submission went through successfully and there's nothing else to do. If you're a candidate and need to change your list of references after this point, see [Adding another reference after submitting](/reference-providers/add-another-reference).
+A submitted form can't be opened again. You'll see **Reference request already filled** (candidates) or **Reference has already been filled** (references). Your submission went through and there's nothing more to do. Candidates who need to change their list can see [Adding another reference after submitting](/reference-providers/add-another-reference).
 
-**The request is no longer active**
+### The request was removed
 
-The recruiter may have closed or removed the request. If so, only the recruiter can reissue it.
+If the recruiter deleted the request, the page says so, for example **Reference deleted**. Only the recruiter can send a new one.
 
-**The link was copied incorrectly**
+### The link was copied incompletely
 
-If you copied the link manually from the email (rather than clicking it), check that the full URL was included with no missing characters or extra spaces at the end.
+If you copied the link instead of clicking it, check that you have the whole address with no missing characters or extra spaces.
 
-**Your work network is blocking the link**
+### Your work network blocks it
 
-Some company networks block external links in emails. Try opening the link on your personal device or using your phone's mobile data instead.
+Some company networks block outside links. Open the link on a personal device or on your phone's mobile data.
 
-## What to do if none of the above helps
+## If none of these help
 
 <Steps>
-  <Step title="Find the recruiter's contact details">
-    Open your original Vitay email. The recruiter's name is mentioned in the message, and replying to that email will reach them directly.
+  <Step title="Reply to the email you received">
+    Replies go to the recruiting team that sent the request.
   </Step>
-  <Step title="Ask them to reissue the link">
-    Let the recruiter know the link isn't working. They can check the status and send you a fresh email if needed.
+  <Step title="Ask for a new link">
+    Say the link isn't working and what the page shows. The recruiter can check the request and send you a new email.
   </Step>
 </Steps>
-
-<Note>
-  Only the recruiter can reissue a link. There is no self-serve way to generate a new one.
-</Note>
 
 ## Related articles
 
@@ -51,4 +47,4 @@ Some company networks block external links in emails. Try opening the link on yo
   <Card title="My reference isn't getting the email" icon="bell-slash" href="/reference-providers/reference-not-receiving-email" />
 </CardGroup>
 
-{/* source: api app/controllers/api/v1/references_controller.rb render_reference_already_filled / render_reference_not_found; reference_requests_controller.rb render_request_already_filled / render_candidate_not_found */}
+{/* source: app projects/references/src/app/public/references/references.component.ts (409 → REFERENCE.ERRORS.FILLED, 410 → REFERENCE.ERRORS.DELETED "Reference deleted"); public/reference-requests/reference-requests.component.html (REFERENCE_REQUESTS.FILLED.UNAVAILABLE); api app/controllers/api/v1/references_controller.rb render_reference_already_filled / render_reference_deleted / render_candidate_deleted; reference_requests_controller.rb render_candidate_not_found */}

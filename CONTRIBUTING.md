@@ -46,7 +46,7 @@ Short intro: what this does and who it's for (1–2 sentences).
   <Step title="Do the first thing">…</Step>
 </Steps>
 
-![SCREENSHOT: what to capture — placeholder](/images/placeholder.png)
+![SCREENSHOT(send-request-modal): The reference request form](/images/placeholder.png)
 
 ## Troubleshooting   {/* optional; use <AccordionGroup> for multiple issues */}
 
@@ -66,9 +66,15 @@ Troubleshooting (optional) → Related articles.
   The description is a real sentence, not a keyword list.
 - **Tone:** clear, friendly, second person ("you"). Short sentences. No jargon
   the reader wouldn't already know.
-- **Screenshots:** text-first. Where a screenshot belongs, leave an explicit
-  `![SCREENSHOT: <what to capture> — placeholder]` marker so it's easy to find
-  and fill later. Do not ship stale images.
+- **Screenshots:** every screenshot is listed in `screenshots/manifest/*.json`
+  and captured by the script in `screenshots/` (see its README). Never add a
+  hand-taken image. Until an image is captured, the article carries a
+  placeholder that names the manifest id:
+  `![SCREENSHOT(<id>): <what it shows>](/images/placeholder.png)`.
+  Running `npm run apply` in `screenshots/` swaps each placeholder for
+  `/images/screens/<id>.png` once that file exists. Add a screenshot only where
+  it saves the reader from hunting for something (a page, a button, a form).
+  Not every step needs one.
 - **Steps:** use `<Steps>`/`<Step>` for anything sequential. One action per step.
 - **Source pointers:** for recruiter articles whose behavior is backed by
   specific code, add an HTML comment at the bottom naming the relevant
@@ -77,6 +83,38 @@ Troubleshooting (optional) → Related articles.
   This lets a future check trace doc → code.
 - **Links:** use absolute paths like `/candidates-reference-requests/overview`
   (no `.mdx`).
+
+## Voice
+
+Write like a support person who knows the product answering a customer, not
+like a brochure. These patterns make articles read as machine-written. Avoid
+them:
+
+- **Em dashes.** Use a period, a comma, or parentheses. One em dash in an
+  article is a lot.
+- **Throat-clearing intros.** Don't open with "This article explains…", "This
+  section covers everything you need to…", or a rhetorical question. Say what
+  the feature does in one sentence and start the steps.
+- **Bold for emphasis.** Bold only the names of things on screen (buttons,
+  tabs, fields, statuses). Not key phrases, not role names in running text.
+- **Filler words:** seamlessly, effortlessly, easily, simply, just, robust,
+  streamline, leverage, ensure, utilize, comprehensive, "whether you're…",
+  "it's worth noting", "keep in mind that", "in order to".
+- **Padding with threes.** Don't list three examples where one makes the point.
+- **Explaining internals.** Describe what the reader sees and does. Leave out
+  background jobs, databases, caches, and how the code decides something,
+  unless the reader needs it to act.
+- **Callout stacking.** One `<Note>` for prerequisites. Use `<Warning>` only for
+  something that loses data or can't be undone. No `<Tip>` that restates the
+  paragraph above it.
+- **Restating.** Don't repeat the title in the intro, the intro in the first
+  step, or the steps in a closing summary.
+- **Over-long tables.** A table cell is a phrase or a short sentence. If a cell
+  needs a paragraph, it belongs in prose.
+
+Prefer the exact on-screen label over a description of it ("Click **Send
+request**", not "click the button to send the request"). Use sentence case
+for headings.
 
 ## Adding an article
 

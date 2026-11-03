@@ -3,137 +3,113 @@ title: "Single sign-on (SAML)"
 description: "Let your team log in to Vitay through your identity provider using SAML 2.0 single sign-on."
 ---
 
-SAML single sign-on (SSO) lets your recruiters log in to Vitay through your
-organisation's identity provider (IdP) — such as Okta, Microsoft Entra ID
-(Azure AD), or OneLogin — instead of a separate Vitay password. Access is
-controlled centrally from your IdP, so joiners, movers, and leavers are handled
-in one place.
+SAML single sign-on (SSO) lets your team sign in to Vitay through your identity provider (IdP),
+such as Okta, Microsoft Entra ID or OneLogin, instead of with a Vitay password. Access is then
+controlled from your IdP.
 
 <Note>
-  SSO is enabled per firm by Vitay's team — contact
-  [hello@vitay.io](mailto:hello@vitay.io) to get started. Once it's enabled, the
-  IdP connection itself is configured in Vitay by a **root recruiter**, working
-  with someone who can administer your IdP.
+  Vitay enables SSO per firm; contact [hello@vitay.io](mailto:hello@vitay.io) to start. After that,
+  a root recruiter connects your IdP in Vitay, working with someone who administers the IdP.
 </Note>
 
 ## Who does what
 
-**Vitay's team sets up the groundwork:**
+Vitay's team:
 
-- Creates the identity organisation behind your Vitay account and records the
-  **email domains** your people sign in with (for example, `acme.com`).
-- Turns on **Sign in with SSO** at the Vitay login page for those domains.
-- Emails a **setup invite** to your first administrator. Following that link
-  signs them in and gives them root recruiter access, so they can open the SSO
-  tab before SSO is live.
-- Optionally makes SSO **required** for your firm (see below).
+- creates the identity organization behind your account and records the email domains your people
+  sign in with (for example `acme.com`);
+- turns on **Sign in with SSO** for those domains;
+- emails a setup invite to your first administrator. Following it signs them in with root recruiter
+  access so they can open the SSO tab before SSO is live;
+- can make SSO required for your firm (see below).
 
-**You configure the connection to your IdP** in Vitay, in the SSO tab described
-next.
+You then connect your IdP on the SSO tab.
 
-## The SSO tab in Configuration
+## The SSO tab
 
-Open **Configuration → Settings → SSO**. The tab is titled **Single Sign-On**
-and holds three sections:
+Open **Configuration → Settings → SSO**. The **Single Sign-On** page has three sections:
 
-| Section | What it's for |
+| Section | Use it to |
 | --- | --- |
-| **SSO Connections** | Create and manage the SAML connection between Vitay and your IdP. This is where you exchange the connection details with your IdP and upload or point at your IdP's metadata. |
-| **SCIM Provisioning** | Set up automatic user provisioning from your IdP — see [SCIM user provisioning](/security-it/scim-provisioning). |
-| **Members** | See the people in your Vitay organisation and their status. |
+| **SSO Connections** | Create the SAML connection and exchange metadata with your IdP. |
+| **SCIM Provisioning** | Set up automatic user provisioning; see [SCIM user provisioning](/security-it/scim-provisioning). |
+| **Members** | See the people in your Vitay organization and their status. |
 
-<Note>
-  The SSO tab only appears once Vitay has provisioned your firm's identity
-  organisation, and only **root recruiters** can open it. If the tab is missing
-  or you see *"Only root recruiters can configure SSO"*, contact
-  [hello@vitay.io](mailto:hello@vitay.io) or a root recruiter at your firm.
-</Note>
+![SCREENSHOT(sso-saml-settings-tab): The Single Sign-On tab in Configuration with the SSO Connections, SCIM Provisioning and Members sections](/images/placeholder.png)
 
-![The SSO settings page in Configuration](/images/sso-settings.png)
+The tab appears only after Vitay has created your identity organization, and only root recruiters
+can open it.
 
 ## How your team signs in
 
 <Steps>
-  <Step title="Choose Sign in with SSO">
-    On the Vitay login page, click **Sign in with SSO** instead of entering a
-    password.
+  <Step title="Click Sign in with SSO">
+    It's under the password form on the Vitay login page.
   </Step>
-  <Step title="Enter your work email address">
-    Type your work email and click **Continue**. Vitay uses the domain of that
-    address to find your organisation — the password field is never involved.
+  <Step title="Enter your work email">
+    Type your work email and click **Continue**. Vitay finds your organization from the email
+    domain.
   </Step>
-  <Step title="Pick your account, if you're asked">
-    If more than one Vitay account uses the same email domain (a parent company
-    and its sub-accounts, for example), Vitay shows **Choose your account** and
-    you pick the right one.
+  <Step title="Pick your account if asked">
+    If several Vitay accounts share your email domain (a parent and its sub-accounts, for example),
+    **Choose your account** lists them. Click the right one.
   </Step>
-  <Step title="Authenticate with your IdP">
-    You're redirected to your identity provider, sign in there as usual, and
-    land back in your Vitay dashboard.
+  <Step title="Sign in with your IdP">
+    Vitay sends you to your identity provider, then back to Vitay once you've signed in.
   </Step>
 </Steps>
 
-A signed-in session lasts **24 hours**, after which your IdP authenticates you
-again.
+An SSO session lasts 24 hours, after which your IdP signs you in again.
 
-## New accounts and roles
+## New users and roles
 
-- **Accounts are created on first sign-in.** If someone authenticates through
-  your IdP and has no Vitay account yet, Vitay creates one from the details in
-  the assertion (email address and name) — no manual setup needed. The same
-  happens for someone who was deactivated: the existing account is reactivated
-  rather than duplicated.
-- **What they can do comes from your IdP groups.** Vitay's roles — recruiter,
-  root recruiter, and supervisor — are granted from the IdP groups mapped to
-  those roles on your SCIM connection, and are kept in step as group membership
-  changes. Signing in via SSO on its own doesn't grant a role. See
+- **Users are created on first sign-in.** If someone signs in through your IdP without a Vitay
+  user, Vitay creates one from the email address and name your IdP sends. A deactivated user is
+  reactivated instead of duplicated.
+- **Roles come from your IdP groups.** The recruiter, root recruiter and supervisor roles are
+  granted from the groups mapped on your SCIM connection and follow group changes. Signing in
+  through SSO doesn't grant a role on its own. See
   [SCIM user provisioning](/security-it/scim-provisioning).
-- **Email addresses must match.** Vitay identifies people by the email address
-  your IdP sends. If someone's email changes in your IdP, change it in Vitay
-  too.
+- **Email addresses must match.** Vitay identifies people by the email your IdP sends. If someone's
+  email changes in the IdP, change it in Vitay too.
 
 ## Making SSO required
 
-Vitay can mark your firm as **SSO-required**. After that, password sign-in is
-refused for your users — anyone who tries gets *"Please login with SSO"* — and
-**Sign in with SSO** is the only way in. Ask
-[hello@vitay.io](mailto:hello@vitay.io) to turn this on or off; it isn't a
-setting you can change yourself.
+Vitay can make SSO required for your firm. Password sign-ins are then refused with *"Please login
+with SSO"*, and **Sign in with SSO** is the only way in. Ask
+[hello@vitay.io](mailto:hello@vitay.io) to turn this on or off.
 
 ## Troubleshooting
 
 <AccordionGroup>
   <Accordion title="'SSO is not enabled for this email domain'">
-    The domain of the address you entered isn't one of the domains registered
-    for your Vitay account, or SSO sign-in hasn't been switched on for it yet.
-    Sign in with your password for now and contact
-    [hello@vitay.io](mailto:hello@vitay.io) with the domain you expect to use.
+    That domain isn't registered for your Vitay account, or SSO isn't on for it yet. Sign in with
+    your password for now and send the domain to [hello@vitay.io](mailto:hello@vitay.io).
   </Accordion>
-  <Accordion title="A password login is refused with 'Please login with SSO'">
-    Your firm is set to require SSO. Use **Sign in with SSO** on the login page.
-    If you need password sign-in restored, contact
+  <Accordion title="Password sign-in is refused with 'Please login with SSO'">
+    Your firm requires SSO. Use **Sign in with SSO**. To get password sign-in back, contact
     [hello@vitay.io](mailto:hello@vitay.io).
   </Accordion>
   <Accordion title="'Your account is not linked to Stytch yet'">
-    You opened the SSO tab with an account that hasn't been through the identity
-    provider yet. Either sign in via **Sign in with SSO**, or use the setup
-    invite Vitay emailed you, and then open the tab again.
+    Your user hasn't signed in through the identity provider yet. Sign in with **Sign in with SSO**,
+    or use the setup invite Vitay emailed you, then open the tab again.
+  </Accordion>
+  <Accordion title="'Only root users can configure SSO'">
+    You need the root recruiter role on this firm. Ask a root recruiter at your firm.
   </Accordion>
   <Accordion title="'No Stytch organization is provisioned for this hiring firm'">
-    Vitay hasn't created the identity organisation for your account yet — that's
-    the first step of setup. Contact [hello@vitay.io](mailto:hello@vitay.io).
-  </Accordion>
-  <Accordion title="'Failed to load Stytch Admin Portal'">
-    The tab loads the configuration portal using your current session. Sign out,
-    sign back in, and open the tab again. If it still fails, contact
+    Vitay hasn't created your identity organization yet. Contact
     [hello@vitay.io](mailto:hello@vitay.io).
   </Accordion>
-  <Accordion title="Someone is rejected even though they're assigned in the IdP">
-    Check that the email address your IdP sends matches the one on their Vitay
-    account, and that they're assigned to the Vitay application in your IdP. An
-    email address that already belongs to an unrelated Vitay account can't be
-    claimed by your organisation — contact
-    [hello@vitay.io](mailto:hello@vitay.io) if you think that's the case.
+  <Accordion title="'Failed to load Stytch Admin Portal'">
+    Sign out, sign back in and open the tab again. If it still fails, contact
+    [hello@vitay.io](mailto:hello@vitay.io).
+  </Accordion>
+  <Accordion title="Someone assigned in the IdP is rejected">
+    Check that the email your IdP sends matches their Vitay user, and that they're assigned to the
+    Vitay app in your IdP. An email that already belongs to an unrelated Vitay account can't be
+    claimed by your organization; contact [hello@vitay.io](mailto:hello@vitay.io) if you think
+    that's the case.
   </Accordion>
 </AccordionGroup>
 
@@ -144,4 +120,4 @@ setting you can change yourself.
   <Card title="Data and privacy" icon="shield-halved" href="/security-it/data-and-privacy" />
 </CardGroup>
 
-{/* source: api app/controllers/auth/stytch_sso_controller.rb (discover by hiring_firms.email_domains + settings.is_stytch_sso_enabled, initiate, callback session_duration_minutes 1440); api app/controllers/auth/stytch_magic_link_controller.rb + app/services/stytch/send_bootstrap_invite.rb (setup invite grants root_recruiter); api app/services/stytch_sync/upsert_member.rb (JIT create, reactivation, CrossTenantClaimError) + sync_member_roles.rb (recruiter/root_recruiter/supervisor from scim_connection_group); api app/controllers/api/v3/stytch/sessions_controller.rb (root-recruiter gate, stytch_not_provisioned, stytch_member_not_linked); api app/controllers/api/v3/oauth_controller.rb (is_sso_required -> "Please login with SSO"); app projects/*/src/app/public/login/login.component.{ts,html} (LOGIN.SSO.*); app projects/configuration settings/sso (stytch-admin-portal-sso / -scim / -members, TABS.SSO gated on stytch_organization_id) */}
+{/* source: api app/controllers/auth/stytch_sso_controller.rb (session_duration_minutes 1440), app/controllers/auth/stytch_magic_link_controller.rb, app/services/stytch/send_bootstrap_invite.rb, app/services/stytch_sync/{upsert_member,sync_member_roles}.rb, app/controllers/api/v3/stytch/sessions_controller.rb, app/controllers/api/v3/oauth_controller.rb ("Please login with SSO"); app projects/references/src/app/public/login/login.component.{html,ts} (LOGIN.SSO.*), projects/configuration/src/app/protected/settings/sso/settings.sso.component.{html,ts} (error messages), shared/settings-search/settings-search.registry.ts, projects/configuration/src/assets/i18n/en.json (SETTINGS.SSO) */}

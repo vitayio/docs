@@ -3,175 +3,143 @@ title: "Candidate feedback"
 description: "Collect feedback directly from a candidate, or from an employer or recruiter, using Vitay's feedback request flow."
 ---
 
-Vitay's feedback feature lets you send a structured questionnaire to a candidate, an employer, or
-a recruiter. The recipient fills in the form online and the results appear on the candidate's
-profile. You can use this to gather candidate experience data, placement check-ins, or recruiter
-service ratings — all powered by the same question-set system used for references.
+Feedback requests send a questionnaire about a candidate's placement or experience. The recipient
+fills it in online and the answers appear on the candidate's **Feedback** tab. Feedback uses the
+same question sets as references.
 
 <Note>
-  Which feedback types are available depends on what's enabled for your firm. **Candidate** and
-  **Employer** feedback are enabled together as one feature; **Recruiter** feedback is enabled
-  separately. Both are turned on by Vitay on request — contact Vitay if a type is missing from
-  the selector. You need a recruiter (or higher) role to send feedback requests.
+  Vitay turns feedback on for your firm. **Candidate** and **Employer** feedback come together;
+  **Recruiter** feedback is turned on separately. Contact [hello@vitay.io](mailto:hello@vitay.io)
+  if a type is missing. Any recruiter can send feedback requests; creating feedback question sets
+  needs the root recruiter or supervisor role.
 </Note>
 
 ## Feedback types
 
-| Type | Who fills it in | Common use |
+| Type | Who fills it in | Typical use |
 |------|-----------------|------------|
-| **Candidate** | The candidate themselves | Candidate experience surveys, placement satisfaction |
-| **Employer** | A hiring manager or company contact | Post-hire check-ins, client satisfaction |
-| **Recruiter** | The candidate, rating their assigned recruiter | Measuring recruiter service quality (if enabled) |
+| **Candidate** | The candidate | Candidate experience surveys |
+| **Employer** | A hiring manager or client contact | Post-hire check-ins |
+| **Recruiter** | The candidate, rating their assigned recruiter | Recruiter service ratings |
 
-### About Recruiter feedback
-
-Recruiter feedback often trips people up because of its name: **the form goes to the candidate, not
-to the recruiter**. The candidate receives the same kind of link they'd get for any other feedback
-request, and the questions ask them to rate the recruiter who handled them — think of it as a
-recruiting NPS. When you pick this type in the request modal, Vitay shows a reminder that reads
-"Candidate will rate the assigned user".
+Recruiter feedback goes to the candidate, not to the recruiter. When you pick it, the request form
+reminds you: *"Candidate will rate the assigned user"*.
 
 ## Create a feedback question set
 
-Feedback uses the same question-set system as references — a question set just has to be marked as a
-feedback set first.
-
 <Steps>
-  <Step title="Add or edit a question set">
-    Go to **Question Sets** and add a new set (or open an existing one to edit it).
+  <Step title="Open Question sets">
+    Click **Question sets** in the left sidebar, then add a set or open one to edit.
   </Step>
-  <Step title="Set the Type to Feedback">
-    In the **Type** dropdown, choose **Feedback** instead of **Reference**, then save. Only sets
-    marked this way appear in the feedback request modal.
+  <Step title="Set Type to Feedback">
+    In the **Type** dropdown, choose **Feedback**, then save. Only Feedback sets appear in feedback
+    requests.
   </Step>
   <Step title="Add your questions">
-    Build the set exactly as you would a reference question set. See
+    Build it like a reference question set. See
     [Question sets and templates](/account-configuration/question-sets-and-templates).
   </Step>
 </Steps>
 
-<Note>
-  There's one **Feedback** question-set type, not one per flavour. The same set can be used for
-  candidate, employer, or recruiter feedback — you choose which when you send the request. The
-  **Type** dropdown only offers **Feedback** once a feedback type is enabled for your firm.
-</Note>
+One Feedback set works for all three types; you choose the type when you send the request.
 
 ## Send a feedback request
 
 <Steps>
-  <Step title="Open the candidate">
-    Go to **Candidates** and select the candidate you want to collect feedback on.
+  <Step title="Open the candidate's Feedback tab">
+    Go to **Candidates**, open the candidate, and click the **Feedback** tab.
   </Step>
-  <Step title="Open the feedback request form">
-    Click **Feedback request** on the candidate's profile page.
+  <Step title="Click Feedback request">
+    The button is at the top right of the tab.
 
-    ![SCREENSHOT: the candidate profile page with the "Feedback request" button — placeholder](/images/placeholder.png)
+    ![SCREENSHOT(candidate-feedback-tab): A candidate's Feedback tab with the Feedback request button, the feedback surveys table and the employers table](/images/placeholder.png)
   </Step>
-  <Step title="Choose the feedback type">
-    In the **Type** selector, pick **Candidate**, **Employer**, or **Recruiter**. The form adjusts
-    based on your selection.
+  <Step title="Choose the Feedback type">
+    - **Candidate**: Vitay sends it to the email on the candidate's profile.
+    - **Employer**: enter the employer's first name, last name and email. Add a phone number to
+      also send it by text message.
+    - **Recruiter**: Vitay sends it to the candidate.
 
-    - **Candidate** — Vitay emails the candidate directly using the email address already on their
-      profile.
-    - **Employer** — Enter the employer's first name, last name, and email. Add a phone number if
-      you also want the request delivered by text message.
-    - **Recruiter** — Vitay sends the form to the candidate, who rates their assigned recruiter.
-
-    ![SCREENSHOT: the feedback request modal with the Type selector and question-set dropdown — placeholder](/images/placeholder.png)
+    ![SCREENSHOT(candidate-feedback-request-modal): The Feedback request dialog with the Feedback type options and the Question set dropdown](/images/placeholder.png)
   </Step>
-  <Step title="Choose a question set">
-    Select the **question set** from the dropdown. Only question sets configured for feedback are
-    shown.
+  <Step title="Choose a Question set">
+    Only Feedback question sets are listed.
   </Step>
-  <Step title="Schedule (optional)">
-    Pick a **scheduled date** to delay delivery, or leave it blank to send right away. Scheduled
-    delivery requires the feature to be enabled on your account.
+  <Step title="Pick a Scheduled date (optional)">
+    If your firm has scheduled feedback, pick a date to send it later, or leave it blank to send
+    now.
   </Step>
-  <Step title="Submit">
-    Click **Submit**. Vitay sends the request by email — and also by text message whenever a phone
-    number is on file for the recipient.
+  <Step title="Click Submit">
+    Vitay emails the request, and also texts it when the recipient has a phone number.
   </Step>
 </Steps>
 
 ## What happens after you send
 
-- The recipient gets an email with a unique link to the feedback form.
-- Vitay sends automatic reminders if the recipient hasn't responded, following your firm's reminder
-  schedule. Reminders also go out by text message if the recipient has a phone number on file and
-  text messages are enabled for your firm.
-- When the form is completed, the feedback appears on the candidate's **Feedback** tab. Who gets
-  the completion email depends on the **Feedback completed** row of your firm's **Team
-  notifications** (**Settings** → **Notifications**); for new accounts it goes to the candidate's
-  assigned recruiter and to the person who sent the feedback request.
-- Any rating or matrix questions generate a score you can see at a glance.
+- The recipient gets a link to the feedback form.
+- If they don't answer, Vitay sends reminders on your firm's reminder schedule, by text too if they
+  have a phone number and your firm uses text messages.
+- When they submit, the answers and a score (from rating and matrix questions) appear on the
+  candidate's **Feedback** tab.
+- An email goes to the people chosen in the **Feedback completed** row of **Team notifications**
+  (**Settings → Notifications** in Configuration). For new accounts, that's the candidate's
+  assigned recruiter and the person who sent the request.
 
-## Turn feedback reminders off
-
-Feedback requests follow your firm's normal reminder sequence. If you'd rather recipients heard from
-you only once, a root recruiter can switch **Feedback reminders** off on **Settings → Notifications**
-— reference reminders keep running as usual. See
+To stop feedback reminders, a root recruiter can turn off **Feedback reminders** on the same
+Notifications tab. Reference reminders aren't affected. See
 [Notification settings](/account-configuration/notification-settings).
 
 ## The Feedback page
 
-As well as the per-candidate tab, there's a **Feedback** item in the left sidebar listing every
-feedback request across your candidates. It appears as soon as a feedback type is enabled for your
-firm.
+**Feedback** in the left sidebar lists every feedback request across your candidates, with the
+question set, type, candidate, score, assigned user, and requested and completed dates. You can
+filter by date range and by type, and switch between **Everyone** and **Myself** if your role or
+firm settings allow it.
 
-Each row shows the question set, the feedback type, the candidate, the score, the assigned user, and
-the requested and completed dates. To narrow the list:
+![SCREENSHOT(candidate-feedback-list): The Feedback page listing feedback requests with the date range picker, type filter and Everyone / Myself toggle](/images/placeholder.png)
 
-- the **date range** picker, with **Last 7 days**, **Month to date**, **Last month** and **Year to
-  date** presets;
-- the **type** filter — **All**, plus **Candidate** and **Employer** (when candidate feedback is on)
-  and **Recruiter** (when recruiter feedback is on);
-- the **Everyone / Myself** toggle, if your role or firm settings allow firm-wide browsing.
+Click a request to open it. On a pending request you can click **Send reminder** to send a reminder
+now.
 
-![SCREENSHOT: the Feedback list page with the date range, type filter and Everyone/Myself toggle — placeholder](/images/placeholder.png)
+## Complete a form on someone's behalf
 
-### Complete a feedback form on someone's behalf
-
-If a candidate or employer gives you their answers over the phone, you can enter them yourself.
-Open the feedback request and click **Complete feedback** — Vitay opens the same form the recipient
-would have received, in a new tab, ready to fill in and submit.
+If a candidate or employer gives you their answers by phone, open the pending request (from the
+Feedback page, or by clicking its row on the candidate's Feedback tab) and click **Complete
+feedback**. The recipient's form opens in a new tab for you to fill in and submit.
 
 <Warning>
-  Answers entered this way are saved exactly like answers the recipient submitted themselves, and
-  there's no marker on the report to say who typed them. Use it only when you're transcribing what
-  the person actually told you. The option disappears once the form has any answers on it.
+  Answers entered this way are saved as if the recipient submitted them, and the report doesn't
+  show who typed them. Only use it to record what the person told you.
 </Warning>
 
 ## Employers
 
-Employer feedback creates an **Employer** record attached to the candidate. You'll find employers in
-two places:
+Employer feedback creates an employer record on the candidate. On the candidate's **Feedback** tab,
+the **employers** table lists them. Click a row to edit the employer's name, email, phone, the
+candidate's position and specialty, and start and end dates.
 
-- The candidate's **Feedback** tab has an **employers** table underneath the feedback surveys. Click
-  a row to edit the employer's name, email, phone, the candidate's position and specialty, and their
-  start and end dates.
-- An **Employers** page in the left sidebar lists every employer on the account with their name,
-  email, and when they were added. It's a read-only overview — edits happen on the candidate.
+If your firm has the ATS plugin, an **Employers** page in the left sidebar lists every employer in
+the account. Edits still happen on the candidate.
 
-## View and export feedback
-
-Open the candidate's **Feedback** tab to see all sent, pending, and completed feedback requests.
 To export feedback answers in bulk, see [Download reports](/reports-lead-generation/download-reports).
 
 ## Troubleshooting
 
 <AccordionGroup>
-  <Accordion title="A feedback type is missing from the selector">
-    **Candidate** and **Employer** feedback are enabled together as one feature; **Recruiter**
-    feedback is enabled separately. Contact Vitay to turn on the type you need.
+  <Accordion title="A feedback type is missing">
+    Candidate and Employer feedback are turned on together, and Recruiter feedback separately.
+    Contact [hello@vitay.io](mailto:hello@vitay.io) to turn on the one you need.
   </Accordion>
-  <Accordion title="The candidate didn't receive the feedback email">
-    Check that the email address on the candidate's profile is correct. Ask the candidate to check
-    their spam folder. You can also send a reminder using the **Reminder** action on the request's
-    row in the candidate's Feedback tab.
+  <Accordion title="I can't choose Feedback as a question set Type">
+    The option only appears once feedback is turned on for your firm.
   </Accordion>
-  <Accordion title="I need to change the email address for an employer feedback">
-    Open the candidate's **Feedback** tab and edit the employer's contact details in the
-    **Employers** table. The next reminder for the pending request goes to the corrected address.
+  <Accordion title="The candidate didn't get the feedback email">
+    Check the email on the candidate's profile and ask them to look in spam. To send a reminder now,
+    open the request from the **Feedback** page and click **Send reminder**.
+  </Accordion>
+  <Accordion title="I need to change an employer's email">
+    On the candidate's **Feedback** tab, click the employer in the **employers** table and correct
+    it. The next reminder goes to the new address.
   </Accordion>
 </AccordionGroup>
 
@@ -184,4 +152,4 @@ To export feedback answers in bulk, see [Download reports](/reports-lead-generat
   <Card title="Question sets and templates" icon="list-check" href="/account-configuration/question-sets-and-templates" />
 </CardGroup>
 
-{/* source: app.vitay.io src/app/shared/components/modals/feedback-requests/modals.feedback-requests.component.{ts,html} (is_plugins_candidate_feedback_enabled, is_plugins_recruiter_feedback_enabled, hardcoded types Candidate/Employer/Recruiter, MODALS.FEEDBACK_REQUESTS.TYPE "Feedback type" + RECRUITER_REQUEST "Candidate will rate the assigned user"; filterQuestionSets() hardcodes type 'Feedback'; postEmployer() creates the Employer); api app/controllers/api/v3/feedbacks_controller.rb ~91-105 (Recruiter type → identifiable = Recruiter, recipient = Candidate) and app/models/feedback.rb (send_feedback_requests_email to recipient&.email || identifiable&.email, add_reminders gated on auto_reminders is_feedback_reminders_enabled, template category feedback / feedback_employer); api app/models/question_set_base.rb ~10-18 (identifiable_type_choices REFERENCE/CANDIDATE/FEEDBACK/EMPLOYER/RECRUITER/PRE_SCREENING; question_sets.identifiable_type default "Reference") + app.vitay.io src/app/shared/components/modals/question-sets/modals.question-sets.component.{ts,html} (MODALS.QUESTION_SETS.IDENTIFIABLE_TYPE "Type", Feedback option only when a feedback plugin is on); app.vitay.io projects/references protected/feedbacks/list/feedbacks.list.component.{html,ts} (NAVBAR.LINKS.FEEDBACKS "Feedback" /feedbacks + FeedbacksGuard; FEEDBACKS.LIST.TITLE; bsConfig.ranges Last 7 days/Month to date/Last month/Year to date; FILTERS.ALL/CANDIDATE/EMPLOYER/RECRUITER type dropdown; FILTERS.EVERYONE/MYSELF when is_all_toogle_enabled || isRoot; columns incl. ASSIGNED_RECRUITER "Assigned user"; no status filter, no search, no CSV), protected/feedbacks/show/feedbacks.show.component.html + shared/components/sidebar/feedback/question-set (FEEDBACKS.SHOW.COMPLETE.CTA "Complete feedback" → routerLink /forms/:id in a new tab, shown only when !filled_at && answers.length === 0); projects/references protected/employers/list + protected/candidates/show/feedbacks (FEEDBACKS.SUBTITLES.EMPLOYERS) + src/app/shared/components/modals/employers (MODALS.EMPLOYERS.EDIT "Edit employer"); api app/models/employer.rb; app.vitay.io projects/configuration SETTINGS.CONFIGURATION.auto_reminders.is_feedback_reminders_enabled "Feedback reminders" */}
+{/* source: app src/app/shared/components/modals/feedback-requests/modals.feedback-requests.component.{html,ts}, projects/references/src/app/protected/candidates/show/candidates.show.component.{html,ts} (Feedback tab + CANDIDATES.BUTTONS.REQUEST_FEEDBACK), protected/candidates/show/feedbacks/, shared/components/sidebar/feedback/question-set (Complete feedback), protected/feedbacks/list + show (Send reminder, Complete feedback), protected/employers/list, shared/components/navbar/navbar.component.ts (Feedback link on feedback plugins, Employers link on ATS plugin), protected/question-sets/list (add gated root|supervisor), src/app/shared/components/modals/question-sets (Type options), src/app/shared/components/modals/employers; api app/models/feedback.rb, app/controllers/api/v3/feedbacks_controller.rb, app/models/custom_notification.rb (FEEDBACKS default send_to_assigned + send_to_requested) */}

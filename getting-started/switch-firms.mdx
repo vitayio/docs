@@ -3,99 +3,83 @@ title: "Switch between firms, branches, and sub-accounts"
 description: "Use the company switcher in the top bar to move between the firms and sub-accounts your account is linked to, and understand what changes when you switch."
 ---
 
-Some Vitay users work across more than one firm — a head office and its branches, or several sub-accounts under one parent. The company switcher in the top bar tells you which one you're currently working in and lets you move between them. It works the same way in the main app and in the Configuration area.
+If you work across more than one firm, such as a head office and its branches, the company switcher
+in the top bar shows which firm you're in and lets you move to another. It works the same in the
+main app and in Configuration.
 
 <Note>
-  The switcher only appears when your account has access to more than one
-  firm. If you only have access to one, the top bar shows its logo and name as
-  a plain, non-clickable label. Access is granted per firm by a root
-  recruiter — see [Manage users](/account-configuration/manage-users).
+  The switcher only appears when you have access to more than one firm. Otherwise the top bar shows
+  your firm's logo and name as a plain label. A root recruiter grants access per firm; see
+  [Manage users](/account-configuration/manage-users).
 </Note>
 
-## Find the switcher
+## Switch firms
 
 <Steps>
-  <Step title="Look at the far right of the top bar">
-    Next to the person icon there is a rounded pill showing your firm's logo
-    and name. That's the firm you're currently working in. Long names are
-    shortened; hover the pill to see the full name.
-  </Step>
-  <Step title="Click the pill">
-    If you have access to more than one firm, the pill has a small down arrow
-    and opens a **Switch account** menu. It lists every firm you can work in,
-    each with its logo and name. The one you're in now is highlighted with a
-    check mark.
+  <Step title="Click the firm name in the top bar">
+    At the far right of the top bar, next to the person icon, is a pill with your current firm's
+    logo and name. Hover it to see a long name in full. Click it to open the **Switch account**
+    menu.
 
-    ![SCREENSHOT: the top-bar company pill open, showing the Switch account menu with the current firm highlighted and ticked — placeholder](/images/placeholder.png)
+    ![SCREENSHOT(switch-firms-menu): The top-bar company pill opened to show the Switch account menu, with the current firm ticked](/images/placeholder.png)
   </Step>
   <Step title="Choose a firm">
-    Click the firm you want. Vitay issues a fresh session for that firm and
-    reloads the data on screen. There's nothing to save and you don't have to
-    sign in again.
+    The menu lists every firm you can work in, alphabetically, with a tick next to the current one.
+    Click the firm you want. Vitay reloads the data for that firm; you don't need to sign in again.
   </Step>
 </Steps>
 
-## Which firms show up in the list
+## Which firms are listed
 
-Two things put a firm in your switcher:
-
-- **You have a user account on that firm.** Any firm where you're an active user is listed.
-- **You're a root recruiter over a parent firm.** Root recruiters of a parent firm also see that parent's sub-accounts in the list — and, when you're already inside a sub-account, the parent and its sibling sub-accounts too.
-
-The list is sorted alphabetically by firm name.
+- Every firm where you're an active user.
+- If you're a root recruiter of a parent firm, that firm's sub-accounts too. From inside a
+  sub-account, you also see the parent and the other sub-accounts.
 
 ## What changes when you switch
 
-Switching firms changes the whole working context, not just a filter:
+- **Candidates and references**: lists, search and the dashboard show the selected firm's records.
+- **Settings**: each firm has its own settings, templates, question sets and relationship lists.
+  Root recruiters can switch firms from the same pill in Configuration.
+- **Exports**: CSV exports from the download icon cover the selected firm only.
+- **Your role**: roles are set per firm, so what you can do may differ between firms.
 
-- **Candidates and references.** Lists, search, and the dashboard show that firm's records.
-- **Settings.** Every firm has its own settings, templates, question sets, and relationship lists. If you're a root recruiter, you can switch firms from the same pill in the Configuration area's top bar to change another firm's settings without going back to the main app.
-- **Exports.** CSV exports from the download icon in the top bar cover the selected firm only. Export before you switch, or switch first and then export.
-- **Your role.** Your permissions are granted per firm, so what you can do may differ from one firm to the next.
+To choose the firm you start in after signing in, set **Default Sub Account** on your Account page.
+See [Your profile, language, and password](/getting-started/your-profile).
 
-<Note>
-  You can set which firm you start in after signing in: **Account →
-  Information → Default Sub Account**. See
-  [Your profile, language, and password](/getting-started/your-profile).
-</Note>
+## The "different branch" banner on a candidate
 
-## The "different branch" notice on a candidate
+If you open a candidate that belongs to another firm than the one you're in (from a link or a
+search result, for example), a yellow banner appears at the top:
 
-If you open a candidate that belongs to a firm other than the one you're currently browsing — for example by following a link or a search result — Vitay shows a yellow banner at the top of the candidate:
+> You are viewing a candidate that belongs to a different branch than the one you are currently
+> browsing. Please change to branch **&lt;branch name&gt;** to perform actions on this candidate.
 
-> You are viewing a candidate that belongs to a different branch than the one you are currently browsing. Please change to branch **&lt;branch name&gt;** to perform actions on this candidate.
+![SCREENSHOT(switch-firms-different-branch): A candidate page with the yellow different-branch banner above the candidate header](/images/placeholder.png)
 
-![SCREENSHOT: a candidate page showing the different-branch warning banner — placeholder](/images/placeholder.png)
-
-You can still read the candidate while the banner is up, but the actions that change it are disabled: **Edit**, **Delete**, **Add reference**, and **Request reference**. Switch to the branch named in the banner and the buttons become available again.
+You can read the candidate, but **Edit**, **Delete**, **Add reference** and **Request reference**
+are disabled until you switch to the branch named in the banner.
 
 ## Troubleshooting
 
 <AccordionGroup>
-  <Accordion title="I don't see a company switcher at all">
-    Your account only has access to one firm, so the top bar shows a plain
-    label — no arrow, and nothing happens when you click it. A root recruiter can give you access to
-    another firm — see [Manage users](/account-configuration/manage-users).
+  <Accordion title="I don't see a company switcher">
+    You only have access to one firm. A root recruiter can give you access to another; see
+    [Manage users](/account-configuration/manage-users).
   </Accordion>
   <Accordion title="A firm I expect is missing from the list">
-    You need an active user account on that firm (or root recruiter access
-    over its parent) for it to appear. Ask a root recruiter to check your user
-    on that firm is active.
+    You need an active user on that firm, or root recruiter access over its parent. Ask a root
+    recruiter to check that your user on that firm is active.
   </Accordion>
   <Accordion title="I got a 'Company switch failed' message">
-    The switch didn't complete, so you're still in the firm you started in.
-    Try again; if it keeps failing, sign out and back in, then contact
-    [hello@vitay.io](mailto:hello@vitay.io).
+    The switch didn't complete and you're still in the original firm. Try again. If it keeps
+    failing, sign out and back in, then contact [hello@vitay.io](mailto:hello@vitay.io).
   </Accordion>
-  <Accordion title="A candidate I know exists doesn't show up in the list">
-    They probably belong to another branch. Switch to that branch, or use the
-    search in the top bar, which can surface the candidate so you can open
-    them read-only — the different-branch banner will tell you which branch
-    to switch to.
+  <Accordion title="A candidate I know exists isn't in the list">
+    They probably belong to another branch. Switch to it, or find them with the top-bar search and
+    read the banner to see which branch to switch to.
   </Accordion>
-  <Accordion title="My export is missing records from another branch">
-    Exports are scoped to the firm selected in the switcher. Run one export
-    per firm, switching between them.
+  <Accordion title="My export is missing another branch's records">
+    Exports cover the selected firm only. Run one export per firm.
   </Accordion>
 </AccordionGroup>
 
@@ -108,4 +92,4 @@ You can still read the candidate while the banner is up, but the actions that ch
   <Card title="Firm configuration" icon="sliders" href="/account-configuration/firm-configuration" />
 </CardGroup>
 
-{/* source: app.vitay.io projects/references shared/components/topbar/topbar.component.{html,ts} + projects/configuration shared/components/topbar/topbar.component.{html,ts} (shared src/app/shared/styles/topbar.component.scss; TOPBAR.ACCOUNTS.SWITCH "Switch account" header, chevron only when switchable, .active + check icon + aria-current on the current firm, name truncated with title tooltip; companies?.length > 1 dropdown vs single static pill, onChangeCompanies → POST /oauth/refresh with hiring_firm_id, "Company switch failed" toast, export icon → ModalsExportComponent), src/app/shared/services/candidate-access.service.ts (isFromDifferentBranch / isActionsDisabled), projects/references protected/candidates/show/alerts (CANDIDATE.DIFFERENT_BRANCH) + show/header + candidates.show.component.html (Edit / Delete / Add reference / Request reference disabled when isFromDifferentBranch); api app/controllers/api/v3/users/hiring_firms_controller.rb (active recruiters' firms + parent/sibling sub-accounts for parent root recruiters, sorted by lowercased name), app/controllers/api/v1/api_controller.rb#access_as_parent_root_recruiter?, app/controllers/concerns/authorization.rb (@current_company from the token's hiring_firm_id), app/controllers/api/v3/documents/csv_controller.rb#find_resources (every export scoped to current_company), app/models/concerns/has_secure_tokens.rb (hiring_firm ||= default_hiring_firm on sign-in), app/models/user.rb (default_hiring_firm) */}
+{/* source: app projects/references/src/app/shared/components/topbar/topbar.component.{html,ts} + projects/configuration/src/app/shared/components/topbar/topbar.component.html (company-switcher, TOPBAR.ACCOUNTS.SWITCH, TOASTS.COMPANY_SWITCH_FAILED), projects/references/src/app/protected/candidates/show/{alerts,header}, candidates.show.component.html (isFromDifferentBranch), projects/references/src/assets/i18n/en.json (CANDIDATE.DIFFERENT_BRANCH, COMMON.DEFAULT_BRANCH); api app/controllers/api/v3/users/hiring_firms_controller.rb, app/controllers/api/v3/oauth_controller.rb (create_refresh), app/controllers/api/v3/documents/csv_controller.rb */}

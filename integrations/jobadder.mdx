@@ -3,71 +3,59 @@ title: "JobAdder integration"
 description: "Connect Vitay to JobAdder via OAuth so your team can request references and push reports without leaving JobAdder."
 ---
 
-The JobAdder integration uses OAuth 2.0 to link your Vitay firm to your JobAdder account. Once connected, Vitay adds a **View candidate** action button inside JobAdder, letting recruiters open a candidate's Vitay reference panel and trigger reference requests directly from JobAdder.
+Connect Vitay to JobAdder to add a **View candidate** action to JobAdder candidate records. It opens the candidate in Vitay, importing them if needed, so you can send a reference request.
 
 <Note>
-  Setting up the JobAdder integration requires **root recruiter** access in Vitay. You will need a JobAdder login that can approve the connection — the client credentials are managed by the Vitay platform.
+  Connecting JobAdder requires the root recruiter role in Vitay and a JobAdder login that can approve the connection. You don't need API credentials; Vitay supplies them.
 </Note>
 
 ## What the integration does
 
-- **In-ATS action button** — Vitay registers a "View candidate" partner action inside JobAdder on the Candidate entity. Clicking it opens the Vitay reference panel for that candidate.
-- **Request references from JobAdder** — trigger a reference request for a JobAdder candidate without leaving the ATS.
-- **Import candidates** — sync a JobAdder candidate record into Vitay automatically when accessed through the action button.
-- **Push candidates to JobAdder** — create or update a candidate record in JobAdder from Vitay.
-- **Upload reference reports** — once references are complete, attach the reference PDF to the candidate's JobAdder profile.
-- **Update candidate status** — write the Vitay candidate score and a custom status back to JobAdder.
+- View candidate action. Vitay adds a **View candidate** action to the Candidate record in JobAdder.
+- Import on demand. Using the action brings the JobAdder candidate into Vitay, or opens their existing Vitay record.
+- Push candidates to JobAdder. Create a JobAdder candidate from a Vitay candidate.
+- Upload reference reports. Attach a reference PDF to the candidate's JobAdder profile.
 
 ## Connect JobAdder
 
-The integration follows a standard OAuth 2.0 authorization-code flow, and a root recruiter can set it up self-serve:
-
 <Steps>
-  <Step title="Open the JobAdder integration">
-    In Vitay, open **Integrations** and select the **JobAdder** card.
+  <Step title="Open the JobAdder card">
+    In the **Configuration** area, select **Integrations** and click the **JobAdder** card.
   </Step>
-  <Step title="Start the connection">
-    Click **Start**. Vitay redirects you to JobAdder's authorization screen.
+  <Step title="Click Start">
+    Click **Start**. Vitay sends you to JobAdder's sign-in page.
+
+    ![SCREENSHOT(jobadder-connect-modal): The JobAdder dialog with the Start button](/images/placeholder.png)
   </Step>
   <Step title="Approve in JobAdder">
-    Sign in with your JobAdder credentials and approve the connection. Vitay stores the access and refresh tokens and registers the "View candidate" action in your JobAdder account.
+    Sign in to JobAdder and approve the connection. You return to Vitay, and the **View candidate** action is added to your JobAdder account.
   </Step>
 </Steps>
 
-Vitay refreshes the JobAdder access token automatically in the background.
-
-![SCREENSHOT: Integrations settings page showing a connected JobAdder integration — placeholder](/images/placeholder.png)
-
 ## Use the integration
 
-Once connected:
-
-- In JobAdder, open any candidate record and find the **Vitay — View candidate** action. Clicking it loads the candidate into Vitay (or shows their existing Vitay record) and lets you send a reference request.
-- In Vitay, recruiters can push a candidate's profile or reference report back to JobAdder from the candidate page.
+- In JobAdder, open a candidate and choose **View candidate**. The candidate opens in Vitay, where you can send a reference request. If Vitay shows **Get candidate data**, click it to import the candidate.
+- In Vitay, use the **Synchronize** menu on the candidate page or on a completed reference to push the candidate or a report to JobAdder.
 
 ## How often it syncs
 
-There's no scheduled background import for JobAdder — the integration works **on demand**. A candidate is pulled from JobAdder into Vitay at the moment someone opens the **View candidate** action for them, and pushes, report uploads, and status write-backs happen as soon as you trigger them. Vitay refreshes its JobAdder access token as part of each of those actions, so nothing needs re-authorising between uses.
-
-Because nothing runs on a timer, a change made in JobAdder doesn't reach Vitay on its own — open the candidate through the Vitay action to bring the latest details across.
+Nothing runs on a schedule. A candidate is pulled from JobAdder when someone uses **View candidate**, and pushes and uploads happen when you trigger them. A change made in JobAdder reaches Vitay the next time you open the candidate through the action.
 
 ## Disconnect JobAdder
 
-Contact [hello@vitay.io](mailto:hello@vitay.io) to remove the integration.
-
-Disconnecting also removes the **View candidate** action from your JobAdder account. If JobAdder has already revoked Vitay's access by the time you disconnect, the action can't be removed automatically — delete it from your JobAdder partner actions, or contact [hello@vitay.io](mailto:hello@vitay.io).
+A root recruiter clicks the **JobAdder** card and chooses **Delete Integration**. Vitay also removes the **View candidate** action from JobAdder. If JobAdder has already revoked Vitay's access, the action can't be removed for you: delete it from your JobAdder partner actions, or contact [hello@vitay.io](mailto:hello@vitay.io).
 
 ## Troubleshooting
 
 <AccordionGroup>
-  <Accordion title="The Vitay action button is not showing in JobAdder">
-    The partner action is registered during the OAuth flow. If the button is missing, the connection may not have completed successfully. Ask a root recruiter to re-run the connection from **Integrations**, or contact [hello@vitay.io](mailto:hello@vitay.io).
+  <Accordion title="The View candidate action is missing in JobAdder">
+    The action is added when you approve the connection. If it's missing, the connection may not have finished. Disconnect and connect again from **Integrations**, or contact [hello@vitay.io](mailto:hello@vitay.io).
   </Accordion>
   <Accordion title="A reference report won't upload to JobAdder">
-    The candidate must be synced to JobAdder before a document can be attached. Ensure the candidate has been pushed to (or imported from) JobAdder so the sync record exists.
+    The candidate must be linked to JobAdder first, either imported through **View candidate** or pushed from Vitay.
   </Accordion>
-  <Accordion title="The token has expired / I see authorization errors">
-    Vitay refreshes the JobAdder token automatically. If you still see errors, the refresh token may have been revoked in JobAdder. Ask a root recruiter to reconnect from **Integrations**, or contact [hello@vitay.io](mailto:hello@vitay.io).
+  <Accordion title="Authorization errors">
+    Vitay renews its JobAdder access automatically. If errors persist, the access may have been revoked in JobAdder. Disconnect and connect again, or contact [hello@vitay.io](mailto:hello@vitay.io).
   </Accordion>
 </AccordionGroup>
 
@@ -80,4 +68,4 @@ Disconnecting also removes the **View candidate** action from your JobAdder acco
   <Card title="Add a candidate" icon="user-plus" href="/candidates-reference-requests/add-a-candidate" />
 </CardGroup>
 
-{/* source: api app/controllers/api/jobadder_controller.rb (load_entity/upload_entity call refresh_token then JobadderCandidateSyncJob.perform_now — on-demand only, no scheduled task in lib/tasks or config/schedule.rb); api app/controllers/api/jobadder_controller.rb (destroy: refresh token, list + delete partner actions best-effort, then pseudo_destroy); api app/services/external_services/jobadder/; api app/models/external_authorisations/jobadder.rb */}
+{/* source: api app/controllers/api/jobadder_controller.rb (authorize creates "View candidate" partner action; load_entity → JobadderCandidateSyncJob on demand; destroy removes partner actions best-effort); api app/services/external_services/jobadder/; app src/app/shared/services/integrations/integrations.jobadder.service.ts; app projects/configuration modals.integrations (MODALS.INTEGRATIONS.JOBADDER.SUBMITKEY "Start", INTEGRATIONS.DELETE); app projects/references/src/app/protected/iframe (IFRAME.SYNC) */}

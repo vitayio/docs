@@ -3,75 +3,65 @@ title: "Add a candidate"
 description: "Create a candidate record in Vitay."
 ---
 
-Before you can send a reference request, the candidate needs to exist in Vitay. Adding a candidate takes under a minute — a first name, last name, and Internal ID are all that's required to start, and you can fill in the rest later.
+A candidate has to exist in Vitay before you can send them a reference request. You need a first name, a last name and an Internal ID to start; everything else can wait.
 
 <Note>
-  You need a recruiter (or higher) role to add candidates. If you don't see the
-  option, ask a root recruiter at your firm to check your permissions.
+  Any recruiter can add candidates. The add buttons are disabled on demo accounts.
 </Note>
 
-## Add a candidate
-
 <Steps>
-  <Step title="Open the Candidates list">
-    In the left sidebar, click **Candidates**. This shows all active candidates
-    in your account.
-  </Step>
-  <Step title="Open the add form">
-    Click the **Add candidate** button in the left navbar. (On the Candidates
-    page itself, the plus icon in the top-right corner of the page header opens
-    the same form.)
+  <Step title="Open the Add Candidate form">
+    Click **Add Candidate** in the left sidebar, under **Quick Request**. On the
+    **Candidates** page, the plus icon in the toolbar opens the same form.
 
-    ![SCREENSHOT: the left navbar with the "Add candidate" button highlighted, plus the icon-only plus button in the Candidates page header — placeholder](/images/placeholder.png)
+    ![SCREENSHOT(add-a-candidate-sidebar-buttons): The Quick Request and Add Candidate buttons at the top of the left sidebar](/images/placeholder.png)
   </Step>
   <Step title="Fill in the candidate's details">
-    Complete the form fields:
+    - **First name** and **Last name** are required.
+    - **Internal ID** is required. Type your own identifier (for example the ID from your ATS) or click the refresh icon to generate one.
+    - **Email** is required by default. A root recruiter can turn off **Candidate email required** in Configuration.
+    - **Mobile number** is optional. When it's filled in, the reference request is also sent by text message.
+    - **Preferred Name**, **Internal notes about the candidate** and **Placement Date** are optional. Internal notes are never shown to the candidate.
+    - **Assigned user** is the recruiter responsible for the candidate. It defaults to you. See Troubleshooting if you can't change it.
 
-    - **First name** and **Last name** — required.
-    - **Preferred name** — optional; used in outgoing emails if provided.
-    - **Email** — whether an email address is required (and must be unique within your account) is a firm setting, and it's on by default.
-    - **Mobile number** — optional; when a candidate has a phone number, Vitay also sends requests and reminders by text message.
-    - **Internal ID** — required. Your firm's own identifier (e.g., from your ATS) — type one in, or click the refresh icon to generate one.
-    - **Assigned user** — the recruiter responsible for this candidate. Defaults to you; whether you can assign someone else depends on your role and firm settings (see Troubleshooting below).
-    - **Notes** — private notes visible only to recruiters, not to the candidate.
-    - **Placement date** — optional; useful for tracking when the hire was made.
+    **Secondary ID**, **Job title**, **Position applied for** and **Additional report recipients** appear only when your firm has those settings on.
 
-    Additional fields such as **Secondary ID**, **Job title**, **Position applied for**, and **Additional report recipients** appear only when your firm has those settings enabled.
-
-    ![The Add candidate form](/images/add-candidate-modal.png)
+    ![SCREENSHOT(add-a-candidate-modal): The Add Candidate form with name, Internal ID, email and mobile number fields](/images/placeholder.png)
   </Step>
-  <Step title="Submit">
-    Click **Submit**. The candidate record is created and you're taken to their
-    profile, where you can send a reference request right away.
+  <Step title="Click Submit">
+    A **Candidate added** message confirms it and Vitay opens the candidate's
+    page, where you can send a reference request right away. To change details
+    later, click the pencil (**Edit candidate**) in the candidate header.
   </Step>
 </Steps>
 
-## What happens next
-
-- The candidate appears in your **Candidates** list immediately.
-- You can edit any field later by opening the candidate and clicking **Edit**.
-- To begin collecting references, see [Send a reference request](/candidates-reference-requests/send-a-reference-request).
+Next: [Send a reference request](/candidates-reference-requests/send-a-reference-request).
 
 ## Troubleshooting
 
 <AccordionGroup>
-  <Accordion title="I get an error saying the email already exists">
-    When your firm requires candidate emails, each address can only be linked to
-    one active candidate per account. Search for the email in the Candidates
-    list — the record may already exist (possibly under a different name or
-    deactivated). Deactivated candidates live in the **Recycle Bin** in the left
-    sidebar, where you can reactivate them yourself.
+  <Accordion title="The email is already associated with a candidate">
+    While candidate emails are required, each address can belong to only one
+    active candidate in your account. Search the **Candidates** list for the
+    address. If you add an email that belongs to a deactivated candidate, Vitay
+    reactivates that candidate with the details you entered instead of creating
+    a new one.
+  </Accordion>
+  <Accordion title="Vitay says the candidate is deactivated">
+    The Internal ID you entered belongs to a candidate in the **Recycle Bin**.
+    Click **Open the Recycle Bin** in the error to find them and reactivate
+    them, or use a different Internal ID. See
+    [Recycle Bin](/candidates-reference-requests/recycle-bin).
   </Accordion>
   <Accordion title="Some fields are missing from the form">
-    Fields like Secondary ID, Job title, and Position applied for are controlled
-    by your firm's settings. If you need them enabled, ask a root recruiter at
-    your firm to turn them on under account settings.
+    Secondary ID, Job title and Position applied for are switched on in your
+    firm's settings. Ask a root recruiter to turn them on.
   </Accordion>
   <Accordion title="I can't assign the candidate to another recruiter">
-    The **Assigned user** field is editable by root recruiters, when your firm
-    has enabled candidate ownership transfers, or when you manage the
-    sub-account the candidate belongs to. Ask a root recruiter if you need a
-    candidate reassigned.
+    The **Assigned user** field appears for root recruiters, for everyone when
+    your firm has turned on **Allow users to update the assigned user**, and for
+    recruiters who manage the sub-account the candidate is in. Otherwise ask a
+    root recruiter to reassign the candidate.
   </Accordion>
 </AccordionGroup>
 
@@ -84,4 +74,4 @@ Before you can send a reference request, the candidate needs to exist in Vitay. 
   <Card title="Add a reference manually" icon="pen-to-square" href="/candidates-reference-requests/add-a-reference-manually" />
 </CardGroup>
 
-{/* source: app.vitay.io src/app/shared/components/modals/candidates/modals.candidates.component.html (fields: first_name, last_name, preferred_name, email, phone, internal_id, secondary_id, job_id, notes, placement_date, added_by_id); api app/models/candidate.rb */}
+{/* source: app src/app/shared/components/modals/candidates/modals.candidates.component.{html,ts}; projects/references/src/app/shared/components/navbar/navbar.component.html; projects/references/src/assets/i18n/en.json (NAVBAR.CTA, MODALS.CANDIDATES, COMMON.*, TOASTS.CANDIDATE_ADDED, RECYCLE_BIN.OPEN_LINK); projects/configuration/src/assets/i18n/en.json (is_candidate_email_required, is_candidate_ownership_updatable); api app/controllers/api/v3/candidates_controller.rb#create + #render_candidate_deactivated; app/controllers/api/v1/candidates_controller.rb#render_candidate_already_exists_with_email; app/models/candidate.rb (validations); app/models/reference_request.rb#send_reference_requests; db/schema.rb settings.is_candidate_email_required */}

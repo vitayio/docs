@@ -3,179 +3,123 @@ title: "Email sender settings"
 description: "Control the From name and email address that references and candidates see when Vitay sends them emails."
 ---
 
-Every email Vitay sends on your behalf — reference requests, reminders, and thank-you notes — shows a sender name and email address in the recipient's inbox. You can choose whether those come from the individual recruiter's identity or from a shared, firm-wide value.
+Emails Vitay sends for you, such as reference requests and reminders, show a sender name and address in the recipient's inbox. You choose whether those come from each recruiter or from one firm-wide value.
 
 <Note>
-  You need a **root recruiter** role to change email sender settings. Changes take effect for all future outgoing emails as soon as they are saved.
+  You need the root recruiter role. Changes apply to emails sent after they are saved.
 </Note>
 
 ## How sender identity works
 
-Sender identity is controlled by the **Email Sender Identity** card in **Settings → Configuration**. It has two independent choices:
+The **Email Sender Identity** card on the **Configuration** tab in Settings has two independent choices:
 
 | Control | Choices | What recipients see |
 |---|---|---|
-| **From: Address** | **Recruiter's email** (default) or **Custom address** | The email address in the From line |
+| **From: Address** | **Recruiter's email** (default) or **Custom address** | The address in the From line |
 | **From: Name** | **Recruiter's name** (default) or **Custom name** | The display name in the From line |
 
-Because the two are independent, you can mix them: for example, show each recruiter's real name but send from one shared company address.
+You can mix them, for example each recruiter's name with one shared company address.
 
 ## Which setup should you choose?
 
-### Personalised — recruiter's email and name
+### Personalised: recruiter's email and name
 
-Both controls set to the recruiter's own value. Emails arrive looking as though they came directly
-from the recruiter managing that candidate.
+Emails look like they come straight from the recruiter managing the candidate. This works well when candidates already know a named recruiter. Every recruiter's email domain needs to be authenticated (see [Deliverability and DMARC](#deliverability-and-dmarc)) or messages may land in spam.
 
-- **Good for** firms where candidates already have a relationship with a named recruiter, and where
-  personal outreach lifts response rates. Recipients are less likely to ignore a familiar sender.
-- **Consider** that every recruiter's email domain needs to be authenticated (see below) or messages
-  may land in spam, and that replies land in individual inboxes rather than a shared one.
+### Centralised: one custom address and name
 
-### Centralised — one custom address and name
-
-Both controls set to a custom value, e.g. `references@yourcompany.com` with the name
-"Acme Talent Team". Every email looks the same regardless of who is assigned.
-
-- **Good for** a consistent, branded experience, teams with recruiter turnover, firms that want
-  replies in a shared inbox, and IT teams with strict email governance.
-- **Consider** that it feels less personal — but it's far easier to authenticate and maintain,
-  because there's only one domain to configure.
+For example `references@yourcompany.com` with the name "Acme Talent Team". Every email looks the same whoever is assigned. It's less personal, but there's only one domain to authenticate, and it holds up when recruiters leave.
 
 ### Mixed
 
-Use the recruiter's address with a custom display name, or the reverse. Less common, but useful when
-replies should reach the recruiter while the brand name stays consistent.
+The recruiter's address with a custom name, or the reverse. Useful when the brand name should stay consistent but the address should be the recruiter's.
 
-### Using a Vitay-hosted address
+### Vitay-hosted address
 
-If you don't have a company address you want to send from, you can leave the custom address as a
-Vitay-hosted one — new accounts start with `recruitment@vitay.io` and the sender name "Recruitment".
-
-- **Pros:** nothing to configure, and Vitay handles authentication and deliverability for you.
-- **Cons:** the address doesn't match your company's domain, which can look less familiar to
-  candidates and references.
-
-It's a good starting point for smaller teams; most established firms eventually move to their own
-domain.
+New accounts start with the custom address `recruitment@vitay.io` and the name "Recruitment". It needs no DNS setup, but it doesn't match your company's domain, so it can look less familiar to recipients.
 
 ## Where replies go
 
-The From address is not necessarily where replies land. Reply-to routing is controlled separately,
-on the same **Settings → Configuration** tab:
-
-| Setting | Effect |
-|---|---|
-| **Redirect support emails to assigned user** (on by default) | Replies go to the recruiter assigned to that candidate — their own address and name. |
-| **Primary reply email** / **Primary Reply Name** | Used when the redirect setting is off. Every reply goes to this one shared address instead. |
-
-So a firm can send everything from one branded address and still have each reply reach the right
-recruiter — or switch the redirect off to funnel all replies into a shared inbox.
+The From address doesn't decide where replies land. Replies to candidate and reference emails go to the recruiter assigned to the candidate. This isn't a setting on the tab; if replies should go to one shared inbox instead, contact **hello@vitay.io**.
 
 ## Which sender your team sees
 
-The settings above shape the emails that go to candidates and references. Emails to **your own team** — **Reference completed**, **Candidate submitted their references**, **Reference awaiting your review**, **Feedback completed** and **Pre-screening completed**, plus the **Send test** button on the Emails tab — also carry your firm's identity rather than Vitay's:
+Emails to your own team, such as **Reference completed**, **Candidate submitted their references**, **Reference awaiting your review**, **Feedback completed**, **Pre-screening completed** and the **Send test** button on the **Emails** tab, also carry your firm's identity:
 
-| Your **From: Address** choice | Team notifications are sent from |
+| Your **From: Address** choice | Team emails are sent from |
 |---|---|
 | **Recruiter's email** | Your **Primary reply email** and **Primary Reply Name** |
 | **Custom address** | The custom address and name |
 
-Replies to those emails go to your **Primary reply email** either way. The **Reference awaiting your review** email is the one exception: it is sent from the same firm address, shown as "*Candidate name* via *Your firm*", but replying to it reaches the candidate who added the reference. If you have never changed **Primary reply email**, it is still Vitay's support address, so team emails keep coming from there until you set your own. Account emails such as password resets and welcome emails always come from Vitay.
+Replies to team emails go to your **Primary reply email**. The exception is **Reference awaiting your review**: it shows as "*Candidate name* via *Your firm*" and replying reaches the candidate. Until you change **Primary reply email**, it is Vitay's support address (hello@vitay.io). Password resets and other account emails always come from Vitay.
 
-Because team notifications now carry your domain, authenticate it under **Settings → Developers → DMARC Protection** (below), otherwise mail clients may show them as sent "via" another domain or file them as spam.
+If team emails come from your own domain, authenticate it under [Deliverability and DMARC](#deliverability-and-dmarc), or mail clients may show them as sent "via" another domain or file them as spam.
 
 ## Change the sender address or name
 
 <Steps>
-  <Step title="Open Configuration settings">
-    Go to **Settings → Configuration** and find the **Email Sender Identity** card.
-
-    ![The email (sender) settings page](/images/email-sender-settings.png)
+  <Step title="Open the Configuration tab">
+    In the Configuration area, click **Settings**, then the **Configuration** tab. Scroll to the **Email Sender Identity** card.
   </Step>
   <Step title="Choose the From: Address">
-    Next to **From: Address**, click either **Recruiter's email** or **Custom address**. The choice saves as soon as you click it.
+    Next to **From: Address**, click **Recruiter's email** or **Custom address**. The choice saves when you click it.
 
-    If you choose **Custom address**, an input appears (for example, `noreply@yourcompany.com`). Type the address; it saves automatically once you stop typing or click away, and **Saved** appears under the field.
+    For **Custom address**, type the address in the field that appears. It saves when you stop typing, and **Saved** shows under the field.
   </Step>
   <Step title="Choose the From: Name">
-    Next to **From: Name**, click either **Recruiter's name** or **Custom name** — again, the choice saves on click.
+    Next to **From: Name**, click **Recruiter's name** or **Custom name**. For **Custom name**, type the display name in the field that appears.
 
-    If you choose **Custom name**, type the display name (for example, "Acme Recruiting Team") in the input that appears; it saves automatically, like the address.
-
-    ![SCREENSHOT: The Email Sender Identity card with the From: Address and From: Name segmented choices and a custom input with the Saved status under it — placeholder](/images/placeholder.png)
+    ![SCREENSHOT(email-sender-settings-identity-card): The Email Sender Identity card with the From: Address and From: Name choices and the custom address field](/images/placeholder.png)
   </Step>
 </Steps>
 
 ## Deliverability and DMARC
 
-If you set a custom From address on a domain you own (e.g. `hiring@yourcompany.com`), your domain's DMARC policy may cause emails to land in spam or be rejected outright — unless Vitay is authorised to send on your domain's behalf.
+If you send from a domain you own (for example `hiring@yourcompany.com`), your domain's DMARC policy can send those emails to spam or reject them unless Vitay is authorised to send for that domain.
 
-### The three standards, in plain language
+Three DNS standards prove an email came from your domain:
 
-Three DNS-based standards work together to prove an email really came from your domain:
+- **SPF** lists the mail servers allowed to send for your domain.
+- **DKIM** adds a signature to each message showing it came from an authorised sender and wasn't changed.
+- **DMARC** tells receiving servers what to do with mail that fails those checks.
 
-- **SPF (Sender Policy Framework)** — a DNS entry listing which mail servers are allowed to send
-  email for your domain. Vitay's sending infrastructure has to be on that list.
-- **DKIM (DomainKeys Identified Mail)** — a cryptographic signature added to every message, proving
-  it came from an authorised sender and hasn't been altered on the way. Vitay supplies the DKIM
-  entries you publish.
-- **DMARC (Domain-based Message Authentication, Reporting & Conformance)** — builds on the other
-  two. It tells receiving mail servers what to do with a message that fails those checks: reject
-  it, send it to spam, or let it through — and can send you reports on what's happening.
-
-You don't need to write any of these by hand. When you add a domain in Vitay, the records you need
-are generated for you; your job is to publish them in your DNS.
+You don't write these records yourself. Vitay generates them and you publish them in your DNS.
 
 ### Add and verify your domain
 
-You can set this up yourself from **Settings → Developers**, under **DMARC Protection**:
-
 <Steps>
+  <Step title="Open the Developers tab">
+    In Settings, click the **Developers** tab and find **DMARC Protection**.
+  </Step>
   <Step title="Add your domain">
-    Enter your domain in the **Domain name** field and click **Add Domain**.
+    Type your domain in **Domain name** and click **Add Domain**.
   </Step>
   <Step title="Publish the DNS records">
-    Vitay generates a table of DNS records (**Type**, **Host**, **Value**) for your domain. Ask your IT team or domain registrar to publish these records in your domain's DNS.
+    Vitay lists the DNS records for the domain (**Type**, **Host**, **Value**). Ask your IT team or domain registrar to publish them. The download button next to the domain gives you the records as a CSV.
   </Step>
   <Step title="Verify">
-    Click **Check DMARC status**. Vitay checks each record and shows a green "valid" indicator once the records are verified.
+    Click the refresh button next to the domain (tooltip **Check DMARC status**). A green check mark appears next to the domain once the records are verified.
 
-    ![SCREENSHOT: The DMARC Protection section on Settings → Developers with the generated DNS records table and Check DMARC status button — placeholder](/images/placeholder.png)
+    ![SCREENSHOT(email-sender-settings-dmarc): The DMARC Protection card on the Developers tab with a domain added and its Type, Host and Value records listed](/images/placeholder.png)
   </Step>
 </Steps>
 
-<Note>
-  DMARC setup requires access to your company's DNS. It is a one-time step per domain. If you get stuck, contact **hello@vitay.io**.
-</Note>
-
-<Note>
-  Adding and verifying a domain here does not change your From address. It authorises the domain so
-  mail sent from it is trusted — you still choose the address itself with **From: Address** on the
-  Configuration tab.
-</Note>
+Adding a domain doesn't change your From address. It only authorises the domain; you still pick the address with **From: Address**. If you get stuck, contact **hello@vitay.io**.
 
 ## Troubleshooting
 
 <AccordionGroup>
-  <Accordion title="References say emails are landing in their spam folder">
-    This is most commonly a deliverability issue. If you are using a custom From address, confirm that the DNS records generated under **Settings → Developers → DMARC Protection** have been published and show as valid. If you are using recruiters' own emails, ask your IT team whether your company's email domain has a restrictive DMARC policy that prevents third-party sending.
+  <Accordion title="References say our emails land in spam">
+    If you use a custom From address, check that its domain shows a green check mark under **DMARC Protection** on the **Developers** tab. If you use recruiters' own addresses, ask your IT team whether your domain's DMARC policy blocks third-party sending, and add the domain under **DMARC Protection**.
   </Accordion>
   <Accordion title="Emails to my team show 'via' another domain or land in spam">
-    Team notifications are sent from the address in [Which sender your team sees](#which-sender-your-team-sees). If that address is on your own domain, publish the DNS records generated under **Settings → Developers → DMARC Protection** and check they show as valid. If it is Vitay's support address, you have not set a **Primary reply email** or custom **From: Address** yet.
+    Team emails come from the address in [Which sender your team sees](#which-sender-your-team-sees). If that address is on your domain, add and verify the domain under **DMARC Protection**. If it is hello@vitay.io, you haven't set a **Primary reply email** or custom **From: Address** yet.
   </Accordion>
-  <Accordion title="I set a custom From address but outgoing emails still show the recruiter's address">
-    Check that **From: Address** is set to **Custom address** (not **Recruiter's email**) and that the status under the address says **Saved**. If it says **Not saved**, the address was rejected — check it for typos and correct it.
+  <Accordion title="I set a custom From address but emails still show the recruiter's address">
+    Check that **From: Address** is set to **Custom address** and that the status under the field says **Saved**. If it says **Not saved**, the address was rejected; check it for typos.
   </Accordion>
   <Accordion title="Replies are going to the wrong inbox">
-    Replies are not controlled by the From address. On **Settings → Configuration**, check
-    **Redirect support emails to assigned user**: when it's on, replies go to the recruiter assigned
-    to that candidate; when it's off, they all go to the **Primary reply email** instead.
-  </Accordion>
-  <Accordion title="We haven't set a custom address — what are emails sent from?">
-    New accounts start with a Vitay-hosted address (`recruitment@vitay.io`, sender name
-    "Recruitment"), which is used whenever **From: Address** is set to **Custom address** and you
-    haven't replaced it. That works out of the box with no DNS setup.
+    Replies to candidate and reference emails go to the candidate's assigned recruiter, whatever the From address. Check who is assigned to the candidate (see [Manage users](/account-configuration/manage-users#change-the-assigned-recruiter-for-a-candidate)).
   </Accordion>
 </AccordionGroup>
 
@@ -188,4 +132,4 @@ You can set this up yourself from **Settings → Developers**, under **DMARC Pro
   <Card title="Send a reference request" icon="paper-plane" href="/candidates-reference-requests/send-a-reference-request" />
 </CardGroup>
 
-{/* source: app.vitay.io projects/configuration settings.configuration.component.html SETTINGS.CONFIGURATION.EMAIL_SENDER (From: Address / From: Name segmented buttons via setEmailSenderSource('from'|'name', bool), appAutoSave + app-auto-save-status on branding_email_from / branding_email_name), SETTINGS.CONFIGURATION.support_email_from "Primary reply email" / support_email_name "Primary Reply Name" / is_support_email_to_assigned_enabled "Redirect support emails to assigned user"; settings.developers.dmarc.component.{html,ts} SETTINGS.DEVELOPERS.DMARC (Domain name, Add Domain, Type/Host/Value table, Check DMARC status); api app/models/setting.rb (branding_email_from default recruitment@vitay.io, branding_email_name default "Recruitment", is_branding_emails_from_enabled/_name_enabled default TRUE = use assigned recruiter's value, support_email_from default hello@vitay.io, is_support_email_to_assigned_enabled default TRUE, settings_json dmarc via find/create/update/delete_dmarc_setting); api app/models/reference.rb ~922-932 + reference_request.rb ~268 + candidate.rb ~278-299 (from_email/from_name ternaries and the reply_to override block); app/models/setting.rb#recruiter_sender (is_branding_emails_from_enabled → support_email_from/name, else branding_email_from/name, Rails.configuration.emails only when blank) + #support_sender (reply-to), used by RecruiterReference#send_reference_completed_email_to_recruiter, ReferenceRequest#send_reference_request_completed_to_recruiter, Feedback#send_feedback_completed_email_to_recruiter, PreScreening#send_pre_screening_completed_email_to_recruiter and Api::V3::EmailsController#preview (api #2713); Reference#notify_pending_review From = recruiter_sender with "<candidate> via <firm>" display name, Reply-To = candidate (api #2721); platform emails (password reset, sign-up, locked-out, admin) keep config.emails; api app/controllers/api/v3/dmarc_settings_controller.rb, app/services/send_grid_service/dmarc.rb (SendGrid /v3/whitelabel/domains?dmarc=true, automatic_security, custom_dkim_selector 'vit' → dkim1/dkim2/mail_cname/dmarc records) */}
+{/* source: app projects/configuration protected/settings/configuration/settings.configuration.component.{ts,html} (EMAIL_SENDER card; no is_support_email_to_assigned_enabled control), protected/settings/developers/settings.developers.dmarc.component.html; api db/schema.rb (branding/support defaults), app/models/setting.rb (recruiter_sender, support_sender), app/models/reference.rb (from_email/from_name, reply_to = assigned recruiter when is_support_email_to_assigned_enabled; notify_pending_review), app/controllers/api/v3/emails_controller.rb, app/controllers/api/v3/dmarc_settings_controller.rb */}

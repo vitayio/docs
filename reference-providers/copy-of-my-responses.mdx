@@ -4,25 +4,21 @@ description: "Whether candidates and people giving a reference can download or r
 ---
 
 <Note>
-  **This article applies to both candidates and people asked to give a reference.** Neither form has a Vitay login, and the answer is the same for both.
+  This article is for both candidates and people asked to give a reference. The answer is the same for both forms.
 </Note>
 
-There is no download, print, or "email me a copy" option on the Vitay forms. Once you click **Submit**, the form shows a confirmation page and your answers go straight to the recruiting team — the form itself doesn't keep a copy for you to open later.
-
-If you'd like a record of what you submitted, ask the recruiter who sent you the request. They can see everything you entered and can decide whether to share it with you.
+The forms have no download, print, or "email me a copy" option, and Vitay doesn't send you a copy after you submit. Once you click **Submit**, you see a thank-you page and your answers go to the recruiting team. If you want a record, ask the recruiter.
 
 <Steps>
-  <Step title="Find the recruiter's contact details">
-    Open the original email you received from Vitay. The recruiter's name is in the message, and replying to that email reaches them directly.
+  <Step title="Reply to the email you received">
+    Open the email that sent you the form and reply to it. Replies go to the recruiting team that sent it.
   </Step>
   <Step title="Ask for a copy">
-    Say which form you filled in (your list of references, or the reference you gave for a named candidate) and that you'd like a copy of your submission.
+    Say which form you filled in (your list of references, or the reference you gave for a named candidate) and that you'd like a copy.
   </Step>
 </Steps>
 
-<Note>
-  If you gave a reference, whether your answers can be shared with the candidate is up to the recruiting team — and, if the form asked you for permission to release your answers to the candidate, on the answer you gave there.
-</Note>
+Whether they share it is up to the recruiting team. If you gave a reference and the form asked **Do we have your permission to release this information to the candidate?**, they'll also take your answer to that into account.
 
 ## Related articles
 
@@ -32,4 +28,4 @@ If you'd like a record of what you submitted, ask the recruiter who sent you the
   <Card title="I don't recognize this request" icon="circle-question" href="/reference-providers/unknown-reference-request" />
 </CardGroup>
 
-{/* source: app.vitay.io projects/references public/references + public/reference-requests templates (submitted views show only thank-you copy / CTAs — no download, print or copy action); api app/controllers/api/v1/references_controller.rb + reference_requests_controller.rb expose no public read-back of a filled form; REFERENCE.PERMISSION.QUESTION.CANDIDATE consent toggle */}
+{/* source: app projects/references/src/app/public/references/references.component.html + public/reference-requests/reference-requests.component.html (submitted views, no download/print); REFERENCE.PERMISSION.QUESTION.CANDIDATE; api app/controllers/api/v1/references_controller.rb public_create (thank-you email disabled); app/models/reference_request.rb send_thank_you_email has no caller */}
