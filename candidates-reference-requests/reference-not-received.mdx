@@ -3,114 +3,78 @@ title: "A reference didn't receive the email"
 description: "Recruiter steps when a reference says they didn't get the request."
 ---
 
-When a reference tells you they never received the request email, a few quick checks from your end can usually resolve it. Work through the steps below before asking them to check their spam folder.
+When a reference says the request never arrived, check the address, check whether delivery failed, then resend.
 
 <Note>
-  These steps are for **recruiters** troubleshooting on behalf of a reference.
-  You need a recruiter (or higher) role to view and edit reference records.
+  These steps are for recruiters. You need access to the candidate to view
+  and edit their references.
 </Note>
 
-## Step 1 — Confirm the email address on file
+## Step 1: Confirm the email address
 
-The most common cause is a simple typo in the email address.
+A typo in the address is the most common cause.
 
 <Steps>
-  <Step title="Open the candidate">
-    Go to **Candidates** and select the candidate who submitted this reference.
+  <Step title="Open the reference">
+    Go to **Candidates**, open the candidate, and click the reference on the
+    **References** tab. Their side panel opens.
   </Step>
-  <Step title="Go to the References tab">
-    Click the **References** tab and find the reference in question.
-  </Step>
-  <Step title="Check the email address">
-    Open the reference record and look at the **Email** field. Confirm it
-    matches what the reference says their address is.
-
-    ![SCREENSHOT: a reference record with the email address field visible — placeholder](/images/placeholder.png)
+  <Step title="Check the address">
+    The email address is listed under the reference's name. Compare it with
+    the address the reference gives you.
   </Step>
   <Step title="Correct it if needed">
-    If the address is wrong, click **Edit** and update the **Email** field.
-    Save the change, then resend the request (see Step 3 below).
+    Click the pencil (**Edit reference**), fix the **Email** field and save.
+    Then resend the request (Step 3).
   </Step>
 </Steps>
 
-## Step 2 — Check the delivery indicator
+## Step 2: Check the delivery icon
 
-Vitay monitors whether outgoing emails are delivered successfully. If a previous email to this address bounced or failed, Vitay records that so you know future sends may also fail. Because a bounce almost always means the address is wrong, Vitay also stops emailing reminders to it until you correct the address or a later email gets through — see [What stops reminders](/candidates-reference-requests/reminders-and-cadence#what-stops-reminders).
+The envelope icon next to the address reflects the last three months of emails to that address. Hover it for the tooltip:
 
-<Steps>
-  <Step title="Look at the envelope icon">
-    On the reference record, look at the colored **envelope icon** next to the
-    email address. Hover it for the tooltip: **Delivered** means Vitay's
-    records show the email arrived, **Failed** means delivery failed, and
-    **Check email validity** means past deliveries to this address suggest a
-    problem. For the full send-by-send history behind that icon — every
-    bounce, drop, and spam report, with the provider's own reason — open the
-    reference's **Email activity** tab; see
-    [Check email and text delivery](/candidates-reference-requests/email-and-text-delivery).
+| Icon | Tooltip | Meaning |
+|---|---|---|
+| Green open envelope | **Delivered** | Emails to this address arrived. |
+| Red envelope | **Failed** | Delivery failed. |
+| Yellow envelope | **Check email validity** | Some emails arrived and some failed. |
 
-    ![SCREENSHOT: a reference record showing the colored envelope delivery icon with its tooltip — placeholder](/images/placeholder.png)
-  </Step>
-  <Step title="What to do if delivery failed or the address is flagged">
-    - Confirm the correct address with the reference directly (phone or an alternative channel).
-    - Update the email address in the reference record (click **Edit**).
-    - Resend the request once the address is corrected.
-  </Step>
-</Steps>
+For every individual event and the provider's reason, open the reference's **Email activity** tab. See [Check email and text delivery](/candidates-reference-requests/email-and-text-delivery).
 
-<Note>
-  Vitay's email validity check is based on delivery history. An address can be
-  flagged if the reference's inbox was full, their mail server temporarily
-  rejected the email, or the address genuinely doesn't exist. When in doubt,
-  ask the reference to provide an alternative address.
-</Note>
+![SCREENSHOT(reference-not-received-envelope-icon): The reference side panel with the colored envelope icon next to the email address and its tooltip](/images/placeholder.png)
 
-## Step 3 — Resend the reference request
+If delivery failed, confirm the address with the reference by phone or another channel and update it. A failure can also mean a full inbox or a server that rejected the message temporarily. While the last email to an address has bounced, Vitay stops emailing reminders to it; see [What stops reminders](/candidates-reference-requests/reminders-and-cadence#what-stops-reminders).
 
-Once the address is confirmed (or corrected), resend the request so the reference gets a fresh email.
+## Step 3: Resend the request
 
-<Steps>
-  <Step title="Open the reference record">
-    On the candidate's **References** tab, click the reference who hasn't received the email.
-  </Step>
-  <Step title="Send a reminder">
-    Click **Send reminder**. Vitay sends the reference request email to the
-    address currently on file, immediately.
+In the reference's side panel, click **Send reminder**. Vitay sends the request email again, right away, to the address now on file.
 
-    ![SCREENSHOT: the reference record with the "Send reminder" button — placeholder](/images/placeholder.png)
-  </Step>
-</Steps>
+## Step 4: Ask them to check spam
 
-## Step 4 — Ask the reference to check their spam folder
+If the address is right and nothing failed, the email probably landed in a filter. Ask the reference to:
 
-If the address is correct and there are no validity flags, the email was likely delivered but caught by a spam or junk filter. Ask the reference to:
-
-1. Check their **Spam**, **Junk**, or **Promotions** folder for an email from Vitay.
-2. Add the Vitay sending address to their contacts or safe-senders list so future emails arrive in their inbox.
-3. Let you know once they've found it, or ask you to resend if they can't locate it.
+1. Check their **Spam**, **Junk** or **Promotions** folder.
+2. Add the sender to their contacts or safe-senders list.
+3. Tell you if they still can't find it, so you can resend.
 
 ## Troubleshooting
 
 <AccordionGroup>
-  <Accordion title="The email address is correct but the reference still isn't getting emails">
-    The reference's mail server may be blocking Vitay's sending domain. Ask
-    them to check with their IT team to whitelist the Vitay sending domain, or
-    try an alternative personal email address if their corporate address is
-    the problem.
+  <Accordion title="The address is correct but nothing arrives">
+    Their mail server may be blocking Vitay's emails. Ask them to have their
+    IT team allow the sender, or use another address.
   </Accordion>
-  <Accordion title="The Send reminder button is greyed out">
-    This usually means reminders are disabled for this candidate or this
-    reference, the reference has reached the limit of 10 reminders, or you
-    sent a reminder within the last 12 hours. See
+  <Accordion title="Send reminder is greyed out">
+    Reminders are off for the candidate or reference, the reference already
+    has 10 reminders, or one went out in the last 12 hours. See
     [Reminders and how they work](/candidates-reference-requests/reminders-and-cadence).
   </Accordion>
-  <Accordion title="The reference says they got the email but the link doesn't work">
-    Reference links don't expire. A link stops working only when the form has
-    already been submitted, the reference declined to respond, or the
-    reference or request was removed. Check the reference's status on the
-    candidate's References tab — if it doesn't explain what they're seeing,
-    contact Vitay support at hello@vitay.io with the candidate name and
-    reference name. Some corporate firewalls also block or pre-scan links, so
-    asking the reference to try a personal device is worth a shot.
+  <Accordion title="They got the email but the link doesn't work">
+    Reference links don't expire. A link stops working once the form has been
+    submitted, the reference declined, or the reference or request was
+    removed. If that doesn't explain it, contact hello@vitay.io with the
+    candidate and reference names. Corporate firewalls sometimes block links,
+    so a personal device is worth a try.
   </Accordion>
 </AccordionGroup>
 
@@ -123,4 +87,4 @@ If the address is correct and there are no validity flags, the email was likely 
   <Card title="Add a reference manually" icon="pen-to-square" href="/candidates-reference-requests/add-a-reference-manually" />
 </CardGroup>
 
-{/* source: api app/models/reference_email_validity.rb (materialized view: is_valid, is_invalid columns); app/models/recruiter_reference.rb (send_reference_email, send_reminder_email); app.vitay.io src/app/shared/services/references.service.ts (sendReferenceReminder, patch) */}
+{/* source: app src/app/shared/models/reference.model.ts (email_validity tooltips), projects/references/src/app/shared/components/sidebar/reference/question-set/sidebar.reference.question-set.component.html + alerts; api app/models/reference_email_validity.rb, app/models/concerns/reminder_email_bounce.rb, app/controllers/api/v1/references_controller.rb (send_reminder, update) */}

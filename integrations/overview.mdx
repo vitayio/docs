@@ -1,65 +1,69 @@
 ---
 title: "Integrations overview"
-description: "Connect Vitay to your ATS so candidates and reference requests stay in sync — no manual data entry."
+description: "Connect Vitay to your ATS so candidates and reference requests stay in sync without manual data entry."
 ---
 
-Vitay integrates with popular applicant tracking systems (ATS) so your team can run reference checks alongside your ATS and get completed reference reports back onto the candidate's record.
+Connect Vitay to your applicant tracking system (ATS) to bring candidates into Vitay and get completed references back onto the candidate's ATS record.
 
 <Note>
-  Setting up an integration requires **root recruiter** access in Vitay. The exact steps vary by ATS — see the article for your platform below.
+  Connecting an integration requires the root recruiter role in Vitay. The steps differ by ATS, so follow the article for your platform below.
 </Note>
 
+<Steps>
+  <Step title="Open Integrations">
+    Open the **Configuration** area and select **Integrations** in the left menu.
+  </Step>
+  <Step title="Pick your ATS">
+    Click your ATS's card and follow the article for that platform. A connected integration shows an **Active** badge on its card.
+  </Step>
+</Steps>
 
-![The Integrations gallery in Configuration](/images/integrations.png)
+![SCREENSHOT(overview-integrations-gallery): The Integrations page in Configuration, showing a card for each ATS](/images/placeholder.png)
 
 ## What integrations do
 
-Depending on the platform, a connected integration can:
+What a connection can do depends on the platform:
 
-- **Import candidates** from your ATS into Vitay — in one click, or automatically as candidates become ready for reference checks.
-- **Send reference requests** for imported candidates without re-entering their details.
-- **Get completed reference reports back into your ATS** — some integrations push the completed report to the candidate's record automatically, others add it through a manual upload action in Vitay. See the article for your platform for exactly what it supports.
-
-Connection credentials are stored on your Vitay account, so day-to-day use requires no re-authentication.
+- Import candidates from your ATS into Vitay, on demand or automatically when they're flagged or reach a set stage.
+- Send reference requests to imported candidates without retyping their details.
+- Send results back to your ATS, either automatically as references complete or with an upload action in Vitay.
 
 ## Supported integrations
 
 <CardGroup cols={2}>
   <Card title="Bullhorn" icon="bullseye" href="/integrations/bullhorn">
-    Connect with your Bullhorn credentials to import candidates, push reference reports, and run reference requests inside Bullhorn.
+    Push candidates and reference reports to Bullhorn, and request references from inside Bullhorn.
   </Card>
   <Card title="eRecruit" icon="rotate" href="/integrations/erecruit">
-    Scheduled sync that imports candidates from eRecruit and sends reference requests automatically.
+    Scheduled sync that imports candidates from eRecruit and sends them reference requests.
   </Card>
   <Card title="JobAdder" icon="briefcase" href="/integrations/jobadder">
-    OAuth-based connection that adds a Vitay action button inside JobAdder.
+    Adds a Vitay action to JobAdder candidate records.
   </Card>
   <Card title="Greenhouse" icon="seedling" href="/integrations/greenhouse">
-    API-key connection that imports flagged candidates from Greenhouse and posts progress notes back to the candidate's activity feed.
+    Imports candidates you flag in Greenhouse and posts progress notes to their activity feed.
   </Card>
   <Card title="JobDiva" icon="users" href="/integrations/jobdiva">
-    API-credential connection that imports candidates you've flagged in JobDiva and sends each one a reference request.
+    Imports candidates you flag in JobDiva and sends each one a reference request.
   </Card>
   <Card title="TargetRecruit" icon="cloud" href="/integrations/targetrecruit">
-    Salesforce-based connection that exchanges candidates and references with TargetRecruit and files completed reference PDFs on the candidate's record.
+    Exchanges candidates and references with TargetRecruit and files completed reference PDFs on the candidate.
   </Card>
 </CardGroup>
 
-<Note>
-  Accounts start with a limit of **one active integration**. If you connect up to
-  the limit, the other cards stop opening and the page tells you the limit has
-  been reached — contact [hello@vitay.io](mailto:hello@vitay.io) to have it raised.
-</Note>
+The Integrations page also lists Workable, which doesn't have its own article yet. Contact [hello@vitay.io](mailto:hello@vitay.io) for help setting it up, or to ask about an ATS that isn't listed.
 
-Don't see your ATS? Contact [hello@vitay.io](mailto:hello@vitay.io) to ask about support for your platform.
+## Integration limit
+
+Accounts start with a limit of one active integration. Once you reach it, the page shows "You have reached your integrations limit" and the other cards stop opening. Contact [hello@vitay.io](mailto:hello@vitay.io) to have the limit raised.
 
 ## For developers
 
-Prefer to build your own connection? Vitay can post reference events to a URL you control.
+To build your own connection, Vitay can post reference events to a URL you control.
 
 <CardGroup cols={2}>
   <Card title="Webhooks" icon="code" href="/integrations/webhooks">
-    Get notified at your own endpoint when reference requests are created, completed, or declined.
+    Get a POST to your endpoint when references are added, completed, or declined.
   </Card>
 </CardGroup>
 
@@ -70,4 +74,4 @@ Prefer to build your own connection? Vitay can post reference events to a URL yo
   <Card title="Add a candidate" icon="user-plus" href="/candidates-reference-requests/add-a-candidate" />
 </CardGroup>
 
-{/* source: api app/controllers/api/bullhorn_controller.rb, jobadder_controller.rb, app/controllers/api/services/erecruit_controller.rb, greenhouse_controller.rb, jobdiva_controller.rb, target_recruit_controller.rb; api app/models/external_authorisation.rb; api db/schema.rb settings.max_integrations (default 1); app configuration protected/integrations (isIntegrationsLimitReached, INTEGRATIONS.LIMIT) */}
+{/* source: app projects/configuration/src/app/protected/integrations/integrations.component.{html,ts} (INTEGRATIONS.ACTIVE, INTEGRATIONS.LIMIT, max_integrations); app src/app/shared/helpers/integrations.helper.ts + services/integrations/integrations.authorizations.service.ts (legacy cards + Sponge listed cards); api app/controllers/api/sponge_controller.rb#integrations + config/integrations/{bullhorn,workable_webhook}.yml (listed: true); api db/schema.rb settings.max_integrations default 1 */}

@@ -3,94 +3,100 @@ title: "Support Mode: when Vitay staff access your account"
 description: "What the Viewing as banner means, how long a Vitay support session lasts, what is recorded about it, and what support staff can and cannot do while it is running."
 ---
 
-When you raise a support ticket, a Vitay support engineer may need to see your account exactly as you see it. **Support Mode** lets them do that: they open a time-limited, audited session inside your account instead of asking you for your password. This article explains what that looks like, what is recorded, and what the limits are.
+When you raise a support ticket, a Vitay support engineer may need to see your account as you see
+it. Support Mode lets them open a time-limited, recorded session in a user's account without
+asking for a password.
 
 <Note>
-  This article is for recruiters and IT reviewers. Support Mode is started by Vitay staff, not by anyone in your firm — there is nothing to switch on, and no setting to configure.
+  For recruiters and IT reviewers. Only Vitay staff can start Support Mode; there's nothing to set
+  up on your side.
 </Note>
 
 ## The Support Mode banner
 
-While a support session is running, a coloured bar is pinned to the top of every page of the app:
+During a session, a coloured bar is pinned to the top of every page. It shows **Support Mode
+Active**, **Viewing as** with the email of the Vitay staff member, a **Session expires in**
+countdown, and an **Exit Support Mode** button. It can't be dismissed, so nobody is ever in your
+account without the banner on screen.
 
-- **Support Mode Active** in bold on the left,
-- **Viewing as** followed by the email address of the Vitay staff member running the session,
-- a **Session expires in Xm YYs** countdown that ticks down every second,
-- an **Exit Support Mode** button.
-
-The banner cannot be dismissed and is visible on every screen for as long as the session lasts, so there is never a state where someone is in your account without it being on screen.
-
-![SCREENSHOT: The Support Mode banner across the top of the app, with the countdown and Exit Support Mode button — placeholder](/images/placeholder.png)
+![SCREENSHOT(support-mode-banner): The Support Mode banner across the top of the app with the Viewing as email, the countdown and the Exit Support Mode button](/images/placeholder.png)
 
 ## How long a session lasts
 
-A support session lasts **one hour by default**. When a longer session is needed — for example an onboarding call that walks through the whole account — the staff member chooses the length when they start the session, up to a **maximum of four hours** (1, 2 or 4 hours). The length is fixed at the start: the session token is minted with that expiry, and every token issued during the session keeps it, so a session can never quietly extend itself. If more time is needed, a fresh, separately audited session has to be started.
+Sessions last 1 hour by default. For longer work, such as an onboarding call, the staff member can
+choose 2 or 4 hours when they start. The length can't be extended later; more time means starting a
+new, separately recorded session.
 
-A session ends when:
-
-- the staff member clicks **Exit Support Mode**, which closes the session and revokes the token immediately;
-- the countdown reaches zero — the app exits automatically, and any further request with that token is rejected as *"Impersonation session invalid or expired"*.
+A session ends when the staff member clicks **Exit Support Mode**, or when the countdown reaches
+zero. Either way, its access stops at once.
 
 ## Users with more than one account
 
-If the user has access to more than one account, for example a parent account and its sub-accounts, the staff member can use the account switcher in the top bar, just as the user can. They can only switch to accounts the user already has access to. The session stays the same: same banner, same countdown, and the same expiry. Every switch is recorded in the audit trail.
+If the user can work in several accounts (a parent and its sub-accounts, for example), the staff
+member can use the company switcher like the user can, but only for accounts the user already has.
+The banner, countdown and expiry stay the same, and each switch is recorded.
 
 ## What is recorded
 
-Every support session is written to an audit record before it starts. Vitay stores:
+Before a session starts, Vitay records:
 
-- who opened it (the staff member) and whose account it was opened on;
-- a **written reason**, which is mandatory and must be between 10 and 500 characters — a session cannot be started without one;
-- a support ticket reference, where one was supplied;
-- the IP address and browser the staff member used;
-- the session length chosen at the start, when the session started, when it is set to expire, and when it actually ended;
-- a running count of the actions performed during the session;
-- how the session ended, and its final state (ended or expired).
+- who opened it and on whose account;
+- a written reason (required, 10 to 500 characters);
+- the support ticket reference, when there is one;
+- the staff member's IP address and browser;
+- the chosen length, start time, expiry and actual end time;
+- the number of actions taken, and how the session ended.
 
-Alongside the session record, entries are written to the activity trail when a session **starts**, when the staff member **switches account** during it, when it **ends** (with the duration and the number of actions), and when an attempt is **denied**.
+The activity log also gets an entry when a session starts, when the staff member switches account,
+when it ends (with its length and action count), and when an attempt is refused.
 
-If you need a report of the support sessions opened on your account, ask [hello@vitay.io](mailto:hello@vitay.io).
+To get a report of support sessions on your account, ask [hello@vitay.io](mailto:hello@vitay.io).
 
-## What support staff can and cannot do
+## What support staff can and can't do
 
-While in Support Mode the staff member sees the app with your user's permissions — the same candidates, references, reports and settings that user can reach. Several actions are blocked outright, whatever the user's role:
+The staff member sees the app with the user's permissions. These actions are blocked during Support
+Mode, whatever the user's role:
 
-| Blocked during Support Mode | Why it matters |
+| Blocked | Why it matters |
 |---|---|
-| Changing the account password | Support can never lock you out of your own account or set a password they know. |
-| Changing multi-factor authentication settings | MFA cannot be disabled or re-enrolled from a support session. |
-| Changing the account's email address | The account identity cannot be moved. |
-| Deleting the user account | Irreversible account removal is off the table. |
-| Refreshing the session token | The length chosen at the start is hard; a session cannot quietly extend itself. |
+| Changing the user's password | Support can't lock you out or set a password they know. |
+| Changing MFA settings | MFA can't be turned off or re-enrolled. |
+| Changing the user's email | The user's identity can't be moved. |
+| Deleting the user | No irreversible account removal. |
+| Downloading candidate-uploaded documents | Staff can see a document exists, but not open it. |
 
-Vitay also restricts who can start a session and on whom:
+Vitay also limits who can start a session and on whom:
 
-- only Vitay administrators can start one, and they cannot start one on another administrator;
-- they cannot start a session on themselves, on an inactive account, or on a user with no hiring firm;
-- a support session cannot launch another support session — no chaining;
-- each administrator is capped at 20 sessions in any 24-hour period.
-
-Password expiry rules are not applied inside a support session, because password changes are blocked there anyway.
+- only Vitay administrators can start one, and never on another administrator, on themselves, or on
+  an inactive user;
+- a session can't start another session;
+- each administrator can start at most 20 sessions in 24 hours.
 
 <Warning>
-  Support Mode does not restrict what your user's role can already *see*. If the user is a root recruiter, the session can reach everything a root recruiter can reach, including candidate records and uploaded documents. Where that matters for your firm's policies, say so on the ticket — and see [Data and privacy](/security-it/data-and-privacy) for how the underlying data is handled.
+  Apart from the actions above, Support Mode can reach whatever the user's role can see. On a root
+  recruiter's account, that includes all candidate records and settings. If that matters for your
+  firm's policies, say so on the ticket. See [Data and privacy](/security-it/data-and-privacy).
 </Warning>
 
 ## Asking about a session
 
-If you saw the banner and want to know why, or you want Support Mode excluded from your account, email [hello@vitay.io](mailto:hello@vitay.io) with the date and time you saw it. Every session has a stored reason and, usually, a ticket reference, so Vitay can tell you exactly what it was for.
+If you saw the banner and want to know why, or want Support Mode excluded from your account, email
+[hello@vitay.io](mailto:hello@vitay.io) with the date and time. Every session has a recorded reason
+and usually a ticket reference.
 
 ## Troubleshooting
 
 <AccordionGroup>
-  <Accordion title="I saw the banner but I didn't ask for support">
-    Sessions are usually opened against a support ticket raised by someone in your firm — it may have been a colleague. Contact [hello@vitay.io](mailto:hello@vitay.io) with the time you saw the banner and the email address shown in it, and Vitay can look up the recorded reason.
+  <Accordion title="I saw the banner but didn't ask for support">
+    A colleague may have raised the ticket. Send [hello@vitay.io](mailto:hello@vitay.io) the time
+    you saw the banner and the email shown in it, and Vitay will look up the recorded reason.
   </Accordion>
-  <Accordion title="The banner is covering the top of the app">
-    The banner is pinned to the top of the window on purpose. It disappears as soon as the session ends — either when the staff member exits or when the countdown reaches zero.
+  <Accordion title="The banner covers the top of the app">
+    That's deliberate. It goes away when the session ends.
   </Accordion>
-  <Accordion title="Does Support Mode change anything in our audit history?">
-    No — actions taken during a session are recorded like any other action, and the session itself is recorded separately with who opened it and why. Nothing is hidden or attributed to a fake user.
+  <Accordion title="Does Support Mode hide anything from our activity history?">
+    No. Actions during a session are recorded like any others, and the session itself is recorded
+    separately with who opened it and why.
   </Accordion>
 </AccordionGroup>
 
@@ -103,4 +109,4 @@ If you saw the banner and want to know why, or you want Support Mode excluded fr
   <Card title="Roles explained" icon="user-shield" href="/getting-started/roles-explained" />
 </CardGroup>
 
-{/* source: app.vitay.io src/app/shared/components/impersonation-banner/impersonation-banner.component.{ts,html} ("Support Mode Active", "Viewing as", "Session expires in", "Exit Support Mode", 1s countdown), src/app/shared/services/impersonation.service.ts (imp claim, exit → /admin/exit-impersonation); api app/models/impersonation_session.rb (reason, ticket_id, ip_address, user_agent, actions_count, status active/expired/ended, ALLOWED_DURATION_MINUTES 60/120/240 default 60, end_session! activity), app/controllers/api/v3/admin/impersonations_controller.rb (reason 10-500 chars required, duration_minutes allowlisted + logged on impersonation_started, impersonation_started / impersonation_ended / impersonation_denied activities, token revoked on exit), app/policies/impersonation_policy.rb (admin only, no admin targets, no self, no chaining, 20 per 24h), app/controllers/concerns/impersonation_guard.rb + app/controllers/api/v1/users_controller.rb + app/controllers/api/v3/users_controller.rb + app/controllers/api/v3/oauth_controller.rb (password/MFA/email/account-delete blocked; create_refresh during impersonation re-mints an impersonation token for the chosen firm via impersonation_token_for, keeping session id, started_at and expires_at, activity user.impersonation_switched_hiring_firm — api #2761), app/controllers/concerns/authorization.rb (validate_impersonation_session, increment_actions!, password expiry skipped), app/models/concerns/has_secure_tokens.rb (generate_impersonation_token hiring_firm:/started_at:, expires_at from the session) */}
+{/* source: app src/app/shared/components/impersonation-banner/impersonation-banner.component.{ts,html}, src/app/shared/services/impersonation.service.ts; api app/models/impersonation_session.rb (ALLOWED_DURATION_MINUTES 60/120/240), app/controllers/api/v3/admin/impersonations_controller.rb (reason 10-500), app/policies/impersonation_policy.rb, app/controllers/concerns/impersonation_guard.rb, app/controllers/api/v1/users_controller.rb (password/mfa/email blocks), app/controllers/api/v{1,3}/users_controller.rb (destroy), app/controllers/api/v3/candidates/documents_controller.rb (download blocked), app/controllers/api/v3/oauth_controller.rb (impersonation_token_for keeps expiry), app/controllers/concerns/authorization.rb */}

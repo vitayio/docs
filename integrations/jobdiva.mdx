@@ -3,83 +3,83 @@ title: "JobDiva integration"
 description: "Connect Vitay to JobDiva so flagged candidates are imported and sent a reference request automatically, and push candidates and reference reports back to JobDiva."
 ---
 
-The JobDiva integration links Vitay to your JobDiva account using your JobDiva API credentials. Once connected, Vitay checks JobDiva every hour for candidates you've flagged for reference checking, imports them, and sends each one a reference request. Recruiters can also push a candidate to JobDiva and upload the completed reference report to the candidate's JobDiva file from Vitay.
+Vitay checks JobDiva every hour for candidates you've flagged, imports them, and sends each one a reference request. Recruiters can also push candidates and reference reports from Vitay to JobDiva.
 
 <Note>
-  Only a **root recruiter** can connect or disconnect the JobDiva integration. You will need your JobDiva API **Client ID**, **username**, and **password**. Flagging candidates for import relies on a Vitay sync field on your JobDiva candidate records, which is set up with the Vitay team — contact [hello@vitay.io](mailto:hello@vitay.io) before you start.
+  Only a root recruiter can connect or disconnect JobDiva. You need your JobDiva API Client ID, username, and password. Flagging candidates relies on a Vitay sync field on your JobDiva candidate records, which you set up with the Vitay team, so contact [hello@vitay.io](mailto:hello@vitay.io) before you start.
 </Note>
 
 ## What the integration does
 
-- **Imports flagged candidates automatically** — every hour, Vitay looks at the JobDiva candidate records created or updated that day and imports the ones whose Vitay sync field is set to *Yes* (first name, last name, email, and JobDiva ID).
-- **Sends reference requests automatically** — each imported candidate is sent a reference request straight away, using your firm's first active question set, with the usual automatic reminders.
-- **Push candidates to JobDiva** — create a JobDiva candidate record from a Vitay candidate in one click. Vitay also adds each of the candidate's references to JobDiva as a contact of type *Reference*.
-- **Upload reference reports** — once references are complete, attach a PDF of the candidate's reference report to the candidate's file in JobDiva.
+- Imports flagged candidates. Every hour, Vitay looks at JobDiva candidates created or updated that day and imports the ones whose Vitay sync field is *Yes* (name, email, and JobDiva ID).
+- Sends reference requests. Each imported candidate gets a reference request straight away, using your first active question set, with automatic reminders.
+- Pushes candidates to JobDiva. Create a JobDiva candidate from a Vitay candidate. Their references are added as JobDiva contacts of type *Reference*.
+- Uploads reference reports. Attach a PDF of the candidate's references to their file in JobDiva.
 
 ## Connect JobDiva
 
 <Steps>
-  <Step title="Open the JobDiva integration">
-    In Vitay, open **Integrations** and select the **JobDiva** card.
+  <Step title="Open the JobDiva card">
+    In the **Configuration** area, select **Integrations** and click the **JobDiva** card.
   </Step>
   <Step title="Enter your JobDiva API credentials">
-    Fill in your JobDiva **Client ID**, **username**, and **password** and submit. Vitay checks the credentials against JobDiva before saving them — if they're rejected, the connection isn't created.
+    Fill in **Client ID**, **Username**, and **Password**, then click **Submit**. Vitay checks them with JobDiva before saving. If JobDiva rejects them, the connection isn't created.
+
+    ![SCREENSHOT(jobdiva-connect-modal): The JobDiva connect dialog with the Client ID, Username and Password fields](/images/placeholder.png)
   </Step>
-  <Step title="Confirm the card shows Active">
-    Back on the Integrations page the JobDiva card is marked **Active**. The hourly import starts from the next run.
+  <Step title="Check the card shows Active">
+    The JobDiva card now shows **Active**. Flagged candidates are picked up from the next hourly check.
   </Step>
 </Steps>
-
-![SCREENSHOT: Integrations gallery showing the JobDiva integration dialog with the Client ID, username and password fields — placeholder](/images/placeholder.png)
 
 ## What syncs, and when
 
 <Steps>
   <Step title="Vitay checks JobDiva every hour">
-    The import runs automatically in the background — no one needs to trigger it. Each run looks at candidate records created or updated in JobDiva **that day** and keeps the ones whose Vitay sync field is set to *Yes*.
+    Each check looks at candidates created or updated in JobDiva that day and keeps the ones whose Vitay sync field is *Yes*.
   </Step>
   <Step title="New candidates are imported">
-    Each flagged candidate's first name, last name, email, and JobDiva ID are copied into Vitay and the candidate is assigned to your firm's default root recruiter. Candidates without an email address in JobDiva are skipped, since Vitay can't send them a reference request. A candidate whose email already exists in your Vitay account isn't duplicated.
+    They're assigned to your firm's default root recruiter. Candidates without an email address are skipped, and a candidate whose email is already in Vitay isn't duplicated.
   </Step>
   <Step title="A reference request goes out">
-    Vitay sends the imported candidate a reference request immediately, using your firm's first active question set. An existing Vitay candidate that's flagged in JobDiva is sent a request too — but only if they don't already have one.
+    Vitay sends the request using your first active question set. A flagged candidate who already exists in Vitay gets one too, but only if they don't have one yet.
   </Step>
-  <Step title="Push data back to JobDiva when you're ready">
-    Pushing candidates and uploading reports to JobDiva are manual actions from the candidate page (see below). Completed reports are **not** uploaded to JobDiva automatically.
+  <Step title="Push to JobDiva when you're ready">
+    Reports aren't uploaded to JobDiva automatically. Use the actions below.
   </Step>
 </Steps>
 
-### Push a candidate or a report from Vitay
+### Push a candidate or a report
 
-Once connected, recruiters see a **Synchronize** dropdown on the candidate page:
+Once connected, recruiters see these actions on the candidate page:
 
-- **Synchronize to Jobdiva** (candidate page header) — creates the candidate in JobDiva, together with a *Reference* contact for each of their references. A candidate can only be pushed once; a second attempt shows **"Candidate already exists"**.
-- **Upload document to Jobdiva** (from the **Synchronize** dropdown on a completed reference) — generates a PDF of the candidate's reference report (*Candidate name – References.pdf*) and attaches it to the candidate's file in JobDiva. The candidate must already be linked to JobDiva (imported by the sync or pushed from Vitay), and at least one reference must be completed.
+- **Synchronize to Jobdiva**, in the **Synchronize** menu, creates the candidate in JobDiva with a *Reference* contact for each of their references. Each candidate can be pushed once.
+- **Upload document to Jobdiva**, under the **Upload report** button next to the download button, attaches a PDF of the candidate's references to their JobDiva file. The candidate must already be linked to JobDiva, and at least one reference must be completed.
 
 ## Disconnect JobDiva
 
-Only a root recruiter can disconnect the integration. Open **Integrations**, select the JobDiva card, and choose **Reset credentials**. The hourly import stops immediately.
+A root recruiter clicks the **JobDiva** card and chooses **Delete Integration**. The hourly import stops.
 
 ## Troubleshooting
 
 <AccordionGroup>
   <Accordion title="A candidate I flagged in JobDiva never appeared in Vitay">
-    Check that the candidate's Vitay sync field is set to *Yes* and that they have an email address in JobDiva. The import only looks at records created or updated on the day it runs, so if the flag was set a while ago, update the candidate record in JobDiva again to bring it into the next run. If the candidate already has a reference request in Vitay, they are left as they are.
+    Check that the Vitay sync field is *Yes* and that the candidate has an email address. Each check only looks at records created or updated that day, so if you set the flag earlier, update the candidate in JobDiva again. Candidates who already have a reference request in Vitay are left as they are.
   </Accordion>
   <Accordion title="The reference request used the wrong question set">
-    The JobDiva import always uses your firm's first active question set — there's no per-candidate choice. If the wrong questions are going out, contact [hello@vitay.io](mailto:hello@vitay.io).
+    The import always uses your first active question set. There's no per-candidate choice. Contact [hello@vitay.io](mailto:hello@vitay.io) if the wrong questions are going out.
   </Accordion>
   <Accordion title="Imported candidates are assigned to the wrong recruiter">
-    Candidates imported from JobDiva are always assigned to your firm's default root recruiter. Reassign them from the candidate page in Vitay if needed.
+    Imported candidates always go to your firm's default root recruiter. Reassign them from the candidate page in Vitay.
   </Accordion>
-  <Accordion title="I get 'Candidate already exists' when pushing a candidate">
-    That candidate is already linked to a JobDiva record — either it was imported by the sync or pushed earlier. There's nothing more to do.
+  <Accordion title="'Candidate already exists' when pushing a candidate">
+    The candidate is already linked to a JobDiva record, either imported by the sync or pushed earlier. There's nothing more to do.
   </Accordion>
   <Accordion title="A reference report won't upload to JobDiva">
-    The candidate must be linked to JobDiva first (imported by the sync or pushed via **Synchronize to Jobdiva**), and the report can only be generated once at least one reference is complete. If both are true and the upload still fails, contact [hello@vitay.io](mailto:hello@vitay.io).
+    Link the candidate to JobDiva first with **Synchronize to Jobdiva**, and wait until at least one reference is complete. If it still fails, contact [hello@vitay.io](mailto:hello@vitay.io).
   </Accordion>
   <Accordion title="Nothing is importing any more">
-    If your JobDiva API password or credentials change, the hourly import can no longer sign in. Ask a root recruiter to open **Integrations**, choose **Reset credentials** on the JobDiva card, and connect again with the new details.
+    If your JobDiva API password or credentials changed, Vitay can no longer sign in. A root recruiter clicks the **JobDiva** card, chooses **Delete Integration**, and connects again with the new details.
   </Accordion>
 </AccordionGroup>
 
@@ -92,4 +92,4 @@ Only a root recruiter can disconnect the integration. Open **Integrations**, sel
   <Card title="Add a candidate" icon="user-plus" href="/candidates-reference-requests/add-a-candidate" />
 </CardGroup>
 
-{/* source: api lib/tasks/services/jobdiva.rake (hourly BI poll: New/Updated Candidate Records for today → Candidates Detail with vitay_candidates_sync == yes; default_root assignee; first active question set; skips candidates with an existing request); api app/services/external_services/jobdiva/{authorize,candidates,documents}.rb; api app/controllers/api/services/jobdiva_controller.rb (+ jobdiva/candidates_controller, documents_controller); cadence: infra cronjobs services-jobdiva-candidates "0 * * * *"; app configuration modals.integrations (jobdiva: client_id/username/password, INTEGRATIONS.DELETE "Reset credentials"); app candidates.show.header Synchronize dropdown + BUTTONS.UPLOAD.DETAILS */}
+{/* source: api lib/tasks/services/jobdiva.rake + config/schedule.rb (every 1.hour); api app/services/external_services/jobdiva/{authorize,candidates,documents}.rb; api app/controllers/api/services/jobdiva_controller.rb (+ jobdiva/candidates_controller, documents_controller); app projects/configuration modals.integrations (client_id/username/password, INTEGRATIONS.DELETE); app projects/references candidates.show.header Synchronize menus */}

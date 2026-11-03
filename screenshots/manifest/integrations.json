@@ -1,0 +1,230 @@
+[
+  {
+    "id": "overview-integrations-gallery",
+    "article": "integrations/overview",
+    "alt": "The Integrations page in Configuration, showing a card for each ATS",
+    "app": "configuration",
+    "as": "root",
+    "path": "/integrations",
+    "needs": "No integration connected (or one, to show the Active badge); integrations limit not reached so no warning banner.",
+    "steps": [
+      {
+        "waitFor": ".integrations-card"
+      }
+    ],
+    "capture": {
+      "selector": ".integrations"
+    },
+    "confidence": "high"
+  },
+  {
+    "id": "greenhouse-connect-modal",
+    "article": "integrations/greenhouse",
+    "alt": "The Greenhouse connect dialog with the Client ID, Client secret and User ID fields",
+    "app": "configuration",
+    "as": "root",
+    "path": "/integrations",
+    "needs": "Firm setting is_demo_enabled off (cards don't open in demo mode) and integrations limit not reached (max_integrations above the number of connected integrations). Greenhouse not connected.",
+    "steps": [
+      {
+        "waitFor": ".integrations-card"
+      },
+      {
+        "click": ".integrations-card:has(img[alt=\"greenhouse\"])"
+      },
+      {
+        "waitFor": ".modal-content #client_id"
+      }
+    ],
+    "capture": {
+      "selector": ".modal-content"
+    },
+    "confidence": "high"
+  },
+  {
+    "id": "greenhouse-webhook-url",
+    "article": "integrations/greenhouse",
+    "alt": "The connected Greenhouse dialog showing the Webhook URL and the Delete Integration button",
+    "app": "configuration",
+    "as": "root",
+    "path": "/integrations",
+    "needs": "Active ExternalAuthorisations::Greenhouse row for the firm (dummy client_id/client_secret is fine; the dialog only reads it) so the card opens in the connected state; is_demo_enabled off.",
+    "steps": [
+      {
+        "waitFor": ".integrations-card"
+      },
+      {
+        "click": ".integrations-card:has(img[alt=\"greenhouse\"])"
+      },
+      {
+        "waitFor": ".modal-content #webhook"
+      }
+    ],
+    "capture": {
+      "selector": ".modal-content"
+    },
+    "confidence": "medium"
+  },
+  {
+    "id": "bullhorn-connect-modal",
+    "article": "integrations/bullhorn",
+    "alt": "The Bullhorn connect dialog with the Bullhorn API credential fields",
+    "app": "configuration",
+    "as": "root",
+    "path": "/integrations",
+    "needs": "Firm setting is_demo_enabled off (cards don't open in demo mode) and integrations limit not reached (max_integrations above the number of connected integrations). Bullhorn not connected; is_bullhorn_sponge_enabled off for the standard field labels.",
+    "steps": [
+      {
+        "waitFor": ".integrations-card"
+      },
+      {
+        "click": ".integrations-card:has(img[alt=\"bullhorn\"])"
+      },
+      {
+        "waitFor": ".modal-content #client_id"
+      }
+    ],
+    "capture": {
+      "selector": ".modal-content"
+    },
+    "confidence": "high"
+  },
+  {
+    "id": "bullhorn-placement-urls",
+    "article": "integrations/bullhorn",
+    "alt": "The connected Bullhorn dialog with the Embed URL, Card URL, menu action URL and list action URL rows",
+    "app": "configuration",
+    "as": "root",
+    "path": "/integrations",
+    "needs": "Firm setting is_bullhorn_sponge_enabled on, plus an active Sponge Bullhorn external_authorisation (ats_key 'bullhorn', embed_token set) so /api/sponge/bullhorn/status returns embed_url and list_action_url; is_demo_enabled off.",
+    "steps": [
+      {
+        "waitFor": ".integrations-card"
+      },
+      {
+        "click": ".integrations-card:has(img[alt=\"bullhorn\"])"
+      },
+      {
+        "waitFor": ".modal-content #embed-url"
+      }
+    ],
+    "capture": {
+      "selector": ".modal-content"
+    },
+    "confidence": "low"
+  },
+  {
+    "id": "erecruit-connect-modal",
+    "article": "integrations/erecruit",
+    "alt": "The eRecruit connect dialog with the site URL, ID and API credential fields",
+    "app": "configuration",
+    "as": "root",
+    "path": "/integrations",
+    "needs": "Firm setting is_demo_enabled off (cards don't open in demo mode) and integrations limit not reached (max_integrations above the number of connected integrations). eRecruit not connected.",
+    "steps": [
+      {
+        "waitFor": ".integrations-card"
+      },
+      {
+        "click": ".integrations-card:has(img[alt=\"erecruit\"])"
+      },
+      {
+        "waitFor": ".modal-content #site_url"
+      }
+    ],
+    "capture": {
+      "selector": ".modal-content"
+    },
+    "confidence": "high"
+  },
+  {
+    "id": "jobadder-connect-modal",
+    "article": "integrations/jobadder",
+    "alt": "The JobAdder dialog with the Start button",
+    "app": "configuration",
+    "as": "root",
+    "path": "/integrations",
+    "needs": "Firm setting is_demo_enabled off (cards don't open in demo mode) and integrations limit not reached (max_integrations above the number of connected integrations). JobAdder not connected.",
+    "steps": [
+      {
+        "waitFor": ".integrations-card"
+      },
+      {
+        "click": ".integrations-card:has(img[alt=\"jobadder\"])"
+      },
+      {
+        "waitFor": ".modal-content .modal-footer"
+      }
+    ],
+    "capture": {
+      "selector": ".modal-content"
+    },
+    "confidence": "medium"
+  },
+  {
+    "id": "jobdiva-connect-modal",
+    "article": "integrations/jobdiva",
+    "alt": "The JobDiva connect dialog with the Client ID, Username and Password fields",
+    "app": "configuration",
+    "as": "root",
+    "path": "/integrations",
+    "needs": "Firm setting is_demo_enabled off (cards don't open in demo mode) and integrations limit not reached (max_integrations above the number of connected integrations). JobDiva not connected.",
+    "steps": [
+      {
+        "waitFor": ".integrations-card"
+      },
+      {
+        "click": ".integrations-card:has(img[alt=\"jobdiva\"])"
+      },
+      {
+        "waitFor": ".modal-content #username"
+      }
+    ],
+    "capture": {
+      "selector": ".modal-content"
+    },
+    "confidence": "high"
+  },
+  {
+    "id": "targetrecruit-connect-modal",
+    "article": "integrations/targetrecruit",
+    "alt": "The Target Recruit connect dialog with the site URL, token, record type ID and credential fields",
+    "app": "configuration",
+    "as": "root",
+    "path": "/integrations",
+    "needs": "Firm setting is_demo_enabled off (cards don't open in demo mode) and integrations limit not reached (max_integrations above the number of connected integrations). TargetRecruit not connected.",
+    "steps": [
+      {
+        "waitFor": ".integrations-card"
+      },
+      {
+        "click": ".integrations-card:has(img[alt=\"target_recruit\"])"
+      },
+      {
+        "waitFor": ".modal-content #candidate_record_type_id"
+      }
+    ],
+    "capture": {
+      "selector": ".modal-content"
+    },
+    "confidence": "high"
+  },
+  {
+    "id": "webhooks-developers-tab",
+    "article": "integrations/webhooks",
+    "alt": "The Developers tab with the Enable Webhook switch and Webhook Url field",
+    "app": "configuration",
+    "as": "root",
+    "path": "/settings/developers",
+    "needs": "Enable Webhook switched on with an example URL such as https://example.com/vitay-webhook so the field isn't greyed out.",
+    "steps": [
+      {
+        "waitFor": "#webhook_url"
+      }
+    ],
+    "capture": {
+      "selector": ".settings-developers > .card:first-child"
+    },
+    "confidence": "medium"
+  }
+]

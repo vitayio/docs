@@ -3,108 +3,93 @@ title: "Add a reference manually"
 description: "Enter a reference yourself instead of sending a request."
 ---
 
-In most cases, Vitay collects references by asking the candidate to provide their contacts. But sometimes you already have a reference's details — or you need to enter them on the candidate's behalf. Adding a reference manually lets you do that without going through the candidate.
+If you already have a reference's contact details, you can add the reference yourself instead of waiting for the candidate. Vitay sends the question set straight to the reference.
 
 <Note>
-  You need a recruiter (or higher) role to add references manually. The
-  candidate must already exist in Vitay. See
+  The candidate must already exist in Vitay. See
   [Add a candidate](/candidates-reference-requests/add-a-candidate).
 </Note>
 
-## Add a reference manually
-
 <Steps>
   <Step title="Open the candidate">
-    Go to **Candidates** and select the candidate you want to add a reference for.
+    Go to **Candidates** and click the candidate.
   </Step>
-  <Step title="Go to the References tab">
-    On the candidate page, click the **References** tab to see all references
-    for this candidate.
-  </Step>
-  <Step title="Add a reference">
-    Click **Add reference** (or the equivalent button on the References tab).
-
-    ![SCREENSHOT: the References tab with the "Add reference" button highlighted — placeholder](/images/placeholder.png)
+  <Step title="Click Add Reference">
+    The button is in the toolbar of the **References** tab, next to
+    **Reference Request**.
   </Step>
   <Step title="Fill in the reference's details">
-    Complete the form with the reference's contact information:
+    - **First name** and **Last name** are required.
+    - **Email** and **Mobile number**: enter at least one. Your firm can make
+      either one required.
+    - **Company name**, **Reference job title** and **Reference type** (the
+      relationship to the candidate, from your firm's list).
+    - **Start date** and **End date**, when your firm has reference dates
+      switched on.
+    - **Question Set**, the questions this reference will answer.
+    - **Language**, when your account has more than one language.
+    - **Internal notes about the reference**, visible only to your team.
 
-    - **First name** and **Last name** — required.
-    - **Email** and/or **Mobile number** — at least one is required. Vitay
-      sends the reference request to the email address, or by text message if
-      you only enter a phone number. (Some firms turn on a setting that makes
-      the email address itself required — it's off by default.)
-    - **Company name** — the company where the reference worked with the candidate.
-    - **Reference job title** — the reference's job title.
-    - **Reference type** — the reference's relationship to the candidate (e.g., Direct Manager, Peer, HR).
-    - **Start date** / **End date** — the period when the reference worked with the candidate. These fields only appear when your firm has reference dates enabled.
-    - **Question set** — the set of questions this reference will answer.
-    - **Language** — the language the request will be sent in (if multi-language is enabled).
+    If the candidate still has an open reference request, a message at the top
+    of the form reminds you that they may add their references themselves.
 
-    ![SCREENSHOT: the Add reference form with fields filled in — placeholder](/images/placeholder.png)
+    ![SCREENSHOT(add-a-reference-manually-modal): The Add Reference form with name, email, mobile number, company and question set fields](/images/placeholder.png)
   </Step>
-  <Step title="Save and send">
-    Click **Submit** (or **Save**). Vitay creates the reference record and
-    sends the reference request right away — by email, or by text message if
-    you only provided a phone number.
+  <Step title="Click Submit">
+    A **Reference added** message confirms it. Vitay emails the reference the
+    question set right away, or texts it when you only entered a mobile number.
+    If your firm has **Reference review configuration** switched on, the
+    reference is held for review and goes out once it's approved.
   </Step>
 </Steps>
 
-## What happens next
+From here the reference gets automatic reminders (see
+[Reminders and how they work](/candidates-reference-requests/reminders-and-cadence)),
+and their answers appear on the reference once they submit (see
+[Read a completed reference](/candidates-reference-requests/read-a-completed-reference)).
 
-- The reference receives an email (or a text message, for phone-only
-  references) with a link to the question form.
-- Vitay automatically sends reminders if they don't respond — see [Reminders and how they work](/candidates-reference-requests/reminders-and-cadence).
-- Once they complete the form, you'll see the answers on their reference record. See [Read a completed reference](/candidates-reference-requests/read-a-completed-reference).
-
-## Difference between a manual reference and a reference request
+## Manual reference or reference request?
 
 | | Reference request | Manual reference |
 |---|---|---|
-| Who provides the contact details | The candidate | You (the recruiter) |
-| Who gets the initial email | The candidate | The reference directly |
-| Useful when | You want the candidate to enter their own contacts | You already have the reference's details |
+| Who enters the contact details | The candidate | You |
+| Who gets the first email | The candidate | The reference |
+| Use it when | The candidate should supply their own references | You already have the reference's details |
 
-Both result in the same experience for the reference: they receive an email (or text message) with a link to complete the question form.
+Either way, the reference gets the same email (or text) and the same form.
 
 ## Troubleshooting
 
 <AccordionGroup>
-  <Accordion title="I can't see the Add reference button">
-    The button is hidden only when your firm requires the candidate's
-    permission before references can be added and this candidate hasn't
-    granted it yet. Ask the candidate to grant permission (or ask a root
-    recruiter about the permission setting), then add the reference.
+  <Accordion title="I can't see the Add Reference button">
+    The button is hidden when your firm requires the candidate's permission
+    before references are added and this candidate hasn't granted it yet. It's
+    greyed out on demo accounts and on candidates that belong to a different
+    sub-account than the one you're viewing.
   </Accordion>
-  <Accordion title="The reference says they didn't get the email">
-    See [A reference didn't receive the email](/candidates-reference-requests/reference-not-received)
-    for a step-by-step troubleshooting guide: confirm the address is correct,
-    check for a bounce, and resend if needed.
+  <Accordion title="The email, phone number or ID is already linked to an existing reference">
+    Your firm has **Prevent duplicate references** on (the default; a root
+    recruiter can turn it off on the **References** settings tab). Vitay then
+    refuses a reference whose email, mobile number or internal ID already
+    belongs to another reference on the same candidate for the same question
+    set. The same person can still be a reference for a different candidate, or
+    for this candidate on a different question set. To change the existing
+    reference, edit it instead.
   </Accordion>
-  <Accordion title="Vitay says the email, phone number or ID is already linked to an existing reference">
-    Your firm has **Prevent duplicate references** switched on — it is on by
-    default, and a root recruiter can turn it off on the **References**
-    settings tab. While it is on, Vitay refuses a reference whose **email
-    address**, **mobile number** (with the same country code) or **internal
-    ID** already belongs to another reference on the *same candidate* for the
-    *same question set*.
-
-    So the same person can be used as a reference for a different candidate, or
-    for the same candidate under a different question set — but not twice for
-    the same candidate and question set. If you meant to update the existing
-    reference, open it and edit it instead of adding a new one.
-  </Accordion>
-  <Accordion title="The email field shows 'personal emails not allowed'">
+  <Accordion title="The email field says personal emails not allowed">
     Your firm has switched off **Allow personal email addresses**, so Gmail,
-    Yahoo, Hotmail, AOL, Outlook, iCloud and similar domains are rejected in
-    this modal as well as on the candidate's own form. Ask the candidate for
-    the reference's work address, or ask a root recruiter to review
+    Yahoo, Hotmail and similar addresses are refused. Use the reference's work
+    address, or ask a root recruiter to review
     [Reference settings](/account-configuration/reference-settings).
   </Accordion>
   <Accordion title="I entered the wrong email address">
-    Open the reference record, click **Edit**, and update the **Email** field.
-    Then use **Send reminder** to resend the request to the corrected address.
-    See [Manage in-flight requests](/candidates-reference-requests/manage-in-flight-requests).
+    Click the reference to open it, click the pencil (**Edit reference**),
+    correct the **Email** and click **Save**. Then click **Send reminder** so
+    the request reaches the new address. See
+    [Manage in-flight requests](/candidates-reference-requests/manage-in-flight-requests).
+  </Accordion>
+  <Accordion title="The reference says they didn't get the email">
+    See [A reference didn't receive the email](/candidates-reference-requests/reference-not-received).
   </Accordion>
 </AccordionGroup>
 
@@ -117,4 +102,4 @@ Both result in the same experience for the reference: they receive an email (or 
   <Card title="Read a completed reference" icon="clipboard-check" href="/candidates-reference-requests/read-a-completed-reference" />
 </CardGroup>
 
-{/* source: api app/models/recruiter_reference.rb (send_reference_email, relationship_choice enum, contact_type_choice enum); app/models/reference.rb (columns: first_name, last_name, email, phone, company_name, title, relationship, start_date, end_date, question_set_id, language); app.vitay.io src/app/shared/services/references.service.ts (addCandidateReference); api app/models/reference.rb#check_uniqueness + exists_by_email?/exists_by_phone?/exists_by_internal_id? + uniqueness_scope (gated on setting.is_prevent_duplicate_references_enabled, default true; scoped to candidate + question_set); db/schema.rb settings.is_prevent_duplicate_references_enabled default true; app.vitay.io projects/configuration settings/configuration SETTINGS.CONFIGURATION.is_prevent_duplicate_references_enabled 'Prevent duplicate references'; src/app/shared/validators/phoneEmailPersonal.validators.ts + personalEmailAllowed.validators.ts (WORK_EMAILS_REGEX, settings_json.is_personal_emails_allowed === false or relationship prevent_personal_emails), src/app/shared/components/form/form-group (FORMS.ERRORS.PERSONAL_EMAIL_ALLOWED '(personal emails not allowed)'); note: the recruiter modal passes only the firm setting, not the per-relationship prevent_personal_emails flag */}
+{/* source: app projects/references/src/app/shared/components/modals/references/modals.references.component.{html,ts}; projects/references/src/app/protected/candidates/show/candidates.show.component.{html,ts} (isRequestNotAvailable); src/app/shared/validators/phoneEmailPersonal.validators.ts; projects/references/src/assets/i18n/en.json (MODALS.REFERENCES, TOASTS.REFERENCE_ADDED, FORMS.ERRORS.PERSONAL_EMAIL_ALLOWED); projects/configuration/src/assets/i18n/en.json (is_prevent_duplicate_references_enabled, is_personal_emails_allowed, review_candidate_references); api app/controllers/api/v1/references_controller.rb#create (is_pending, send_reference); app/models/reference.rb (#send_reference, #check_uniqueness, #exists_by_*); db/schema.rb settings defaults */}

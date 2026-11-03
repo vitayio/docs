@@ -4,40 +4,36 @@ description: "For people giving a reference: whether you can change your answers
 ---
 
 <Note>
-  **This article is for people who were asked to give a reference.** If you're the candidate and want to change the reference details you submitted, see [Correcting a reference's email address](/reference-providers/change-reference-email) or [Adding another reference after submitting](/reference-providers/add-another-reference).
+  This article is for people who were asked to give a reference. If you're the candidate and want to change the reference details you submitted, see [Correcting a reference's email address](/reference-providers/change-reference-email) or [Adding another reference after submitting](/reference-providers/add-another-reference).
 </Note>
 
-Once you click **Submit** on the reference form, your answers are locked. There is no self-serve way to edit them after submission — the form closes to prevent duplicate or conflicting responses.
-
-If you need a change made, the recruiter can update your answers on their side. Reach out to them and they'll sort it out.
+When you click **Submit**, the form asks you to confirm because you can't change your answers afterwards. If you open the link again, you'll see **Reference has already been filled**. The recruiter can correct an answer on their side.
 
 ## I submitted but need to change something
 
 <Steps>
-  <Step title="Find the recruiter's contact details">
-    Open the original email you received from Vitay asking you to give a reference. The recruiter's name is in the email, and you can reply to reach them directly.
+  <Step title="Reply to the email you received">
+    Open the email that asked you to give a reference and reply to it. Replies go to the recruiting team that sent it.
   </Step>
-  <Step title="Explain what needs to change">
-    Let the recruiter know which answer you'd like to correct and what the updated answer should be. They can make the edit for you.
+  <Step title="Say what needs to change">
+    Tell them which question you want to correct and what the answer should be.
   </Step>
 </Steps>
 
 ## I'm having trouble submitting
 
-If you're stuck on the form and can't get it to submit at all, try these steps first:
-
 <AccordionGroup>
-  <Accordion title="The form won't let me submit">
-    Make sure all required questions are answered — required fields are usually marked. Scroll through the whole form to check nothing was missed.
+  <Accordion title="The Submit button is red and nothing is sent">
+    Something required is still empty. Click **Submit** and a list headed **Please complete the following before submitting:** shows what's missing. Required questions are marked, and some ratings need a comment.
   </Accordion>
   <Accordion title="I get an error when I click Submit">
-    Try refreshing the page and re-entering your answers. If the error says the reference has already been filled, your submission went through — no need to resubmit.
+    Refresh the page and try again. Your answers are saved in your browser as you type, so they should still be there. If the error says the reference has already been filled, your submission went through and there's nothing more to do.
   </Accordion>
-  <Accordion title="The form keeps timing out or crashing">
-    Try a different browser (Google Chrome works best) or switch to your phone's mobile data instead of a work network. Some corporate networks block external links.
+  <Accordion title="The page keeps failing to load or freezing">
+    Try another browser, such as Google Chrome, or your phone on mobile data instead of a work network. Some company networks block outside links.
   </Accordion>
-  <Accordion title="None of the above worked">
-    Reply to your original email and let the recruiter know what's happening. They can resend the link or help troubleshoot.
+  <Accordion title="None of this worked">
+    Reply to the email you received and describe what you see. The recruiter can check the request or send you a new link.
   </Accordion>
 </AccordionGroup>
 
@@ -49,4 +45,4 @@ If you're stuck on the form and can't get it to submit at all, try these steps f
   <Card title="I don't recognize this request" icon="circle-question" href="/reference-providers/unknown-reference-request" />
 </CardGroup>
 
-{/* source: api app/controllers/api/v1/references_controller.rb public_create sets filled_at; Pundit policy blocks re-submission with render_reference_already_filled; recruiter-authenticated update permits answers — no unlock/reopen exists */}
+{/* source: app projects/references/src/app/public/references/references.component.{html,ts} (REFERENCE.CONFIRM_SUBMIT modal, app-missing-fields, localStorage `${id}-answers` / `${id}-referencer`, 409 → REFERENCE.ERRORS.FILLED.TITLE); src/app/shared/components/answers/answers.component.html (recruiter edit answer); api app/controllers/api/v1/references_controller.rb render_reference_already_filled */}
