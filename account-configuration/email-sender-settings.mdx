@@ -1,9 +1,9 @@
 ---
 title: "Email sender settings"
-description: "Control the From name and email address that references and candidates see when Vitay sends them emails."
+description: "Control the From name and address that references and candidates see, where their replies land, and the sender on emails to your own team."
 ---
 
-Emails Vitay sends for you, such as reference requests and reminders, show a sender name and address in the recipient's inbox. You choose whether those come from each recruiter or from one firm-wide value.
+Emails Vitay sends for you, such as reference requests and reminders, show a sender name and address in the recipient's inbox, and a reply goes somewhere. You choose whether each comes from the recruiter managing the candidate or from one firm-wide value.
 
 <Note>
   You need the root recruiter role. Changes apply to emails sent after they are saved.
@@ -11,14 +11,15 @@ Emails Vitay sends for you, such as reference requests and reminders, show a sen
 
 ## How sender identity works
 
-The **Email Sender Identity** card on the **Configuration** tab in Settings has two independent choices:
+The **Email Sender Identity** card on the **Configuration** tab in Settings has three independent choices:
 
-| Control | Choices | What recipients see |
+| Control | Choices | What it controls |
 |---|---|---|
 | **From: Address** | **Recruiter's email** (default) or **Custom address** | The address in the From line |
 | **From: Name** | **Recruiter's name** (default) or **Custom name** | The display name in the From line |
+| **Reply-To** | **Assigned recruiter** (default) or **Custom address** | Where a reply lands when a candidate or reference hits Reply |
 
-You can mix them, for example each recruiter's name with one shared company address.
+You can mix them, for example each recruiter's name with one shared company address, or a shared From address with replies going to the assigned recruiter.
 
 ## Which setup should you choose?
 
@@ -40,18 +41,22 @@ New accounts start with the custom address `recruitment@vitay.io` and the name "
 
 ## Where replies go
 
-The From address doesn't decide where replies land. Replies to candidate and reference emails go to the recruiter assigned to the candidate. This isn't a setting on the tab; if replies should go to one shared inbox instead, contact **hello@vitay.io**.
+The From address doesn't decide where replies land. With **Reply-To** set to **Assigned recruiter**, replies to candidate and reference emails go to the recruiter assigned to the candidate, whatever the From address shows.
+
+To send every reply to one shared inbox instead, click **Custom address** next to **Reply-To** and type the address in the field that appears. The name field under it is optional; when it is blank, replies show your company name. Until an address is typed, replies keep going to the assigned recruiter.
 
 ## Which sender your team sees
 
-Emails to your own team, such as **Reference completed**, **Candidate submitted their references**, **Reference awaiting your review**, **Feedback completed**, **Pre-screening completed** and the **Send test** button on the **Emails** tab, also carry your firm's identity:
+Emails to your own team, such as the welcome email to a new recruiter, **Reference completed**, **Candidate submitted their references**, **Reference awaiting your review**, **Feedback completed**, **Pre-screening completed**, report recipient emails and the **Send test** button on the **Emails** tab, use a separate sender: the **Team notification sender**.
 
 | Your **From: Address** choice | Team emails are sent from |
 |---|---|
-| **Recruiter's email** | Your **Primary reply email** and **Primary Reply Name** |
+| **Recruiter's email** | Your **Team notification sender** |
 | **Custom address** | The custom address and name |
 
-Replies to team emails go to your **Primary reply email**. The exception is **Reference awaiting your review**: it shows as "*Candidate name* via *Your firm*" and replying reaches the candidate. Until you change **Primary reply email**, it is Vitay's support address (hello@vitay.io). Password resets and other account emails always come from Vitay.
+Replies to team emails always go to your **Team notification sender**. The exception is **Reference awaiting your review**: it shows as "*Candidate name* via *Your firm*" and replying reaches the candidate. Password resets and other account emails always come from Vitay.
+
+The **Team notification sender** card is on the **White Label** tab in Settings, so it is only there when the white-label plugin is on (see [Branding and white label](/account-configuration/branding-white-label#set-up-white-label)). Type the address and name you want; each saves when you stop typing. Leave them blank to use Vitay's address for your region (the fields show it as a placeholder). If you don't have the plugin and need a different sender for team emails, contact **hello@vitay.io**.
 
 If team emails come from your own domain, authenticate it under [Deliverability and DMARC](#deliverability-and-dmarc), or mail clients may show them as sent "via" another domain or file them as spam.
 
@@ -68,8 +73,11 @@ If team emails come from your own domain, authenticate it under [Deliverability 
   </Step>
   <Step title="Choose the From: Name">
     Next to **From: Name**, click **Recruiter's name** or **Custom name**. For **Custom name**, type the display name in the field that appears.
+  </Step>
+  <Step title="Choose where replies go">
+    Next to **Reply-To**, click **Assigned recruiter** or **Custom address**. For **Custom address**, type the address and, if you want, a name in the fields that appear. Each saves when you stop typing.
 
-    ![The Email Sender Identity card with the From: Address and From: Name choices and the custom address field](/images/screens/email-sender-settings-identity-card.png)
+    ![SCREENSHOT(email-sender-settings-identity-card): The Email Sender Identity card with the From: Address, From: Name and Reply-To choices and the custom address fields](/images/placeholder.png)
   </Step>
 </Steps>
 
@@ -113,13 +121,13 @@ Adding a domain doesn't change your From address. It only authorises the domain;
     If you use a custom From address, check that its domain shows a green check mark under **DMARC Protection** on the **Developers** tab. If you use recruiters' own addresses, ask your IT team whether your domain's DMARC policy blocks third-party sending, and add the domain under **DMARC Protection**.
   </Accordion>
   <Accordion title="Emails to my team show 'via' another domain or land in spam">
-    Team emails come from the address in [Which sender your team sees](#which-sender-your-team-sees). If that address is on your domain, add and verify the domain under **DMARC Protection**. If it is hello@vitay.io, you haven't set a **Primary reply email** or custom **From: Address** yet.
+    Team emails come from the address in [Which sender your team sees](#which-sender-your-team-sees). If that address is on your domain, add and verify the domain under **DMARC Protection**. If it is a Vitay address, you haven't set a **Team notification sender** or a custom **From: Address** yet.
   </Accordion>
   <Accordion title="I set a custom From address but emails still show the recruiter's address">
     Check that **From: Address** is set to **Custom address** and that the status under the field says **Saved**. If it says **Not saved**, the address was rejected; check it for typos.
   </Accordion>
   <Accordion title="Replies are going to the wrong inbox">
-    Replies to candidate and reference emails go to the candidate's assigned recruiter, whatever the From address. Check who is assigned to the candidate (see [Manage users](/account-configuration/manage-users#change-the-assigned-recruiter-for-a-candidate)).
+    Check **Reply-To** on the **Email Sender Identity** card. With **Assigned recruiter**, replies go to the candidate's assigned recruiter, whatever the From address; check who is assigned to the candidate (see [Manage users](/account-configuration/manage-users#change-the-assigned-recruiter-for-a-candidate)). With **Custom address**, every reply goes to the address in the field, so check it for typos and that the status under it says **Saved**.
   </Accordion>
 </AccordionGroup>
 
@@ -132,4 +140,4 @@ Adding a domain doesn't change your From address. It only authorises the domain;
   <Card title="Send a reference request" icon="paper-plane" href="/candidates-reference-requests/send-a-reference-request" />
 </CardGroup>
 
-{/* source: app projects/configuration protected/settings/configuration/settings.configuration.component.{ts,html} (EMAIL_SENDER card; no is_support_email_to_assigned_enabled control), protected/settings/developers/settings.developers.dmarc.component.html; api db/schema.rb (branding/support defaults), app/models/setting.rb (recruiter_sender, support_sender), app/models/reference.rb (from_email/from_name, reply_to = assigned recruiter when is_support_email_to_assigned_enabled; notify_pending_review), app/controllers/api/v3/emails_controller.rb, app/controllers/api/v3/dmarc_settings_controller.rb */}
+{/* source: app projects/configuration protected/settings/configuration/settings.configuration.component.{ts,html} (EMAIL_SENDER card: From rows + Reply-To row bound to is_reply_to_custom_enabled / reply_to_email / reply_to_name), protected/settings/white-label/settings.white-label.component.html (Team notification sender card: notification_email_from / notification_email_name, placeholders from notification_sender_*), protected/settings/developers/settings.developers.dmarc.component.html; api app/models/setting.rb (recruiter_sender, notification_sender, reply_to_sender), app/models/reference.rb (from_email/from_name; notify_pending_review), app/controllers/api/v3/emails_controller.rb, app/controllers/api/v3/dmarc_settings_controller.rb */}
