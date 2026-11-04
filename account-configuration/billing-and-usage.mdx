@@ -3,111 +3,89 @@ title: "Usage and billing"
 description: "See how many contract credits your firm has used on the Usage page, break usage down by period or sub-account, and set up alerts before you reach your limit."
 ---
 
-The **Usage** page shows how much of your contract your firm has consumed: the credits you bought, how many you have used, what is left, and how the usage was spread over time. It is a reporting view — plan and contract changes are handled by the Vitay team.
+The **Usage** page shows how much of your contract your firm has used: credits bought, credits used, what's left, and how usage spread over time. Plan and contract changes are handled by the Vitay team.
 
 <Note>
-  You need a **root recruiter** role to open the Configuration area. The **Usage** page does not appear on sub-accounts whose billing is rolled up into a parent account — in that case, open **Usage** on the parent account instead.
+  You need the root recruiter role. Sub-accounts whose billing rolls up into a parent account don't have a **Usage** page; open it on the parent account instead.
 </Note>
 
 ## Open the Usage page
 
 <Steps>
   <Step title="Open the Configuration area">
-    Open the **Configuration** area from the main navigation.
+    Click **Configuration** in the left navigation.
   </Step>
   <Step title="Select Usage">
-    Select **Usage** in the left-hand navigation, between **Settings** and **Plugins**. It opens on your current contract period.
+    Click **Usage**, below **Settings**. It opens on your current contract period.
 
-    ![SCREENSHOT: The Usage page in the Configuration navigation, with the four stat cards and the usage chart — placeholder](/images/placeholder.png)
+    ![The Usage page with the contract period picker, the stat cards and the Usage Over Time chart](/images/screens/billing-and-usage-page.png)
   </Step>
 </Steps>
 
-<Note>
-  Usage used to be the **Billing & Usage** tab inside **Settings**. Old links to that tab now open the **Usage** page.
-</Note>
-
 ## What counts as usage
 
-One credit is consumed **per candidate**, the first time a report is completed for them — a reference, a pre-screening or a feedback form, whichever lands first. That means:
+One credit is used per candidate, the first time a reference, pre-screening or feedback form is completed for them.
 
-- Adding candidates costs nothing. Sending requests costs nothing. The credit is only counted when the first response comes back.
-- A candidate is counted **once**. Their second, third and tenth completed reference do not add to the count.
-- The date the credit lands against is the date that first report was completed, which is what the chart and the breakdown table are plotting.
+- Adding candidates and sending requests cost nothing.
+- A candidate counts once. Later completed references don't add to the count.
+- The credit is dated on the day that first form was completed.
 
 ## Read the numbers
 
-Four stat cards sit at the top of the page. The three contract cards only appear when your account has contract credits recorded.
-
 | Card | What it means |
 |---|---|
-| **Contract Credits** | *"Total number of candidates purchased in your contract"* |
-| **Credits Used** | *"Total usage during the selected date range"*, with the percentage of your contract shown beside it |
-| **Remaining Credits** | *"Credits remaining in your contract"* |
-| **Overages** | *"Usage exceeding your contract credits"* |
+| **Contract Credits** | Total candidates purchased in your contract. |
+| **Credits Used** | Usage during the selected date range, with the percentage of your contract beside it. |
+| **Remaining Credits** | Credits left in your contract. |
+| **Overages** | Usage beyond your contract credits. |
+
+**Contract Credits**, **Remaining Credits** and **Overages** only show when your contract credits are recorded in Vitay.
 
 ## Change what you are looking at
 
 | Control | What it does |
 |---|---|
-| **Contract Period** | Picks which contract term to report on. The date range for the selected term is shown underneath. |
-| **Group By** | **Daily**, **Weekly**, **Monthly** or **Annual** buckets for the chart and the table. Monthly is the default. |
-| **Align with contract billing periods** | Appears when Group By is **Monthly**. Buckets the data by your contract's billing periods rather than by calendar month, so the rows line up with your invoices. |
-| **Include subaccounts** | Appears on a parent account. Rolls every child account's usage into the totals. |
+| **Contract Period** | The contract term to report on. Its dates show underneath. |
+| **Group By** | **Daily**, **Weekly**, **Monthly** (default) or **Annual** buckets for the chart and table. |
+| **Align with contract billing periods** | Shown with **Monthly**. Groups by your contract's billing periods instead of calendar months, so rows match your invoices. |
+| **Include subaccounts** | Shown on a parent account. Adds the sub-accounts' usage to the totals. |
 
-The **Usage Over Time** chart can be read two ways: **Cumulative** (a running total climbing towards your contract credits) or **Per Period** (how much was used in each bucket on its own).
+The **Usage Over Time** chart shows either **Cumulative** (a running total) or **Per Period** (usage in each bucket).
 
-**Usage Breakdown** below the chart is the same data as a table — **Period**, **Usage**, **Cumulative Usage** and **Overages**. With **Include subaccounts** on, each row expands to show which firm the usage came from and what share of the period it accounted for. The download icon in the table header exports the breakdown as a CSV.
+**Usage Breakdown** shows the same data as a table: **Period**, **Usage**, **Cumulative Usage** and **Overages**. With **Include subaccounts** on, you can expand a row to see which account the usage came from. The download button in the table header (tooltip **Download CSV**) exports the table.
 
-![SCREENSHOT: The Usage Breakdown table with a period row expanded to show sub-account usage — placeholder](/images/placeholder.png)
+![SCREENSHOT(billing-and-usage-breakdown): The Usage Breakdown table with Period, Usage, Cumulative Usage and Overages columns and the download button](/images/placeholder.png)
 
 ## Get alerted before you run out
 
-Usage threshold notifications are set on the **Notifications** settings tab, not on the Usage page.
+Usage alerts are set on the **Notifications** tab in Settings, in the **Usage Notifications** card. New accounts start with it on, alerting at 80%, 90% and 100% to every root user. You can pick thresholds from 70% to 110% and add extra addresses. See [Notification settings](/account-configuration/notification-settings#usage-notifications).
 
-<Steps>
-  <Step title="Open Configuration → Settings → Notifications">
-    Scroll to the **Usage Notifications** card — *"Automatically notify your team when usage reaches specified thresholds relative to your contract limits."* Accounts created from November 3, 2026 have it switched on from the start. On older accounts it stays as it was, which is off unless someone turned it on.
-  </Step>
-  <Step title="Pick your thresholds">
-    **Notification Thresholds** offers checkboxes at **70%**, **75%**, **80%**, **85%**, **90%**, **95%**, **100%**, **105%** and **110%**. New accounts start with **80%, 90% and 100%** selected.
+Each threshold sends one email per contract term. The email has the subject **Usage Alert: N% threshold reached**, summarises your usage and overage, and has a **View Usage Details** button. Alerts always count sub-account usage, whatever the **Include subaccounts** checkbox says.
 
-    As the tooltip says: *"You will receive a notification once for each threshold during the current contract period. Notifications reset when a new contract period begins."* Crossing 80% does not generate a second email the next day — each threshold fires once per contract term.
-  </Step>
-  <Step title="Choose who gets them">
-    **Notify Administrators** — *"Send notifications to all users with administrator/root access to this account"* — is on by default. **Additional Email Recipients** takes a comma-separated list for anyone else who should be copied, such as a finance mailbox.
-
-    ![SCREENSHOT: The Usage Notifications card with thresholds and recipients — placeholder](/images/placeholder.png)
-  </Step>
-</Steps>
-
-The alert arrives with the subject **Usage Alert: N% threshold reached** and summarises your usage, contract credits, percentage used and any overage, with a **View Usage Details** button that opens the Usage page. Usage for these alerts is always calculated **including sub-accounts**, even if you have the sub-account checkbox turned off on the Usage page.
-
-Threshold alerts need an active contract on the account with a start date and a candidate limit recorded. If your contract details are not in Vitay yet, nothing is sent — contact [hello@vitay.io](mailto:hello@vitay.io).
+Alerts need an active contract in Vitay with a start date and a candidate limit. If your contract details aren't in Vitay yet, nothing is sent; contact [hello@vitay.io](mailto:hello@vitay.io).
 
 ## Monthly usage report email
 
-Vitay can also send a recurring **Monthly Usage Update** email: how many candidates received references during the contract period, your limit, and the percentage used. It goes to your account's main root recruiter, plus any extra addresses you nominate.
-
-There is no self-serve switch for it — ask [hello@vitay.io](mailto:hello@vitay.io) to turn it on and to set the recipient list.
+Vitay can also send a **Monthly Usage Update** email with how many candidates received references this contract period, your limit and the percentage used. There is no switch for it in the app. Ask [hello@vitay.io](mailto:hello@vitay.io) to turn it on and set the recipients.
 
 ## Changing your plan
 
-Credits, contract dates and limits come from your Vitay contract; they are not editable in the app. To add credits, change your plan or query an overage, contact [hello@vitay.io](mailto:hello@vitay.io).
+Credits, contract dates and limits come from your Vitay contract and can't be edited in the app. To add credits, change your plan or ask about an overage, contact [hello@vitay.io](mailto:hello@vitay.io).
 
 ## Troubleshooting
 
 <AccordionGroup>
   <Accordion title="I can't find the Usage page">
-    Accounts whose billing is consolidated into a parent account do not have their own usage view, so **Usage** is not in their navigation. Switch to the parent account and open **Usage** there — and turn on **Include subaccounts** to see the child account's usage inside the totals.
+    Sub-accounts whose billing is combined with a parent account don't show **Usage**. Switch to the parent account, open **Usage** and turn on **Include subaccounts**.
   </Accordion>
   <Accordion title="The contract cards are missing">
-    **Contract Credits**, **Remaining Credits** and **Overages** only render when contract credits are recorded for the account. **Credits Used** always shows. If your contract should be on file, contact [hello@vitay.io](mailto:hello@vitay.io).
+    They only show when contract credits are recorded for the account. **Credits Used** always shows. If your contract should be on file, contact [hello@vitay.io](mailto:hello@vitay.io).
   </Accordion>
-  <Accordion title="Our usage looks lower than the number of candidates we added">
-    Only candidates with at least one completed report count. Candidates who were added but never had a reference, pre-screening or feedback come back do not consume a credit.
+  <Accordion title="Our usage is lower than the number of candidates we added">
+    Only candidates with at least one completed reference, pre-screening or feedback form count.
   </Accordion>
   <Accordion title="We passed 90% but nobody got an email">
-    Check that **Usage Notifications** is on, that the 90% threshold is ticked, and that either **Notify Administrators** is on or there is at least one **Additional Email Recipient** — with no recipients, nothing is sent. Also check the threshold has not already fired earlier in the same contract term; each one only sends once per term.
+    Check that **Usage Notifications** is on, 90% is ticked, and either **Notify Administrators** is on or there is at least one **Additional Email Recipients** address. Also check whether the 90% alert already went out earlier in the same contract term.
   </Accordion>
 </AccordionGroup>
 
@@ -120,4 +98,4 @@ Credits, contract dates and limits come from your Vitay contract; they are not e
   <Card title="Download reports" icon="download" href="/reports-lead-generation/download-reports" />
 </CardGroup>
 
-{/* source: app.vitay.io projects/configuration protected/usage/usage.component.{ts,html} (groupByOptions, chartViewOptions, statistics, tableCols, includeChildFirms, useContractPeriods, CSV export; i18n USAGE.TITLE), shared/components/navbar/navbar.component.ts (NAVBAR.USAGE between Settings and Plugins, hidden when is_billing_sub_accounts_linked_enabled), protected/settings/settings-routing.module.ts (settings/billing → /usage redirect), protected/settings/notifications/settings.notifications.component.{ts,html} (availableThresholds 70-110, custom emails), i18n SETTINGS.BILLING.* and SETTINGS.CONFIGURATION.usage_notifications.*; api app/services/usage_service/creator.rb (one UsageRecord per candidate on first filled Reference/PreScreening/Feedback), app/models/usage_record.rb (uniqueness per candidate + firm), app/services/usage_notification_service.rb (thresholds once per contract term, notify_root_users + custom_emails, include_child_firms: true, contract validity), app/models/usage_notification_log.rb, app/mailers/usage_notification_mailer.rb (subject + View Usage Details), app/models/setting.rb (usage_notifications defaults 80/90/100; Setting before_create enable_usage_notifications sets usage_notifications_setting.is_enabled for new firms only, api #2750, notify_root_users true), lib/tasks/notifications.rake (notifications:usage_thresholds), lib/tasks/client_reports.rake (client_reports:monthly_overview, is_monthly_usage_report_enabled + usage_report_emails_list, admin-only UI) */}
+{/* source: app projects/configuration protected/usage/usage.component.{ts,html}; shared/components/navbar/navbar.component.ts; protected/settings/notifications/settings.notifications.component.ts (availableThresholds); api app/services/usage_service/creator.rb, app/services/usage_notification_service.rb, app/mailers/usage_notification_mailer.rb, app/models/setting.rb (enable_usage_notifications), lib/tasks/client_reports.rake */}

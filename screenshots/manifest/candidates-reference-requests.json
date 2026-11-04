@@ -1,0 +1,858 @@
+[
+  {
+    "id": "add-a-candidate-sidebar-buttons",
+    "article": "candidates-reference-requests/add-a-candidate",
+    "alt": "The Quick Request and Add Candidate buttons at the top of the left sidebar",
+    "app": "references",
+    "as": "recruiter",
+    "path": "/candidates",
+    "needs": "non-demo firm (buttons are disabled on demo accounts)",
+    "steps": [
+      {
+        "waitFor": ".protected-sidebar #quickRequest"
+      }
+    ],
+    "capture": {
+      "selector": ".protected-sidebar #sidebar li.nav-item:has(#quickRequest)"
+    },
+    "confidence": "high"
+  },
+  {
+    "id": "add-a-candidate-modal",
+    "article": "candidates-reference-requests/add-a-candidate",
+    "alt": "The Add Candidate form with name, Internal ID, email and mobile number fields",
+    "app": "references",
+    "as": "recruiter",
+    "path": "/candidates",
+    "needs": "",
+    "steps": [
+      {
+        "click": ".btn-toolbar button:has(i.lnr-plus)"
+      },
+      {
+        "waitFor": ".modal.show #first_name"
+      }
+    ],
+    "capture": {
+      "selector": ".modal.show .modal-content"
+    },
+    "confidence": "high"
+  },
+  {
+    "id": "send-a-reference-request-button",
+    "article": "candidates-reference-requests/send-a-reference-request",
+    "alt": "The References tab toolbar on a candidate page with the Add Reference and Reference Request buttons",
+    "app": "references",
+    "as": "recruiter",
+    "path": "/candidates/:candidateId/references",
+    "needs": "candidate with an email address, assigned to the demo recruiter's own (sub-)account",
+    "steps": [
+      {
+        "waitFor": ".candidates-show button:has(i.lnr-paper-plane)"
+      }
+    ],
+    "capture": {
+      "selector": ".candidates-show .btn-toolbar.float-end"
+    },
+    "confidence": "medium"
+  },
+  {
+    "id": "send-a-reference-request-modal",
+    "article": "candidates-reference-requests/send-a-reference-request",
+    "alt": "The Reference Request form with Question Set, Number of references, Managers only and Public notes for the candidate",
+    "app": "references",
+    "as": "recruiter",
+    "path": "/candidates/:candidateId/references",
+    "needs": "candidate with an email address; firm has a default reference question set",
+    "steps": [
+      {
+        "click": ".candidates-show button:has(i.lnr-paper-plane)"
+      },
+      {
+        "waitFor": ".modal.show #min_manager_references"
+      }
+    ],
+    "capture": {
+      "selector": ".modal.show .modal-content"
+    },
+    "confidence": "high"
+  },
+  {
+    "id": "send-a-reference-request-quick-request",
+    "article": "candidates-reference-requests/send-a-reference-request",
+    "alt": "The Quick Request form with candidate details and the reference request options",
+    "app": "references",
+    "as": "recruiter",
+    "path": "/candidates",
+    "needs": "non-demo firm; at least one reference question set",
+    "steps": [
+      {
+        "click": ".protected-sidebar #quickRequest"
+      },
+      {
+        "waitFor": ".modal.show #first_name"
+      }
+    ],
+    "capture": {
+      "selector": ".modal.show .modal-content"
+    },
+    "confidence": "medium"
+  },
+  {
+    "id": "add-a-reference-manually-modal",
+    "article": "candidates-reference-requests/add-a-reference-manually",
+    "alt": "The Add Reference form with name, email, mobile number, company and question set fields",
+    "app": "references",
+    "as": "recruiter",
+    "path": "/candidates/:candidateId/references",
+    "needs": "candidate in the recruiter's own account; firm does not require candidate permission (require_candidate_permission off)",
+    "steps": [
+      {
+        "click": ".candidates-show .btn-toolbar.float-end button:has(i.lnr-plus)"
+      },
+      {
+        "waitFor": ".modal.show #company_name"
+      }
+    ],
+    "capture": {
+      "selector": ".modal.show .modal-content"
+    },
+    "confidence": "high"
+  },
+  {
+    "id": "manage-in-flight-requests-banner",
+    "article": "candidates-reference-requests/manage-in-flight-requests",
+    "alt": "The open-request banner at the top of a candidate page with the cancel, copy-link and Send reminder buttons",
+    "app": "references",
+    "as": "recruiter",
+    "path": "/candidates/593813bf-4d2e-459c-ad09-88cd0c0f899c/references",
+    "needs": "Docs candidate Daniel Kim (CAND-006, assigned to Sarah Johnson, id in path) with an open, unsubmitted reference request and reminders on",
+    "steps": [
+      {
+        "waitFor": "app-candidates-show-alerts .alert.v-alert-primary"
+      }
+    ],
+    "capture": {
+      "selector": "app-candidates-show-alerts .alert.v-alert-primary"
+    },
+    "confidence": "medium"
+  },
+  {
+    "id": "manage-in-flight-requests-edit-reference",
+    "article": "candidates-reference-requests/manage-in-flight-requests",
+    "alt": "The Edit Reference form opened from the reference side panel",
+    "app": "references",
+    "as": "recruiter",
+    "path": "/candidates/:candidateId/references",
+    "needs": "candidate assigned to the demo recruiter with at least one pending reference",
+    "steps": [
+      {
+        "click": "app-table tbody tr.pointer >> nth=0"
+      },
+      {
+        "waitFor": "ng-sidebar app-sidebar-reference button:has(i.lnr-pencil)"
+      },
+      {
+        "click": "ng-sidebar app-sidebar-reference button:has(i.lnr-pencil)"
+      },
+      {
+        "waitFor": ".modal.show #email"
+      }
+    ],
+    "capture": {
+      "selector": ".modal.show .modal-content"
+    },
+    "confidence": "medium"
+  },
+  {
+    "id": "manage-in-flight-requests-delete-dialog",
+    "article": "candidates-reference-requests/manage-in-flight-requests",
+    "alt": "The Delete Request confirmation dialog",
+    "app": "references",
+    "as": "recruiter",
+    "path": "/candidates/593813bf-4d2e-459c-ad09-88cd0c0f899c/references",
+    "needs": "Docs candidate Daniel Kim (CAND-006, id in path) with an open reference request (do not click Delete)",
+    "steps": [
+      {
+        "click": "app-candidates-show-alerts .alert.v-alert-primary button:has(i.lnr-cross) >> nth=0"
+      },
+      {
+        "waitFor": ".modal.show .modal-footer .v-btn-danger"
+      }
+    ],
+    "capture": {
+      "selector": ".modal.show .modal-content"
+    },
+    "confidence": "medium"
+  },
+  {
+    "id": "bulk-candidate-actions-bar",
+    "article": "candidates-reference-requests/bulk-candidate-actions",
+    "alt": "The Candidates list with three rows ticked and the bulk action bar at the bottom of the screen",
+    "app": "references",
+    "as": "recruiter",
+    "path": "/candidates",
+    "needs": "At least 3 candidates assigned to Sarah Johnson in the default list view (Robert Martinez, Daniel Kim, Olivia Bennett)",
+    "steps": [
+      {
+        "click": "app-table tbody tr td.v-table-select input >> nth=0"
+      },
+      {
+        "click": "app-table tbody tr td.v-table-select input >> nth=1"
+      },
+      {
+        "click": "app-table tbody tr td.v-table-select input >> nth=2"
+      },
+      {
+        "waitFor": ".bulk-action-bar"
+      }
+    ],
+    "capture": {
+      "viewport": true
+    },
+    "confidence": "high"
+  },
+  {
+    "id": "bulk-candidate-actions-send-new-request",
+    "article": "candidates-reference-requests/bulk-candidate-actions",
+    "alt": "The Send new request dialog with the Reference card selected and the question set and minimum references fields",
+    "app": "references",
+    "as": "recruiter",
+    "path": "/candidates",
+    "needs": "At least 3 candidates assigned to Sarah Johnson in the default list view (Robert Martinez, Daniel Kim, Olivia Bennett)",
+    "steps": [
+      {
+        "click": "app-table tbody tr td.v-table-select input >> nth=0"
+      },
+      {
+        "click": "app-table tbody tr td.v-table-select input >> nth=1"
+      },
+      {
+        "click": ".bulk-action-bar button:has(i.lnr-paper-plane)"
+      },
+      {
+        "waitFor": ".modal.show .request-type-card"
+      },
+      {
+        "click": ".modal.show .request-type-card >> nth=0"
+      },
+      {
+        "waitFor": ".modal.show #minReferences"
+      }
+    ],
+    "capture": {
+      "selector": ".modal.show .modal-content"
+    },
+    "confidence": "medium"
+  },
+  {
+    "id": "reminders-and-cadence-settings",
+    "article": "candidates-reference-requests/reminders-and-cadence",
+    "alt": "The Auto Reminders card on Settings → Notifications with the Reminders Rate dropdown and the weekend switch",
+    "app": "configuration",
+    "as": "root",
+    "path": "/settings/notifications",
+    "needs": "Auto reminders enabled (default)",
+    "steps": [
+      {
+        "waitFor": "[appsettinganchor=\"auto_reminders\"]"
+      }
+    ],
+    "capture": {
+      "selector": "[appsettinganchor=\"auto_reminders\"]"
+    },
+    "confidence": "medium"
+  },
+  {
+    "id": "reminders-and-cadence-send-reminder",
+    "article": "candidates-reference-requests/reminders-and-cadence",
+    "alt": "The reference side panel with the Send reminder button above the reference details",
+    "app": "references",
+    "as": "root",
+    "path": "/candidates/d44f7aa7-9a6a-487a-8195-38d5677e34e7/references",
+    "needs": "Candidate Alice Thompson (CAND-001, assigned to John Smith, id in path) whose reference James Wilson is pending, reminders on, no reminder sent in the last 24 hours",
+    "steps": [
+      {
+        "click": "app-candidates-show-references tbody tr:has-text(\"James Wilson\") td:first-child"
+      },
+      {
+        "waitFor": "ng-sidebar app-sidebar-reference app-sidebar-reference-question-set-alerts button:has-text(\"Send reminder\")"
+      }
+    ],
+    "capture": {
+      "selector": "ng-sidebar .sidebar-panel.sidebar-open"
+    },
+    "confidence": "medium"
+  },
+  {
+    "id": "reminders-and-cadence-reminders-tab",
+    "article": "candidates-reference-requests/reminders-and-cadence",
+    "alt": "The Reminders tab of a reference side panel with the on/off switch and the list of scheduled reminders",
+    "app": "references",
+    "as": "recruiter",
+    "path": "/candidates/b7a55f8e-0692-422e-b98f-b1b103315098/references",
+    "needs": "Olivia Bennett (staging literal id) with Priya Shah pending; reminders were scheduled when her request was submitted",
+    "steps": [
+      {
+        "click": "app-candidates-show-references tbody tr:has-text(\"Priya Shah\") td:first-child"
+      },
+      {
+        "waitFor": "ng-sidebar app-sidebar-reference"
+      },
+      {
+        "click": "app-sidebar-reference .nav-link:has(span.lnr-alarm)"
+      },
+      {
+        "waitFor": "app-sidebar-reference-reminders ui-switch"
+      },
+      {
+        "hover": "app-sidebar-reference-reminders"
+      }
+    ],
+    "capture": {
+      "selector": "ng-sidebar .sidebar-panel.sidebar-open"
+    },
+    "confidence": "medium"
+  },
+  {
+    "id": "reference-not-received-envelope-icon",
+    "article": "candidates-reference-requests/reference-not-received",
+    "alt": "The reference side panel with the colored envelope icon next to the email address and its tooltip",
+    "app": "references",
+    "as": "recruiter",
+    "path": "/candidates/:candidateId/references",
+    "needs": "First reference row has an email with a delivered or bounce event in the last 3 months",
+    "steps": [
+      {
+        "click": "app-candidates-show-references tbody tr:first-child td:first-child"
+      },
+      {
+        "waitFor": "app-sidebar-reference-question-set ul.list-unstyled"
+      },
+      {
+        "hover": "app-sidebar-reference-question-set ul.list-unstyled li:first-child i.lnr"
+      }
+    ],
+    "capture": {
+      "selector": "ng-sidebar .sidebar-panel.sidebar-open"
+    },
+    "confidence": "medium"
+  },
+  {
+    "id": "email-and-text-delivery-email-activity",
+    "article": "candidates-reference-requests/email-and-text-delivery",
+    "alt": "The reference side panel open on the Email activity tab, listing delivered and bounce events",
+    "app": "references",
+    "as": "recruiter",
+    "path": "/candidates/:candidateId/references",
+    "needs": "First reference row has email activity (a delivered and ideally a bounce event)",
+    "steps": [
+      {
+        "click": "app-candidates-show-references tbody tr:first-child td:first-child"
+      },
+      {
+        "waitFor": "ng-sidebar app-sidebar-reference"
+      },
+      {
+        "click": "app-sidebar-reference .nav-link:has(span.lnr-envelope)"
+      },
+      {
+        "waitFor": "app-sidebar-reference-emails table"
+      }
+    ],
+    "capture": {
+      "selector": "ng-sidebar app-sidebar-reference"
+    },
+    "confidence": "medium"
+  },
+  {
+    "id": "email-and-text-delivery-team-notifications",
+    "article": "candidates-reference-requests/email-and-text-delivery",
+    "alt": "The Team notifications table on Settings → Notifications showing the Email could not be delivered and Text message could not be delivered rows",
+    "app": "configuration",
+    "as": "root",
+    "path": "/settings/notifications",
+    "needs": "Text messages enabled so the text row is visible",
+    "steps": [
+      {
+        "waitFor": "app-notification-matrix table"
+      }
+    ],
+    "capture": {
+      "selector": "app-notification-matrix"
+    },
+    "confidence": "medium"
+  },
+  {
+    "id": "read-a-completed-reference-references-tab",
+    "article": "candidates-reference-requests/read-a-completed-reference",
+    "alt": "The candidate's References tab with a question-set group, a completed reference row and the download menu open",
+    "app": "references",
+    "as": "recruiter",
+    "path": "/candidates/:candidateId/references",
+    "needs": "Candidate with one completed and one pending reference in the same question set; reference score shown",
+    "steps": [
+      {
+        "waitFor": "app-candidates-show-references app-table"
+      },
+      {
+        "click": "app-candidates-show-references button.dropdown-toggle:has(i.lnr-download2)"
+      },
+      {
+        "waitFor": "app-candidates-show-references .dropdown-menu .dropdown-item"
+      }
+    ],
+    "capture": {
+      "selector": "app-candidates-show-references"
+    },
+    "confidence": "medium"
+  },
+  {
+    "id": "read-a-completed-reference-panel",
+    "article": "candidates-reference-requests/read-a-completed-reference",
+    "alt": "A completed reference's side panel with the score circle, contact details and the first answers",
+    "app": "references",
+    "as": "recruiter",
+    "path": "/candidates/:candidateId/references",
+    "needs": "First reference row is completed, with rating and text answers",
+    "steps": [
+      {
+        "click": "app-candidates-show-references tbody tr:first-child td:first-child"
+      },
+      {
+        "waitFor": "ng-sidebar app-sidebar-reference-question-set app-score"
+      }
+    ],
+    "capture": {
+      "selector": "ng-sidebar .sidebar-panel.sidebar-open"
+    },
+    "confidence": "medium"
+  },
+  {
+    "id": "search-past-references-topbar-search",
+    "article": "candidates-reference-requests/search-past-references",
+    "alt": "The top bar with the search box open and the Search candidates / Search references dropdown",
+    "app": "references",
+    "as": "recruiter",
+    "path": "/candidates",
+    "needs": "Non-demo firm",
+    "steps": [
+      {
+        "click": "app-topbar .nav-link:has(i.lnr-magnifier)"
+      },
+      {
+        "waitFor": "app-topbar app-typeahead"
+      }
+    ],
+    "capture": {
+      "selector": "app-topbar"
+    },
+    "confidence": "medium"
+  },
+  {
+    "id": "search-past-references-candidates-filters",
+    "article": "candidates-reference-requests/search-past-references",
+    "alt": "The Candidates list with the filter toolbar expanded, showing the date range, Statuses and Recruiters dropdowns and the red reset button",
+    "app": "references",
+    "as": "root",
+    "path": "/candidates",
+    "needs": "A handful of candidates; root user so the Recruiters filter shows",
+    "steps": [
+      {
+        "click": "app-candidates-list button:has(i.lnr-funnel)"
+      },
+      {
+        "waitFor": "app-candidates-list button.v-btn-danger:has(i.lnr-cross)"
+      }
+    ],
+    "capture": {
+      "viewport": true
+    },
+    "confidence": "high"
+  },
+  {
+    "id": "search-past-references-references-filters",
+    "article": "candidates-reference-requests/search-past-references",
+    "alt": "The References list with the filter toolbar expanded, showing Recruiters, Question sets, Types, Relationships and Status",
+    "app": "references",
+    "as": "root",
+    "path": "/leads",
+    "needs": "A handful of references across two question sets",
+    "steps": [
+      {
+        "click": "app-leads-list button:has(i.lnr-funnel)"
+      },
+      {
+        "waitFor": "app-leads-list button.v-btn-danger:has(i.lnr-cross)"
+      }
+    ],
+    "capture": {
+      "viewport": true
+    },
+    "confidence": "high"
+  },
+  {
+    "id": "share-reports-settings-card",
+    "article": "candidates-reference-requests/share-reports",
+    "alt": "The Additional Report Recipients card on Settings → Notifications with both switches on",
+    "app": "configuration",
+    "as": "root",
+    "path": "/settings/notifications",
+    "needs": "candidate_report_recipients is_enabled and is_domain_restricted both on",
+    "steps": [
+      {
+        "waitFor": "[appsettinganchor=\"candidate_report_recipients\"]"
+      }
+    ],
+    "capture": {
+      "selector": "[appsettinganchor=\"candidate_report_recipients\"]"
+    },
+    "confidence": "medium"
+  },
+  {
+    "id": "share-reports-recipients-field",
+    "article": "candidates-reference-requests/share-reports",
+    "alt": "The Edit Candidate form with two address chips in the Additional report recipients field",
+    "app": "references",
+    "as": "recruiter",
+    "path": "/candidates/:candidateId/references",
+    "needs": "Additional report recipients enabled; candidate with two report recipient emails",
+    "steps": [
+      {
+        "click": "app-candidates-show-header button:has(i.lnr-pencil)"
+      },
+      {
+        "waitFor": ".modal.show app-report-recipients-input"
+      }
+    ],
+    "capture": {
+      "selector": ".modal.show .modal-content"
+    },
+    "confidence": "high"
+  },
+  {
+    "id": "share-reports-permission-warning",
+    "article": "candidates-reference-requests/share-reports",
+    "alt": "A completed reference's side panel showing the yellow sharing-permission warning",
+    "app": "references",
+    "as": "recruiter",
+    "path": "/candidates/b7a55f8e-0692-422e-b98f-b1b103315098/references",
+    "needs": "Consent questions on (is_references_consent_enabled). Candidate Olivia Bennett (CAND-007, id in path) whose completed reference Grace Patel answered No to sharing with clients",
+    "steps": [
+      {
+        "click": "app-candidates-show-references tbody tr:has-text(\"Grace Patel\") td:first-child"
+      },
+      {
+        "waitFor": "ng-sidebar app-sidebar-reference-question-set-alerts .alert-warning"
+      }
+    ],
+    "capture": {
+      "selector": "ng-sidebar .sidebar-panel.sidebar-open"
+    },
+    "confidence": "low"
+  },
+  {
+    "id": "candidate-documents-settings-card",
+    "article": "candidates-reference-requests/candidate-documents",
+    "alt": "The Candidate document upload card on the Ref. Requests settings tab, switched on, with the required toggle and the description editor",
+    "app": "configuration",
+    "as": "root",
+    "path": "/settings/requests",
+    "needs": "Candidate document upload switched on (so the Required toggle and description editor show)",
+    "steps": [
+      {
+        "waitFor": "[appsettinganchor=\"candidate_documents\"]"
+      }
+    ],
+    "capture": {
+      "selector": "[appsettinganchor=\"candidate_documents\"]"
+    },
+    "confidence": "high"
+  },
+  {
+    "id": "candidate-documents-public-form-card",
+    "article": "candidates-reference-requests/candidate-documents",
+    "alt": "The Documents card on the candidate's reference request form, with the description, the upload area and the privacy notice",
+    "app": "public-candidate",
+    "as": "none",
+    "path": "/reference-requests/:referenceRequestId",
+    "needs": "Open (unsubmitted) reference request; firm has Candidate document upload on",
+    "steps": [
+      {
+        "waitFor": "[data-testid=\"documents-privacy-notice\"]"
+      }
+    ],
+    "capture": {
+      "selector": ".card.v-card:has([data-testid=\"documents-privacy-notice\"])"
+    },
+    "confidence": "high"
+  },
+  {
+    "id": "candidate-documents-tab",
+    "article": "candidates-reference-requests/candidate-documents",
+    "alt": "The candidate Documents tab with the Select file button and a list of documents",
+    "app": "references",
+    "as": "recruiter",
+    "path": "/candidates/:candidateId/references",
+    "needs": "Candidate with 1-2 uploaded documents (Robert Martinez has a résumé and a certificate PDF)",
+    "steps": [
+      {
+        "click": ".candidates-show tabset .nav-link:has-text(\"Documents\")"
+      },
+      {
+        "waitFor": "app-candidates-show-documents"
+      }
+    ],
+    "capture": {
+      "viewport": true
+    },
+    "confidence": "high",
+    "viewport": {
+      "width": 1680,
+      "height": 900
+    }
+  },
+  {
+    "id": "candidate-statuses-and-comments-status-dropdown",
+    "article": "candidates-reference-requests/candidate-statuses-and-comments",
+    "alt": "The candidate page header with the status dropdown open",
+    "app": "references",
+    "as": "recruiter",
+    "path": "/candidates/:candidateId",
+    "needs": "Any active candidate; no integrations connected (otherwise a Synchronize dropdown sits next to the status button)",
+    "steps": [
+      {
+        "waitFor": "app-candidates-show-header"
+      },
+      {
+        "click": "app-candidates-show-header .row.mt-2 .btn-group:last-child > button.dropdown-toggle"
+      },
+      {
+        "waitFor": "app-candidates-show-header .dropdown-menu .dropdown-item"
+      }
+    ],
+    "capture": {
+      "selector": "app-candidates-show-header"
+    },
+    "confidence": "medium"
+  },
+  {
+    "id": "candidate-statuses-and-comments-comments-tab",
+    "article": "candidates-reference-requests/candidate-statuses-and-comments",
+    "alt": "The Comments tab in the candidate side panel with a comment and the comment box",
+    "app": "references",
+    "as": "recruiter",
+    "path": "/candidates/:candidateId",
+    "needs": "Candidate with at least one comment written by the capture user",
+    "steps": [
+      {
+        "waitFor": "app-candidates-show-header"
+      },
+      {
+        "click": "app-candidates-show-header button:has(i.lnr-bubble)"
+      },
+      {
+        "waitFor": "ng-sidebar app-sidebar-candidate-comments"
+      }
+    ],
+    "capture": {
+      "selector": "ng-sidebar app-sidebar-candidate"
+    },
+    "confidence": "medium"
+  },
+  {
+    "id": "ip-conflicts-and-reference-edits-ip-banner",
+    "article": "candidates-reference-requests/ip-conflicts-and-reference-edits",
+    "alt": "A candidate page showing the IP address warning banner above the References table, with the warning triangle on the affected row",
+    "app": "references",
+    "as": "recruiter",
+    "path": "/candidates/b7a55f8e-0692-422e-b98f-b1b103315098/references",
+    "needs": "IP conflict banner setting on. Candidate Olivia Bennett (CAND-007, id in path) whose reference Priya Shah opened her form from the candidate's IP address",
+    "steps": [
+      {
+        "waitFor": "app-candidates-show-alerts .alert-warning"
+      },
+      {
+        "waitFor": "app-candidates-show-references app-table"
+      }
+    ],
+    "capture": {
+      "viewport": true
+    },
+    "confidence": "medium"
+  },
+  {
+    "id": "ip-conflicts-and-reference-edits-self-reference-banner",
+    "article": "candidates-reference-requests/ip-conflicts-and-reference-edits",
+    "alt": "A candidate page showing the self-reference attempt banner with the attempt count and the ✕ to clear it",
+    "app": "references",
+    "as": "recruiter",
+    "path": "/candidates/593813bf-4d2e-459c-ad09-88cd0c0f899c",
+    "needs": "Candidate Daniel Kim (CAND-006, id in path) with an open self-reference attempt (2 attempts)",
+    "steps": [
+      {
+        "waitFor": "[data-testid=\"self-reference-banner-message\"]"
+      }
+    ],
+    "capture": {
+      "selector": "app-candidates-show-alerts .alert:has([data-testid=\"self-reference-banner-message\"])"
+    },
+    "confidence": "high"
+  },
+  {
+    "id": "ip-conflicts-and-reference-edits-settings",
+    "article": "candidates-reference-requests/ip-conflicts-and-reference-edits",
+    "alt": "Settings → Notifications showing the IP address conflict detected and self-reference rows of Team notifications and the IP conflict banner switch under Email options",
+    "app": "configuration",
+    "as": "root",
+    "path": "/settings/notifications",
+    "needs": "Attach the PDF report to completion emails switched on so the nested IP conflict banner switch is visible. Captures only the Email options card: the IP conflict / self-reference matrix rows sit ~1100px above it, so they cannot share one shot (see email-and-text-delivery-team-notifications for the matrix)",
+    "steps": [
+      {
+        "waitFor": "[appsettinganchor=\"is_ip_conflict_banner_enabled\"]"
+      }
+    ],
+    "capture": {
+      "selector": "[appsettinganchor=\"email_options\"]"
+    },
+    "confidence": "low"
+  },
+  {
+    "id": "recycle-bin-deactivate-button",
+    "article": "candidates-reference-requests/recycle-bin",
+    "alt": "The Details tab of the candidate side panel with the Deactivate button",
+    "app": "references",
+    "as": "recruiter",
+    "path": "/candidates/:candidateId",
+    "needs": "Any active candidate",
+    "steps": [
+      {
+        "waitFor": "app-candidates-show-header"
+      },
+      {
+        "click": "app-candidates-show-header button:has-text(\"See more\")"
+      },
+      {
+        "waitFor": "ng-sidebar app-sidebar-candidate-details button:has-text(\"Deactivate\")"
+      }
+    ],
+    "capture": {
+      "selector": "ng-sidebar app-sidebar-candidate"
+    },
+    "confidence": "high"
+  },
+  {
+    "id": "recycle-bin-list",
+    "article": "candidates-reference-requests/recycle-bin",
+    "alt": "The Recycle Bin page with deactivated candidates and the Reactivate, View details and Delete permanently icons on each row",
+    "app": "references",
+    "as": "root",
+    "path": "/recycle-bin",
+    "needs": "3-4 deactivated candidates (root user so the Delete permanently icon shows)",
+    "steps": [
+      {
+        "waitFor": ".recycle-bin app-table"
+      }
+    ],
+    "capture": {
+      "viewport": true
+    },
+    "confidence": "high"
+  },
+  {
+    "id": "pre-screening-send-modal",
+    "article": "candidates-reference-requests/pre-screening",
+    "alt": "The Send Pre-Screening Request dialog with the question set dropdown and the public notes field",
+    "app": "references",
+    "as": "recruiter",
+    "path": "/candidates/:candidateId/references",
+    "needs": "Pre-screening plugin on; at least one question set of type Pre-screening",
+    "steps": [
+      {
+        "click": ".candidates-show tabset .nav-link:has-text(\"Pre-screening\")"
+      },
+      {
+        "waitFor": "app-candidates-show-pre-screenings"
+      },
+      {
+        "click": ".candidates-show .btn-toolbar.float-end button:has(i.lnr-paper-plane)"
+      },
+      {
+        "waitFor": ".modal.show .modal-content"
+      }
+    ],
+    "capture": {
+      "selector": ".modal.show .modal-content"
+    },
+    "confidence": "high"
+  },
+  {
+    "id": "pre-screening-answers-page",
+    "article": "candidates-reference-requests/pre-screening",
+    "alt": "A completed Pre-screening answers page with the score, the download button and the answers",
+    "app": "references",
+    "as": "recruiter",
+    "path": "/pre-screenings/:preScreeningId",
+    "needs": "Pre-screening plugin on; a completed pre-screening. The current DOCS_PRE_SCREENING_ID question set has no rating questions, so no score circle shows; use one with rating questions to match the alt text",
+    "steps": [
+      {
+        "waitFor": "app-pre-screenings-show app-answers"
+      }
+    ],
+    "capture": {
+      "viewport": true
+    },
+    "confidence": "medium"
+  },
+  {
+    "id": "background-screening-request-modal",
+    "article": "candidates-reference-requests/background-screening",
+    "alt": "The Background Screening Requests dialog with the partner tabs and the list of screening categories",
+    "app": "references",
+    "as": "recruiter",
+    "path": "/candidates/:candidateId/references",
+    "needs": "MANUAL: Mintz and Validity must both be active with background check products assigned to the firm (admin-side partner setup). On staging the Acme docs firm has no products, so the dialog shows only an empty Mintz tab with no categories.",
+    "steps": [
+      {
+        "click": ".candidates-show tabset .nav-link:has-text(\"Background Screening\")"
+      },
+      {
+        "waitFor": "app-candidates-show-background-checkings"
+      },
+      {
+        "click": ".candidates-show .btn-toolbar.float-end button:has(i.lnr-paper-plane)"
+      },
+      {
+        "waitFor": ".modal.show .modal-content"
+      }
+    ],
+    "capture": {
+      "selector": ".modal.show .modal-content"
+    },
+    "confidence": "manual"
+  },
+  {
+    "id": "background-screening-tab",
+    "article": "candidates-reference-requests/background-screening",
+    "alt": "The candidate's Background Screening tab with a completed check and one in progress",
+    "app": "references",
+    "as": "recruiter",
+    "path": "/candidates/:candidateId/references",
+    "needs": "MANUAL: candidate with one Completed (Clear) and one In progress background check. These rows can only come from a partner (Mintz/Validity) or a Rails-console seed; the docs firm has none, so the tab shows \"No data available\".",
+    "steps": [
+      {
+        "click": ".candidates-show tabset .nav-link:has-text(\"Background Screening\")"
+      },
+      {
+        "waitFor": "app-candidates-show-background-checkings"
+      },
+      {
+        "waitFor": "app-candidates-show-background-checkings app-table"
+      }
+    ],
+    "capture": {
+      "viewport": true
+    },
+    "confidence": "manual"
+  }
+]

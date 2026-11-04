@@ -3,177 +3,144 @@ title: "Share reference reports outside Vitay"
 description: "Email a copy of a candidate's completed reference reports to hiring managers, clients, or colleagues who don't have a Vitay login, and understand what a reference's sharing permission means."
 ---
 
-Not everyone who needs to read a reference report has a Vitay account. Vitay can email the completed report as a PDF attachment to addresses you add to the candidate — a hiring manager, a client contact, or a colleague — without giving them a login.
+Vitay can email completed reference reports, as PDF attachments, to addresses you add to a candidate, such as a hiring manager or a client contact. They don't need a Vitay login.
 
 <Note>
-  You need a recruiter (or higher) role to add report recipients to a
-  candidate, and the feature has to be switched on first: only a **root
-  recruiter** can turn on **Additional report recipients** and the domain
-  restriction on **Settings → Notifications**.
+  A root recruiter has to turn the feature on first, in the Configuration
+  area. After that, any recruiter can add report recipients to a candidate.
 </Note>
 
 ## Turn the feature on
 
 <Steps>
   <Step title="Open the Notifications settings">
-    Go to **Settings → Notifications** and scroll to the **Additional report
-    recipients** card. Its description reads *"Let users add email addresses to
-    a candidate that will receive the same confidential reference report emails
-    as the assigned user."*
+    In the Configuration area, go to **Settings → Notifications** and find the
+    **Additional Report Recipients** card.
   </Step>
   <Step title="Switch it on">
-    Flip the toggle. It saves immediately — there is no Save button. The
-    **Additional report recipients** field now appears on every candidate form
-    in your firm.
+    Flip the switch. It saves straight away. Every candidate form now has an
+    **Additional report recipients** field.
   </Step>
-  <Step title="Decide whether to restrict the domains">
-    A second toggle appears underneath: **Restrict to your organization's
-    domains** — *"Only allow email addresses whose domain matches one already
-    used by an active recruiter in your organization."* With it on, Vitay
-    rejects any address whose domain isn't already in use by an active
-    recruiter in the firm. Leave it off if you need to send reports to client
-    or hiring-manager domains.
+  <Step title="Decide whether to restrict domains">
+    A second switch appears: **Restrict To Your Organization's Domains**. When
+    it's on, only addresses whose domain is already used by an active
+    recruiter in your firm are accepted. Leave it off to send reports to
+    client domains.
 
-    ![SCREENSHOT: the Additional report recipients card on Settings → Notifications with both toggles — placeholder](/images/placeholder.png)
+    ![The Additional Report Recipients card on Settings → Notifications with both switches on](/images/screens/share-reports-settings-card.png)
   </Step>
 </Steps>
 
 ## Add report recipients to a candidate
 
 <Steps>
-  <Step title="Open the candidate">
-    Go to **Candidates** and select the candidate, then click the **pencil**
-    (edit) button on the candidate header. You can also set recipients while
-    creating the candidate, and in the **Quick request** modal.
+  <Step title="Edit the candidate">
+    Open the candidate and click the pencil (**Edit candidate**) in the
+    header. You can also add recipients when you create the candidate or in
+    the **Quick Request** form.
   </Step>
-  <Step title="Find the Additional report recipients field">
-    It's at the bottom of the form. The question-mark tooltip explains: *"Add
-    emails here to receive this candidate's completed reference report(s), in
-    addition to your default account settings."*
-  </Step>
-  <Step title="Type an address and press Enter">
-    The placeholder says **Add an email address and press Enter**. Each address
-    becomes a chip. You can add up to **5 addresses per candidate**.
+  <Step title="Add the addresses">
+    At the bottom of the form, under **Additional report recipients**, type an
+    address and press **Enter**. Each address becomes a chip. A candidate can
+    have up to 5.
 
-    ![SCREENSHOT: the Additional report recipients field on the edit-candidate modal with two address chips — placeholder](/images/placeholder.png)
+    ![The Edit Candidate form with two address chips in the Additional report recipients field](/images/screens/share-reports-recipients-field.png)
   </Step>
   <Step title="Save">
-    Submit the form. The candidate header then shows a **Report recipients**
-    line listing the addresses.
+    Click **Save**. The candidate header now shows a **Report recipients**
+    line with the addresses.
   </Step>
 </Steps>
 
-To remove someone, edit the candidate, delete their chip, and save — the list is replaced with whatever chips remain.
+To remove someone, edit the candidate, delete their chip and save.
 
-### When an address is rejected
-
-The field validates as you type and shows the reason in red underneath:
+If an address is refused, the reason shows in red under the field:
 
 | Message | What to do |
 | --- | --- |
-| *&lt;address&gt; is not a valid email address* | Check for a typo, a missing `@`, or a missing domain. |
-| *&lt;domain&gt; is not a domain used by a recruiter in your organization* | **Restrict to your organization's domains** is on and this domain isn't used by any active recruiter in your firm. Ask a root recruiter to turn the restriction off, or use an internal address. |
-| *A candidate can have at most 5 report recipients* | Remove an address before adding another. |
+| *&lt;address&gt; is not a valid email address* | Fix the typo. |
+| *&lt;domain&gt; is not a domain used by a recruiter in your organization* | The domain restriction is on. Use an internal address, or ask a root recruiter to turn the restriction off. |
+| *A candidate can have at most 5 report recipients* | Remove an address first. |
 
-## What report recipients receive, and when
+## What recipients receive
 
-Report recipients get an email with the report attached as a PDF. There is no link into Vitay and no account to create — the attachment is their copy.
+Each recipient gets an email with the report attached as a PDF. There's no link into Vitay.
 
-| Event | Subject line | Attachment |
+| When | Subject | Attachment |
 | --- | --- | --- |
-| One reference completes their form | *A reference has been completed for &lt;candidate&gt;* | That single reference's report |
-| The last outstanding reference completes | *All references have been completed for &lt;candidate&gt;* | The full candidate report, covering every reference |
+| A reference completes their form | *A reference has been completed for &lt;candidate&gt;* | That reference's report |
+| The last reference completes | *All references have been completed for &lt;candidate&gt;* | The full candidate report |
 
-The email body names your firm, explains that the address was added as a report recipient for this candidate, and asks them to reply to the email with any questions. It's sent from — and replies go to — your firm's **Primary reply email** (**Settings → Configuration**), not the assigned recruiter's personal address.
+The email names your firm, says the address was added as a report recipient, and invites questions by reply. It comes from your firm's **Primary Reply Email** (**Settings → Configuration**), and replies go there too.
 
-<Note>
-  Report recipients are separate from the **Team notifications** table on
-  **Settings → Notifications**. The columns you tick there decide who on your
-  team is emailed; they don't add or remove a candidate's report recipients.
-</Note>
+Report recipients are separate from the **Team notifications** table on **Settings → Notifications**, which only decides who on your team is emailed.
 
-## The firm-level recipient list
+## Copy the same people on every candidate
 
-The per-candidate list is for one candidate. If the same people should be copied on *every* candidate, add them to your team notifications instead.
+If someone should get reports for every candidate, use the team notifications instead:
 
 <Steps>
-  <Step title="Open Settings → Notifications">
-    Go to **Configuration → Settings → Notifications**. The first card is **Team notifications**, a table with one row per event.
+  <Step title="Open Team notifications">
+    In the Configuration area, go to **Settings → Notifications**. The first
+    card is **Team notifications**.
   </Step>
-  <Step title="Find the rows for completed references">
-    Use the **Reference completed** row ("A reference has submitted their answers for a candidate.") and the **All references completed** row ("Every reference for a candidate has been submitted. The email includes the full candidate report as a PDF.").
+  <Step title="Tick Additional emails">
+    On the **Reference completed** and **All references completed** rows, tick
+    **Additional emails**. An **Additional emails for this event** field opens
+    under the row.
   </Step>
-  <Step title="Tick Additional emails and add the addresses">
-    Tick the **Additional emails** column on the row. An **Additional emails for this event** field opens under it: type an address and press **Enter** for each person. Each row has its own list, and each box saves as soon as you tick it.
-
-    ![SCREENSHOT: the Team notifications table on Settings → Notifications with Additional emails ticked on the Reference completed row and two addresses in the field below it — placeholder](/images/placeholder.png)
+  <Step title="Add the addresses">
+    Type each address and press **Enter**. Each row keeps its own list, and
+    changes save as you make them.
   </Step>
 </Steps>
 
-The additional emails on a row apply to every candidate in the firm and aren't subject to the 5-address per-candidate cap or the domain restriction. Use the per-candidate field for the people who only need this one search. See [Notification settings](/account-configuration/notification-settings) for the other columns and events.
+These lists apply to every candidate in the firm. The 5-address limit and the domain restriction don't apply to them. See [Notification settings](/account-configuration/notification-settings).
 
 ## When a reference withholds permission to share
 
-If your firm asks references for consent, a reference can say they don't want their answers passed on — and Vitay records that on the report so you see it before you forward anything.
+If your firm turns on **Ask For References Consent To Share Results** (**Settings → References**), the reference form can ask:
 
-The questions come from **Settings → References → Ask for references consent to share results** ("Allow references to hide their results from candidates and customers. Warning note will be displayed on reports."). Two sub-toggles control which questions appear on the reference form:
+- *Do we have your permission to release this information to our client?* (switch: **Permission release to client**)
+- *Do we have your permission to release this information to the candidate?* (switch: **Permission release to candidate**)
 
-- **Permission release to client** → *"Do we have your permission to release this information to our client?"*
-- **Permission release to candidate** → *"Do we have your permission to release this information to the candidate?"*
+If the reference answers **No**, a yellow warning appears on the reference in Vitay:
 
-If the reference answers **No**, a yellow warning appears on the reference inside Vitay and on that reference's report PDF:
-
-| They declined | Warning shown |
+| They declined | Warning |
 | --- | --- |
 | Client only | *This reference has requested that this information not be shared with our clients.* |
 | Candidate only | *This reference has requested that this information not be shared with the candidate.* |
 | Both | *This reference has requested that this information not be shared with either our clients or the candidate.* |
 
-![SCREENSHOT: a completed reference in Vitay showing the yellow sharing-permission warning — placeholder](/images/placeholder.png)
+![A completed reference's side panel showing the yellow sharing-permission warning](/images/screens/share-reports-permission-warning.png)
 
-<Note>
-  The warning is advisory. Vitay does **not** block, redact, or withhold
-  anything based on the answer — report recipients still receive their copy,
-  and the report is still downloadable. Honouring the reference's wish is up to
-  you. The warning is printed on the individual reference report; the combined
-  all-references candidate report does not repeat it, so check the reference in
-  Vitay before you forward a combined report.
-</Note>
-
-If your firm has **Ask for references consent to share results** turned off, the questions are never asked and no warning is ever shown.
+The warning is advisory. Vitay doesn't block or redact anything: report recipients still get their copy and the report can still be downloaded. The standard report layout doesn't print the warning (only the older default layout does, on single-reference reports), so check the reference in Vitay before you forward any report.
 
 ## Troubleshooting
 
 <AccordionGroup>
-  <Accordion title="There's no Additional report recipients field on the candidate form">
-    The feature is off for your firm. A root recruiter needs to switch on
-    **Additional report recipients** on **Settings → Notifications**.
+  <Accordion title="There's no Additional report recipients field">
+    The feature is off. A root recruiter needs to switch on **Additional
+    Report Recipients** under **Settings → Notifications**.
   </Accordion>
-  <Accordion title="A report recipient says they never got the report">
-    Check three things, in order: the address is still listed under **Report
-    recipients** on the candidate header; **Additional report recipients** is
-    still switched on under **Settings → Notifications**; and the reference in
-    question is actually complete. Report recipients are also
-    worth checking against their spam folder — the message carries a PDF
-    attachment, which some filters treat harshly.
+  <Accordion title="A recipient never got the report">
+    Check that the address is still listed under **Report recipients** on the
+    candidate, that the feature is still on, and that the reference is
+    actually complete. Then ask them to check spam: emails with PDF
+    attachments are often filtered.
   </Accordion>
-  <Accordion title="Report recipient emails don't show on the Email activity tab">
-    That's expected. The candidate's **Email activity** tab lists messages sent
-    to the candidate's own address, so emails to report recipients don't appear
-    there. See
-    [Check email and text delivery](/candidates-reference-requests/email-and-text-delivery)
-    for what that tab does cover.
+  <Accordion title="Recipient emails aren't on the Email activity tab">
+    That tab only lists emails sent to the candidate's own address. See
+    [Check email and text delivery](/candidates-reference-requests/email-and-text-delivery).
   </Accordion>
   <Accordion title="I added someone by mistake">
-    Edit the candidate, remove their chip, and save. Removing an address stops
-    future report emails; it cannot recall a PDF that has already been
-    delivered. If the attachment contained something it shouldn't have,
-    contact Vitay support at [hello@vitay.io](mailto:hello@vitay.io).
+    Edit the candidate, remove the chip and save. This stops future emails but
+    can't recall a PDF already sent. If that's a problem, contact
+    [hello@vitay.io](mailto:hello@vitay.io).
   </Accordion>
-  <Accordion title="Can a report recipient log in to see more?">
-    No. Report recipients have no Vitay account and no link into the app —
-    they only ever see the PDF that was attached to their email. If someone
-    needs ongoing access, add them as a user instead; see
+  <Accordion title="Can a recipient log in to see more?">
+    No. Recipients only see the PDF attached to their email. If someone needs
+    ongoing access, add them as a user; see
     [Manage users](/account-configuration/manage-users).
   </Accordion>
 </AccordionGroup>
@@ -187,4 +154,4 @@ If your firm has **Ask for references consent to share results** turned off, the
   <Card title="Manage users" icon="users" href="/account-configuration/manage-users" />
 </CardGroup>
 
-{/* source: api app/models/candidate_report_recipient.rb (MAX_PER_CANDIDATE=5, email format + uniqueness + email_domain_allowed), app/services/candidate_report_recipients/allowed_domains.rb (active recruiters' email domains) + sync.rb (replace-on-save, dry_run validation), app/models/recruiter_reference.rb (send_reference_completed_email_to_report_recipients / send_all_references_completed_email_to_report_recipients / send_report_email_to_report_recipients — subjects, body copy, support_email_from as from+reply_to, gated on custom_notifications.exists? and candidate_report_recipients.is_enabled), app/workers/recruiter_reference_notification_worker.rb + recruiter_all_references_notification_worker.rb, app/services/mail_service.rb (pdf_report_enabled → SetPdfReference / SetPdfCandidateReport attachment), app/models/setting.rb (candidate_report_recipients {is_enabled,is_domain_restricted}; is_references_consent_enabled, is_consent_enabled_to_client, is_consent_enabled_to_candidate), app/models/reference.rb#permission_warning_message, app/views/api/v3/documents/en/default/references.erb (warning gated on is_references_consent_enabled; candidates.erb has no warning), app/controllers/api/v3/candidates/email_activities_controller.rb (filters on candidate.email), app/views/api/v1/settings/_data.json.jbuilder (report_recipient_allowed_domains); app.vitay.io src/app/shared/components/report-recipients-input/report-recipients-input.component.ts (maxItems=5, inline error strings), src/app/shared/components/modals/candidates/modals.candidates.component.{html,ts} (isReportRecipientsEnabled / isReportRecipientsDomainRestricted), projects/references shared/components/modals/quick-request, protected/candidates/show/header (CANDIDATES.SHOW.REPORT_RECIPIENTS), shared/components/sidebar/reference/question-set/alerts (REFERENCE.PERMISSION.WARNING.*), public/references/references.component.html (REFERENCE.PERMISSION.QUESTION.*), projects/configuration settings/notifications (SETTINGS.CONFIGURATION.candidate_report_recipients.*, TEAM_NOTIFICATIONS matrix rows REFERENCE_COMPLETED / ALL_REFERENCES_COMPLETED, send_to_custom chip input) + shared/components/notification-matrix, settings/references (SETTINGS.REFERENCES.is_references_consent_enabled TITLE/TO_CLIENT/TO_CANDIDATE); api app/controllers/api/v3/custom_notifications_controller.rb (ensure_all_types_for!), app/models/hiring_firm.rb (create_custom_notifications) */}
+{/* source: api app/models/candidate_report_recipient.rb, app/models/recruiter_reference.rb (send_*_to_report_recipients, send_report_email_to_report_recipients), app/models/reference.rb#permission_warning_message, app/views/api/v3/documents/en/{default,compressed}/references.erb, db/schema.rb (pdf_template default compressed, consent defaults); app src/app/shared/components/report-recipients-input/report-recipients-input.component.ts, src/app/shared/components/modals/candidates/modals.candidates.component.html, projects/references/src/app/shared/components/modals/quick-request/modals.quick-request.component.html, protected/candidates/show/header/candidates.show.header.component.html, shared/components/sidebar/reference/question-set/alerts/sidebar.reference.question-set.alerts.component.ts; projects/configuration/src/app/protected/settings/{notifications,references}, shared/components/notification-matrix */}

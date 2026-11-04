@@ -3,75 +3,53 @@ title: "Supported browsers"
 description: "Which browsers work with Vitay, and the browser settings recruiters and admins need."
 ---
 
-Vitay is a modern web application that runs in any current evergreen browser.
-You don't need to install anything — just open your browser and go.
+Vitay runs in the browser. There's nothing to install.
 
 ## Supported browsers
 
-Vitay works in current versions of modern browsers, on desktop and mobile:
+Use a current version of one of these, on desktop or mobile:
 
-- **Google Chrome** (including Chrome for Android)
-- **Microsoft Edge**
-- **Mozilla Firefox**
-- **Apple Safari** (macOS and iOS)
+- Google Chrome (including Chrome for Android)
+- Microsoft Edge
+- Mozilla Firefox
+- Apple Safari (macOS and iOS)
 
-Keep your browser up to date — Vitay is built for current browser versions, and
-staying updated also keeps you on the latest security patches.
+Internet Explorer doesn't work with Vitay. Browsers built on old versions of Chromium may not work
+either; use Chrome or Edge instead.
 
-## Browsers that are not supported
+## Browser settings Vitay needs
 
-- **Internet Explorer** — any version. IE lacks the JavaScript features Vitay
-  relies on and will not work.
-- **Browsers based on outdated Chromium forks** — if in doubt, use Chrome or
-  Edge instead.
+- **JavaScript** must be on, or the app won't load.
+- **Cookies** must be allowed for your Vitay domain. Vitay uses cookies to keep you signed in and to
+  remember your cookie consent choice. Blocking them can break SSO sign-in, and a browser that
+  clears cookies on close shows the consent banner on every visit. See
+  [Cookies and consent](/security-it/cookies-and-consent).
+- **Local and session storage** must be available. Vitay uses them to keep your place between page
+  loads.
 
-## Browser settings required
+## For IT teams
 
-Vitay requires the following browser features to be **enabled**:
-
-- **JavaScript** — Vitay is a JavaScript application. Disabling JavaScript
-  will prevent the app from loading.
-- **Cookies** — Vitay uses a session cookie to keep you logged in, and a
-  first-party cookie to remember each user's cookie consent choice. Third-party
-  cookie restrictions (from browser privacy modes or extensions) can interfere
-  with SSO logins; if you use SSO, ensure cookies from `vitay.io` are permitted.
-  Browsers set to clear cookies on close will re-show the consent banner on
-  every visit — see [Cookies and consent](/security-it/cookies-and-consent).
-- **Local storage** — used to preserve app state between page refreshes.
-
-## Tips for IT and managed devices
-
-- Deploy Chrome or Edge via your standard software management tooling and keep
-  auto-updates enabled so users stay on supported versions.
-- If your managed device policy blocks browser extensions, Vitay has no
-  extension requirements.
-- If you use a content security policy or proxy that inspects TLS, ensure
-  `*.vitay.io`, `*.vitay.ca` (Canada region), and `*.vitay.co.uk` (UK region)
-  are on the allow-list.
+- Keep browser auto-updates on so users stay on current versions.
+- Vitay needs no browser extensions.
+- If a proxy, firewall or TLS inspection tool filters traffic, allow `*.vitay.io`, `*.vitay.ca`
+  (Canada) and `*.vitay.co.uk` (United Kingdom).
 
 ## Troubleshooting
 
 <AccordionGroup>
-  <Accordion title="The Vitay app shows a blank page or won't load">
-    Check that JavaScript and cookies are enabled in the browser. Try opening
-    Vitay in a private/incognito window (which disables most extensions) to rule
-    out a browser extension conflict. If the issue only occurs on managed
-    devices, check whether your proxy or security tools are blocking requests to
-    `*.vitay.io`, `*.vitay.ca`, or `*.vitay.co.uk`.
+  <Accordion title="Vitay shows a blank page or won't load">
+    Check that JavaScript and cookies are on. Try a private or incognito window to rule out an
+    extension. If it only happens on managed devices, check whether your proxy or security tools
+    block `*.vitay.io`, `*.vitay.ca` or `*.vitay.co.uk`.
   </Accordion>
-  <Accordion title="SSO login redirects back to the login page without signing in">
-    This is usually a cookie issue. Ensure cookies from `vitay.io` (and your
-    IdP domain) are not being blocked. See [Single sign-on (SAML)](/security-it/sso-saml)
-    for more SSO troubleshooting steps.
+  <Accordion title="SSO sign-in sends me back to the login page">
+    This is usually a blocked cookie. Allow cookies for your Vitay domain and your identity
+    provider's domain. See [Single sign-on (SAML)](/security-it/sso-saml).
   </Accordion>
-  <Accordion title="A user reports the app looks broken on their device">
-    Update the browser to its current version, then clear the browser cache and
-    reload — a stale cached version of the app can cause layout or loading
-    issues. Also check for extensions (especially ad-blockers) that may
-    interfere; trying a private/incognito window is a quick way to rule them
-    out. If the issue persists on an up-to-date browser, contact
-    [hello@vitay.io](mailto:hello@vitay.io) with the browser name, version, and
-    a description of what's broken.
+  <Accordion title="The app looks broken on one device">
+    Update the browser, clear its cache and reload. Try a private window to rule out extensions such
+    as ad blockers. If it still looks wrong, email [hello@vitay.io](mailto:hello@vitay.io) with the
+    browser name and version and what you see.
   </Accordion>
 </AccordionGroup>
 
@@ -82,4 +60,4 @@ Vitay requires the following browser features to be **enabled**:
   <Card title="SCIM user provisioning" icon="users-gear" href="/security-it/scim-provisioning" />
 </CardGroup>
 
-{/* source: Vitay frontend (app.vitay.io) Angular application; no specific backend model */}
+{/* source: app angular.json (no .browserslistrc: Angular default browser support), src/app/shared/config/cookie-registry.ts, src/app/shared/services/cookie-consent.service.ts, src/app/shared/helpers/utils.helper.ts (localStorage), src/app/shared/services/chunk-recovery.service.ts (sessionStorage) */}

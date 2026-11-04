@@ -3,157 +3,84 @@ title: "Bulk candidate upload"
 description: "Add up to 50 candidates at once by uploading a formatted CSV file."
 ---
 
-Instead of adding candidates one at a time, you can upload a CSV file to create many candidates
-in a single step. You can optionally attach a reference request to each candidate at the same
-time, so requests go out the moment the upload finishes.
+Upload a CSV file to add many candidates in one go, and optionally send each of them a reference request at the same time.
 
 <Note>
-  You need a recruiter (or higher) role to upload candidates. Each upload reads the first **50
-  rows** of the file — **100** if Vitay has enabled the raised limit for your account (ask
-  **hello@vitay.io**). Rows past the limit are ignored silently, so split larger files rather
-  than relying on a warning. Vitay checks the whole file before anything is created, and only a
-  file with no errors can be submitted.
+  You need a recruiter (or higher) role. Vitay reads the first 50 rows of the file, or 100 if Vitay has raised the limit for your account (ask hello@vitay.io). Rows past the limit are ignored without a warning, so split larger files.
 </Note>
 
 ## Prepare your CSV file
 
-Download the official template first so your columns are in the right order.
-
 <Steps>
   <Step title="Download the template">
-    In the **Candidates** section, click **Import candidates**, then click **Download the CSV
-    template**. Open the file in your spreadsheet app.
+    Go to **Candidates** and click the upload icon (**Import candidates**) in the toolbar. In the window that opens, click **Download the CSV template**.
 
-    ![SCREENSHOT: the import panel with the "Download the CSV template" link — placeholder](/images/placeholder.png)
+    ![The Import candidates window with the Download the CSV template link and the file drop area](/images/screens/bulk-candidate-upload-import-window.png)
   </Step>
-  <Step title="Fill in the required columns">
-    Every row must have at minimum:
+  <Step title="Fill in one row per candidate">
+    Vitay reads the columns by position, so keep the template's column order.
 
     | Column | Required | Notes |
     |--------|----------|-------|
+    | `internal_id` | No | Your ATS or CRM ID. Generated if blank |
     | `first_name` | Yes | |
     | `last_name` | Yes | |
-    | `email` | Yes | Must be a valid email; cannot match an existing recruiter |
-    | `internal_id` | No | Your ATS/CRM ID; auto-generated if blank |
-    | `country_code` | No | Phone country code digits only (e.g. `1` for USA); defaults to `1` |
-    | `phone_number` | No | Formatting (spaces, dashes, `+`) is stripped automatically |
-    | `public_notes` | No | Message shown to the candidate on their reference request |
-    | `internal_notes` | No | Notes visible to recruiters only |
-    | `min_manager_references` | No | Minimum references required |
-    | `is_manager_only` | No | `true` or `yes` to require all references to be managers |
-    | `assigned_recruiter_email` | No | Assigns the candidate to a specific recruiter on your firm (or on the branch named by `branch_id`). Leave it blank and **you** become the assigned recruiter |
-    | `branch_id` | No | Sub-account ID; assigns the candidate to a branch. Find it in the **ID** column of **Configuration → Accounts** |
-    | `job_title` | No | Visible when the Job title feature is enabled on your account |
-
-    The question set for auto-created reference requests is not set per row — you choose it once
-    in the import panel and it applies to every candidate in the file.
-
+    | `email` | Yes | Can't be the email of a recruiter |
+    | `country_code` | No | Dialing code digits, e.g. `1`. Defaults to `1` |
+    | `phone_number` | No | Spaces, dashes and `+` are removed |
+    | `public_notes` | No | Note shown to the candidate on their reference request |
+    | `internal_notes` | No | Visible to recruiters only |
+    | `min_manager_references` | No | Minimum number of references |
+    | `assigned_recruiter_email` | No | A recruiter on your account or on the `branch_id` account. Blank means you |
+    | `branch_id` | No | Sub-account ID from the **ID** column in **Configuration → Accounts** |
+    | `question_set_id` | No | Leave blank. You pick the question set in the import window |
+    | `is_manager_only` | No | `true` or `yes` to require manager references only |
+    | `job_title` | No | Only in the template when the job title feature is on |
   </Step>
   <Step title="Save as CSV">
-    Save the file with UTF-8 encoding and a `.csv` extension. Remove any blank rows at the end.
+    Save the file as `.csv` with UTF-8 encoding and remove blank rows at the end. The file can be up to 15 MB.
   </Step>
 </Steps>
 
 ## Upload the file
 
 <Steps>
-  <Step title="Open the import panel">
-    In the **Candidates** section, click **Import candidates**.
+  <Step title="Drop the file in the import window">
+    Open **Import candidates** again and drag your CSV onto the drop area, or click the browse button. Vitay checks the file right away. Nothing is created yet.
+  </Step>
+  <Step title="Fix any errors">
+    If a row has a problem, the window lists every error: a missing field, an invalid email, an unknown recruiter email, or a candidate that already exists on your account (same email or internal ID). You can't continue until there are none. Fix the rows in your spreadsheet and drop the file again.
   </Step>
   <Step title="Choose a question set (optional)">
-    If you want Vitay to automatically send a reference request to every uploaded candidate,
-    select a **question set** in the import panel — it applies to all rows in the file. Leave this
-    blank to add candidates without sending requests.
-
-    ![SCREENSHOT: the import panel with a question set selector and file-upload area — placeholder](/images/placeholder.png)
+    When the file passes, the window shows how many candidates will be added and a **Question set** dropdown. Pick a question set to send every new candidate a reference request, or leave it on **Select a question set** to add them without one.
   </Step>
-  <Step title="Select your file">
-    Click **Choose file** (or drag and drop) and pick your CSV. Vitay validates the file before
-    committing anything.
-  </Step>
-  <Step title="Review the validation results">
-    Vitay scans the file and shows:
-    - **New entries** — rows that will be created.
-    - **Errors** — rows that fail validation (missing required fields, invalid email format,
-      recruiter email not found, a candidate that already exists, etc.). Duplicates — rows where
-      the email or internal ID already exists on your firm — count as errors, not warnings.
-
-    Fix any errors in your spreadsheet, re-export as CSV, and re-upload. Every error, duplicates
-    included, must be resolved before you can proceed.
-
-    A row that matches a **deactivated** candidate is listed as **Deactivated candidate**, with
-    the candidate's name and email, and the panel shows an **Open the Recycle Bin** link that
-    opens the bin with that candidate already searched. Reactivate them there and remove the row
-    from your file, or leave them deactivated and drop the row. See
-    [Recycle Bin](/candidates-reference-requests/recycle-bin#adding-a-deactivated-candidate-again).
-
-    ![SCREENSHOT: the validation summary screen showing new entries, duplicates, and errors — placeholder](/images/placeholder.png)
-  </Step>
-  <Step title="Confirm the upload">
-    When validation passes with no errors, click **Submit**. The import runs in the background:
-    the panel shows **Uploading and processing candidates…** with a progress bar, the percentage
-    done and **Processed X of Y rows**, so large files no longer freeze the page or time out.
-    Keep the panel open until it finishes.
-
-    When every row is in, the toast **Candidates added** confirms it and the panel closes. If you
-    selected a question set, Vitay sends the reference requests to every new candidate as soon as
-    the import finishes.
-
-    If a row could not be added during the import itself (for example, a candidate created by a
-    colleague between the check and the upload), the other rows are still imported and the panel
-    lists the rows that failed, with the message *"N candidate(s) added, M row(s) could not be
-    added"*. Fix those rows and upload them in a new file. If more than half the rows fail, nothing
-    is imported.
-
-    ![SCREENSHOT: the import panel showing the progress bar with "Processed 23 of 50 rows" — placeholder](/images/placeholder.png)
+  <Step title="Submit">
+    Click **Submit**. When it's done, you'll see **Candidates added** and the window closes. Reference requests go out straight away if you chose a question set.
   </Step>
 </Steps>
 
-## What happens after a successful upload
-
-- Each new candidate is created on your firm (or the branch specified by `branch_id`).
-- The candidate is assigned to the recruiter in `assigned_recruiter_email`. If you left that
-  column blank, the candidate is assigned to **you** — the person running the upload — and any
-  reference request created for the row is sent in your name.
-- If you chose a question set, a reference request is created and emailed to each candidate
-  right away.
+Each candidate is added to your account, or to the sub-account in `branch_id`, and assigned to the recruiter in `assigned_recruiter_email`. If that column is blank, they're assigned to you and any reference request is sent in your name.
 
 ## Troubleshooting
 
 <AccordionGroup>
-  <Accordion title="A row failed because the recruiter email wasn't found">
-    The email in `assigned_recruiter_email` must match a recruiter on your firm (or the branch
-    specified by `branch_id`). Correct the email, or remove the column value and let the
-    candidate be assigned to you.
+  <Accordion title="The recruiter email wasn't found">
+    The email in `assigned_recruiter_email` must belong to a recruiter on your account, or on the `branch_id` account if you set one. Correct it, or clear it to assign the candidate to yourself.
   </Accordion>
-  <Accordion title="Where do I find the Branch ID?">
-    Open the **Configuration** area and go to **Accounts**. The first column, **ID**, is the
-    number to put in `branch_id` — it is a short number, not the long UUID from the browser
-    address bar. Leave the column blank to create the candidate on your own firm.
+  <Accordion title="Where do I find the branch ID?">
+    In **Configuration**, open **Accounts**. Use the short number in the **ID** column, not the long ID from the browser address bar. Leave `branch_id` blank to add the candidate to your own account.
   </Accordion>
-  <Accordion title="The upload says a candidate is deactivated">
-    Duplicate detection includes deactivated candidates, who do not appear in your candidates
-    list. The error names the candidate and offers an **Open the Recycle Bin** link that opens the
-    bin with that candidate already searched. Click **Reactivate** there to bring them back with
-    their full history, then remove the row from your file and upload it again. See
-    [Recycle Bin](/candidates-reference-requests/recycle-bin).
+  <Accordion title="A row says Deactivated candidate">
+    That candidate is in the Recycle Bin, so they don't show in your candidates list. Click **Open the Recycle Bin**, find them, and click **Reactivate** to restore them with their history. Then remove the row from your file and upload it again. See [Recycle Bin](/candidates-reference-requests/recycle-bin#adding-a-deactivated-candidate-again).
   </Accordion>
-  <Accordion title="I closed the import panel while the progress bar was running">
-    The import carries on in the background; closing the panel only stops the progress display.
-    Reload the candidates list after a minute and the new candidates are there. If you upload the
-    same file again, the rows already imported are reported as duplicates and skipped at the check
-    step.
+  <Accordion title="Rows could not be added after I clicked Submit">
+    A row can still fail at this point, for example if a colleague added the same candidate in the meantime. If any row fails, nothing from the file is imported and the window lists the rows with errors. Fix them and upload the whole file again.
   </Accordion>
-  <Accordion title="My file has more than 50 rows and won't import">
-    Vitay reads the first 50 rows of the file — 100 for accounts with the raised limit, which
-    Vitay enables on request (write to **hello@vitay.io**). Rows beyond the limit are simply not
-    read, and nothing tells you they were skipped, so split your file and upload in batches.
+  <Accordion title="My file has more than 50 rows">
+    Only the first 50 rows are read (100 if Vitay raised your limit). Split the file and upload it in batches.
   </Accordion>
-  <Accordion title="I see a phone number error even though the number looks correct">
-    Formatting characters — spaces, dashes, parentheses, and a leading `+` — are removed
-    automatically, so a phone error means the number itself isn't valid. Check the digits and
-    make sure `country_code` is set to the correct dialing prefix (e.g. `1` for North America,
-    `44` for the UK).
+  <Accordion title="I get a phone number error but the number looks right">
+    Formatting is removed automatically, so the digits themselves aren't valid for that country. Check the number and set `country_code` to the right dialing code, such as `1` for North America or `44` for the UK.
   </Accordion>
 </AccordionGroup>
 
@@ -166,4 +93,4 @@ Download the official template first so your columns are in the right order.
   <Card title="Question sets and templates" icon="list-check" href="/account-configuration/question-sets-and-templates" />
 </CardGroup>
 
-{/* source: app.vitay.io projects/references shared/components/modals/import (check via POST /documents/csv is_check, submit via DocumentsService.postAsync → csv#upload_async 202 upload_job_id, UploadJobsService.pollUntilComplete every 1 s on GET /v3/upload_jobs/:id, progress bar + "Processed X of Y rows", TOASTS.CANDIDATES_ADDED / IMPORT_PARTIAL, MODALS.IMPORT.DEACTIVATED_HINT + RECYCLE_BIN.OPEN_LINK; app #2099 + #2129); api app/jobs/process_csv_upload_job.rb (Sidekiq, per-row errors, ActiveRecord::Rollback when failed_rows > total/2, reference requests sent after the transaction; api #2714), app/models/upload_job.rb, app/controllers/api/v3/upload_jobs_controller.rb; api #2733 ("Deactivated candidate" error with deactivated/candidate_id/candidate_email/candidate_name); api app/controllers/api/v3/documents/csv_controller.rb (check and upload actions, candidates branch); api app/services/documents/csv/candidates_handler.rb (template fields: internal_id, first_name, last_name, email, country_code, phone_number, public_notes, internal_notes, min_manager_references, assigned_recruiter_email, branch_id, question_set_id, is_manager_only; optional job_title); api app/controllers/api/v3/documents/csv_controller.rb#check/#upload (content_raw.first(100) when setting.break_rows_limit_feature_flag else first(50); added_by = current_recruiter unless assigned_recruiter_email resolves; branch_id matched on hiring_firm.load_self_and_siblings.seq_id); api app/models/setting.rb feature flag :break_rows_limit 'Increase the rows of CSV from 50 to 100'; app.vitay.io projects/configuration protected/accounts/list (TABLES.HEADERS.ID -> seq_id column); api app/models/candidate.rb */}
+{/* source: app projects/references/src/app/protected/candidates/list/candidates.list.component.html (import button lnr-upload2, BUTTONS.IMPORT); shared/components/modals/import/modals.import.component.{ts,html} (check on drop is_check, 15 MB, question set select after check, synchronous submit, TOASTS.CANDIDATES_ADDED / IMPORT_PARTIAL, DEACTIVATED_HINT + RECYCLE_BIN.OPEN_LINK → /recycle-bin); api app/controllers/api/v3/documents/csv_controller.rb (#check, #upload all-or-nothing transaction, first(50)/first(100) break_rows_limit_feature_flag, existing_candidate_for, set_duplicate_candidate_error); app/services/documents/csv/candidates_handler.rb (template fields, positional to_params, validate!) */}

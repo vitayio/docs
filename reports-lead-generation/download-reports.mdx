@@ -3,189 +3,104 @@ title: "Download reports"
 description: "Export candidate, reference, lead, and activity data from Vitay as CSV files."
 ---
 
-Vitay lets you export data from most sections of the platform as CSV files. Use exports to build
-your own reports, share data with stakeholders, or archive records outside of Vitay.
+Export Vitay data as CSV files to build your own reports or keep records outside Vitay. Most exports start from the **Export** window in the top bar; a few live on their own pages.
 
 <Note>
-  You need a recruiter (or higher) role to download reports.
+  You need a recruiter (or higher) role. Root recruiters always see the export buttons. Other users see them unless Vitay has turned report downloads off for your firm.
 </Note>
 
-## Available report types
-
-| Report | What it contains |
-|--------|-----------------|
-| **Candidates** | Candidate list with status, score, assigned recruiter, reference totals, and creation date |
-| **References (answers per candidate)** | One row per completed reference, with every question and answer |
-| **Leads** | Reference contacts, one row per unique email, with lead type, consent timestamp, and consent text |
-| **Custom leads** | Contacts captured via your firm's custom lead types (e.g. a second lead category) |
-| **Feedback** | Feedback request records with creation and completion dates |
-| **Feedback answers** | One row per feedback form with every question and answer (answers are blank for forms not yet completed) |
-| **Pre-screenings** | Pre-screening requests with creation dates |
-| **Candidates per recruiters** | Summary of candidates, references, and leads grouped by recruiter |
-| **Recruiter performance** | Completed and total references by recruiter, with active status |
-| **Dashboard** | Recruiter-level summary across the whole firm (or sub-accounts) |
-| **Recruiters** | Recruiter list with name, email, and active status |
-
-## Download a report
+## Export from the Export window
 
 <Steps>
-  <Step title="Open the Export modal">
-    Click the **download icon** in the top bar. An **Export** modal opens — "Export all of your
-    data".
+  <Step title="Open the Export window">
+    Click the download icon in the top bar. The **Export** window opens.
 
-    ![SCREENSHOT: the top bar with the download icon highlighted and the Export modal open — placeholder](/images/placeholder.png)
+    ![The Export window with the Tables dropdown, the Date range picker and the Fields list](/images/screens/download-reports-export-window.png)
   </Step>
-  <Step title="Choose a report type">
-    Pick one from the **Tables** dropdown (it starts on "Select a table to export").
+  <Step title="Choose a table">
+    Pick a report from **Tables** (it starts on **Select a table to export**). See the list below.
   </Step>
   <Step title="Set the date range">
-    Use the **Date range** picker. It starts on the last month and matches on the record's creation
-    date.
-
-    ![SCREENSHOT: the Export modal with the Tables dropdown, Date range picker and Fields checkboxes — placeholder](/images/placeholder.png)
+    Use **Date range**. Records are matched on the date they were created.
   </Step>
   <Step title="Pick your fields">
-    Once you've chosen a table, a **Fields** list of checkboxes appears — tick only the columns you
-    want in the file. Leave them all unticked to get the standard set of columns for that table.
-
-    A couple of tables have no field list (they show a dash instead) because their columns are
-    fixed: **Reference Answers Per Candidates** and **Candidates Per Recruiter**.
+    Tick the columns you want under **Fields**, or leave them all unticked to get the standard columns. **Reference Answers Per Candidates** and **Candidates Per Recruiter** have fixed columns and show a dash instead.
   </Step>
   <Step title="Filter by question set (Reference Answers Per Candidates only)">
-    When you pick **Reference Answers Per Candidates**, a **Question Set** dropdown appears. Leave
-    it on **All question sets**, or pick one to get just those answers.
+    A **Question set** dropdown appears for this table. Leave it on **All question sets** or pick one.
   </Step>
   <Step title="Export">
-    Click **Export**. Vitay generates the CSV file and your browser downloads it automatically.
+    Click **Export**. The CSV downloads to your browser.
   </Step>
 </Steps>
 
-<Note>
-  The Export modal always exports your whole firm's data for the chosen date range — it ignores the
-  **Everyone / Myself** toggle you may have set on a list page.
-</Note>
+The Export window always covers your whole firm for the chosen dates. It ignores any **Everyone** / **Myself** choice you made on a list page.
 
-A few exports live on their own pages instead of the Export modal: **leads** are downloaded from
-the Leads page, and the **dashboard** and **recruiter performance** exports from their respective
-pages.
+| Table | What you get |
+|-------|--------------|
+| **Answers** | Individual answer records |
+| **Candidates** | Candidates with status, score, assigned recruiter, reference totals, and created date |
+| **Reference Answers Per Candidates** | One row per completed reference, with a column per question |
+| **Candidates Per Recruiter** | Per recruiter: candidates, references, leads, and whether they're active |
+| **Feedback** | Feedback requests with created and completed dates |
+| **Feedback Answers** | One row per feedback form with its answers |
+| **Pre Screening** | Pre-screenings with candidate, score, requester, and dates |
+| **References** | Reference contacts, one row per email address, including lead type and consent columns |
 
-## Export a list straight from the page
+## Exports on other pages
 
-The **Candidates** and **References** list pages have their own one-click CSV export, handy when
-you've already narrowed the list on screen.
+- **Candidates** and **References** pages: a download icon in the filter toolbar exports the list. See below.
+- **Leads** page: a download icon exports your leads, including lead type and consent. See [Lead generation](/reports-lead-generation/lead-generation).
+- **Overview** dashboard: a download button exports the dashboard as CSV or PDF, and the **Recruiters** table has its own export. See [Read the Overview dashboard](/reports-lead-generation/overview-dashboard).
+
+## Export a list from the Candidates or References page
 
 <Steps>
-  <Step title="Filter the list first">
-    Click the **Filters** (funnel) icon and set the filters you want. See
-    [Search for past references](/candidates-reference-requests/search-past-references) for what each
-    filter does.
+  <Step title="Filter the list">
+    Click the **Filters** (funnel) icon and set your filters. See [Search for past references](/candidates-reference-requests/search-past-references).
   </Step>
   <Step title="Choose Everyone or Myself">
-    Unlike the Export modal, this export **follows the Everyone / Myself toggle**. Switch to
-    **Everyone** before exporting if you want the whole firm's records rather than just your own.
+    These exports follow the **Everyone** / **Myself** toggle. Pick **Everyone** for the whole firm.
   </Step>
   <Step title="Click the download icon">
-    With the filter toolbar open, click the **download** icon to get the CSV.
+    With the filter toolbar open, click the download icon.
   </Step>
 </Steps>
 
 <Warning>
-  The two list exports don't respect every on-screen filter. The References CSV applies your scope,
-  date range, recruiters, types, relationships and question sets — but **not** the reference-status
-  or job-title filters, and not the search box. The Candidates CSV applies only the scope and date
-  range. If you need an exact match to what's on screen, check the file before sharing it.
+  These exports don't apply every on-screen filter. The References CSV applies the scope, date range, recruiters, types, relationships, and question sets, but not the reference status or job title filters or the search box. The Candidates CSV applies only the scope and date range. Check the file before sharing it.
 </Warning>
 
-<Tip>
-  The References export also collapses rows that share an email address, keeping one row per
-  contact. That's why the CSV can have fewer rows than the list showed.
-</Tip>
+The References CSV keeps one row per email address, so it can have fewer rows than the list on screen.
 
-## Download an individual candidate's report
+## Download one candidate's report
 
-Bulk CSVs aside, you can download the report for one candidate or one reference:
+- On a candidate's page, the download button offers **PDF** or **Word**.
+- On the candidate's **References** tab, you can download per question set as **PDF**, **Word**, or **CSV** (one row per reference, a column per question).
+- On a completed reference, you can download **PDF** or **Word**. The option doesn't appear for declined references.
 
-- From a **candidate's page**, the download button offers **PDF** or **Word**.
-- From the candidate's **References** tab, you can download per question set in **PDF**, **Word**,
-  or **CSV** (one row per reference, with a column per question).
-- From a single completed reference in the sidebar, you get **PDF** or **Word**. The option only
-  appears once the reference is complete and wasn't declined.
+Which details are hidden on the PDF, and whether it has a watermark, is set in **Configuration → Settings → Documents**. See [Report settings](/account-configuration/report-settings) and [Read a completed reference](/candidates-reference-requests/read-a-completed-reference).
 
-These formats are available to every firm; there's no setting to switch Word or CSV on.
+## Columns worth knowing
 
-Whether the PDF uses the full or condensed layout, and whether personal details are hidden or a
-watermark is applied, comes from your firm's **Settings → Documents** configuration. See
-[Read a completed reference](/candidates-reference-requests/read-a-completed-reference) and
-[Report settings](/account-configuration/report-settings).
-
-<Tip>
-  For trends rather than raw rows — totals, completion times, average scores, desktop vs. mobile —
-  use the [Overview dashboard](/reports-lead-generation/overview-dashboard), which has its own
-  export.
-</Tip>
-
-## Column reference
-
-Most exported columns are self-explanatory. A few worth noting:
-
-- **Score** — a percentage calculated from rating and matrix questions in the question set. Zero
-  means no rating questions were answered.
-- **Consent Given At** / **Consent Text** — appear on lead and custom-lead exports. They show
-  the timestamp when the reference gave lead-gen consent and the exact wording they agreed to.
-  See [Lead generation](/reports-lead-generation/lead-generation) for context.
-- **Branch name** — the sub-account or hiring firm branch the record belongs to (shown on
-  multi-account exports).
-
-## Export a candidate reference-answer report
-
-The **References (answers per candidate)** report is the most detailed export: it creates one row
-per completed reference and adds one column per question. This is useful for analysis or for
-sharing reference results in spreadsheet form.
-
-<Steps>
-  <Step title="Select the report type">
-    Open the **Export** modal from the download icon in the top bar and choose **Reference Answers
-    Per Candidates** from the **Tables** dropdown.
-  </Step>
-  <Step title="Filter by question set (optional)">
-    If you want answers only from a specific question set, pick it from the **Question Set**
-    dropdown. This report's columns are fixed, so there's no **Fields** list to tick.
-  </Step>
-  <Step title="Export">
-    Click **Export**. Large exports may take a few seconds to generate.
-  </Step>
-</Steps>
+- **Score**: a percentage from the rating and matrix questions. Zero means none were answered.
+- **Consent Given At** and **Consent Text**: on reference and lead exports, when the reference agreed to be contacted and the wording they agreed to. See [Lead generation](/reports-lead-generation/lead-generation).
+- **Branch name**: the sub-account a record belongs to, on exports that cover several accounts.
 
 ## Troubleshooting
 
 <AccordionGroup>
   <Accordion title="The download icon is missing from the top bar">
-    Root recruiters always see the export icon in the top bar. Whether other users see it is a
-    firm-level setting that has no switch in the Configuration area — ask a root recruiter to
-    contact [hello@vitay.io](mailto:hello@vitay.io) to have it changed.
-
-    The report download buttons on a candidate, reference, feedback or pre-screening page are not
-    affected by this: every firm gets **PDF** and **Word** there, plus **CSV** on the candidate's
-    References tab. If one of those formats is missing, reload the app. See
-    [Report settings](/account-configuration/report-settings) for how the PDF itself looks.
+    Root recruiters always see it. For other users it depends on a firm setting that isn't in Configuration. Ask a root recruiter to contact [hello@vitay.io](mailto:hello@vitay.io). The PDF and Word downloads on candidate and reference pages aren't affected.
   </Accordion>
-  <Accordion title="The CSV doesn't match what I see on screen">
-    The list exports apply some filters and not others — see the warning above. The Export modal
-    ignores the **Everyone / Myself** toggle entirely and always covers the whole firm. Re-check the
-    date range too: both the modal and the lists start on a default range rather than "all time".
+  <Accordion title="The CSV doesn't match the screen">
+    List exports skip some filters (see the warning above), and the Export window always covers the whole firm. Both start on a default date range, not all time, so check the dates too.
   </Accordion>
-  <Accordion title="The downloaded file is empty (only headers)">
-    No records match your current filters. Try widening the date range, removing the recruiter
-    filter, or confirming that the data you expect exists in Vitay.
+  <Accordion title="The file only has headers">
+    Nothing matches your dates or filters. Widen the date range or remove filters.
   </Accordion>
-  <Accordion title="A column I expected isn't in the file">
-    Some columns only appear on the matching export type (for example, the Consent columns appear
-    only on lead exports), and some depend on features enabled for your account. Contact Vitay if
-    you think a feature should be on.
-  </Accordion>
-  <Accordion title="The report includes more rows than expected">
-    Leads and custom-lead exports de-duplicate by email address (one row per unique email). If
-    the same contact appears on multiple reference requests, only one row is exported.
+  <Accordion title="A column I expected is missing">
+    Some columns only exist on certain exports (consent columns are only on reference and lead exports), and some depend on features enabled for your account.
   </Accordion>
 </AccordionGroup>
 
@@ -198,4 +113,4 @@ sharing reference results in spreadsheet form.
   <Card title="Send a reference request" icon="paper-plane" href="/candidates-reference-requests/send-a-reference-request" />
 </CardGroup>
 
-{/* source: app.vitay.io projects/references shared/components/modals/export/modals.export.component.{ts,html} (MODALS.EXPORT.TITLE "Export" / DESCRIPTION "Export all of your data" / TABLES / DATE_RANGE / FIELDS / ALL_QUESTION_SETS / CTA "Export", PLACEHOLDERS.TABLES "Select a table to export"; hardcoded tables[] answers/candidates/referenceAnswersPerCandidates/candidatesPerRecruiters/feedbacks/feedback_answers/pre_screenings/references→leads; question-set select only when type === referenceAnswersPerCandidates; Fields checkboxes from src/app/shared/helpers/table-fields.helper.ts, empty for referenceAnswersPerCandidates + candidatesPerRecruiters; filter hardcoded scope:all so the modal is always firm-wide); topbar.component.html (download icon shown when (is_reports_downloadable || isRoot) && shouldShow('download')); projects/references protected/leads/list/leads.list.component.ts download() and protected/candidates/list/candidates.list.component.ts (pass the live selectFilter, i.e. the Everyone/Myself scope) via src/app/shared/services/documents.service.ts; api app/controllers/api/v3/documents/csv_controller.rb (show action when branches: candidates, referenceAnswersPerCandidates, candidate_references_answers, leads, custom_leads, feedback_answers, feedbacks, pre_screenings, candidatesPerRecruiters, recruiter_performances, dashboard, recruiters; leads branch honours scope:my via requested_by_id and de-duplicates by reference email; candidates branch honours scope only); api app/services/filters/leads.rb (to_query_string covers contact_type/relationships/recruiters/question_sets but NOT reference_statuses or job_title); api app/services/documents/model_to_csv.rb (column header map); api app/models/setting.rb (is_reports_downloadable default TRUE — no panel toggle, is_pdf_watermark_enabled default FALSE, pdf_template; is_candidate_references_csv_enabled / is_docx_enabled dropped in api #2647); app.vitay.io projects/configuration protected/settings/documents/settings.documents.component.{ts,html} SETTINGS.DOCUMENTS.* labels; projects/references protected/candidates/show/references/candidates.show.references.component.ts (reportFormats = PDF / Word / CSV for every firm since app #2017; csv → type candidate_references_answers) and .../show/header + shared/components/sidebar/reference/question-set (PDF/Word only; isDownloadable = filled && !decline); api app/controllers/api/v3/documents/pdf_controller.rb ~183-205 (pdf_template default/compressed, question-set template override, watermark, hide_personal_data) */}
+{/* source: app projects/references/src/app/shared/components/modals/export/modals.export.component.{ts,html} (tables[], titlecase labels, scope:all, question set only for referenceAnswersPerCandidates); src/app/shared/helpers/table-fields.helper.ts; shared/components/topbar/topbar.component.html (is_reports_downloadable || isRoot); protected/candidates/list + protected/leads/list download(); protected/lead-generation/list (custom_leads); protected/dashboard/recruiters (recruiter_performances, recruiters); protected/candidates/show/references (PDF/Word/CSV); projects/configuration settings/documents (is_hide_report_*, is_pdf_watermark_enabled); api app/controllers/api/v3/documents/csv_controller.rb (show branches, created_at date filter, leads de-dup by email); app/services/filters/leads.rb */}

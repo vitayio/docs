@@ -3,112 +3,68 @@ title: "Cookies and consent"
 description: "What cookies Vitay sets, how the consent banner works, and how you or your users can change cookie preferences at any time."
 ---
 
-Vitay asks every visitor for cookie consent before it loads its analytics,
-advertising, or support-widget scripts and the cookies they set. This article
-explains the cookie categories, how consent is stored, and how to change it —
-useful when your IT or privacy team asks what Vitay drops on a browser.
+Vitay asks every visitor for consent before it loads analytics, advertising or support-chat scripts
+and the cookies they set. Use this page to answer your privacy team's questions or to change your
+own choice.
 
 <Note>
-  No role is required. The consent banner and preferences are available to
-  everyone, including candidates and reference providers who have no Vitay
-  login.
+  No role is needed. The banner and preferences are available to everyone, including candidates and
+  reference providers without a Vitay login.
 </Note>
 
 ## How consent works
 
-The first time someone visits Vitay, a banner appears at the bottom of the page
-with three choices:
+On a first visit, a banner at the bottom of the page offers three choices:
 
-- **Accept all** — allow every category.
-- **Reject non-essential** — allow only strictly necessary cookies.
-- **Customize** — open the **Cookie preferences** modal and choose per category.
+- **Accept all** allows every category.
+- **Reject non-essential** allows only strictly necessary cookies.
+- **Customize** opens **Cookie preferences**, where you choose per category.
 
-Nothing in the Functional, Analytics, or Advertising categories loads until
-consent is given. Rejecting is exactly as prominent and as quick as accepting.
+Nothing outside the strictly necessary category loads until consent is given. After you choose, a
+**Cookie preferences** button stays on every page so you can change your mind.
 
-Once a choice is made, the banner is replaced by a persistent **Cookie
-preferences** control that stays available on every page, so consent can be
-changed or withdrawn at any time.
+![The Cookie preferences dialog with the four categories and one category's cookie table expanded](/images/screens/cookies-and-consent-preferences.png)
 
 ## Cookie categories
 
-<AccordionGroup>
-  <Accordion title="Strictly necessary — always on">
-    Cookies Vitay cannot function without: your sign-in session and single
-    sign-on session, your language preference, cached white-label branding,
-    bot protection, the Stripe payment and fraud-prevention cookies, and the
-    cookie that records your consent choice itself. These cannot be switched
-    off, and Vitay sets them whether or not consent is given.
-  </Accordion>
-  <Accordion title="Functional">
-    Cookies and scripts that support optional conveniences rather than core
-    functionality: the in-app support chat widget, and the Google script that
-    suggests addresses as you type on public forms. Turning this category off
-    means neither is loaded — the **Help** entry in the sidebar opens your
-    cookie preferences instead so you can re-enable the widget, and address
-    fields work as plain text fields you fill in by hand.
-  </Accordion>
-  <Accordion title="Analytics">
-    Product analytics used to understand how Vitay is used in aggregate. Loaded
-    through Google Tag Manager, and only once analytics consent is granted.
-  </Accordion>
-  <Accordion title="Advertising">
-    Marketing and audience-measurement pixels used to measure campaign
-    effectiveness. Loaded only once advertising consent is granted.
-  </Accordion>
-</AccordionGroup>
+| Category | What it covers | Can be turned off |
+|---|---|---|
+| **Strictly necessary** | Sign-in and SSO sessions, language, white-label branding, bot protection, Stripe payment and fraud checks, and your consent choice | No |
+| **Functional** | The in-app support chat and Google address suggestions on public forms | Yes |
+| **Analytics** | Usage statistics, loaded through Google Tag Manager | Yes |
+| **Advertising** | Campaign measurement pixels | Yes |
 
-Click **View cookies** on any category to see every cookie it declares, with
-its **Name**, **Provider**, **Purpose**, and **Duration** — so there's no need
-to inspect the browser to answer a privacy questionnaire. Third-party scripts
-that set no cookie but do send the visitor's IP address to their provider (such
-as Google address suggestions) are listed in the same table.
+Click **View cookies** on a category to see each cookie's **Name**, **Provider**, **Purpose** and
+**Duration**. Scripts that set no cookie but send the visitor's IP address to their provider, such
+as Google address suggestions, are listed too.
 
-![SCREENSHOT: the cookie preferences modal with a category expanded to show its cookie table — placeholder](/images/placeholder.png)
+With Functional off, address fields are plain text fields, and the sidebar **Help** link opens your
+cookie preferences instead of the chat.
 
-## Where consent applies
+## Where your choice applies
 
-<Steps>
-  <Step title="One choice across the Vitay sites you use">
-    Consent is stored in a first-party cookie on your firm's Vitay domain, so a
-    choice made on the reference-checking site also applies to the configuration
-    and feedback sites. Firms on a white-label domain give consent separately on
-    that domain.
-  </Step>
-  <Step title="Remembered for 12 months">
-    Vitay re-asks after 12 months. Vitay also re-asks everyone when it makes a
-    material change to its cookie list, so a stored choice doesn't silently
-    cover new cookies.
-  </Step>
-  <Step title="Inside ATS tabs and embeds">
-    In the classic Vitay **custom tab** inside Bullhorn, the banner appears the
-    first time you open the tab, and your choice is remembered for later visits.
-    The choice is stored separately for each ATS site, so it does not carry over
-    from the Vitay site or from one ATS to another. Until you choose, only
-    strictly necessary cookies are used.
-
-    Embedded Vitay forms inside an ATS, and form previews in the configuration
-    panel, never show a banner. They use strictly necessary cookies only, whatever
-    consent you gave elsewhere.
-  </Step>
-</Steps>
+- **Across Vitay sites**: the choice is stored on your firm's Vitay domain, so it covers the
+  reference app, Configuration and the feedback site. A white-label domain asks separately.
+- **For 12 months**: after that, or when Vitay changes its cookie list, you're asked again.
+- **In the Bullhorn custom tab**: the banner appears the first time you open the tab and your
+  choice is remembered there. It's stored separately for each ATS site. Until you choose, only
+  strictly necessary cookies are used.
+- **In embedded forms and Configuration previews**: no banner is shown, and only strictly necessary
+  cookies are used.
 
 ## Change or withdraw consent
 
 <Steps>
-  <Step title="Open cookie preferences">
-    Click the **Cookie preferences** control on any Vitay page.
+  <Step title="Open Cookie preferences">
+    Click the **Cookie preferences** button on any Vitay page.
   </Step>
-  <Step title="Adjust the categories">
-    Switch categories on or off. Click **View cookies** on a category first if
-    you want to see exactly which cookies it covers.
+  <Step title="Switch categories on or off">
+    Click **View cookies** first if you want to see what a category covers.
   </Step>
-  <Step title="Save">
-    Click **Save preferences**. If you have withdrawn consent for a category
-    that was previously granted, the page reloads so the affected scripts stop
-    loading and no further data is collected. Cookies those services already
-    set are not deleted by Vitay — they expire on their own schedule, though
-    you can clear them from your browser immediately if you prefer.
+  <Step title="Click Save preferences">
+    If you withdrew a category you'd allowed before, the page reloads so those scripts stop. Cookies
+    they already set expire on their own schedule; clear them in your browser if you want them gone
+    now.
   </Step>
 </Steps>
 
@@ -116,31 +72,21 @@ as Google address suggestions) are listed in the same table.
 
 <AccordionGroup>
   <Accordion title="The banner keeps coming back">
-    The consent choice is stored in a cookie that survives signing out and
-    session expiry. If the browser is set to clear cookies on close, is in a
-    private window, or has an extension that clears site data, the choice
-    cannot persist and the banner will reappear on each visit. Allow cookies
-    from your Vitay domain — see
-    [Browser support](/security-it/browser-support).
+    Your choice is stored in a cookie. A private window, a browser set to clear cookies on close, or
+    an extension that clears site data removes it. Allow cookies for your Vitay domain; see
+    [Supported browsers](/security-it/browser-support).
   </Accordion>
-  <Accordion title="Address suggestions don't appear on the form">
-    Address autocomplete is provided by Google and sits in the Functional
-    category. If that category is off, or the banner hasn't been answered yet,
-    the address fields are plain text fields — type the address in by hand, or
-    open **Cookie preferences**, switch Functional on, and save. Suggestions
-    start working straight away, without reloading.
+  <Accordion title="Address suggestions don't appear on a form">
+    They're in the Functional category. Type the address by hand, or open **Cookie preferences**,
+    switch Functional on and save. Suggestions start without a reload.
   </Accordion>
-  <Accordion title="The support chat widget disappeared">
-    The in-app support chat widget sits in the Functional category. If that
-    category is off, the widget is not loaded. Open **Cookie preferences**,
-    switch Functional on, and save — or use the sidebar **Help** entry, which
-    opens the preferences modal when the widget is unavailable.
+  <Accordion title="The support chat disappeared">
+    The chat is in the Functional category. Switch it on in **Cookie preferences**, or click
+    **Help** in the sidebar, which opens the preferences when the chat isn't loaded.
   </Accordion>
   <Accordion title="Our privacy team needs the full cookie list">
-    Every cookie Vitay declares is listed in the preferences modal, grouped by
-    category, with its purpose and lifetime. For the privacy policy, DPA
-    template, and sub-processor list, see
-    [Data and privacy](/security-it/data-and-privacy) or contact
+    Every cookie is listed in **Cookie preferences** under **View cookies**. For the privacy policy,
+    DPA and sub-processor list, see [Data and privacy](/security-it/data-and-privacy) or contact
     [hello@vitay.io](mailto:hello@vitay.io).
   </Accordion>
 </AccordionGroup>
@@ -152,4 +98,4 @@ as Google address suggestions) are listed in the same table.
   <Card title="Browser support" icon="globe" href="/security-it/browser-support" />
 </CardGroup>
 
-{/* source: app.vitay.io src/app/shared/config/cookie-registry.ts (functional: HelpScout Beacon + Google Places 'script' declaration); src/app/shared/services/cookie-consent.service.ts (preserve() across cleanStorage; cross-origin frame → host-only SameSite=None; Secure; Partitioned consent cookie, app #2156); src/app/shared/helpers/consent-path.helper.ts (isConsentSuppressedPath: /embed + form previews suppressed, /iframe keeps the banner); src/app/shared/services/google-places-loader.service.ts (grantedOnce$('functional')); src/app/shared/components/cookie-consent/; the 'mfa' remember-device cookie is no longer set or read since VIT-1346 (api #2656 / app #2034) even though cookie-registry.ts still declares it */}
+{/* source: app src/app/shared/components/cookie-consent/cookie-consent.component.{html,ts}, src/app/shared/services/cookie-consent.service.ts (shared parent domain, Partitioned cookie in cross-site frames, reload on withdrawal), src/app/shared/interfaces/cookie-consent.interface.ts (CONSENT_EXPIRY_DAYS 365, CONSENT_VERSION), src/app/shared/config/cookie-registry.ts, src/app/shared/helpers/consent-path.helper.ts, src/app/shared/services/google-places-loader.service.ts, projects/references/src/app/shared/components/navbar/navbar.component.ts (openBeacon), projects/references/src/assets/i18n/en.json (COOKIE_CONSENT) */}

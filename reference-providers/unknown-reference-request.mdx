@@ -4,34 +4,36 @@ description: "For people asked to give a reference: what to do if you received a
 ---
 
 <Note>
-  **This article is for people who were asked to give a reference.** If you're a job candidate and received a reference request you weren't expecting, reply to the email and ask the recruiter to confirm it's genuine.
+  This article is for people who were asked to give a reference. If you're a job candidate and got a reference request you weren't expecting, reply to the email and ask the recruiter to confirm it's genuine.
 </Note>
 
-Getting an unexpected email asking you to give a reference can feel alarming, but it's usually straightforward to explain: a job candidate listed you as one of their references and gave your contact details to their recruiter. You may not have been told in advance.
-
-You are not obligated to complete the reference, and there's nothing you need to do to "refuse" formally — you can simply not fill it in.
+You got this email because a job candidate listed you as a reference and gave the recruiter your contact details. They may not have told you first. The email names the candidate. You don't have to fill in the form.
 
 ## Your options
 
-**Not sure if you know the candidate?**
+<Steps>
+  <Step title="Check the candidate's name">
+    If you know the candidate, the request is genuine and you can fill in the form or decline it. If you don't know them, use one of the options below.
+  </Step>
+  <Step title="Decline on the form, if offered">
+    Open the link. Some recruiting teams add a line near the top of the form: *If this request is not relevant to you or you wish to decline it, please click here.* Click it, leave a short comment saying why, and click **Decline**. The recruiter is notified. If you don't see that line, reply to the email instead.
+  </Step>
+  <Step title="Or reply to the email">
+    Replies go to the recruiting team that sent the request. Tell them you don't recognize the candidate or didn't agree to be listed, and they'll follow up.
+  </Step>
+</Steps>
 
-The email names the candidate you're being asked to reference. If you recognize the name, the request is legitimate. If you genuinely don't know the person, use one of the options below.
+If you do nothing, you may get reminder emails. There's no penalty for not completing a form you didn't agree to.
 
-**Option 1 — Decline using the form**
+![The top of the reference form with the "If this request is not relevant to you or you wish to decline it, please click here." line](/images/screens/unknown-reference-request-decline-link.png)
 
-Open the link in the email. Some Vitay reference forms include a **Decline** option (it depends on the recruiter's setup) that lets you indicate you don't wish to (or are unable to) complete the reference. This notifies the recruiter automatically. If you don't see a Decline option, use one of the other options below.
+## Troubleshooting
 
-**Option 2 — Contact the recruiter**
-
-Reply to the email or contact the recruiter directly (their name and contact are in the email). Let them know you don't recognize the candidate or didn't agree to be listed. They'll follow up with the candidate to sort it out.
-
-**Option 3 — Do nothing**
-
-If you don't respond, the recruiter will eventually follow up. There's no penalty for not completing a form you didn't agree to.
-
-<Note>
-  If you believe someone used your email address fraudulently, reply to the email and tell the recruiter immediately. They can remove your details and investigate.
-</Note>
+<AccordionGroup>
+  <Accordion title="I think someone used my email address without permission">
+    Reply to the email and tell the recruiter. They can remove your details and look into it.
+  </Accordion>
+</AccordionGroup>
 
 ## Related articles
 
@@ -41,4 +43,4 @@ If you don't respond, the recruiter will eventually follow up. There's no penalt
   <Card title="Editing your answers after submitting" icon="pen-to-square" href="/reference-providers/edit-my-answers" />
 </CardGroup>
 
-{/* source: app projects/references public/references — reference form with decline option; api app/controllers/api/v1/references/declines_controller.rb + app/models/setting.rb is_reference_is_declinable_enabled (default false, so Decline is only present when the firm turns it on); app/models/recruiter_reference.rb send_reference_email names the candidate */}
+{/* source: app projects/references/src/app/public/references/references.component.{html,ts} (REFERENCE.BUTTONS.DECLINED + CLICK_HERE shown after 3 s when is_reference_is_declinable_enabled; REFERENCE.DECLINED comment required; BUTTONS.DECLINE); api app/controllers/api/v1/references/declines_controller.rb (send_notify_recruiter_declined); app/models/setting.rb is_reference_is_declinable_enabled default false; templates/emails.yml reference template names the candidate */}

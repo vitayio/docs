@@ -1,0 +1,238 @@
+[
+  {
+    "id": "add-another-reference-button",
+    "article": "reference-providers/add-another-reference",
+    "alt": "The Add another reference button below the reference cards on the reference request form",
+    "app": "public-candidate",
+    "as": "none",
+    "path": "/reference-requests/:referenceRequestId",
+    "needs": "Extra references allowed (settings_json.is_additional_references_enabled, on by default)",
+    "steps": [
+      {
+        "waitFor": "#first_name0"
+      }
+    ],
+    "capture": {
+      "selector": "div.row.mb-4:has(button:has-text(\"Add another reference\"))"
+    },
+    "confidence": "medium"
+  },
+  {
+    "id": "date-fields-employment-dates",
+    "article": "reference-providers/date-fields",
+    "alt": "The Start date and End date fields with the Present checkbox on a reference card of the reference request form",
+    "app": "public-candidate",
+    "as": "none",
+    "path": "/reference-requests/:referenceRequestId",
+    "needs": "Reference dates enabled (is_reference_dates_enabled, on by default)",
+    "steps": [
+      {
+        "waitFor": "#start_date-0"
+      }
+    ],
+    "capture": {
+      "selector": ".card:has(#start_date-0)"
+    },
+    "confidence": "medium"
+  },
+  {
+    "id": "trouble-submitting-missing-fields",
+    "article": "reference-providers/trouble-submitting",
+    "alt": "The red Submit button with the \"Please complete the following before submitting\" list below it on the reference request form",
+    "app": "public-candidate",
+    "as": "none",
+    "path": "/reference-requests/:referenceRequestId",
+    "needs": "",
+    "steps": [
+      {
+        "waitFor": "#first_name0"
+      },
+      {
+        "click": "form button[type=\"submit\"].btn-lg"
+      },
+      {
+        "waitFor": ".v-missing-fields"
+      },
+      {
+        "scroll": ".v-missing-fields"
+      }
+    ],
+    "capture": {
+      "viewport": true
+    },
+    "confidence": "medium"
+  },
+  {
+    "id": "unknown-reference-request-decline-link",
+    "article": "reference-providers/unknown-reference-request",
+    "alt": "The top of the reference form with the \"If this request is not relevant to you or you wish to decline it, please click here.\" line",
+    "app": "public-referee",
+    "as": "none",
+    "path": "/references/:referenceId",
+    "needs": "Decline option enabled for the firm (is_reference_is_declinable_enabled, off by default); the link appears 3 s after load",
+    "steps": [
+      {
+        "waitFor": "button.btn-link:has-text(\"click here.\")"
+      }
+    ],
+    "capture": {
+      "selector": ".references-content > .row:has(#reference-form-title)"
+    },
+    "confidence": "medium"
+  },
+  {
+    "id": "upload-documents-section",
+    "article": "reference-providers/upload-documents",
+    "alt": "The Documents section of the reference request form with the upload area and the Browse files button",
+    "app": "public-candidate",
+    "as": "none",
+    "path": "/reference-requests/:referenceRequestId",
+    "needs": "Candidate document upload enabled (settings_json.candidate_documents.enabled, Ref. Requests tab) with a short description",
+    "steps": [
+      {
+        "waitFor": ".card ngx-file-drop"
+      },
+      {
+        "scroll": ".card:has(ngx-file-drop)"
+      }
+    ],
+    "capture": {
+      "selector": ".card:has(ngx-file-drop)"
+    },
+    "confidence": "high"
+  },
+  {
+    "id": "activities-log-page",
+    "article": "reports-lead-generation/activities-log",
+    "alt": "The Activities page with the date range picker, the Everyone/Myself toggle and the activity table",
+    "app": "references",
+    "as": "root",
+    "path": "/activities",
+    "needs": "Some activity in the docs firm within the last month",
+    "steps": [
+      {
+        "waitFor": "app-table"
+      }
+    ],
+    "capture": {
+      "viewport": true
+    },
+    "confidence": "high"
+  },
+  {
+    "id": "activities-log-notifications-panel",
+    "article": "reports-lead-generation/activities-log",
+    "alt": "The Notifications panel open from the bell in the top bar, with Mark all as read and View all notifications",
+    "app": "references",
+    "as": "root",
+    "path": "/dashboard/references",
+    "needs": "At least one published announcement targeting root recruiters",
+    "steps": [
+      {
+        "click": "button.announcement-badge"
+      },
+      {
+        "waitFor": ".announcement-sidebar__panel--open"
+      }
+    ],
+    "capture": {
+      "selector": ".announcement-sidebar__panel"
+    },
+    "confidence": "medium"
+  },
+  {
+    "id": "bulk-candidate-upload-import-window",
+    "article": "reports-lead-generation/bulk-candidate-upload",
+    "alt": "The Import candidates window with the Download the CSV template link and the file drop area",
+    "app": "references",
+    "as": "recruiter",
+    "path": "/candidates",
+    "needs": "Not a demo firm; recruiter signed in to the main account (button is disabled on sub-accounts)",
+    "steps": [
+      {
+        "click": ".btn-toolbar button:has(i.lnr-upload2)"
+      },
+      {
+        "waitFor": ".modal.show ngx-file-drop"
+      }
+    ],
+    "capture": {
+      "selector": ".modal.show .modal-content"
+    },
+    "confidence": "high"
+  },
+  {
+    "id": "download-reports-export-window",
+    "article": "reports-lead-generation/download-reports",
+    "alt": "The Export window with the Tables dropdown, the Date range picker and the Fields list",
+    "app": "references",
+    "as": "root",
+    "path": "/candidates",
+    "needs": "",
+    "steps": [
+      {
+        "click": "div.nav-link:has(> i.lnr-download2)"
+      },
+      {
+        "waitFor": ".modal.show select#type"
+      }
+    ],
+    "capture": {
+      "selector": ".modal.show .modal-content"
+    },
+    "confidence": "medium"
+  },
+  {
+    "id": "lead-generation-leads-list",
+    "article": "reports-lead-generation/lead-generation",
+    "alt": "The Leads page with the lead-type counts, the filter toolbar and the list of leads",
+    "app": "references",
+    "as": "root",
+    "path": "/lead-generation",
+    "needs": "Lead generation on with 2 lead types, and a few references that submitted themselves as leads in the last month",
+    "steps": [
+      {
+        "waitFor": "app-table"
+      }
+    ],
+    "capture": {
+      "viewport": true
+    },
+    "confidence": "high"
+  },
+  {
+    "id": "lead-generation-settings",
+    "article": "reports-lead-generation/lead-generation",
+    "alt": "The Leads settings page with the switch, Company description, Consent checkbox and the Number of lead types to collect dropdown",
+    "app": "configuration",
+    "as": "root",
+    "path": "/settings/leads",
+    "needs": "Lead generation switched on, with a company description, the consent checkbox on with its text, and 2 lead types",
+    "steps": [
+      {
+        "waitFor": "#lead_generation_description quill-editor"
+      },
+      {
+        "waitFor": "#lead_types select"
+      }
+    ],
+    "capture": {
+      "viewport": true
+    },
+    "confidence": "high"
+  },
+  {
+    "id": "overview-dashboard-references",
+    "article": "reports-lead-generation/overview-dashboard",
+    "alt": "The References overview with the toolbar (date range, Everyone/Myself toggle, view dropdown), the four tiles and the daily chart",
+    "app": "references",
+    "as": "root",
+    "path": "/dashboard/references",
+    "needs": "Candidates and completed references in the last month",
+    "steps": [],
+    "capture": {
+      "viewport": true
+    },
+    "confidence": "high"
+  }
+]

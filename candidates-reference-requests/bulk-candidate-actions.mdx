@@ -3,32 +3,27 @@ title: "Bulk candidate actions"
 description: "Select several candidates at once to deactivate them, update their status, assign a recruiter, send reminders, or send new requests."
 ---
 
-When you need to do the same thing to many candidates — close out a filled role,
-hand a pipeline to a colleague, or nudge everyone still waiting on references —
-you can select the candidates on the list and apply one action to all of them.
+Select candidates on the **Candidates** list and apply one action to all of them, for example to close out a filled role or hand a pipeline to a colleague.
 
 <Note>
-  Available to all recruiter roles. You can only act on candidates you can see:
-  if your access is limited to your own candidates, bulk actions apply only to
-  those.
+  Any recruiter can use bulk actions. They apply only to candidates you can
+  see: if you only see your own candidates, that's all a bulk action touches.
 </Note>
 
-## Select candidates and choose an action
-
 <Steps>
-  <Step title="Open the candidates list">
-    Go to **Candidates**.
+  <Step title="Open the Candidates list">
+    Click **Candidates** in the left sidebar.
   </Step>
-  <Step title="Tick the candidates you want">
-    Use the checkbox on each row, or the checkbox in the table header to select
-    the whole page. A floating action bar appears at the bottom of the screen
-    showing how many candidates are selected, with a button to clear the
-    selection.
+  <Step title="Tick the candidates">
+    Tick the checkbox on each row, or the one in the table header to select
+    the whole page. A bar appears at the bottom of the screen showing how many
+    are selected. Its **X** clears the selection.
 
-    ![SCREENSHOT: candidates list with several rows ticked and the floating bulk action bar visible — placeholder](/images/placeholder.png)
+    ![The Candidates list with three rows ticked and the bulk action bar at the bottom of the screen](/images/screens/bulk-candidate-actions-bar.png)
   </Step>
-  <Step title="Pick an action from the bar">
-    Each action opens a short confirmation dialog before anything is applied.
+  <Step title="Click an action on the bar">
+    Each action opens a dialog where you confirm, or pick a status, recruiter
+    or request type, before anything changes.
   </Step>
 </Steps>
 
@@ -36,31 +31,40 @@ you can select the candidates on the list and apply one action to all of them.
 
 | Action | What it does |
 |---|---|
-| **Update status** | Sets the same candidate status on every selected candidate. Statuses are: Process initiated, Waitlisted, Interview scheduled, Rejected, Interviewed, Completed, Submitted, Accepted, and Unresponsive. |
-| **Assign to recruiter** | Moves the selected candidates to a recruiter you choose. Not available while you're viewing all sub-accounts at once — switch to a single account first. |
-| **Send reminder** | Emails a reminder to the references that haven't responded yet, for each selected candidate. |
-| **Send new request** | Sends a new reference request — or a feedback / pre-screening request if those are enabled for your firm — to every selected candidate. You choose the question set and the minimum number of references, just like a single request. |
-| **Deactivate** | Deactivates the selected candidates. They disappear from the active list but their data and completed references are kept. |
+| **Send reminder** | Reminds every reference of the selected candidates who hasn't answered yet. |
+| **Update status** | Gives every selected candidate the same status. |
+| **Assign to recruiter** | Makes one recruiter the assigned user for all of them. |
+| **Send new request** | Sends each candidate a new reference request, or a feedback or pre-screening request when those are on for your firm. |
+| **Deactivate** | Moves the candidates to the Recycle Bin. Their data is kept. |
 
-If an action can't be applied to one of the selected candidates, the others are
-still processed — after the action runs, a toast tells you how many candidates
-failed and why.
+**Send reminder** follows the same limits as a single reminder: references that
+already had 10 reminders, were reminded in the last 12 hours, have reminders
+turned off, or whose last email bounced are skipped. See
+[Reminders and how they work](/candidates-reference-requests/reminders-and-cadence).
+
+**Send new request** asks for a **Question Set** and, for reference requests,
+the **Minimum number of references**.
+
+![The Send new request dialog with the Reference card selected and the question set and minimum references fields](/images/screens/bulk-candidate-actions-send-new-request.png)
+
+If an action fails for some candidates, the others are still processed and a
+message tells you how many failed and why.
 
 ## Troubleshooting
 
 <AccordionGroup>
-  <Accordion title="The action bar doesn't appear">
-    The bar only shows while at least one candidate is ticked. If you can't tick
-    any rows, your role may not have access to those candidates.
-  </Accordion>
-  <Accordion title="I don't see feedback or pre-screening in Send new request">
-    Those request types only appear when they're enabled for your firm. Ask a
-    root recruiter at your firm, or see [Post-hire feedback](/feedback/post-hire-feedback).
-  </Accordion>
   <Accordion title="Assign to recruiter is missing from the bar">
-    **Assign to recruiter** isn't offered while you're viewing candidates
-    across all sub-accounts. Switch to a single account and select the
-    candidates there.
+    It's not offered while you're viewing all sub-accounts at once. Switch to a
+    single account and select the candidates there.
+  </Accordion>
+  <Accordion title="Send new request doesn't offer feedback or pre-screening">
+    Those request types appear only when the plugins are on for your firm. Ask
+    a root recruiter, or see [Post-hire feedback](/feedback/post-hire-feedback)
+    and [Pre-screening questionnaires](/candidates-reference-requests/pre-screening).
+  </Accordion>
+  <Accordion title="Fewer reminders were sent than candidates selected">
+    Reminders go to references, not candidates, and references that hit a limit
+    are skipped. A candidate whose references have all answered gets nothing.
   </Accordion>
 </AccordionGroup>
 
@@ -73,4 +77,4 @@ failed and why.
   <Card title="Add a candidate" icon="user-plus" href="/candidates-reference-requests/add-a-candidate" />
 </CardGroup>
 
-{/* source: app.vitay.io projects/references candidates list + shared app-bulk-action-bar + bulk modals (CANDIDATES.BULK_ACTIONS.*); api app/controllers/api/v3/candidates/bulk_controller.rb */}
+{/* source: app projects/references/src/app/protected/candidates/list/candidates.list.component.{html,ts} (bulkActions, assign withheld under all-sub-accounts), send-new-request-modal.component.{html,ts}, update-status-modal, assign-to-recruiter-modal, deactivate-confirmation-modal; src/app/shared/components/bulk-action-bar; src/app/shared/components/table/table.component.html (selectable); projects/references/src/assets/i18n/en.json (CANDIDATES.BULK_ACTIONS, BULK_ACTIONS, TOASTS.BULK_*); api app/controllers/api/v3/candidates/bulk_controller.rb (current_user_candidate_scope, send_candidate_reminders, bulk_send_new_request) */}

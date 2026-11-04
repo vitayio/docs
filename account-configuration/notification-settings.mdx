@@ -3,207 +3,157 @@ title: "Notification settings"
 description: "Choose who on your team is emailed about completed references, feedback, delivery failures and other events, and which emails candidates receive."
 ---
 
-The **Notifications** tab controls every automatic email Vitay sends about your candidates: who on your team hears about each event, how those emails are sent, and which updates candidates receive. It is grouped by audience, top to bottom:
-
-1. **Team notifications**: who is emailed when each event happens.
-2. **Additional report recipients**: extra addresses on individual candidates.
-3. **Email options**: how team notifications are sent.
-4. **Candidate notifications**: emails candidates receive about their own references.
-5. **Auto reminders** and **Usage Notifications**.
+The **Notifications** tab controls the automatic emails Vitay sends about your candidates. From top to bottom it has: **Team notifications** (who is emailed about each event), **Additional report recipients**, **Email options**, **Candidate notifications**, **Auto reminders** and **Usage Notifications**.
 
 <Note>
-  You need a **root recruiter** role to open **Configuration → Settings → Notifications**. Every switch and checkbox on the tab saves as soon as you change it; there is no Save button. Changes apply to future emails only.
+  You need the root recruiter role. Every switch and checkbox on the tab saves as soon as you change it. Changes apply to future emails only.
 </Note>
 
 ## Choose who is notified about each event
 
-**Team notifications** is a table. Each row is an event, and each column is a group of people who can be emailed when it happens. Tick any combination of columns on a row.
+**Team notifications** is a table. Each row is an event and each column is a group of people. Tick any combination of columns on a row.
 
 <Steps>
   <Step title="Open the Notifications tab">
-    Go to **Configuration → Settings → Notifications**. **Team notifications** is the first card.
+    In the Configuration area, click **Settings**, then the **Notifications** tab. **Team notifications** is the first card.
 
-    ![SCREENSHOT: The Team notifications table on Settings → Notifications, showing event rows and the Assigned recruiter, Reference requester, Root users and Additional emails columns — placeholder](/images/placeholder.png)
+    ![The Team notifications table with event rows and the Assigned recruiter, Reference requester, Root users and Additional emails columns](/images/screens/notification-settings-team-table.png)
   </Step>
   <Step title="Find the event">
-    Each row names the event and describes when it fires, for example **Reference completed** or **Email could not be delivered**. See [Events you can be notified about](#events-you-can-be-notified-about) for the full list.
+    Each row names an event and says when it fires. See [Events you can be notified about](#events-you-can-be-notified-about).
   </Step>
   <Step title="Tick the recipients">
-    Tick a box to add that group of people to the event, and untick it to remove them. Each box saves on its own and a confirmation message appears. If a change can't be saved, the box switches back and an error message appears.
+    Tick a box to add that group to the event, untick it to remove them. If a change can't be saved, the box switches back and an error appears.
 
     | Column | Who receives the email |
     |---|---|
     | **Assigned recruiter** | The recruiter the candidate is assigned to. |
-    | **Reference requester** | The recruiter who sent the request. Often the same person as the assigned recruiter. |
+    | **Reference requester** | The recruiter who sent the request. |
     | **Root users** | Every active team member with the Root role. |
-    | **Additional emails** | Extra addresses such as a shared inbox. They receive the email without needing a Vitay account. |
-
-    Hover the question-mark icon next to a column heading to see the same explanation in the app.
+    | **Additional emails** | Extra addresses, such as a shared inbox. No Vitay account needed. |
   </Step>
   <Step title="Add extra addresses if you need them">
-    Ticking **Additional emails** opens an **Additional emails for this event** field under that row. Type an address and press **Enter** to add it. You can add up to 20 addresses per event, and remove one by clicking its **×**. Each event has its own list.
+    Ticking **Additional emails** opens an **Additional emails for this event** field under the row. Type an address and press **Enter**. Each event has its own list of up to 20 addresses. Click an address's **×** to remove it.
   </Step>
 </Steps>
 
-Some things to know about recipients:
+How recipients work:
 
-- **Only active people are emailed.** Team members whose account has been deactivated are skipped automatically.
-- **Nobody gets the same email twice.** If one person matches several columns (for example, they are both the assigned recruiter and a root user), they receive one copy.
-- **An event with nobody ticked sends no email.** The table is the only place recipients come from; there is no separate list of people who receive everything.
-- **Additional emails reach people outside Vitay.** Team notifications name the candidate and link to their record, so only add addresses that should see that information.
-
-<Note>
-  If your account was set up before the Notifications tab was reorganized, Vitay carried your existing choices over, so each event goes to the same people as before. One difference: **Root users** now means every active root user in your account, not just the account's main root address.
-</Note>
+- Deactivated team members are skipped.
+- A person who matches several columns gets one copy.
+- A row with nothing ticked sends no email. There is no separate "always notify" list.
+- Team notifications name the candidate and link to their record, so only add addresses that should see that.
 
 ## Events you can be notified about
 
-Rows only appear for features your account uses. For example, **Feedback completed** appears only when a feedback plugin is active.
+Some rows only appear when your account uses the matching feature.
 
 | Event | When it's sent | Default for new accounts |
 |---|---|---|
-| **Reference completed** | A reference has submitted their answers for a candidate. | Assigned recruiter |
+| **Reference completed** | A reference submitted their answers. | Assigned recruiter |
 | **All references completed** | Every reference for a candidate has been submitted. | Assigned recruiter |
-| **Candidate submitted their references** | A candidate has provided the reference contacts you asked for. | Assigned recruiter |
-| **Reference awaiting your review** | A candidate added a reference that needs approval before the question set is sent. Only shown when **Reference review configuration** is on. | Reference requester |
-| **Reference or request unresponsive** | A reference or reference request has run out of reminders without a reply. | Assigned recruiter |
+| **Candidate submitted their references** | A candidate provided the reference contacts you asked for. | Assigned recruiter |
+| **Reference awaiting your review** | A candidate added a reference that needs approval. Shown when **Reference review configuration** is on. | Reference requester |
+| **Reference or request unresponsive** | A reference or request ran out of reminders without a reply. | Assigned recruiter |
 | **Email could not be delivered** | An email to a candidate or reference bounced or was rejected. | Assigned recruiter |
-| **Text message could not be delivered** | A text message to a candidate or reference failed. Only shown when text messages are enabled for your account. | Assigned recruiter |
+| **Text message could not be delivered** | A text to a candidate or reference failed. Shown when text messages are on for your account. | Assigned recruiter |
 | **IP address conflict detected** | A candidate and one of their references submitted from the same IP address. | Assigned recruiter |
-| **Candidate submitted their own contact details as a reference** | A candidate tried to add a reference using their own email address or phone number on the reference request form. The reference was rejected; this tells you it happened. | Assigned recruiter |
-| **Feedback completed** | A feedback request has been completed. Only shown when a feedback plugin is active. | Assigned recruiter and reference requester |
-| **Pre-screening completed** | A pre-screening request has been completed. Only shown when the pre-screening plugin is active. | Assigned recruiter |
-| **Lead received** | A reference asked to be contacted. Only shown for accounts on the original lead generation setup. | Assigned recruiter |
+| **Candidate submitted their own contact details as a reference** | A candidate tried to add their own email or phone number as a reference. | Assigned recruiter |
+| **Feedback completed** | A feedback request was completed. Shown when a feedback plugin is on. | Assigned recruiter and reference requester |
+| **Pre-screening completed** | A pre-screening request was completed. Shown when the pre-screening plugin is on. | Assigned recruiter |
+| **Lead received** | A reference asked to be contacted. Shown on the original lead generation setup only. | Assigned recruiter |
 
 ### Reference awaiting your review
 
-When **Reference review configuration** is on (see [Reference request settings](/account-configuration/reference-request-settings)), references a candidate adds are held until someone approves them. This row decides who is told that a reference is waiting. You can send it to the requester, the assigned recruiter, root users or extra addresses, or untick every column to stop the email. Each recipient gets their own copy. The email is sent from your firm's sender address, shown as "*Candidate name* via *Your firm*", and replying to it reaches the candidate.
+When **Reference review configuration** is on (see [Reference request settings](/account-configuration/reference-request-settings)), references a candidate adds wait for approval. This row decides who is told. Untick every column to stop the email. The email shows as "*Candidate name* via *Your firm*", and replying reaches the candidate.
 
 ### When an unresponsive alert fires
 
-A reference or reference request is treated as unresponsive when all of the following are true:
+A reference or reference request counts as unresponsive when it still isn't filled in, it has no more reminders scheduled, and the last reminder went out more than 24 hours ago. The alert is sent once per record. If the same reference goes quiet again later, there is no second email.
 
-- it still hasn't been filled in;
-- its automatic reminders have run out, so no further reminder is scheduled; and
-- the last reminder went out more than 24 hours ago.
-
-Vitay then emails the people ticked on **Reference or request unresponsive**. The alert is sent **once per record**. If the same reference goes quiet again later, you won't get a second email, so check the record itself for its current state.
-
-<Note>
-  Separately, a candidate sitting in **Process initiated** is moved to the **Unresponsive** status when one of their reference requests goes quiet, and moves back automatically once it's responsive again. See
-  [Candidate statuses and comments](/candidates-reference-requests/candidate-statuses-and-comments).
-</Note>
+A candidate in **Process initiated** also moves to **Unresponsive** when one of their reference requests goes quiet, and moves back once it responds. See [Candidate statuses and comments](/candidates-reference-requests/candidate-statuses-and-comments).
 
 ### IP address conflicts
 
-Vitay only checks for IP conflicts while someone would be told about them: at least one column is ticked on **IP address conflict detected**, or the **IP conflict banner** under [Email options](#email-options) is on. If neither is true, no conflicts are recorded. See [IP conflicts and reference edits](/candidates-reference-requests/ip-conflicts-and-reference-edits).
+Vitay only checks for IP conflicts when someone would hear about them: at least one column is ticked on **IP address conflict detected**, or the **IP conflict banner** under [Email options](#email-options) is on. Otherwise no conflicts are recorded. See [IP conflicts and reference edits](/candidates-reference-requests/ip-conflicts-and-reference-edits).
 
 ### Self-reference attempts
 
-When a candidate tries to list themselves as a reference, the form rejects the reference and Vitay records the attempt on the candidate page whatever this row says. The row only decides who is emailed. One email goes out per episode: repeated attempts before someone clears the alert do not send again. Accounts that existed before this row was added received a copy of their **IP address conflict detected** choices. See [Fraud signals](/candidates-reference-requests/ip-conflicts-and-reference-edits#self-reference-attempts).
+When a candidate lists themselves as a reference, the form rejects it and the attempt is recorded on the candidate page whatever this row says. The row only decides who is emailed. Repeated attempts before someone clears the alert send one email. See [Fraud signals](/candidates-reference-requests/ip-conflicts-and-reference-edits#self-reference-attempts).
 
 ### Lead notifications
 
-On accounts that use the original lead generation setup, the **Lead received** row sends lead emails. If your account collects hiring leads this way, the **Additional emails** column shows a **Manage list** button instead of a checkbox. Click it to edit the list of addresses and which lead types each one receives. Accounts on the current lead generation setup choose lead recipients per lead type instead. See [Lead generation](/reports-lead-generation/lead-generation).
-
-<Note>
-  **Always notified team members** has been removed. That card let you mark individual people to receive every team notification regardless of the table, which made it hard to tell why someone was emailed. If you used it, those people now receive only the events whose ticked columns include them. To keep someone on everything, tick **Root users** on each row (if they are a root user) or add their address under **Additional emails**.
-</Note>
+On the original lead generation setup, the **Lead received** row sends lead emails. If your account collects hiring leads this way, the **Additional emails** column shows a **Manage list** button. Click it to choose addresses and the lead types each one receives. On the current lead generation setup, you choose recipients per lead type instead. See [Lead generation](/reports-lead-generation/lead-generation).
 
 ## Additional report recipients
 
-**Additional report recipients** lets your users add extra email addresses to an individual candidate. Those addresses then receive the same confidential reference report emails as the assigned recruiter. This is useful for a hiring manager or client contact who should see the result without a Vitay login.
+When this card is on, your users can add extra email addresses to a candidate. Those addresses get the same confidential reference report emails as the assigned recruiter, for example a hiring manager without a Vitay login. A candidate can have up to five.
 
-- A candidate can have at most **five** report recipients.
-- Turn on **Restrict to your organization's domains** to only accept addresses whose domain matches one already used by an active recruiter in your firm. Anything else is rejected when it's added.
+Turn on **Restrict to your organization's domains** to accept only addresses whose domain matches one used by an active recruiter in your firm.
 
 <Warning>
-  Report recipients receive confidential reference content by email. Use the domain restriction if
-  reports should never leave your organisation. See
-  [Share reports](/candidates-reference-requests/share-reports).
+  Report recipients receive confidential reference content by email. Use the domain restriction if reports should never leave your organisation. See [Share reports](/candidates-reference-requests/share-reports).
 </Warning>
 
 ## Email options
 
-**Email options** controls how the team notifications above are sent.
-
 | Option | What it does | Default |
 |---|---|---|
-| **Attach the PDF report to completion emails** | Reference-completed, all-references-completed and feedback-completed emails to your team include the report as a PDF, so it arrives in the inbox. Leave it off if reports should only be read inside Vitay. | Off |
-| **IP conflict banner** | Shows a banner on reports when the candidate and reference share the same IP address, or when the candidate tried to add themselves as a reference. It sits under **Attach the PDF report to completion emails** and only appears while that option is on. | Off |
-| **Requested user email** | Emails to candidates and references are sent in the name of the recruiter who sent the request, instead of the candidate's assigned recruiter. | Off |
+| **Attach the PDF report to completion emails** | Adds the report as a PDF to reference-completed, all-references-completed and feedback-completed emails to your team. | Off |
+| **IP conflict banner** | Shows a banner on reports when the candidate and reference share an IP address, or the candidate tried to add themselves as a reference. Appears only while the PDF option above is on. | Off |
+| **Requested user email** | Sends candidate and reference emails in the name of the recruiter who sent the request, not the assigned recruiter. | Off |
 
 ## Candidate notifications
 
-**Candidate notifications** are emails Vitay sends to candidates about their own references. Each switch saves as soon as you flip it.
-
 | Switch | What it does | Default |
 |---|---|---|
-| **Candidate: Reference has been added** | Notify the candidate when a user has added a new reference. | Off |
-| **Candidate reference pending notification** | Notify the candidate when one of their references is reminded and still hasn't responded. The wording is the **Candidate: Reference response still pending** template on the **Emails** tab, which is only shown while this switch is on. | On |
-| **Candidate: Reference is completed** | Notify the candidate when their reference is completed. | On |
-| **Candidate: Notify Reference Contact Errors** | Notify the candidate when Vitay can't deliver an email or text to one of their references, so they can supply better contact details. | Off |
+| **Candidate: Reference has been added** | Emails the candidate when a user adds a reference for them. | Off |
+| **Candidate reference pending notification** | Emails the candidate when one of their references still hasn't responded. Its wording is the **Candidate: Reference response still pending** template on the **Emails** tab, shown only while this is on. | On |
+| **Candidate: Reference is completed** | Emails the candidate when a reference is completed. | On |
+| **Candidate: Notify Reference Contact Errors** | Emails the candidate when an email or text to one of their references can't be delivered, so they can correct it. Only sent when someone on your team is also notified about that failure. | Off |
 
-**Candidate: Notify Reference Contact Errors** is only sent when someone on your team is also notified about the same failure (see [Email and text delivery](/candidates-reference-requests/email-and-text-delivery)).
+See [Email and text delivery](/candidates-reference-requests/email-and-text-delivery).
 
 ## Auto reminders
 
-The **Auto reminders** card controls the automatic reminder sequence for candidates and references: whether it runs, the **Reminders Rate**, and **Skip Reminders during the weekend**. See [Reminders and how they work](/candidates-reference-requests/reminders-and-cadence).
+The **Auto reminders** card turns the automatic reminder sequence on or off and sets the **Reminders Rate** and **Skip Reminders during the weekend**. See [Reminders and how they work](/candidates-reference-requests/reminders-and-cadence).
 
-Inside it, **Feedback reminders** is a separate switch:
-
-- Leave it **on** (the default) and feedback recipients get the same reminder sequence as everyone
-  else.
-- Turn it **off** and recipients get the original feedback request only, with no follow-ups, while
-  reference reminders carry on as normal.
-
-<Note>
-  **Feedback reminders** only appears when **Auto reminders** is on and at least one feedback type is
-  enabled for your firm. See [Candidate feedback](/feedback/candidate-feedback).
-</Note>
+**Feedback reminders** (on by default) controls reminders for feedback requests. Turn it off to send feedback recipients the original request only, while reference reminders carry on. It appears when **Auto reminders** is on and a feedback plugin is on. See [Candidate feedback](/feedback/candidate-feedback).
 
 ## Usage notifications
 
-**Usage Notifications** warn your team as you approach your contract limits, so a renewal
-conversation isn't a surprise.
+**Usage Notifications** email your team as usage approaches your contract limits. New accounts start with it on, the 80%, 90% and 100% thresholds ticked, and **Notify Administrators** on.
 
 <Steps>
   <Step title="Turn on Usage Notifications">
-    On **Settings → Notifications**, switch on **Usage Notifications**. New accounts start with
-    it already on, with the 80%, 90% and 100% thresholds ticked and **Notify Administrators** on.
+    On the **Notifications** tab, switch on **Usage Notifications**.
+
+    ![The Usage Notifications card with the threshold checkboxes, Notify Administrators switch and Additional Email Recipients field](/images/screens/notification-settings-usage.png)
   </Step>
   <Step title="Pick your thresholds">
-    Under **Notification Thresholds**, tick the percentages of your contract limit that should
-    trigger an alert. You can pick more than one, for example 80% and 100%.
+    Under **Notification Thresholds**, tick the percentages of your contract limit that should send an alert.
   </Step>
   <Step title="Choose who hears about it">
-    **Notify Administrators** sends the alert to everyone with root/administrator access.
-    **Additional Email Recipients** takes a comma-separated list of extra addresses, such as your
-    finance inbox.
+    **Notify Administrators** emails every root user. **Additional Email Recipients** takes a comma-separated list of extra addresses, such as a finance inbox.
   </Step>
 </Steps>
 
-<Note>
-  Each threshold notifies you **once per contract period**. It won't repeat as usage hovers around
-  the same percentage, and the set resets when a new contract period begins. Usage is counted
-  across your sub-accounts as well as the parent account. See
-  [Billing and usage](/account-configuration/billing-and-usage).
-</Note>
+Each threshold sends one email per contract period and resets when a new period starts. Usage across your sub-accounts counts toward the parent account. See [Billing and usage](/account-configuration/billing-and-usage).
 
 ## Troubleshooting
 
 <AccordionGroup>
   <Accordion title="I'm not receiving notifications I expect">
-    On **Settings → Notifications**, find the event's row under **Team notifications** and check that a column that includes you is ticked. For example, if only **Assigned recruiter** is ticked, you only hear about candidates assigned to you. To receive every team notification, ask a root recruiter to tick a column that includes you (for example **Root users**, or your address under **Additional emails**) on every row. Also check your spam folder: team notifications are sent from your firm's own sender address, so make sure that domain is authenticated (see [Email sender settings](/account-configuration/email-sender-settings#which-sender-your-team-sees)).
+    Find the event's row under **Team notifications** and check that a column that includes you is ticked. If only **Assigned recruiter** is ticked, you only hear about candidates assigned to you. To get every notification, ask a root recruiter to tick **Root users** (if you are root) or add your address under **Additional emails** on each row. Also check spam, and that your firm's sender domain is authenticated (see [Email sender settings](/account-configuration/email-sender-settings#which-sender-your-team-sees)).
   </Accordion>
   <Accordion title="Too many people are getting notified">
-    Untick the columns you don't need on each row. If someone still receives everything, check whether they are a root user (**Root users** includes every active root user) or whether their address was added under **Additional emails** on each row.
+    Untick the columns you don't need on each row. If someone still gets everything, check whether they are root (**Root users** includes every active root user) or listed under **Additional emails**.
   </Accordion>
-  <Accordion title="I don't see a row for a particular event">
-    Rows follow the features your account uses. **Feedback completed** and **Pre-screening completed** need their plugins, **Text message could not be delivered** needs text messages, and **Reference awaiting your review** needs **Reference review configuration**. Contact **hello@vitay.io** if you believe a feature should be available to your account.
+  <Accordion title="I don't see a row for an event">
+    Rows follow the features your account uses: **Feedback completed** and **Pre-screening completed** need their plugins, **Text message could not be delivered** needs text messages, and **Reference awaiting your review** needs **Reference review configuration**. Contact **hello@vitay.io** if a feature should be available to you.
   </Accordion>
   <Accordion title="Team notifications could not be loaded">
-    Refresh the page to try again. If the table still doesn't load, contact **hello@vitay.io**.
+    Refresh the page. If the table still doesn't load, contact **hello@vitay.io**.
   </Accordion>
 </AccordionGroup>
 
@@ -216,4 +166,4 @@ conversation isn't a surprise.
   <Card title="Email and text delivery" icon="triangle-exclamation" href="/candidates-reference-requests/email-and-text-delivery" />
 </CardGroup>
 
-{/* source: app.vitay.io projects/configuration protected/settings/notifications/settings.notifications.component.{ts,html} (TABS.NOTIFICATIONS "Notifications"; card order team_notifications → candidate_report_recipients → email_options → candidate_notifications (candidateParams: is_notify_candidate_reference_added/pending/completed/email_activities_enabled) → auto_reminders → usage_notifications), shared/components/notification-matrix/notification-matrix.{component.html,component.ts,rows.ts} (NOTIFICATION_MATRIX_ROWS order incl. self_reference_attempt after ip_conflict + isVisible: reference_pending_review needs review_candidate_references, text_delivery_failed needs is_text_messages_enabled, feedbacks needs candidate/recruiter feedback plugin, pre_screening needs is_plugins_pre_screening_enabled, leads hidden on the new lead-generation system; legacy hiring leads → MANAGE_LIST button; custom emails chip input maxItems 20; per-cell optimistic save with rollback) (always-notified-recruiters card removed in app #2054), i18n SETTINGS.CONFIGURATION.{TEAM_NOTIFICATIONS,EMAIL_OPTIONS,CANDIDATE_NOTIFICATIONS,is_attach_pdf_report_recruiter_email_enabled,is_ip_conflict_banner_enabled,is_requested_recruiter_from_email,candidate_report_recipients,auto_reminders,usage_notifications}; api app/models/custom_notification.rb (TYPES, DEFAULT_FLAGS / FALLBACK_DEFAULT_FLAGS for new firms via HiringFirm#create_custom_notifications; ensure_all_types_for! creates missing rows all-off; any_recipient?), app/services/notifications/recipient_resolver.rb (assigned = candidate.added_by, requested = requested_by, root = active_root_recruiters, custom; the recruiters.notifications opt-in was dropped in api #2684; active recruiter + active user only; case-insensitive dedupe; no row => no recipients), db/migrate/20260916120000_backfill_recruiter_event_custom_notifications.rb + 20260917120000_add_reference_pending_review_custom_notifications.rb (existing firms keep behaviour), app/models/reference.rb#notify_pending_review (one email per recipient), app/services/ip_conflict_service.rb#detection_enabled? (banner on OR ip_conflict row any_recipient?), app/workers/unresponsive_notification_worker.rb + app/models/concerns/can_be_unresponsive.rb (24h threshold, 2-day window, once per record), app/controllers/api/v3/webhooks/{sendgrid,twilio}_controller.rb (candidate contact-error email only when resolver.any?), app/models/recruiter_reference.rb#custom_notifications (new lead system → lead_type_custom_notifications, no opt-in), app/models/candidate_report_recipient.rb (MAX_PER_CANDIDATE = 5), app/services/usage_notification_service.rb, app/models/setting.rb (is_notify_candidate_* / is_attach_pdf_report_recruiter_email_enabled / is_requested_recruiter_from_email defaults) */}
+{/* source: app projects/configuration protected/settings/notifications/settings.notifications.component.{ts,html}; shared/components/notification-matrix/notification-matrix.{component.html,rows.ts}; api app/models/custom_notification.rb (DEFAULT_FLAGS), app/services/notifications/recipient_resolver.rb, app/services/ip_conflict_service.rb, app/workers/unresponsive_notification_worker.rb, app/models/concerns/can_be_unresponsive.rb, app/controllers/api/v3/webhooks/{sendgrid,twilio}_controller.rb, app/models/candidate_report_recipient.rb, app/models/recruiter_reference.rb + feedback.rb (PDF attach), app/services/usage_notification_service.rb, app/models/setting.rb (defaults, enable_usage_notifications) */}

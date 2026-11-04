@@ -3,168 +3,175 @@ title: "Manage users"
 description: "Add, remove, and change roles for the recruiters in your Vitay account, including sub-account access."
 ---
 
-Users are the recruiters who log in to Vitay to manage candidates and references. As a root recruiter you can invite colleagues, update their roles, and remove access when someone leaves.
+Users are the recruiters who sign in to Vitay. As a root recruiter you can add colleagues, change their roles, and remove access when someone leaves.
 
 <Note>
-  You need a **root recruiter** role to open the Configuration area, where user management lives. Only root recruiters can add users or change roles.
+  You need the root recruiter role. User management is in the Configuration area, which only root recruiters can open.
 </Note>
 
 ## Add a user
 
 <Steps>
-  <Step title="Open the Users section">
-    Open the **Configuration** area from the main navigation, then select **Users** (alongside Settings, Plugins, and Integrations).
+  <Step title="Open Users">
+    Click **Configuration** in the left navigation, then **Users**.
 
-    ![The Users page with the team list](/images/users-list.png)
+    ![The Users page in the Configuration area, with the refresh, download and add buttons above the team list](/images/screens/manage-users-list.png)
   </Step>
-  <Step title="Click the add button">
-    Click the **plus** icon (its tooltip reads **Add recruiter**). The **Add user** modal opens.
+  <Step title="Click Add recruiter">
+    Click the **+** button (tooltip **Add recruiter**). The **Add user** form opens.
   </Step>
   <Step title="Enter the user's details">
-    Fill in the new user's **first name**, **last name**, **email address**, and optionally their **phone number**. The email address becomes their login username and must be unique across Vitay.
+    Fill in **First name**, **Last name**, **Email** and, if you like, a phone number. The email address is their username.
 
-    Leave the **Send email to user** checkbox ticked if you want Vitay to email the new user their login credentials. If you untick it, no email is sent and you will need to share access details yourself (for example, by triggering a password reset later).
+    Leave **Send email to user** ticked to email them their login details. If you untick it, no email is sent and you need to give them access another way, for example with **Reset password** on their user page.
   </Step>
   <Step title="Submit">
-    Click **Submit**. Vitay creates the account as a regular **recruiter**. Roles are not set at creation — to promote the new user to root or supervisor, see [Edit a user's details or role](#edit-a-users-details-or-role) below.
+    Click **Submit**. The new user is a regular recruiter. To make them root or supervisor, see [Edit a user's details or role](#edit-a-users-details-or-role).
 
-    ![SCREENSHOT: The Add user modal with name, email, phone, and the Send email to user checkbox — placeholder](/images/placeholder.png)
+    ![The Add user form with name, email and phone fields and the Send email to user checkbox](/images/screens/manage-users-add-modal.png)
   </Step>
 </Steps>
 
+If the email address already belongs to a Vitay user, that person is added to your account with their existing login, and no welcome email is sent.
+
 ### What the new user receives
 
-When **Send email to user** is ticked, the new user gets a welcome email (subject "Reference checking. Simplified.") that says who added them, lists their username and a temporary password, and has a **Log in** button. It also links to an explainer video and a user guide — by default Vitay's own, or your firm's if you've set custom links on the **White Label** tab (see [Branding and white label](/account-configuration/branding-white-label)).
+With **Send email to user** ticked, a new user gets a welcome email (subject "Reference checking. Simplified.") that says who added them, gives their username and a temporary password, and has a **Log in** button. It also links to an explainer video and a user guide: Vitay's by default, or your own if you set custom links on the **White Label** tab (see [Branding and white label](/account-configuration/branding-white-label)).
 
-If your firm has filled in **New Recruiters - Compliance Statement** under **Settings → Configuration**, that statement is included in the welcome email in bold. Use it for any onboarding or compliance wording your new users must see.
+If you filled in **New Recruiters - Compliance Statement** on the **Configuration** tab in Settings, that text appears in bold in the welcome email.
 
 ### Download the user list
 
-To export your team list, click the **download** icon on the **Users** page (its tooltip reads **Download report**). Vitay downloads a CSV with each user's first name, last name, email, and whether they are active.
+Click the download button on the **Users** page (tooltip **Download report**). Vitay downloads a CSV with each user's first name, last name, email and whether they are active.
 
 ## Roles explained
 
 | Role | What they can do |
 |---|---|
-| **Recruiter** | Add candidates, send reference requests, and read reports for their candidates. By default a recruiter sees their own candidates; a firm-wide display setting can allow everyone's candidates to be visible instead. |
-| **Supervisor recruiter** | Everything a recruiter can do, plus visibility into all team activity and metrics, and the ability to edit question sets. |
-| **Root recruiter** | Full access: all recruiter capabilities plus the Configuration area — account settings, user management, billing, and sub-accounts. |
+| **Recruiter** | Add candidates, send reference requests and read reports for their own candidates. The **Display Everyone / Myself toggle** setting can let them see everyone's candidates. |
+| **Supervisor Recruiter** | Everything a recruiter can do, plus oversight of all team activity and metrics, and editing question sets. |
+| **Root** | Full access, including the Configuration area: settings, users, usage and sub-accounts. |
 
-<Note>
-  Each Vitay account has exactly one **default root** account that cannot be deactivated or have its role changed. If you need to hand over that designation to someone else, contact Vitay support.
-</Note>
+Each account has one default account user. Their roles can't be changed and they can't be deactivated. To move that designation to someone else, contact Vitay support.
 
 ## Edit a user's details or role
 
 <Steps>
   <Step title="Open the user's page">
-    Go to **Configuration → Users** and click the person's row in the list to open their page.
+    On the **Users** page, click the person's row.
   </Step>
-  <Step title="Open the edit modal">
-    On the user's page, click the **edit** icon (pencil). The **Edit user** modal opens, pre-populated with their current details.
+  <Step title="Open Edit user">
+    Click the pencil button (tooltip **Edit recruiter**). The **Edit user** form opens.
   </Step>
-  <Step title="Update and save">
-    Change the fields you need — name, phone number — then click **Submit**.
+  <Step title="Change details">
+    Change the name, email or phone number, then click **Submit**.
+  </Step>
+  <Step title="Change roles">
+    Use the **Root account** and **Supervisor Recruiter** switches under **Roles**. A switch change saves straight away.
 
-    The Edit user modal is also where roles are changed: as a root recruiter, use the **Root** and **Supervisor** switches to grant or remove those roles. When a switch cannot be changed it stays visible but locked (greyed out, with a tooltip and a short note underneath saying why): both switches when you edit **your own account** (another root user has to change your roles) or the account's **default root user**, and the **Supervisor** switch for any **root** user, since root already includes everything a supervisor can do.
+    ![The Edit user form with the Root account and Supervisor Recruiter switches under Roles](/images/screens/manage-users-edit-roles.png)
   </Step>
 </Steps>
+
+Some switches are greyed out, with a note explaining why:
+
+- Both switches, when you edit your own account (another root user has to change your roles) or the default account user.
+- The **Supervisor Recruiter** switch, for a root user, since root already includes everything a supervisor can do.
 
 ### Send someone every team notification
 
-There is no per-person "always notify" switch. Who receives each team notification email is decided row by row in the **Team notifications** table under **Settings → Notifications**: tick **Root users** on a row to include every root user, or add the person's address under **Additional emails**. See [Notification settings](/account-configuration/notification-settings).
+There is no per-person "always notify" switch. Each team notification has its own row in the **Team notifications** table on the **Notifications** tab in Settings. Tick **Root users** on a row to include every root user, or add the person's address under **Additional emails**. See [Notification settings](/account-configuration/notification-settings).
 
 ## Deactivate (remove) a user
 
-Deactivating a user removes their login access but preserves all their historical candidates and references.
+Deactivating a user removes their access but keeps their candidates and references.
 
 <Steps>
-  <Step title="Find the user">
-    Go to **Configuration → Users**.
+  <Step title="Open the user's page">
+    On the **Users** page, click the person's row.
   </Step>
   <Step title="Deactivate">
-    Click the **deactivate** (cross) icon on the user's row. Confirm when prompted.
+    Click the red trash button, then confirm with **Delete**.
   </Step>
 </Steps>
 
-The user loses access straight away. If they are signed in when you deactivate them, they are signed out the next time they do anything in Vitay, rather than keeping access until their session would have expired. They can't sign in again, and they stop receiving team notification emails. If the person also belongs to another account in your firm family and is still active there, their access to that account is not affected.
+The trash button only shows for users who aren't root. To deactivate a root user, turn off their **Root account** switch first.
 
-Their past work remains visible and is still attributed to them in reports and activity logs. If you need to restore access later, use the **reactivate** (check) icon on the same row. They then sign in again as usual.
+The user loses access straight away. If they are signed in, they are signed out at their next action. They can't sign in again and stop receiving team notification emails. If they also belong to another account in your firm family, their access there is not affected.
 
-<Note>
-  Deactivating a user doesn't reassign their candidates. Emails for those candidates that go to the **Assigned recruiter** skip deactivated users, so reassign the candidates if someone else should hear about them. See [Change the assigned recruiter for a candidate](#change-the-assigned-recruiter-for-a-candidate).
-</Note>
+Their past work stays in reports and activity logs under their name. To restore access, filter the **Users** page to **Inactive** (the cross button), open their page and click **Reactivar**.
 
-## Automatic lock for inactive users
+Deactivating a user doesn't reassign their candidates, and emails for the assigned recruiter skip deactivated users. Reassign the candidates if someone else should hear about them (see [Change the assigned recruiter for a candidate](#change-the-assigned-recruiter-for-a-candidate)).
 
-If you turn on **Lock inactive users** under **Settings → Configuration** (off by default), Vitay periodically locks any user who hasn't signed in for a month. Root recruiters are never locked this way. A locked user sees a **Locked** badge on their user page and can't sign in until the account is unlocked.
+## Unlock a user
 
-To unlock someone, open their page under **Configuration → Users** and click **Unlock and Reset password**. They receive a password reset email, and the account is unlocked once they finish resetting their password. The link in that email expires after **1 hour** and works only once; if it runs out, click the button again to send a fresh one. Users can also unlock themselves with the **Forgot password** link on the login page — see [Logging in](/getting-started/logging-in).
+A user is locked after too many failed sign-in attempts, or by **Lock inactive users** on the **Configuration** tab (off by default), which locks non-root users who haven't signed in for a month. Locked users show **Locked** in the **Login status** column and on their user page.
+
+To unlock someone, open their page and do one of these:
+
+- Click **Unlock and Reset password**. They get a password reset email and are unlocked once they set a new password. The link works once and expires after 1 hour; click the button again to send a new one.
+- Click the pencil button, then **Unlock account** in the **Edit user** form. They are unlocked straight away and keep their current password.
+
+Users can also unlock themselves with **Forgot password** on the login page (see [Logging in](/getting-started/logging-in)).
 
 ## Change the assigned recruiter for a candidate
 
-Every candidate has an **Assigned user** — the recruiter who owns the record and, with the default [notification settings](/account-configuration/notification-settings), receives its notifications. You'll typically reassign candidates when a recruiter leaves or changes role.
-
-- **Root recruiters** can always change the assigned user.
-- **Other users** can only do so when **Allow users to update the assigned user** is turned on under **Settings → Configuration** (off by default).
+Every candidate has an **Assigned user**: the recruiter who owns the record and, with the default [notification settings](/account-configuration/notification-settings), gets its notifications. Root recruiters can always change it. Other users can only change it when **Allow users to update the assigned user** is on in the **Configuration** tab (off by default).
 
 <Steps>
   <Step title="Reassign one candidate">
-    Open the candidate, click the **edit** (pencil) icon, and pick the new recruiter in the **Assigned user** field at the top of the **Edit candidate** modal — the current assignee is shown beneath it. Click **Submit**.
+    Open the candidate, click the pencil button, and pick the new recruiter in **Assigned user** at the top of the form. Click **Submit**.
   </Step>
   <Step title="Reassign several candidates at once">
-    On the **Candidates** list, tick the candidates you want to move and choose **Assign to recruiter** from the bulk actions. Select the recruiter and confirm. The bulk action isn't offered while the list is filtered to **All Sub Accounts**, because a recruiter belongs to a single account — switch to one account first.
+    On the **Candidates** list, tick the candidates and choose **Assign to recruiter** from the bulk actions. Select the recruiter and confirm. This action isn't offered while the list shows **All Sub Accounts**; pick one account first.
   </Step>
 </Steps>
-
-![SCREENSHOT: the Edit candidate modal with the Assigned user field, and the Assign to recruiter bulk action on the Candidates list — placeholder](/images/placeholder.png)
 
 ## Manage sub-accounts
 
-Sub-accounts are separate environments for branches, teams, or client companies under your main account: each has its own candidates, references, and user list, while usage rolls up to the parent for billing. If sub-accounts are enabled for your firm, an **Accounts** item appears in the Configuration area's navigation.
+Sub-accounts are separate accounts under your main one, for branches, teams or client companies. Each has its own candidates, references and users, and usage rolls up to the parent for billing. If sub-accounts are enabled for your firm, **Accounts** appears in the Configuration navigation.
 
 <Steps>
   <Step title="Open Accounts">
-    Go to **Configuration → Accounts**. The table lists each sub-account with its **ID**, name, brand name, root user, and creation date. The brand name is what the sub-account's candidates and references see: its own, or yours when it has none (see [Branding and white label](/account-configuration/branding-white-label)). (The **ID** is the "Branch ID" used when [bulk-uploading candidates](/reports-lead-generation/bulk-candidate-upload) into a sub-account.)
+    Click **Accounts** in the Configuration navigation. The table lists each sub-account's **ID**, name, brand name, root user and creation date. The brand name is what the sub-account's candidates and references see: its own, or yours when it has none (see [Branding and white label](/account-configuration/branding-white-label)). The **ID** is the Branch ID used when [bulk-uploading candidates](/reports-lead-generation/bulk-candidate-upload) into a sub-account.
   </Step>
-  <Step title="Click the add button">
-    Click the **plus** icon (tooltip **Add sub account**). Sub-accounts can only be created from the parent account — the button is disabled while you're working inside a sub-account.
+  <Step title="Click Add sub account">
+    Click the **+** button (tooltip **Add sub account**). The button is disabled inside a sub-account; create sub-accounts from the parent.
   </Step>
   <Step title="Enter the sub-account and its root user">
-    Fill in the sub-account's **Name**, then the **first name**, **last name**, and **email** of the person who will manage it — they become that sub-account's default root user.
+    Fill in the sub-account's **Name**, then the **First name**, **Last name** and **Email** of the person who will manage it. They become its default root user.
 
-    The root users of your parent account are added to the new sub-account as root users at the same time, so they can manage it and switch into it from the company switcher. People with the plain recruiter role, and deactivated users, are not carried over.
-
-    Leave **Send email to user** ticked to email them their login credentials (the modal confirms "Credentials are sent directly to the user"); untick it and no email goes out, so you'll need to share access another way.
+    Leave **Send email to user** ticked to email them their login details.
   </Step>
   <Step title="Submit">
-    Click **Submit**. To add more users to the sub-account, switch into it and follow [Add a user](#add-a-user) above. If the email you enter belongs to someone who already has a Vitay account in your firm family, that account is given access to the sub-account instead of a duplicate being created, and no welcome email is sent. Capitalisation in the email address doesn't matter.
+    Click **Submit**. The parent account's root users are added to the new sub-account as root users, so they can manage it and switch into it. Recruiters and deactivated users are not carried over.
   </Step>
 </Steps>
 
-<Note>
-  A user can belong to more than one account within the same firm family; they switch between them from the company switcher in the top bar — see [Switch firms](/getting-started/switch-firms). A user cannot be added to two unrelated firm families.
-</Note>
+To add more users to a sub-account, switch into it and follow [Add a user](#add-a-user). If the email you enter already belongs to a Vitay user, that person gets access to the sub-account with their existing login and no welcome email is sent.
 
-Root users of the parent account can see combined usage across sub-accounts on the **Sub accounts overview** dashboard, and on the billing pages — see [Billing and usage](/account-configuration/billing-and-usage).
+A user who belongs to several accounts switches between them from the top bar (see [Switch firms](/getting-started/switch-firms)). Root users of the parent account can see combined usage on the **Sub accounts overview** dashboard and the usage pages (see [Billing and usage](/account-configuration/billing-and-usage)).
 
 ## Troubleshooting
 
 <AccordionGroup>
-  <Accordion title="The new user says they didn't receive their credentials email">
-    First confirm the **Send email to user** checkbox was ticked when the user was added — if it wasn't, no email was sent. Ask them to check their spam or junk folder. To send fresh login details, open the user's page and click **Reset password** (or **Unlock and Reset password** if their account is locked); they will receive a password reset email. The reset link expires after **1 hour** and works only once, so ask them to use it promptly.
+  <Accordion title="The new user didn't receive their login email">
+    Check that **Send email to user** was ticked when you added them; if not, no email was sent. Ask them to check spam. To send new login details, open their page and click **Reset password** (or **Unlock and Reset password** if they are locked). The reset link expires after 1 hour.
   </Accordion>
-  <Accordion title="I can't change the role for a specific user">
-    The Root and Supervisor switches are only available to root recruiters. They appear locked (greyed out, with a tooltip explaining why) when you edit your own account, when the user is the account's default root user, and, for the Supervisor switch, when the user is already root. Ask another root user to change your own roles. If the user is listed as the default account, contact Vitay support to transfer that designation.
+  <Accordion title="I can't change the role for a user">
+    The role switches are greyed out when you edit your own account, when the user is the default account user, and (for **Supervisor Recruiter**) when the user is root. Ask another root user to change your roles. To move the default account designation, contact Vitay support.
+  </Accordion>
+  <Accordion title="There's no trash button on a user's page">
+    The user is root. Turn off their **Root account** switch in **Edit user**, then deactivate them.
   </Accordion>
   <Accordion title="A user was locked but never entered a wrong password">
-    This is the inactive-user lock: **Lock inactive users** is on and the user hadn't signed in for a month. Click **Unlock and Reset password** on their user page, or turn the setting off under **Settings → Configuration** if you don't want this behaviour.
+    **Lock inactive users** is on and they hadn't signed in for a month. Unlock them from their user page, or turn the setting off on the **Configuration** tab.
   </Accordion>
   <Accordion title="I can't see the Assigned user field when editing a candidate">
-    The field only appears for root recruiters, or for everyone once **Allow users to update the assigned user** is turned on under **Settings → Configuration**. Ask a root recruiter to reassign the candidate or to enable the setting.
+    The field shows for root recruiters, or for everyone once **Allow users to update the assigned user** is on. Ask a root recruiter to reassign the candidate or turn on the setting.
   </Accordion>
-  <Accordion title="The Users section is not visible">
-    You need a root recruiter role to open the Configuration area, including user management. If you believe you should have access, ask your account's root recruiter to upgrade your role.
+  <Accordion title="I can't find Users">
+    Users is in the Configuration area, which only root recruiters can open. Ask a root recruiter in your account to change your role.
   </Accordion>
 </AccordionGroup>
 

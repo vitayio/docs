@@ -1,0 +1,587 @@
+[
+  {
+    "id": "find-and-change-settings-search",
+    "article": "account-configuration/find-and-change-settings",
+    "alt": "The settings search window open with results for \"reminder\", each showing the setting name, description and tab",
+    "app": "configuration",
+    "as": "root",
+    "path": "/settings/general",
+    "needs": "",
+    "steps": [
+      {
+        "waitFor": "#settings-search-trigger"
+      },
+      {
+        "click": "#settings-search-trigger"
+      },
+      {
+        "fill": [
+          "#settings-search-input",
+          "reminder"
+        ]
+      },
+      {
+        "waitFor": ".settings-search-result"
+      }
+    ],
+    "capture": {
+      "selector": ".settings-search-dialog .modal-content"
+    },
+    "confidence": "high"
+  },
+  {
+    "id": "firm-configuration-tab",
+    "article": "account-configuration/firm-configuration",
+    "alt": "The Configuration tab in Settings, with the Information banner card at the top and setting cards below",
+    "app": "configuration",
+    "as": "root",
+    "path": "/settings/configuration",
+    "needs": "Non-demo firm",
+    "steps": [
+      {
+        "waitFor": "app-settings-configuration, .settings-configuration"
+      }
+    ],
+    "capture": {
+      "viewport": true
+    },
+    "confidence": "high"
+  },
+  {
+    "id": "firm-configuration-password-expiry",
+    "article": "account-configuration/firm-configuration",
+    "alt": "The Require passwords update card with its switch and the Password expiry (days) field",
+    "app": "configuration",
+    "as": "root",
+    "path": "/settings/configuration",
+    "needs": "Require passwords update switched on so the expiry field is enabled",
+    "steps": [
+      {
+        "waitFor": "div.card#is_force_users_password_update_enabled"
+      }
+    ],
+    "capture": {
+      "selector": "div.card#is_force_users_password_update_enabled"
+    },
+    "confidence": "high"
+  },
+  {
+    "id": "manage-users-list",
+    "article": "account-configuration/manage-users",
+    "alt": "The Users page in the Configuration area, with the refresh, download and add buttons above the team list",
+    "app": "configuration",
+    "as": "root",
+    "path": "/users",
+    "needs": "Several active users with mixed roles",
+    "steps": [
+      {
+        "waitFor": "app-table"
+      }
+    ],
+    "capture": {
+      "viewport": true
+    },
+    "confidence": "high"
+  },
+  {
+    "id": "manage-users-add-modal",
+    "article": "account-configuration/manage-users",
+    "alt": "The Add user form with name, email and phone fields and the Send email to user checkbox",
+    "app": "configuration",
+    "as": "root",
+    "path": "/users",
+    "needs": "Non-demo firm",
+    "steps": [
+      {
+        "waitFor": "app-table"
+      },
+      {
+        "click": ".users-list button:has(.lnr-plus)"
+      },
+      {
+        "waitFor": ".modal-content #is_send_email_enabled"
+      }
+    ],
+    "capture": {
+      "selector": ".modal-content"
+    },
+    "confidence": "high"
+  },
+  {
+    "id": "manage-users-edit-roles",
+    "article": "account-configuration/manage-users",
+    "alt": "The Edit user form with the Root account and Supervisor Recruiter switches under Roles",
+    "app": "configuration",
+    "as": "root",
+    "path": "/users/:recruiterId",
+    "needs": "A non-default, non-root recruiter other than the signed-in user (so switches are enabled)",
+    "steps": [
+      {
+        "click": "button:has(.lnr-pencil)"
+      },
+      {
+        "waitFor": ".modal-content #users_roles"
+      },
+      {
+        "click": ".modal-content .modal-title"
+      }
+    ],
+    "capture": {
+      "selector": ".modal-content"
+    },
+    "confidence": "medium"
+  },
+  {
+    "id": "notification-settings-team-table",
+    "article": "account-configuration/notification-settings",
+    "alt": "The Team notifications table with event rows and the Assigned recruiter, Reference requester, Root users and Additional emails columns",
+    "app": "configuration",
+    "as": "root",
+    "path": "/settings/notifications",
+    "needs": "A few rows ticked, at least one with Additional emails holding an address",
+    "steps": [
+      {
+        "waitFor": "div.card#team_notifications app-notification-matrix"
+      }
+    ],
+    "capture": {
+      "selector": "div.card#team_notifications"
+    },
+    "confidence": "medium"
+  },
+  {
+    "id": "notification-settings-usage",
+    "article": "account-configuration/notification-settings",
+    "alt": "The Usage Notifications card with the threshold checkboxes, Notify Administrators switch and Additional Email Recipients field",
+    "app": "configuration",
+    "as": "root",
+    "path": "/settings/notifications",
+    "needs": "Usage Notifications switched on",
+    "steps": [
+      {
+        "waitFor": "div.card#usage_notifications"
+      }
+    ],
+    "capture": {
+      "selector": "div.card#usage_notifications"
+    },
+    "confidence": "high"
+  },
+  {
+    "id": "email-sender-settings-identity-card",
+    "article": "account-configuration/email-sender-settings",
+    "alt": "The Email Sender Identity card with the From: Address and From: Name choices and the custom address field",
+    "app": "configuration",
+    "as": "root",
+    "path": "/settings/configuration",
+    "needs": "From: Address set to Custom address so the address field shows",
+    "steps": [
+      {
+        "waitFor": "div.card#is_branding_emails_from_enabled"
+      }
+    ],
+    "capture": {
+      "selector": "div.card#is_branding_emails_from_enabled"
+    },
+    "confidence": "high"
+  },
+  {
+    "id": "email-sender-settings-dmarc",
+    "article": "account-configuration/email-sender-settings",
+    "alt": "The DMARC Protection card on the Developers tab with a domain added and its Type, Host and Value records listed",
+    "app": "configuration",
+    "as": "root",
+    "path": "/settings/developers",
+    "needs": "One DMARC domain added (records generated)",
+    "steps": [
+      {
+        "waitFor": "app-settings-developers-dmarc #domain_name"
+      }
+    ],
+    "capture": {
+      "selector": "app-settings-developers-dmarc"
+    },
+    "confidence": "medium"
+  },
+  {
+    "id": "billing-and-usage-page",
+    "article": "account-configuration/billing-and-usage",
+    "alt": "The Usage page with the contract period picker, the stat cards and the Usage Over Time chart",
+    "app": "configuration",
+    "as": "root",
+    "path": "/usage",
+    "needs": "Parent (not billing-linked) firm with an active contract with credits and some usage records",
+    "steps": [
+      {
+        "waitFor": ".usage .card"
+      }
+    ],
+    "capture": {
+      "viewport": true
+    },
+    "confidence": "high"
+  },
+  {
+    "id": "billing-and-usage-breakdown",
+    "article": "account-configuration/billing-and-usage",
+    "alt": "The Usage Breakdown table with Period, Usage, Cumulative Usage and Overages columns and the download button",
+    "app": "configuration",
+    "as": "root",
+    "path": "/usage",
+    "needs": "MANUAL: the docs firm has no contract and no usage_records (seeded references never went through the public form, which is what creates UsageRecord rows), so the card shows \"No data available\" and no table. Needs a contract with credits plus usage_records spread over several months (backdated usage_occurred_at), which can only be seeded from a Rails console on staging. Selector is right once data exists.",
+    "steps": [
+      {
+        "waitFor": ".card:has(h5:has-text(\"Usage Breakdown\")) table"
+      }
+    ],
+    "capture": {
+      "selector": ".card:has(h5:has-text(\"Usage Breakdown\"))"
+    },
+    "confidence": "manual"
+  },
+  {
+    "id": "branding-white-label-general",
+    "article": "account-configuration/branding-white-label",
+    "alt": "The General tab in Settings with the Company name, Logo, and Primary color and Secondary color fields",
+    "app": "configuration",
+    "as": "root",
+    "path": "/settings/general",
+    "needs": "Firm logo uploaded and brand colors set. Captures the whole Settings area (tab list + General cards) because the colour cards sit below the 900px fold.",
+    "steps": [
+      {
+        "waitFor": ".settings-general #name"
+      },
+      {
+        "waitFor": ".settings-general #colors_primary"
+      }
+    ],
+    "capture": {
+      "selector": "div.settings.container"
+    },
+    "confidence": "high"
+  },
+  {
+    "id": "branding-white-label-tab",
+    "article": "account-configuration/branding-white-label",
+    "alt": "The White Label tab with the Enable / Disable white label switch, Font family, Domain name, Explainer video link and User guide link fields",
+    "app": "configuration",
+    "as": "root",
+    "path": "/settings/white-label",
+    "needs": "White label plugin enabled (is_plugins_white_label_enabled) with a domain name set",
+    "steps": [
+      {
+        "waitFor": "div.card#is_plugins_white_label_enabled"
+      }
+    ],
+    "capture": {
+      "viewport": true
+    },
+    "confidence": "high"
+  },
+  {
+    "id": "plugins-marketplace",
+    "article": "account-configuration/plugins",
+    "alt": "The Plugins page with the Activated and Deactivated sections of plugin cards",
+    "app": "configuration",
+    "as": "root",
+    "path": "/plugins",
+    "needs": "A mix of activated and deactivated plugins",
+    "steps": [
+      {
+        "waitFor": ".plugins .v-square-card"
+      }
+    ],
+    "capture": {
+      "viewport": true
+    },
+    "confidence": "high"
+  },
+  {
+    "id": "plugins-multi-languages",
+    "article": "account-configuration/plugins",
+    "alt": "The Multi languages card on the Plugins tab in Settings with the four language checkboxes",
+    "app": "configuration",
+    "as": "root",
+    "path": "/settings/plugins",
+    "needs": "Multi-languages plugin enabled (is_plugins_multi_languages_enabled) with French ticked (languages \"en,fr\"); otherwise the tab only shows the \"not activated\" card",
+    "steps": [
+      {
+        "waitFor": "div.card#multi_languages"
+      }
+    ],
+    "capture": {
+      "selector": "div.card#multi_languages"
+    },
+    "confidence": "high"
+  },
+  {
+    "id": "change-history-table",
+    "article": "account-configuration/change-history",
+    "alt": "The Change history page with the When, Who, Setting, Old value and New value columns and several rows",
+    "app": "configuration",
+    "as": "root",
+    "path": "/change-history",
+    "needs": "Several recent configuration changes (a switch, a template edit, an added user)",
+    "steps": [
+      {
+        "waitFor": ".change-history table"
+      }
+    ],
+    "capture": {
+      "viewport": true
+    },
+    "confidence": "high"
+  },
+  {
+    "id": "email-text-and-page-templates-email-card",
+    "article": "account-configuration/email-text-and-page-templates",
+    "alt": "The Reference requests card on the Emails tab with the language dropdown, Variables menu, Send test button, and the subject, title and button fields above the editor",
+    "app": "configuration",
+    "as": "root",
+    "path": "/settings/emails",
+    "needs": "Multi-languages plugin on (so the language dropdown shows)",
+    "steps": [
+      {
+        "waitFor": "div.card#request quill-editor"
+      }
+    ],
+    "capture": {
+      "selector": "div.card#request"
+    },
+    "confidence": "medium"
+  },
+  {
+    "id": "email-text-and-page-templates-page-preview",
+    "article": "account-configuration/email-text-and-page-templates",
+    "alt": "The Reference request header card on the Pages tab in Preview mode",
+    "app": "configuration",
+    "as": "root",
+    "path": "/settings/pages",
+    "needs": "",
+    "steps": [
+      {
+        "waitFor": "div.card#request"
+      },
+      {
+        "click": "div.card#request button:has(.lnr-eye)"
+      },
+      {
+        "waitFor": "div.card#request h6.text-muted"
+      }
+    ],
+    "capture": {
+      "selector": "div.card#request"
+    },
+    "confidence": "medium"
+  },
+  {
+    "id": "question-sets-and-templates-list",
+    "article": "account-configuration/question-sets-and-templates",
+    "alt": "The Question sets list with the Quest. groups button, the add button and the star and duplicate actions on each row",
+    "app": "references",
+    "as": "root",
+    "path": "/question-sets",
+    "needs": "Non-demo firm with several question sets, one starred as default",
+    "steps": [
+      {
+        "waitFor": ".question-sets-list app-table"
+      }
+    ],
+    "capture": {
+      "viewport": true
+    },
+    "confidence": "high"
+  },
+  {
+    "id": "question-sets-and-templates-template-picker",
+    "article": "account-configuration/question-sets-and-templates",
+    "alt": "The Add question set form with Use a question set template ticked and the Template dropdown showing",
+    "app": "references",
+    "as": "root",
+    "path": "/question-sets",
+    "needs": "At least one question set template available",
+    "steps": [
+      {
+        "waitFor": ".question-sets-list app-table"
+      },
+      {
+        "click": ".question-sets-list .btn-toolbar button:has(.lnr-plus)"
+      },
+      {
+        "waitFor": ".modal-content #is_template"
+      },
+      {
+        "click": ".modal-content #is_template"
+      },
+      {
+        "waitFor": ".modal-content select[formcontrolname=\"template\"]"
+      }
+    ],
+    "capture": {
+      "selector": ".modal-content"
+    },
+    "confidence": "medium"
+  },
+  {
+    "id": "reference-request-settings-tab",
+    "article": "account-configuration/reference-request-settings",
+    "alt": "The Ref. Requests tab with the Preview the reference request form card, the Default question set and Number of references dropdowns, and the first switch cards",
+    "app": "configuration",
+    "as": "root",
+    "path": "/settings/requests",
+    "needs": "Non-demo firm",
+    "steps": [
+      {
+        "waitFor": "#referenceRequestPreviewCard"
+      }
+    ],
+    "capture": {
+      "viewport": true
+    },
+    "confidence": "high"
+  },
+  {
+    "id": "reference-request-settings-preview",
+    "article": "account-configuration/reference-request-settings",
+    "alt": "The candidate reference request form in preview, with the preview banner and Reset preview button at the top",
+    "app": "public-candidate",
+    "as": "root",
+    "path": "/reference-requests/preview",
+    "needs": "Signed-in configuration session token (preview refuses anonymous visitors); a default question set",
+    "steps": [
+      {
+        "waitFor": "text=This is a preview of your reference request form"
+      }
+    ],
+    "capture": {
+      "viewport": true
+    },
+    "confidence": "low"
+  },
+  {
+    "id": "reference-settings-tab",
+    "article": "account-configuration/reference-settings",
+    "alt": "The References tab with the Preview the reference form card and its question set dropdown, and the first switch cards",
+    "app": "configuration",
+    "as": "root",
+    "path": "/settings/references",
+    "needs": "Non-demo firm with a default question set selected on Ref. Requests",
+    "steps": [
+      {
+        "waitFor": "#referencePreviewCard"
+      }
+    ],
+    "capture": {
+      "viewport": true
+    },
+    "confidence": "high"
+  },
+  {
+    "id": "reference-settings-consent",
+    "article": "account-configuration/reference-settings",
+    "alt": "The Ask for references consent to share results card with the Permission release to client and Permission release to candidate switches",
+    "app": "configuration",
+    "as": "root",
+    "path": "/settings/references",
+    "needs": "Ask for references consent to share results switched on so the sub-switches show",
+    "steps": [
+      {
+        "waitFor": "div.card#is_references_consent_enabled"
+      }
+    ],
+    "capture": {
+      "selector": "div.card#is_references_consent_enabled"
+    },
+    "confidence": "high"
+  },
+  {
+    "id": "relationships-and-jobs-relationships",
+    "article": "account-configuration/relationships-and-jobs",
+    "alt": "The Relationships tab listing relationships with their question sets, No personal emails badges, and edit and delete buttons on each row",
+    "app": "configuration",
+    "as": "root",
+    "path": "/settings/relationships",
+    "needs": "Several relationships, at least one with a question set and one with Prevent personal emails on",
+    "steps": [
+      {
+        "waitFor": "div.card#reference_relationships"
+      }
+    ],
+    "capture": {
+      "selector": "div.card#reference_relationships"
+    },
+    "confidence": "high"
+  },
+  {
+    "id": "relationships-and-jobs-jobs",
+    "article": "account-configuration/relationships-and-jobs",
+    "alt": "The Jobs tab with the Candidate job field and Candidate job required switches above the job list and its Question set column",
+    "app": "configuration",
+    "as": "root",
+    "path": "/settings/jobs",
+    "needs": "Candidate job field on; a few jobs, some with question sets",
+    "steps": [
+      {
+        "waitFor": "app-table#jobs_list"
+      }
+    ],
+    "capture": {
+      "viewport": true
+    },
+    "confidence": "high"
+  },
+  {
+    "id": "report-settings-documents-tab",
+    "article": "account-configuration/report-settings",
+    "alt": "The Documents tab with the Watermark, Show Reference Edits On Reports and Hide personal data cards",
+    "app": "configuration",
+    "as": "root",
+    "path": "/settings/documents",
+    "needs": "Non-demo firm",
+    "steps": [
+      {
+        "waitFor": "div.card#is_pdf_watermark_enabled"
+      }
+    ],
+    "capture": {
+      "viewport": true
+    },
+    "confidence": "medium"
+  },
+  {
+    "id": "report-settings-hide-personal-data",
+    "article": "account-configuration/report-settings",
+    "alt": "The Hide personal data card with its seven switches",
+    "app": "configuration",
+    "as": "root",
+    "path": "/settings/documents",
+    "needs": "",
+    "steps": [
+      {
+        "waitFor": "div.card#is_hide_report_data"
+      }
+    ],
+    "capture": {
+      "selector": "div.card#is_hide_report_data"
+    },
+    "confidence": "medium"
+  },
+  {
+    "id": "signatures-candidate-card",
+    "article": "account-configuration/signatures",
+    "alt": "The signature card on the candidate's reference request form with the Draw and Type modes and the Clear button",
+    "app": "public-candidate",
+    "as": "none",
+    "path": "/reference-requests/:referenceRequestId",
+    "needs": "An open (unfilled) reference request in a firm with Candidate signature on",
+    "steps": [
+      {
+        "waitFor": "signature-pad#signature"
+      }
+    ],
+    "capture": {
+      "selector": ".card:has(signature-pad#signature)"
+    },
+    "confidence": "medium"
+  }
+]
