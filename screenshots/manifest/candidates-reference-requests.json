@@ -9,11 +9,11 @@
     "needs": "non-demo firm (buttons are disabled on demo accounts)",
     "steps": [
       {
-        "waitFor": "#quickRequest"
+        "waitFor": ".protected-sidebar #quickRequest"
       }
     ],
     "capture": {
-      "selector": "#sidebar li.nav-item:has(#quickRequest)"
+      "selector": ".protected-sidebar #sidebar li.nav-item:has(#quickRequest)"
     },
     "confidence": "high"
   },
@@ -87,10 +87,10 @@
     "needs": "non-demo firm; at least one reference question set",
     "steps": [
       {
-        "click": "#quickRequest"
+        "click": ".protected-sidebar #quickRequest"
       },
       {
-        "waitFor": ".modal.show #isSearchCandidate"
+        "waitFor": ".modal.show #first_name"
       }
     ],
     "capture": {
@@ -125,8 +125,8 @@
     "alt": "The open-request banner at the top of a candidate page with the cancel, copy-link and Send reminder buttons",
     "app": "references",
     "as": "recruiter",
-    "path": "/candidates/:candidateId/references",
-    "needs": "candidate with an open (unsubmitted, unscheduled) reference request sent more than 12 hours ago, reminders enabled",
+    "path": "/candidates/593813bf-4d2e-459c-ad09-88cd0c0f899c/references",
+    "needs": "Docs candidate Daniel Kim (CAND-006, assigned to Sarah Johnson, id in path) with an open, unsubmitted reference request and reminders on",
     "steps": [
       {
         "waitFor": "app-candidates-show-alerts .alert.v-alert-primary"
@@ -170,8 +170,8 @@
     "alt": "The Delete Request confirmation dialog",
     "app": "references",
     "as": "recruiter",
-    "path": "/candidates/:candidateId/references",
-    "needs": "candidate with an open reference request (do not click Delete)",
+    "path": "/candidates/593813bf-4d2e-459c-ad09-88cd0c0f899c/references",
+    "needs": "Docs candidate Daniel Kim (CAND-006, id in path) with an open reference request (do not click Delete)",
     "steps": [
       {
         "click": "app-candidates-show-alerts .alert.v-alert-primary button:has(i.lnr-cross) >> nth=0"
@@ -192,7 +192,7 @@
     "app": "references",
     "as": "recruiter",
     "path": "/candidates",
-    "needs": "at least 3 candidates in the default list view",
+    "needs": "At least 3 candidates assigned to Sarah Johnson in the default list view (Robert Martinez, Daniel Kim, Olivia Bennett)",
     "steps": [
       {
         "click": "app-table tbody tr td.v-table-select input >> nth=0"
@@ -219,7 +219,7 @@
     "app": "references",
     "as": "recruiter",
     "path": "/candidates",
-    "needs": "at least 2 candidates; pre-screening/feedback plugins on if those cards should show",
+    "needs": "At least 3 candidates assigned to Sarah Johnson in the default list view (Robert Martinez, Daniel Kim, Olivia Bennett)",
     "steps": [
       {
         "click": "app-table tbody tr td.v-table-select input >> nth=0"
@@ -268,19 +268,19 @@
     "article": "candidates-reference-requests/reminders-and-cadence",
     "alt": "The reference side panel with the Send reminder button above the reference details",
     "app": "references",
-    "as": "recruiter",
-    "path": "/candidates/:candidateId/references",
-    "needs": "Candidate whose first reference row is pending (not completed), reminders on, no reminder sent in the last 12 hours",
+    "as": "root",
+    "path": "/candidates/d44f7aa7-9a6a-487a-8195-38d5677e34e7/references",
+    "needs": "Candidate Alice Thompson (CAND-001, assigned to John Smith, id in path) whose reference James Wilson is pending, reminders on, no reminder sent in the last 24 hours",
     "steps": [
       {
-        "click": "app-candidates-show-references tbody tr:first-child td:first-child"
+        "click": "app-candidates-show-references tbody tr:has-text(\"James Wilson\") td:first-child"
       },
       {
         "waitFor": "ng-sidebar app-sidebar-reference app-sidebar-reference-question-set-alerts button:has-text(\"Send reminder\")"
       }
     ],
     "capture": {
-      "selector": "ng-sidebar app-sidebar-reference app-sidebar-reference-question-set"
+      "selector": "ng-sidebar .sidebar-panel.sidebar-open"
     },
     "confidence": "medium"
   },
@@ -290,11 +290,11 @@
     "alt": "The Reminders tab of a reference side panel with the on/off switch and the list of scheduled reminders",
     "app": "references",
     "as": "recruiter",
-    "path": "/candidates/:candidateId/references",
-    "needs": "Pending reference with at least one sent and one scheduled reminder",
+    "path": "/candidates/b7a55f8e-0692-422e-b98f-b1b103315098/references",
+    "needs": "Olivia Bennett (staging literal id) with Priya Shah pending; reminders were scheduled when her request was submitted",
     "steps": [
       {
-        "click": "app-candidates-show-references tbody tr:first-child td:first-child"
+        "click": "app-candidates-show-references tbody tr:has-text(\"Priya Shah\") td:first-child"
       },
       {
         "waitFor": "ng-sidebar app-sidebar-reference"
@@ -304,10 +304,13 @@
       },
       {
         "waitFor": "app-sidebar-reference-reminders ui-switch"
+      },
+      {
+        "hover": "app-sidebar-reference-reminders"
       }
     ],
     "capture": {
-      "selector": "ng-sidebar app-sidebar-reference"
+      "selector": "ng-sidebar .sidebar-panel.sidebar-open"
     },
     "confidence": "medium"
   },
@@ -331,7 +334,7 @@
       }
     ],
     "capture": {
-      "selector": "ng-sidebar app-sidebar-reference"
+      "selector": "ng-sidebar .sidebar-panel.sidebar-open"
     },
     "confidence": "medium"
   },
@@ -421,7 +424,7 @@
       }
     ],
     "capture": {
-      "selector": "ng-sidebar app-sidebar-reference"
+      "selector": "ng-sidebar .sidebar-panel.sidebar-open"
     },
     "confidence": "medium"
   },
@@ -533,18 +536,18 @@
     "alt": "A completed reference's side panel showing the yellow sharing-permission warning",
     "app": "references",
     "as": "recruiter",
-    "path": "/candidates/:candidateId/references",
-    "needs": "Consent questions on; first reference row completed with permission to share with client answered No",
+    "path": "/candidates/b7a55f8e-0692-422e-b98f-b1b103315098/references",
+    "needs": "Consent questions on (is_references_consent_enabled). Candidate Olivia Bennett (CAND-007, id in path) whose completed reference Grace Patel answered No to sharing with clients",
     "steps": [
       {
-        "click": "app-candidates-show-references tbody tr:first-child td:first-child"
+        "click": "app-candidates-show-references tbody tr:has-text(\"Grace Patel\") td:first-child"
       },
       {
         "waitFor": "ng-sidebar app-sidebar-reference-question-set-alerts .alert-warning"
       }
     ],
     "capture": {
-      "selector": "ng-sidebar app-sidebar-reference-question-set"
+      "selector": "ng-sidebar .sidebar-panel.sidebar-open"
     },
     "confidence": "low"
   },
@@ -590,9 +593,12 @@
     "alt": "The candidate Documents tab with the Select file button and a list of documents",
     "app": "references",
     "as": "recruiter",
-    "path": "/candidates/:candidateId/documents",
-    "needs": "Candidate with 1-2 uploaded documents (e.g. a candidate-uploaded résumé PDF)",
+    "path": "/candidates/:candidateId/references",
+    "needs": "Candidate with 1-2 uploaded documents (Robert Martinez has a résumé and a certificate PDF)",
     "steps": [
+      {
+        "click": ".candidates-show tabset .nav-link:has-text(\"Documents\")"
+      },
       {
         "waitFor": "app-candidates-show-documents"
       }
@@ -600,7 +606,11 @@
     "capture": {
       "viewport": true
     },
-    "confidence": "high"
+    "confidence": "high",
+    "viewport": {
+      "width": 1680,
+      "height": 900
+    }
   },
   {
     "id": "candidate-statuses-and-comments-status-dropdown",
@@ -656,14 +666,14 @@
     "alt": "A candidate page showing the IP address warning banner above the References table, with the warning triangle on the affected row",
     "app": "references",
     "as": "recruiter",
-    "path": "/candidates/:candidateId/references",
-    "needs": "Candidate whose completed reference has a recorded IP conflict (same IP as candidate); IP detection on for the firm",
+    "path": "/candidates/b7a55f8e-0692-422e-b98f-b1b103315098/references",
+    "needs": "IP conflict banner setting on. Candidate Olivia Bennett (CAND-007, id in path) whose reference Priya Shah opened her form from the candidate's IP address",
     "steps": [
       {
         "waitFor": "app-candidates-show-alerts .alert-warning"
       },
       {
-        "waitFor": "app-candidates-show-references"
+        "waitFor": "app-candidates-show-references app-table"
       }
     ],
     "capture": {
@@ -677,15 +687,15 @@
     "alt": "A candidate page showing the self-reference attempt banner with the attempt count and the ✕ to clear it",
     "app": "references",
     "as": "recruiter",
-    "path": "/candidates/:candidateId",
-    "needs": "Candidate with an open (uncleared) self-reference attempt, ideally 2+ attempts",
+    "path": "/candidates/593813bf-4d2e-459c-ad09-88cd0c0f899c",
+    "needs": "Candidate Daniel Kim (CAND-006, id in path) with an open self-reference attempt (2 attempts)",
     "steps": [
       {
         "waitFor": "[data-testid=\"self-reference-banner-message\"]"
       }
     ],
     "capture": {
-      "selector": "app-candidates-show-alerts"
+      "selector": "app-candidates-show-alerts .alert:has([data-testid=\"self-reference-banner-message\"])"
     },
     "confidence": "high"
   },
@@ -696,16 +706,16 @@
     "app": "configuration",
     "as": "root",
     "path": "/settings/notifications",
-    "needs": "Attach the PDF report to completion emails switched on so the nested IP conflict banner switch is visible",
+    "needs": "Attach the PDF report to completion emails switched on so the nested IP conflict banner switch is visible. Captures only the Email options card: the IP conflict / self-reference matrix rows sit ~1100px above it, so they cannot share one shot (see email-and-text-delivery-team-notifications for the matrix)",
     "steps": [
       {
         "waitFor": "[appsettinganchor=\"is_ip_conflict_banner_enabled\"]"
       }
     ],
     "capture": {
-      "viewport": true
+      "selector": "[appsettinganchor=\"email_options\"]"
     },
-    "confidence": "medium"
+    "confidence": "low"
   },
   {
     "id": "recycle-bin-deactivate-button",
@@ -755,14 +765,17 @@
     "alt": "The Send Pre-Screening Request dialog with the question set dropdown and the public notes field",
     "app": "references",
     "as": "recruiter",
-    "path": "/candidates/:candidateId/pre-screenings",
+    "path": "/candidates/:candidateId/references",
     "needs": "Pre-screening plugin on; at least one question set of type Pre-screening",
     "steps": [
+      {
+        "click": ".candidates-show tabset .nav-link:has-text(\"Pre-screening\")"
+      },
       {
         "waitFor": "app-candidates-show-pre-screenings"
       },
       {
-        "click": "button:has-text(\"Pre-screening request\")"
+        "click": ".candidates-show .btn-toolbar.float-end button:has(i.lnr-paper-plane)"
       },
       {
         "waitFor": ".modal.show .modal-content"
@@ -780,10 +793,10 @@
     "app": "references",
     "as": "recruiter",
     "path": "/pre-screenings/:preScreeningId",
-    "needs": "Pre-screening plugin on; a completed pre-screening with rating questions so a score shows",
+    "needs": "Pre-screening plugin on; a completed pre-screening. The current DOCS_PRE_SCREENING_ID question set has no rating questions, so no score circle shows; use one with rating questions to match the alt text",
     "steps": [
       {
-        "waitFor": "app-pre-screenings-show app-score"
+        "waitFor": "app-pre-screenings-show app-answers"
       }
     ],
     "capture": {
@@ -797,14 +810,17 @@
     "alt": "The Background Screening Requests dialog with the partner tabs and the list of screening categories",
     "app": "references",
     "as": "recruiter",
-    "path": "/candidates/:candidateId/background-checkings",
-    "needs": "Mintz and Validity both active with background check products assigned to the firm (so both tabs and categories show)",
+    "path": "/candidates/:candidateId/references",
+    "needs": "MANUAL: Mintz and Validity must both be active with background check products assigned to the firm (admin-side partner setup). On staging the Acme docs firm has no products, so the dialog shows only an empty Mintz tab with no categories.",
     "steps": [
+      {
+        "click": ".candidates-show tabset .nav-link:has-text(\"Background Screening\")"
+      },
       {
         "waitFor": "app-candidates-show-background-checkings"
       },
       {
-        "click": "button:has-text(\"Background screening request\")"
+        "click": ".candidates-show .btn-toolbar.float-end button:has(i.lnr-paper-plane)"
       },
       {
         "waitFor": ".modal.show .modal-content"
@@ -813,7 +829,7 @@
     "capture": {
       "selector": ".modal.show .modal-content"
     },
-    "confidence": "high"
+    "confidence": "manual"
   },
   {
     "id": "background-screening-tab",
@@ -821,9 +837,15 @@
     "alt": "The candidate's Background Screening tab with a completed check and one in progress",
     "app": "references",
     "as": "recruiter",
-    "path": "/candidates/:candidateId/background-checkings",
-    "needs": "Candidate with one Completed (Clear) and one In progress background check (seeded rows; no live partner call needed)",
+    "path": "/candidates/:candidateId/references",
+    "needs": "MANUAL: candidate with one Completed (Clear) and one In progress background check. These rows can only come from a partner (Mintz/Validity) or a Rails-console seed; the docs firm has none, so the tab shows \"No data available\".",
     "steps": [
+      {
+        "click": ".candidates-show tabset .nav-link:has-text(\"Background Screening\")"
+      },
+      {
+        "waitFor": "app-candidates-show-background-checkings"
+      },
       {
         "waitFor": "app-candidates-show-background-checkings app-table"
       }
@@ -831,6 +853,6 @@
     "capture": {
       "viewport": true
     },
-    "confidence": "medium"
+    "confidence": "manual"
   }
 ]

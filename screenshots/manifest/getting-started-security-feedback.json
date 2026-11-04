@@ -7,8 +7,14 @@
     "as": "none",
     "path": "/login",
     "needs": "",
-    "steps": [{"waitFor": "#email"}],
-    "capture": {"selector": ".references-login form"},
+    "steps": [
+      {
+        "waitFor": "#email"
+      }
+    ],
+    "capture": {
+      "selector": ".references-login form"
+    },
     "confidence": "high"
   },
   {
@@ -19,8 +25,14 @@
     "as": "recruiter",
     "path": "/account/security",
     "needs": "recruiter has a phone number saved so the Multi-factor authentication switch is enabled; firm does not force MFA",
-    "steps": [{"waitFor": "app-account-security ui-switch"}],
-    "capture": {"selector": "app-account"},
+    "steps": [
+      {
+        "waitFor": "app-account-security ui-switch"
+      }
+    ],
+    "capture": {
+      "selector": "app-account"
+    },
     "confidence": "high"
   },
   {
@@ -31,8 +43,14 @@
     "as": "root",
     "path": "/dashboard",
     "needs": "demo firm with some candidates and completed references so the dashboard is populated; is_demo_enabled off so no demo banner",
-    "steps": [{"waitFor": ".topbar"}],
-    "capture": {"viewport": true},
+    "steps": [
+      {
+        "waitFor": ".topbar"
+      }
+    ],
+    "capture": {
+      "viewport": true
+    },
     "confidence": "high"
   },
   {
@@ -43,8 +61,14 @@
     "as": "root",
     "path": "/users",
     "needs": "at least one root recruiter, one supervisor and one plain recruiter in the firm",
-    "steps": [{"waitFor": "app-users-list table"}],
-    "capture": {"selector": "app-users-list"},
+    "steps": [
+      {
+        "waitFor": "app-users-list table"
+      }
+    ],
+    "capture": {
+      "selector": "app-users-list"
+    },
     "confidence": "medium"
   },
   {
@@ -55,8 +79,17 @@
     "as": "root",
     "path": "/dashboard",
     "needs": "user with access to 2+ firms (parent root recruiter with sub-accounts)",
-    "steps": [{"click": ".company-switcher button.nav-link"}, {"waitFor": ".company-menu"}],
-    "capture": {"viewport": true},
+    "steps": [
+      {
+        "click": ".company-switcher button.nav-link"
+      },
+      {
+        "waitFor": ".company-menu"
+      }
+    ],
+    "capture": {
+      "viewport": true
+    },
     "confidence": "high"
   },
   {
@@ -65,10 +98,16 @@
     "alt": "A candidate page with the yellow different-branch banner above the candidate header",
     "app": "references",
     "as": "root",
-    "path": "/candidates/:candidateId",
-    "needs": "parent root recruiter browsing the parent firm; :candidateId belongs to a sub-account, not the current firm",
-    "steps": [{"waitFor": "app-candidates-show-alerts .alert"}],
-    "capture": {"viewport": true},
+    "path": "/candidates/80188888-c236-4c80-9da7-930c964af9a6",
+    "needs": "parent root recruiter browsing the parent firm. The path hard-codes Jennifer Lee (CAND-003), a staging candidate added by Emily Rodriguez in the Acme Technologies - Engineering sub-account; replace the id if the docs firm is rebuilt",
+    "steps": [
+      {
+        "waitFor": "app-candidates-show-alerts .alert-warning"
+      }
+    ],
+    "capture": {
+      "viewport": true
+    },
     "confidence": "medium"
   },
   {
@@ -79,8 +118,14 @@
     "as": "recruiter",
     "path": "/account/information",
     "needs": "recruiter with first name, last name and phone filled in",
-    "steps": [{"waitFor": "app-account-information form"}],
-    "capture": {"selector": "app-account"},
+    "steps": [
+      {
+        "waitFor": "app-account-information form"
+      }
+    ],
+    "capture": {
+      "selector": "app-account"
+    },
     "confidence": "high"
   },
   {
@@ -91,8 +136,14 @@
     "as": "recruiter",
     "path": "/account/security",
     "needs": "recruiter has a phone number saved",
-    "steps": [{"waitFor": "app-account-security #old_password"}],
-    "capture": {"selector": "app-account"},
+    "steps": [
+      {
+        "waitFor": "app-account-security #old_password"
+      }
+    ],
+    "capture": {
+      "selector": "app-account"
+    },
     "confidence": "high"
   },
   {
@@ -102,10 +153,29 @@
     "app": "references",
     "as": "none",
     "path": "/login",
-    "needs": "fresh browser context with no consent cookie so the banner shows",
-    "steps": [{"waitFor": ".cookie-consent__banner"}, {"click": ".cookie-consent__banner button:has-text(\"Customize\")"}, {"waitFor": ".cookie-consent__modal"}, {"click": ".cookie-consent__modal button:has-text(\"View cookies\") >> nth=1"}, {"waitFor": ".cookie-consent__modal table"}],
-    "capture": {"selector": ".cookie-consent__modal"},
-    "confidence": "medium"
+    "needs": "Fresh context with no consent cookie; the banner is kept for this entry only",
+    "steps": [
+      {
+        "waitFor": ".cookie-consent__banner"
+      },
+      {
+        "click": "[data-test=cc-customize]"
+      },
+      {
+        "waitFor": ".cookie-consent__modal"
+      },
+      {
+        "click": ".cookie-consent__modal button[aria-expanded] >> nth=1"
+      },
+      {
+        "waitFor": ".cookie-consent__modal table"
+      }
+    ],
+    "capture": {
+      "selector": ".cookie-consent__modal"
+    },
+    "confidence": "medium",
+    "keepCookieConsent": true
   },
   {
     "id": "data-retention-settings",
@@ -115,8 +185,14 @@
     "as": "root",
     "path": "/settings/data-retention",
     "needs": "data_retention_plugin granted to the firm (admin) and settings_json.data_retention.is_enabled true",
-    "steps": [{"waitFor": "app-settings-data-retention"}],
-    "capture": {"selector": "app-settings-data-retention"},
+    "steps": [
+      {
+        "waitFor": "app-settings-data-retention"
+      }
+    ],
+    "capture": {
+      "selector": "app-settings-data-retention"
+    },
     "confidence": "medium"
   },
   {
@@ -126,10 +202,16 @@
     "app": "configuration",
     "as": "root",
     "path": "/scheduled-entities",
-    "needs": "retention policy on with a short period, and a few candidates whose last reference activity is older than it (or within 30 days of it)",
-    "steps": [{"waitFor": "app-scheduled-entities table"}],
-    "capture": {"selector": "app-scheduled-entities"},
-    "confidence": "medium"
+    "needs": "MANUAL: a Vitay admin must grant data_retention_plugin to the docs firm and turn retention on (minimum period 3 months), and some candidates need last_initiated_at older than (period - 30 days). The docs firm candidates were created 2026-11-03 so none fall inside even the 90-day preview; backdating last_initiated_at needs a Rails console on staging. Keep the records retention_exempt=false but not past the cutoff, or the nightly job anonymizes them",
+    "steps": [
+      {
+        "waitFor": "app-scheduled-entities table"
+      }
+    ],
+    "capture": {
+      "selector": "app-scheduled-entities"
+    },
+    "confidence": "manual"
   },
   {
     "id": "sso-saml-settings-tab",
@@ -138,10 +220,16 @@
     "app": "configuration",
     "as": "root",
     "path": "/settings/sso",
-    "needs": "firm has stytch_organization_id and the root recruiter is linked to a Stytch member with a live stytch_session_jwt cookie (Stytch test org)",
-    "steps": [{"waitFor": "#stytch-admin-portal-sso"}],
-    "capture": {"selector": ".v-settings-sso"},
-    "confidence": "low"
+    "needs": "MANUAL: the docs firm has no Stytch organization (is_stytch_sso_enabled false), so the Single Sign-On tab is hidden. Needs a Stytch test organization linked to the firm, the root recruiter linked to a Stytch member, and a live stytch_session_jwt cookie in the capture context (the Stytch admin portal widgets render from it)",
+    "steps": [
+      {
+        "waitFor": "#stytch-admin-portal-sso"
+      }
+    ],
+    "capture": {
+      "selector": ".v-settings-sso"
+    },
+    "confidence": "manual"
   },
   {
     "id": "support-mode-banner",
@@ -150,10 +238,16 @@
     "app": "references",
     "as": "recruiter",
     "path": "/dashboard",
-    "needs": "an active Support Mode (impersonation) session started from the admin app on the demo recruiter; the normal recruiter login won't show the banner",
-    "steps": [{"waitFor": "app-impersonation-banner .fixed-top"}],
-    "capture": {"selector": "app-impersonation-banner .fixed-top"},
-    "confidence": "low"
+    "needs": "MANUAL: the banner renders only when the recruiter-token JWT carries a server-signed imp claim (ImpersonationService.init), which only the admin app issues when a Vitay staff member starts Support Mode. The docs credentials can't produce one. To automate: a staff user starts Support Mode on Sarah Johnson in the staging admin app, and the spec accepts that token as an extra role (e.g. as \"support\" reading DOCS_TOKEN_SUPPORT) since it expires within 1-4 hours",
+    "steps": [
+      {
+        "waitFor": "app-impersonation-banner .fixed-top"
+      }
+    ],
+    "capture": {
+      "selector": "app-impersonation-banner .fixed-top"
+    },
+    "confidence": "manual"
   },
   {
     "id": "candidate-feedback-tab",
@@ -161,11 +255,24 @@
     "alt": "A candidate's Feedback tab with the Feedback request button, the feedback surveys table and the employers table",
     "app": "references",
     "as": "recruiter",
-    "path": "/candidates/:candidateId/feedbacks",
-    "needs": "candidate feedback plugin on; candidate with at least one feedback request and one employer",
-    "steps": [{"waitFor": "app-candidates-show-feedbacks table"}],
-    "capture": {"selector": ".candidates-show"},
-    "confidence": "medium"
+    "path": "/candidates/:candidateId",
+    "needs": "candidate feedback plugin on; candidate with at least one feedback request and one employer. The candidate page lands on References, so the Feedback tab is clicked. Staging data: Feedback question set \"90-Day Post-Hire Check-in\"; on Robert Martinez a pending Candidate feedback, a completed Employer feedback (score 93) and employer Karen Brooks; a completed Candidate feedback on Alice Thompson",
+    "steps": [
+      {
+        "click": "[role=tab]:has-text(\"Feedback\")"
+      },
+      {
+        "waitFor": "app-candidates-show-feedbacks table"
+      }
+    ],
+    "capture": {
+      "selector": ".candidates-show"
+    },
+    "confidence": "medium",
+    "viewport": {
+      "width": 1680,
+      "height": 900
+    }
   },
   {
     "id": "candidate-feedback-request-modal",
@@ -173,10 +280,25 @@
     "alt": "The Feedback request dialog with the Feedback type options and the Question set dropdown",
     "app": "references",
     "as": "recruiter",
-    "path": "/candidates/:candidateId/feedbacks",
-    "needs": "candidate and recruiter feedback plugins on (all three types listed); at least one question set of Type Feedback",
-    "steps": [{"click": "button:has-text(\"Feedback request\")"}, {"waitFor": ".modal-content #question_set"}],
-    "capture": {"selector": ".modal-content"},
+    "path": "/candidates/:candidateId",
+    "needs": "candidate feedback plugin on; at least one question set of Type Feedback. The docs firm has the recruiter feedback plugin off, so only Candidate and Employer are listed (turn it on to show Recruiter too). Staging data: Feedback question set \"90-Day Post-Hire Check-in\"; on Robert Martinez a pending Candidate feedback, a completed Employer feedback (score 93) and employer Karen Brooks; a completed Candidate feedback on Alice Thompson",
+    "steps": [
+      {
+        "click": "[role=tab]:has-text(\"Feedback\")"
+      },
+      {
+        "waitFor": "app-candidates-show-feedbacks app-table"
+      },
+      {
+        "click": "button:has-text(\"Feedback request\")"
+      },
+      {
+        "waitFor": ".modal-content #question_set"
+      }
+    ],
+    "capture": {
+      "selector": ".modal-content"
+    },
     "confidence": "high"
   },
   {
@@ -186,10 +308,20 @@
     "app": "references",
     "as": "root",
     "path": "/feedbacks",
-    "needs": "feedback plugin on; several feedback requests of different types, some completed, inside the default date range",
-    "steps": [{"waitFor": "app-feedbacks-list table"}],
-    "capture": {"selector": "app-feedbacks-list"},
-    "confidence": "medium"
+    "needs": "feedback plugin on; several feedback requests of different types, some completed, inside the default date range (requests are dated 2026-11-04 and fall out of the default last-month range after early December; re-create or widen the range then). Staging data: Feedback question set \"90-Day Post-Hire Check-in\"; on Robert Martinez a pending Candidate feedback, a completed Employer feedback (score 93) and employer Karen Brooks; a completed Candidate feedback on Alice Thompson",
+    "steps": [
+      {
+        "waitFor": "app-feedbacks-list table"
+      }
+    ],
+    "capture": {
+      "selector": "app-feedbacks-list"
+    },
+    "confidence": "medium",
+    "viewport": {
+      "width": 1680,
+      "height": 900
+    }
   },
   {
     "id": "post-hire-feedback-employer-modal",
@@ -197,10 +329,52 @@
     "alt": "The Feedback request dialog with Employer selected and the employer's name, phone and email fields",
     "app": "references",
     "as": "recruiter",
-    "path": "/candidates/:candidateId/feedbacks",
-    "needs": "candidate feedback plugin on; at least one question set of Type Feedback",
-    "steps": [{"click": "button:has-text(\"Feedback request\")"}, {"waitFor": ".modal-content"}, {"click": ".modal-content label:has-text(\"Employer\")"}, {"waitFor": ".modal-content #first_name"}, {"fill": [".modal-content #first_name", "Dana"]}, {"fill": [".modal-content #last_name", "Morgan"]}, {"fill": [".modal-content #email", "dana.morgan@example.com"]}],
-    "capture": {"selector": ".modal-content"},
+    "path": "/candidates/:candidateId",
+    "needs": "candidate feedback plugin on; at least one question set of Type Feedback. Staging data: Feedback question set \"90-Day Post-Hire Check-in\"; on Robert Martinez a pending Candidate feedback, a completed Employer feedback (score 93) and employer Karen Brooks; a completed Candidate feedback on Alice Thompson",
+    "steps": [
+      {
+        "click": "[role=tab]:has-text(\"Feedback\")"
+      },
+      {
+        "waitFor": "app-candidates-show-feedbacks app-table"
+      },
+      {
+        "click": "button:has-text(\"Feedback request\")"
+      },
+      {
+        "waitFor": ".modal-content #question_set"
+      },
+      {
+        "click": ".modal-content label.form-check-label:text-is(\"Employer\")"
+      },
+      {
+        "waitFor": ".modal-content #first_name"
+      },
+      {
+        "fill": [
+          ".modal-content #first_name",
+          "Dana"
+        ]
+      },
+      {
+        "fill": [
+          ".modal-content #last_name",
+          "Morgan"
+        ]
+      },
+      {
+        "fill": [
+          ".modal-content #email",
+          "dana.morgan@example.com"
+        ]
+      },
+      {
+        "click": ".modal-content .modal-title"
+      }
+    ],
+    "capture": {
+      "selector": ".modal-content"
+    },
     "confidence": "high"
   },
   {
@@ -209,10 +383,23 @@
     "alt": "A candidate's Feedback tab showing a completed Employer feedback with its score, and the employers table below",
     "app": "references",
     "as": "recruiter",
-    "path": "/candidates/:candidateId/feedbacks",
-    "needs": "candidate with a completed Employer feedback (rating questions answered so a score shows) and its employer record",
-    "steps": [{"waitFor": "app-candidates-show-feedbacks table"}],
-    "capture": {"selector": "app-candidates-show-feedbacks"},
-    "confidence": "medium"
+    "path": "/candidates/:candidateId",
+    "needs": "candidate with a completed Employer feedback (rating questions answered so a score shows) and its employer record. Staging data: Feedback question set \"90-Day Post-Hire Check-in\"; on Robert Martinez a pending Candidate feedback, a completed Employer feedback (score 93) and employer Karen Brooks; a completed Candidate feedback on Alice Thompson",
+    "steps": [
+      {
+        "click": "[role=tab]:has-text(\"Feedback\")"
+      },
+      {
+        "waitFor": "app-candidates-show-feedbacks table"
+      }
+    ],
+    "capture": {
+      "selector": "app-candidates-show-feedbacks"
+    },
+    "confidence": "medium",
+    "viewport": {
+      "width": 1680,
+      "height": 900
+    }
   }
 ]

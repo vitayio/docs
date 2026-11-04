@@ -7,8 +7,14 @@
     "as": "none",
     "path": "/reference-requests/:referenceRequestId",
     "needs": "Extra references allowed (settings_json.is_additional_references_enabled, on by default)",
-    "steps": [{ "waitFor": "#first_name0" }],
-    "capture": { "selector": "div.row.mb-4:has(button:has-text(\"Add another reference\"))" },
+    "steps": [
+      {
+        "waitFor": "#first_name0"
+      }
+    ],
+    "capture": {
+      "selector": "div.row.mb-4:has(button:has-text(\"Add another reference\"))"
+    },
     "confidence": "medium"
   },
   {
@@ -19,8 +25,14 @@
     "as": "none",
     "path": "/reference-requests/:referenceRequestId",
     "needs": "Reference dates enabled (is_reference_dates_enabled, on by default)",
-    "steps": [{ "waitFor": "#start_date-0" }],
-    "capture": { "selector": ".card:has(#start_date-0)" },
+    "steps": [
+      {
+        "waitFor": "#start_date-0"
+      }
+    ],
+    "capture": {
+      "selector": ".card:has(#start_date-0)"
+    },
     "confidence": "medium"
   },
   {
@@ -32,11 +44,22 @@
     "path": "/reference-requests/:referenceRequestId",
     "needs": "",
     "steps": [
-      { "waitFor": "#first_name0" },
-      { "click": "form button[type=\"submit\"].btn-lg" },
-      { "waitFor": ".v-missing-fields" }
+      {
+        "waitFor": "#first_name0"
+      },
+      {
+        "click": "form button[type=\"submit\"].btn-lg"
+      },
+      {
+        "waitFor": ".v-missing-fields"
+      },
+      {
+        "scroll": ".v-missing-fields"
+      }
     ],
-    "capture": { "selector": "div.d-grid.position-relative:has(.v-missing-fields)" },
+    "capture": {
+      "viewport": true
+    },
     "confidence": "medium"
   },
   {
@@ -47,8 +70,14 @@
     "as": "none",
     "path": "/references/:referenceId",
     "needs": "Decline option enabled for the firm (is_reference_is_declinable_enabled, off by default); the link appears 3 s after load",
-    "steps": [{ "waitFor": "button.btn-link:has-text(\"click here.\")" }],
-    "capture": { "selector": ".references-content > .row:has(#reference-form-title)" },
+    "steps": [
+      {
+        "waitFor": "button.btn-link:has-text(\"click here.\")"
+      }
+    ],
+    "capture": {
+      "selector": ".references-content > .row:has(#reference-form-title)"
+    },
     "confidence": "medium"
   },
   {
@@ -58,9 +87,18 @@
     "app": "public-candidate",
     "as": "none",
     "path": "/reference-requests/:referenceRequestId",
-    "needs": "Candidate document upload enabled (settings_json.candidate_documents.enabled), ideally with a short description",
-    "steps": [{ "waitFor": "[data-testid=\"documents-description\"]" }],
-    "capture": { "selector": ".card:has([data-testid=\"documents-description\"])" },
+    "needs": "Candidate document upload enabled (settings_json.candidate_documents.enabled, Ref. Requests tab) with a short description",
+    "steps": [
+      {
+        "waitFor": ".card ngx-file-drop"
+      },
+      {
+        "scroll": ".card:has(ngx-file-drop)"
+      }
+    ],
+    "capture": {
+      "selector": ".card:has(ngx-file-drop)"
+    },
     "confidence": "high"
   },
   {
@@ -71,8 +109,14 @@
     "as": "root",
     "path": "/activities",
     "needs": "Some activity in the docs firm within the last month",
-    "steps": [{ "waitFor": "app-table" }],
-    "capture": { "viewport": true },
+    "steps": [
+      {
+        "waitFor": "app-table"
+      }
+    ],
+    "capture": {
+      "viewport": true
+    },
     "confidence": "high"
   },
   {
@@ -84,10 +128,16 @@
     "path": "/dashboard/references",
     "needs": "At least one published announcement targeting root recruiters",
     "steps": [
-      { "click": "button.announcement-badge" },
-      { "waitFor": ".announcement-sidebar__panel--open" }
+      {
+        "click": "button.announcement-badge"
+      },
+      {
+        "waitFor": ".announcement-sidebar__panel--open"
+      }
     ],
-    "capture": { "selector": ".announcement-sidebar__panel" },
+    "capture": {
+      "selector": ".announcement-sidebar__panel"
+    },
     "confidence": "medium"
   },
   {
@@ -99,10 +149,16 @@
     "path": "/candidates",
     "needs": "Not a demo firm; recruiter signed in to the main account (button is disabled on sub-accounts)",
     "steps": [
-      { "click": ".btn-toolbar button:has(i.lnr-upload2)" },
-      { "waitFor": ".modal.show ngx-file-drop" }
+      {
+        "click": ".btn-toolbar button:has(i.lnr-upload2)"
+      },
+      {
+        "waitFor": ".modal.show ngx-file-drop"
+      }
     ],
-    "capture": { "selector": ".modal.show .modal-content" },
+    "capture": {
+      "selector": ".modal.show .modal-content"
+    },
     "confidence": "high"
   },
   {
@@ -114,10 +170,16 @@
     "path": "/candidates",
     "needs": "",
     "steps": [
-      { "click": "div.nav-link:has(> i.lnr-download2)" },
-      { "waitFor": ".modal.show select#type" }
+      {
+        "click": "div.nav-link:has(> i.lnr-download2)"
+      },
+      {
+        "waitFor": ".modal.show select#type"
+      }
     ],
-    "capture": { "selector": ".modal.show .modal-content" },
+    "capture": {
+      "selector": ".modal.show .modal-content"
+    },
     "confidence": "medium"
   },
   {
@@ -128,8 +190,14 @@
     "as": "root",
     "path": "/lead-generation",
     "needs": "Lead generation on with 2 lead types, and a few references that submitted themselves as leads in the last month",
-    "steps": [{ "waitFor": "app-table" }],
-    "capture": { "viewport": true },
+    "steps": [
+      {
+        "waitFor": "app-table"
+      }
+    ],
+    "capture": {
+      "viewport": true
+    },
     "confidence": "high"
   },
   {
@@ -139,9 +207,18 @@
     "app": "configuration",
     "as": "root",
     "path": "/settings/leads",
-    "needs": "Lead generation switched on, with a company description and 2 lead types",
-    "steps": [{ "waitFor": "quill-editor" }],
-    "capture": { "viewport": true },
+    "needs": "Lead generation switched on, with a company description, the consent checkbox on with its text, and 2 lead types",
+    "steps": [
+      {
+        "waitFor": "#lead_generation_description quill-editor"
+      },
+      {
+        "waitFor": "#lead_types select"
+      }
+    ],
+    "capture": {
+      "viewport": true
+    },
     "confidence": "high"
   },
   {
@@ -153,7 +230,9 @@
     "path": "/dashboard/references",
     "needs": "Candidates and completed references in the last month",
     "steps": [],
-    "capture": { "viewport": true },
+    "capture": {
+      "viewport": true
+    },
     "confidence": "high"
   }
 ]

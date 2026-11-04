@@ -48,7 +48,7 @@
     "app": "configuration",
     "as": "root",
     "path": "/integrations",
-    "needs": "Active ExternalAuthorisations::Greenhouse row for the firm (dummy client_id/client_secret is fine; the dialog only reads it) so the card opens in the connected state; is_demo_enabled off.",
+    "needs": "MANUAL: needs an active ExternalAuthorisations::Greenhouse row for the firm. It cannot be created through the app with dummy values (POST /api/services/greenhouse/auth validates the credentials against Greenhouse), and connecting a real one would use the firm's only integration slot (max_integrations 1), which stops the other connect-dialog shots from opening. Seed the row from a Rails console on staging (is_demo_enabled off), capture, then remove it; or take this one by hand on a firm with Greenhouse connected.",
     "steps": [
       {
         "waitFor": ".integrations-card"
@@ -63,7 +63,7 @@
     "capture": {
       "selector": ".modal-content"
     },
-    "confidence": "medium"
+    "confidence": "manual"
   },
   {
     "id": "bullhorn-connect-modal",
@@ -96,7 +96,7 @@
     "app": "configuration",
     "as": "root",
     "path": "/integrations",
-    "needs": "Firm setting is_bullhorn_sponge_enabled on, plus an active Sponge Bullhorn external_authorisation (ats_key 'bullhorn', embed_token set) so /api/sponge/bullhorn/status returns embed_url and list_action_url; is_demo_enabled off.",
+    "needs": "MANUAL: needs is_bullhorn_sponge_enabled on plus an active Sponge Bullhorn external_authorisation with an embed_token, so /api/sponge/bullhorn/status returns embed_url and list_action_url. Neither the authorisation nor the token can be created from the app without real Bullhorn credentials, and it would use the firm's only integration slot (max_integrations 1). Seed from a Rails console on staging, capture, then remove; or take it by hand from a Sponge-connected firm.",
     "steps": [
       {
         "waitFor": ".integrations-card"
@@ -111,7 +111,7 @@
     "capture": {
       "selector": ".modal-content"
     },
-    "confidence": "low"
+    "confidence": "manual"
   },
   {
     "id": "erecruit-connect-modal",

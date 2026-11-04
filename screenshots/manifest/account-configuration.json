@@ -121,6 +121,9 @@
       },
       {
         "waitFor": ".modal-content #users_roles"
+      },
+      {
+        "click": ".modal-content .modal-title"
       }
     ],
     "capture": {
@@ -225,7 +228,7 @@
     "app": "configuration",
     "as": "root",
     "path": "/usage",
-    "needs": "Usage records across several months",
+    "needs": "MANUAL: the docs firm has no contract and no usage_records (seeded references never went through the public form, which is what creates UsageRecord rows), so the card shows \"No data available\" and no table. Needs a contract with credits plus usage_records spread over several months (backdated usage_occurred_at), which can only be seeded from a Rails console on staging. Selector is right once data exists.",
     "steps": [
       {
         "waitFor": ".card:has(h5:has-text(\"Usage Breakdown\")) table"
@@ -234,7 +237,7 @@
     "capture": {
       "selector": ".card:has(h5:has-text(\"Usage Breakdown\"))"
     },
-    "confidence": "medium"
+    "confidence": "manual"
   },
   {
     "id": "branding-white-label-general",
@@ -243,14 +246,17 @@
     "app": "configuration",
     "as": "root",
     "path": "/settings/general",
-    "needs": "Firm logo uploaded and brand colors set",
+    "needs": "Firm logo uploaded and brand colors set. Captures the whole Settings area (tab list + General cards) because the colour cards sit below the 900px fold.",
     "steps": [
       {
-        "waitFor": "#file-input"
+        "waitFor": ".settings-general #name"
+      },
+      {
+        "waitFor": ".settings-general #colors_primary"
       }
     ],
     "capture": {
-      "viewport": true
+      "selector": "div.settings.container"
     },
     "confidence": "high"
   },
@@ -297,7 +303,7 @@
     "app": "configuration",
     "as": "root",
     "path": "/settings/plugins",
-    "needs": "Multi-languages plugin enabled, with one extra language ticked",
+    "needs": "Multi-languages plugin enabled (is_plugins_multi_languages_enabled) with French ticked (languages \"en,fr\"); otherwise the tab only shows the \"not activated\" card",
     "steps": [
       {
         "waitFor": "div.card#multi_languages"

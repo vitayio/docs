@@ -23,7 +23,12 @@ interface Entry {
   needs?: string;
   steps?: Step[];
   capture: { selector: string } | { viewport: true };
+  // "manual": the screen can't be produced from the docs firm; skipped.
   confidence?: string;
+  // The cookie consent page needs the banner the other shots hide.
+  keepCookieConsent?: boolean;
+  // Wider pages for tables that don't fit at 1440px.
+  viewport?: { width: number; height: number };
 }
 
 const MANIFEST_DIR = join(__dirname, 'manifest');
@@ -37,9 +42,10 @@ const entries: Entry[] = readdirSync(MANIFEST_DIR)
 // Things that differ between environments or runs and have no place in a
 // help article: the staging "Env" badge, the new-version banner, the cookie
 // banner, chat widgets, the text caret.
+const COOKIE_CSS = 'app-cookie-consent { display: none !important; }';
 const HIDE_CSS = `
   #sidebar .alert.alert-warning, .navbar .alert.alert-warning:has(.lnr-warning),
-  app-update-banner, app-cookie-consent, #cookieyes, .cky-consent-container, .cky-btn-revisit-wrapper,
+  app-update-banner, #cookieyes, .cky-consent-container, .cky-btn-revisit-wrapper,
   #beacon-container, .BeaconFabButtonFrame { display: none !important; }
   * { caret-color: transparent !important; }
 `;
@@ -58,14 +64,15 @@ test.afterAll(async () => {
 });
 
 for (const entry of entries) {
-  test(entry.id, async ({ browser }) => {
+  const define = entry.confidence === 'manual' ? test.skip : test;
+  define(entry.id, async ({ browser }) => {
     test.info().annotations.push({ type: 'article', description: entry.article });
     const base = hostFor(entry.app);
-    const context = await newContext(browser, base, entry.as);
+    const context = await newContext(browser, base, entry);
     try {
       const page = await context.newPage();
       await open(page, entry.as, await resolvePath(entry));
-      await page.addStyleTag({ content: HIDE_CSS });
+      await page.addStyleTag({ content: entry.keepCookieConsent ? HIDE_CSS : HIDE_CSS + COOKIE_CSS });
       await settle(page);
 
       for (const step of entry.steps ?? []) {
@@ -93,13 +100,16 @@ for (const entry of entries) {
   });
 }
 
-async function newContext(browser: import('@playwright/test').Browser, baseURL: string, role: Role): Promise<BrowserContext> {
-  const context = await browser.newContext({ baseURL });
+async function newContext(browser: import('@playwright/test').Browser, baseURL: string, entry: Entry): Promise<BrowserContext> {
+  const role = entry.as;
+  const context = await browser.newContext({ baseURL, ...(entry.viewport ? { viewport: entry.viewport } : {}) });
   // Reject the cookie banner whenever it appears so it never covers a button.
-  context.on('page', (page) => {
-    const reject = page.locator('[data-test="cc-reject-all"]');
-    void page.addLocatorHandler(reject, () => reject.click(), { noWaitAfter: true });
-  });
+  if (!entry.keepCookieConsent) {
+    context.on('page', (page) => {
+      const reject = page.locator('[data-test="cc-reject-all"]');
+      void page.addLocatorHandler(reject, () => reject.click(), { noWaitAfter: true });
+    });
+  }
   if (role !== 'none') {
     // The references and configuration apps share the lax recruiter-token
     // cookie on the parent domain (EnvironmentsService.setToken).
