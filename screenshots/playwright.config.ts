@@ -22,6 +22,7 @@ export default defineConfig({
     colorScheme: 'light',
     reducedMotion: 'reduce',
     trace: 'retain-on-failure',
-    navigationTimeout: 45_000
+    navigationTimeout: 45_000,
+    actionTimeout: 15_000
   }
 });

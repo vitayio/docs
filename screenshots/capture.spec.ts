@@ -8,7 +8,10 @@ type Step =
   | { click: string }
   | { fill: [string, string] }
   | { waitFor: string }
-  | { hover: string };
+  | { hover: string }
+  | { scroll: string }
+  | { press: string }
+  | { wait: number };
 
 interface Entry {
   id: string;
@@ -36,7 +39,7 @@ const entries: Entry[] = readdirSync(MANIFEST_DIR)
 // banner, chat widgets, the text caret.
 const HIDE_CSS = `
   #sidebar .alert.alert-warning, .navbar .alert.alert-warning:has(.lnr-warning),
-  app-update-banner, #cookieyes, .cky-consent-container, .cky-btn-revisit-wrapper,
+  app-update-banner, app-cookie-consent, #cookieyes, .cky-consent-container, .cky-btn-revisit-wrapper,
   #beacon-container, .BeaconFabButtonFrame { display: none !important; }
   * { caret-color: transparent !important; }
 `;
@@ -61,8 +64,7 @@ for (const entry of entries) {
     const context = await newContext(browser, base, entry.as);
     try {
       const page = await context.newPage();
-      await page.addStyleTag({ content: HIDE_CSS }).catch(() => undefined);
-      await page.goto(await resolvePath(entry), { waitUntil: 'networkidle' });
+      await open(page, entry.as, await resolvePath(entry));
       await page.addStyleTag({ content: HIDE_CSS });
       await settle(page);
 
@@ -71,6 +73,9 @@ for (const entry of entries) {
         else if ('fill' in step) await page.locator(step.fill[0]).first().fill(step.fill[1]);
         else if ('hover' in step) await page.locator(step.hover).first().hover();
         else if ('waitFor' in step) await page.locator(step.waitFor).first().waitFor({ state: 'visible' });
+        else if ('scroll' in step) await page.locator(step.scroll).first().scrollIntoViewIfNeeded();
+        else if ('press' in step) await page.keyboard.press(step.press);
+        else if ('wait' in step) await page.waitForTimeout(step.wait);
         await settle(page);
       }
 
@@ -123,9 +128,39 @@ async function resolvePath(entry: Entry): Promise<string> {
     path = path.replace(':referenceId', id);
   }
   if (path.includes(':candidateId')) path = path.replace(':candidateId', env.candidateId);
+  if (path.includes(':recruiterId')) path = path.replace(':recruiterId', recruiterIdOf('RECRUITER'));
   if (path.includes(':preScreeningId')) path = path.replace(':preScreeningId', env.preScreeningId);
   if (/:[a-zA-Z]+/.test(path)) throw new Error(`Unresolved parameter in path ${path}`);
   return path;
+}
+
+// The recruiter docs user's own id, read from its login token.
+function recruiterIdOf(role: 'ROOT' | 'RECRUITER'): string {
+  const token = process.env[`DOCS_TOKEN_${role}`] as string;
+  return JSON.parse(Buffer.from(token.split('.')[1] ?? '', 'base64url').toString('utf8')).recruiter_id;
+}
+
+// Signed-in pages are opened from inside the app: route guards such as
+// PreScreeningsGuard read firm settings that are not loaded yet on a cold
+// deep link, and bounce to the dashboard.
+async function open(page: Page, role: Role, path: string): Promise<void> {
+  if (role === 'none') {
+    await page.goto(path, { waitUntil: 'networkidle' });
+    return;
+  }
+  await page.goto('/', { waitUntil: 'networkidle' });
+  await settle(page);
+  await page.evaluate((url) => {
+    history.pushState({}, '', url);
+    dispatchEvent(new PopStateEvent('popstate', { state: {} }));
+  }, path);
+  await page.waitForLoadState('networkidle');
+  // A redirect to a child route (/dashboard → /dashboard/references) is fine.
+  const wanted = path.split('?')[0];
+  const landed = new URL(page.url());
+  if (landed.pathname !== wanted && !landed.pathname.startsWith(wanted + '/')) {
+    throw new Error(`Opened ${path} but the app redirected to ${landed.pathname}`);
+  }
 }
 
 async function settle(page: Page): Promise<void> {
