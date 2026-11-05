@@ -4,6 +4,73 @@ description: "Product updates, improvements, and fixes shipped to Vitay."
 ---
 
 <Update
+  label="November 6, 2026"
+  description="Sign-in codes by email, a brand name for candidates, a Reply-To choice, Usage in the main app, and sub-account fixes"
+  tags={["Feature", "Improvement", "Fix"]}
+  rss={{
+    title: "Sign-in codes by email, a brand name for candidates, a Reply-To choice, Usage in the main app, and sub-account fixes",
+    description: "Get your MFA code by email, show candidates a brand name separate from your company name, choose where candidate replies go, and open Usage from the main app. Parent root users now stay root in every sub-account, exports are capped at 5,000 rows, and several sub-account and settings fixes."
+  }}
+>
+  ### New
+
+  - **Get your sign-in code by email.** Multi-factor authentication can now
+    send your code to your email address instead of your phone. Switch on
+    **Multi-factor authentication by Email** under **My account → Security**.
+    You use either email or text-message codes, not both. See
+    [Multi-factor authentication & login options](/getting-started/mfa-and-login-options#get-codes-by-email-instead).
+  - **A brand name for candidates, separate from your company name.** A new
+    **Brand name** setting on the **General** tab is what candidates,
+    references and report recipients see in emails, text messages, forms and
+    reports. Your team keeps seeing the **Company name** inside Vitay.
+    Sub-accounts without their own brand name use the parent account's. If
+    your account had a nickname, it becomes your company name and your
+    previous company name becomes your brand name, so nothing your candidates
+    see changes. See
+    [Branding and white label](/account-configuration/branding-white-label#other-settings-on-the-general-tab).
+  - **Choose where candidate replies go.** The **Email Sender Identity** card
+    has a new **Reply-To** choice: replies go to the **Assigned recruiter**, or
+    to one **Custom address** you set. Emails to your own team now have their
+    own **Team notification sender** on the **White Label** tab, which
+    replaces the old **Primary reply email** fields. See
+    [Email sender settings](/account-configuration/email-sender-settings#where-replies-go).
+  - **Usage in the main app.** Root recruiters can open **Usage** straight
+    from the left navigation, without going to the Configuration area. See
+    [Usage and billing](/account-configuration/billing-and-usage).
+
+  ### Improved
+
+  - **Parent root users stay root in every sub-account.** Anyone who is root
+    on a parent account is now root on all of its sub-accounts, including
+    sub-accounts created before they became root, and they show on each
+    sub-account's **Users** page. Removing their root role on the parent
+    removes it from the sub-accounts too. See
+    [Manage users](/account-configuration/manage-users#manage-sub-accounts).
+  - **Exports are capped at 5,000 rows.** A CSV export that would go over
+    5,000 rows now shows a message asking you to shorten the date range, and
+    the **Export** window stays open so you can try again. See
+    [Download reports](/reports-lead-generation/download-reports#export-size-limit).
+
+  ### Fixed
+
+  - **Each sub-account has its own ID.** Some sub-accounts showed the same
+    **ID** as their parent account under **Configuration → Accounts**. They
+    now have their own number, and IDs that were already unique stay the same.
+    The table lists your main account first, and you can hover a long name to
+    read it in full.
+  - **The All sub-accounts option comes back when you switch accounts.** After
+    you switch from a sub-account back to the parent account, the
+    **Candidates** list and the **Dashboard** show the All sub-accounts option
+    again without a page reload.
+  - **The DMARC status check clears old errors.** Clicking **Check DMARC
+    status** on a domain that now passes clears the earlier error and shows the
+    green check mark straight away.
+  - **Duplicating a question set explains a refusal.** When a question set
+    can't be duplicated, for example into a sub-account where you aren't root,
+    a message now tells you why instead of nothing happening.
+</Update>
+
+<Update
   label="November 3, 2026"
   description="Usage notifications on for new accounts, supervisors can duplicate question sets again, and the cookie banner stops reappearing in the Bullhorn tab"
   tags={["Improvement", "Fix"]}

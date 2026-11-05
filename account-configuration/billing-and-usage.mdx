@@ -12,11 +12,12 @@ The **Usage** page shows how much of your contract your firm has used: credits b
 ## Open the Usage page
 
 <Steps>
-  <Step title="Open the Configuration area">
-    Click **Configuration** in the left navigation.
-  </Step>
-  <Step title="Select Usage">
-    Click **Usage**, below **Settings**. It opens on your current contract period.
+  <Step title="Click Usage in the left navigation">
+    In the main Vitay app, click **Usage** in the left navigation, just above **Recycle Bin**. It
+    opens on your current contract period.
+
+    You can also open it from the Configuration area: click **Configuration**, then **Usage**,
+    below **Settings**. Both show the same page.
 
     ![The Usage page with the contract period picker, the stat cards and the Usage Over Time chart](/images/screens/billing-and-usage-page.png)
   </Step>
@@ -76,7 +77,8 @@ Credits, contract dates and limits come from your Vitay contract and can't be ed
 
 <AccordionGroup>
   <Accordion title="I can't find the Usage page">
-    Sub-accounts whose billing is combined with a parent account don't show **Usage**. Switch to the parent account, open **Usage** and turn on **Include subaccounts**.
+    **Usage** only shows for root recruiters. Sub-accounts whose billing is combined with a parent
+    account don't show it either. Switch to the parent account, open **Usage** and turn on **Include subaccounts**.
   </Accordion>
   <Accordion title="The contract cards are missing">
     They only show when contract credits are recorded for the account. **Credits Used** always shows. If your contract should be on file, contact [hello@vitay.io](mailto:hello@vitay.io).
@@ -98,4 +100,4 @@ Credits, contract dates and limits come from your Vitay contract and can't be ed
   <Card title="Download reports" icon="download" href="/reports-lead-generation/download-reports" />
 </CardGroup>
 
-{/* source: app projects/configuration protected/usage/usage.component.{ts,html}; shared/components/navbar/navbar.component.ts; protected/settings/notifications/settings.notifications.component.ts (availableThresholds); api app/services/usage_service/creator.rb, app/services/usage_notification_service.rb, app/mailers/usage_notification_mailer.rb, app/models/setting.rb (enable_usage_notifications), lib/tasks/client_reports.rake */}
+{/* source: app src/app/shared/routing/usage/usage.component.{ts,html} (shared by both apps), projects/references usage route + UsageGuard (root && !is_billing_sub_accounts_linked_enabled) + navbar link before Recycle Bin; shared/components/navbar/navbar.component.ts; protected/settings/notifications/settings.notifications.component.ts (availableThresholds); api app/services/usage_service/creator.rb, app/services/usage_notification_service.rb, app/mailers/usage_notification_mailer.rb, app/models/setting.rb (enable_usage_notifications), lib/tasks/client_reports.rake */}

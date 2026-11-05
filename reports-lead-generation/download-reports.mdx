@@ -47,6 +47,15 @@ The Export window always covers your whole firm for the chosen dates. It ignores
 | **Pre Screening** | Pre-screenings with candidate, score, requester, and dates |
 | **References** | Reference contacts, one row per email address, including lead type and consent columns |
 
+## Export size limit
+
+Each CSV export can hold up to 5,000 rows. If the table, dates and filters you picked come to more
+than that, the file isn't downloaded and Vitay shows a message instead: **The file exceeds over 5000
+lines. Please shorten the date range or contact Vitay support**. In the **Export** window the message
+appears inside the window, so you can shorten the **Date range** and click **Export** again. This
+applies to the Export window and to the list exports below. To get a larger data set in one file,
+contact [hello@vitay.io](mailto:hello@vitay.io).
+
 ## Exports on other pages
 
 - **Candidates** and **References** pages: a download icon in the filter toolbar exports the list. See below.
@@ -96,6 +105,10 @@ Which details are hidden on the PDF, and whether it has a watermark, is set in *
   <Accordion title="The CSV doesn't match the screen">
     List exports skip some filters (see the warning above), and the Export window always covers the whole firm. Both start on a default date range, not all time, so check the dates too.
   </Accordion>
+  <Accordion title="The export says the file exceeds 5000 lines">
+    An export can hold up to 5,000 rows. Shorten the date range, or split it into several shorter
+    periods and export each one. See [Export size limit](#export-size-limit).
+  </Accordion>
   <Accordion title="The file only has headers">
     Nothing matches your dates or filters. Widen the date range or remove filters.
   </Accordion>
@@ -113,4 +126,4 @@ Which details are hidden on the PDF, and whether it has a watermark, is set in *
   <Card title="Send a reference request" icon="paper-plane" href="/candidates-reference-requests/send-a-reference-request" />
 </CardGroup>
 
-{/* source: app projects/references/src/app/shared/components/modals/export/modals.export.component.{ts,html} (tables[], titlecase labels, scope:all, question set only for referenceAnswersPerCandidates); src/app/shared/helpers/table-fields.helper.ts; shared/components/topbar/topbar.component.html (is_reports_downloadable || isRoot); protected/candidates/list + protected/leads/list download(); protected/lead-generation/list (custom_leads); protected/dashboard/recruiters (recruiter_performances, recruiters); protected/candidates/show/references (PDF/Word/CSV); projects/configuration settings/documents (is_hide_report_*, is_pdf_watermark_enabled); api app/controllers/api/v3/documents/csv_controller.rb (show branches, created_at date filter, leads de-dup by email); app/services/filters/leads.rb */}
+{/* source: app projects/references/src/app/shared/components/modals/export/modals.export.component.{ts,html} (tables[], titlecase labels, scope:all, question set only for referenceAnswersPerCandidates); src/app/shared/helpers/table-fields.helper.ts; shared/components/topbar/topbar.component.html (is_reports_downloadable || isRoot); protected/candidates/list + protected/leads/list download(); protected/lead-generation/list (custom_leads); protected/dashboard/recruiters (recruiter_performances, recruiters); protected/candidates/show/references (PDF/Word/CSV); projects/configuration settings/documents (is_hide_report_*, is_pdf_watermark_enabled); api app/controllers/api/v3/documents/csv_controller.rb (MAX_EXPORT_ROWS 5000 → 422, show branches, created_at date filter, leads de-dup by email); app/services/filters/leads.rb */}
