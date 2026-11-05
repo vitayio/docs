@@ -36,4 +36,4 @@ You don't need a Vitay account either way. The email (or text message) you recei
   <Card title="Can I get a copy of what I submitted?" icon="copy" href="/reference-providers/copy-of-my-responses" />
 </CardGroup>
 
-{/* source: api app/models/recruiter_request.rb send_reference_requests_email / _text (candidate link /reference-requests/:id); app/models/recruiter_reference.rb send_reference_email (reference link /references/:id); reply_to = firm support email or assigned recruiter */}
+{/* source: api app/models/recruiter_request.rb send_reference_requests_email / _text (candidate link /reference-requests/:id); app/models/recruiter_reference.rb send_reference_email (reference link /references/:id); reply_to = Setting#reply_to_sender (assigned recruiter, or the firm's custom Reply-To when is_reply_to_custom_enabled) */}

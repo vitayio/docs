@@ -170,11 +170,11 @@
   {
     "id": "email-sender-settings-identity-card",
     "article": "account-configuration/email-sender-settings",
-    "alt": "The Email Sender Identity card with the From: Address and From: Name choices and the custom address field",
+    "alt": "The Email Sender Identity card with the From: Address, From: Name and Reply-To choices and the custom address fields",
     "app": "configuration",
     "as": "root",
     "path": "/settings/configuration",
-    "needs": "From: Address set to Custom address so the address field shows",
+    "needs": "From: Address and Reply-To set to Custom address so both address fields show",
     "steps": [
       {
         "waitFor": "div.card#is_branding_emails_from_enabled"
@@ -263,7 +263,7 @@
   {
     "id": "branding-white-label-tab",
     "article": "account-configuration/branding-white-label",
-    "alt": "The White Label tab with the Enable / Disable white label switch, Font family, Domain name, Explainer video link and User guide link fields",
+    "alt": "The White Label tab with the Enable / Disable white label switch, Font family, Team notification sender, Domain name, Explainer video link and User guide link fields",
     "app": "configuration",
     "as": "root",
     "path": "/settings/white-label",
