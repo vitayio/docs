@@ -15,7 +15,7 @@ Candidates pick a relationship for each reference they add, for example **Manage
 
 <Steps>
   <Step title="Open the tab">
-    In the Configuration area, click **Settings**, then the **Relationships** tab. Each row shows the relationship name, its question set (if any) and a **No personal emails** badge where that option is on.
+    In the Configuration area, click **Settings**, then the **Relationships** tab. Each row shows the relationship name, its question set (if any), and a **No personal emails** or **Non-professional** badge where that option is on.
 
     ![The Relationships tab listing relationships with their question sets, No personal emails badges, and edit and delete buttons on each row](/images/screens/relationships-and-jobs-relationships.png)
   </Step>
@@ -25,8 +25,13 @@ Candidates pick a relationship for each reference they add, for example **Manage
   <Step title="Attach a question set (optional)">
     Pick one in **Question set**. References with this relationship then get that question set. Only reference question sets are listed.
   </Step>
+  <Step title="Mark it non-professional (optional)">
+    Tick **Non-professional reference (friend, family, character reference)** for a relationship with no working relationship behind it. See [Non-professional relationships](#non-professional-relationships).
+
+    ![SCREENSHOT(relationships-and-jobs-non-professional): The relationship form with the Non-professional reference checkbox ticked](/images/placeholder.png)
+  </Step>
   <Step title="Block personal emails (optional)">
-    Tick **Prevent personal emails for these references (@gmail.com, @yahoo.com, etc.)** to require a work address for this relationship only, for example **Manager** but not **Character**.
+    Tick **Prevent personal emails for these references (@gmail.com, @yahoo.com, etc.)** to require a work address for this relationship only, for example **Manager** but not **Character**. This option is hidden for a non-professional relationship.
   </Step>
   <Step title="Save">
     Click **Save**.
@@ -38,6 +43,18 @@ To change a relationship, click the pencil button on its row. Changes also apply
 To remove one, click the trash button on its row and confirm with **Delete**. Candidates can no longer pick it; existing references keep it.
 
 This per-relationship rule works alongside **Allow personal email addresses** on the **References** tab (see [Reference settings](/account-configuration/reference-settings)).
+
+### Non-professional relationships
+
+A friend, a family member or a character reference never worked with the candidate, so questions about working together don't apply. When a non-professional relationship is picked, the forms hide:
+
+- the candidate's position;
+- the employment **Start date** and **End date** (and **Present**);
+- the work phone number.
+
+The reference's company name and job title stay. This applies on the candidate's form, when a recruiter adds or edits a reference, and on the reference's own form. If someone switches back to a professional relationship, the hidden fields come back empty with their usual requirements.
+
+**Restrict reference end date** and the relationship's own **Prevent personal emails** option don't apply to non-professional references. Your account-wide **Allow personal email addresses** setting still does.
 
 ## Manage candidate jobs
 
@@ -68,7 +85,7 @@ Three things can set the question set a reference receives:
 
 1. **The relationship's question set** wins. When the candidate submits their references, any reference whose relationship has a question set gets that set, whatever the request was sent with.
 2. **The job's question set** fills in the **Question set** field when you pick an existing job on the **Quick request** form. You can still change it before sending.
-3. **Your default question set** (the starred one) is pre-selected when you open the reference request form.
+3. **Your default question set** is pre-selected when you open a request form. **Quick request** uses the **Default question set** from the **Ref. Requests** tab, or the starred set on the **Question sets** list when none is chosen. The **Reference Request** form on a candidate page uses the starred set.
 
 For example, a request sent with the **Nurse** question set still sends the **Character** question set to a reference marked **Character**, if that relationship has one. A relationship without a question set changes nothing.
 

@@ -57,6 +57,7 @@
         "pages": [
           "account-configuration/find-and-change-settings",
           "account-configuration/manage-users",
+          "account-configuration/roles-and-permissions",
           "account-configuration/firm-configuration",
           "account-configuration/reference-request-settings",
           "account-configuration/reference-settings",

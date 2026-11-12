@@ -86,7 +86,7 @@
   {
     "id": "manage-users-add-modal",
     "article": "account-configuration/manage-users",
-    "alt": "The Add user form with name, email and phone fields and the Send email to user checkbox",
+    "alt": "The Add user form with name, email and phone fields, the Role dropdown and the Send email to user checkbox",
     "app": "configuration",
     "as": "root",
     "path": "/users",
@@ -110,11 +110,11 @@
   {
     "id": "manage-users-edit-roles",
     "article": "account-configuration/manage-users",
-    "alt": "The Edit user form with the Root account and Supervisor Recruiter switches under Roles",
+    "alt": "The Edit user form with the Role dropdown below the user's details",
     "app": "configuration",
     "as": "root",
     "path": "/users/:recruiterId",
-    "needs": "A non-default, non-root recruiter other than the signed-in user (so switches are enabled)",
+    "needs": "A non-default recruiter other than the signed-in user (so the Role dropdown is enabled)",
     "steps": [
       {
         "click": "button:has(.lnr-pencil)"
@@ -134,7 +134,7 @@
   {
     "id": "notification-settings-team-table",
     "article": "account-configuration/notification-settings",
-    "alt": "The Team notifications table with event rows and the Assigned recruiter, Reference requester, Root users and Additional emails columns",
+    "alt": "The Team notifications table with event rows and the Assigned user, Reference requester, Admin users and Additional emails columns",
     "app": "configuration",
     "as": "root",
     "path": "/settings/notifications",
@@ -583,5 +583,86 @@
       "selector": ".card:has(signature-pad#signature)"
     },
     "confidence": "medium"
+  },
+  {
+    "id": "roles-and-permissions-list",
+    "article": "account-configuration/roles-and-permissions",
+    "alt": "The Roles page with the Admin, Supervisor, Recruiter and View only cards, each showing its member and permission counts",
+    "app": "configuration",
+    "as": "root",
+    "path": "/roles",
+    "needs": "Firm roles seeded (api #2803 deployed)",
+    "steps": [
+      {
+        "waitFor": "app-roles"
+      }
+    ],
+    "capture": {
+      "viewport": true
+    },
+    "confidence": "low"
+  },
+  {
+    "id": "roles-and-permissions-editor",
+    "article": "account-configuration/roles-and-permissions",
+    "alt": "The role editor with Name and Description fields above the permission checkboxes grouped by area, with Personal data and High risk badges",
+    "app": "configuration",
+    "as": "root",
+    "path": "/roles",
+    "needs": "Firm roles seeded (api #2803 deployed)",
+    "steps": [
+      {
+        "waitFor": "app-roles"
+      },
+      {
+        "click": "text=New role"
+      }
+    ],
+    "capture": {
+      "selector": ".modal-content"
+    },
+    "confidence": "low"
+  },
+  {
+    "id": "relationships-and-jobs-non-professional",
+    "article": "account-configuration/relationships-and-jobs",
+    "alt": "The relationship form with the Non-professional reference checkbox ticked",
+    "app": "configuration",
+    "as": "root",
+    "path": "/settings/relationships",
+    "needs": "Non-demo firm; api #2802 deployed",
+    "steps": [
+      {
+        "click": "button:has(.lnr-pencil)"
+      },
+      {
+        "waitFor": ".modal-content"
+      }
+    ],
+    "capture": {
+      "selector": ".modal-content"
+    },
+    "confidence": "low"
+  },
+  {
+    "id": "find-and-change-settings-apply-to-accounts",
+    "article": "account-configuration/find-and-change-settings",
+    "alt": "The Apply to other accounts window with the list of accounts ticked and the overwrite warning",
+    "app": "configuration",
+    "as": "root",
+    "path": "/settings/general",
+    "needs": "Signed in as an Admin of a parent account with sub-accounts (staging Acme); api #2798 deployed",
+    "steps": [
+      {
+        "click": "text=Apply to all accounts"
+      },
+      {
+        "waitFor": ".modal-content"
+      }
+    ],
+    "capture": {
+      "selector": ".modal-content"
+    },
+    "confidence": "low"
   }
 ]

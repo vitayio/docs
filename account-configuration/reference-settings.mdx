@@ -30,7 +30,7 @@ The **Preview the reference form** card opens the form a reference fills in, so 
 
 <Steps>
   <Step title="Choose the question set to show">
-    Under **Question set shown in the preview**, pick **Sample question set (every question type)** to see one question of each type, or **Default question set: *name*** to see your firm's default. If you haven't set a default on the **Ref. Requests** tab, that option reads **Default question set (none selected)** and can't be picked.
+    Under **Question set shown in the preview**, pick **Sample question set (every question type)** to see one question of each type, or any of your active reference question sets. Your default set is listed first and marked **(default)**; the others follow in alphabetical order.
   </Step>
   <Step title="Click Preview">
     Click **Preview**. The form opens in a new tab for a sample candidate and reference, in your account's default language.
@@ -55,7 +55,7 @@ These apply wherever a reference is added: on the candidate's form and when a re
 | **Enable Work Phone Number** | Adds a work phone field for candidates and references, plus a **Phone number requirement** dropdown: **No phone required**, **Mobile number required**, **Work number required**, **Both mobile and work required** or **At least one (mobile or work)**. | Off |
 | **Reference mobile number required** | Makes the reference's mobile number mandatory. Hidden while **Enable Work Phone Number** is on; use **Phone number requirement** instead. | Off |
 | **Allow personal email addresses** | When off, addresses on Gmail, Yahoo, Hotmail and similar domains are rejected, and the candidate's form explains why. | On |
-| **Prevent duplicate references** | Stops the same reference being added twice to a candidate for the same question set, matching on email, phone or ATS ID. The form shows "is already linked to an existing reference". | On |
+| **Allow duplicate references** | When on, the same reference can be added twice to a candidate. When off, a reference with the same email, phone or ATS ID as one already on the candidate for the same question set is refused, and the form shows "is already linked to an existing reference". | Off |
 
 You can also block personal emails for one relationship type only (see [Relationships and jobs](/account-configuration/relationships-and-jobs)).
 
@@ -93,8 +93,8 @@ You can also block personal emails for one relationship type only (see [Relation
   <Accordion title="I can't find Reference mobile number required">
     It's hidden while **Enable Work Phone Number** is on. Use the **Phone number requirement** dropdown on that card instead.
   </Accordion>
-  <Accordion title="I can't choose my default question set in the preview">
-    Pick a **Default question set** on the **Ref. Requests** tab first.
+  <Accordion title="A question set is missing from the preview list">
+    The list shows active question sets of the **Reference** type only. Check the set on the **Question sets** list: it may be a different type or no longer active.
   </Accordion>
   <Accordion title="The preview says Preview unavailable">
     The preview only works while you're signed in to the Configuration area. Sign in again and use the **Preview** button rather than a saved link. If nothing opens, allow pop-ups for the Configuration site.

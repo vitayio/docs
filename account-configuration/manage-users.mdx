@@ -1,12 +1,12 @@
 ---
 title: "Manage users"
-description: "Add, remove, and change roles for the recruiters in your Vitay account, including sub-account access."
+description: "Add users, give them a role, remove access when someone leaves, and manage sub-accounts in your Vitay account."
 ---
 
-Users are the recruiters who sign in to Vitay. As a root recruiter you can add colleagues, change their roles, and remove access when someone leaves.
+Users are the people on your team who sign in to Vitay. As an Admin you can add colleagues, give each one a role, and remove access when someone leaves.
 
 <Note>
-  You need the root recruiter role. User management is in the Configuration area, which only root recruiters can open.
+  You need the Admin role, or a role with **Manage users** (and **Manage roles** to change roles). See [Roles and permissions](/account-configuration/roles-and-permissions).
 </Note>
 
 ## Add a user
@@ -23,12 +23,14 @@ Users are the recruiters who sign in to Vitay. As a root recruiter you can add c
   <Step title="Enter the user's details">
     Fill in **First name**, **Last name**, **Email** and, if you like, a phone number. The email address is their username.
 
+    Pick their **Role**. It starts on **Recruiter**.
+
     Leave **Send email to user** ticked to email them their login details. If you untick it, no email is sent and you need to give them access another way, for example with **Reset password** on their user page.
   </Step>
   <Step title="Submit">
-    Click **Submit**. The new user is a regular recruiter. To make them root or supervisor, see [Edit a user's details or role](#edit-a-users-details-or-role).
+    Click **Submit**. To change their role later, see [Change a user's role](#change-a-users-role).
 
-    ![The Add user form with name, email and phone fields and the Send email to user checkbox](/images/screens/manage-users-add-modal.png)
+    ![SCREENSHOT(manage-users-add-modal): The Add user form with name, email and phone fields, the Role dropdown and the Send email to user checkbox](/images/placeholder.png)
   </Step>
 </Steps>
 
@@ -44,17 +46,13 @@ If you filled in **New Recruiters - Compliance Statement** on the **Configuratio
 
 Click the download button on the **Users** page (tooltip **Download report**). Vitay downloads a CSV with each user's first name, last name, email and whether they are active.
 
-## Roles explained
+## Roles
 
-| Role | What they can do |
-|---|---|
-| **Recruiter** | Add candidates, send reference requests and read reports for their own candidates. The **Display Everyone / Myself toggle** setting can let them see everyone's candidates. |
-| **Supervisor Recruiter** | Everything a recruiter can do, plus oversight of all team activity and metrics, and editing question sets. |
-| **Root** | Full access, including the Configuration area: settings, users, usage and sub-accounts. |
+Every user has one role: **Admin**, **Supervisor**, **Recruiter**, **View only**, or a custom role your firm created. See [Roles and permissions](/account-configuration/roles-and-permissions) for what each one can do.
 
-Each account has one default account user. Their roles can't be changed and they can't be deactivated. To move that designation to someone else, contact Vitay support.
+Each account has one default account user, your main point of contact. They are always an Admin and can't be deactivated. To move that designation to someone else, contact Vitay support.
 
-## Edit a user's details or role
+## Edit a user's details
 
 <Steps>
   <Step title="Open the user's page">
@@ -66,21 +64,32 @@ Each account has one default account user. Their roles can't be changed and they
   <Step title="Change details">
     Change the name, email or phone number, then click **Submit**.
   </Step>
-  <Step title="Change roles">
-    Use the **Root account** and **Supervisor Recruiter** switches under **Roles**. A switch change saves straight away.
+</Steps>
 
-    ![The Edit user form with the Root account and Supervisor Recruiter switches under Roles](/images/screens/manage-users-edit-roles.png)
+## Change a user's role
+
+<Steps>
+  <Step title="Open Edit user">
+    On the **Users** page, click the person's row, then the pencil button.
+  </Step>
+  <Step title="Pick the role">
+    Choose the new role in **Role**. The change saves straight away and **Role saved** appears.
+
+    ![SCREENSHOT(manage-users-edit-roles): The Edit user form with the Role dropdown below the user's details](/images/placeholder.png)
   </Step>
 </Steps>
 
-Some switches are greyed out, with a note explaining why:
+The **Role** dropdown is locked, with a note explaining why, when:
 
-- Both switches, when you edit your own account (another root user has to change your roles) or the default account user.
-- The **Supervisor Recruiter** switch, for a root user, since root already includes everything a supervisor can do.
+- you edit your own account (another Admin has to change your role);
+- the user is the default account user, who is always an Admin;
+- in a sub-account, the user is an Admin of the main account (change their role on the main account).
+
+A role marked "This role holds permissions you do not have" can't be picked, because you can't hand out permissions you don't hold.
 
 ### Send someone every team notification
 
-There is no per-person "always notify" switch. Each team notification has its own row in the **Team notifications** table on the **Notifications** tab in Settings. Tick **Root users** on a row to include every root user, or add the person's address under **Additional emails**. See [Notification settings](/account-configuration/notification-settings).
+There is no per-person "always notify" switch. Each team notification has its own row in the **Team notifications** table on the **Notifications** tab in Settings. Tick **Admin users** on a row to include every Admin, or add the person's address under **Additional emails**. See [Notification settings](/account-configuration/notification-settings).
 
 ## Deactivate (remove) a user
 
@@ -95,7 +104,7 @@ Deactivating a user removes their access but keeps their candidates and referenc
   </Step>
 </Steps>
 
-The trash button only shows for users who aren't root. To deactivate a root user, turn off their **Root account** switch first.
+Admins can't be deactivated. For an Admin, the trash button is shown locked, and hovering it says "Admins can't be deactivated. Change this user's role first." Change their role, then deactivate them.
 
 The user loses access straight away. If they are signed in, they are signed out at their next action. They can't sign in again and stop receiving team notification emails. If they also belong to another account in your firm family, their access there is not affected.
 
@@ -159,10 +168,10 @@ A user who belongs to several accounts switches between them from the top bar (s
     Check that **Send email to user** was ticked when you added them; if not, no email was sent. Ask them to check spam. To send new login details, open their page and click **Reset password** (or **Unlock and Reset password** if they are locked). The reset link expires after 1 hour.
   </Accordion>
   <Accordion title="I can't change the role for a user">
-    The role switches are greyed out when you edit your own account, when the user is the default account user, and (for **Supervisor Recruiter**) when the user is root. Ask another root user to change your roles. To move the default account designation, contact Vitay support.
+    The **Role** dropdown is locked when you edit your own account, when the user is the default account user, and in a sub-account when the user is an Admin of the main account. Ask another Admin to change your role. To move the default account designation, contact Vitay support. If you don't see **Role** at all, your role doesn't include **Manage roles**.
   </Accordion>
-  <Accordion title="There's no trash button on a user's page">
-    The user is root. Turn off their **Root account** switch in **Edit user**, then deactivate them.
+  <Accordion title="The trash button on a user's page is locked">
+    The user is an Admin. Change their role in **Edit user**, then deactivate them.
   </Accordion>
   <Accordion title="A user was locked but never entered a wrong password">
     **Lock inactive users** is on and they hadn't signed in for a month. Unlock them from their user page, or turn the setting off on the **Configuration** tab.
@@ -171,13 +180,14 @@ A user who belongs to several accounts switches between them from the top bar (s
     The field shows for root recruiters, or for everyone once **Allow users to update the assigned user** is on. Ask a root recruiter to reassign the candidate or turn on the setting.
   </Accordion>
   <Accordion title="I can't find Users">
-    Users is in the Configuration area, which only root recruiters can open. Ask a root recruiter in your account to change your role.
+    Users is in the Configuration area, which only roles with **Open Configuration** can open. Ask an Admin in your account to change your role.
   </Accordion>
 </AccordionGroup>
 
 ## Related articles
 
 <CardGroup cols={2}>
+  <Card title="Roles and permissions" icon="id-badge" href="/account-configuration/roles-and-permissions" />
   <Card title="Email sender settings" icon="envelope" href="/account-configuration/email-sender-settings" />
   <Card title="Notification settings" icon="bell" href="/account-configuration/notification-settings" />
   <Card title="Question sets and templates" icon="list-check" href="/account-configuration/question-sets-and-templates" />
@@ -186,4 +196,4 @@ A user who belongs to several accounts switches between them from the top bar (s
   <Card title="Billing and usage" icon="credit-card" href="/account-configuration/billing-and-usage" />
 </CardGroup>
 
-{/* source: app.vitay.io projects/configuration MODALS.USERS (Add user / Edit user, IS_SEND_EMAIL_ENABLED), MODALS.USERS.SUPERVISOR, src/app/shared/components/modals/users (root/supervisor ui-switch [checked] + [disabled] with tooltip, MODALS.USERS.ROLES_LOCKED.SELF / .ROOT / IS_DEFAULT lock hint — shown locked instead of hidden since app #2131), NAVBAR.USERS, NAVBAR.ACCOUNTS, USERS show page (Reset password / Unlock and Reset password, USERS.SHOW.LOCKED badge), users.list.component (download → documents csv type recruiters), accounts.list.component (cols seq_id ID/name/public_name brand/default_root/created_at; add disabled when isSubAccount) + shared/components/modals/accounts (name, first/last name, email, is_send_email_enabled, MODALS.ACCOUNTS.WARNING), SETTINGS.CONFIGURATION.is_disable_inactive_users_enabled / is_candidate_ownership_updatable / new_recruiters_security_statement labels; projects/references shared/components/modals/candidates (added_by_id Assigned user field gated by isRoot || is_candidate_ownership_updatable), candidates.list.component + assign-to-recruiter-modal (CANDIDATES.BULK_ACTIONS.ASSIGN_TO_RECRUITER, withheld under scope:all_sub_accounts), DASHBOARD.SUB_ACCOUNTS; api app/models/user.rb, app/models/recruiter.rb (send_welcome email: subject, username/password, explainer_video_link, user_guide_link, new_recruiters_security_statement), app/models/role.rb, app/models/hiring_firm.rb (seq_id per parent), lib/tasks/users.rake (disable_inactive: non-root, last_connected_at > 1 month → is_locked), app/controllers/api/v3/candidates/bulk_controller.rb (bulk_assign_to_recruiter), app/controllers/api/v3/documents/csv_controller.rb (recruiters export fields first_name last_name email is_active), app/controllers/concerns/authorization.rb (inactive user or recruiter → 401, token revoked) + User#revoke_all_tokens! / Recruiter#revoke_session_tokens! after deactivation (VIT-1347; sibling-firm sessions kept), app/models/user.rb PASSWORD_RESET_KEY_TTL = 1.hour + clear_password_reset_key (single use), app/services/notifications/recipient_resolver.rb (active recruiter + active user only); app.vitay.io projects/configuration shared/components/always-notified-recruiters (recruiter.notifications) */}
+{/* source: app.vitay.io projects/configuration MODALS.USERS (Add user / Edit user, IS_SEND_EMAIL_ENABLED), MODALS.USERS.SUPERVISOR, src/app/shared/components/modals/users (role select gated on team:roles, MODALS.USERS.ROLE / CANNOT_GRANT, ROLES_LOCKED.SELF / IS_DEFAULT / INHERITED lock reason), USERS.SHOW.DEACTIVATE_LOCKED_TOOLTIP (app #2213), NAVBAR.USERS, NAVBAR.ACCOUNTS, USERS show page (Reset password / Unlock and Reset password, USERS.SHOW.LOCKED badge), users.list.component (download → documents csv type recruiters), accounts.list.component (cols seq_id ID/name/public_name brand/default_root/created_at; add disabled when isSubAccount) + shared/components/modals/accounts (name, first/last name, email, is_send_email_enabled, MODALS.ACCOUNTS.WARNING), SETTINGS.CONFIGURATION.is_disable_inactive_users_enabled / is_candidate_ownership_updatable / new_recruiters_security_statement labels; projects/references shared/components/modals/candidates (added_by_id Assigned user field gated by isRoot || is_candidate_ownership_updatable), candidates.list.component + assign-to-recruiter-modal (CANDIDATES.BULK_ACTIONS.ASSIGN_TO_RECRUITER, withheld under scope:all_sub_accounts), DASHBOARD.SUB_ACCOUNTS; api app/models/user.rb, app/models/recruiter.rb (send_welcome email: subject, username/password, explainer_video_link, user_guide_link, new_recruiters_security_statement), app/models/role.rb, app/models/hiring_firm.rb (seq_id per parent), lib/tasks/users.rake (disable_inactive: non-root, last_connected_at > 1 month → is_locked), app/controllers/api/v3/candidates/bulk_controller.rb (bulk_assign_to_recruiter), app/controllers/api/v3/documents/csv_controller.rb (recruiters export fields first_name last_name email is_active), app/controllers/concerns/authorization.rb (inactive user or recruiter → 401, token revoked) + User#revoke_all_tokens! / Recruiter#revoke_session_tokens! after deactivation (VIT-1347; sibling-firm sessions kept), app/models/user.rb PASSWORD_RESET_KEY_TTL = 1.hour + clear_password_reset_key (single use), app/services/notifications/recipient_resolver.rb (active recruiter + active user only); app.vitay.io projects/configuration shared/components/always-notified-recruiters (recruiter.notifications) */}
