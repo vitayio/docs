@@ -24,8 +24,11 @@ either; use Chrome or Edge instead.
   remember your cookie consent choice. Blocking them can break SSO sign-in, and a browser that
   clears cookies on close shows the consent banner on every visit. See
   [Cookies and consent](/security-it/cookies-and-consent).
-- **Local and session storage** must be available. Vitay uses them to keep your place between page
-  loads.
+- **Local and session storage** let Vitay keep your place between page loads. If a browser blocks
+  them (for example Safari with **Block All Cookies** turned on, or some in-app browsers), Vitay's
+  pages still load and candidates and references can still fill in and submit their forms, but
+  nothing is remembered after a reload. On the forms, entries typed before a reload are lost.
+  Blocking cookies still affects sign-in, as above.
 
 ## For IT teams
 
@@ -60,4 +63,4 @@ either; use Chrome or Edge instead.
   <Card title="SCIM user provisioning" icon="users-gear" href="/security-it/scim-provisioning" />
 </CardGroup>
 
-{/* source: app angular.json (no .browserslistrc: Angular default browser support), src/app/shared/config/cookie-registry.ts, src/app/shared/services/cookie-consent.service.ts, src/app/shared/helpers/utils.helper.ts (localStorage), src/app/shared/services/chunk-recovery.service.ts (sessionStorage) */}
+{/* source: app angular.json (no .browserslistrc: Angular default browser support), src/app/shared/config/cookie-registry.ts, src/app/shared/services/cookie-consent.service.ts, src/app/shared/helpers/utils.helper.ts (localStorage), src/app/shared/services/chunk-recovery.service.ts (sessionStorage), src/app/shared/helpers/safe-storage.helper.ts (blocked storage → in-memory for the visit; app #2245/#2249) */}

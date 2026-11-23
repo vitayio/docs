@@ -4,6 +4,84 @@ description: "Product updates, improvements, and fixes shipped to Vitay."
 ---
 
 <Update
+  label="November 24, 2026"
+  description="Questions for candidates, required relationships, more than one assigned user, a simpler candidate statuses card, and more copied to new sub-accounts"
+  tags={["Feature", "Improvement", "Fix"]}
+  rss={{
+    title: "Questions for candidates, required relationships, more than one assigned user, a simpler candidate statuses card, and more copied to new sub-accounts",
+    description: "Ask candidates your own questions on their reference form, require specific relationships, and assign a candidate to more than one user. New sub-accounts copy much more from the parent, email, page and text wording can be applied to all accounts, and the account switcher has a search box. Remove actions are renamed, Send test fills in merge fields, and Google Authenticator can be switched on again."
+  }}
+>
+  ### New
+
+  - **Ask candidates questions of their own.** Create a question set with the
+    new **Candidate** type, and the candidate answers it on their "Add your
+    references" form before their references are contacted. Pick a default
+    under **Settings → Ref. Requests → Default candidate questions**, or
+    change it (or choose **None**) on each request. Answers show on the
+    candidate's References tab and in the report. See
+    [Ask candidates questions](/candidates-reference-requests/candidate-questions).
+  - **Require specific relationships.** Switch on **Required relationships**
+    on the **Ref. Requests** tab to ask every candidate for, say, one manager
+    and one non-professional reference. You can change the rows on each
+    request, and the candidate's form marks the required references. The
+    switch is off by default. See
+    [Reference request settings](/account-configuration/reference-request-settings#required-relationships).
+  - **More than one assigned user per candidate.** Switch on **Allow multiple
+    assigned users** on the **Configuration** tab, and Add/Edit Candidate and
+    Quick Request get one **Assigned users** field that holds up to 11 users.
+    Everyone listed sees the candidate under **Myself** and gets its
+    notifications; emails are still sent from the first user listed. See
+    [Add a candidate](/candidates-reference-requests/add-a-candidate#assigned-users).
+  - **Apply email, page and text wording to all accounts.** Once you save a
+    card on the **Emails**, **Pages** or **Texts** tab, it offers the same
+    **Apply to all accounts** link as your other settings, so a parent account
+    can roll its wording out to every sub-account. See
+    [Customize emails, text messages, and pages](/account-configuration/email-text-and-page-templates#copy-a-template-to-your-other-accounts).
+
+  ### Improved
+
+  - **New sub-accounts start with much more from the parent.** With **Copy the
+    parent account's settings** ticked, a new sub-account now also gets the
+    parent's features and plugins, lead generation, branding and logo, email,
+    page and text wording, relationships and jobs. A second box copies the
+    parent's question sets too. See
+    [Manage users](/account-configuration/manage-users#what-a-new-sub-account-copies).
+  - **Candidate statuses in one card.** The **Candidate statuses** card on the
+    **Configuration** tab has its on/off switch in the header, plus
+    **Mandatory comment** (no status change without a comment) and
+    **Automatic Unresponsive status**. See
+    [Candidate statuses and comments](/candidates-reference-requests/candidate-statuses-and-comments#candidate-statuses-settings).
+  - **Search your accounts.** The account switcher scrolls, and with 8 or more
+    accounts it has a **Search accounts** box. See
+    [Switch between firms](/getting-started/switch-firms).
+  - **Remove actions say what they do.** **Move to bin** (restorable from the
+    Recycle Bin), **Remove** for a reference, **Erase data** (permanent), and
+    **Restore** / **Delete forever** in the Recycle Bin. See
+    [Recycle Bin](/candidates-reference-requests/recycle-bin).
+  - **Send test fills in merge fields.** Test emails and texts show sample
+    values, such as your name, your brand name and your default number of
+    references, instead of raw `{{variables}}`. See
+    [Customize emails, text messages, and pages](/account-configuration/email-text-and-page-templates#what-a-test-fills-in).
+  - **IP conflict banner has its own setting.** The switch moved to the
+    **Documents** tab and no longer depends on emailing PDF reports. See
+    [Report settings](/account-configuration/report-settings#ip-conflict-banner).
+  - **Faster candidate CSV uploads**, especially for files with 50 or more
+    candidates.
+
+  ### Fixed
+
+  - **Google Authenticator can be switched on again.** On **My account →
+    Security**, the **Multi-factor Google authentication** switch could not be
+    turned on while it was off. See
+    [Multi-factor authentication & login options](/getting-started/mfa-and-login-options).
+  - **Reference forms work when the browser blocks cookies.** Safari with
+    "Block All Cookies" and some in-app browsers no longer stop candidates and
+    references from filling in their form. See
+    [Browser support](/security-it/browser-support).
+</Update>
+
+<Update
   label="November 3, 2026"
   description="Usage notifications on for new accounts, supervisors can duplicate question sets again, and the cookie banner stops reappearing in the Bullhorn tab"
   tags={["Improvement", "Fix"]}

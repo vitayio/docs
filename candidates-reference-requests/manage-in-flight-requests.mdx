@@ -7,7 +7,7 @@ After you send a reference request you can remind the candidate, remind a single
 
 <Note>
   You can manage requests on any candidate you can open. Editing a reference
-  is limited to the candidate's assigned recruiter, the recruiter who
+  is limited to the candidate's assigned users, the recruiter who
   requested the reference, and root recruiters.
 </Note>
 
@@ -100,7 +100,7 @@ be read.
     question set is locked once the form has been filled in.
   </Accordion>
   <Accordion title="There's no pencil on the reference">
-    Only the candidate's assigned recruiter, the recruiter who requested the
+    Only the candidate's assigned users, the recruiter who requested the
     reference, and root recruiters can edit it. It's also hidden on candidates
     from a different sub-account than the one you're viewing.
   </Accordion>
@@ -122,4 +122,4 @@ be read.
   <Card title="Read a completed reference" icon="clipboard-check" href="/candidates-reference-requests/read-a-completed-reference" />
 </CardGroup>
 
-{/* source: app projects/references/src/app/protected/candidates/show/alerts/candidates.show.alerts.component.{html,ts}; projects/references/src/app/protected/candidates/show/references/candidates.show.references.component.{html,ts}; src/app/shared/components/table/table.component.html (reminder states); projects/references/src/app/shared/components/sidebar/reference/question-set/sidebar.reference.question-set.component.{html,ts} (isEditable, isQSEditable); projects/references/src/assets/i18n/en.json (CANDIDATES.REQUEST_SENT, BUTTONS.REMINDERS, REQUESTS.CONFIRM, TOASTS.REQUEST_DISABLED); api app/controllers/api/v1/reference_requests_controller.rb (#send_reminder, #destroy); app/controllers/api/v1/references_controller.rb#update (reset_reminders); app/models/reference_request.rb#add_reminder; app/models/email_reminder.rb (inactive requests skipped) */}
+{/* source: app projects/references/src/app/protected/candidates/show/alerts/candidates.show.alerts.component.{html,ts}; projects/references/src/app/protected/candidates/show/references/candidates.show.references.component.{html,ts}; src/app/shared/components/table/table.component.html (reminder states); projects/references/src/app/shared/components/sidebar/reference/question-set/sidebar.reference.question-set.component.{html,ts} (isEditable incl. additional assignees, isQSEditable); projects/references/src/assets/i18n/en.json (CANDIDATES.REQUEST_SENT, BUTTONS.REMINDERS, REQUESTS.CONFIRM, TOASTS.REQUEST_DISABLED); api app/controllers/api/v1/reference_requests_controller.rb (#send_reminder, #destroy); app/controllers/api/v1/references_controller.rb#update (reset_reminders); app/models/reference_request.rb#add_reminder; app/models/email_reminder.rb (inactive requests skipped) */}

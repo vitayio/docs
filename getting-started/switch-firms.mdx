@@ -21,11 +21,17 @@ main app and in Configuration.
     logo and name. Hover it to see a long name in full. Click it to open the **Switch account**
     menu.
 
-    ![The top-bar company pill opened to show the Switch account menu, with the current firm ticked](/images/screens/switch-firms-menu.png)
+    ![SCREENSHOT(switch-firms-menu): The top-bar company pill opened to show the Switch account menu, with the Search accounts box and the current firm ticked](/images/placeholder.png)
   </Step>
-  <Step title="Choose a firm">
+  <Step title="Find the firm">
     The menu lists every firm you can work in, alphabetically, with a tick next to the current one.
-    Click the firm you want. Vitay reloads the data for that firm; you don't need to sign in again.
+    A long list scrolls inside the menu. With 8 or more firms, a **Search accounts** box sits at the
+    top of the menu, ready to type in: enter part of a name to filter the list (capitals and accents
+    don't matter).
+  </Step>
+  <Step title="Choose it">
+    Click the firm you want. Vitay loads that firm's data and settings, and the pill shows the new
+    firm once the switch is done. You don't need to sign in again.
   </Step>
 </Steps>
 
@@ -67,12 +73,16 @@ are disabled until you switch to the branch named in the banner.
     [Manage users](/account-configuration/manage-users).
   </Accordion>
   <Accordion title="A firm I expect is missing from the list">
-    You need an active user on that firm, or root recruiter access over its parent. Ask a root
-    recruiter to check that your user on that firm is active.
+    If the menu has a **Search accounts** box, clear it: the list only shows names that match what
+    you typed, and **No accounts match your search** means none do. Otherwise, you need an active
+    user on that firm, or root recruiter access over its parent. Ask a root recruiter to check that
+    your user on that firm is active.
   </Accordion>
   <Accordion title="I got a 'Company switch failed' message">
     The switch didn't complete and you're still in the original firm. Try again. If it keeps
     failing, sign out and back in, then contact [hello@vitay.io](mailto:hello@vitay.io).
+    If the page reloads on its own instead, the switch went through but the firm's data didn't
+    load at first. The reloaded page opens in the new firm.
   </Accordion>
   <Accordion title="A candidate I know exists isn't in the list">
     They probably belong to another branch. Switch to it, or find them with the top-bar search and
@@ -92,4 +102,4 @@ are disabled until you switch to the branch named in the banner.
   <Card title="Firm configuration" icon="sliders" href="/account-configuration/firm-configuration" />
 </CardGroup>
 
-{/* source: app projects/references/src/app/shared/components/topbar/topbar.component.{html,ts} + projects/configuration/src/app/shared/components/topbar/topbar.component.html (company-switcher, TOPBAR.ACCOUNTS.SWITCH, TOASTS.COMPANY_SWITCH_FAILED), projects/references/src/app/protected/candidates/show/{alerts,header}, candidates.show.component.html (isFromDifferentBranch), projects/references/src/assets/i18n/en.json (CANDIDATE.DIFFERENT_BRANCH, COMMON.DEFAULT_BRANCH); api app/controllers/api/v3/users/hiring_firms_controller.rb, app/controllers/api/v3/oauth_controller.rb (create_refresh), app/controllers/api/v3/documents/csv_controller.rb */}
+{/* source: app src/app/shared/components/account-switcher/account-switcher.component.{html,ts} (SEARCH_FROM = 8, TOPBAR.ACCOUNTS.SEARCH / NO_MATCH), src/app/shared/services/account-switch.service.ts (refresh token → load account + settings; reload on partial failure); projects/references/src/app/shared/components/topbar/topbar.component.{html,ts} + projects/configuration/src/app/shared/components/topbar/topbar.component.html (TOPBAR.ACCOUNTS.SWITCH, TOASTS.COMPANY_SWITCH_FAILED), projects/references/src/app/protected/candidates/show/{alerts,header}, candidates.show.component.html (isFromDifferentBranch), projects/references/src/assets/i18n/en.json (CANDIDATE.DIFFERENT_BRANCH, COMMON.DEFAULT_BRANCH); api app/controllers/api/v3/users/hiring_firms_controller.rb, app/controllers/api/v3/oauth_controller.rb (create_refresh), app/controllers/api/v3/documents/csv_controller.rb */}

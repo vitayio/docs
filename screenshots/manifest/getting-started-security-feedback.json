@@ -74,17 +74,17 @@
   {
     "id": "switch-firms-menu",
     "article": "getting-started/switch-firms",
-    "alt": "The top-bar company pill opened to show the Switch account menu, with the current firm ticked",
+    "alt": "The top-bar company pill opened to show the Switch account menu, with the Search accounts box and the current firm ticked",
     "app": "references",
     "as": "root",
     "path": "/dashboard",
-    "needs": "user with access to 2+ firms (parent root recruiter with sub-accounts)",
+    "needs": "user with access to 8+ firms (parent root with sub-accounts) so the Search accounts box shows",
     "steps": [
       {
         "click": ".company-switcher button.nav-link"
       },
       {
-        "waitFor": ".company-menu"
+        "waitFor": "app-account-switcher"
       }
     ],
     "capture": {
@@ -401,5 +401,23 @@
       "width": 1680,
       "height": 900
     }
+  },
+  {
+    "id": "mfa-and-login-options-authenticator-qr",
+    "article": "getting-started/mfa-and-login-options",
+    "alt": "The Multi-factor Google authentication card switched on, with the QR code below it",
+    "app": "references",
+    "as": "recruiter",
+    "path": "/account/security",
+    "needs": "Multi-factor Google authentication switched on for the recruiter so the QR code shows; firm does not force MFA. Switch it off again afterwards",
+    "steps": [
+      {
+        "waitFor": "app-account-security img[width=\"200\"]"
+      }
+    ],
+    "capture": {
+      "selector": "app-account"
+    },
+    "confidence": "low"
   }
 ]

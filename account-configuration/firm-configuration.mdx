@@ -1,6 +1,6 @@
 ---
 title: "Firm configuration and security settings"
-description: "Set idle timeouts, password expiry, inactive-account locking, the team banner, list defaults, phone validation and other firm-wide behaviour from the Configuration tab."
+description: "Set idle timeouts, password expiry, inactive-account locking, the team banner, list defaults, assigned users, candidate statuses, phone validation and other firm-wide behaviour from the Configuration tab."
 ---
 
 The **Configuration** tab holds firm-wide settings: session and password rules, what your team sees by default, which candidate details are mandatory, and how account emails are addressed. The security settings come first, for IT reviewers.
@@ -46,7 +46,20 @@ Multi-factor authentication is turned on per user, not on this tab (see [MFA and
 | **Default rating scale** | Whether rating questions use a **5** or **10** point scale. Applies to reference forms opened after the change. | 5 |
 | **Display Everyone / Myself toggle** | Lets every recruiter switch list pages between **Everyone** and **Myself**. When off, recruiters see only their own candidates; root recruiters and supervisors still see everyone's. | Off |
 | **Allow users to update the assigned user** | Shows the assigned recruiter field in the candidate form to every user. When off, only root recruiters can reassign a candidate. | Off |
-| **Status change comment prompt** | Opens a **Change candidate status** dialog with an optional comment whenever someone changes a candidate's status. The comment is added to the candidate's comments. | Off |
+| **Allow multiple assigned users** | Lets a candidate have up to 11 assigned users. Each of them sees the candidate under **Myself** and receives its team notifications. Emails to candidates and references are still sent from the first user listed. See [Add a candidate](/candidates-reference-requests/add-a-candidate#assigned-users). | Off |
+| **Candidate statuses** | The switch in the card header turns candidate statuses on or off. Off hides statuses; existing statuses are kept. See below. | On |
+
+### Candidate statuses card
+
+While **Candidate statuses** is on, the card has three more switches. While it's off, only the card header shows, and these switches keep their values for when you turn statuses back on.
+
+| Switch | What it does | Default |
+|---|---|---|
+| **Status change comment** | Opens a **Change candidate status** dialog with a comment box whenever someone changes a candidate's status. The comment is added to the candidate's comments. Bulk status updates never ask. | Off |
+| **Mandatory comment** | The status can't be changed without a comment. Greyed out until **Status change comment** is on. | Off |
+| **Automatic Unresponsive status** | Moves a candidate from **Process initiated** to **Unresponsive** when their reference request goes unanswered, and back once it's answered. | On |
+
+See [Candidate statuses and comments](/candidates-reference-requests/candidate-statuses-and-comments).
 
 ## Contact details and data quality
 
@@ -93,4 +106,4 @@ Reference contact settings (**Reference email required**, work and mobile phone 
   <Card title="Candidate statuses and comments" icon="comment" href="/candidates-reference-requests/candidate-statuses-and-comments" />
 </CardGroup>
 
-{/* source: app projects/configuration protected/settings/configuration/settings.configuration.component.{ts,html}; src/app/shared/services/idle.service.ts; src/app/shared/components/modals/candidates/modals.candidates.component.html; api db/schema.rb (settings defaults), app/models/setting.rb, app/models/user.rb (mfa_method, firm_requires_mfa?), app/models/concerns/has_secure_tokens.rb, lib/tasks/users.rake + config/schedule.rb, app/controllers/api/v3/oauth_controller.rb, app/controllers/api/v3/candidates_controller.rb, app/models/candidate.rb + reference.rb + employer.rb (phone lookup), app/models/recruiter.rb (welcome email) */}
+{/* source: app projects/configuration protected/settings/configuration/settings.configuration.component.{ts,html} (candidate_statuses card, is_multiple_assigned_users_enabled); src/app/shared/helpers/candidate-status-settings.helper.ts; src/app/shared/components/assigned-users-input; src/app/shared/services/idle.service.ts; src/app/shared/components/modals/candidates/modals.candidates.component.html; api db/schema.rb (settings defaults), app/models/setting.rb, app/models/user.rb (mfa_method, firm_requires_mfa?), app/models/concerns/has_secure_tokens.rb, lib/tasks/users.rake + config/schedule.rb, app/controllers/api/v3/oauth_controller.rb, app/controllers/api/v3/candidates_controller.rb, app/models/candidate.rb + reference.rb + employer.rb (phone lookup), app/models/recruiter.rb (welcome email), app/models/candidate_additional_assignee.rb, app/workers/unresponsive_notification_worker.rb (auto_flip_candidates) */}

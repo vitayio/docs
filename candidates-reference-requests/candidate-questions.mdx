@@ -1,0 +1,93 @@
+---
+title: "Ask candidates questions"
+description: "Add a Candidate question set to a reference request so the candidate answers your questions before submitting their references, and read their answers on the candidate page."
+---
+
+A **Candidate** question set lets you ask the candidate a few questions of their own, for example their notice period or why they're leaving, on the same form where they list their references. The candidate must answer them before they can submit.
+
+<Note>
+  You need the root recruiter or supervisor recruiter role to create a
+  question set, and the root recruiter role to choose the firm default. Any
+  recruiter who can send a reference request can pick a different set or
+  **None** on that request.
+</Note>
+
+<Steps>
+  <Step title="Create a Candidate question set">
+    Go to **Question sets**, click the **+** button and set the **Type** to
+    **Candidate**. Name the set, click **Submit**, then open it and add
+    questions the same way as for a reference question set. Every question
+    type is available. See
+    [Question sets and templates](/account-configuration/question-sets-and-templates).
+
+    To find your Candidate sets later, pick **Candidates** in the filter at the
+    top of the **Question sets** list.
+  </Step>
+  <Step title="Choose a default (optional)">
+    In the Configuration area, go to **Settings** → **Ref. Requests** and pick
+    the set in **Default candidate questions**. It's then added to every new
+    reference request, including requests sent in bulk, from a CSV import or
+    from an ATS integration. Leave it on **None** to add candidate questions
+    only when a recruiter picks them. See
+    [Reference request settings](/account-configuration/reference-request-settings#default-candidate-questions).
+  </Step>
+  <Step title="Send the reference request">
+    On the **Reference Request** form, or the **Reference** tab of **Quick
+    Request**, check **Candidate questions**. Your firm's default is
+    pre-selected. Pick another Candidate set, or **None** to send the request
+    without candidate questions. See
+    [Send a reference request](/candidates-reference-requests/send-a-reference-request).
+
+    ![SCREENSHOT(candidate-questions-request-picker): The Reference Request form with the Candidate questions dropdown and its hint, The candidate answers these questions before submitting their references.](/images/placeholder.png)
+  </Step>
+  <Step title="Read the answers">
+    Once the candidate submits, open the candidate and go to the
+    **References** tab. A **Candidate answers** card, named after the question
+    set and dated, sits above the references. Click its title to collapse or
+    expand it. The candidate report PDF also has a **Candidate answers**
+    section.
+
+    ![SCREENSHOT(candidate-questions-answers-card): The References tab of a candidate page with the Candidate answers card expanded above the references](/images/placeholder.png)
+  </Step>
+</Steps>
+
+## What the candidate sees
+
+The questions appear at the top of the reference request form under **A few questions for you**, above **Your references**. Every question must be answered, plus its comment where you made the comment required. Until then the form lists the missing answers and won't submit. Once the candidate submits, their answers can't be changed.
+
+The candidate sees the questions in the language of their form. If the set has no questions in that language, they see the request's language instead.
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="The Candidate questions field isn't on the request form">
+    It only appears when your account has an active Candidate question set
+    with questions in the request's language. Create a set, or add questions in
+    that language. On **Quick Request**, it's only on the **Reference** tab.
+  </Accordion>
+  <Accordion title="Default candidate questions is greyed out in Settings">
+    Your account has no Candidate question set yet. Create one first.
+  </Accordion>
+  <Accordion title="I don't see my Candidate set in the Question Set dropdown">
+    A Candidate set is never the request's main **Question Set**; references
+    don't answer it. Pick it under **Candidate questions** instead. Candidate
+    sets also aren't offered when you import candidates from a CSV file; the
+    firm default is added to those requests automatically.
+  </Accordion>
+  <Accordion title="There's no Candidate answers card on the candidate">
+    The card appears once the candidate has submitted a request that had
+    candidate questions. If the request was sent with **None**, or the
+    candidate hasn't submitted yet, there's nothing to show.
+  </Accordion>
+</AccordionGroup>
+
+## Related articles
+
+<CardGroup cols={2}>
+  <Card title="Send a reference request" icon="paper-plane" href="/candidates-reference-requests/send-a-reference-request" />
+  <Card title="Question sets and templates" icon="list-check" href="/account-configuration/question-sets-and-templates" />
+  <Card title="Reference request settings" icon="sliders" href="/account-configuration/reference-request-settings" />
+  <Card title="Collect documents from candidates" icon="file-arrow-up" href="/candidates-reference-requests/candidate-documents" />
+</CardGroup>
+
+{/* source: app src/app/shared/components/modals/question-sets/modals.question-sets.component.{html,ts} (Candidate type, CANDIDATE_TYPE_HINT); projects/references protected/question-sets/list (QUESTION_SETS.LIST.FILTERS.CANDIDATES); projects/configuration protected/settings/requests/settings.requests.component.html (DEFAULT_CANDIDATE_QUESTION_SET); src/app/shared/components/modals/reference-requests/*, projects/references shared/components/modals/quick-request/* (MODALS.QUICK_REQUEST.CANDIDATE_QUESTIONS*); src/app/shared/helpers/candidate-question-sets.helper.ts; projects/references protected/candidates/show/references/candidates.show.references.component.html (CANDIDATES.SHOW.REFERENCES.CANDIDATE_ANSWERS); public form app-candidate-questions (REFERENCE_REQUESTS.CANDIDATE_QUESTIONS.*); api app/models/reference_request.rb (assign_default_candidate_question_set, candidate_question_set validations), app/controllers/api/v1/reference_requests_controller.rb (public_show, public_create candidate_answers 422), _candidate_answers.erb (default candidate report); VIT-915 api #2819, app #2231 */}

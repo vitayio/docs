@@ -5,6 +5,8 @@ description: "Create and manage the question sets that references answer, and us
 
 A question set is the list of questions a reference answers. You can keep several, for example one for executive roles and one for entry-level roles, and pick one when you send a reference request.
 
+A **Candidate** question set works the other way round: the candidate answers it on their reference request form, before they submit their references. See [Ask candidates questions](/candidates-reference-requests/candidate-questions).
+
 <Note>
   You need the root recruiter or supervisor recruiter role to create, edit or delete question sets. Other recruiters can pick from existing sets.
 </Note>
@@ -24,7 +26,7 @@ A question set is the list of questions a reference answers. You can keep severa
     Type a name in **Label**, for example "Standard Reference Check". Recruiters pick sets by this name. To start from one of Vitay's sets instead, see [Use question set templates](#use-question-set-templates).
   </Step>
   <Step title="Choose the type">
-    If a feedback or pre-screening plugin is on, pick the **Type**: **Reference**, **Feedback** or **Pre-screening**. The type decides where the set can be used; a Feedback set is never offered for a reference request.
+    Pick the **Type**: **Reference** (the default) or **Candidate**, plus **Feedback** or **Pre-screening** when those plugins are on. The type decides where the set can be used. A **Reference** set is what references answer. A **Candidate** set is offered under **Candidate questions** when you send a reference request, and its firm-wide default is chosen in **Default candidate questions** on the **Ref. Requests** tab in Settings, not with the star. A Feedback set is never offered for a reference request.
   </Step>
   <Step title="Choose a language">
     If your account has the Multi-languages plugin, pick the **Language**.
@@ -132,6 +134,9 @@ Question groups are labels such as "Leadership" or "Technical skills" that group
   <Accordion title="I want different question sets for different relationship types">
     You can give each relationship type its own question set on the **Relationships** tab in Settings. See [Relationships and jobs](/account-configuration/relationships-and-jobs).
   </Accordion>
+  <Accordion title="My Candidate question set isn't offered on a reference request">
+    A Candidate set is only offered under **Candidate questions** when it has questions in the request's language. Open the set and add questions in that language. Candidate sets are never offered as the request's **Question Set**, and they aren't listed when you import candidates from a CSV file.
+  </Accordion>
 </AccordionGroup>
 
 ## Related articles
@@ -143,4 +148,4 @@ Question groups are labels such as "Leadership" or "Technical skills" that group
   <Card title="Read a completed reference" icon="clipboard-check" href="/candidates-reference-requests/read-a-completed-reference" />
 </CardGroup>
 
-{/* source: app projects/references protected/question-sets/{list,show}/*, shared/components/navbar/navbar.component.ts, assets/i18n/en.json (QUESTION_SETS.*, PLACEHOLDERS.QUESTION_SETS.USE); src/app/shared/components/modals/{question-sets,questions}/*; src/app/shared/enums/question.enum.ts; api app/controllers/api/v1/question_sets_controller.rb (duplicate), app/models/question_set.rb, app/models/reference.rb#score */}
+{/* source: app projects/references protected/question-sets/{list,show}/*, shared/components/navbar/navbar.component.ts, assets/i18n/en.json (QUESTION_SETS.*, PLACEHOLDERS.QUESTION_SETS.USE); src/app/shared/components/modals/{question-sets,questions}/*; src/app/shared/enums/question.enum.ts, src/app/shared/helpers/candidate-question-sets.helper.ts (Candidate type, VIT-915); api app/controllers/api/v1/question_sets_controller.rb (duplicate), app/models/question_set.rb, app/models/reference.rb#score */}
