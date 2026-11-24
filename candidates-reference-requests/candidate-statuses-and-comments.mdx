@@ -1,14 +1,14 @@
 ---
 title: "Candidate statuses and comments"
-description: "What each candidate status means, how reference statuses differ, changing status one at a time or in bulk, the automatic Unresponsive flip, and leaving comments on candidates and references."
+description: "What each candidate status means, how reference statuses differ, changing status one at a time or in bulk, the Candidate statuses settings, the automatic Unresponsive flip, and leaving comments on candidates and references."
 ---
 
 Each candidate has a status that you set to track where they are in your process. Vitay also shows a reference status for each reference, worked out from that reference's form. Comments let your team leave internal notes on a candidate or a reference.
 
 <Note>
   Any recruiter can change the status of a candidate they can see, and can
-  comment. Turning the status change comment prompt on or off needs a root
-  recruiter.
+  comment. Changing the **Candidate statuses** settings needs an
+  Admin.
 </Note>
 
 ## The candidate statuses
@@ -29,6 +29,8 @@ The status appears as a coloured button at the top of the candidate page and as 
 
 The list is fixed and can't be renamed or extended. Apart from the automatic Unresponsive flip, the statuses are labels for your team: changing one never sends an email, stops reminders, or changes a reference request.
 
+If your firm doesn't use candidate statuses, an Admin can turn them off (see [Candidate statuses settings](#candidate-statuses-settings)). The status button, the status column, the candidate status filters and the bulk **Update status** action then disappear. Reference statuses stay.
+
 ## Change one candidate's status
 
 <Steps>
@@ -39,12 +41,15 @@ The list is fixed and can't be renamed or extended. Apart from the automatic Unr
     Click the coloured button in the header that shows the current status.
   </Step>
   <Step title="Pick the new status">
-    Select it. If the comment prompt is off for your firm, the change saves
-    right away.
+    Select it. If **Status Change Comment** is off for your firm, the change
+    saves right away.
   </Step>
   <Step title="Add a reason (when prompted)">
-    With the prompt on, the **Change Candidate Status** dialog opens. Type in
-    **Add a comment (optional)** or leave it blank, then confirm.
+    With **Status Change Comment** on, the **Change Candidate Status** dialog
+    opens. Type in **Add a comment (optional)** or leave it blank, then click
+    **Submit**. When your firm has also turned on **Mandatory Comment**, the
+    field is labelled **Add a comment** and **Submit** stays disabled until you
+    type something.
   </Step>
 </Steps>
 
@@ -52,9 +57,29 @@ The list is fixed and can't be renamed or extended. Apart from the automatic Unr
 
 If you type a comment, Vitay posts it to the candidate's **Comments** tab as `Status changed from "Process initiated" to "Interviewed": <your text>`. A blank comment changes the status without posting anything.
 
-### The comment prompt setting
+## Candidate statuses settings
 
-A root recruiter turns the prompt on in the Configuration area: **Settings** → **Configuration** tab → **Status Change Comment Prompt**. With it off, statuses change in one click and no comment is created.
+An Admin manages statuses in the Configuration area: **Settings** → **Configuration** tab → **Candidate statuses** card.
+
+<Steps>
+  <Step title="Turn statuses on or off">
+    Use the switch in the card header. It's on by default. Turning it off
+    hides statuses for your whole team; the status each candidate had is kept
+    and comes back if you turn statuses on again.
+  </Step>
+  <Step title="Choose the options (while statuses are on)">
+    | Switch | What it does | Default |
+    |---|---|---|
+    | **Status Change Comment** | Asks for a comment whenever someone changes a candidate's status. | Off |
+    | **Mandatory Comment** | Makes that comment required. Greyed out until **Status Change Comment** is on. | Off |
+    | **Automatic Unresponsive Status** | Turns the [automatic Unresponsive flip](#the-automatic-unresponsive-flip) on or off. | On |
+
+    While statuses are off, only the card header shows. These switches keep
+    their values.
+  </Step>
+</Steps>
+
+![SCREENSHOT(candidate-statuses-and-comments-settings-card): The Candidate statuses card on the Configuration tab with the header switch on and the Status Change Comment, Mandatory Comment and Automatic Unresponsive Status switches below](/images/placeholder.png)
 
 ## Change status in bulk
 
@@ -64,14 +89,15 @@ A root recruiter turns the prompt on in the Configuration area: **Settings** →
     bar appears.
   </Step>
   <Step title="Click Update status">
-    Pick one of the nine statuses.
+    Pick one of the nine statuses. The action isn't offered while candidate
+    statuses are turned off.
   </Step>
   <Step title="Confirm">
     Every selected candidate moves to that status.
   </Step>
 </Steps>
 
-The bulk action never asks for a comment, even when the prompt is on. See [Bulk candidate actions](/candidates-reference-requests/bulk-candidate-actions) for the other bulk operations.
+The bulk action never asks for a comment, even when **Status Change Comment** or **Mandatory Comment** is on. See [Bulk candidate actions](/candidates-reference-requests/bulk-candidate-actions) for the other bulk operations.
 
 ## Reference statuses
 
@@ -95,13 +121,13 @@ On the **Candidates** list, the filters include a **Reference status** group, wh
 
 ## The automatic Unresponsive flip
 
-Once a day, Vitay moves references and reference requests in and out of **Unresponsive**.
+Once a day, Vitay moves references and reference requests in and out of **Unresponsive**. This part always runs.
 
 A reference or reference request becomes unresponsive when it hasn't been submitted, at least one reminder has been sent, the last reminder went out more than 24 hours ago, and no further reminder is scheduled. It stops being unresponsive when the form is submitted or a new reminder is scheduled.
 
-The candidate's own status follows the reference request only. A candidate on **Process initiated** whose reference request is unresponsive flips to **Unresponsive**, and flips back to **Process initiated** when the request is no longer unresponsive. An unresponsive reference shows on the reference and in the filter but never changes the candidate's status. Candidates on any status other than **Process initiated** or **Unresponsive** are left alone.
+The candidate's own status follows the reference request only. A candidate on **Process initiated** whose reference request is unresponsive flips to **Unresponsive**, and flips back to **Process initiated** when the request is no longer unresponsive. An unresponsive reference shows on the reference and in the filter but never changes the candidate's status. Candidates on any status other than **Process initiated** or **Unresponsive** are left alone. When your firm turns off **Automatic Unresponsive Status** (or turns statuses off), candidates are never moved; references and reference requests still are, and the notification below still goes out.
 
-Vitay can also email your team the first time a record turns unresponsive. Choose who on the **Reference or request unresponsive** row of **Team notifications** under **Settings → Notifications** (the assigned recruiter, for new accounts). It's sent once per record, and skipped if the last reminder went out more than two days ago. See [Notification settings](/account-configuration/notification-settings).
+Vitay can also email your team the first time a record turns unresponsive. Choose who on the **Reference or request unresponsive** row of **Team notifications** under **Settings → Notifications** (the assigned user, for new accounts). It's sent once per record, and skipped if the last reminder went out more than two days ago. See [Notification settings](/account-configuration/notification-settings).
 
 ## Comments
 
@@ -132,11 +158,17 @@ Adding, editing and deleting comments are all recorded in the [Activities log](/
   <Accordion title="A candidate keeps going back to Unresponsive">
     Their reference request is still unanswered, its last reminder is over 24
     hours old, and nothing else is scheduled. Send a reminder, or move the
-    candidate to a status other than **Process initiated**.
+    candidate to a status other than **Process initiated**. An Admin
+    can stop these moves by turning off **Automatic Unresponsive Status**.
   </Accordion>
   <Accordion title="I wasn't asked for a comment when I changed a status">
-    Either **Status Change Comment Prompt** is off for your firm, or you used
+    Either **Status Change Comment** is off for your firm, or you used
     the bulk **Update status** action, which never prompts.
+  </Accordion>
+  <Accordion title="The status button and status column are gone">
+    An Admin has turned off **Candidate statuses** on the
+    **Configuration** tab. Candidates keep their statuses, and they show
+    again once it's turned back on.
   </Accordion>
   <Accordion title="I can't edit a colleague's comment">
     Only the author can edit or delete a comment. Add your own comment
@@ -163,4 +195,4 @@ Adding, editing and deleting comments are all recorded in the [Activities log](/
   <Card title="Fraud signals: IP conflicts and reference edits" icon="fingerprint" href="/candidates-reference-requests/ip-conflicts-and-reference-edits" />
 </CardGroup>
 
-{/* source: app src/app/shared/helpers/{candidate,reference}.helper.ts; projects/references protected/candidates/show/header/candidates.show.header.component.html, shared/components/sidebar/candidate/{sidebar.candidate.component.ts,comments/}, sidebar/reference/sidebar.reference.component.ts, assets/i18n/en.json STATUSES.* MODALS.STATUS_CHANGE_COMMENT COMMENTS.*; projects/configuration protected/settings/configuration (is_status_change_comment_prompt_enabled), i18n TEAM_NOTIFICATIONS.ROWS.UNRESPONSIVE; api app/models/concerns/can_be_unresponsive.rb, app/workers/unresponsive_notification_worker.rb, app/controllers/api/v3/comments_controller.rb */}
+{/* source: app src/app/shared/helpers/{candidate,reference}.helper.ts; projects/references protected/candidates/show/header/candidates.show.header.component.html, shared/components/sidebar/candidate/{sidebar.candidate.component.ts,comments/}, sidebar/reference/sidebar.reference.component.ts, assets/i18n/en.json STATUSES.* MODALS.STATUS_CHANGE_COMMENT COMMENTS.*; src/app/shared/helpers/candidate-status-settings.helper.ts; projects/configuration protected/settings/configuration (candidate_statuses card: is_candidate_status_enabled, is_status_change_comment_prompt_enabled, is_status_change_comment_required, is_candidate_auto_unresponsive_enabled), i18n TEAM_NOTIFICATIONS.ROWS.UNRESPONSIVE; api app/models/concerns/can_be_unresponsive.rb, app/workers/unresponsive_notification_worker.rb (auto_flip_candidates), app/models/setting.rb (defaults), app/controllers/api/v3/comments_controller.rb */}

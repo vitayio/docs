@@ -425,7 +425,7 @@
   {
     "id": "reference-request-settings-tab",
     "article": "account-configuration/reference-request-settings",
-    "alt": "The Ref. Requests tab with the Preview the reference request form card, the Default question set and Number of references dropdowns, and the first switch cards",
+    "alt": "The Ref. Requests tab with the Preview the reference request form card, the Default question set, Default candidate questions and Number of references dropdowns, and the Required relationships card",
     "app": "configuration",
     "as": "root",
     "path": "/settings/requests",
@@ -533,7 +533,7 @@
   {
     "id": "report-settings-documents-tab",
     "article": "account-configuration/report-settings",
-    "alt": "The Documents tab with the Watermark, Show Reference Edits On Reports and Hide personal data cards",
+    "alt": "The Documents tab with the Watermark, Show Reference Edits On Reports, IP Conflict Banner and Hide personal data cards",
     "app": "configuration",
     "as": "root",
     "path": "/settings/documents",
@@ -664,5 +664,62 @@
       "selector": ".modal-content"
     },
     "confidence": "low"
+  },
+  {
+    "id": "email-text-and-page-templates-apply-to-accounts",
+    "article": "account-configuration/email-text-and-page-templates",
+    "alt": "An email card on the Emails tab with the Apply to all accounts link under its description",
+    "app": "configuration",
+    "as": "root",
+    "path": "/settings/emails",
+    "needs": "Parent account with sub-accounts; the Reference requests email saved once in this session (the link only shows after a save)",
+    "steps": [
+      {
+        "waitFor": "div.card#request app-apply-to-accounts-button"
+      }
+    ],
+    "capture": {
+      "selector": "div.card#request"
+    },
+    "confidence": "low"
+  },
+  {
+    "id": "manage-users-add-sub-account",
+    "article": "account-configuration/manage-users",
+    "alt": "The Add sub account form with the Name field, the two copy checkboxes ticked and the Email field",
+    "app": "configuration",
+    "as": "root",
+    "path": "/users",
+    "needs": "Parent account (sub-accounts enabled); open the Add sub account form from the + button",
+    "steps": [
+      {
+        "click": "button[tooltip=\"Add sub account\"], button:has(.lnr-plus)"
+      },
+      {
+        "waitFor": ".modal-content #is_copy_parent_question_sets_enabled"
+      }
+    ],
+    "capture": {
+      "selector": ".modal-content"
+    },
+    "confidence": "low"
+  },
+  {
+    "id": "reference-request-settings-required-relationships",
+    "article": "account-configuration/reference-request-settings",
+    "alt": "The Required relationships card switched on, with two rows: one for manager relationships and one for Any non-professional relationship",
+    "app": "configuration",
+    "as": "root",
+    "path": "/settings/requests",
+    "needs": "Required relationships switched on with a manager row and an Any non-professional relationship row",
+    "steps": [
+      {
+        "waitFor": "[appsettinganchor=\"relationship_requirements\"] app-relationship-requirements-editor"
+      }
+    ],
+    "capture": {
+      "selector": "[appsettinganchor=\"relationship_requirements\"]"
+    },
+    "confidence": "medium"
   }
 ]

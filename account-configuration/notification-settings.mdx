@@ -40,6 +40,7 @@ The **Notifications** tab controls the automatic emails Vitay sends about your c
 How recipients work:
 
 - Deactivated team members are skipped.
+- When your firm turns on **Allow multiple assigned users**, the assigned user column covers every active user assigned to the candidate, not only the first one.
 - A person who matches several columns gets one copy.
 - A row with nothing ticked sends no email. There is no separate "always notify" list.
 - Team notifications name the candidate and link to their record, so only add addresses that should see that.
@@ -75,7 +76,7 @@ A candidate in **Process initiated** also moves to **Unresponsive** when one of 
 
 ### IP address conflicts
 
-Vitay only checks for IP conflicts when someone would hear about them: at least one column is ticked on **IP address conflict detected**, or the **IP conflict banner** under [Email options](#email-options) is on. Otherwise no conflicts are recorded. See [IP conflicts and reference edits](/candidates-reference-requests/ip-conflicts-and-reference-edits).
+Vitay only checks for IP conflicts when someone would hear about them: at least one column is ticked on **IP address conflict detected**, or the **IP conflict banner** on the **Documents** tab is on (see [Reference report settings](/account-configuration/report-settings#ip-conflict-banner)). Otherwise no conflicts are recorded. See [IP conflicts and reference edits](/candidates-reference-requests/ip-conflicts-and-reference-edits).
 
 ### Self-reference attempts
 
@@ -100,8 +101,9 @@ Turn on **Restrict to your organization's domains** to accept only addresses who
 | Option | What it does | Default |
 |---|---|---|
 | **Attach the PDF report to completion emails** | Adds the report as a PDF to reference-completed, all-references-completed and feedback-completed emails to your team. | Off |
-| **IP conflict banner** | Shows a banner on reports when the candidate and reference share an IP address, or the candidate tried to add themselves as a reference. Appears only while the PDF option above is on. | Off |
 | **Requested user email** | Sends candidate and reference emails in the name of the recruiter who sent the request, not the assigned recruiter. | Off |
+
+Looking for the **IP conflict banner** switch? It's on the **Documents** tab. See [Reference report settings](/account-configuration/report-settings#ip-conflict-banner).
 
 ## Candidate notifications
 

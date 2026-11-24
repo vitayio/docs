@@ -1,6 +1,6 @@
 ---
 title: "Bulk candidate actions"
-description: "Select several candidates at once to deactivate them, update their status, assign a recruiter, send reminders, or send new requests."
+description: "Select several candidates at once to move them to the Recycle Bin, update their status, assign a recruiter, send reminders, or send new requests."
 ---
 
 Select candidates on the **Candidates** list and apply one action to all of them, for example to close out a filled role or hand a pipeline to a colleague.
@@ -19,7 +19,7 @@ Select candidates on the **Candidates** list and apply one action to all of them
     the whole page. A bar appears at the bottom of the screen showing how many
     are selected. Its **X** clears the selection.
 
-    ![The Candidates list with three rows ticked and the bulk action bar at the bottom of the screen](/images/screens/bulk-candidate-actions-bar.png)
+    ![SCREENSHOT(bulk-candidate-actions-bar): The Candidates list with three rows ticked and the bulk action bar at the bottom of the screen](/images/placeholder.png)
   </Step>
   <Step title="Click an action on the bar">
     Each action opens a dialog where you confirm, or pick a status, recruiter
@@ -32,10 +32,10 @@ Select candidates on the **Candidates** list and apply one action to all of them
 | Action | What it does |
 |---|---|
 | **Send reminder** | Reminds every reference of the selected candidates who hasn't answered yet. |
-| **Update status** | Gives every selected candidate the same status. |
-| **Assign to recruiter** | Makes one recruiter the assigned user for all of them. |
+| **Update status** | Gives every selected candidate the same status. Not shown when your firm has turned candidate statuses off. |
+| **Assign to recruiter** | Makes one recruiter the assigned user for all of them. When your firm allows multiple assigned users, this replaces the first (main) assigned user and keeps the others. |
 | **Send new request** | Sends each candidate a new reference request, or a feedback or pre-screening request when those are on for your firm. |
-| **Deactivate** | Moves the candidates to the Recycle Bin. Their data is kept. |
+| **Move to bin** | Moves the candidates to the Recycle Bin, where you can restore them later. Their data is kept. |
 
 **Send reminder** follows the same limits as a single reminder: references that
 already had 10 reminders, were reminded in the last 12 hours, have reminders
@@ -57,6 +57,11 @@ message tells you how many failed and why.
     It's not offered while you're viewing all sub-accounts at once. Switch to a
     single account and select the candidates there.
   </Accordion>
+  <Accordion title="Update status is missing from the bar">
+    Your firm has turned off **Candidate statuses** in Configuration, so
+    candidates have no status to update. See
+    [Candidate statuses and comments](/candidates-reference-requests/candidate-statuses-and-comments).
+  </Accordion>
   <Accordion title="Send new request doesn't offer feedback or pre-screening">
     Those request types appear only when the plugins are on for your firm. Ask
     a root recruiter, or see [Post-hire feedback](/feedback/post-hire-feedback)
@@ -77,4 +82,4 @@ message tells you how many failed and why.
   <Card title="Add a candidate" icon="user-plus" href="/candidates-reference-requests/add-a-candidate" />
 </CardGroup>
 
-{/* source: app projects/references/src/app/protected/candidates/list/candidates.list.component.{html,ts} (bulkActions, assign withheld under all-sub-accounts), send-new-request-modal.component.{html,ts}, update-status-modal, assign-to-recruiter-modal, deactivate-confirmation-modal; src/app/shared/components/bulk-action-bar; src/app/shared/components/table/table.component.html (selectable); projects/references/src/assets/i18n/en.json (CANDIDATES.BULK_ACTIONS, BULK_ACTIONS, TOASTS.BULK_*); api app/controllers/api/v3/candidates/bulk_controller.rb (current_user_candidate_scope, send_candidate_reminders, bulk_send_new_request) */}
+{/* source: app projects/references/src/app/protected/candidates/list/candidates.list.component.{html,ts} (bulkActions, assign withheld under all-sub-accounts), send-new-request-modal.component.{html,ts}, update-status-modal, assign-to-recruiter-modal, deactivate-confirmation-modal; src/app/shared/components/bulk-action-bar; src/app/shared/components/table/table.component.html (selectable); projects/references/src/assets/i18n/en.json (CANDIDATES.BULK_ACTIONS, BULK_ACTIONS, TOASTS.BULK_*); api app/controllers/api/v3/candidates/bulk_controller.rb (current_user_candidate_scope via Candidate.assigned_to, send_candidate_reminders, bulk_send_new_request) */}

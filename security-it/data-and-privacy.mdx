@@ -50,16 +50,17 @@ period you choose (3 months minimum). Once Vitay enables it, a root recruiter se
 
 ### Single candidates
 
-Deactivating a candidate moves them to the **Recycle Bin**. Nothing is deleted at that point, and
-the bin never empties itself. From there, a recruiter can **Reactivate** the candidate, or a root
-recruiter can **Delete permanently**, which removes the candidate and their references for good.
+**Move to bin** sends a candidate to the **Recycle Bin**. Nothing is deleted at that point, and
+the bin never empties itself. From there, a recruiter can **Restore** the candidate, or a root
+recruiter can **Delete forever**, which removes the candidate and their references for good.
 See [Recycle Bin](/candidates-reference-requests/recycle-bin).
 
-To erase the personal data but keep the record, use **Purge data** on the candidate, or let the
-[retention policy](/security-it/data-retention) do it on a schedule.
+To erase the personal data but keep the record, use **Erase data** on the candidate (or on a single
+reference), or let the [retention policy](/security-it/data-retention) do it on a schedule. Erasing
+can't be undone.
 
 Uploaded documents go to the Recycle Bin with the candidate and are removed when the candidate is
-permanently deleted. To remove one file sooner, delete it from the candidate's **Documents** tab.
+deleted forever. To remove one file sooner, delete it from the candidate's **Documents** tab.
 
 ### Your whole account
 
@@ -113,4 +114,4 @@ it.
   <Card title="Cookies and consent" icon="cookie-bite" href="/security-it/cookies-and-consent" />
 </CardGroup>
 
-{/* source: api app/models/purge_batch.rb, app/models/user.rb (PASSWORD_REQUIREMENTS, MAX_LOGIN_ATTEMPTS, PASSWORD_RESET_KEY_TTL, revoke_all_tokens! on deactivation), config/initializers/rack_attack.rb, app/controllers/api/v1/references_controller.rb ("Reference has already been filled"), app/controllers/concerns/impersonation_guard.rb; app projects/references/src/app/protected/recycle-bin/recycle-bin.component.ts (canPermanentlyDelete root only), shared/components/sidebar/candidate/details (Purge data), projects/references/src/assets/i18n/en.json (RECYCLE_BIN.*) */}
+{/* source: api app/models/purge_batch.rb, app/models/user.rb (PASSWORD_REQUIREMENTS, MAX_LOGIN_ATTEMPTS, PASSWORD_RESET_KEY_TTL, revoke_all_tokens! on deactivation), config/initializers/rack_attack.rb, app/controllers/api/v1/references_controller.rb ("Reference has already been filled"), app/controllers/concerns/impersonation_guard.rb; app projects/references/src/app/protected/recycle-bin/recycle-bin.component.ts (canPermanentlyDelete root only), shared/components/sidebar/candidate/details (Move to bin, Erase data), shared/components/sidebar/reference/question-set (Remove, Erase data), projects/references/src/assets/i18n/en.json (RECYCLE_BIN.*, BUTTONS.MOVE_TO_BIN, BUTTONS.ERASE_DATA, CANDIDATE.ANONYMIZE, REFERENCE.ANONYMIZE) */}

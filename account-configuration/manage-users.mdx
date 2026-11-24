@@ -147,10 +147,18 @@ Sub-accounts are separate accounts under your main one, for branches, teams or c
   <Step title="Click Add sub account">
     Click the **+** button (tooltip **Add sub account**). The button is disabled inside a sub-account; create sub-accounts from the parent.
   </Step>
-  <Step title="Enter the sub-account and its root user">
-    Fill in the sub-account's **Name**, then the **First name**, **Last name** and **Email** of the person who will manage it. They become its default root user.
+  <Step title="Name the sub-account">
+    Fill in the sub-account's **Name**.
+  </Step>
+  <Step title="Choose what to copy from the parent">
+    Two checkboxes, both ticked by default, start the sub-account with your setup instead of Vitay's defaults: **Copy the parent account's settings to this sub account** and **Copy the parent account's question sets to this sub account**. See [What a new sub-account copies](#what-a-new-sub-account-copies).
 
-    Leave **Send email to user** ticked to email them their login details.
+    ![SCREENSHOT(manage-users-add-sub-account): The Add sub account form with the Name field, the two copy checkboxes ticked and the Email field](/images/placeholder.png)
+  </Step>
+  <Step title="Enter its Admin">
+    Type the **Email** of the person who will manage the sub-account. They become its default account user, an Admin.
+
+    If the address already belongs to a Vitay user, a note says they'll be added with their current login, and no name is needed. Otherwise, fill in their **First name** and **Last name**, and leave **Send email to user** ticked to email them their login details.
   </Step>
   <Step title="Submit">
     Click **Submit**. The parent account's root users are added to the new sub-account as root users, so they can manage it and switch into it. Recruiters and deactivated users are not carried over.
@@ -162,6 +170,24 @@ Admins of the parent account are always Admins of every sub-account. Making some
 To add more users to a sub-account, switch into it and follow [Add a user](#add-a-user). If the email you enter already belongs to a Vitay user, that person gets access to the sub-account with their existing login and no welcome email is sent.
 
 A user who belongs to several accounts switches between them from the top bar (see [Switch firms](/getting-started/switch-firms)). Root users of the parent account can see combined usage on the **Sub accounts overview** dashboard and the usage pages (see [Billing and usage](/account-configuration/billing-and-usage)).
+
+### What a new sub-account copies
+
+The copy happens once, when you create the sub-account. Later changes on the parent account don't carry over.
+
+**Copy the parent account's settings to this sub account** copies:
+
+- your settings, and the plugins and features Vitay turned on for your account (see [Plugins and the marketplace](/account-configuration/plugins));
+- your brand name, logo and colors, and with white label, your domain (see [Branding and white label](/account-configuration/branding-white-label)). If your brand name is blank, the sub-account's stays blank too;
+- your email, page and text message wording, in every language (see [Customize emails, text messages, and pages](/account-configuration/email-text-and-page-templates));
+- your relationships and jobs (see [Relationships and jobs](/account-configuration/relationships-and-jobs));
+- your lead generation setup on the **Leads** tab (see [Lead generation](/reports-lead-generation/lead-generation)).
+
+It doesn't copy single sign-on, email sender settings, webhooks, your data retention policy or usage limits. Set those up in the sub-account if it needs them. A sub-account can't have sub-accounts of its own.
+
+**Copy the parent account's question sets to this sub account** copies every active question set, with its questions and question groups, in place of Vitay's starter **Default Question Set**. The sub-account's default question set is the copy of yours. With both boxes ticked, the copied relationships and jobs use the copied question sets. With only the settings box ticked, they come over without a question set.
+
+If one of the two copies fails, the sub-account is still created and that part keeps Vitay's defaults. Contact **hello@vitay.io** if a new sub-account is missing something you expected.
 
 ## Troubleshooting
 

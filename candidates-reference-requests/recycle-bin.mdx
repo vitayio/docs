@@ -1,38 +1,38 @@
 ---
-title: "Recycle Bin: restore or permanently delete candidates"
-description: "What happens when you deactivate a candidate, how to bring them back from the Recycle Bin, and how root recruiters permanently delete a record."
+title: "Recycle Bin: restore or delete candidates forever"
+description: "What happens when you move a candidate to the bin, how to restore them from the Recycle Bin, and how Admins delete a record forever."
 ---
 
-Deactivating a candidate removes them from your active candidate list without deleting anything. They wait in the **Recycle Bin** until someone restores them or a root recruiter deletes them for good.
+Moving a candidate to the bin removes them from your active candidate list without deleting anything. They wait in the **Recycle Bin** until someone restores them or an Admin deletes them for good.
 
 <Note>
-  Any recruiter can deactivate and reactivate their own candidates. Only root
-  recruiters can use **Delete permanently**. Recruiters see only their own
-  candidates in the bin; root recruiters see the whole firm's, and so does
+  Any recruiter can move their own candidates to the bin and restore them.
+  Only Admins can use **Delete forever**. Recruiters see only the
+  candidates assigned to them in the bin; Admins see the whole firm's, and so does
   everyone when your firm has turned on the **Display Everyone / Myself
   toggle** setting.
 </Note>
 
-## What deactivating does
+## What moving to the bin does
 
-You can deactivate a candidate in three places: the red bin button in the candidate page header, the **Deactivate** button in the **Details** tab of the candidate's side panel (click **See more**), or the **Deactivate** bulk action on the **Candidates** list.
+You can move a candidate to the bin in three places: the red bin button (**Move to bin**) in the candidate page header, the **Move to bin** button in the **Details** tab of the candidate's side panel (click **See more**), or the **Move to bin** bulk action on the **Candidates** list.
 
-![The Details tab of the candidate side panel with the Deactivate button](/images/screens/recycle-bin-deactivate-button.png)
+![SCREENSHOT(recycle-bin-deactivate-button): The Details tab of the candidate side panel with the Move to bin button](/images/placeholder.png)
 
-When you deactivate a candidate, Vitay:
+The confirmation is titled **Move candidate to recycle bin?** (or **Move candidates to recycle bin?** for a bulk action) and reminds you that you can restore them from the Recycle Bin at any time. When you confirm, Vitay:
 
-- hides them from the candidates list, searches and reports;
-- records who deactivated them and when, and adds an entry to the activity log;
+- hides the candidate from the candidates list, searches and reports;
+- records who moved them and when, and adds an entry to the activity log;
 - keeps every reference, answer, document, comment and activity as it was.
 
-The single-candidate confirmation is titled **Delete Candidate?**, but it only deactivates. The bulk confirmation says so: *"Deactivated candidates are moved to the recycle bin and can be reactivated later."*
+**Move to bin** is different from **Erase data**, the button next to it, which wipes the candidate's personal data for good. See [Recycle Bin vs. erasing data](#recycle-bin-vs-erasing-data).
 
 ## Adding a deactivated candidate again
 
-A deactivated candidate still counts as existing on your account:
+A candidate in the bin (error messages call them deactivated) still counts as existing on your account:
 
-- If you add a candidate with the same **Internal ID** as a deactivated one, or a CSV import row matches a deactivated candidate's email or internal ID, Vitay refuses and tells you the candidate is deactivated. An **Open the Recycle Bin** link opens the bin with that candidate already in the search box, so you can reactivate them with their references and history.
-- If your firm requires candidate emails and you add a candidate with the email of a deactivated one, Vitay reactivates that record with the details you entered instead of creating a new candidate.
+- If you add a candidate with the same **Internal ID** as one in the bin, or a CSV import row matches a binned candidate's email or internal ID, Vitay refuses and tells you the candidate is deactivated. An **Open the Recycle Bin** link opens the bin with that candidate already in the search box, so you can restore them with their references and history.
+- If your firm requires candidate emails and you add a candidate with the email of one in the bin, Vitay restores that record with the details you entered instead of creating a new candidate.
 
 ## Open the Recycle Bin
 
@@ -41,7 +41,7 @@ A deactivated candidate still counts as existing on your account:
     Click **Recycle Bin** in the left sidebar. The list shows the most
     recently removed candidate first, with a count of how many are in the bin.
 
-    ![The Recycle Bin page with deactivated candidates and the Reactivate, View details and Delete permanently icons on each row](/images/screens/recycle-bin-list.png)
+    ![SCREENSHOT(recycle-bin-list): The Recycle Bin page with candidates in the bin and the Restore, View details and Delete forever icons on each row](/images/placeholder.png)
   </Step>
   <Step title="Find the candidate">
     Type in the **Search by name or email** box. If the scope buttons are
@@ -59,51 +59,51 @@ A deactivated candidate still counts as existing on your account:
 ## Restore a candidate
 
 <Steps>
-  <Step title="Click Reactivate">
-    Click the undo-arrow icon (**Reactivate**) on the row. To restore several,
+  <Step title="Click Restore">
+    Click the undo-arrow icon (**Restore**) on the row. To restore several,
     tick their checkboxes (or select all matching candidates) and click
-    **Reactivate** in the bulk action bar.
+    **Restore** in the bulk action bar.
   </Step>
   <Step title="Check the candidates list">
-    A **Candidate reactivated** message confirms it. The candidate is back in
+    A **Candidate restored** message confirms it. The candidate is back in
     your candidates list, along with any of their references that had been
-    deactivated.
+    removed.
   </Step>
 </Steps>
 
-## Permanently delete a candidate
+## Delete a candidate forever
 
 <Warning>
-  Permanent deletion cannot be undone. It removes the candidate and their
+  **Delete forever** cannot be undone. It removes the candidate and their
   references, reference requests, pre-screenings, background checks,
   feedback, comments, uploaded documents and signature, IP-conflict records
   and report recipients.
 </Warning>
 
 <Steps>
-  <Step title="Click Delete permanently">
-    Click the bin icon (**Delete permanently**) on the row, or tick several
-    candidates and click **Delete permanently** in the bulk action bar. Only
+  <Step title="Click Delete forever">
+    Click the bin icon (**Delete forever**) on the row, or tick several
+    candidates and click **Delete forever** in the bulk action bar. Only
     root recruiters see this option.
   </Step>
   <Step title="Confirm">
-    The confirmation reads *"This cannot be undone. The candidate's
-    references will also be permanently deleted."* Click **Delete**. A
-    **Candidate permanently deleted** message confirms it.
+    The **Delete forever?** confirmation reads *"The candidate and their
+    references will be deleted forever. This cannot be undone."* Click
+    **Delete forever**. A **Candidate deleted forever** message confirms it.
   </Step>
 </Steps>
 
 ## Nothing expires on its own
 
-Candidates stay in the Recycle Bin until someone reactivates them or a root recruiter deletes them. Vitay never empties the bin automatically.
+Candidates stay in the Recycle Bin until someone restores them or an Admin deletes them forever. Vitay never empties the bin automatically.
 
-## Recycle Bin vs. anonymization
+## Recycle Bin vs. erasing data
 
-| | Recycle Bin | Anonymization |
+| | Recycle Bin | Erase data |
 |---|---|---|
-| What it does | Hides the candidate and keeps all data | Replaces personal data with placeholders |
-| Reversible? | Yes, with **Reactivate** | No |
-| Who can do it | Any recruiter deactivates; root recruiters delete permanently | Root and supervisor recruiters, with **Purge data** in the candidate side panel, or the automatic [data retention policy](/security-it/data-retention) |
+| What it does | Hides the candidate and keeps all data | Replaces personal data with placeholders and deletes documents and answers |
+| Reversible? | Yes, with **Restore** | No |
+| Who can do it | Any recruiter uses **Move to bin**; Admins use **Delete forever** | Admins and Supervisors, with **Erase data** in the candidate side panel, or the automatic [data retention policy](/security-it/data-retention) |
 | Use it when | A candidate was added by mistake or is no longer active | You must erase personal data |
 
 To erase personal data on a schedule instead of case by case, see [Set up automatic data retention](/security-it/data-retention).
@@ -111,16 +111,21 @@ To erase personal data on a schedule instead of case by case, see [Set up automa
 ## Troubleshooting
 
 <AccordionGroup>
-  <Accordion title="I can't see the Delete permanently option">
+  <Accordion title="I can't see the Delete forever option">
     Only root recruiters of the account (or of its parent account) can
-    delete permanently. Ask a root recruiter, or see
+    delete forever. Ask an Admin, or see
     [Manage users](/account-configuration/manage-users).
   </Accordion>
-  <Accordion title="A candidate I deactivated isn't in the bin">
+  <Accordion title="A candidate I moved to the bin isn't there">
     Clear the search box, and if you see the scope buttons, choose
     **Everyone**. If you are not a root recruiter and the Everyone / Myself
     toggle setting is off, you only see candidates assigned to you. A
-    candidate a root recruiter deleted permanently can't be recovered.
+    candidate an Admin deleted forever can't be recovered.
+  </Accordion>
+  <Accordion title="Where do removed references go?">
+    **Remove** on a single reference takes it off the candidate's references
+    without sending it to the Recycle Bin, and there's no screen to restore
+    it on its own.
   </Accordion>
   <Accordion title="The bulk action reported some failures">
     The message shows how many succeeded and failed (for example *2
@@ -139,4 +144,4 @@ To erase personal data on a schedule instead of case by case, see [Set up automa
   <Card title="Activities log" icon="list-timeline" href="/reports-lead-generation/activities-log" />
 </CardGroup>
 
-{/* source: app projects/references protected/recycle-bin/{recycle-bin.component.{html,ts},details/}, protected/candidates/show/header/candidates.show.header.component.html, shared/components/sidebar/candidate/details/sidebar.candidate.details.component.{html,ts}, assets/i18n/en.json RECYCLE_BIN.* CANDIDATE.CONFIRM CANDIDATES.BULK_ACTIONS.DEACTIVATE_*; api app/controllers/api/v3/recycle_bin/candidates_controller.rb (inactive_scope, SOFT_DELETED_CHILD_MODELS), app/controllers/api/v3/candidates_controller.rb (#create email reactivation, deactivated_candidate_with_internal_id, #destroy), app/controllers/api/v3/documents/csv_controller.rb#set_duplicate_candidate_error, app/models/candidate.rb#reactivate, app/models/user.rb#all_toggle_or_root_recruiter? */}
+{/* source: app projects/references protected/recycle-bin/{recycle-bin.component.{html,ts},details/}, protected/candidates/show/header/candidates.show.header.component.html, shared/components/sidebar/candidate/details/sidebar.candidate.details.component.{html,ts}, assets/i18n/en.json RECYCLE_BIN.* CANDIDATE.CONFIRM CANDIDATE.ANONYMIZE BUTTONS.MOVE_TO_BIN BUTTONS.ERASE_DATA BUTTONS.REMOVE CANDIDATES.BULK_ACTIONS.DEACTIVATE_*; api app/controllers/api/v3/recycle_bin/candidates_controller.rb (inactive_scope, SOFT_DELETED_CHILD_MODELS), app/controllers/api/v3/candidates_controller.rb (#create email reactivation, deactivated_candidate_with_internal_id, #destroy), app/controllers/api/v3/documents/csv_controller.rb#set_duplicate_candidate_error, app/models/candidate.rb#reactivate, app/models/user.rb#all_toggle_or_root_recruiter? */}

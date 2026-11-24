@@ -22,6 +22,13 @@ What usually shows up there:
 - **An authorization checkbox**: *Please review and accept all the terms above*. Some recruiting teams add their own consent text with a checkbox.
 - **Signature**: *Signature is required*. Use the **Draw** tab to sign with your mouse or finger, or the **Type** tab to type your name. **Clear** starts again.
 - **At least one document**: the recruiter has made uploads required. Attach a file in the **Documents** section.
+- **Answer to your question**: some recruiters ask you a few questions of your own, under **A few questions for you** above **Your references**. Every one needs an answer before you can submit.
+
+## References marked "Required"
+
+Some recruiters need references with a specific relationship to you, for example a former manager. The form then says so at the top, and the first reference cards are marked **Required** with the relationship that card needs. The relationship list on those cards only offers the relationships that fit. Fill in those cards first; any references after them can have any relationship.
+
+If you see *Some required relationships are missing. Check the references marked "Required" and try again.* after clicking **Submit**, check that each **Required** card has a reference with the relationship it asks for.
 
 ## Check the email addresses
 
@@ -32,7 +39,7 @@ What usually shows up there:
 
 <Steps>
   <Step title="Refresh the page">
-    Reload the form. Your entries are saved in your browser as you type, so they should still be there.
+    Reload the form. Your entries are saved in your browser as you type, so they should still be there. If your browser blocks website data (for example Safari with **Block All Cookies** turned on), the form still works, but your entries are only kept while the page is open and a reload clears them.
   </Step>
   <Step title="Turn off ad-blockers and extensions">
     Ad-blockers and privacy extensions can stop parts of the form from responding. Turn them off for this page, or open the link in a private or incognito window.
@@ -61,4 +68,4 @@ Reply to the email that asked you for your references. Replies go to the recruit
   <Card title="Editing your answers after submitting" icon="pen-to-square" href="/reference-providers/edit-my-answers" />
 </CardGroup>
 
-{/* source: app projects/references/src/app/public/reference-requests/reference-requests.component.{html,ts} (createItem validators, updateNotApplicable, isFormReady, collectMissingFields, terms/candidateAuthorization/signature-pad, isMissingRequiredDocuments, localStorage `${id}-references`, REFERENCE_REQUESTS.TOASTS.*); src/app/shared/validators/phoneEmailPersonal.validators.ts; src/app/shared/validators/duplicateReference.validators.ts; src/app/shared/components/form/form-group/form.form-group.component.ts; i18n REFERENCES_REQUEST.FIELDS.*, FORMS.ERRORS.*; api app/controllers/api/v1/reference_requests_controller.rb public_create (single transaction) */}
+{/* source: app projects/references/src/app/public/reference-requests/reference-requests.component.{html,ts} (createItem validators, updateNotApplicable, isFormReady, collectMissingFields, terms/candidateAuthorization/signature-pad, isMissingRequiredDocuments, localStorage `${id}-references` (in-memory for the visit when storage is blocked: src/app/shared/helpers/safe-storage.helper.ts), REFERENCE_REQUESTS.TOASTS.*, REFERENCE_REQUESTS.CANDIDATE_QUESTIONS.*, REFERENCE_REQUESTS.REQUIREMENTS.* + requirementSlots / relationshipOptionsFor); src/app/shared/validators/phoneEmailPersonal.validators.ts; src/app/shared/validators/duplicateReference.validators.ts; src/app/shared/components/form/form-group/form.form-group.component.ts; i18n REFERENCES_REQUEST.FIELDS.*, FORMS.ERRORS.*; api app/controllers/api/v1/reference_requests_controller.rb public_create (single transaction) */}
