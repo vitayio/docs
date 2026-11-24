@@ -20,11 +20,11 @@
   {
     "id": "mfa-and-login-options-security-tab",
     "article": "getting-started/mfa-and-login-options",
-    "alt": "The Account Security tab with the Multi-factor authentication and Multi-factor Google authentication switches beside the password form",
+    "alt": "The Account Security tab with the Multi-factor authentication by SMS, by Email and Google authentication switches beside the password form",
     "app": "references",
     "as": "recruiter",
     "path": "/account/security",
-    "needs": "recruiter has a phone number saved so the Multi-factor authentication switch is enabled; firm does not force MFA",
+    "needs": "recruiter has a phone number saved so the Multi-factor authentication by SMS switch is enabled; firm does not force MFA",
     "steps": [
       {
         "waitFor": "app-account-security ui-switch"

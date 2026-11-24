@@ -3,16 +3,18 @@ title: "Multi-factor authentication & login options"
 description: "Set up MFA and other login options for your account."
 ---
 
-Vitay supports two kinds of multi-factor authentication (MFA): a code sent to your phone by text
-message, or a code from an authenticator app. You can turn on the text-message option yourself.
-The authenticator-app option is turned on by Vitay support.
+Vitay supports three kinds of multi-factor authentication (MFA): a code sent to your phone by text
+message, a code sent to your email address, or a code from an authenticator app. You can turn on
+the text-message or email option yourself. The authenticator-app option is turned on by Vitay
+support.
 
 <Note>
   Every user can manage MFA on their own **Account** page. Vitay can also require MFA for your whole
   firm; contact [hello@vitay.io](mailto:hello@vitay.io) to set this up. When it's on, new users get
-  text-message MFA automatically, users can't switch it off, and anyone with a phone number or
-  authenticator app on their account is asked for a code at sign-in. Users with neither can still
-  sign in without a code, so add a phone number to every account you want covered.
+  text-message MFA automatically, users can't change their text-message or email switches, and
+  anyone with an authenticator app, email codes or a phone number on their account is asked for a
+  code at sign-in. Users with none of these can still sign in without a code, so add a phone number
+  to every account you want covered.
 </Note>
 
 ## Turn on text-message MFA
@@ -25,13 +27,31 @@ The authenticator-app option is turned on by Vitay support.
     On the **Information** tab, add your phone number and click **Submit**. The MFA switch stays
     disabled until a phone number is saved.
   </Step>
-  <Step title="Switch on Multi-factor authentication">
-    Open the **Security** tab and switch on **Multi-factor authentication**. It saves straight
-    away, and a **Profile updated** message confirms it.
+  <Step title="Switch on Multi-factor authentication by SMS">
+    Open the **Security** tab and switch on **Multi-factor authentication by SMS**. It saves
+    straight away, and a **Profile updated** message confirms it.
 
-    ![The Account Security tab with the Multi-factor authentication and Multi-factor Google authentication switches beside the password form](/images/screens/mfa-and-login-options-security-tab.png)
+    ![SCREENSHOT(mfa-and-login-options-security-tab): The Account Security tab with the Multi-factor authentication by SMS, by Email and Google authentication switches beside the password form](/images/placeholder.png)
   </Step>
 </Steps>
+
+## Get codes by email instead
+
+Email codes don't need a phone number. They go to the email address you sign in with.
+
+<Steps>
+  <Step title="Open your Account page">
+    Click the person icon (**My account**) in the top bar and open the **Security** tab.
+  </Step>
+  <Step title="Switch on Multi-factor authentication by Email">
+    Switch on **Multi-factor authentication by Email**. It saves straight away, and a
+    **Profile updated** message confirms it.
+  </Step>
+</Steps>
+
+You can use text-message codes or email codes, not both. Switching one on switches the other off.
+If your firm requires MFA, both switches are locked; contact [hello@vitay.io](mailto:hello@vitay.io)
+to change how you get your code.
 
 ## Set up an authenticator app
 
@@ -57,10 +77,13 @@ tab stays disabled until Vitay support turns the option on, so start by asking
 
 ## What to expect at login
 
-After your email and password, the **2FA verification** screen opens. Vitay asks for the
-authenticator code if you have one set up, otherwise for a text-message code:
+After your email and password, a verification screen opens. Vitay asks for the authenticator code
+if you have one set up. Otherwise it asks for the email or text-message code you chose:
 
-- Text message: click **Get code**, type the code sent to your phone, and click **Submit**.
+- Email (**Email verification** screen): click **Get code**, type the code sent to your email
+  address, and click **Submit**.
+- Text message (**SMS verification** screen): click **Get code**, type the code sent to your
+  phone, and click **Submit**.
 - Authenticator app: type the current code from the app and click **Submit**.
 
 Vitay asks for a code on every password sign-in, on every device. There's no "remember this device"
@@ -72,8 +95,9 @@ See [Logging in](/getting-started/logging-in#troubleshooting) to unlock it.
 
 ## Turn MFA off
 
-Switch **Multi-factor authentication** or **Multi-factor Google authentication** off on the
-**Security** tab. If your firm requires MFA, the text-message switch is locked; contact
+Switch **Multi-factor authentication by SMS**, **Multi-factor authentication by Email** or
+**Multi-factor Google authentication** off on the **Security** tab. If your firm requires MFA, the
+text-message and email switches are locked; contact
 [hello@vitay.io](mailto:hello@vitay.io).
 
 ## SSO sign-ins
@@ -85,10 +109,15 @@ its own code on SSO sign-ins, even when your firm requires MFA. See
 ## Troubleshooting
 
 <AccordionGroup>
-  <Accordion title="The Multi-factor authentication switch is greyed out">
+  <Accordion title="The Multi-factor authentication by SMS switch is greyed out">
     Hovering it shows **Phone number required** when there's no phone on your account. Add one on
-    the **Information** tab. If you have a phone number and it's still locked, your firm requires
-    MFA.
+    the **Information** tab, or use email codes instead. If you have a phone number and it's still
+    locked, your firm requires MFA.
+  </Accordion>
+  <Accordion title="My email code hasn't arrived">
+    Codes go to the email address you sign in with. Check your spam or junk folder, wait a minute,
+    then click **Get code** again. If it still doesn't arrive, contact
+    [hello@vitay.io](mailto:hello@vitay.io).
   </Accordion>
   <Accordion title="My authenticator codes aren't working">
     Codes depend on your device's clock, so make sure it sets the time automatically. If codes still
@@ -122,4 +151,4 @@ its own code on SSO sign-ins, even when your firm requires MFA. See
   <Card title="Manage users" icon="users-gear" href="/account-configuration/manage-users" />
 </CardGroup>
 
-{/* source: app src/app/shared/routing/account/security/account.security.component.{html,ts} (isDisabled, showQrCode), src/app/shared/routing/mfa/mfa.component.html, src/app/shared/helpers/login-routing.helper.ts, projects/references/src/assets/i18n/en.json (ACCOUNT.SECURITY, MFA, TOPBAR.TOOLTIPS.ACCOUNT); api app/models/user.rb (mfa_method, firm_requires_mfa?, MAX_LOGIN_ATTEMPTS), app/models/concerns/has_secure_tokens.rb (MFA_PENDING_TTL), app/controllers/api/v3/authentication_controller.rb, app/controllers/api/v1/users_controller.rb, app/controllers/api/v1/recruiters_controller.rb (firm MFA pre-enables new users) */}
+{/* source: app src/app/shared/routing/account/security/account.security.component.{html,ts} (isDisabled, showQrCode), src/app/shared/routing/mfa/mfa.component.html, src/app/shared/helpers/login-routing.helper.ts, projects/references/src/assets/i18n/en.json (ACCOUNT.SECURITY, MFA, TOPBAR.TOOLTIPS.ACCOUNT); projects/references/src/assets/i18n/en.json (ACCOUNT.SECURITY.is_mfa_enabled / is_mfa_by_email / is_2fa_enabled, MFA.TITLE_SMS / TITLE_EMAIL); api app/models/user.rb (mfa_method: totp > email > sms, firm_requires_mfa?, MAX_LOGIN_ATTEMPTS), app/models/concerns/has_secure_tokens.rb (MFA_PENDING_TTL), app/controllers/api/v3/authentication_controller.rb, app/controllers/api/v1/users_controller.rb, app/controllers/api/v1/recruiters_controller.rb (firm MFA pre-enables new users) */}
