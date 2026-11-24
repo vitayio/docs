@@ -1,0 +1,118 @@
+---
+title: "Roles and permissions"
+description: "See what each role in your account can do, create custom roles with the permissions your team needs, and choose who can hand them out."
+---
+
+Every user in your account has one role, and the role's permissions decide what they can see and do. Vitay gives you four built-in roles, and you can add your own on the **Roles** page in the Configuration area.
+
+<Note>
+  You need a role with the **Manage roles** permission, which Admins have. Roles are set up on your main account and shared by all its sub-accounts.
+</Note>
+
+## The built-in roles
+
+| Role | What it's for |
+|---|---|
+| **Admin** | Everything, including permissions Vitay adds later. Your main point of contact always has this role. |
+| **Supervisor** | Sees everyone's candidates and references, reassigns candidates, manages question sets and exports reports. No access to Configuration. |
+| **Recruiter** | Adds candidates and references and works their own pipeline. |
+| **View only** | Sees everyone's candidates and references but can't add, edit or export anything. |
+
+**Admin** can't be edited or deleted. The other built-in roles can be edited but not deleted. When roles were introduced, the **Recruiter** role started with what your settings already let recruiters do: see everyone's candidates (**Display Everyone / Myself toggle**), change the assigned user and download reports.
+
+Admin is the role earlier versions of Vitay called root recruiter.
+
+## Open the Roles page
+
+<Steps>
+  <Step title="Open Roles">
+    In the Configuration area, click **Roles** in the left navigation, under **Users**.
+
+    ![SCREENSHOT(roles-and-permissions-list): The Roles page with the Admin, Supervisor, Recruiter and View only cards, each showing its member and permission counts](/images/placeholder.png)
+  </Step>
+</Steps>
+
+Each card shows the role's name, whether it's a **Preset** or **Custom** role, how many members it has and how many permissions it holds. Click **View** on **Admin** to see its permissions, or **Edit** on any other role.
+
+## Create a custom role
+
+<Steps>
+  <Step title="Click New role">
+    On the **Roles** page, click **New role**.
+  </Step>
+  <Step title="Name the role">
+    Fill in **Name** and, if you like, **Description**, for example "Hiring manager: sees everyone's references, can't change anything".
+  </Step>
+  <Step title="Tick the permissions">
+    Permissions are grouped into **Candidates & references**, **Team** and **Configuration**, each with a short description. Permissions that touch candidates' personal information are marked **Personal data**, and sensitive ones are marked **High risk**.
+
+    Permissions you don't hold yourself are greyed out, because you can't grant them.
+
+    ![SCREENSHOT(roles-and-permissions-editor): The role editor with Name and Description fields above the permission checkboxes grouped by area, with Personal data and High risk badges](/images/placeholder.png)
+  </Step>
+  <Step title="Save">
+    Click **Save role**. The role is now available on the **Users** page.
+  </Step>
+</Steps>
+
+## Edit or delete a role
+
+Click **Edit** on a role's card, change its name, description or permissions, and click **Save role**. The change applies to everyone with that role.
+
+To remove a custom role, click **Delete** on its card. If people have the role, choose the role they move to in **Move members to**, then click **Delete role**. This can't be undone.
+
+## Give someone a role
+
+Open **Users**, click the person, click the pencil button and pick their role in **Role**. When you add a new user, the **Role** field starts on **Recruiter**. See [Manage users](/account-configuration/manage-users#change-a-users-role).
+
+## Permissions
+
+| Group | Permission | What it allows |
+|---|---|---|
+| Candidates & references | **See own candidates and references** | See the candidates and references they added. |
+| | **See everyone's candidates and references** | See every candidate, reference and activity in the account. |
+| | **See all sub-accounts** | See candidates and references across every sub-account. Only counts on the main account. |
+| | **Add and edit candidates** | Add and edit candidates, send reference requests, add references and send reminders. |
+| | **Reassign candidates** | Change which user a candidate belongs to. |
+| | **Permanently delete** | Permanently delete candidates from the recycle bin and run data retention. |
+| | **Edit reference answers** | Edit the answers a reference submitted. |
+| | **Export reports** | Download CSV exports and reports. |
+| Team | **See the team** | See who is on the account. |
+| | **Manage users** | Invite, edit and deactivate users. |
+| | **Manage roles** | Assign roles and create, edit or delete roles. |
+| Configuration | **Open Configuration** | Open the Configuration area and read the settings. |
+| | **Change settings** | Change settings, templates, notifications, pages, jobs and the logo. |
+| | **Change sign-in security** | Change SSO, SCIM, two-factor authentication, the password policy and webhooks. |
+| | **Manage integrations** | Connect and disconnect ATS integrations. |
+| | **Manage question sets** | Create, edit, lock, delete and duplicate question sets. |
+| | **Manage sub-accounts** | Create sub-accounts and copy question sets into them. Only counts on the main account. |
+| | **See usage** | See usage and plan limits. |
+| | **See change history** | See the account's change history. |
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="I don't see Roles in the Configuration navigation">
+    Your role doesn't include **Manage roles**. Ask an Admin in your account.
+  </Accordion>
+  <Accordion title="I can't edit the Admin role">
+    Admin always has every permission and can't be changed. Create a custom role if you need a narrower one.
+  </Accordion>
+  <Accordion title="A role is greyed out when I assign it">
+    The role holds permissions you don't have, so you can't hand it out. Ask an Admin to assign it.
+  </Accordion>
+  <Accordion title="A Supervisor can't sign in to Configuration">
+    The Supervisor role doesn't include **Open Configuration**. Give the person a custom role that does.
+  </Accordion>
+</AccordionGroup>
+
+## Related articles
+
+<CardGroup cols={2}>
+  <Card title="Manage users" icon="users-gear" href="/account-configuration/manage-users" />
+  <Card title="User roles explained" icon="id-badge" href="/getting-started/roles-explained" />
+  <Card title="Change history" icon="clock-rotate-left" href="/account-configuration/change-history" />
+  <Card title="Switch firms" icon="building" href="/getting-started/switch-firms" />
+</CardGroup>
+
+{/* source: app.vitay.io projects/configuration protected/roles/roles.component.{ts,html} (ROLES.*), shared/components/navbar/navbar.component.ts (NAVBAR.ROLES gated on team:roles), public/login/login.component.ts + shared/guards/authenticated.guard.ts (configuration:access), assets/i18n/en.json PERMISSIONS.KEYS/GROUPS/RISK; src/app/shared/components/modals/users (role select, MODALS.USERS.ROLE, CANNOT_GRANT); api app/models/access_role.rb (FIRM_PRESETS, locked account_admin), app/services/firm_permissions.rb (sub_accounts:* from top-level membership only), app/services/firm_roles/{assigner,backfill}.rb, app/controllers/api/v3/roles_controller.rb */}

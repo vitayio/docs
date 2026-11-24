@@ -34,6 +34,33 @@ The search matches setting names and descriptions in the language you use Vitay 
 
 When you open a setting from the search, the address in your browser points at its card, for example `…/settings/references#is_reference_dates_enabled`. Send that address to a colleague. When they open it as a root recruiter on the same account, Vitay opens the tab and scrolls to the card.
 
+## Apply a setting to all your accounts
+
+If your firm has sub-accounts, you can copy a setting's current value from the account you're in to the others, instead of switching into each one.
+
+<Note>
+  You need to be an Admin of the main account. The link only shows on settings that make sense to share; account-specific ones such as email senders and domains, webhooks, SSO, integrations, the default question set and data retention don't have it.
+</Note>
+
+<Steps>
+  <Step title="Set the value">
+    Change the setting in the account whose value you want to copy.
+  </Step>
+  <Step title="Click Apply to all accounts">
+    Click **Apply to all accounts** under the setting's title. The **Apply to other accounts** window lists the other accounts in your firm, all ticked, with the main account marked **Parent account**.
+
+    ![SCREENSHOT(find-and-change-settings-apply-to-accounts): The Apply to other accounts window with the list of accounts ticked and the overwrite warning](/images/placeholder.png)
+  </Step>
+  <Step title="Choose the accounts">
+    Untick any account that should keep its own value, or use **Select all**.
+  </Step>
+  <Step title="Click Apply">
+    Click **Apply**. A message says how many accounts were changed. Either every ticked account gets the value or, if one can't be changed, none does.
+  </Step>
+</Steps>
+
+This overwrites the value those accounts have today. Each change is recorded in that account's [change history](/account-configuration/change-history).
+
 ## How changes are saved
 
 | Kind of setting | How it saves |

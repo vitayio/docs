@@ -17,7 +17,7 @@ The **Notifications** tab controls the automatic emails Vitay sends about your c
   <Step title="Open the Notifications tab">
     In the Configuration area, click **Settings**, then the **Notifications** tab. **Team notifications** is the first card.
 
-    ![The Team notifications table with event rows and the Assigned recruiter, Reference requester, Root users and Additional emails columns](/images/screens/notification-settings-team-table.png)
+    ![SCREENSHOT(notification-settings-team-table): The Team notifications table with event rows and the Assigned user, Reference requester, Admin users and Additional emails columns](/images/placeholder.png)
   </Step>
   <Step title="Find the event">
     Each row names an event and says when it fires. See [Events you can be notified about](#events-you-can-be-notified-about).
@@ -27,9 +27,9 @@ The **Notifications** tab controls the automatic emails Vitay sends about your c
 
     | Column | Who receives the email |
     |---|---|
-    | **Assigned recruiter** | The recruiter the candidate is assigned to. |
-    | **Reference requester** | The recruiter who sent the request. |
-    | **Root users** | Every active team member with the Root role. |
+    | **Assigned user** | The user the candidate is assigned to. |
+    | **Reference requester** | The user who sent the request. |
+    | **Admin users** | Every active team member with the Admin role. |
     | **Additional emails** | Extra addresses, such as a shared inbox. No Vitay account needed. |
   </Step>
   <Step title="Add extra addresses if you need them">
@@ -50,18 +50,18 @@ Some rows only appear when your account uses the matching feature.
 
 | Event | When it's sent | Default for new accounts |
 |---|---|---|
-| **Reference completed** | A reference submitted their answers. | Assigned recruiter |
-| **All references completed** | Every reference for a candidate has been submitted. | Assigned recruiter |
-| **Candidate submitted their references** | A candidate provided the reference contacts you asked for. | Assigned recruiter |
+| **Reference completed** | A reference submitted their answers. | Assigned user |
+| **All references completed** | Every reference for a candidate has been submitted. | Assigned user |
+| **Candidate submitted their references** | A candidate provided the reference contacts you asked for. | Assigned user |
 | **Reference awaiting your review** | A candidate added a reference that needs approval. Shown when **Reference review configuration** is on. | Reference requester |
-| **Reference or request unresponsive** | A reference or request ran out of reminders without a reply. | Assigned recruiter |
-| **Email could not be delivered** | An email to a candidate or reference bounced or was rejected. | Assigned recruiter |
-| **Text message could not be delivered** | A text to a candidate or reference failed. Shown when text messages are on for your account. | Assigned recruiter |
-| **IP address conflict detected** | A candidate and one of their references submitted from the same IP address. | Assigned recruiter |
-| **Candidate submitted their own contact details as a reference** | A candidate tried to add their own email or phone number as a reference. | Assigned recruiter |
-| **Feedback completed** | A feedback request was completed. Shown when a feedback plugin is on. | Assigned recruiter and reference requester |
-| **Pre-screening completed** | A pre-screening request was completed. Shown when the pre-screening plugin is on. | Assigned recruiter |
-| **Lead received** | A reference asked to be contacted. Shown on the original lead generation setup only. | Assigned recruiter |
+| **Reference or request unresponsive** | A reference or request ran out of reminders without a reply. | Assigned user |
+| **Email could not be delivered** | An email to a candidate or reference bounced or was rejected. | Assigned user |
+| **Text message could not be delivered** | A text to a candidate or reference failed. Shown when text messages are on for your account. | Assigned user |
+| **IP address conflict detected** | A candidate and one of their references submitted from the same IP address. | Assigned user |
+| **Candidate submitted their own contact details as a reference** | A candidate tried to add their own email or phone number as a reference. | Assigned user |
+| **Feedback completed** | A feedback request was completed. Shown when a feedback plugin is on. | Assigned user and reference requester |
+| **Pre-screening completed** | A pre-screening request was completed. Shown when the pre-screening plugin is on. | Assigned user |
+| **Lead received** | A reference asked to be contacted. Shown on the original lead generation setup only. | Assigned user |
 
 ### Reference awaiting your review
 
@@ -144,10 +144,10 @@ Each threshold sends one email per contract period and resets when a new period 
 
 <AccordionGroup>
   <Accordion title="I'm not receiving notifications I expect">
-    Find the event's row under **Team notifications** and check that a column that includes you is ticked. If only **Assigned recruiter** is ticked, you only hear about candidates assigned to you. To get every notification, ask a root recruiter to tick **Root users** (if you are root) or add your address under **Additional emails** on each row. Also check spam, and that your firm's sender domain is authenticated (see [Email sender settings](/account-configuration/email-sender-settings#which-sender-your-team-sees)).
+    Find the event's row under **Team notifications** and check that a column that includes you is ticked. If only **Assigned user** is ticked, you only hear about candidates assigned to you. To get every notification, ask an Admin to tick **Admin users** (if you are an Admin) or add your address under **Additional emails** on each row. Also check spam, and that your firm's sender domain is authenticated (see [Email sender settings](/account-configuration/email-sender-settings#which-sender-your-team-sees)).
   </Accordion>
   <Accordion title="Too many people are getting notified">
-    Untick the columns you don't need on each row. If someone still gets everything, check whether they are root (**Root users** includes every active root user) or listed under **Additional emails**.
+    Untick the columns you don't need on each row. If someone still gets everything, check whether they are an Admin (**Admin users** includes every active Admin) or listed under **Additional emails**.
   </Accordion>
   <Accordion title="I don't see a row for an event">
     Rows follow the features your account uses: **Feedback completed** and **Pre-screening completed** need their plugins, **Text message could not be delivered** needs text messages, and **Reference awaiting your review** needs **Reference review configuration**. Contact **hello@vitay.io** if a feature should be available to you.
