@@ -37,9 +37,44 @@ The three tabs work the same way. Each template is a card with its own toolbar.
 
 | Action | Where | What it does |
 |---|---|---|
-| **Send test** | Emails, Texts | Sends the saved template to your own email address or the phone number on your profile. Merge fields aren't filled in. |
+| **Send test** | Emails, Texts | Sends the saved template to your own email address or the phone number on your profile, with merge fields filled in with sample values. |
 | **Preview** | Pages | Shows the page text as it will look. Click again to go back to editing. |
 | **Restore default** | All three | Puts back Vitay's default wording for that template and language and saves it. Only shown on cards you have changed. |
+
+### What a test fills in
+
+A test isn't tied to a real candidate or reference, so Vitay fills the merge fields like this:
+
+| Merge field | Value in the test |
+|---|---|
+| `{{recruiter_full_name}}`, `{{added_by_full_name}}` | Your name |
+| `{{company_name}}`, `{{hiring_firm_name}}` | Your brand name, or your company name when the brand name is blank |
+| `{{nb_min_references}}` | Your **Number of references** on the **Ref. Requests** tab |
+| Candidate, reference, employer and job title fields | Sample values, such as *Jane Sample* for the candidate and *Alex Example* for the reference |
+
+A field with a typo, such as a missing brace in `{{candidate_full_name}`, stays as typed, so you can spot it. The test email also has the title, button and footer of the real email.
+
+Merge fields in the **Email title** and **Button** are only filled in on **Recruiter: Reference completed**, **Recruiter: All references completed** and, for the title, **Candidate: Reference completed**. On other cards they go out as typed, in tests and in real emails, so keep merge fields in the subject and body there.
+
+## Copy a template to your other accounts
+
+If your firm has sub-accounts, Admins of the main account can copy a template's wording from the account they're in to the others, instead of editing it in each one.
+
+<Steps>
+  <Step title="Save the template">
+    Edit the card in the account whose wording you want to copy and let it save, or click **Restore default**. **Apply to all accounts** appears under the card's description. It stays there until you reload the page or switch account.
+
+    ![SCREENSHOT(email-text-and-page-templates-apply-to-accounts): An email card on the Emails tab with the Apply to all accounts link under its description](/images/placeholder.png)
+  </Step>
+  <Step title="Click Apply to all accounts">
+    The **Apply to other accounts** window lists the other accounts in your firm, all ticked, with the main account marked **Parent account**.
+  </Step>
+  <Step title="Choose the accounts and apply">
+    Untick any account that should keep its own wording, then click **Apply**. A message says how many accounts were changed. Either every ticked account gets the template or, if one can't be changed, none does.
+  </Step>
+</Steps>
+
+The copy covers that one card in every language. Emails copy the subject, title, button and body. Pages and texts copy the body. This overwrites the wording those accounts have today, and each change is recorded in that account's [change history](/account-configuration/change-history).
 
 ## Email templates
 
@@ -122,8 +157,11 @@ Vitay has default templates in English, French, French (Canada) and Spanish. The
 ## Troubleshooting
 
 <AccordionGroup>
-  <Accordion title="My test email shows merge fields as literal text">
-    That's expected. A test isn't tied to a real candidate or reference, so fields like `{{candidate_full_name}}` aren't replaced. Real emails fill them in.
+  <Accordion title="My test email shows a merge field as literal text">
+    Check how the field is typed. It's only filled in when it matches the Variables menu exactly, such as `{{candidate_full_name}}` with two braces on each side. In the **Email title** and **Button**, fields are only filled in on the cards listed under [What a test fills in](#what-a-test-fills-in).
+  </Accordion>
+  <Accordion title="I don't see Apply to all accounts on a card">
+    The link appears once the card has saved a change in this visit, and only for Admins of the main account in a firm with sub-accounts. It goes away when you reload the page or switch account. Make the change again to bring it back.
   </Accordion>
   <Accordion title="I don't see the Feedback, Employer Feedback or Pre-screening cards">
     They only appear when the matching plugin is on. Contact **hello@vitay.io** if a plugin should be on for your account.
@@ -153,4 +191,4 @@ Vitay has default templates in English, French, French (Canada) and Spanish. The
   <Card title="Lead generation" icon="magnet" href="/reports-lead-generation/lead-generation" />
 </CardGroup>
 
-{/* source: app projects/configuration protected/settings/{emails,texts,pages}/settings.*.component.{ts,html}; src/app/shared/models/{email,text,page}.model.ts (variables); api db/schema.rb (is_text_messages_enabled), templates/{emails,texts,pages}.yml, app/controllers/api/v3/{emails,texts,pages}_controller.rb, app/services/settings/provision_language_templates.rb */}
+{/* source: app projects/configuration protected/settings/{emails,texts,pages}/settings.*.component.{ts,html}; src/app/shared/models/{email,text,page}.model.ts (variables); api db/schema.rb (is_text_messages_enabled), templates/{emails,texts,pages}.yml, app/controllers/api/v3/{emails,texts,pages}_controller.rb, app/services/settings/provision_language_templates.rb, app/services/templates/sample_variables.rb (Send test values; title/cta filled only for recruiter_reference_completed, recruiter_all_references_completed, title of candidate_reference_completed); app projects/configuration shared/apply-to-accounts/ (SETTINGS.APPLY_TO_ACCOUNTS.*, markChanged template keys); api app/services/settings/template_propagator.rb */}

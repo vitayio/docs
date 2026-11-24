@@ -1,6 +1,6 @@
 ---
 title: "Reference report settings"
-description: "Settings on the Documents tab: add a watermark, hide personal details, show reference edits on reports, and see which download formats your team gets."
+description: "Settings on the Documents tab: add a watermark, hide personal details, show reference edits and IP conflict warnings on reports, and see which download formats your team gets."
 ---
 
 The **Documents** tab controls how your firm's reference reports look. The settings apply to every report generated afterwards: PDFs your recruiters download, PDFs attached to notification emails, and reports sent to your ATS.
@@ -18,7 +18,7 @@ The **Documents** tab controls how your firm's reference reports look. The setti
   <Step title="Select Documents">
     Click the **Documents** tab in the list on the left.
 
-    ![The Documents tab with the Watermark, Show Reference Edits On Reports and Hide personal data cards](/images/screens/report-settings-documents-tab.png)
+    ![SCREENSHOT(report-settings-documents-tab): The Documents tab with the Watermark, Show Reference Edits On Reports, IP Conflict Banner and Hide personal data cards](/images/placeholder.png)
   </Step>
 </Steps>
 
@@ -33,6 +33,12 @@ Accounts use Vitay's compressed PDF layout, which fits the full report into fewe
 ## Show reference edits on reports
 
 **Show Reference Edits On Reports** (off by default) adds a **Reference Made Edits** banner to the PDF when a reference changed details the candidate supplied. It lists each changed field as *old value → new value*. References that changed nothing get no banner.
+
+## IP conflict banner
+
+**IP Conflict Banner** (off by default) adds a red **IP Address Conflict Detected** box above a reference's answers when the reference and the candidate submitted their forms from the same IP address. It also adds a **Self-Reference Attempt Detected** box to the candidate's report when the candidate tried to add themselves as a reference. It works on both the compressed and the full-length layout, whether or not your team gets reports attached to notification emails.
+
+While this switch is on, Vitay checks for IP conflicts even if nobody is ticked on the **IP address conflict detected** notification row. See [IP conflicts and reference edits](/candidates-reference-requests/ip-conflicts-and-reference-edits).
 
 ## Hide personal data
 
@@ -92,4 +98,4 @@ The Word version has its own simpler layout. The eye toggle next to the download
   <Card title="Firm configuration and security settings" icon="gear" href="/account-configuration/firm-configuration" />
 </CardGroup>
 
-{/* source: app projects/configuration protected/settings/documents/settings.documents.component.{ts,html}; src/app/shared/helpers/array.helper.ts (reportFormats, csvReportFormat); projects/references protected/candidates/show/references/candidates.show.references.component.ts; api db/schema.rb (pdf_template default compressed), app/models/setting.rb, app/controllers/api/v3/documents/pdf_controller.rb, app/views/api/v3/documents/_reference_edits_summary.erb, app/views/api/v3/documents/en/compressed/*.erb */}
+{/* source: app projects/configuration protected/settings/documents/settings.documents.component.{ts,html} (is_ip_conflict_banner_enabled); src/app/shared/helpers/array.helper.ts (reportFormats, csvReportFormat); projects/references protected/candidates/show/references/candidates.show.references.component.ts; api db/schema.rb (pdf_template default compressed), app/models/setting.rb, app/controllers/api/v3/documents/pdf_controller.rb, app/views/api/v3/documents/_reference_edits_summary.erb, app/views/api/v3/documents/en/{compressed,default}/*.erb, app/services/ip_conflict_service.rb */}

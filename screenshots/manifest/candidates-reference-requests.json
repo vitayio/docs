@@ -20,7 +20,7 @@
   {
     "id": "add-a-candidate-modal",
     "article": "candidates-reference-requests/add-a-candidate",
-    "alt": "The Add Candidate form with name, Internal ID, email and mobile number fields",
+    "alt": "The Add Candidate form with name, Internal ID, email and mobile number fields and the Assigned user field at the bottom",
     "app": "references",
     "as": "recruiter",
     "path": "/candidates",
@@ -702,25 +702,25 @@
   {
     "id": "ip-conflicts-and-reference-edits-settings",
     "article": "candidates-reference-requests/ip-conflicts-and-reference-edits",
-    "alt": "Settings → Notifications showing the IP address conflict detected and self-reference rows of Team notifications and the IP conflict banner switch under Email options",
+    "alt": "The Documents tab of Settings with the IP Conflict Banner card between Show Reference Edits On Reports and Hide Personal Data",
     "app": "configuration",
     "as": "root",
-    "path": "/settings/notifications",
-    "needs": "Attach the PDF report to completion emails switched on so the nested IP conflict banner switch is visible. Captures only the Email options card: the IP conflict / self-reference matrix rows sit ~1100px above it, so they cannot share one shot (see email-and-text-delivery-team-notifications for the matrix)",
+    "path": "/settings/documents",
+    "needs": "",
     "steps": [
       {
         "waitFor": "[appsettinganchor=\"is_ip_conflict_banner_enabled\"]"
       }
     ],
     "capture": {
-      "selector": "[appsettinganchor=\"email_options\"]"
+      "selector": "[appsettinganchor=\"is_ip_conflict_banner_enabled\"]"
     },
-    "confidence": "low"
+    "confidence": "medium"
   },
   {
     "id": "recycle-bin-deactivate-button",
     "article": "candidates-reference-requests/recycle-bin",
-    "alt": "The Details tab of the candidate side panel with the Deactivate button",
+    "alt": "The Details tab of the candidate side panel with the Move to bin button",
     "app": "references",
     "as": "recruiter",
     "path": "/candidates/:candidateId",
@@ -733,7 +733,7 @@
         "click": "app-candidates-show-header button:has-text(\"See more\")"
       },
       {
-        "waitFor": "ng-sidebar app-sidebar-candidate-details button:has-text(\"Deactivate\")"
+        "waitFor": "ng-sidebar app-sidebar-candidate-details button:has-text(\"Move to bin\")"
       }
     ],
     "capture": {
@@ -744,7 +744,7 @@
   {
     "id": "recycle-bin-list",
     "article": "candidates-reference-requests/recycle-bin",
-    "alt": "The Recycle Bin page with deactivated candidates and the Reactivate, View details and Delete permanently icons on each row",
+    "alt": "The Recycle Bin page with candidates in the bin and the Restore, View details and Delete forever icons on each row",
     "app": "references",
     "as": "root",
     "path": "/recycle-bin",
@@ -854,5 +854,107 @@
       "viewport": true
     },
     "confidence": "manual"
+  },
+  {
+    "id": "add-a-candidate-assigned-users",
+    "article": "candidates-reference-requests/add-a-candidate",
+    "alt": "The Assigned users field on the Edit Candidate form with three users, the first marked with an envelope, and the search box",
+    "app": "references",
+    "as": "root",
+    "path": "/candidates/:candidateId",
+    "needs": "Allow multiple assigned users on; candidate with three assigned users. Open Edit Candidate from the profile",
+    "steps": [
+      {
+        "waitFor": "app-candidates-show-header"
+      },
+      {
+        "click": "app-candidates-show-header button:has(i.lnr-pencil)"
+      },
+      {
+        "waitFor": ".modal.show app-assigned-users-input"
+      }
+    ],
+    "capture": {
+      "selector": ".modal.show app-assigned-users-input"
+    },
+    "confidence": "low"
+  },
+  {
+    "id": "candidate-questions-request-picker",
+    "article": "candidates-reference-requests/candidate-questions",
+    "alt": "The Reference Request form with the Candidate questions dropdown and its hint, The candidate answers these questions before submitting their references.",
+    "app": "references",
+    "as": "recruiter",
+    "path": "/candidates/:candidateId/references",
+    "needs": "At least one Candidate question set; default candidate questions set in Settings",
+    "steps": [
+      {
+        "click": ".candidates-show button:has(i.lnr-paper-plane)"
+      },
+      {
+        "waitFor": ".modal.show #candidate_question_set"
+      }
+    ],
+    "capture": {
+      "selector": ".modal.show .modal-content"
+    },
+    "confidence": "medium"
+  },
+  {
+    "id": "candidate-questions-answers-card",
+    "article": "candidates-reference-requests/candidate-questions",
+    "alt": "The References tab of a candidate page with the Candidate answers card expanded above the references",
+    "app": "references",
+    "as": "recruiter",
+    "path": "/candidates/:candidateId/references",
+    "needs": "DOCS_CANDIDATE_ID's request carried a Candidate set and the candidate answered it (card expanded)",
+    "steps": [
+      {
+        "waitFor": "app-candidate-questions"
+      }
+    ],
+    "capture": {
+      "selector": "app-candidate-questions"
+    },
+    "confidence": "low"
+  },
+  {
+    "id": "candidate-statuses-and-comments-settings-card",
+    "article": "candidates-reference-requests/candidate-statuses-and-comments",
+    "alt": "The Candidate statuses card on the Configuration tab with the header switch on and the Status Change Comment, Mandatory Comment and Automatic Unresponsive Status switches below",
+    "app": "configuration",
+    "as": "root",
+    "path": "/settings/configuration",
+    "needs": "Candidate statuses switched on",
+    "steps": [
+      {
+        "waitFor": "[appsettinganchor=\"candidate_statuses\"]"
+      }
+    ],
+    "capture": {
+      "selector": "[appsettinganchor=\"candidate_statuses\"]"
+    },
+    "confidence": "medium"
+  },
+  {
+    "id": "send-a-reference-request-requirements",
+    "article": "candidates-reference-requests/send-a-reference-request",
+    "alt": "The Reference Request form with the Candidate questions dropdown and the Required relationships line with its Change link",
+    "app": "references",
+    "as": "recruiter",
+    "path": "/candidates/:candidateId/references",
+    "needs": "Required relationships switched on with rows; at least one Candidate question set",
+    "steps": [
+      {
+        "click": ".candidates-show button:has(i.lnr-paper-plane)"
+      },
+      {
+        "waitFor": ".modal.show #relationship-requirements-field"
+      }
+    ],
+    "capture": {
+      "selector": ".modal.show .modal-content"
+    },
+    "confidence": "medium"
   }
 ]

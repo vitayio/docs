@@ -1,9 +1,9 @@
 ---
 title: "Reference request settings"
-description: "Settings on the Ref. Requests tab: preview the candidate's form, set the default question set and number of references, and choose whether references are reviewed before sending."
+description: "Settings on the Ref. Requests tab: preview the candidate's form, set the default question sets, number of references and required relationships, and choose whether references are reviewed before sending."
 ---
 
-The **Ref. Requests** tab controls the request your candidate receives: how many references they're asked for, what they must agree to, whether you review their references before Vitay contacts them, and whether they can upload documents. You can also preview the candidate's form.
+The **Ref. Requests** tab controls the request your candidate receives: how many references they're asked for, which relationships they must include, what questions they answer themselves, what they must agree to, whether you review their references before Vitay contacts them, and whether they can upload documents. You can also preview the candidate's form.
 
 Settings about the reference itself, such as required contact details and what a reference can do on their form, are on the **References** tab. See [Reference settings](/account-configuration/reference-settings).
 
@@ -20,7 +20,7 @@ Settings about the reference itself, such as required contact details and what a
   <Step title="Select Ref. Requests">
     Click the **Ref. Requests** tab in the list on the left.
 
-    ![The Ref. Requests tab with the Preview the reference request form card, the Default question set and Number of references dropdowns, and the first switch cards](/images/screens/reference-request-settings-tab.png)
+    ![SCREENSHOT(reference-request-settings-tab): The Ref. Requests tab with the Preview the reference request form card, the Default question set, Default candidate questions and Number of references dropdowns, and the Required relationships card](/images/placeholder.png)
   </Step>
 </Steps>
 
@@ -48,10 +48,43 @@ To preview the reference's form, use **Preview the reference form** on the **Ref
 
 | Setting | What it does | Default |
 |---|---|---|
-| **Default question set** | Your firm's default question set, or **None**. The form previews use it. It's separate from the starred set on the **Question sets** list, which is what the reference request form pre-selects (see [Question sets and templates](/account-configuration/question-sets-and-templates#set-a-default-question-set)). | None |
+| **Default question set** | Your firm's default question set, or **None**. **Quick Request** pre-selects it and the form previews list it first. It's separate from the starred set on the **Question sets** list, which the **Reference Request** form on a candidate page pre-selects, and which **Quick Request** falls back to when this is **None** (see [Question sets and templates](/account-configuration/question-sets-and-templates#set-a-default-question-set)). | None |
 | **Number of references** | How many references a candidate is asked for by default, from **0** to **6**. Pre-fills the number in the reference request form and the `{{nb_min_references}}` merge field. | 1 |
 | **Allow candidate to add additional references** | Shows an **Add another reference** button so candidates can list more than requested. | On |
 | **Managers only default** | Ticks **Managers only** by default when you send a request. The candidate's form then says "Please only provide direct or non direct managers contact details." | Off |
+
+## Default candidate questions
+
+**Default candidate questions** attaches a **Candidate** question set to every new reference request, including requests sent in bulk, from a CSV import or from an ATS integration. The candidate answers its questions on their form before they can submit their references. Recruiters can pick another Candidate set or **None** on each request. The default is **None**.
+
+The dropdown is greyed out until your account has a Candidate question set, with the hint "Create a question set of type Candidate to use this option." See [Ask candidates questions](/candidates-reference-requests/candidate-questions).
+
+## Required relationships
+
+**Required relationships** asks every candidate for references with specific relationships, for example one manager and one non-professional reference. The switch is off by default.
+
+<Steps>
+  <Step title="Turn on the switch">
+    Turn on the **Required relationships** card. The editor appears below the description.
+  </Step>
+  <Step title="Add a row">
+    Click **Add a required relationship**. Pick how many references the row needs, then click each relationship that counts toward it. The row reads "*N* with any of these relationships:" followed by the relationships you picked. When your account has both professional and non-professional relationships, you can also pick **Any professional relationship** or **Any non-professional relationship**.
+
+    ![SCREENSHOT(reference-request-settings-required-relationships): The Required relationships card switched on, with two rows: one for manager relationships and one for Any non-professional relationship](/images/placeholder.png)
+  </Step>
+  <Step title="Add more rows (optional)">
+    Repeat for each relationship the candidate must include. A relationship can only be in one row; in the others it's greyed out with the tooltip "Already part of another requirement". To remove a row, click its trash button.
+  </Step>
+</Steps>
+
+Changes save automatically and become the default for new reference requests. Recruiters see the default as one line on the request form and can click **Change** to adjust it for that request (see [Send a reference request](/candidates-reference-requests/send-a-reference-request)). What it means for each request:
+
+- The candidate is asked for at least as many references as the rows add up to, even if **Number of references** is lower.
+- On the candidate's form, the first reference cards are marked **Required**, and each one only offers the relationships that meet its row.
+- A request sent with **Managers only** ticked ignores the rows. While **Managers only default** is on, the card shows a reminder of this.
+- A request sent from the page of a candidate who already had a reference request starts with no required relationships, so they aren't asked for the same references again.
+
+Turning the switch off hides the editor but keeps your rows, so turning it back on restores them. While it's off, no new request asks for specific relationships, and requests already sent stop enforcing theirs.
 
 ## What the candidate must do
 
@@ -91,6 +124,12 @@ These are on the **References** tab (see [Reference settings](/account-configura
   <Accordion title="The Ref. Requests tab is greyed out">
     The tab is disabled on demo accounts. Contact **hello@vitay.io** to upgrade.
   </Accordion>
+  <Accordion title="Default candidate questions is greyed out">
+    Your account has no **Candidate** question set yet. Create one on the **Question sets** list with the **Type** set to **Candidate** (see [Question sets and templates](/account-configuration/question-sets-and-templates)).
+  </Accordion>
+  <Accordion title="Candidates aren't asked for the relationships I set">
+    Check that the **Required relationships** switch is on, and that the request wasn't sent with **Managers only** ticked. A recruiter may also have changed the relationships on that request, and a candidate's second request starts with none.
+  </Accordion>
 </AccordionGroup>
 
 ## Related articles
@@ -104,4 +143,4 @@ These are on the **References** tab (see [Reference settings](/account-configura
   <Card title="Notification settings" icon="bell" href="/account-configuration/notification-settings" />
 </CardGroup>
 
-{/* source: app projects/configuration protected/settings/requests/settings.requests.component.{ts,html}, shared/services/form-preview.service.ts; projects/references assets/i18n/en.json (REFERENCE_REQUESTS.PREVIEW.*, REFERENCE.ALERTS.PENDING_REVIEW.*, SETTINGS.REQUESTS.ASSIGNED_USER); api db/schema.rb + app/models/setting.rb (defaults), app/controllers/api/v1/reference_requests_controller.rb#preview */}
+{/* source: app projects/configuration protected/settings/requests/settings.requests.component.{ts,html} (DEFAULT_CANDIDATE_QUESTION_SET, relationship_requirements card + is_relationship_requirements_enabled switch), shared/services/form-preview.service.ts; src/app/shared/components/relationship-requirements-editor/*, src/app/shared/helpers/relationship-requirements.helper.ts; projects/references assets/i18n/en.json (REFERENCE_REQUESTS.PREVIEW.*, REFERENCE.ALERTS.PENDING_REVIEW.*, SETTINGS.REQUESTS.ASSIGNED_USER); api db/schema.rb + app/models/setting.rb (defaults), app/controllers/api/v1/reference_requests_controller.rb#preview, app/models/reference_request.rb (assign_default_candidate_question_set, effective_relationship_requirements) */}

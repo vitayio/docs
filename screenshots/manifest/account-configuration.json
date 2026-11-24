@@ -86,7 +86,7 @@
   {
     "id": "manage-users-add-modal",
     "article": "account-configuration/manage-users",
-    "alt": "The Add user form with name, email and phone fields and the Send email to user checkbox",
+    "alt": "The Add user form with name, email and phone fields, the Role dropdown and the Send email to user checkbox",
     "app": "configuration",
     "as": "root",
     "path": "/users",
@@ -110,11 +110,11 @@
   {
     "id": "manage-users-edit-roles",
     "article": "account-configuration/manage-users",
-    "alt": "The Edit user form with the Root account and Supervisor Recruiter switches under Roles",
+    "alt": "The Edit user form with the Role dropdown below the user's details",
     "app": "configuration",
     "as": "root",
     "path": "/users/:recruiterId",
-    "needs": "A non-default, non-root recruiter other than the signed-in user (so switches are enabled)",
+    "needs": "A non-default recruiter other than the signed-in user (so the Role dropdown is enabled)",
     "steps": [
       {
         "click": "button:has(.lnr-pencil)"
@@ -134,7 +134,7 @@
   {
     "id": "notification-settings-team-table",
     "article": "account-configuration/notification-settings",
-    "alt": "The Team notifications table with event rows and the Assigned recruiter, Reference requester, Root users and Additional emails columns",
+    "alt": "The Team notifications table with event rows and the Assigned user, Reference requester, Admin users and Additional emails columns",
     "app": "configuration",
     "as": "root",
     "path": "/settings/notifications",
@@ -425,7 +425,7 @@
   {
     "id": "reference-request-settings-tab",
     "article": "account-configuration/reference-request-settings",
-    "alt": "The Ref. Requests tab with the Preview the reference request form card, the Default question set and Number of references dropdowns, and the first switch cards",
+    "alt": "The Ref. Requests tab with the Preview the reference request form card, the Default question set, Default candidate questions and Number of references dropdowns, and the Required relationships card",
     "app": "configuration",
     "as": "root",
     "path": "/settings/requests",
@@ -533,7 +533,7 @@
   {
     "id": "report-settings-documents-tab",
     "article": "account-configuration/report-settings",
-    "alt": "The Documents tab with the Watermark, Show Reference Edits On Reports and Hide personal data cards",
+    "alt": "The Documents tab with the Watermark, Show Reference Edits On Reports, IP Conflict Banner and Hide personal data cards",
     "app": "configuration",
     "as": "root",
     "path": "/settings/documents",
@@ -581,6 +581,144 @@
     ],
     "capture": {
       "selector": ".card:has(signature-pad#signature)"
+    },
+    "confidence": "medium"
+  },
+  {
+    "id": "roles-and-permissions-list",
+    "article": "account-configuration/roles-and-permissions",
+    "alt": "The Roles page with the Admin, Supervisor, Recruiter and View only cards, each showing its member and permission counts",
+    "app": "configuration",
+    "as": "root",
+    "path": "/roles",
+    "needs": "Firm roles seeded (api #2803 deployed)",
+    "steps": [
+      {
+        "waitFor": "app-roles"
+      }
+    ],
+    "capture": {
+      "viewport": true
+    },
+    "confidence": "low"
+  },
+  {
+    "id": "roles-and-permissions-editor",
+    "article": "account-configuration/roles-and-permissions",
+    "alt": "The role editor with Name and Description fields above the permission checkboxes grouped by area, with Personal data and High risk badges",
+    "app": "configuration",
+    "as": "root",
+    "path": "/roles",
+    "needs": "Firm roles seeded (api #2803 deployed)",
+    "steps": [
+      {
+        "waitFor": "app-roles"
+      },
+      {
+        "click": "text=New role"
+      }
+    ],
+    "capture": {
+      "selector": ".modal-content"
+    },
+    "confidence": "low"
+  },
+  {
+    "id": "relationships-and-jobs-non-professional",
+    "article": "account-configuration/relationships-and-jobs",
+    "alt": "The relationship form with the Non-professional reference checkbox ticked",
+    "app": "configuration",
+    "as": "root",
+    "path": "/settings/relationships",
+    "needs": "Non-demo firm; api #2802 deployed",
+    "steps": [
+      {
+        "click": "button:has(.lnr-pencil)"
+      },
+      {
+        "waitFor": ".modal-content"
+      }
+    ],
+    "capture": {
+      "selector": ".modal-content"
+    },
+    "confidence": "low"
+  },
+  {
+    "id": "find-and-change-settings-apply-to-accounts",
+    "article": "account-configuration/find-and-change-settings",
+    "alt": "The Apply to other accounts window with the list of accounts ticked and the overwrite warning",
+    "app": "configuration",
+    "as": "root",
+    "path": "/settings/general",
+    "needs": "Signed in as an Admin of a parent account with sub-accounts (staging Acme); api #2798 deployed",
+    "steps": [
+      {
+        "click": "text=Apply to all accounts"
+      },
+      {
+        "waitFor": ".modal-content"
+      }
+    ],
+    "capture": {
+      "selector": ".modal-content"
+    },
+    "confidence": "low"
+  },
+  {
+    "id": "email-text-and-page-templates-apply-to-accounts",
+    "article": "account-configuration/email-text-and-page-templates",
+    "alt": "An email card on the Emails tab with the Apply to all accounts link under its description",
+    "app": "configuration",
+    "as": "root",
+    "path": "/settings/emails",
+    "needs": "Parent account with sub-accounts; the Reference requests email saved once in this session (the link only shows after a save)",
+    "steps": [
+      {
+        "waitFor": "div.card#request app-apply-to-accounts-button"
+      }
+    ],
+    "capture": {
+      "selector": "div.card#request"
+    },
+    "confidence": "low"
+  },
+  {
+    "id": "manage-users-add-sub-account",
+    "article": "account-configuration/manage-users",
+    "alt": "The Add sub account form with the Name field, the two copy checkboxes ticked and the Email field",
+    "app": "configuration",
+    "as": "root",
+    "path": "/users",
+    "needs": "Parent account (sub-accounts enabled); open the Add sub account form from the + button",
+    "steps": [
+      {
+        "click": "button[tooltip=\"Add sub account\"], button:has(.lnr-plus)"
+      },
+      {
+        "waitFor": ".modal-content #is_copy_parent_question_sets_enabled"
+      }
+    ],
+    "capture": {
+      "selector": ".modal-content"
+    },
+    "confidence": "low"
+  },
+  {
+    "id": "reference-request-settings-required-relationships",
+    "article": "account-configuration/reference-request-settings",
+    "alt": "The Required relationships card switched on, with two rows: one for manager relationships and one for Any non-professional relationship",
+    "app": "configuration",
+    "as": "root",
+    "path": "/settings/requests",
+    "needs": "Required relationships switched on with a manager row and an Any non-professional relationship row",
+    "steps": [
+      {
+        "waitFor": "[appsettinganchor=\"relationship_requirements\"] app-relationship-requirements-editor"
+      }
+    ],
+    "capture": {
+      "selector": "[appsettinganchor=\"relationship_requirements\"]"
     },
     "confidence": "medium"
   }

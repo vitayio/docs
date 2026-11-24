@@ -34,6 +34,7 @@
           "candidates-reference-requests/overview",
           "candidates-reference-requests/add-a-candidate",
           "candidates-reference-requests/send-a-reference-request",
+          "candidates-reference-requests/candidate-questions",
           "candidates-reference-requests/candidate-documents",
           "candidates-reference-requests/reminders-and-cadence",
           "candidates-reference-requests/search-past-references",
@@ -57,6 +58,7 @@
         "pages": [
           "account-configuration/find-and-change-settings",
           "account-configuration/manage-users",
+          "account-configuration/roles-and-permissions",
           "account-configuration/firm-configuration",
           "account-configuration/reference-request-settings",
           "account-configuration/reference-settings",

@@ -42,7 +42,7 @@ To see the raw details for any submission, open the reference and go to its **Ab
 The candidate page can show two more banners that compare your own current IP address with what's on file:
 
 - **Reference request submitted by the user:** your IP address matches the candidate's, which usually means you filled in the candidate's form yourself.
-- **IP match between Recruiter and Referee:** your IP address matches one of the candidate's references.
+- **IP match between Recruiter and Reference:** your IP address matches one of the candidate's references.
 
 These are worked out in your browser, aren't affected by the settings below, and are separate from the candidate-to-reference conflict.
 
@@ -99,15 +99,15 @@ Clearing removes the banner and the report box and adds an entry to the Activiti
 
 ## The IP and self-reference settings
 
-These are in the Configuration area under **Settings → Notifications**:
+These are in the Configuration area under **Settings**:
 
-- **IP address conflict detected** (a row of the **Team notifications** table): who is emailed when a conflict is found. New accounts notify the **Assigned recruiter**.
-- **Candidate submitted their own contact details as a reference** (another row): who is emailed about self-reference attempts. New accounts notify the **Assigned recruiter**.
-- **IP Conflict Banner** (under **Email options**): adds the **IP Address Conflict Detected** and **Self-Reference Attempt Detected** boxes to PDF reports. Off by default. It only appears once **Attach The PDF Report To Completion Emails** above it is switched on.
+- **IP address conflict detected** (a row of the **Team notifications** table on the **Notifications** tab): who is emailed when a conflict is found. New accounts notify the assigned user.
+- **Candidate submitted their own contact details as a reference** (another row on the same table): who is emailed about self-reference attempts. New accounts notify the assigned user.
+- **IP Conflict Banner** (its own card on the **Documents** tab): adds the **IP Address Conflict Detected** and **Self-Reference Attempt Detected** boxes to PDF reports. Off by default.
 
-Vitay only checks IP addresses while at least one column is ticked on the **IP address conflict detected** row or the **IP Conflict Banner** is on. See [Notification settings](/account-configuration/notification-settings).
+Vitay only checks IP addresses while at least one column is ticked on the **IP address conflict detected** row or the **IP Conflict Banner** is on. See [Notification settings](/account-configuration/notification-settings) and [Reference report settings](/account-configuration/report-settings#ip-conflict-banner).
 
-![Settings → Notifications showing the IP address conflict detected and self-reference rows of Team notifications and the IP conflict banner switch under Email options](/images/screens/ip-conflicts-and-reference-edits-settings.png)
+![SCREENSHOT(ip-conflicts-and-reference-edits-settings): The Documents tab of Settings with the IP Conflict Banner card between Show Reference Edits On Reports and Hide Personal Data](/images/placeholder.png)
 
 ## Reference edits
 
@@ -147,9 +147,8 @@ A root recruiter can add the same summary to PDF reports: **Settings** → **Doc
     recruiter** is ticked, you only hear about your own candidates.
   </Accordion>
   <Accordion title="The banner is on screen but not on the PDF report">
-    Switch on **IP Conflict Banner** under **Email options** on the
-    **Notifications** tab (turn on **Attach The PDF Report To Completion
-    Emails** first to see it), then download the report again.
+    Switch on **IP Conflict Banner** on the **Documents** tab of
+    **Settings**, then download the report again.
   </Accordion>
   <Accordion title="I cleared the alert by mistake">
     There's no undo. You can still compare the **IP Address** on the
@@ -186,4 +185,4 @@ A root recruiter can add the same summary to PDF reports: **Settings** → **Doc
   <Card title="Share reports" icon="share-nodes" href="/candidates-reference-requests/share-reports" />
 </CardGroup>
 
-{/* source: app projects/references protected/candidates/show/alerts/candidates.show.alerts.component.html, protected/candidates/show/references (hasSameIPAddress column), shared/components/sidebar/reference/question-set/alerts/sidebar.reference.question-set.alerts.component.html, protected/leads/list (Types: Duplicated IP), i18n CANDIDATE.IP_ADDRESS.* CANDIDATE.SELF_REFERENCE.* REFERENCE.IP_ADDRESS.* REFERENCE.EDITS.*; projects/configuration protected/settings/notifications/settings.notifications.component.html, i18n TEAM_NOTIFICATIONS.ROWS.{IP_CONFLICT,SELF_REFERENCE_ATTEMPT}, is_ip_conflict_banner_enabled, SETTINGS.DOCUMENTS.is_show_reference_edits_on_report; api app/services/ip_conflict_service.rb, app/services/self_reference_check.rb, app/services/candidate_self_reference_attempts/record.rb, app/models/reference.rb CANDIDATE_EDITABLE_FIELDS, app/views/api/v3/documents/en/default/{references,candidates}.erb */}
+{/* source: app projects/references protected/candidates/show/alerts/candidates.show.alerts.component.html, protected/candidates/show/references (hasSameIPAddress column), shared/components/sidebar/reference/question-set/alerts/sidebar.reference.question-set.alerts.component.html, protected/leads/list (Types: Duplicated IP), i18n CANDIDATE.IP_ADDRESS.* CANDIDATE.SELF_REFERENCE.* REFERENCE.IP_ADDRESS.* REFERENCE.EDITS.*; projects/configuration protected/settings/notifications/settings.notifications.component.html, protected/settings/documents/settings.documents.component.{ts,html} (is_ip_conflict_banner_enabled), i18n TEAM_NOTIFICATIONS.ROWS.{IP_CONFLICT,SELF_REFERENCE_ATTEMPT}, SETTINGS.DOCUMENTS.is_ip_conflict_banner_enabled, SETTINGS.DOCUMENTS.is_show_reference_edits_on_report; api app/services/ip_conflict_service.rb, app/services/self_reference_check.rb, app/services/candidate_self_reference_attempts/record.rb, app/models/reference.rb CANDIDATE_EDITABLE_FIELDS, app/views/api/v3/documents/en/default/{references,candidates}.erb */}
